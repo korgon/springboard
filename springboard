@@ -1,0 +1,3 @@
+#!/bin/sh
+# code to run node with harmony flag for ecma6 support
+node --harmony launch.js
