@@ -1,0 +1,15 @@
+doctype html
+head
+  html
+    block title
+    block head
+      script(src='/js/sbc.js')
+    block css
+      link(href='/css/springboard.css', rel='stylesheet')
+  body
+    //- include the header
+    include ./above.jade
+    #content
+      block body
+    //- include the footer
+    include ./below.jade

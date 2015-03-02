@@ -1,0 +1,12 @@
+extends ./layouts/main.jade
+
+block append head
+  //- add some more scripts?
+
+block title
+  title= 'springboard [' + site.name + ']'
+
+block body
+  #frame
+    -var site_url = 'http://localhost:1338/sites/' + site.name + '/' + site.name + '.html';
+    iframe#mockupwindow(name='mockupwindow' src=site_url)

@@ -1,0 +1,16 @@
+extends ./layouts/main.jade
+
+block append head
+  //- add some more scripts?
+
+block title
+  title springboard [sitename]
+
+block body
+  #gallery
+    ul
+      each site in sites
+        li
+          -var site_url = '/sites/' + site.name + '/' + site.name + '.html';
+          a(href=site_url)= site.name
+      

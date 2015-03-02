@@ -8,6 +8,7 @@ var reload = browserSync.reload;
 
 // gulp plugins
 var concat = require('gulp-concat');
+var gzip = require('gulp-gzip');
 var jshint = require('gulp-jshint');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
@@ -15,15 +16,22 @@ var uglify = require('gulp-uglify');
 var gutil = require('gulp-util');
 
 // js tasks
-gulp.task('lint', function() {
-  return gulp.src('public/js/*.js')
+gulp.task('js', function() {
+  return gulp.src('build/js/*.js')
     .pipe(jshint()).on('error', gutil.log)
     .pipe(jshint.reporter('default'))
+    .pipe(gulp.dest('public/js'))
+    .pipe(uglify()).on('error', gutil.log)
+    .pipe(rename({extname: '.min.js'}))
+    .pipe(gulp.dest('public/js'))
+    .pipe(gzip())
+    .pipe(rename({extname: '.gzip'}))
+    .pipe(gulp.dest('public/js'));
 });
 
-// sass
+// sass tasks
 gulp.task('sass', function() {
-  return gulp.src('build/sass/*.scss')
+  return gulp.src('build/scss/*.scss')
     .pipe(sass()).on('error', gutil.log)
     .pipe(gulp.dest('public/css'))
     .pipe(reload({stream: true})).on('error', gutil.log);
@@ -31,9 +39,9 @@ gulp.task('sass', function() {
 
 // all seeing eye
 gulp.task('watch', function() {
-  gulp.watch(['public/js/*.js', 'build/js/*.js'], ['lint', reload]);
+  gulp.watch('build/js/*.js', ['js', reload]);
   gulp.watch('build/scss/*.scss', ['sass']);
-  gulp.watch('public/views/*.jade').on('change', reload);
+  gulp.watch('views/**/*.jade').on('change', reload);
 });
 
 // start browsersync

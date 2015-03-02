@@ -1,6 +1,3 @@
-
-
-
 // springboard
 // manage searchspring mockups
 // * include and merge js files
@@ -19,6 +16,7 @@ var co = require('co');
 var koa = require('koa');
 var favicon = require('koa-favicon');
 var logger = require('koa-logger');
+var serve = require('koa-static');
 var route = require('koa-route');
 var mount = require('koa-mount');
 
@@ -30,19 +28,25 @@ var app = koa();
 springboard.init();
 
 // middleware
-app.use(favicon(__dirname + '/public/favicon.png'));
 app.use(logger());
+app.use(favicon(__dirname + '/public/favicon.png'));
+app.use(serve(__dirname + '/public/'));
+app.use(serve(__dirname + '/' + springboard.options.mockup_dir));
 
 // route middleware
+// ----------------
+// general routes
 var routes = require(__dirname + '/routes/routes.js')(springboard);
 app.use(route.get('/', routes.index));
-
+app.use(route.get('/sites', routes.gallery));
+// api routes
 var api = require(__dirname + '/routes/v1.js')(springboard);
 app.use(route.get(['/mockups', '/mockups/all'], api.sites));
 app.use(route.get('/mockups/:site', api.site));
 
 // start your engines
-app.listen(1337);
+app.listen(springboard.options.port);
 setTimeout(function(){
-  console.log('http://localhost:1337/');
+  console.log();
+  console.log('loaded @ http://localhost:' + springboard.options.port + '/');
 }, 1337);

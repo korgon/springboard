@@ -5,12 +5,9 @@
 /api/v1/
 ------------------
 GET mockups/all
-POST mockups/create
 GET mockups/{{ name }}
-GET mockups/{{ name }}/files
-GET mockups/{{ name }}/modules
-GET mockups/{{ name }}/publish
-GET mockups/{{ name }}/destroy
+POST mockups/create
+... add more ...
 */
 
 // must pass in the springboard dependency
@@ -24,6 +21,9 @@ module.exports = function(springboard) {
       var data = springboard.getSite(name);
       this.response.body = data;
       this.response.type = 'json';
+    },
+    create: function*() {
+      // add new mockup
     }
   };
 };
