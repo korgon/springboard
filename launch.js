@@ -18,7 +18,6 @@ var favicon = require('koa-favicon');
 var logger = require('koa-logger');
 var serve = require('koa-static');
 var route = require('koa-route');
-var mount = require('koa-mount');
 
 // local modules
 var springboard = require(__dirname + "/lib/springboard.js");
