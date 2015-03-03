@@ -2,5 +2,23 @@
 
 #above
   .heading
-    img.logo(src="/images/ss.png")
-    span.subtitle springboard
+    .title
+      img.logo(src='/images/ss.png')
+      .subtitle springboard
+    .url
+      input#frameurl(name='url', autocomplete='off', spellcheck='false')
+    .buttons
+      button#open
+    .selection
+      select#websitelist
+        each site in sites
+          option= site.name
+      .selectioncontainer
+        a.selected
+          span= site.name
+        .websiteselect
+          .websitesearch
+            input(autocomplete='off')
+          ul.websitechoices
+            each site in sites
+              li= site.name

@@ -27,6 +27,17 @@ var springboard = require(__dirname + "/lib/springboard.js");
 var app = koa();
 springboard.init();
 
+// handle things...
+// app.use(function*(next) {
+//   try {
+//     // pass things downstream
+//     yield next;
+//   } catch(err) {
+//     // catch any errors thrown upstream
+//     this.status == err.status || 500
+//   }
+// });
+
 // middleware
 app.use(logger());
 app.use(favicon(__dirname + '/public/favicon.png'));

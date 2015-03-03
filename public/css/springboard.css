@@ -9,13 +9,40 @@ body {
   background-image: -o-linear-gradient(top, #01214f, #0058a6);
   background-image: linear-gradient(to bottom, #01214f, #0058a6);
   background: url('../images/blue-bkgrd.jpg') center center fixed;
-  background: #01214f \9;
   background-size: cover;
   background-position: 0px 0px; }
+  body input, body select, body textarea {
+    padding: 7px;
+    border: 0;
+    border-radius: 6px;
+    color: #eee;
+    font-weight: bold;
+    background-color: #002347; }
+    body input::-webkit-input-placeholder, body select::-webkit-input-placeholder, body textarea::-webkit-input-placeholder {
+      color: #797979;
+      font-weight: normal;
+      font-style: italic; }
+    body input:-moz-placeholder, body select:-moz-placeholder, body textarea:-moz-placeholder {
+      /* Firefox 18- */
+      color: #797979;
+      font-weight: normal;
+      font-style: italic; }
+    body input::-moz-placeholder, body select::-moz-placeholder, body textarea::-moz-placeholder {
+      /* Firefox 19+ */
+      color: #797979;
+      font-weight: normal;
+      font-style: italic; }
+    body input:-ms-input-placeholder, body select:-ms-input-placeholder, body textarea:-ms-input-placeholder {
+      color: #797979;
+      font-weight: normal;
+      font-style: italic; }
+    body input:focus, body input:active, body select:focus, body select:active, body textarea:focus, body textarea:active {
+      outline: 0;
+      background-color: #001A35; }
   body #above {
     position: absolute;
     width: 100%;
-    height: 36px;
+    height: 40px;
     padding: 0;
     margin: 0;
     z-index: 6; }
@@ -23,18 +50,81 @@ body {
       display: inline-block;
       float: left;
       width: 100%;
-      margin: 0; }
-      body #above .heading .logo {
-        vertical-align: middle; }
-      body #above .heading .subtitle {
+      height: 100%;
+      margin: 0;
+      background-color: #003366;
+      color: #885200; }
+      body #above .heading .title {
+        margin: 2px 5px 0 10px;
+        float: left; }
+        body #above .heading .title .logo {
+          vertical-align: middle; }
+        body #above .heading .title .subtitle {
+          display: inline-block;
+          color: #885200;
+          margin-left: 9px;
+          vertical-align: middle;
+          font-size: 30px; }
+      body #above .heading .url {
         display: inline-block;
-        color: #885200;
-        margin-left: 9px;
-        vertical-align: middle;
-        font-size: 30px; }
+        width: 50%;
+        float: left;
+        margin: 4px 10px 0; }
+        body #above .heading .url input {
+          border: 1px solid #304B66;
+          width: 100%;
+          color: #99A9BD; }
+      body #above .heading .buttons {
+        margin: 6px 10px 0;
+        display: inline-block;
+        float: left;
+        display: none; }
+        body #above .heading .buttons button {
+          border: 0;
+          background: rgba(0, 0, 0, 0.3);
+          width: 27px;
+          height: 27px; }
+      body #above .heading .selection {
+        position: relative;
+        float: right;
+        margin: 0;
+        display: inline-block;
+        width: 250px; }
+        body #above .heading .selection #websitelist {
+          display: none; }
+        body #above .heading .selection .selectioncontainer {
+          position: relative; }
+          body #above .heading .selection .selectioncontainer a.selected {
+            display: block;
+            padding: 0px 6px;
+            margin: 4px 5px 0 0;
+            height: 28px;
+            border-radius: 6px;
+            border: 1px solid #304B66;
+            background-color: #002347; }
+            body #above .heading .selection .selectioncontainer a.selected:hover {
+              cursor: pointer; }
+            body #above .heading .selection .selectioncontainer a.selected span {
+              font-size: 20px;
+              line-height: 28px;
+              display: inline-block; }
+          body #above .heading .selection .selectioncontainer .websiteselect {
+            display: none;
+            margin: 0px 5px 0 0;
+            position: relative;
+            background-color: #003366; }
+            body #above .heading .selection .selectioncontainer .websiteselect .websitesearch input {
+              width: 225px;
+              margin: 2px 5px; }
+            body #above .heading .selection .selectioncontainer .websiteselect ul.websitechoices {
+              list-style: none;
+              margin: 0;
+              padding: 0; }
+              body #above .heading .selection .selectioncontainer .websiteselect ul.websitechoices li {
+                padding: 6px; }
   body #content #frame iframe {
     position: absolute;
-    top: 36px;
+    top: 40px;
     background-color: #fff;
     border: none;
     width: 100%;

@@ -3,6 +3,8 @@
 // using gulp browsersync and browserify
 
 var gulp = require('gulp');
+var source = require('vinyl-source-stream');
+var browserify = require('browserify');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 
@@ -15,21 +17,37 @@ var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var gutil = require('gulp-util');
 
-// js tasks
+// // js task
+// gulp.task('js', function() {
+//   return gulp.src('build/js/*.js')
+//     .pipe(jshint()).on('error', gutil.log)
+//     .pipe(jshint.reporter('default'))
+//     .pipe(gulp.dest('public/js'))
+//     .pipe(uglify()).on('error', gutil.log)
+//     .pipe(rename({extname: '.min.js'}))
+//     .pipe(gulp.dest('public/js'))
+//     .pipe(gzip())
+//     .pipe(rename({extname: '.gzip'}))
+//     .pipe(gulp.dest('public/js'));
+// });
+
+// browserified js task
 gulp.task('js', function() {
-  return gulp.src('build/js/*.js')
+  return browserify('./build/js/sbc.js')
+    .bundle().on('error', gutil.log)
+    .pipe(source('sbc-v1.0.0.js')).on('error', gutil.log)
     .pipe(jshint()).on('error', gutil.log)
     .pipe(jshint.reporter('default'))
-    .pipe(gulp.dest('public/js'))
-    .pipe(uglify()).on('error', gutil.log)
-    .pipe(rename({extname: '.min.js'}))
-    .pipe(gulp.dest('public/js'))
-    .pipe(gzip())
-    .pipe(rename({extname: '.gzip'}))
     .pipe(gulp.dest('public/js'));
+    // .pipe(uglify()).on('error', gutil.log)
+    // .pipe(rename({extname: '.min.js'}))
+    // .pipe(gulp.dest('public/js'))
+    // .pipe(gzip())
+    // .pipe(rename({extname: '.gzip'}))
+    // .pipe(gulp.dest('public/js'));
 });
 
-// sass tasks
+// sass task
 gulp.task('sass', function() {
   return gulp.src('build/scss/*.scss')
     .pipe(sass()).on('error', gutil.log)
