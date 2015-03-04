@@ -12,6 +12,7 @@ var reload = browserSync.reload;
 var concat = require('gulp-concat');
 var gzip = require('gulp-gzip');
 var jshint = require('gulp-jshint');
+var plumber = require('gulp-plumber');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
@@ -33,11 +34,11 @@ var gutil = require('gulp-util');
 
 // browserified js task
 gulp.task('js', function() {
-  return browserify('./build/js/sbc.js')
-    .bundle().on('error', gutil.log)
-    .pipe(source('sbc-v1.0.0.js')).on('error', gutil.log)
-    .pipe(jshint()).on('error', gutil.log)
-    .pipe(jshint.reporter('default'))
+  var sbc = browserify();
+  sbc.add('./build/js/sbc.js');
+
+  return sbc.bundle().on('error', browserifyHandler)
+    .pipe(source('sbc-v1.0.0.js'))
     .pipe(gulp.dest('public/js'));
     // .pipe(uglify()).on('error', gutil.log)
     // .pipe(rename({extname: '.min.js'}))
@@ -47,12 +48,24 @@ gulp.task('js', function() {
     // .pipe(gulp.dest('public/js'));
 });
 
+// handler for browserify
+function browserifyHandler(err){
+  gutil.log(gutil.colors.red('Error'), err.message);
+  this.emit('end');
+}
+
+// lint task
+// .pipe(jshint('.jshintrc'))
+// .pipe(jshint.reporter('jshint-stylish'))
+// .pipe(jshint.reporter('fail'))
+
 // sass task
 gulp.task('sass', function() {
   return gulp.src('build/scss/*.scss')
-    .pipe(sass()).on('error', gutil.log)
+    .pipe(plumber())
+    .pipe(sass({errLogToConsole: true}))
     .pipe(gulp.dest('public/css'))
-    .pipe(reload({stream: true})).on('error', gutil.log);
+    .pipe(reload({stream: true}))
 });
 
 // all seeing eye

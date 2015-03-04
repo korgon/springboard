@@ -8,10 +8,12 @@ $bluedarkest: #001A35;
 $bluehighlight: #304B66;
 $orange: #885200;
 
+$heightheader: 40px;
+
 body {
 	padding: 0;
 	margin: 0;
-	font-family: "Roboto", Helvetica, Arial, sans-serif;
+	font-family: 'Roboto', sans-serif;
 	background-color: #0058a6;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#01214f), to(#0058a6));
 	background-image: -webkit-linear-gradient(top, #01214f, #0058a6);
@@ -23,6 +25,11 @@ body {
 	background-position: 0px 0px;
 
 	// general objects
+	a {
+		color: $orange;
+		font-weight: bold;
+		text-decoration: none;
+	}
 	input, select, textarea {
 		padding: 7px;
 		border: 0;
@@ -60,7 +67,6 @@ body {
 	#above {
     position: absolute;
 		width: 100%;
-    height: 40px;
 		padding: 0;
     margin: 0;
     // -webkit-box-shadow: 0px 0px 6px 2px black;
@@ -68,59 +74,65 @@ body {
     // box-shadow: 0px 0px 6px 2px black;
     z-index: 6;
 		.heading {
-			display: inline-block;
-			float: left;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
 			width: 100%;
-			height: 100%;
+			height: $heightheader;
 			margin: 0;
 			background-color: $bluebase;
-			color: #885200;
+			color: $orange;
+			&.hidden {
+				display: none;
+			}
 			.title {
-				margin: 2px 5px 0 10px;
-				float: left;
+				display:flex;
+				align-items: center;
+				order: 1;
 				.logo {
-					vertical-align: middle;
+					margin-left: 9px;
 				}
 				.subtitle {
-					display: inline-block;
 					color: $orange;
 					margin-left: 9px;
-					vertical-align: middle;
-					font-size: 30px;
+					font-size: 21px;
 				}
 			}
 			.url {
-				display: inline-block;
-				width: 50%;
-				float: left;
-				margin: 4px 10px 0;
+				order: 2;
+				flex: 1 1 33%;
+				margin: 0 25px 0 10px;
 				input {
 					border: 1px solid $bluehighlight;
 					width: 100%;
 					color: $bluelightest;
 				}
 			}
-			.buttons {
-				margin: 6px 10px 0;
-				display: inline-block;
-				float: left;
-				display: none;
-				button {
-					border: 0;
-					background: rgba(0, 0, 0, 0.3);
-					width: 27px;
-					height: 27px;
-				}
-				.new_window {
-
+			.open {
+				order: 3;
+				width: 20px;
+				height: 20px;
+				opacity: 0.5;
+				background: url('/images/open.png') no-repeat;
+				background-size: 20px;
+				margin-right: 9px;
+				&:hover {
+					cursor: pointer;
+					opacity: 1;
 				}
 			}
+			.line {
+				order: 4;
+				height: $heightheader;
+				border-right: 1px solid $bluehighlight;
+				border-left: 1px solid $bluedarkest;
+			}
 			.selection {
-				position: relative;
-				float: right;
-				margin: 0;
-				display: inline-block;
+				order: 4;
 				width: 250px;
+				height: $heightheader;
+
 				#websitelist {
 					display: none;
 				}
@@ -128,28 +140,28 @@ body {
 					position: relative;
 					a.selected {
 						display: block;
+						text-align: center;
 						padding: 0px 6px;
-						margin: 4px 5px 0 0;
-						height: 28px;
-						border-radius: 6px;
-						border: 1px solid $bluehighlight;
-						background-color: $bluedark;
+						margin: 0;
+						line-height: $heightheader;
+						height: $heightheader;
 						&:hover {
 							cursor: pointer;
 						}
 						span {
-							font-size: 20px;
-							line-height: 28px;
 							display: inline-block;
-
+							font-size: 18px;
+							font-weight: bold;
+							color: #9B7F25;
 						}
 					}
 					.websiteselect {
 						display: none;
-						margin: 0px 5px 0 0;
+						margin: 0;
 						position: relative;
 						background-color: $bluebase;
 						.websitesearch {
+							display: none;
 							input {
 								width: 225px;
 								margin: 2px 5px;
@@ -160,7 +172,14 @@ body {
 							margin: 0;
 							padding: 0;
 							li {
-								padding: 6px;
+								border-top: 1px solid $bluehighlight;
+								a {
+									display: block;
+									padding: 6px;
+									&:hover {
+										cursor: pointer;
+									}
+								}
 							}
 						}
 					}
@@ -179,6 +198,9 @@ body {
         border: none;
         width: 100%;
         height: 100%;
+				&.maximized {
+					top: 0px;
+				}
       }
     }
   }

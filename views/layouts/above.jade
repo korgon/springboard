@@ -3,12 +3,12 @@
 #above
   .heading
     .title
-      img.logo(src='/images/ss.png')
-      .subtitle springboard
+      img.logo(src='/images/ssdoge.png')
+      .subtitle [ SǷ®1ͶgƁ0ΛɌԂ ]
     .url
       input#frameurl(name='url', autocomplete='off', spellcheck='false')
-    .buttons
-      button#open
+    .open
+    .line
     .selection
       select#websitelist
         each site in sites
@@ -21,4 +21,6 @@
             input(autocomplete='off')
           ul.websitechoices
             each site in sites
-              li= site.name
+              -var site_url = 'http://localhost:1338/sites/' + site.name + '/' + site.name + '.html';
+              li
+                a(href=site_url target='frameview')= site.name

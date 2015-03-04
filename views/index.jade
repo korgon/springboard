@@ -9,4 +9,4 @@ block title
 block body
   #frame
     -var site_url = 'http://localhost:1338/sites/' + site.name + '/' + site.name + '.html';
-    iframe#mockupwindow(name='mockupwindow', src=site_url, onLoad='sb.updateUrl()')
+    iframe#frameview(name='frameview', src=site_url, onLoad='sb.updateUrl()')

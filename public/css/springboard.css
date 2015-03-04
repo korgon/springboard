@@ -1,7 +1,7 @@
 body {
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
   background-color: #0058a6;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#01214f), to(#0058a6));
   background-image: -webkit-linear-gradient(top, #01214f, #0058a6);
@@ -11,6 +11,10 @@ body {
   background: url('../images/blue-bkgrd.jpg') center center fixed;
   background-size: cover;
   background-position: 0px 0px; }
+  body a {
+    color: #885200;
+    font-weight: bold;
+    text-decoration: none; }
   body input, body select, body textarea {
     padding: 7px;
     border: 0;
@@ -42,86 +46,98 @@ body {
   body #above {
     position: absolute;
     width: 100%;
-    height: 40px;
     padding: 0;
     margin: 0;
     z-index: 6; }
     body #above .heading {
-      display: inline-block;
-      float: left;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
       width: 100%;
-      height: 100%;
+      height: 40px;
       margin: 0;
       background-color: #003366;
       color: #885200; }
+      body #above .heading.hidden {
+        display: none; }
       body #above .heading .title {
-        margin: 2px 5px 0 10px;
-        float: left; }
+        display: flex;
+        align-items: center;
+        order: 1; }
         body #above .heading .title .logo {
-          vertical-align: middle; }
+          margin-left: 9px; }
         body #above .heading .title .subtitle {
-          display: inline-block;
           color: #885200;
           margin-left: 9px;
-          vertical-align: middle;
-          font-size: 30px; }
+          font-size: 21px; }
       body #above .heading .url {
-        display: inline-block;
-        width: 50%;
-        float: left;
-        margin: 4px 10px 0; }
+        order: 2;
+        flex: 1 1 33%;
+        margin: 0 25px 0 10px; }
         body #above .heading .url input {
           border: 1px solid #304B66;
           width: 100%;
           color: #99A9BD; }
-      body #above .heading .buttons {
-        margin: 6px 10px 0;
-        display: inline-block;
-        float: left;
-        display: none; }
-        body #above .heading .buttons button {
-          border: 0;
-          background: rgba(0, 0, 0, 0.3);
-          width: 27px;
-          height: 27px; }
+      body #above .heading .open {
+        order: 3;
+        width: 20px;
+        height: 20px;
+        opacity: 0.5;
+        background: url('/images/open.png') no-repeat;
+        background-size: 20px;
+        margin-right: 9px; }
+        body #above .heading .open:hover {
+          cursor: pointer;
+          opacity: 1; }
+      body #above .heading .line {
+        order: 4;
+        height: 40px;
+        border-right: 1px solid #304B66;
+        border-left: 1px solid #001A35; }
       body #above .heading .selection {
-        position: relative;
-        float: right;
-        margin: 0;
-        display: inline-block;
-        width: 250px; }
+        order: 4;
+        width: 250px;
+        height: 40px; }
         body #above .heading .selection #websitelist {
           display: none; }
         body #above .heading .selection .selectioncontainer {
           position: relative; }
           body #above .heading .selection .selectioncontainer a.selected {
             display: block;
+            text-align: center;
             padding: 0px 6px;
-            margin: 4px 5px 0 0;
-            height: 28px;
-            border-radius: 6px;
-            border: 1px solid #304B66;
-            background-color: #002347; }
+            margin: 0;
+            line-height: 40px;
+            height: 40px; }
             body #above .heading .selection .selectioncontainer a.selected:hover {
               cursor: pointer; }
             body #above .heading .selection .selectioncontainer a.selected span {
-              font-size: 20px;
-              line-height: 28px;
-              display: inline-block; }
+              display: inline-block;
+              font-size: 18px;
+              font-weight: bold;
+              color: #9B7F25; }
           body #above .heading .selection .selectioncontainer .websiteselect {
             display: none;
-            margin: 0px 5px 0 0;
+            margin: 0;
             position: relative;
             background-color: #003366; }
-            body #above .heading .selection .selectioncontainer .websiteselect .websitesearch input {
-              width: 225px;
-              margin: 2px 5px; }
+            body #above .heading .selection .selectioncontainer .websiteselect .websitesearch {
+              display: none; }
+              body #above .heading .selection .selectioncontainer .websiteselect .websitesearch input {
+                width: 225px;
+                margin: 2px 5px; }
             body #above .heading .selection .selectioncontainer .websiteselect ul.websitechoices {
               list-style: none;
               margin: 0;
               padding: 0; }
               body #above .heading .selection .selectioncontainer .websiteselect ul.websitechoices li {
-                padding: 6px; }
+                border-top: 1px solid #304B66; }
+                body #above .heading .selection .selectioncontainer .websiteselect ul.websitechoices li a {
+                  display: block;
+                  padding: 6px; }
+                  body #above .heading .selection .selectioncontainer .websiteselect ul.websitechoices li a:hover {
+                    cursor: pointer; }
   body #content #frame iframe {
     position: absolute;
     top: 40px;
@@ -129,3 +145,5 @@ body {
     border: none;
     width: 100%;
     height: 100%; }
+    body #content #frame iframe.maximized {
+      top: 0px; }

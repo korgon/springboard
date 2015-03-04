@@ -55,8 +55,8 @@ app.use(route.get(['/mockups', '/mockups/all'], api.sites));
 app.use(route.get('/mockups/:site', api.site));
 
 // start your engines
-app.listen(springboard.options.port);
+app.listen(springboard.options.port + 1);
 setTimeout(function(){
   console.log();
   console.log('loaded @ http://localhost:' + springboard.options.port + '/');
-}, 1337);
+}, 1500);
