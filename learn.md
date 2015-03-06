@@ -68,11 +68,11 @@ For a full listing see what is in [package.json](./package.json)
 [jade templates](http://jade-lang.com/api/)  
 
 #####Articles
-http://www.sitepoint.com/introduction-gulp-js/
-http://travismaynard.com/writing/getting-started-with-gulp
-https://gist.github.com/mlouro/8886076
-http://notjoshmiller.com/understanding-co/
-http://www.jongleberry.com/koa.html
+http://www.sitepoint.com/introduction-gulp-js/  
+http://travismaynard.com/writing/getting-started-with-gulp  
+https://gist.github.com/mlouro/8886076  
+http://notjoshmiller.com/understanding-co/  
+http://www.jongleberry.com/koa.html  
 
 ##Software
 #####Atom
