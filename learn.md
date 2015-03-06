@@ -63,6 +63,7 @@ For a full listing see what is in [package.json](./package.json)
 
 [gulp](https://github.com/gulpjs/gulp)  
 [browsersync](http://www.browsersync.io/)  
+[browserify](http://browserify.org/)  
 [co](https://github.com/tj/co)  
 [koa](https://github.com/koajs/koa)  
 [jade templates](http://jade-lang.com/api/)  
@@ -73,6 +74,37 @@ http://travismaynard.com/writing/getting-started-with-gulp
 https://gist.github.com/mlouro/8886076  
 http://notjoshmiller.com/understanding-co/  
 http://www.jongleberry.com/koa.html  
+
+##Prepare Development Tools
+Once you feel comfortable with all of that, feel free to start developing springboard.
+When working on the project if possible join the hipchat room springboard so that we can discuss project development and don't duplicate work.
+Get the latest springboard from the repo, then install:
+
+node.js (>=0.12.0)  
+http://nodejs.org/download/
+
+gulp, nodemon, mocha
+
+###Installation instructions
+
+```shellsession
+# sudo npm -g install nodemon gulp mocha
+```
+
+Run it!  
+(use the development launcher)
+
+```shellsession
+# ./devspringboard
+```
+
+From the springboard folder run gulp task
+
+```shellsession
+# gulp default
+```
+
+Goto localhost:1338 for browsersync of springboard
 
 ##Software
 #####Atom
