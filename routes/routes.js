@@ -10,7 +10,7 @@ module.exports = function(springboard) {
   return {
     index: function*() {
       var sites = springboard.getSites();
-      var site = yield springboard.useSite('springdoge');
+      var site = yield springboard.useSite('**previous_site**');
 
       if (site.valid != true) {
         site = { name: "error", siteid: "000000"};

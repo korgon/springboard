@@ -5,22 +5,18 @@
     .title
       img.logo(src='/images/ssdoge.png')
       .subtitle [ SǷ®1ͶgƁ0ΛɌԂ ]
-    .url
-      input#frameurl(name='url', autocomplete='off', spellcheck='false')
-    .open
-    .line
-    .selection
-      select#websitelist
-        each site in sites
-          option= site.name
-      .selectioncontainer
-        a.selected
-          span= site.name
-        .websiteselect
-          .websitesearch
-            input(autocomplete='off')
-          ul.websitechoices
-            each site in sites
-              -var site_url = 'http://localhost:1338/sites/' + site.name + '/' + site.name + '.html';
-              li
-                a(href=site_url target='frameview')= site.name
+    .mainmenu
+      ul.menuoptions
+        li
+          a
+            span.menuicon.newsite
+            span.menutext new site
+        li
+          a
+            span.menuicon.settings
+            span.menutext settings
+        li
+          a
+            span.menuicon.sitegallery
+            span.menutext view sites
+    block headerextend

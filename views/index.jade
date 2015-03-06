@@ -6,6 +6,10 @@ block append head
 block title
   title= 'springboard [' + site.name + ']'
 
+block header
+  //- include the header
+  include ./layouts/defaultheader.jade
+
 block body
   #frame
     -var site_url = 'http://localhost:1338/sites/' + site.name + '/' + site.name + '.html';

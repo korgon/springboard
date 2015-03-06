@@ -20,20 +20,10 @@ function sb() {
 
     // do stuff when dom has loaded
     $(function() {
-      // check for changes in frameurl and send them to frame
-      $('#frameurl').keypress(function(event) {
-        if (event.keyCode == 13) {
-          self.updateFrame($('#frameurl').val());
-        }
-      });
-
-			// bind new tab button
-			$('.heading .open').click(function() {
-				window.open($("#frameview").attr('src'), '_blank');
-			});
-
-			// initialize sites dropdown
-			siteSelector();
+			// add home click for title
+			$('.heading .title').click(function() {
+				window.location = '/';
+			})
 
       // bind hotkeys!
 			self.hotkeyInit();
@@ -50,6 +40,19 @@ function sb() {
 
 		// bind hotkeys to iframe (if it exists)
 		if ($iframe.length == 1) {
+			// check for changes in frameurl and send them to frame
+			$('#frameurl').keypress(function(event) {
+				if (event.keyCode == 13) {
+					self.updateFrame($('#frameurl').val());
+				}
+			});
+
+			// bind new tab button
+			$('.heading .openurl').click(function() {
+				window.open($('#frameurl').val(), '_blank');
+			});
+
+			// look for key events inside the iframe too
 			$iframe.load(function() {
 				$(this).contents().keydown(function(event) {
 					bindKeys(event)
@@ -59,32 +62,43 @@ function sb() {
 	}
 
 	self.updateUrl = function() {
-    $('#frameurl').val($("#frameview").attr('src'));
+    $('#frameurl').val($("#frameview").get(0).contentWindow.location);
 	}
 
   self.updateFrame = function(new_location) {
     $("#frameview").attr('src', new_location);
   }
 
+	self.switchSite = function(site) {
+		$.get('/api/mockups/watch/' + site, function(data) {
+			if (data.site !== undefined) {
+				// update the site selectordiv
+				$('.currentsite_name').text(data.site.name);
+			} else {
+				console.log('error: ' + data.error);
+			}
+		});
+	}
+
 	// hotkeys!!!
 	function bindKeys(event) {
 		if (event.ctrlKey || event.metaKey) {
 			switch (String.fromCharCode(event.which).toLowerCase()) {
-				// ctrl-s or command-s
+				// ctrl-d or command-d
 				// hide springboard panel
-				case 's':
+				case 'd':
 					event.preventDefault();
 					$('.heading').toggleClass('hidden');
 					$('#frameview').toggleClass('maximized');
 					break;
+				// ctrl-s or command-s
+				// save work / commit to repo
+				case 's':
+					event.preventDefault();
+					// TBD
+					break;
 			}
 		}
-	}
-
-	function siteSelector() {
-		$('.selection .selected').click(function() {
-			$('.websiteselect').toggle();
-		});
 	}
 }
 

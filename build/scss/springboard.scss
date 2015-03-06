@@ -1,12 +1,14 @@
 // comment
 
 // color variables
-$bluebase: #003366;
-$bluelightest: #99A9BD;
-$bluedark: #002347;
-$bluedarkest: #001A35;
+$bluebase: #354E66;
+$bluelightest: #7194AD;
+$bluedark: #1B3141;
+$bluedarkest: #001A2B;
+$bluedarkestest: #0E1920;
 $bluehighlight: #304B66;
-$orange: #885200;
+$grey: #999;
+$orange: #DD8500;
 
 $heightheader: 40px;
 
@@ -14,15 +16,8 @@ body {
 	padding: 0;
 	margin: 0;
 	font-family: 'Roboto', sans-serif;
-	background-color: #0058a6;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#01214f), to(#0058a6));
-	background-image: -webkit-linear-gradient(top, #01214f, #0058a6);
-	background-image: -moz-linear-gradient(top, #01214f, #0058a6);
-	background-image: -o-linear-gradient(top, #01214f, #0058a6);
-	background-image: linear-gradient(to bottom, #01214f, #0058a6);
-	background: url('../images/blue-bkgrd.jpg') center center fixed;
-	background-size: cover;
-	background-position: 0px 0px;
+	background-color: $bluebase;
+	color: $bluedarkestest;
 
 	// general objects
 	a {
@@ -36,36 +31,16 @@ body {
 		border-radius: 6px;
 		color: #eee;
 		font-weight: bold;
-		background-color: $bluedark;
-		&::-webkit-input-placeholder {
-			color: #797979;
-			font-weight: normal;
-			font-style: italic;
-		}
-		&:-moz-placeholder { /* Firefox 18- */
-			color: #797979;
-			font-weight: normal;
-			font-style: italic;
-		}
-		&::-moz-placeholder {  /* Firefox 19+ */
-			color: #797979;
-			font-weight: normal;
-			font-style: italic;
-		}
-		&:-ms-input-placeholder {
-			color: #797979;
-			font-weight: normal;
-			font-style: italic;
-		}
+		background-color: $bluedarkest;
 		&:focus, &:active {
 			outline: 0;
-			background-color: $bluedarkest;
+			background-color: $bluedark;
 		}
 	}
 
   // header
 	#above {
-    position: absolute;
+		position: fixed;
 		width: 100%;
 		padding: 0;
     margin: 0;
@@ -77,26 +52,100 @@ body {
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;
+			box-sizing: border-box;
 			align-items: center;
 			width: 100%;
 			height: $heightheader;
 			margin: 0;
-			background-color: $bluebase;
+			background-color: $bluedarkest;
 			color: $orange;
+			border-bottom: 1px solid $bluehighlight;
 			&.hidden {
 				display: none;
 			}
 			.title {
-				display:flex;
+				display: flex;
 				align-items: center;
 				order: 1;
+				height: $heightheader;
 				.logo {
 					margin-left: 9px;
 				}
 				.subtitle {
-					color: $orange;
+					color: $grey;
 					margin-left: 9px;
 					font-size: 21px;
+					text-shadow: -3px 1px #1E3145;
+				}
+				&:hover {
+					cursor: pointer;
+				}
+				&:hover + .mainmenu {
+					display: block;
+				}
+			}
+			.mainmenu {
+				display: none;
+				margin: 0;
+				position: absolute;
+				left: 0;
+				top: $heightheader;
+				width: 250px;
+				background-color: $bluedark;
+				z-index: 7;
+				border: 1px solid $bluehighlight;
+				border-top: 0;
+				ul.menuoptions {
+					list-style: none;
+					margin: 0;
+					padding: 0;
+					li {
+						border-top: 1px solid $bluehighlight;
+						&:first-of-type {
+							border-top: 0;
+						}
+						a {
+							display: flex;
+							flex-direction: row;
+							justify-content: left;
+							align-items: center;
+							height: 50px;
+							width: 100%;
+							color: $bluelightest;
+							span.menuicon {
+								display: inline-block;
+								width: 50px;
+								height: 50px;
+								opacity: 0.5;
+								background-repeat: no-repeat;
+								background-size: 25px;
+								background-position: center;
+								&.newsite {
+									background-image: url('/images/newsite.png');
+								}
+								&.settings {
+									background-image: url('/images/settings.png');
+								}
+								&.sitegallery {
+									background-image: url('/images/site.png');
+								}
+							}
+							span.menutext {
+								margin-left: 10px;
+							}
+							&:hover {
+								background-color: $bluedarkestest;
+								cursor: pointer;
+								color: $orange;
+							}
+							&:hover > .menuicon {
+								opacity: 1;
+							}
+						}
+					}
+				}
+				&:hover {
+					display: block;
 				}
 			}
 			.url {
@@ -109,12 +158,13 @@ body {
 					color: $bluelightest;
 				}
 			}
-			.open {
+			.openurl {
 				order: 3;
 				width: 20px;
 				height: 20px;
 				opacity: 0.5;
-				background: url('/images/open.png') no-repeat;
+				background-image: url('/images/open.png');
+				background-repeat: no-repeat;
 				background-size: 20px;
 				margin-right: 9px;
 				&:hover {
@@ -128,59 +178,70 @@ body {
 				border-right: 1px solid $bluehighlight;
 				border-left: 1px solid $bluedarkest;
 			}
-			.selection {
+			.worksite {
 				order: 4;
 				width: 250px;
 				height: $heightheader;
-
-				#websitelist {
-					display: none;
-				}
-				.selectioncontainer {
-					position: relative;
-					a.selected {
+				.worksitecontainer {
+					a.currentsite {
 						display: block;
 						text-align: center;
 						padding: 0px 6px;
 						margin: 0;
 						line-height: $heightheader;
 						height: $heightheader;
+						span {
+							display: inline-block;
+							font-size: 14px;
+							font-weight: bold;
+							color: $orange;
+						}
 						&:hover {
 							cursor: pointer;
 						}
-						span {
-							display: inline-block;
-							font-size: 18px;
-							font-weight: bold;
-							color: #9B7F25;
+						&:hover + .siteselect {
+							display: block;
 						}
 					}
-					.websiteselect {
+					.siteselect {
 						display: none;
 						margin: 0;
 						position: relative;
-						background-color: $bluebase;
-						.websitesearch {
+						background-color: $bluedark;
+						border: 1px solid $bluehighlight;
+						border-top: 0;
+						z-index: 7;
+						.sitesearch {
 							display: none;
 							input {
 								width: 225px;
 								margin: 2px 5px;
 							}
 						}
-						ul.websitechoices {
+						ul.sitechoices {
 							list-style: none;
 							margin: 0;
 							padding: 0;
 							li {
+								font-size: 14px;
 								border-top: 1px solid $bluehighlight;
+								&:first-of-type {
+									border-top: 0;
+								}
 								a {
+									color: $bluelightest;
 									display: block;
 									padding: 6px;
 									&:hover {
+										background-color: $bluedarkestest;
+										color: $orange;
 										cursor: pointer;
 									}
 								}
 							}
+						}
+						&:hover {
+							display: block;
 						}
 					}
 				}
@@ -193,7 +254,7 @@ body {
     #frame {
       iframe {
         position: absolute;
-        top: 40px;
+        top: 0px;
         background-color: #fff;
         border: none;
         width: 100%;
