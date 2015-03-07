@@ -12,7 +12,7 @@
 
 // include packages
 var co = require('co');
-var fs = require('mz/fs');
+
 // local modules
 var springboard = require(__dirname + "/lib/springboard.js");
 
@@ -21,7 +21,17 @@ co(function*() {
 	// compress the springs
 	yield springboard.init();
 	// choose a site
-	springboard.useSite('springdoge');
+	// springboard.useSite('springdoge');
+
+	// create a site
+	var site = {
+		name: 'springcat',
+		siteid: '654321',
+		cart: 'unknown',
+		template: 'skeleton'
+	}
+	// ['name', 'siteid', 'status', 'cart', 'template', 'modules']
+	yield springboard.newSite(site);
 })
 .then(function() {
 
