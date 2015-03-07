@@ -10,7 +10,7 @@
     "colors": "^1.0.3",
     "gulp": "^3.8.11",
     "gulp-concat": "^2.5.2",
-    "gulp-git": "^1.0.0",
+    "gulp-git": "^1.1.0",
     "gulp-gzip": "^1.0.0",
     "gulp-jshint": "~1.9.2",
     "gulp-plumber": "^0.6.6",
