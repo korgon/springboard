@@ -1,6 +1,6 @@
 #ϟǷ®1Πɢß0ȺɌÐ
 
-A tool to be used, and steadily improved upon to start tying in our many processes and SASS fees into one main control system. With future additions within a week or less time to implement, the possibilities would be limited only to APIs. Centralizing this program would take time to build out a secure login system. The current focus of this iteration of this program is on mockup creation. Any centralization of this program would require it to be split into two.
+A tool to be used, and steadily improved upon to start tying in our many processes into one main control system. With future additions within a week or less time to implement, the possibilities would be limited only to APIs. Centralizing this program would take time to build out a secure login system. The current focus of this iteration of this program is on mockup creation. Any centralization of this program would require it to be split into two.
 
 Notes on getting prepared to run springboard:
 
