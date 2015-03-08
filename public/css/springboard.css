@@ -12,12 +12,13 @@ body {
     padding: 7px;
     border: 0;
     border-radius: 6px;
-    color: #eee;
+    color: #7194AD;
     font-weight: bold;
     background-color: #001A2B; }
     body input:focus, body input:active, body select:focus, body select:active, body textarea:focus, body textarea:active {
       outline: 0;
-      background-color: #1B3141; }
+      background-color: #0E1920;
+      color: #DD8500; }
   body #above {
     position: fixed;
     width: 100%;
@@ -111,8 +112,7 @@ body {
         margin: 0 25px 0 10px; }
         body #above .heading .url input {
           border: 1px solid #304B66;
-          width: 100%;
-          color: #7194AD; }
+          width: 100%; }
       body #above .heading .openurl {
         order: 3;
         width: 20px;
