@@ -41,7 +41,7 @@ springboard.init();
 app.use(logger());
 app.use(favicon(__dirname + '/public/favicon.png'));
 app.use(serve(__dirname + '/public/'));
-app.use(serve(__dirname + '/' + springboard.options.mockup_dir));
+app.use(serve(__dirname + '/searchspring-mockups'));
 
 // route middleware
 // ----------------
