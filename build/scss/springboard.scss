@@ -29,12 +29,13 @@ body {
 		padding: 7px;
 		border: 0;
 		border-radius: 6px;
-		color: #eee;
+		color: $bluelightest;
 		font-weight: bold;
 		background-color: $bluedarkest;
 		&:focus, &:active {
 			outline: 0;
-			background-color: $bluedark;
+			background-color: $bluedarkestest;
+			color: $orange;
 		}
 	}
 
@@ -155,7 +156,6 @@ body {
 				input {
 					border: 1px solid $bluehighlight;
 					width: 100%;
-					color: $bluelightest;
 				}
 			}
 			.openurl {
@@ -267,7 +267,7 @@ body {
   }
 
 	// popup windows
-	
+
 
   // footer
   #below {
