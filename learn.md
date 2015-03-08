@@ -42,9 +42,9 @@ Some disputes in [node.js](http://nodejs.org/) land created the rift [io.js](htt
 * asynchronous flow
 * modules
 
-Learn at school. Learn at [nodescool](http://nodeschool.io/index.html).  
 Learn about the [node package manager](https://www.npmjs.com/).  
 Learn how to use the [node.js module system](http://nodejs.org/api/modules.html).  
+Learn at school. Learn at [nodescool](http://nodeschool.io/index.html).  
 
 #####Articles
 http://www.sitepoint.com/understanding-module-exports-exports-node-js/  

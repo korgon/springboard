@@ -1,10 +1,12 @@
 #ϟǷ®1Πɢß0ȺɌÐ
 
+A tool to be used, and steadily improved upon to start tying in our many processes and SASS fees into one main control system. With future additions within a week or less time to implement, the possibilities would be limited only to APIs. Centralizing this program would take time to build out a secure login system. The current focus of this iteration of this program is on mockup creation. Any centralization of this program would require it to be split into two.
+
 Notes on getting prepared to run springboard:
 
-Springboard is based upon the idea of having a management system for mockups. Springboards forefathers are a collection of bash scripts, and the famous [pyspring.](https://github.com/b7interactive/pyspring) The current iteration of the tool now finds itself written in Javascript.
+Springboard is based upon the idea of having a management system for mockups. Springboards forefathers are a collection of bash scripts, and the famous [pyspring.](https://github.com/b7interactive/pyspring) The current iteration of the tool now finds itself written in Javascript with a focus on modularity, objects, and apis.
 
-It makes use of several of the new ecma script 6 (ES6) by running on nodejs (with the harmony flag) or iojs (out of the box). This allows the use of generators and promises as well as other ES6 functionality (https://leanpub.com/understandinges6/read/#leanpub-auto-iterators-and-generators). Utilizing the vast array of node.js modules within the package management system (npm) we can quickly create web technologies and adapt to the ever changing ways of the web.
+It makes use of several of the soon to be standardized ECMA Script 6 (ES6). This allows the use of generators and promises as well as other ES6 functionality (https://leanpub.com/understandinges6/read/#leanpub-auto-iterators-and-generators). Utilizing the vast array of node.js modules within the package management system (npm) we can quickly create web technologies and adapt to the ever changing ways of the web.
 
 * Javascript
 * Use same language on server side as client side
@@ -16,7 +18,7 @@ It makes use of several of the new ecma script 6 (ES6) by running on nodejs (wit
 ##Programs to install
 
 node.js (>=0.12.0)  
-http://nodejs.org/download/
+[nodejs](http://nodejs.org/download/) (with the harmony flag) or [iojs](https://iojs.org/en/index.html) (out of the box).
 
 ##Installation instructions
 
@@ -70,22 +72,40 @@ Now you can use the command springboard in your terminal. How exciting!
 To get up to speed on this "node" thing and join the development.  
 [Ya gotta learn it...](./learn.md)
 
-##Do it! (todo)
+##Short Term Goals:
+* Easier and maintainable objects (website, module)
+* Modular modules (plug and play)
+* Theme based (templates)
+* Merge conflict prevention
+
+##To Do
 ####No real order...
-* unit testing (yuno)!!!
-* build out api/ui (new site, publish site, integration request(pull))
-* add site details and screen captures
-* implement simple module mode (use browserify)
-* themes / automockup / previewer (create new api manipulator / modify ajaxcatalog)
-* api authentication (json web tokens)
-* tie into smc (data and feed viewing)?
+* More documentation
+* Unit testing (yuno)!!!
+* Build out api/ui (new site, publish site, integration request(pull))
+* Add site details and screen captures
+* Implement simple module mode (use browserify)
+
+
+##Long Term Ideas:
+**Become friends with other APIs**
+* Integrate with Kanban, and BaseCamp.
+* Create a site ONCE for everyone.
+* Login and API Authentication (json web tokens)
+* Talk to SMC API (if one doesn't exist build it)
+* Get URL for feed data, provide front end for looking at data
+* Themes / Automockup / Previewer (create new api manipulator / modify ajaxcatalog)
+
+**Remove our middlemen where possible**
+* Create our own forms and store the data in a database (replaces formstack)
+* Store and retrieve passwords securely (replaces Teampass)
+* With a bit more work Kanban could be replaced as well
 
 ##Wish List
 ####Ordered by implementation... mostly...
-* allow for multiple watchers (per site instance)
-* database (mongodb or couchdb)
-* user class for login (or split project into client/server model)
-* online presence
-* webhooks for github
-* socket.io for realtime updating.
-* build out client side with emberjs or angularjs or somesuch
+* Database (mongodb or couchdb)
+* User class for login (or split project into client/server model)
+* Online presence
+* Webhooks (github mostly)
+* Socket.io for realtime updating.
+* Build out client side with emberjs or angularjs or somesuch
