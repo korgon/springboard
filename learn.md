@@ -1,4 +1,9 @@
 ##Getting Started
+
+// begin brief summary of program
+A scaffolding tool was not used to build out this project. A minimal modular, middleware focused http framework KOA was chosen to build to serve up a front end as well as provide an API. Browsersync provides the browser refreshing, synchronization accross multipe browsers and css injection. Browserify bring node module based require system it the browser to allow for the compilation of modular based userscripts. Phantomjs is a headless browser used to capture the website screenshots. Gulp is a task manager typically used to watch for design and development changes to compile SASS, compile and maniupulate JS, and for triggering other tasks (it is always watching). Springboard is the main object (controller) that manages and serves up (in tandem with KOA) the data or view (websites, modules). The [Jade templates](./views) along with the [client side scripts](./build/js) (and [scss](./build/scss)) provide the view. The objects (classes) are stored in the [lib folder](./lib). The data lives in the searchspring-mockups repository.  
+// end brief summary of program
+
 Many of the concepts used in this project are new concepts...we are forever learning...
 
 Jumping into it all can be very intimidating, as there are some many choices and opinions... not to mention the opionionated choices. So here is an opionionated start on if you want to develop web applications with Javascript today.
@@ -55,7 +60,6 @@ Not sure on which assertion library to use. Need to research unit testing method
 
 #####Articles
 http://code.tutsplus.com/tutorials/testing-in-nodejs--net-35018  
-
 
 
 ##Specific packages used
