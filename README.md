@@ -4,12 +4,15 @@ A tool to be used, and steadily improved upon to start tying in our many process
 
 Notes on getting prepared to run springboard:
 
-Springboard is based upon the idea of having a management system for mockups. Springboards forefathers are a collection of bash scripts, and the famous [pyspring.](https://github.com/b7interactive/pyspring) The current iteration of the tool now finds itself written in Javascript with a focus on modularity, objects, and apis.
+Springboard is based upon the idea of having a management system for mockups. Springboards forefathers are a collection of bash scripts, and the famous [pyspring.](https://github.com/b7interactive/pyspring) The current iteration of the tool now finds itself written in Javascript with a focus on modularity, objects, and APIs.
 
-It makes use of several of the soon to be standardized ECMA Script 6 (ES6). This allows the use of generators and promises as well as other ES6 functionality (https://leanpub.com/understandinges6/read/#leanpub-auto-iterators-and-generators). Utilizing the vast array of node.js modules within the package management system (npm) we can quickly create web technologies and adapt to the ever changing ways of the web.
+It makes use of several of the soon to be standardized ECMA Script 6 (ES6). This allows the use of generators and promises as well as other ES6 functionality. By utilizing the vast array of node.js modules within the package management system (npm), we can quickly create web technologies and adapt to the ever changing ways of the web.
 
-* Javascript
 * Use same language on server side as client side
+* Clean interface
+* Plug and play JS modules and sassy templating
+* JS Linting and compiling, Sass compiling and browser synchronization
+* Prevent merge conflicts by moving to new branching model
 * Increase productivity
 
 ---
