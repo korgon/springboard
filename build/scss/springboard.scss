@@ -7,7 +7,7 @@ $bluedark: #1B3141;
 $bluedarkest: #001A2B;
 $bluedarkestest: #0E1920;
 $bluehighlight: #304B66;
-$grey: #999;
+$grey: #61717B;
 $orange: #DD8500;
 
 $heightheader: 40px;
@@ -70,13 +70,12 @@ body {
 				order: 1;
 				height: $heightheader;
 				.logo {
-					margin-left: 9px;
+					margin-left: 15px;
 				}
 				.subtitle {
 					color: $grey;
-					margin-left: 9px;
+					margin: 0 20px;
 					font-size: 21px;
-					text-shadow: -3px 1px #1E3145;
 				}
 				&:hover {
 					cursor: pointer;

@@ -45,12 +45,11 @@ body {
         order: 1;
         height: 40px; }
         body #above .heading .title .logo {
-          margin-left: 9px; }
+          margin-left: 15px; }
         body #above .heading .title .subtitle {
-          color: #999;
-          margin-left: 9px;
-          font-size: 21px;
-          text-shadow: -3px 1px #1E3145; }
+          color: #61717B;
+          margin: 0 20px;
+          font-size: 21px; }
         body #above .heading .title:hover {
           cursor: pointer; }
         body #above .heading .title:hover + .mainmenu {
