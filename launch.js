@@ -52,12 +52,9 @@ app.use(route.get('/sites', routes.gallery));
 // api routes
 var api = require(__dirname + '/routes/v1.js')(springboard);
 app.use(route.get(['/api/mockups', '/api/mockups/all'], api.sites));
+app.use(route.get('/api/mockups/sync', api.sync));
 app.use(route.get('/api/mockups/:site', api.site));
 app.use(route.get('/api/mockups/watch/:site', api.watch));
 
 // start your engines
 app.listen(springboard.options.port + 1);
-setTimeout(function(){
-  console.log();
-  console.log('loaded @ http://localhost:' + springboard.options.port + '/');
-}, 1500);
