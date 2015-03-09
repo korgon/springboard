@@ -26,6 +26,7 @@ node.js (>=0.12.0)
 ##Installation instructions
 
 Springboard assumes that you have setup your git account with SSH. If you have not [please do.](https://help.github.com/articles/generating-ssh-keys/)  
+Springboard also assumes you have setup your username globally. Springboard will fail to commit changes if you have not setup a [username](https://help.github.com/articles/setting-your-username-in-git/) and email for the searchspring-mockups repo.  
 Get the latest springboard from the repo, then install node modules:
 
 ```shellsession
