@@ -10,7 +10,7 @@ module.exports = function(springboard) {
   return {
     index: function*() {
       var sites = springboard.getSites();
-      var site = yield springboard.useSite('**previous_site**');
+      var site = springboard.getSite();
 
       if (site.valid != true) {
         site = { name: "error", siteid: "000000"};
@@ -19,7 +19,7 @@ module.exports = function(springboard) {
     },
     gallery: function*() {
       var sites = springboard.getSites();
-      this.body = jade.renderFile(view_dir + 'gallery.jade', {sites: sites});
+      this.body = jade.renderFile(view_dir + 'gallery.jade', {pretty:true, sites: sites});
     }
   };
 };

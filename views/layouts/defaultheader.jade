@@ -17,4 +17,4 @@ block headerextend
           each site in sites
             -var site_url = 'http://localhost:1338/sites/' + site.name + '/' + site.name + '.html';
             li
-              a(href=site_url, target='frameview', onclick='sb.switchSite(\"' + site.name + '\")')= site.name
+              a(onclick="sb.switchSite('" + site.name + "', '" + site_url + "')")= site.name

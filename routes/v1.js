@@ -1,5 +1,5 @@
 // springboard
-// restful api for mockups
+// api for mockups not restful... just whatever is needed
 
 /*
 /api/v1/
@@ -23,10 +23,10 @@ module.exports = function(springboard) {
       this.response.type = 'json';
       this.response.body = data;
     },
-    // runs the useSite function that triggers gulp watches of js/scss/html
+    // runs the watchSite function that triggers gulp watches of js/scss/html
     watch: function*(name) {
       try {
-        var data = yield springboard.useSite(name);
+        var data = yield springboard.watchSite(name);
         this.response.type = 'json';
         this.response.body = { site: data};
       }

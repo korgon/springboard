@@ -37,7 +37,7 @@ function sb() {
 			bindKeys(event)
 		});
 
-		// bind hotkeys to iframe (if it exists)
+		// bind hotkeys to iframe (if it exists) and if in mockup mode
 		if ($iframe.length == 1) {
 			// check for changes in frameurl and send them to frame
 			$('#frameurl').keypress(function(event) {
@@ -68,11 +68,14 @@ function sb() {
     $("#frameview").attr('src', new_location);
   }
 
-	self.switchSite = function(site) {
+	self.switchSite = function(site, url) {
+		// show loading modal
+		// switch the watch of a site
 		$.get('/api/mockups/watch/' + site, function(data) {
 			if (data.site !== undefined) {
-				// update the site selectordiv
-				$('.currentsite_name').text(data.site.name);
+				// update the site selectordiv and frame url
+				$('title, .currentsite_name').text(data.site.name);
+				self.updateFrame(url);
 			} else {
 				console.log('error: ' + data.error);
 			}

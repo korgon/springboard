@@ -6,3 +6,9 @@ searchspring-mockups/
 
 # ignore the configuration options
 options.json
+
+# ignore the jshint config
+.jshintrc
+
+# ignore annoying files
+.DS_Store
