@@ -9,7 +9,6 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 
 // gulp plugins
-var concat = require('gulp-concat');
 var gzip = require('gulp-gzip');
 var jshint = require('gulp-jshint');
 var plumber = require('gulp-plumber');
