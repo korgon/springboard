@@ -73,9 +73,9 @@ function sb() {
 		// show loading modal
 		// switch the watch of a site
 		$.get('/api/mockups/watch/' + site, function(data) {
-			if (data.site !== undefined) {
+			if (data.name !== undefined) {
 				// update the site selectordiv and frame url
-				$('title, .currentsite_name').text(data.site.name);
+				$('title, .currentsite_name').text(data.name);
 				self.updateFrame(url);
 			} else {
 				console.log('error: ' + data.error);

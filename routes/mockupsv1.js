@@ -7,6 +7,8 @@
 GET   api/mockups/all
 GET   api/mockups/{{ name }}
 GET   api/mockups/watch/{{ name }}
+GET   api/mockups/publish/{{ name }}
+GET   api/mockups/push/{{ name }}
 GET   api/mockups/sync
 POST  api/mockups/create
 ... add more ...
@@ -29,11 +31,33 @@ module.exports = function(springboard) {
       try {
         var data = yield springboard.watchSite(name);
         this.response.type = 'json';
-        this.response.body = { site: data};
+        this.response.body = data;
       }
       catch(err) {
         this.response.type = 'json';
         this.response.body = { error: name + ' not found', loaded: 'false'};
+      }
+    },
+    publish: function*(name) {
+      try {
+        var data = yield springboard.publishSite(name);
+        this.response.type = 'json';
+        this.response.body = data;
+      }
+      catch(err) {
+        this.response.type = 'json';
+        this.response.body = { error: name + ' not found', loaded: 'false'};
+      }
+    },
+    push: function*(name) {
+      try {
+        var data = yield springboard.pushSite(name);
+        this.response.type = 'json';
+        this.response.body = data;
+      }
+      catch(err) {
+        this.response.type = 'json';
+        this.response.body = { error: name + ' could not be pushed', loaded: 'false'};
       }
     },
     sync: function*() {

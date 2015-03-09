@@ -50,11 +50,13 @@ var routes = require(__dirname + '/routes/routes.js')(springboard);
 app.use(route.get('/', routes.index));
 app.use(route.get('/sites', routes.gallery));
 // api routes
-var api = require(__dirname + '/routes/v1.js')(springboard);
-app.use(route.get(['/api/mockups', '/api/mockups/all'], api.sites));
-app.use(route.get('/api/mockups/sync', api.sync));
-app.use(route.get('/api/mockups/:site', api.site));
-app.use(route.get('/api/mockups/watch/:site', api.watch));
+var mockupsapi = require(__dirname + '/routes/mockupsv1.js')(springboard);
+app.use(route.get(['/api/mockups', '/api/mockups/all'], mockupsapi.sites));
+app.use(route.get('/api/mockups/sync', mockupsapi.sync));
+app.use(route.get('/api/mockups/:site', mockupsapi.site));
+app.use(route.get('/api/mockups/watch/:site', mockupsapi.watch));
+app.use(route.get('/api/mockups/publish/:site', mockupsapi.publish));
+app.use(route.get('/api/mockups/push/:site', mockupsapi.push));
 
 // start your engines
 app.listen(springboard.options.port + 1);
