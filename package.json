@@ -28,6 +28,7 @@
     "koa-logger": "^1.2.2",
     "koa-route": "^2.4.0",
     "koa-static": "^1.4.9",
+    "lwip": "0.0.6",
     "vinyl-source-stream": "^1.0.0",
     "webshot": "^0.15.4"
   },

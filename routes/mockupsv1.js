@@ -45,8 +45,9 @@ module.exports = function(springboard) {
         this.response.body = data;
       }
       catch(err) {
+        console.log(err);
         this.response.type = 'json';
-        this.response.body = { error: name + ' not found', loaded: 'false'};
+        this.response.body = { site: name, error: name + ' not found', loaded: 'false'};
       }
     },
     push: function*(name) {
@@ -57,7 +58,7 @@ module.exports = function(springboard) {
       }
       catch(err) {
         this.response.type = 'json';
-        this.response.body = { error: name + ' could not be pushed', loaded: 'false'};
+        this.response.body = { site: name, error: name + ' could not be pushed'};
       }
     },
     sync: function*() {
