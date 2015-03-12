@@ -1,6 +1,6 @@
 {
   "name": "springboard",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "spring into the future",
   "main": "launch.js",
   "dependencies": {
@@ -23,6 +23,7 @@
     "jade": "^1.9.2",
     "jshint-stylish": "^1.0.1",
     "koa": "^0.18.0",
+    "koa-bodyparser": "^1.4.1",
     "koa-favicon": "^1.2.0",
     "koa-jwt": "^0.1.7",
     "koa-logger": "^1.2.2",

@@ -1,11 +1,11 @@
 // springboard
-// manage searchspring mockups
+// manage searchspring sites
 // * include and merge js files
 // * compile SASS
 // * manage repository
-// * manage mockups
+// * manage sites
 // * create screenshots
-// * restful api
+// * API/UI interface
 // * bonus: start work of new ajax catalog
 
 // strictness!
@@ -14,6 +14,7 @@
 // include packages
 var co = require('co');
 var koa = require('koa');
+var bodyParser = require('koa-bodyparser');
 var favicon = require('koa-favicon');
 var logger = require('koa-logger');
 var serve = require('koa-static');
@@ -38,10 +39,11 @@ springboard.init();
 // });
 
 // middleware
+app.use(bodyParser());
 app.use(logger());
 app.use(favicon(__dirname + '/public/favicon.png'));
 app.use(serve(__dirname + '/public/'));
-app.use(serve(__dirname + '/searchspring-mockups'));
+app.use(serve(__dirname + '/searchspring-sites'));
 
 // route middleware
 // ----------------
@@ -50,13 +52,14 @@ var routes = require(__dirname + '/routes/routes.js')(springboard);
 app.use(route.get('/', routes.index));
 app.use(route.get('/sites', routes.gallery));
 // api routes
-var mockupsapi = require(__dirname + '/routes/mockupsv1.js')(springboard);
-app.use(route.get(['/api/mockups', '/api/mockups/all'], mockupsapi.sites));
-app.use(route.get('/api/mockups/sync', mockupsapi.sync));
-app.use(route.get('/api/mockups/:site', mockupsapi.site));
-app.use(route.get('/api/mockups/watch/:site', mockupsapi.watch));
-app.use(route.get('/api/mockups/publish/:site', mockupsapi.publish));
-app.use(route.get('/api/mockups/push/:site', mockupsapi.push));
+var sitesapi = require(__dirname + '/routes/sitesv1.js')(springboard);
+app.use(route.get(['/api/sites', '/api/sites/all'], sitesapi.sites));
+app.use(route.post('/api/sites/create', sitesapi.create));
+app.use(route.get('/api/sites/sync', sitesapi.sync));
+app.use(route.get('/api/sites/:site', sitesapi.site));
+app.use(route.get('/api/sites/watch/:site', sitesapi.watch));
+app.use(route.get('/api/sites/publish/:site', sitesapi.publish));
+app.use(route.get('/api/sites/push/:site', sitesapi.push));
 
 // start your engines
-app.listen(springboard.options.port + 1);
+app.listen(1338);

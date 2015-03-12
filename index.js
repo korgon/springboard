@@ -1,11 +1,6 @@
 // manage searchspring mockups
-// * include and merge js files
-// * compile SASS
-// * manage repository
-// * manage mockups
-// * create screenshots
-// * restful api
-// * bonus: start work of new ajax catalog
+// this script was mostly used for testing purposes
+// it has not been used since the installation of postman in chrome
 
 // strictness!
 "use strict";

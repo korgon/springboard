@@ -12,8 +12,8 @@ module.exports = function(springboard) {
       var sites = springboard.getSites();
       var site = springboard.getSite();
 
-      if (site.valid != true) {
-        site = { name: "error", siteid: "000000"};
+      if (!site.valid) {
+        site = { name: "empty", siteid: "000000"};
       }
       this.body = jade.renderFile(view_dir + 'index.jade', {pretty:true, sites: sites, site: site});
     },

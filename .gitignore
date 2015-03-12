@@ -2,7 +2,7 @@
 node_modules/
 
 # ignore the searchspring-mockups repo
-searchspring-mockups/
+searchspring-sites/
 
 # ignore the configuration options
 options.json
