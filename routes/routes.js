@@ -11,7 +11,6 @@ module.exports = function(springboard) {
     editor: function*() {
       var sites = springboard.getSites();
       var site = springboard.getSite();
-
       // redirect if no sites
       if (Object.keys(sites).length == 0 || !site.valid) {
         console.log('no sites, redirecting...');

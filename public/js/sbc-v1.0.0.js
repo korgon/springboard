@@ -13,6 +13,7 @@ function sb() {
   var version = '1.0.0';
 
   self.version = version;
+	self.site = "";
 
   self.init = function() {
     // do stuff
@@ -20,6 +21,7 @@ function sb() {
 
     // do stuff when dom has loaded
     $(function() {
+			self.site = $('#currentsite').text();
 			// add home click for title
 			$('.heading .title').click(function() {
 				window.location = '/';
@@ -70,13 +72,64 @@ function sb() {
   }
 
 	self.switchSite = function(site, url) {
+		self.site = site;
+		$('#loading').fadeIn(300);
 		// show loading modal
 		// switch the watch of a site
-		$.get('/api/sites/watch/' + site, function(data) {
-			if (data.name !== undefined) {
+		$.get('/api/sites/commit/' + site, function(data) {
+			if (data.site !== undefined) {
+				$.get('/api/sites/watch/' + site, function(data) {
+					if (data.name !== undefined) {
+						// update the site selectordiv and frame url
+						$('title, #currentsite').text(data.name);
+						self.updateFrame(url);
+						$('#loading').fadeOut(300);
+					} else {
+						console.log('error: ' + data.error);
+					}
+				});
+			} else {
+				console.log('error: ' + data.error);
+			}
+		});
+	}
+
+	self.refreshSiteList = function() {
+		$.get('/api/sites/sync', function(data) {
+			if (Object.keys(data) > 1 && !data.error) {
 				// update the site selectordiv and frame url
-				$('title, .currentsite_name').text(data.name);
 				self.updateFrame(url);
+			} else {
+				console.log('error: ' + data.error);
+			}
+		});
+	}
+
+	self.pushSite = function(site) {
+		$('#loading').fadeIn(300);
+		$.get('/api/sites/commit/' + site, function(data) {
+			if (data.site !== undefined) {
+				$.get('/api/sites/push/' + site, function(data) {
+					if (data.site !== undefined) {
+						// update the site selectordiv and frame url
+						$('#loading').fadeOut(300);
+					} else {
+						console.log('error: ' + data.error);
+					}
+				});
+			} else {
+				console.log('error: ' + data.error);
+			}
+		});
+	}
+
+	self.publishSite = function(site) {
+		$('#loading').fadeIn(300);
+		$.get('/api/sites/publish/' + site, function(data) {
+			if (Object.keys(data) > 1 && !data.error) {
+				// update the site selectordiv and frame url
+				self.updateFrame(url);
+				$('#loading').fadeOut(300);
 			} else {
 				console.log('error: ' + data.error);
 			}

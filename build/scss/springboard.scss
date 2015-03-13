@@ -205,13 +205,62 @@ body {
 						}
 					}
 					.siteselect {
-						display: none;
-						margin: 0;
+						display: block;
+						// display: none;
+						margin: -1px -1px 0 -1px;
 						position: relative;
 						background-color: $bluedark;
 						border: 1px solid $bluehighlight;
 						border-top: 0;
+						border-top: 0;
 						z-index: 7;
+						ul.sitebuttons {
+							display: flex;
+							align-items: center;
+							flex-flow: center;
+							justify-content: space-between;
+							list-style: none;
+							margin: 0;
+							padding: 0;
+							border-bottom: 1px solid $bluehighlight;
+							background-color: $bluedarkest;
+							li {
+								width: 20px;
+								height: 20px;
+								display: inline-block;
+								margin: 6px 0;
+								a {
+									display: inline-block;
+									width: 22px;
+									height: 22px;
+									opacity: 0.5;
+									background-repeat: no-repeat;
+									background-size: 20px;
+									&:hover {
+										cursor: pointer;
+										opacity: 1;
+									}
+									&.refresh {
+										background-image: url('/images/refresh.png');
+									}
+									&.push {
+										background-image: url('/images/git_branch.png');
+									}
+									&.upload {
+										background-image: url('/images/upload.png');
+									}
+									&.pull {
+										background-image: url('/images/pull_request.png');
+									}
+								}
+								&:first-of-type {
+									margin-left: 20px;
+								}
+								&:last-of-type {
+									margin-right: 20px;
+								}
+							}
+						}
 						.sitesearch {
 							display: none;
 							input {
@@ -224,19 +273,34 @@ body {
 							margin: 0;
 							padding: 0;
 							li {
+								min-height: 33px;
+								position: relative;
 								font-size: 14px;
 								border-top: 1px solid $bluehighlight;
 								&:first-of-type {
 									border-top: 0;
 								}
 								a {
-									color: $bluelightest;
 									display: block;
-									padding: 6px;
+									span {
+										position: absolute;
+										width: 100%;
+										top: 0;
+										padding-left: 12px;
+										color: $grey;
+										display: block;
+										line-height: 33px;
+										background: rgba(0, 0, 0, 0.5);
+									}
+									img {
+										max-width: 100%;
+									}
 									&:hover {
-										background-color: $bluedarkestest;
 										color: $orange;
 										cursor: pointer;
+									}
+									&:hover > span {
+										color: $orange;
 									}
 								}
 							}

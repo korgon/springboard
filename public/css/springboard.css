@@ -151,13 +151,51 @@ body {
           body #above .heading .worksite .worksitecontainer a.currentsite:hover + .siteselect {
             display: block; }
         body #above .heading .worksite .worksitecontainer .siteselect {
-          display: none;
-          margin: 0;
+          display: block;
+          margin: -1px -1px 0 -1px;
           position: relative;
           background-color: #1B3141;
           border: 1px solid #304B66;
           border-top: 0;
+          border-top: 0;
           z-index: 7; }
+          body #above .heading .worksite .worksitecontainer .siteselect ul.sitebuttons {
+            display: flex;
+            align-items: center;
+            flex-flow: center;
+            justify-content: space-between;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            border-bottom: 1px solid #304B66;
+            background-color: #001A2B; }
+            body #above .heading .worksite .worksitecontainer .siteselect ul.sitebuttons li {
+              width: 20px;
+              height: 20px;
+              display: inline-block;
+              margin: 6px 0; }
+              body #above .heading .worksite .worksitecontainer .siteselect ul.sitebuttons li a {
+                display: inline-block;
+                width: 22px;
+                height: 22px;
+                opacity: 0.5;
+                background-repeat: no-repeat;
+                background-size: 20px; }
+                body #above .heading .worksite .worksitecontainer .siteselect ul.sitebuttons li a:hover {
+                  cursor: pointer;
+                  opacity: 1; }
+                body #above .heading .worksite .worksitecontainer .siteselect ul.sitebuttons li a.refresh {
+                  background-image: url('/images/refresh.png'); }
+                body #above .heading .worksite .worksitecontainer .siteselect ul.sitebuttons li a.push {
+                  background-image: url('/images/git_branch.png'); }
+                body #above .heading .worksite .worksitecontainer .siteselect ul.sitebuttons li a.upload {
+                  background-image: url('/images/upload.png'); }
+                body #above .heading .worksite .worksitecontainer .siteselect ul.sitebuttons li a.pull {
+                  background-image: url('/images/pull_request.png'); }
+              body #above .heading .worksite .worksitecontainer .siteselect ul.sitebuttons li:first-of-type {
+                margin-left: 20px; }
+              body #above .heading .worksite .worksitecontainer .siteselect ul.sitebuttons li:last-of-type {
+                margin-right: 20px; }
           body #above .heading .worksite .worksitecontainer .siteselect .sitesearch {
             display: none; }
             body #above .heading .worksite .worksitecontainer .siteselect .sitesearch input {
@@ -168,18 +206,30 @@ body {
             margin: 0;
             padding: 0; }
             body #above .heading .worksite .worksitecontainer .siteselect ul.sitechoices li {
+              min-height: 33px;
+              position: relative;
               font-size: 14px;
               border-top: 1px solid #304B66; }
               body #above .heading .worksite .worksitecontainer .siteselect ul.sitechoices li:first-of-type {
                 border-top: 0; }
               body #above .heading .worksite .worksitecontainer .siteselect ul.sitechoices li a {
-                color: #7194AD;
-                display: block;
-                padding: 6px; }
+                display: block; }
+                body #above .heading .worksite .worksitecontainer .siteselect ul.sitechoices li a span {
+                  position: absolute;
+                  width: 100%;
+                  top: 0;
+                  padding-left: 12px;
+                  color: #61717B;
+                  display: block;
+                  line-height: 33px;
+                  background: rgba(0, 0, 0, 0.5); }
+                body #above .heading .worksite .worksitecontainer .siteselect ul.sitechoices li a img {
+                  max-width: 100%; }
                 body #above .heading .worksite .worksitecontainer .siteselect ul.sitechoices li a:hover {
-                  background-color: #0E1920;
                   color: #DD8500;
                   cursor: pointer; }
+                body #above .heading .worksite .worksitecontainer .siteselect ul.sitechoices li a:hover > span {
+                  color: #DD8500; }
           body #above .heading .worksite .worksitecontainer .siteselect:hover {
             display: block; }
   body #content {

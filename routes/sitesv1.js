@@ -6,6 +6,7 @@
 ------------------
 GET   api/sites/all
 GET   api/sites/{{ name }}
+GET   api/sites/commit/{{ name }}
 GET   api/sites/watch/{{ name }}
 GET   api/sites/publish/{{ name }}
 GET   api/sites/push/{{ name }}
@@ -39,8 +40,9 @@ module.exports = function(springboard) {
         this.response.body = data;
       }
       catch(err) {
+        console.log(err);
         this.response.type = 'json';
-        this.response.body = { error: name + ' not found', loaded: 'false' };
+        this.response.body = { error: this.params.site + ' not found', loaded: 'false' };
       }
     },
 
@@ -53,19 +55,33 @@ module.exports = function(springboard) {
       catch(err) {
         console.log(err);
         this.response.type = 'json';
-        this.response.body = { site: name, error: name + ' not found', loaded: 'false' };
+        this.response.body = { site: this.params.site, error: this.params.site + ' not found', loaded: 'false' };
       }
     },
 
-    push: function*() {
+    commit: function*() {
+      try {
+        var data = yield springboard.commitSite(this.params.site);
+        this.response.type = 'json';
+        this.response.body = data;
+      }
+      catch(err) {
+        console.log(err);
+        this.response.type = 'json';
+        this.response.body = { site: this.params.site, error: this.params.site + ' could not be commited' };
+      }
+    },
+
+    pushit: function*() {
       try {
         var data = yield springboard.pushSite(this.params.site);
         this.response.type = 'json';
         this.response.body = data;
       }
       catch(err) {
+        console.log(err);
         this.response.type = 'json';
-        this.response.body = { site: name, error: name + ' could not be pushed' };
+        this.response.body = { site: this.params.site, error: this.params.site + ' could not be pushed' };
       }
     },
 
@@ -113,7 +129,7 @@ module.exports = function(springboard) {
         this.response.body = { error: 'an error occured during site creation' };
         return;
       }
-      
+
       this.response.body = site;
     }
   };
