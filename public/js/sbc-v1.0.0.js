@@ -72,7 +72,7 @@ function sb() {
 	self.switchSite = function(site, url) {
 		// show loading modal
 		// switch the watch of a site
-		$.get('/api/mockups/watch/' + site, function(data) {
+		$.get('/api/sites/watch/' + site, function(data) {
 			if (data.name !== undefined) {
 				// update the site selectordiv and frame url
 				$('title, .currentsite_name').text(data.name);
@@ -83,18 +83,51 @@ function sb() {
 		});
 	}
 
-	self.newSite = function () {
-		$('#input.wrap').empty();
+	self.createSiteInput = function() {
+		$('#input .wrap').empty();
 		$('\
 		<form id="createSite"> \
-		</form>').appendTo('#input.wrap');
-	}
+			<label for="input_name">Site Name</label> \
+			<input type="text" name="name" id="input_name"> \
+			<label for="input_siteid">Site Id</label> \
+			<input type="text" name="siteid" id="input_siteid"> \
+			<label for="input_template">Template</label> \
+			<select id="input_template"> \
+				<option>Skeleton</option> \
+			</select> \
+			<div class="buttons"> \
+				<input type="submit" name="submit" value="Add Site"> \
+				<input type="button" name="cancel" value="Cancel"> \
+			</div> \
+		</form>').appendTo('#input .wrap');
+		$('#input').fadeIn(500);
 
-	function loading(toggle) {
-		if (toggle == 'hide')
-			$('#loader').removeClass('show');
-		else
-			$('#loader').addClass('show');
+		$('#createSite input[name="cancel"]').click(function() {
+			$('#input').fadeOut(500);
+		});
+
+		$("#createSite").submit(function(e){
+			var site = {};
+			site['name'] = $('#createSite #input_name').val();
+			site['siteid'] = $('#createSite #input_siteid').val();
+			site['template'] = $('#createSite #input_template').val();
+
+			if (site.name.match(/.*\..+/i) && site.siteid.match(/[a-z0-9]{6}/i)) {
+				$('#input').fadeOut(200);
+				$('#loading').fadeIn(300);
+
+				$.post('/api/sites/create', site, function(data) {
+					$('#loading').fadeOut(300);
+					if (data.name !== undefined) {
+						window.location = '/';
+					} else {
+						console.log('error: ' + data.error);
+						$('#loading').fadeOut(1000);
+					}
+				});
+			}
+			return false;
+		});
 	}
 
 	// hotkeys!!!

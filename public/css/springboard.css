@@ -204,6 +204,7 @@ body {
       width: 70%;
       margin: 90px auto; }
   body .modal {
+    display: none;
     position: fixed;
     top: 0;
     right: 0;
@@ -211,27 +212,51 @@ body {
     left: 0;
     background: rgba(0, 0, 0, 0.8);
     z-index: 999999;
-    opacity: 0;
-    -webkit-transition: opacity 400ms ease-in;
-    -moz-transition: opacity 400ms ease-in;
-    transition: opacity 400ms ease-in;
     pointer-events: none; }
-    body .modal.show {
-      opacity: 1; }
     body .modal .wrap {
-      width: 600px;
       position: relative;
       margin: 90px auto 0px;
       padding: 20px;
       pointer-events: auto; }
   body #loading {
-    margin: 20% auto;
+    padding-top: 60px;
     text-align: center; }
     body #loading .loadImage {
       width: 50px;
       height: 50px; }
   body #input .wrap {
-    background-color: #1B3141;
-    border: 1px solid #7194AD;
-    height: 400px;
+    width: 200px;
+    height: 250px;
+    background-color: #001A2B;
+    border: 1px solid #354E66;
     padding: 30px; }
+    body #input .wrap label {
+      margin-bottom: 6px;
+      display: block;
+      color: #61717B;
+      font-size: 18px; }
+    body #input .wrap input[type="text"], body #input .wrap select {
+      width: 100%;
+      box-sizing: border-box;
+      border-radius: 0;
+      background-color: #001224;
+      border: 1px solid #354E66;
+      color: #7194AD;
+      margin-bottom: 10px; }
+      body #input .wrap input[type="text"]:focus, body #input .wrap input[type="text"]:active, body #input .wrap select:focus, body #input .wrap select:active {
+        outline: 0;
+        background-color: #0E1920;
+        color: #DD8500; }
+    body #input .wrap .buttons {
+      margin-top: 20px; }
+    body #input .wrap input[type="submit"], body #input .wrap input[type="button"] {
+      width: 45%;
+      border: 1px solid #354E66;
+      background-color: #0E1920;
+      color: #DD8500; }
+      body #input .wrap input[type="submit"]:hover, body #input .wrap input[type="button"]:hover {
+        cursor: pointer;
+        background-color: #aa5200;
+        color: #0E1920; }
+    body #input .wrap input[type="button"] {
+      float: right; }

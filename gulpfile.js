@@ -70,7 +70,6 @@ gulp.task('bundlejs', function() {
 // sass task
 gulp.task('sass', function() {
   return gulp.src('build/scss/*.scss')
-    .pipe(plumber())
     .pipe(sass({errLogToConsole: true}))
     .pipe(gulp.dest('public/css'))
     .pipe(reload({stream: true}))

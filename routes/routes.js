@@ -8,19 +8,17 @@ var view_dir = __dirname + '/../views/';
 // must pass in the springboard dependency
 module.exports = function(springboard) {
   return {
-    index: function*() {
+    editor: function*() {
       var sites = springboard.getSites();
       var site = springboard.getSite();
 
       // redirect if no sites
-      if (Object.keys(sites).length == 0) {
+      if (Object.keys(sites).length == 0 || !site.valid) {
+        console.log('no sites, redirecting...');
         this.status = 301;
         this.redirect('/sites');
         this.body = 'Redirecting to sites. There is no site to edit...';
         return;
-      }
-      if (!site.valid) {
-        site = { name: "empty", siteid: "000000"};
       }
       this.body = jade.renderFile(view_dir + 'index.jade', {pretty:true, sites: sites, site: site});
     },

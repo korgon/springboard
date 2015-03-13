@@ -52,7 +52,7 @@ app.use(serve(__dirname + '/searchspring-sites'));
 // ----------------
 // begin rout definitions
 var routes = require(__dirname + '/routes/routes.js')(springboard);
-router.get('/', routes.index);
+router.get('/', routes.editor);
 router.get('/sites', routes.gallery);
 // api routes
 var sitesapi = require(__dirname + '/routes/sitesv1.js')(springboard);

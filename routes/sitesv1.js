@@ -89,27 +89,32 @@ module.exports = function(springboard) {
       if (!newsite.name || !newsite.siteid || !newsite.template) {
         this.response.status = 400;
         this.response.body = { error: 'missing required fields' };
+        return;
       }
 
       // check to make sure inputs are valid
       if (!newsite.name.match(/.*\..+/i)) {
         this.response.status = 400;
         this.response.body = { error: 'invalid sitename' };
+        return;
       }
       if (!newsite.siteid.match(/[a-z0-9]{6}/i)) {
         this.response.status = 400;
         this.response.body = { error: 'invalid siteid' };
+        return;
       }
 
       try {
         var site = yield springboard.newSite(newsite);
-        this.response.body = site;
       }
       catch(err) {
         console.log(err);
         this.response.status = 400;
         this.response.body = { error: 'an error occured during site creation' };
+        return;
       }
+      
+      this.response.body = site;
     }
   };
 };

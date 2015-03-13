@@ -6,6 +6,7 @@ $bluelightest: #7194AD;
 $bluedark: #1B3141;
 $bluedarkest: #001A2B;
 $bluedarkestest: #0E1920;
+$bluedarkness: #001224;
 $bluehighlight: #304B66;
 $grey: #61717B;
 $orange: #DD8500;
@@ -285,6 +286,7 @@ body {
 
 	// popup windows
 	.modal {
+		display: none;
 		position: fixed;
 		top: 0;
 		right: 0;
@@ -292,16 +294,8 @@ body {
 		left: 0;
 		background: rgba(0, 0, 0, 0.8);
 		z-index: 999999;
-		opacity: 0;
-		-webkit-transition: opacity 400ms ease-in;
-		-moz-transition: opacity 400ms ease-in;
-		transition: opacity 400ms ease-in;
 		pointer-events: none;
-		&.show {
-			opacity: 1;
-		}
 		.wrap {
-			width: 600px;
 			position: relative;
 			margin: 90px auto 0px;
 			padding: 20px;
@@ -309,7 +303,7 @@ body {
 		}
 	}
 	#loading {
-		margin: 20% auto;
+		padding-top: 60px;
 		text-align: center;
 		.loadImage {
 			width: 50px;
@@ -318,10 +312,48 @@ body {
 	}
 	#input {
 		.wrap {
-			background-color: $bluedark;
-			border: 1px solid $bluelightest;
-			height: 400px;
+			width: 200px;
+			height: 250px;
+			background-color: $bluedarkest;
+			border: 1px solid $bluebase;
 			padding: 30px;
+			label {
+				margin-bottom: 6px;
+				display: block;
+				color: $grey;
+				font-size: 18px;
+			}
+			input[type="text"], select {
+				width: 100%;
+				box-sizing: border-box;
+				border-radius: 0;
+				background-color: $bluedarkness;
+				border: 1px solid $bluebase;
+				color: $bluelightest;
+				margin-bottom: 10px;
+				&:focus, &:active {
+					outline: 0;
+					background-color: $bluedarkestest;
+					color: $orange;
+				}
+			}
+			.buttons {
+				margin-top: 20px;
+			}
+			input[type="submit"], input[type="button"] {
+				width: 45%;
+				border: 1px solid $bluebase;
+				background-color: $bluedarkestest;
+				color: $orange;
+				&:hover {
+					cursor: pointer;
+					background-color: $orange - #333;
+					color: $bluedarkestest;
+				}
+			}
+			input[type="button"] {
+				float: right;
+			}
 		}
 	}
 
