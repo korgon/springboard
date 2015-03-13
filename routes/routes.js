@@ -15,7 +15,7 @@ module.exports = function(springboard) {
       // redirect if no sites
       if (Object.keys(sites).length == 0 || !site.valid) {
         console.log('no sites, redirecting...');
-        this.status = 301;
+        this.status = 307;
         this.redirect('/sites');
         this.body = 'Redirecting to sites. There is no site to edit...';
         return;

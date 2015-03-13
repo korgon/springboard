@@ -11,7 +11,6 @@ body {
   body input, body select, body textarea {
     padding: 7px;
     border: 0;
-    border-radius: 6px;
     color: #7194AD;
     font-weight: bold;
     background-color: #001A2B; }
@@ -29,7 +28,7 @@ body {
     body #above .heading {
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: flex-start;
       box-sizing: border-box;
       align-items: center;
       width: 100%;
@@ -111,6 +110,7 @@ body {
         flex: 1 1 33%;
         margin: 0 25px 0 10px; }
         body #above .heading .url input {
+          border-radius: 6px;
           border: 1px solid #304B66;
           width: 100%; }
       body #above .heading .openurl {
