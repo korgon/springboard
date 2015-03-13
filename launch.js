@@ -14,18 +14,21 @@
 // include packages
 var co = require('co');
 var koa = require('koa');
-var bodyParser = require('koa-bodyparser');
+var koaBody = require('koa-better-body');
 var favicon = require('koa-favicon');
 var logger = require('koa-logger');
 var serve = require('koa-static');
-var route = require('koa-route');
+var router = require('koa-router')();
 
 // local modules
 var springboard = require(__dirname + "/lib/springboard.js");
 
 // start
 var app = koa();
-springboard.init();
+springboard.init().catch(function(err) {
+  console.log('failed to initialize springboard!'.red);
+  process.exit(1);
+});
 
 // handle things...
 // app.use(function*(next) {
@@ -39,7 +42,7 @@ springboard.init();
 // });
 
 // middleware
-app.use(bodyParser());
+
 app.use(logger());
 app.use(favicon(__dirname + '/public/favicon.png'));
 app.use(serve(__dirname + '/public/'));
@@ -47,19 +50,24 @@ app.use(serve(__dirname + '/searchspring-sites'));
 
 // route middleware
 // ----------------
-// general routes
+// begin rout definitions
 var routes = require(__dirname + '/routes/routes.js')(springboard);
-app.use(route.get('/', routes.index));
-app.use(route.get('/sites', routes.gallery));
+router.get('/', routes.index);
+router.get('/sites', routes.gallery);
 // api routes
 var sitesapi = require(__dirname + '/routes/sitesv1.js')(springboard);
-app.use(route.get(['/api/sites', '/api/sites/all'], sitesapi.sites));
-app.use(route.post('/api/sites/create', sitesapi.create));
-app.use(route.get('/api/sites/sync', sitesapi.sync));
-app.use(route.get('/api/sites/:site', sitesapi.site));
-app.use(route.get('/api/sites/watch/:site', sitesapi.watch));
-app.use(route.get('/api/sites/publish/:site', sitesapi.publish));
-app.use(route.get('/api/sites/push/:site', sitesapi.push));
+router.get(['/api/sites', '/api/sites/all'], sitesapi.sites);
+router.post('/api/sites/create', koaBody(), sitesapi.create);
+router.get('/api/sites/sync', sitesapi.sync);
+router.get('/api/sites/:site', sitesapi.site);
+router.get('/api/sites/watch/:site', sitesapi.watch);
+router.get('/api/sites/publish/:site', sitesapi.publish);
+router.get('/api/sites/push/:site', sitesapi.push);
+// end route definitions
+
+// router middleware
+app.use(router.routes());
 
 // start your engines
 app.listen(1338);
+// koa serves up at 1338, but browsersync creates a proxy at 1337 for css injection using socket.io

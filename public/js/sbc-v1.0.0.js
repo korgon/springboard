@@ -83,6 +83,20 @@ function sb() {
 		});
 	}
 
+	self.newSite = function () {
+		$('#input.wrap').empty();
+		$('\
+		<form id="createSite"> \
+		</form>').appendTo('#input.wrap');
+	}
+
+	function loading(toggle) {
+		if (toggle == 'hide')
+			$('#loader').removeClass('show');
+		else
+			$('#loader').addClass('show');
+	}
+
 	// hotkeys!!!
 	function bindKeys(event) {
 		if (event.ctrlKey || event.metaKey) {

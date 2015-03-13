@@ -4,19 +4,19 @@
   .heading
     .title
       img.logo(src='/images/ssdoge.png')
-      .subtitle SǷ®1ͶgƁ0ΛɌԂ
+      .subtitle SPRIΠGBOΛRD
     .mainmenu
       ul.menuoptions
         li
-          a
+          a(onclick="sb.newSite()")
             span.menuicon.newsite
             span.menutext new site
+        li
+          a(href='/sites/')
+            span.menuicon.sitegallery
+            span.menutext view sites
         li
           a
             span.menuicon.settings
             span.menutext settings
-        li
-          a
-            span.menuicon.sitegallery
-            span.menutext view sites
     block headerextend

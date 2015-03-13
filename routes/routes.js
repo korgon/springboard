@@ -12,6 +12,13 @@ module.exports = function(springboard) {
       var sites = springboard.getSites();
       var site = springboard.getSite();
 
+      // redirect if no sites
+      if (Object.keys(sites).length == 0) {
+        this.status = 301;
+        this.redirect('/sites');
+        this.body = 'Redirecting to sites. There is no site to edit...';
+        return;
+      }
       if (!site.valid) {
         site = { name: "empty", siteid: "000000"};
       }
