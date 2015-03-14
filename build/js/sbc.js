@@ -70,19 +70,19 @@ function sb() {
     $("#frameview").attr('src', new_location);
   }
 
-	self.switchSite = function(site, url) {
-		self.site = site;
+	self.switchSite = function(switchsite, url) {
 		$('#loading').fadeIn(300);
 		// show loading modal
 		// switch the watch of a site
-		$.get('/api/sites/commit/' + site, function(data) {
+		$.get('/api/sites/commit/' + self.site, function(data) {
 			if (data.site !== undefined) {
-				$.get('/api/sites/watch/' + site, function(data) {
+				$.get('/api/sites/watch/' + switchsite, function(data) {
 					if (data.name !== undefined) {
 						// update the site selectordiv and frame url
 						$('title, #currentsite').text(data.name);
 						self.updateFrame(url);
 						$('#loading').fadeOut(300);
+						self.site = switchsite;
 					} else {
 						console.log('error: ' + data.error);
 					}

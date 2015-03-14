@@ -358,13 +358,15 @@ body {
 		background: rgba(0, 0, 0, 0.8);
 		z-index: 999999;
 		pointer-events: none;
-		.wrap {
-			position: relative;
-			margin: 90px auto 0px;
-			padding: 20px;
-			pointer-events: auto;
-		}
 	}
+
+	.boxwrap {
+		position: relative;
+		margin: 90px auto 0px;
+		padding: 20px;
+		pointer-events: auto;
+	}
+
 	#loading {
 		padding-top: 60px;
 		text-align: center;
@@ -374,7 +376,13 @@ body {
 		}
 	}
 	#input {
-		.wrap {
+		.boxtopw {
+			.box {
+
+			}
+			.boxbuttons
+		}
+		.boxwrap {
 			width: 200px;
 			height: 250px;
 			background-color: $bluedarkest;
@@ -406,7 +414,7 @@ body {
 			input[type="submit"], input[type="button"] {
 				width: 45%;
 				border: 1px solid $bluebase;
-				background-color: $bluedarkestest;
+				background-color: $bluedark;
 				color: $orange;
 				&:hover {
 					cursor: pointer;
