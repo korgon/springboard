@@ -106,16 +106,10 @@ function sb() {
 
 	self.pushSite = function(site) {
 		$('#loading').fadeIn(300);
-		$.get('/api/sites/commit/' + site, function(data) {
+		$.get('/api/sites/push/' + site, function(data) {
 			if (data.site !== undefined) {
-				$.get('/api/sites/push/' + site, function(data) {
-					if (data.site !== undefined) {
-						// update the site selectordiv and frame url
-						$('#loading').fadeOut(300);
-					} else {
-						console.log('error: ' + data.error);
-					}
-				});
+				// update the site selectordiv and frame url
+				$('#loading').fadeOut(300);
 			} else {
 				console.log('error: ' + data.error);
 			}
