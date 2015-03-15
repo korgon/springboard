@@ -74,28 +74,26 @@ function sb() {
 		$('#loading').fadeIn(300);
 		// show loading modal
 		// switch the watch of a site
-		$.get('/api/sites/commit/' + self.site, function(data) {
-			if (data.site !== undefined) {
-				$.get('/api/sites/watch/' + switchsite, function(data) {
-					if (data.name !== undefined) {
-						// update the site selectordiv and frame url
-						$('title, #currentsite').text(data.name);
-						self.updateFrame(url);
-						$('#loading').fadeOut(300);
-						self.site = switchsite;
-					} else {
-						console.log('error: ' + data.error);
-					}
-				});
-			} else {
-				console.log('error: ' + data.error);
-			}
+		$.get('/api/sites/commit', function(data) {
+			$('#frame').fadeOut(300);
+			$.get('/api/sites/use/' + switchsite, function(data) {
+				if (data.name !== undefined) {
+					// update the site selectordiv and frame url
+					$('title, #currentsite').text(data.name);
+					self.updateFrame(url);
+					$('#frame').fadeIn(300);
+					$('#loading').fadeOut(600);
+					self.site = switchsite;
+				} else {
+					console.log('error: ' + data.error);
+				}
+			});
 		});
 	}
 
 	self.refreshSiteList = function() {
 		$('#loading').fadeIn(300);
-		$.get('/api/sites/sync', function(data) {
+		$.get('/api/sites/sync/', function(data) {
 			if (Object.keys(data).length >= 1 && !data.error) {
 				// TBD
 				// update the site selectordiv with new sites
@@ -118,12 +116,22 @@ function sb() {
 		});
 	}
 
+	self.mergeSite = function() {
+		$('#loading').fadeIn(300);
+		$.get('/api/sites/merge/', function(data) {
+			if (data.site !== undefined) {
+				// update the site selectordiv and frame url
+				$('#loading').fadeOut(300);
+			} else {
+				console.log('error: ' + data.error);
+			}
+		});
+	}
+
 	self.publishSite = function() {
 		$('#loading').fadeIn(300);
 		$.get('/api/sites/publish/', function(data) {
-			if (Object.keys(data) > 1 && !data.error) {
-				// update the site selectordiv and frame url
-				self.updateFrame(url);
+			if (data.status == 'success') {
 				$('#loading').fadeOut(300);
 			} else {
 				console.log('error: ' + data.error);
@@ -134,23 +142,33 @@ function sb() {
 	self.createSiteInput = function() {
 		$('#input .wrap').empty();
 		$('\
-		<form id="createSite"> \
-			<label for="input_name">Site Name</label> \
-			<input type="text" name="name" id="input_name"> \
-			<label for="input_siteid">Site Id</label> \
-			<input type="text" name="siteid" id="input_siteid"> \
-			<label for="input_template">Template</label> \
-			<select id="input_template"> \
-				<option>Skeleton</option> \
-			</select> \
-			<div class="buttons"> \
-				<input type="submit" name="submit" value="Add Site"> \
-				<input type="button" name="cancel" value="Cancel"> \
+		<div class="boxwrap"> \
+			<div class="boxtop"> \
+				<div class="box"></div> \
+				<ul class="boxbuttons"> \
+					<li class="move"><a></a></li> \
+					<li><a class="close"></a></li> \
+				</ul> \
 			</div> \
-		</form>').appendTo('#input .wrap');
+			<div class="boxcontent"> \
+				<form id="createSite"> \
+					<label for="input_name">Site Name</label> \
+					<input type="text" name="name" id="input_name"> \
+					<label for="input_siteid">Site Id</label> \
+					<input type="text" name="siteid" id="input_siteid"> \
+					<label for="input_template">Template</label> \
+					<select id="input_template"> \
+						<option>Skeleton</option> \
+					</select> \
+					<div class="buttons"> \
+						<input type="submit" name="submit" value="Add Site"> \
+					</div> \
+				</form> \
+			</div> \
+		</div>').appendTo('#input .wrap');
 		$('#input').fadeIn(500);
 
-		$('#createSite input[name="cancel"]').click(function() {
+		$('.boxbuttons .close').click(function() {
 			$('#input').fadeOut(500);
 		});
 

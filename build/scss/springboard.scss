@@ -8,6 +8,7 @@ $bluedarkest: #001A2B;
 $bluedarkestest: #0E1920;
 $bluedarkness: #001224;
 $bluehighlight: #304B66;
+$bluetext: #3F525F;
 $grey: #61717B;
 $orange: #DD8500;
 
@@ -34,8 +35,6 @@ body {
 		background-color: $bluedarkest;
 		&:focus, &:active {
 			outline: 0;
-			background-color: $bluedarkestest;
-			color: $orange;
 		}
 	}
 
@@ -157,6 +156,10 @@ body {
 					border-radius: 6px;
 					border: 1px solid $bluehighlight;
 					width: 100%;
+					&:focus, &:active {
+						background-color: $bluedarkestest;
+						color: $orange;
+					}
 				}
 			}
 			.openurl {
@@ -216,7 +219,6 @@ body {
 						ul.sitebuttons {
 							display: flex;
 							align-items: center;
-							flex-flow: center;
 							justify-content: space-between;
 							list-style: none;
 							margin: 0;
@@ -224,8 +226,6 @@ body {
 							border-bottom: 1px solid $bluehighlight;
 							background-color: $bluedarkest;
 							li {
-								width: 20px;
-								height: 20px;
 								display: inline-block;
 								margin: 6px 0;
 								a {
@@ -276,6 +276,7 @@ body {
 								position: relative;
 								font-size: 14px;
 								border-top: 1px solid $bluehighlight;
+								margin-bottom: -3px;
 								&:first-of-type {
 									border-top: 0;
 								}
@@ -286,10 +287,10 @@ body {
 										width: 100%;
 										top: 0;
 										padding-left: 12px;
-										color: $grey;
+										color: $bluetext;
 										display: block;
 										line-height: 33px;
-										background: rgba(0, 0, 0, 0.5);
+										background: rgba(0, 0, 0, 0.9);
 									}
 									img {
 										max-width: 100%;
@@ -355,7 +356,7 @@ body {
 		right: 0;
 		bottom: 0;
 		left: 0;
-		background: rgba(0, 0, 0, 0.8);
+		background: rgba(0, 0, 0, 0.9);
 		z-index: 999999;
 		pointer-events: none;
 	}
@@ -367,63 +368,120 @@ body {
 		pointer-events: auto;
 	}
 
+	// loading modal
 	#loading {
-		padding-top: 60px;
 		text-align: center;
-		.loadImage {
-			width: 50px;
-			height: 50px;
-		}
-	}
-	#input {
-		.boxtopw {
-			.box {
-
-			}
-			.boxbuttons
-		}
-		.boxwrap {
-			width: 200px;
-			height: 250px;
+		.wrap {
+			position: relative;
+			top: 50%;
+			transform: translateY(-50%);
+			height: 120px;
+			width: 120px;
+			border-radius: 60px;
+			margin: 0 auto;
 			background-color: $bluedarkest;
 			border: 1px solid $bluebase;
-			padding: 30px;
-			label {
-				margin-bottom: 6px;
-				display: block;
-				color: $grey;
-				font-size: 18px;
+			box-shadow: 0px 0px 20px $orange;
+			.loadImage {
+				position: absolute;
+				left: 5px;
+				top: 9px;
+				width: 111px;
+				height: 111px;
 			}
-			input[type="text"], select {
-				width: 100%;
-				box-sizing: border-box;
-				border-radius: 0;
+		}
+	}
+
+	// input box used by sbc javascripts
+	#input {
+		.boxwrap {
+			width: 250px;
+			height: auto;
+			border: 1px solid $bluedark;
+			padding: 0;
+			.boxtop {
+				height: 22px;
+				overflow: hidden;
+				background-color: $bluedarkestest;
+				background-image: linear-gradient($bluedarkest, #000);
+				border-bottom: 1px solid $bluedark;
+				ul.boxbuttons {
+					display: flex;
+					align-items: center;
+					justify-content: flex-end;
+					list-style: none;
+					margin: 0;
+					padding: 0;
+					li {
+						display: inline-block;
+						margin: 4px;
+						a {
+							display: inline-block;
+							width: 15px;
+							height: 15px;
+							opacity: 0.5;
+							background-repeat: no-repeat;
+							&.close {
+								background-image: url('/images/close.png');
+								background-size: 15px;
+								&:hover {
+									opacity: 1;
+									cursor: pointer;
+								}
+							}
+						}
+						&.move {
+							margin: 0 0 0 2px;
+							flex-grow: 12;
+							height: 18px;
+							&:hover {
+								cursor: move;
+							}
+						}
+					}
+				}
+			}
+			.boxcontent {
 				background-color: $bluedarkness;
-				border: 1px solid $bluebase;
-				color: $bluelightest;
-				margin-bottom: 10px;
-				&:focus, &:active {
-					outline: 0;
+				padding: 10px;
+				label {
+					margin-bottom: 6px;
+					display: block;
+					color: $bluetext;
+					font-size: 18px;
+				}
+				input[type="text"], select {
+					width: 100%;
+					box-sizing: border-box;
+					border-radius: 3px;
+					background-color: $bluedarkest;
+					border: 1px solid $bluebase;
+					color: $grey;
+					margin-bottom: 10px;
+					&:focus, &:active {
+						color: $bluelightest;
+					}
+				}
+				.buttons {
+					margin-top: 30px;
+				}
+				input[type="submit"], input[type="button"] {
+					width: 100%;
+					border: 1px solid $bluedark;
+					border-radius: 3px;
 					background-color: $bluedarkestest;
+					background-image: linear-gradient($bluedark, $bluedarkest);
 					color: $orange;
+					text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
+					&:hover {
+						cursor: pointer;
+						background-image: linear-gradient($bluedark, $bluedarkestest);
+						color: $orange;
+					}
 				}
-			}
-			.buttons {
-				margin-top: 20px;
-			}
-			input[type="submit"], input[type="button"] {
-				width: 45%;
-				border: 1px solid $bluebase;
-				background-color: $bluedark;
-				color: $orange;
-				&:hover {
-					cursor: pointer;
-					background-color: $orange - #333;
-					color: $bluedarkestest;
+				input[type="button"] {
+					float: right;
 				}
-			}
-			input[type="button"] {
-				float: right;
 			}
 		}
 	}

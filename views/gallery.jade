@@ -17,5 +17,7 @@ block body
         each site in sites
           li
             -var site_url = '/sites/' + site.name + '/' + site.name + '.html';
-            a(href=site_url)= site.name
-      
+            a(href=site_url)
+              span= site.name
+              if site.image
+                img(src="/sites/.thumbs/" + site.name + "/" + site.name + '.png')

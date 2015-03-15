@@ -47,6 +47,7 @@ app.use(logger());
 app.use(favicon(__dirname + '/public/favicon.png'));
 app.use(serve(__dirname + '/public/'));
 app.use(serve(__dirname + '/searchspring-sites'));
+app.use(serve(__dirname + '/.cache'));
 
 // route middleware
 // ----------------
@@ -62,6 +63,7 @@ router.get('/api/sites/sync', sitesapi.sync);
 router.get('/api/sites/commit', sitesapi.commit);
 router.get('/api/sites/publish', sitesapi.publish);
 router.get('/api/sites/push', sitesapi.pushit);
+router.get('/api/sites/merge', sitesapi.mergeit);
 router.post('/api/sites/create', koaBody(), sitesapi.create);
 
 router.get('/api/sites/:site', sitesapi.site);

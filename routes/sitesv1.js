@@ -4,14 +4,15 @@
 /*
 /api/v1/
 ------------------
-GET   api/sites/all
+GET   api/sites/all/
 GET   api/sites/{{ name }}
-GET   api/sites/commit
-GET   api/sites/publish
-GET   api/sites/push
-GET   api/sites/sync
+GET   api/sites/commit/
+GET   api/sites/publish/
+GET   api/sites/push/
+GET   api/sites/merge/
+GET   api/sites/sync/
 GET   api/sites/use/{{ name }}
-POST  api/sites/create
+POST  api/sites/create/
 ... add more ...
 */
 
@@ -81,6 +82,19 @@ module.exports = function(springboard) {
         console.log(err);
         this.response.type = 'json';
         this.response.body = { error: 'site could not be pushed' };
+      }
+    },
+
+    mergeit: function*() {
+      try {
+        var data = yield springboard.mergeSite();
+        this.response.type = 'json';
+        this.response.body = data;
+      }
+      catch(err) {
+        console.log(err);
+        this.response.type = 'json';
+        this.response.body = { error: 'site could not be merged' };
       }
     },
 

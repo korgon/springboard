@@ -15,9 +15,7 @@ body {
     font-weight: bold;
     background-color: #001A2B; }
     body input:focus, body input:active, body select:focus, body select:active, body textarea:focus, body textarea:active {
-      outline: 0;
-      background-color: #0E1920;
-      color: #DD8500; }
+      outline: 0; }
   body #above {
     position: fixed;
     top: 0;
@@ -113,6 +111,9 @@ body {
           border-radius: 6px;
           border: 1px solid #304B66;
           width: 100%; }
+          body #above .heading .url input:focus, body #above .heading .url input:active {
+            background-color: #0E1920;
+            color: #DD8500; }
       body #above .heading .openurl {
         order: 3;
         width: 20px;
@@ -162,7 +163,6 @@ body {
           body #above .heading .worksite .worksitecontainer .siteselect ul.sitebuttons {
             display: flex;
             align-items: center;
-            flex-flow: center;
             justify-content: space-between;
             list-style: none;
             margin: 0;
@@ -170,8 +170,6 @@ body {
             border-bottom: 1px solid #304B66;
             background-color: #001A2B; }
             body #above .heading .worksite .worksitecontainer .siteselect ul.sitebuttons li {
-              width: 20px;
-              height: 20px;
               display: inline-block;
               margin: 6px 0; }
               body #above .heading .worksite .worksitecontainer .siteselect ul.sitebuttons li a {
@@ -209,7 +207,8 @@ body {
               min-height: 33px;
               position: relative;
               font-size: 14px;
-              border-top: 1px solid #304B66; }
+              border-top: 1px solid #304B66;
+              margin-bottom: -3px; }
               body #above .heading .worksite .worksitecontainer .siteselect ul.sitechoices li:first-of-type {
                 border-top: 0; }
               body #above .heading .worksite .worksitecontainer .siteselect ul.sitechoices li a {
@@ -219,10 +218,10 @@ body {
                   width: 100%;
                   top: 0;
                   padding-left: 12px;
-                  color: #61717B;
+                  color: #3F525F;
                   display: block;
                   line-height: 33px;
-                  background: rgba(0, 0, 0, 0.5); }
+                  background: rgba(0, 0, 0, 0.9); }
                 body #above .heading .worksite .worksitecontainer .siteselect ul.sitechoices li a img {
                   max-width: 100%; }
                 body #above .heading .worksite .worksitecontainer .siteselect ul.sitechoices li a:hover {
@@ -260,53 +259,103 @@ body {
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.9);
     z-index: 999999;
     pointer-events: none; }
-    body .modal .wrap {
-      position: relative;
-      margin: 90px auto 0px;
-      padding: 20px;
-      pointer-events: auto; }
+  body .boxwrap {
+    position: relative;
+    margin: 90px auto 0px;
+    padding: 20px;
+    pointer-events: auto; }
   body #loading {
-    padding-top: 60px;
     text-align: center; }
-    body #loading .loadImage {
-      width: 50px;
-      height: 50px; }
-  body #input .wrap {
-    width: 200px;
-    height: 250px;
-    background-color: #001A2B;
-    border: 1px solid #354E66;
-    padding: 30px; }
-    body #input .wrap label {
-      margin-bottom: 6px;
-      display: block;
-      color: #61717B;
-      font-size: 18px; }
-    body #input .wrap input[type="text"], body #input .wrap select {
-      width: 100%;
-      box-sizing: border-box;
-      border-radius: 0;
+    body #loading .wrap {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 120px;
+      width: 120px;
+      border-radius: 60px;
+      margin: 0 auto;
+      background-color: #001A2B;
+      border: 1px solid #354E66;
+      box-shadow: 0px 0px 20px #DD8500; }
+      body #loading .wrap .loadImage {
+        position: absolute;
+        left: 5px;
+        top: 9px;
+        width: 111px;
+        height: 111px; }
+  body #input .boxwrap {
+    width: 250px;
+    height: auto;
+    border: 1px solid #1B3141;
+    padding: 0; }
+    body #input .boxwrap .boxtop {
+      height: 22px;
+      overflow: hidden;
+      background-color: #0E1920;
+      background-image: linear-gradient(#001A2B, #000);
+      border-bottom: 1px solid #1B3141; }
+      body #input .boxwrap .boxtop ul.boxbuttons {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        list-style: none;
+        margin: 0;
+        padding: 0; }
+        body #input .boxwrap .boxtop ul.boxbuttons li {
+          display: inline-block;
+          margin: 4px; }
+          body #input .boxwrap .boxtop ul.boxbuttons li a {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            opacity: 0.5;
+            background-repeat: no-repeat; }
+            body #input .boxwrap .boxtop ul.boxbuttons li a.close {
+              background-image: url('/images/close.png');
+              background-size: 15px; }
+              body #input .boxwrap .boxtop ul.boxbuttons li a.close:hover {
+                opacity: 1;
+                cursor: pointer; }
+          body #input .boxwrap .boxtop ul.boxbuttons li.move {
+            margin: 0 0 0 2px;
+            flex-grow: 12;
+            height: 18px; }
+            body #input .boxwrap .boxtop ul.boxbuttons li.move:hover {
+              cursor: move; }
+    body #input .boxwrap .boxcontent {
       background-color: #001224;
-      border: 1px solid #354E66;
-      color: #7194AD;
-      margin-bottom: 10px; }
-      body #input .wrap input[type="text"]:focus, body #input .wrap input[type="text"]:active, body #input .wrap select:focus, body #input .wrap select:active {
-        outline: 0;
+      padding: 10px; }
+      body #input .boxwrap .boxcontent label {
+        margin-bottom: 6px;
+        display: block;
+        color: #3F525F;
+        font-size: 18px; }
+      body #input .boxwrap .boxcontent input[type="text"], body #input .boxwrap .boxcontent select {
+        width: 100%;
+        box-sizing: border-box;
+        border-radius: 3px;
+        background-color: #001A2B;
+        border: 1px solid #354E66;
+        color: #61717B;
+        margin-bottom: 10px; }
+        body #input .boxwrap .boxcontent input[type="text"]:focus, body #input .boxwrap .boxcontent input[type="text"]:active, body #input .boxwrap .boxcontent select:focus, body #input .boxwrap .boxcontent select:active {
+          color: #7194AD; }
+      body #input .boxwrap .boxcontent .buttons {
+        margin-top: 30px; }
+      body #input .boxwrap .boxcontent input[type="submit"], body #input .boxwrap .boxcontent input[type="button"] {
+        width: 100%;
+        border: 1px solid #1B3141;
+        border-radius: 3px;
         background-color: #0E1920;
-        color: #DD8500; }
-    body #input .wrap .buttons {
-      margin-top: 20px; }
-    body #input .wrap input[type="submit"], body #input .wrap input[type="button"] {
-      width: 45%;
-      border: 1px solid #354E66;
-      background-color: #1B3141;
-      color: #DD8500; }
-      body #input .wrap input[type="submit"]:hover, body #input .wrap input[type="button"]:hover {
-        cursor: pointer;
-        background-color: #aa5200;
-        color: #0E1920; }
-    body #input .wrap input[type="button"] {
-      float: right; }
+        background-image: linear-gradient(#1B3141, #001A2B);
+        color: #DD8500;
+        text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25); }
+        body #input .boxwrap .boxcontent input[type="submit"]:hover, body #input .boxwrap .boxcontent input[type="button"]:hover {
+          cursor: pointer;
+          background-image: linear-gradient(#1B3141, #0E1920);
+          color: #DD8500; }
+      body #input .boxwrap .boxcontent input[type="button"] {
+        float: right; }
