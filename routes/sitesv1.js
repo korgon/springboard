@@ -6,11 +6,11 @@
 ------------------
 GET   api/sites/all
 GET   api/sites/{{ name }}
-GET   api/sites/commit/{{ name }}
-GET   api/sites/watch/{{ name }}
-GET   api/sites/publish/{{ name }}
-GET   api/sites/push/{{ name }}
+GET   api/sites/commit
+GET   api/sites/publish
+GET   api/sites/push
 GET   api/sites/sync
+GET   api/sites/use/{{ name }}
 POST  api/sites/create
 ... add more ...
 */
@@ -32,7 +32,7 @@ module.exports = function(springboard) {
       this.response.body = data;
     },
 
-    watch: function*() {
+    use: function*() {
     // runs the watchSite function that triggers gulp watches of js/scss/html
       try {
         var data = yield springboard.watchSite(this.params.site);
@@ -42,52 +42,51 @@ module.exports = function(springboard) {
       catch(err) {
         console.log(err);
         this.response.type = 'json';
-        this.response.body = { error: this.params.site + ' not found', loaded: 'false' };
+        this.response.body = { error: 'could not switch to ' + this.params.site };
       }
     },
 
     publish: function*() {
       try {
-        var data = yield springboard.publishSite(this.params.site);
+        var data = yield springboard.publishSite();
         this.response.type = 'json';
         this.response.body = data;
       }
       catch(err) {
         console.log(err);
         this.response.type = 'json';
-        this.response.body = { site: this.params.site, error: this.params.site + ' not found', loaded: 'false' };
+        this.response.body = { error: 'site could not be published' };
       }
     },
 
     commit: function*() {
       try {
-        var data = yield springboard.commitSite(this.params.site);
+        var data = yield springboard.commitSite();
         this.response.type = 'json';
         this.response.body = data;
       }
       catch(err) {
-        console.log(err);
         this.response.type = 'json';
-        this.response.body = { site: this.params.site, error: this.params.site + ' could not be commited' };
+        this.response.body = { error: 'site could not be commited' };
       }
     },
 
     pushit: function*() {
       try {
-        var data = yield springboard.pushSite(this.params.site);
+        var data = yield springboard.pushSite();
         this.response.type = 'json';
         this.response.body = data;
       }
       catch(err) {
         console.log(err);
         this.response.type = 'json';
-        this.response.body = { site: this.params.site, error: this.params.site + ' could not be pushed' };
+        this.response.body = { error: 'site could not be pushed' };
       }
     },
 
     sync: function*() {
       try {
-        var data = yield springboard.updateSites();
+        var data = yield springboard.loadSites();
         this.response.type = 'json';
         this.response.body = data;
       }
@@ -124,9 +123,8 @@ module.exports = function(springboard) {
         var site = yield springboard.newSite(newsite);
       }
       catch(err) {
-        console.log(err);
         this.response.status = 400;
-        this.response.body = { error: 'an error occured during site creation' };
+        this.response.body = { error: 'an error occured during site creation', message: err.message };
         return;
       }
 

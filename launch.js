@@ -57,13 +57,14 @@ router.get('/sites', routes.gallery);
 // api routes
 var sitesapi = require(__dirname + '/routes/sitesv1.js')(springboard);
 router.get(['/api/sites', '/api/sites/all'], sitesapi.sites);
-router.post('/api/sites/create', koaBody(), sitesapi.create);
+router.get('/api/sites/use/:site', sitesapi.use);
 router.get('/api/sites/sync', sitesapi.sync);
+router.get('/api/sites/commit', sitesapi.commit);
+router.get('/api/sites/publish', sitesapi.publish);
+router.get('/api/sites/push', sitesapi.pushit);
+router.post('/api/sites/create', koaBody(), sitesapi.create);
+
 router.get('/api/sites/:site', sitesapi.site);
-router.get('/api/sites/commit/:site', sitesapi.commit);
-router.get('/api/sites/watch/:site', sitesapi.watch);
-router.get('/api/sites/publish/:site', sitesapi.publish);
-router.get('/api/sites/push/:site', sitesapi.pushit);
 // end route definitions
 
 // router middleware

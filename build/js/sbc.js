@@ -94,19 +94,21 @@ function sb() {
 	}
 
 	self.refreshSiteList = function() {
+		$('#loading').fadeIn(300);
 		$.get('/api/sites/sync', function(data) {
-			if (Object.keys(data) > 1 && !data.error) {
-				// update the site selectordiv and frame url
-				self.updateFrame(url);
+			if (Object.keys(data).length >= 1 && !data.error) {
+				// TBD
+				// update the site selectordiv with new sites
+				$('#loading').fadeOut(300);
 			} else {
 				console.log('error: ' + data.error);
 			}
 		});
 	}
 
-	self.pushSite = function(site) {
+	self.pushSite = function() {
 		$('#loading').fadeIn(300);
-		$.get('/api/sites/push/' + site, function(data) {
+		$.get('/api/sites/push/', function(data) {
 			if (data.site !== undefined) {
 				// update the site selectordiv and frame url
 				$('#loading').fadeOut(300);
@@ -116,9 +118,9 @@ function sb() {
 		});
 	}
 
-	self.publishSite = function(site) {
+	self.publishSite = function() {
 		$('#loading').fadeIn(300);
-		$.get('/api/sites/publish/' + site, function(data) {
+		$.get('/api/sites/publish/', function(data) {
 			if (Object.keys(data) > 1 && !data.error) {
 				// update the site selectordiv and frame url
 				self.updateFrame(url);

@@ -12,3 +12,6 @@ options.json
 
 # ignore annoying files
 .DS_Store
+
+# ignore cache directory (for thumbs)
+.thumbs

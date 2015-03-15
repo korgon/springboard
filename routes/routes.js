@@ -12,8 +12,7 @@ module.exports = function(springboard) {
       var sites = springboard.getSites();
       var site = springboard.getSite();
       // redirect if no sites
-      if (Object.keys(sites).length == 0 || !site.valid) {
-        console.log('no sites, redirecting...');
+      if (Object.keys(sites).length == 0 || site === undefined) {
         this.status = 307;
         this.redirect('/sites');
         this.body = 'Redirecting to sites. There is no site to edit...';
