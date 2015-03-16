@@ -14,4 +14,4 @@ options.json
 .DS_Store
 
 # ignore cache directory (for thumbs)
-.thumbs
+.cache

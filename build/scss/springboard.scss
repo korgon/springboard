@@ -268,15 +268,18 @@ body {
 							}
 						}
 						ul.sitechoices {
+							display: flex;
+							flex-flow: column nowrap;
+							justify-content: flex-start;
 							list-style: none;
 							margin: 0;
 							padding: 0;
+							overflow-y: auto;
 							li {
 								min-height: 33px;
 								position: relative;
 								font-size: 14px;
 								border-top: 1px solid $bluehighlight;
-								margin-bottom: -3px;
 								&:first-of-type {
 									border-top: 0;
 								}
@@ -284,16 +287,18 @@ body {
 									display: block;
 									span {
 										position: absolute;
-										width: 100%;
 										top: 0;
+										width: 100%;
+										box-sizing: border-box;
 										padding-left: 12px;
 										color: $bluetext;
 										display: block;
 										line-height: 33px;
-										background: rgba(0, 0, 0, 0.9);
+										background: rgba(0, 12, 22, 0.9);
 									}
 									img {
 										max-width: 100%;
+										margin-bottom: -3px;
 									}
 									&:hover {
 										color: $orange;
@@ -342,8 +347,51 @@ body {
 
 		#gallery {
 			#siteshow {
-				width: 70%;
-				margin: 90px auto;
+				width: 95%;
+				margin: 60px auto;
+				ul {
+					display: flex;
+					flex-flow: row wrap;
+					justify-content: flex-start;
+					list-style: none;
+					margin: 0;
+					padding: 0;
+					li {
+						width: 320px;
+						height: 180px;
+						position: relative;
+						font-size: 14px;
+						border: 1px solid $bluedarkest;
+						margin: 5px;
+						&:first-of-type {
+							border-top: 0;
+						}
+						a {
+							display: block;
+							span {
+								position: absolute;
+								box-sizing: border-box;
+								width: 100%;
+								top: 0;
+								padding-left: 12px;
+								color: $bluetext;
+								display: block;
+								line-height: 33px;
+								background: rgba(0, 12, 22, 0.9);
+							}
+							img {
+								max-width: 100%;
+							}
+							&:hover {
+								color: $orange;
+								cursor: pointer;
+							}
+							&:hover > span {
+								color: $orange;
+							}
+						}
+					}
+				}
 			}
 		}
   }

@@ -71,24 +71,38 @@ function sb() {
     $("#frameview").attr('src', new_location);
   }
 
-	self.switchSite = function(switchsite, url) {
-		$('#loading').fadeIn(300);
+	self.switchSite = function(usesite, url) {
 		// show loading modal
+		$('#loading').fadeIn(300);
 		// switch the watch of a site
 		$.get('/api/sites/commit', function(data) {
 			$('#frame').fadeOut(300);
-			$.get('/api/sites/use/' + switchsite, function(data) {
+			$.get('/api/sites/use/' + usesite, function(data) {
 				if (data.name !== undefined) {
 					// update the site selectordiv and frame url
 					$('title, #currentsite').text(data.name);
 					self.updateFrame(url);
 					$('#frame').fadeIn(300);
 					$('#loading').fadeOut(600);
-					self.site = switchsite;
+					self.site = usesite;
 				} else {
 					console.log('error: ' + data.error);
 				}
 			});
+		});
+	}
+
+	self.viewSite = function(usesite, url) {
+		// show loading modal
+		$('#loading').fadeIn(300);
+		$.get('/api/sites/use/' + usesite, function(data) {
+			if (data.name !== undefined) {
+				$('#loading').fadeOut(600);
+				self.site = usesite;
+				window.location = '/';
+			} else {
+				console.log('error: ' + data.error);
+			}
 		});
 	}
 
