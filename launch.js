@@ -44,7 +44,7 @@ springboard.init().catch(function(err) {
 // middleware
 
 app.use(logger());
-app.use(favicon(__dirname + '/public/favicon.png'));
+app.use(favicon(__dirname + '/public/images/favicon.png'));
 app.use(serve(__dirname + '/public/'));
 app.use(serve(__dirname + '/searchspring-sites'));
 app.use(serve(__dirname + '/.cache'));

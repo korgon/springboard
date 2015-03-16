@@ -3,8 +3,7 @@
 extends ./above.jade
 
 block headerextend
-  .url
-    input#frameurl(name='url', autocomplete='off', spellcheck='false')
+  input#frameurl(name='url', autocomplete='off', spellcheck='false')
   .openurl
   .line
   .worksite
@@ -29,6 +28,9 @@ block headerextend
             -var site_url = '/sites/' + site.name + '/' + site.name + '.html';
             li
               a(onclick="sb.switchSite('" + site.name + "', '" + site_url + "')")
-                span= site.name
+                .info
+                  span.sitename= site.name
                 if (site.image && show_images)
                   img(src="/sites/thumbs/" + site.name + "/" + site.name + '.png')
+                else if (!site.image && show_images)
+                  img(src="/images/working.png")

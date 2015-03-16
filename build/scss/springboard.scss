@@ -6,11 +6,12 @@ $bluelightest: #7194AD;
 $bluedark: #1B3141;
 $bluedarkest: #001A2B;
 $bluedarkestest: #0E1920;
-$bluedarkness: #001224;
+$blueblack: #00121E;
 $bluehighlight: #304B66;
 $bluetext: #3F525F;
 $grey: #61717B;
 $orange: #DD8500;
+$red: #A12B00;
 
 $heightheader: 40px;
 
@@ -53,7 +54,6 @@ body {
 			display: flex;
 			flex-direction: row;
 			justify-content: flex-start;
-			box-sizing: border-box;
 			align-items: center;
 			width: 100%;
 			height: $heightheader;
@@ -65,45 +65,51 @@ body {
 				display: none;
 			}
 			.title {
+				flex: 0 0 auto;
 				display: flex;
 				align-items: center;
 				order: 1;
 				height: $heightheader;
-				.logo {
-					margin-left: 15px;
-				}
-				.subtitle {
-					color: $grey;
-					margin: 0 20px;
-					font-size: 21px;
-				}
+				z-index: 9;
 				&:hover {
 					cursor: pointer;
 				}
 				&:hover + .mainmenu {
-					display: block;
+					max-height: 300px;
+				}
+				.logo {
+					height: $heightheader;
+					margin-left: 15px;
+				}
+				.subtitle {
+					color: $bluetext;
+					margin: 0 10px;
+					font-size: 21px;
 				}
 			}
 			.mainmenu {
-				display: none;
-				margin: 0;
 				position: absolute;
-				left: 0;
+				left: -1px;
 				top: $heightheader;
+				box-sizing: border-box;
 				width: 250px;
+				max-height: 0;
+				overflow: hidden;
+				margin: 0;
 				background-color: $bluedark;
-				z-index: 7;
 				border: 1px solid $bluehighlight;
 				border-top: 0;
+				transition: max-height 1s ease;
+				z-index: 7;
+				&:hover {
+					max-height: 300px;
+				}
 				ul.menuoptions {
 					list-style: none;
 					margin: 0;
 					padding: 0;
 					li {
 						border-top: 1px solid $bluehighlight;
-						&:first-of-type {
-							border-top: 0;
-						}
 						a {
 							display: flex;
 							flex-direction: row;
@@ -134,7 +140,7 @@ body {
 								margin-left: 10px;
 							}
 							&:hover {
-								background-color: $bluedarkestest;
+								background-color: $bluedarkest;
 								cursor: pointer;
 								color: $orange;
 							}
@@ -144,33 +150,31 @@ body {
 						}
 					}
 				}
-				&:hover {
-					display: block;
-				}
 			}
-			.url {
+			#frameurl {
 				order: 2;
 				flex: 1 1 33%;
-				margin: 0 25px 0 10px;
-				input {
-					border-radius: 6px;
-					border: 1px solid $bluehighlight;
-					width: 100%;
-					&:focus, &:active {
-						background-color: $bluedarkestest;
-						color: $orange;
-					}
+				margin: 0 10px;
+				display: block;
+				border-radius: 6px;
+				border: 1px solid $bluehighlight;
+				width: 100%;
+				&:focus {
+					background-color: $bluedarkestest;
+					color: $orange;
 				}
 			}
 			.openurl {
 				order: 3;
+				flex: 0 0 auto;
 				width: 20px;
 				height: 20px;
-				opacity: 0.5;
+				opacity: 0.1618033;
 				background-image: url('/images/open.png');
 				background-repeat: no-repeat;
 				background-size: 20px;
 				margin-right: 9px;
+				-webkit-filter: drop-shadow(16px 16px 10px, rgba(0,0,0,1));
 				&:hover {
 					cursor: pointer;
 					opacity: 1;
@@ -189,52 +193,66 @@ body {
 				.worksitecontainer {
 					a.currentsite {
 						display: block;
+						position: relative;
 						text-align: center;
-						padding: 0px 6px;
+						padding: 0;
 						margin: 0;
+						// border-bottom: 1px solid $bluehighlight;
 						line-height: $heightheader;
 						height: $heightheader;
+						z-index: 9;
 						span {
 							display: inline-block;
+							width: 100%;
 							font-size: 14px;
 							font-weight: bold;
-							color: $orange;
+							color: $bluetext;
 						}
 						&:hover {
 							cursor: pointer;
 						}
 						&:hover + .siteselect {
-							display: block;
+							max-height: 1200px;
 						}
 					}
 					.siteselect {
-						display: none;
+						//display: none;
+						position: absolute;
+						width: 250px;
+						max-height: 1px;
+						overflow: hidden;
 						margin: -1px -1px 0 -1px;
-						position: relative;
 						background-color: $bluedark;
 						border: 1px solid $bluehighlight;
 						border-top: 0;
-						border-top: 0;
+						transition: max-height 1s ease;
 						z-index: 7;
+						&:hover {
+							max-height: 1200px;
+						}
 						ul.sitebuttons {
 							display: flex;
-							align-items: center;
-							justify-content: space-between;
+							flex-flow: row nowrap;
+							justify-content: space-around;
 							list-style: none;
 							margin: 0;
 							padding: 0;
 							border-bottom: 1px solid $bluehighlight;
+							// border-top: 1px solid $bluehighlight;
 							background-color: $bluedarkest;
 							li {
 								display: inline-block;
-								margin: 6px 0;
+								flex-grow: 1;
+								text-align: center;
+								height: $heightheader;
 								a {
 									display: inline-block;
-									width: 22px;
-									height: 22px;
-									opacity: 0.5;
+									width: 100%;
+									height: $heightheader;
+									opacity: 0.1618033;
 									background-repeat: no-repeat;
 									background-size: 20px;
+									background-position: center center;
 									&:hover {
 										cursor: pointer;
 										opacity: 1;
@@ -252,12 +270,6 @@ body {
 										background-image: url('/images/pull_request.png');
 									}
 								}
-								&:first-of-type {
-									margin-left: 20px;
-								}
-								&:last-of-type {
-									margin-right: 20px;
-								}
 							}
 						}
 						.sitesearch {
@@ -268,15 +280,12 @@ body {
 							}
 						}
 						ul.sitechoices {
-							display: flex;
-							flex-flow: column nowrap;
-							justify-content: flex-start;
 							list-style: none;
 							margin: 0;
 							padding: 0;
+							max-height: 1100px;
 							overflow-y: auto;
 							li {
-								min-height: 33px;
 								position: relative;
 								font-size: 14px;
 								border-top: 1px solid $bluehighlight;
@@ -284,34 +293,49 @@ body {
 									border-top: 0;
 								}
 								a {
+									position: relative;
 									display: block;
-									span {
+									height: 33px;
+									overflow: hidden;
+									transition: all 0.5s ease;
+									.info {
+										display: block;
 										position: absolute;
 										top: 0;
+										right: 0;
 										width: 100%;
+										height: 33px;
+										z-index: 1;
 										box-sizing: border-box;
 										padding-left: 12px;
 										color: $bluetext;
-										display: block;
 										line-height: 33px;
-										background: rgba(0, 12, 22, 0.9);
+										background: rgba(0, 25, 42, 0.9);
+										transition: height 0.5s ease;
+										&:hover {
+											background: rgba(0, 12, 22, 0.9);
+											.sitename {
+											}
+										}
 									}
 									img {
-										max-width: 100%;
+										display: block;
+										position: absolute;
+										top: 0;
+										right: 0;
+										width: 250px;
 										margin-bottom: -3px;
 									}
 									&:hover {
 										color: $orange;
+										height: 141px;
 										cursor: pointer;
 									}
-									&:hover > span {
-										color: $orange;
+									&:hover > .info {
+										height: 141px;
 									}
 								}
 							}
-						}
-						&:hover {
-							display: block;
 						}
 					}
 				}
@@ -490,7 +514,7 @@ body {
 				}
 			}
 			.boxcontent {
-				background-color: $bluedarkness;
+				background-color: $blueblack;
 				padding: 10px;
 				label {
 					margin-bottom: 6px;

@@ -120,10 +120,16 @@ function sb() {
 
 	self.pushSite = function() {
 		$('#loading').fadeIn(300);
-		$.get('/api/sites/push/', function(data) {
+
+		$.get('/api/sites/commit/', function(data) {
 			if (data.site !== undefined) {
-				// update the site selectordiv and frame url
-				$('#loading').fadeOut(300);
+				$.get('/api/sites/push/', function(data) {
+					if (data.site !== undefined) {
+						$('#loading').fadeOut(300);
+					} else {
+						console.log('error: ' + data.error);
+					}
+				});
 			} else {
 				console.log('error: ' + data.error);
 			}
@@ -153,6 +159,30 @@ function sb() {
 		});
 	}
 
+	self.createSite = function() {
+		var site = {};
+		site['name'] = $('#createSite #input_name').val();
+		site['siteid'] = $('#createSite #input_siteid').val();
+		site['template'] = $('#createSite #input_template').val();
+
+		if (site.name.match(/.*\..+/i) && site.siteid.match(/[a-z0-9]{6}/i)) {
+			$('#input').fadeOut(200);
+			$('#loading').fadeIn(300);
+
+			$.post('/api/sites/create', site, function(data) {
+				if (data.name !== undefined) {
+					setTimeout(function() {
+						window.location = '/';
+					}, 900);
+				} else {
+					console.log('error: ' + data.error);
+					$('#loading').fadeOut(1000);
+				}
+			});
+		}
+		return false;
+	}
+
 	self.createSiteInput = function() {
 		$('#input .wrap').empty();
 		$('\
@@ -172,6 +202,7 @@ function sb() {
 					<input type="text" name="siteid" id="input_siteid"> \
 					<label for="input_template">Template</label> \
 					<select id="input_template"> \
+						<option>None</option> \
 						<option>Skeleton</option> \
 					</select> \
 					<div class="buttons"> \
@@ -186,27 +217,8 @@ function sb() {
 			$('#input').fadeOut(500);
 		});
 
-		$("#createSite").submit(function(e){
-			var site = {};
-			site['name'] = $('#createSite #input_name').val();
-			site['siteid'] = $('#createSite #input_siteid').val();
-			site['template'] = $('#createSite #input_template').val();
-
-			if (site.name.match(/.*\..+/i) && site.siteid.match(/[a-z0-9]{6}/i)) {
-				$('#input').fadeOut(200);
-				$('#loading').fadeIn(300);
-
-				$.post('/api/sites/create', site, function(data) {
-					$('#loading').fadeOut(300);
-					if (data.name !== undefined) {
-						window.location = '/';
-					} else {
-						console.log('error: ' + data.error);
-						$('#loading').fadeOut(1000);
-					}
-				});
-			}
-			return false;
+		$("#createSite").submit(function(e) {
+			self.createSite();
 		});
 	}
 
