@@ -73,15 +73,15 @@ function sb() {
 	self.switchSite = function(usesite, url) {
 		// show loading modal
 		$('#loading').fadeIn(300);
+		$('#frame').hide();
 		// switch the watch of a site
 		$.get('/api/sites/commit', function(data) {
-			$('#frame').fadeOut(300);
 			$.get('/api/sites/use/' + usesite, function(data) {
 				if (data.name !== undefined) {
 					// update the site selectordiv and frame url
 					$('title, #currentsite').text(data.name);
 					self.updateFrame(url);
-					$('#frame').fadeIn(300);
+					$('#frame').fadeIn(1000);
 					$('#loading').fadeOut(600);
 					self.site = usesite;
 				} else {
@@ -118,9 +118,19 @@ function sb() {
 		});
 	}
 
+	self.commitSite = function() {
+		$('#loading').fadeIn(300);
+		$.get('/api/sites/commit/', function(data) {
+			if (data.site !== undefined) {
+				$('#loading').fadeOut(300);
+			} else {
+				console.log('error: ' + data.error);
+			}
+		});
+	}
+
 	self.pushSite = function() {
 		$('#loading').fadeIn(300);
-
 		$.get('/api/sites/commit/', function(data) {
 			if (data.site !== undefined) {
 				$.get('/api/sites/push/', function(data) {
@@ -170,6 +180,7 @@ function sb() {
 			$('#loading').fadeIn(300);
 
 			$.post('/api/sites/create', site, function(data) {
+				console.log(data);
 				if (data.name !== undefined) {
 					setTimeout(function() {
 						window.location = '/';
@@ -218,6 +229,7 @@ function sb() {
 		});
 
 		$("#createSite").submit(function(e) {
+			e.preventDefault();
 			self.createSite();
 		});
 	}
