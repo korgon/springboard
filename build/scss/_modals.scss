@@ -1,0 +1,142 @@
+// scss for springboard modals
+// loading modal (#loading)
+// input modal (#input)
+
+body {
+  // popup windows
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 999999;
+  }
+
+  .boxwrap {
+    position: relative;
+    margin: 90px auto 0px;
+    padding: 20px;
+    pointer-events: auto;
+  }
+
+  // loading modal
+  #loading {
+    text-align: center;
+    .wrap {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 120px;
+      width: 120px;
+      border-radius: 60px;
+      margin: 0 auto;
+      background-color: $bluedarkest;
+      border: 1px solid $bluebase;
+      box-shadow: 0px 0px 20px $orange;
+      .loadImage {
+        position: absolute;
+        left: 5px;
+        top: 9px;
+        width: 111px;
+        height: 111px;
+      }
+    }
+  }
+
+  // input box used by sbc javascripts
+  #input {
+    .boxwrap {
+      width: 250px;
+      height: auto;
+      border: 1px solid $bluedark;
+      padding: 0;
+      .boxtop {
+        height: 22px;
+        overflow: hidden;
+        background-color: $bluedarkestest;
+        background-image: linear-gradient($bluedarkest, #000);
+        border-bottom: 1px solid $bluedark;
+        ul.boxbuttons {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          li {
+            display: inline-block;
+            margin: 4px;
+            a {
+              display: inline-block;
+              width: 15px;
+              height: 15px;
+              opacity: 0.5;
+              background-repeat: no-repeat;
+              &.close {
+                background-image: url('/images/icons/close_tiny.png');
+                background-size: 15px;
+                &:hover {
+                  opacity: 1;
+                  cursor: pointer;
+                }
+              }
+            }
+            &.move {
+              margin: 0;
+              flex-grow: 12;
+              height: 27px;
+              &:hover {
+                cursor: move;
+              }
+            }
+          }
+        }
+      }
+      .boxcontent {
+        background-color: $blueblack;
+        padding: 10px;
+        label {
+          margin-bottom: 6px;
+          display: block;
+          color: $bluetext;
+          font-size: 18px;
+        }
+        input[type="text"], select {
+          width: 100%;
+          box-sizing: border-box;
+          border-radius: 3px;
+          background-color: $bluedarkest;
+          border: 1px solid $bluebase;
+          color: $grey;
+          margin-bottom: 10px;
+          &:focus, &:active {
+            color: $bluelightest;
+          }
+        }
+        .buttons {
+          margin-top: 30px;
+        }
+        input[type="submit"], input[type="button"] {
+          width: 100%;
+          border: 1px solid $bluedark;
+          border-radius: 3px;
+          background-color: $bluedarkestest;
+          background-image: linear-gradient($bluedark, $bluedarkest);
+          color: $orange;
+          text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
+          &:hover {
+            cursor: pointer;
+            background-image: linear-gradient($bluedark, $bluedarkestest);
+            color: $orange;
+          }
+        }
+        input[type="button"] {
+          float: right;
+        }
+      }
+    }
+  }
+}

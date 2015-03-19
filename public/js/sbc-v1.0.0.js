@@ -65,6 +65,7 @@ function sb() {
 
 	self.updateUrl = function() {
     $('#frameurl').val($("#frameview").get(0).contentWindow.location);
+		$('#frame').show();
 	}
 
   self.updateFrame = function(new_location) {
@@ -244,6 +245,7 @@ function sb() {
 				case 'd':
 					event.preventDefault();
 					$('.heading').toggleClass('hidden');
+					$('#content').toggleClass('fullscreen');
 					$('#frameview').toggleClass('maximized');
 					break;
 				// ctrl-s or command-s

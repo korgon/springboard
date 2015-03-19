@@ -18,7 +18,7 @@ module.exports = function(springboard) {
         this.body = 'Redirecting to sites. There is no site to edit...';
         return;
       }
-      this.body = jade.renderFile(view_dir + 'index.jade', {pretty:true, sites: sites, site: site});
+      this.body = jade.renderFile(view_dir + 'editor.jade', {pretty:true, sites: sites, site: site});
     },
     gallery: function*() {
       var sites = springboard.getSites();

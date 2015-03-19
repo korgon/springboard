@@ -1,0 +1,60 @@
+// scss for springboard gallery page
+
+body {
+	#gallery {
+		#siteshow {
+			width: auto;
+			margin: 20px;
+			ul {
+				width: 100%;
+				display: flex;
+				flex-flow: row wrap;
+				justify-content: center;
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				li {
+					box-sizing: border-box;
+					max-width: 320px;
+					max-height: 180px;
+					width: 24%;
+					position: relative;
+					font-size: 14px;
+					border: 1px solid $bluedarkest;
+					margin: 0.5%;
+					&:first-of-type {
+						border-top: 0;
+					}
+					@include respondpx(768) {
+						width: 45%;
+					}
+					a {
+						display: block;
+						span {
+							position: absolute;
+							box-sizing: border-box;
+							width: 100%;
+							top: 0;
+							padding-left: 12px;
+							color: $bluetext;
+							display: block;
+							line-height: 33px;
+							background: rgba(0, 12, 22, 0.9);
+						}
+						img {
+							display: block;
+							max-width: 100%;
+						}
+						&:hover {
+							color: $orange;
+							cursor: pointer;
+						}
+						&:hover > span {
+							color: $orange;
+						}
+					}
+				}
+			}
+		}
+	}
+}
