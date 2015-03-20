@@ -3,7 +3,9 @@
 // using gulp browsersync and browserify
 
 var gulp = require('gulp');
+var colors = require('colors');
 var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
 var browserify = require('browserify');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
@@ -28,28 +30,10 @@ function browserifyHandler(err){
 // all seeing eye
 // watch for js css and jade changes
 gulp.task('watch', function() {
-  gulp.watch('build/js/*.js', ['bundlejs', reload]);
+  gulp.watch('build/js/*.js', ['lint', 'bundlejs', reload]);
   gulp.watch('build/scss/*.scss', ['sass']);
   gulp.watch('views/**/*.jade').on('change', reload);
 });
-
-
-// taskmaster tasks below
-// ---------------------------------------------
-
-// js linting task
-// gulp.task('lintjs', function() {
-//   return gulp.src('build/js/*.js')
-//     .pipe(jshint.reporter('jshint-stylish'))
-//     .pipe(jshint.reporter('fail'))
-//     .pipe(gulp.dest('public/js'))
-//     .pipe(uglify()).on('error', gutil.log)
-//     .pipe(rename({extname: '.min.js'}))
-//     .pipe(gulp.dest('public/js'))
-//     .pipe(gzip())
-//     .pipe(rename({extname: '.gzip'}))
-//     .pipe(gulp.dest('public/js'));
-// });
 
 // js bundler task (using browserifiy)
 gulp.task('bundlejs', function() {
@@ -58,13 +42,24 @@ gulp.task('bundlejs', function() {
 
   return sbc.bundle().on('error', browserifyHandler)
     .pipe(source('sbc-v1.0.0.js'))
+    .pipe(gulp.dest('public/js'))
+    .pipe(buffer()) // <----- convert from streaming to buffered vinyl file object
+    .pipe(uglify()).on('error', gutil.log)
+    .pipe(rename({extname: '.min.js'}))
     .pipe(gulp.dest('public/js'));
-    // .pipe(uglify()).on('error', gutil.log)
-    // .pipe(rename({extname: '.min.js'}))
-    // .pipe(gulp.dest('public/js'))
     // .pipe(gzip())
     // .pipe(rename({extname: '.gzip'}))
     // .pipe(gulp.dest('public/js'));
+});
+
+gulp.task('lint', function() {
+  return gulp.src('./build/js/sbc.js')
+  .pipe(jshint()).on('error', gutil.log)
+  .pipe(jshint.reporter('jshint-stylish'))
+  .pipe(jshint.reporter('fail')).on('error', function(err) {
+
+    this.emit('end');
+  });
 });
 
 // sass task
@@ -92,5 +87,44 @@ gulp.task('browsersync', function() {
   }
 });
 
+
 // the default gulp task!
 gulp.task('default', ['browsersync', 'watch']);
+
+
+function logit(alert, message, type) {
+  alert = ' ' + alert + ' ';
+  var boxtopper = '╭' + '─'.repeat(alert.length) + '╮';
+  var boxbottom = '╰' + '─'.repeat(alert.length) + '╯';
+  switch (type) {
+    case 'blue':
+      console.log(boxtopper.blue);
+      console.log('│'.blue + alert.bold.blue + '│'.blue + ' ' + message.blue);
+      console.log(boxbottom.blue);
+      break;
+    case 'pass':
+    case 'green':
+      console.log(boxtopper.green);
+      console.log('│'.green + alert.bold.green + '│'.green + ' ' + message.green);
+      console.log(boxbottom.green);
+      break;
+    case 'fail':
+    case 'red':
+      console.log(boxtopper.red);
+      console.log('│'.red + alert.bold.red + '│'.red + ' ' + message.red);
+      console.log(boxbottom.red);
+      break;
+    case 'warn':
+    case 'yellow':
+      console.log(boxtopper.yellow);
+      console.log('│'.yellow + alert.bold.yellow + '│'.yellow + ' ' + message.yellow);
+      console.log(boxbottom.yellow);
+      break;
+    case 'white':
+    default:
+      console.log(boxtopper.white);
+      console.log('│'.white + alert.bold.white + '│'.white + ' ' + message.white);
+      console.log(boxbottom.white);
+  }
+  console.log();
+}

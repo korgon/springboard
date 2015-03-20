@@ -20,6 +20,10 @@ var logger = require('koa-logger');
 var serve = require('koa-static');
 var router = require('koa-router')();
 
+// set some global variables needed in multiple modules
+global.port = 1337;
+global.site_dir = "searchspring-sites/";
+
 // local modules
 var springboard = require(__dirname + "/lib/springboard.js");
 
@@ -46,7 +50,7 @@ springboard.init().catch(function(err) {
 app.use(logger());
 app.use(favicon(__dirname + '/public/images/favicon.png'));
 app.use(serve(__dirname + '/public/'));
-app.use(serve(__dirname + '/searchspring-sites'));
+app.use(serve(__dirname + '/' + global.site_dir));
 app.use(serve(__dirname + '/.cache'));
 
 // route middleware
@@ -73,5 +77,5 @@ router.get('/api/sites/:site', sitesapi.site);
 app.use(router.routes());
 
 // start your engines
-app.listen(1338);
+app.listen(global.port + 1);
 // koa serves up at 1338, but browsersync creates a proxy at 1337 for css injection using socket.io

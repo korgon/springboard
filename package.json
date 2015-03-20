@@ -13,6 +13,7 @@
     "gulp": "^3.8.11",
     "gulp-callback": "0.0.3",
     "gulp-gzip": "^1.0.0",
+    "gulp-if": "^1.2.5",
     "gulp-jshint": "~1.9.2",
     "gulp-plumber": "^0.6.6",
     "gulp-rename": "^1.2.0",
@@ -30,7 +31,8 @@
     "koa-router": "^4.2.0",
     "koa-static": "^1.4.9",
     "lwip": "0.0.6",
-    "vinyl-source-stream": "^1.0.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
     "webshot": "^0.15.4"
   },
   "devDependencies": {

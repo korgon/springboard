@@ -7,29 +7,30 @@ block headerextend
   .openurl
   .line
   .worksite
-    .worksitecontainer
-      a.currentsite
-        span#currentsite= site.name
-      .siteselect
-        //- .sitesearch
-        //-   input(autocomplete='off')
-        ul.sitebuttons
-          li
-            a.refresh(onclick="sb.refreshSiteList()")
-          li
-            a.push(onclick="sb.pushSite()")
-          li
-            a.upload(onclick="sb.publishSite()")
-          li
-            a.pull(onclick="sb.mergeSite()")
+    a.currentsite
+      span#currentsite= site.name
+    .siteselect
+      //- .sitesearch
+      //-   input(autocomplete='off')
+      ul.sitebuttons
+        li
+          a.refresh(onclick="sb.refreshSiteList()")
+        li
+          a.push(onclick="sb.pushSite()")
+        li
+          a.upload(onclick="sb.publishSite()")
+        li
+          a.pull(onclick="sb.mergeSite()")
+      .sitescroller
         ul.sitechoices
           -var show_images = true;
           each site in sites
             -var site_url = '/sites/' + site.name + '/' + site.name + '.html';
             li
               a(onclick="sb.switchSite('" + site.name + "', '" + site_url + "')")
-                .info
-                  span.sitename= site.name
+                .shade
+                  .info
+                    span.sitename= site.name
                 if (site.image && show_images)
                   img(src="/sites/thumbs/" + site.name + "/" + site.name + '.png')
                 else if (!site.image && show_images)

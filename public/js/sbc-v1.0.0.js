@@ -22,10 +22,16 @@ function sb() {
     // do stuff when dom has loaded
     $(function() {
 			self.site = $('#currentsite').text();
-			// add home click for title
+			// add click to keep menus open
 			$('.heading .title').click(function() {
-				window.location = '/';
+				$('#above .mainmenu').toggleClass('showmenu');
 			})
+			$('.worksite .currentsite').click(function() {
+				$('.worksite .siteselect').toggleClass('showmenu');
+			})
+
+			// set siteselect sitescroller to max-height of window
+			$('.siteselect .sitescroller').css('max-height', $(window).height() - 81);
 
       // bind hotkeys!
 			self.hotkeyInit();
@@ -173,9 +179,9 @@ function sb() {
 
 	self.createSite = function() {
 		var site = {};
-		site['name'] = $('#createSite #input_name').val();
-		site['siteid'] = $('#createSite #input_siteid').val();
-		site['template'] = $('#createSite #input_template').val();
+		site.name = $('#createSite #input_name').val();
+		site.siteid = $('#createSite #input_siteid').val();
+		site.template = $('#createSite #input_template').val();
 
 		if (site.name.match(/.*\..+/i) && site.siteid.match(/[a-z0-9]{6}/i)) {
 			$('#input').fadeOut(200);
