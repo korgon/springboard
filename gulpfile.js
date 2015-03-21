@@ -13,10 +13,11 @@ var reload = browserSync.reload;
 // gulp plugins
 var gzip = require('gulp-gzip');
 var jshint = require('gulp-jshint');
+var minify = require('gulp-minify-css');
 var plumber = require('gulp-plumber');
 var rename = require('gulp-rename');
-var sourcemaps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 var gutil = require('gulp-util');
 
@@ -79,8 +80,11 @@ gulp.task('sass', function() {
 
 // css task for injection
 gulp.task('css', function() {
-  return gulp.src('public/css/*.css')
-  .pipe(reload({stream: true})).on('error', gutil.log);
+  return gulp.src(['public/css/*.css', '!public/css/*.min.css'])
+  .pipe(reload({stream: true})).on('error', gutil.log)
+  .pipe(rename({extname: '.min.css'}))
+  .pipe(minify())
+  .pipe(gulp.dest('public/css'));
 });
 
 // start browsersync to trigger reload and inject css
