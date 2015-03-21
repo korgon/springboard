@@ -278,7 +278,7 @@ body {
 									display: block;
 									height: 33px;
 									overflow: hidden;
-									transition: all 420ms ease;
+									transition: all 222ms ease;
 									&:hover {
 										color: $orange;
 										height: 141px;
@@ -299,7 +299,7 @@ body {
 										color: $bluetext;
 										line-height: 33px;
 										background: rgba(0, 25, 42, 0.9);
-										transition: height 420ms ease;
+										transition: height 222ms ease;
 										&:hover {
 											background: rgba(0, 12, 22, 0.9);
 										}

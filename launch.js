@@ -34,7 +34,7 @@ springboard.init().catch(function(err) {
   process.exit(1);
 });
 
-// handle things...
+// handle things... sample middleware
 // app.use(function*(next) {
 //   try {
 //     // pass things downstream
@@ -78,4 +78,4 @@ app.use(router.routes());
 
 // start your engines
 app.listen(global.port + 1);
-// koa serves up at 1338, but browsersync creates a proxy at 1337 for css injection using socket.io
+// koa serves up at 1338, but browsersync creates a proxy at global.port (1337) for css injection using socket.io

@@ -15,6 +15,7 @@ var gzip = require('gulp-gzip');
 var jshint = require('gulp-jshint');
 var plumber = require('gulp-plumber');
 var rename = require('gulp-rename');
+var sourcemaps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var gutil = require('gulp-util');
@@ -28,10 +29,11 @@ function browserifyHandler(err){
 
 
 // all seeing eye
-// watch for js css and jade changes
+// watch for js, scss, css and jade changes
 gulp.task('watch', function() {
   gulp.watch('build/js/*.js', ['lint', 'bundlejs', reload]);
   gulp.watch('build/scss/*.scss', ['sass']);
+  gulp.watch('public/css/*.css', ['css']);
   gulp.watch('views/**/*.jade').on('change', reload);
 });
 
@@ -65,9 +67,20 @@ gulp.task('lint', function() {
 // sass task
 gulp.task('sass', function() {
   return gulp.src('build/scss/*.scss')
-    .pipe(sass({errLogToConsole: true}))
+    .pipe(sourcemaps.init())
+    .pipe(sass({
+        errLogToConsole: true,
+        sourceComments: 'map',
+        sourceMap: 'scss'
+      }))
+    .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('public/css'))
-    .pipe(reload({stream: true}))
+});
+
+// css task for injection
+gulp.task('css', function() {
+  return gulp.src('public/css/*.css')
+  .pipe(reload({stream: true})).on('error', gutil.log);
 });
 
 // start browsersync to trigger reload and inject css
