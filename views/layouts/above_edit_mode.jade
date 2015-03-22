@@ -10,8 +10,6 @@ block headerextend
     a.currentsite
       span#currentsite= site.name
     .siteselect
-      //- .sitesearch
-      //-   input(autocomplete='off')
       ul.sitebuttons
         li
           a.refresh(onclick="sb.refreshSiteList()")
@@ -21,6 +19,9 @@ block headerextend
           a.upload(onclick="sb.publishSite()")
         li
           a.pull(onclick="sb.mergeSite()")
+      .sitesearch
+        input#searchbox(autocomplete='off')
+        label.lookingglass(for="searchbox")
       .sitescroller
         ul.sitechoices
           -var show_images = true;

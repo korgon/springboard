@@ -24,14 +24,22 @@ function sb() {
 			self.site = $('#currentsite').text();
 			// add click to keep menus open
 			$('.heading .title').click(function() {
-				$('#above .mainmenu').toggleClass('showmenu');
+				$('#above .mainmenu').toggleClass('show');
 			})
 			$('.worksite .currentsite').click(function() {
-				$('.worksite .siteselect').toggleClass('showmenu');
+				$('.worksite .siteselect').toggleClass('show');
+				if ($('.worksite .siteselect').hasClass('show')) {
+					$('#searchbox').focus();
+				}
 			})
+			$('#searchbox').focus(function() {
+				$('#above .siteselect').addClass('show');
+			}).focusout(function() {
+				$('#above .siteselect').removeClass('show');
+			});
 
 			// set siteselect sitescroller to max-height of window
-			$('.siteselect .sitescroller').css('max-height', $(window).height() - 81);
+			$('.siteselect .sitescroller').css('max-height', $(window).height() - 121);
 
       // bind hotkeys!
 			self.hotkeyInit();

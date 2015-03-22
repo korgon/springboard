@@ -66,7 +66,7 @@ body {
 					max-height: 300px;
 					overflow: initial;
 				}
-				&.showmenu {
+				&.show {
 					max-height: 300px;
 				}
 				ul.menuoptions {
@@ -122,7 +122,7 @@ body {
 								}
 							}
 							span.menutext {
-								margin-left: 10px;
+								
 							}
 						}
 					}
@@ -165,6 +165,7 @@ body {
 			}
 			.worksite {
 				order: 4;
+				flex-basis: 250px;
 				width: 250px;
 				height: $heightheader;
 				a.currentsite {
@@ -193,30 +194,31 @@ body {
 				}
 				.siteselect {
 					position: absolute;
-					width: 250px;
+					right: 0;
+					width: 350px;
 					max-height: 1px;
 					overflow: hidden;
 					margin: -1px -1px 0 -1px;
-					background-color: $bluedark;
-					border: 1px solid $bluehighlight;
 					border-top: 0;
 					transition: max-height 144ms ease, max-height 400ms ease-out;
 					z-index: 7;
 					&:hover {
 						max-height: 1200px;
 					}
-					&.showmenu {
+					&.show {
 						max-height: 1200px;
 					}
 					ul.sitebuttons {
+						width: 250px;
+						float: right;
 						display: flex;
 						flex-flow: row nowrap;
 						justify-content: space-around;
 						list-style: none;
 						margin: 0;
 						padding: 0;
-						border-bottom: 1px solid $bluehighlight;
-						// border-top: 1px solid $bluehighlight;
+						border: 1px solid $bluehighlight;
+						border-top: 0;
 						background-color: $bluedarkest;
 						li {
 							display: inline-block;
@@ -253,13 +255,47 @@ body {
 						}
 					}
 					.sitesearch {
-						display: none;
-						input {
-							width: 225px;
-							margin: 2px 5px;
+						display: flex;
+						justify-content: flex-start;
+						background-color: $blueblack;
+						border-left: 1px solid $bluedarkestest_text;
+						width: 240px;
+						clear: right;
+						float: right;
+						position: relative;
+						#searchbox {
+							order: 2;
+							flex-grow: 2;
+							margin: 11px 12px 9px 0;
+							padding: 0 3px 5px;
+							color: $bluedarkestest_text;
+							background-color: $blueblack;
+							border-bottom: 1px solid $bluedarkestest_text;
+							width: auto;
+							transition: all 222ms ease;
+							&:focus {
+								color: $bluelight;
+								border-bottom: 1px solid $bluehighlight;
+							}
+							&:focus ~ .lookingglass {
+								opacity: .6;
+							}
+						}
+						.lookingglass {
+							order: 1;
+							width: 40px;
+							opacity: .3;
+							background-image: url('/images/icons/search_tiny.png');
+							background-position: center;
+							background-repeat: no-repeat;
+							transition: all 222ms ease;
 						}
 					}
 					.sitescroller {
+						clear: both;
+						float: right;
+						width: 252px;
+						border-top: 1px solid $bluehighlight;
 						max-height: 1200px;
 						overflow-y: auto;
 						ul.sitechoices {
@@ -269,9 +305,9 @@ body {
 							li {
 								position: relative;
 								font-size: 14px;
-								border-top: 1px solid $bluehighlight;
+								border: 1px solid $bluehighlight;
+								border-top: 0;
 								&:first-of-type {
-									border-top: 0;
 								}
 								a {
 									position: relative;
