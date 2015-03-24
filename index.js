@@ -25,8 +25,7 @@ co(function*() {
 		cart: 'unknown',
 		template: 'skeleton'
 	}
-	// ['name', 'siteid', 'status', 'cart', 'template', 'modules']
-	yield springboard.newSite(site);
+	// yield springboard.newSite(site);
 })
 .then(function() {
 
