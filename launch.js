@@ -22,7 +22,7 @@ var router = require('koa-router')();
 
 // set some global variables needed in multiple modules
 global.port = 1337;
-global.site_dir = "searchspring-sites/";
+global.repo_dir = "searchspring-sites/";
 
 // local modules
 var springboard = require(__dirname + "/lib/springboard.js");
@@ -33,6 +33,7 @@ springboard.init().catch(function(err) {
   console.log('failed to initialize springboard!'.red);
   process.exit(1);
 });
+var log_http = false;
 
 // handle things... sample middleware
 // app.use(function*(next) {
@@ -45,12 +46,16 @@ springboard.init().catch(function(err) {
 //   }
 // });
 
-// middleware
 
-app.use(logger());
+// optional middleware
+if (log_http) {
+  app.use(logger());
+}
+
+// middleware
 app.use(favicon(__dirname + '/public/images/favicon.png'));
 app.use(serve(__dirname + '/public/'));
-app.use(serve(__dirname + '/' + global.site_dir));
+app.use(serve(__dirname + '/' + global.repo_dir));
 app.use(serve(__dirname + '/.cache'));
 
 // route middleware
