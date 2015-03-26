@@ -37,8 +37,9 @@ function sb() {
 				$('#above .siteselect').removeClass('show');
 			});
 
-			// set siteselect sitescroller to max-height of window
-			$('.siteselect .sitescroller').css('max-height', $(window).height() - 121);
+			// run resize function on window resize
+			$(window).resize(resize);
+			resize();
 
       // bind hotkeys!
 			self.hotkeyInit();
@@ -109,14 +110,16 @@ function sb() {
 	self.viewSite = function(usesite, url) {
 		// show loading modal
 		$('#loading').fadeIn(300);
-		$.get('/api/sites/use/' + usesite, function(data) {
-			if (data.name !== undefined) {
-				$('#loading').fadeOut(600);
-				self.site = usesite;
-				window.location = '/';
-			} else {
-				console.log('error: ' + data.error);
-			}
+		$.get('/api/sites/commit', function(data) {
+			$.get('/api/sites/use/' + usesite, function(data) {
+				if (data.name !== undefined) {
+					$('#loading').fadeOut(600);
+					self.site = usesite;
+					window.location = '/';
+				} else {
+					console.log('error: ' + data.error);
+				}
+			});
 		});
 	}
 
@@ -260,6 +263,7 @@ function sb() {
 					$('.heading').toggleClass('hidden');
 					$('#content').toggleClass('fullscreen');
 					$('#frameview').toggleClass('maximized');
+					resize();
 					break;
 				// ctrl-s or command-s
 				// save work / commit to repo
@@ -269,5 +273,13 @@ function sb() {
 					break;
 			}
 		}
+	}
+
+	function resize() {
+		// set siteselect sitescroller to max-height of window
+		$('.siteselect .sitescroller').css('max-height', $(window).height() - 121);
+		if ($('#content').hasClass('fullscreen')) var mod = 0;
+		else var mod = 40;
+		$('#content').css('height', $(window).height() - mod);
 	}
 }
