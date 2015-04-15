@@ -57,7 +57,7 @@ body {
         height: 22px;
         overflow: hidden;
         background-color: $bluedarkestest;
-        background-image: linear-gradient($bluedarkest, #000);
+        background-image: linear-gradient($bluefaded, $bluedark);
         border-bottom: 1px solid $bluedark;
         ul.boxbuttons {
           display: flex;
@@ -120,17 +120,18 @@ body {
           margin-top: 30px;
         }
         input[type="submit"], input[type="button"] {
+          text-transform: uppercase;
           width: 100%;
           border: 1px solid $bluedark;
           border-radius: 3px;
           background-color: $bluedarkestest;
-          background-image: linear-gradient($bluedark, $bluedarkest);
-          color: $orange;
+          background-image: linear-gradient($bluedark, $bluedark);
+          color: $bluegrey;
           text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
           &:hover {
             cursor: pointer;
-            background-image: linear-gradient($bluedark, $bluedarkestest);
-            color: $orange;
+            background-image: linear-gradient($bluefaded, $bluefaded);
+            color: $bluegrey;
           }
         }
         input[type="button"] {
