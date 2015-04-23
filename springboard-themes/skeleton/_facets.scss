@@ -1,0 +1,150 @@
+// Skeleton Template Facets
+
+// facet extensions can be used to reduce location of similar styling rules
+
+%facet-title {
+
+}
+
+%element-container {
+
+}
+
+%facet-option {
+
+}
+
+
+/* !!! Begin Facets Styling !!! */
+
+
+#searchspring-sidebar {
+	h3.filter {
+
+	}
+	// *** Refinements Begin ***
+	#searchspring-summary_header {
+		@extend %facet-title !optional;
+	}
+	#searchspring-summary {
+		@extend %element-container !optional;
+		li {
+			@extend %facet-option !optional;
+			.searchspring-summary_label {
+
+			}
+			.searchspring-summary_value {
+
+			}
+		}
+	}
+	#searchspring-reset {
+
+	}
+	// *** Refinements End ***
+
+	// *** Facets Begin ***
+	#searchspring-facets {
+		& > li {
+			&.facet_container {
+				a.facet_title {
+					@extend %facet-title !optional;
+				}
+				ul.element_container {
+					@extend %element-container !optional;
+					li {
+						a.option_link {
+							@extend %facet-option !optional;
+							.searchspring-facet_count {
+
+							}
+							&:hover {
+
+							}
+						}
+						&.show_more {
+							@extend %facet-option !optional;
+						}
+					}
+				}
+			}
+			&.hierarchy {
+				ul.element_container {
+					li {
+						a.option_link {
+							@extend %facet-option !optional;
+						}
+						&.filtered_current, &.filtered_link {
+							@extend %facet-option !optional;
+						}
+						&.filtered_link {
+
+						}
+						&.filtered_current {
+							// all items after current (typically indented)
+							~ li {
+							  // margin-left: 6px;
+							}
+						}
+						&.filtered_sub {
+
+						}
+					}
+				}
+			}
+			&.list {
+				ul.element_container {
+					li {
+						a.option_link {
+							@extend %facet-option !optional;
+						}
+					}
+				}
+			}
+			&.grid {
+				ul.element_container {
+					li {
+						a.option_link {
+
+						}
+					}
+				}
+			}
+			&.palette {
+				ul.element_container {
+					li {
+						a.option_link {
+
+						}
+					}
+				}
+			}
+			&.slider {
+				div.element_container {
+					.slider_value {
+
+					}
+					.slider_reset {
+						display: none;
+					}
+					.slider {
+						.ui-slider-range {
+
+						}
+						.ui-slider-handle {
+
+							&:hover, &.ui-state-active {
+
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.searchspring-no_results {
+		display: none !important;
+	}
+}
+
+/* !!! End Facets Styling !!! */

@@ -1,0 +1,11 @@
+// responsive easifier
+// example usage:
+
+//			@include respond(420) {
+//			  padding: 0px 3px;
+//			}
+@mixin respondpx($breakpoint) {
+	@media only screen and (max-width: $breakpoint + px) {
+		@content;
+	}
+}

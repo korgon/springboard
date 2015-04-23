@@ -1,0 +1,7 @@
+{
+  "name": "equalize",
+  "version": "1.0.1",
+  "enabled": true,
+  "description": "row equalizer for variable product attribute heights",
+  "script": "equalize.js"
+}
