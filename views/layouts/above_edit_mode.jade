@@ -32,7 +32,7 @@ block headerextend
                 .shade
                   .info
                     span.sitename= site.name
-                if (site.image && show_images)
+                if (site.status != 'new' && show_images)
                   img(src="/sites/thumbs/" + site.name + "/" + site.name + '.png')
                 else if (!site.image && show_images)
                   img(src="/images/working.png")
