@@ -19,7 +19,7 @@ block body
             -var site_url = '/sites/' + site.name + '/' + site.name + '.html';
             a(onclick="sb.viewSite('" + site.name + "')")
               span= site.name
-              if site.image
+              if site.status == 'mockup'
                 img(src="/sites/thumbs/" + site.name + "/" + site.name + '.png')
               else
                 img(src="/images/working.png")

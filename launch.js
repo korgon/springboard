@@ -61,7 +61,7 @@ app.use(serve(__dirname + '/.cache'));
 
 // route middleware
 // ----------------
-// begin rout definitions
+// begin route definitions
 var routes = require(__dirname + '/routes/routes.js')(springboard);
 router.get('/', routes.editor);
 router.get('/sites', routes.gallery);

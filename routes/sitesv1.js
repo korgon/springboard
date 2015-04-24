@@ -34,9 +34,9 @@ module.exports = function(springboard) {
     },
 
     use: function*() {
-    // runs the watchSite function that triggers gulp watches of js/scss/html
+    // runs the useSite function that triggers gulp watches of js/scss/html
       try {
-        var data = yield springboard.watchSite(this.params.site);
+        var data = yield springboard.useSite(this.params.site);
         this.response.type = 'json';
         this.response.body = data;
       }
@@ -49,7 +49,7 @@ module.exports = function(springboard) {
 
     publish: function*() {
       try {
-        var data = yield springboard.publishSite();
+        var data = yield springboard.publishSiteMockup();
         this.response.type = 'json';
         this.response.body = data;
       }
