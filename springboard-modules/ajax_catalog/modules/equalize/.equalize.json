@@ -1,7 +1,8 @@
 {
   "name": "equalize",
   "version": "1.0.1",
-  "enabled": true,
+  "enabled": false,
+  "requires": ["ajax_catalog"],
   "description": "row equalizer for variable product attribute heights",
   "script": "equalize.js"
 }

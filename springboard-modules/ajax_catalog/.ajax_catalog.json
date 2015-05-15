@@ -1,0 +1,15 @@
+{
+  "name": "ajax_catalog",
+  "version": "1.0.0",
+  "enabled": false,
+  "description": "searchspring ajax catalog",
+  "script": "ajax_catalog.js",
+  "variables": {
+    "siteid": {
+      "default": true,
+      "type": "string",
+      "for": "js",
+      "description": "website id"
+    }
+  }
+}

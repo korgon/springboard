@@ -1,7 +1,8 @@
 {
   "name": "slideout",
   "version": "1.1.1",
-  "enabled": true,
+  "enabled": false,
+  "requires": ["ajax_catalog"],
   "description": "slide out facet container for responsive sites",
   "script": "slideout.js",
   "scss": "_slideout.scss",
