@@ -8,28 +8,28 @@
   "scss": "_slideout.scss",
   "variables": {
     "hideOnClick": {
+      "value": true,
       "default": true,
       "type": "boolean",
-      "for": "js",
       "description": "hide the slideout when a facet option is clicked"
     },
     "respondAt": {
+      "value": 999999,
       "default": 999999,
       "type": "integer",
-      "for": "both",
-      "description": "display slideout at this width (px)"
+      "description": "display slideout at this width in pixels"
     },
     "speed": {
+      "value": 666,
       "default": 666,
       "type": "integer",
-      "for": "scss",
-      "description": "speed to hide slideout container (ms)"
+      "description": "speed to hide slideout container in milliseconds"
     },
     "width": {
+      "value": 333,
       "default": 333,
       "type": "integer",
-      "for": "scss",
-      "description": "width of slideout container (px)"
+      "description": "width of slideout container in pixels"
     }
   }
 }

@@ -5,13 +5,15 @@
 /api/v1/
 ------------------
 GET   api/sites/all/
-GET   api/sites/{{ name }}
-GET   api/sites/commit/
-GET   api/sites/publish/
-GET   api/sites/push/
-GET   api/sites/merge/
 GET   api/sites/sync/
-GET   api/sites/use/{{ name }}
+GET   api/sites/{{ name }}
+GET   api/sites/{{ name }}/commit/
+GET   api/sites/{{ name }}/push/
+GET   api/sites/{{ name }}/publish/{{ live/mockup }}
+GET   api/sites/{{ name }}/merge/
+
+GET   api/springboard/watch/{{ name }}
+
 POST  api/sites/create/
 ... add more ...
 */

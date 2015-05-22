@@ -1,0 +1,73 @@
+// Skeleton Template Results Body
+
+// Top Options Pagination and Sorting
+// includes everything before and after results
+
+/* !!! Begin Results Body Styling !!! */
+
+body .searchspring-results_container {
+	.container {
+		#searchspring-loading {
+		}
+	}
+	#searchspring-main {
+		#searchspring-options {
+			h1 {
+			}
+			.view-type {
+				#searchspring-grid_result_layout {
+					&.highlight {
+					}
+				}
+				#searchspring-list_result_layout {
+					&.highlight {
+					}
+				}
+			}
+			.per-page {
+			}
+		}
+		.pagination {
+			td {
+			}
+			.searchspring-previous {
+			}
+			.searchspring-next {
+			}
+			.searchspring-pageSelect {
+				&.highlight {
+				}
+			}
+			.searchspring-pageOf {
+			}
+			.searchspring-total_pages {
+			}
+			&.top {
+			}
+			&.bottom {
+			}
+		}
+		.breadcrumbs {
+		}
+		.sort-by {
+		}
+		#searchspring-did_you_mean {
+			a {
+				cursor: pointer;
+				&:hover {
+				}
+			}
+		}
+		#searchspring-search_results {
+			#searchspring-no_results {
+			}
+		}
+		#searchspring-bottom_container {
+			#searchspring-powered_by {
+				//display: none;
+			}
+		}
+	}
+}
+
+/* !!! End Results Body Styling !!! */

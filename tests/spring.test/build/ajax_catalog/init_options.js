@@ -2,13 +2,16 @@
 
 SearchSpring.initOptions = SearchSpring.jQuery.extend(true, {}, SearchSpring.initDefaults, {
   results_per_page: '12',
-  // insert common init options here
+  /* insert common init options here
+  */
   afterResultsChange: function() {
     var $$ = SearchSpring.jQuery;
     if (!SearchSpring.Integration.loaded) {
       SearchSpring.Integration.once();
       // insert do once code here
     }
+    SearchSpring.Integration.always();
+    // insert code to run on every results change here
   },
 });
 

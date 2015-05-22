@@ -2,5 +2,5 @@
   "name": "skeleton",
   "cart": "none",
   "colors": ["none"],
-  "type": "desktop"
+  "responsive": false
 }

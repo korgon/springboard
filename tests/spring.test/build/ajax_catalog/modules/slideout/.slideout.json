@@ -1,0 +1,31 @@
+{
+  "name": "slideout",
+  "version": "1.1.1",
+  "enabled": false,
+  "requires": ["ajax_catalog"],
+  "description": "slide out facet container for responsive sites",
+  "script": "slideout.js",
+  "scss": "_slideout.scss",
+  "variables": {
+    "hideOnClick": {
+      "value": true,
+      "type": "boolean",
+      "description": "hide the slideout when a facet option is clicked"
+    },
+    "respondAt": {
+      "value": 999999,
+      "type": "integer",
+      "description": "display slideout at this width (px)"
+    },
+    "speed": {
+      "value": 666,
+      "type": "integer",
+      "description": "speed to hide slideout container (ms)"
+    },
+    "width": {
+      "value": 333,
+      "type": "integer",
+      "description": "width of slideout container (px)"
+    }
+  }
+}

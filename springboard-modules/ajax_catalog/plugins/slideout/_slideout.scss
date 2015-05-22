@@ -1,0 +1,130 @@
+// slideout styling
+// v1.1.0 | 05/21/2015
+// altered to import varialbe sheet
+// built for springboard
+
+@import ".plugin.slideout.var.scss";
+
+// colors
+//______________________________________________________________________________
+$color_text: #fff;
+$color_text_hover: #000;
+$color_border: #727272;
+$color_bg: #323232;
+$color_bg_hover: #727272;
+
+
+
+// mixins
+//______________________________________________________________________________
+@mixin respondpx($breakpoint) {
+	@media only screen and (max-width: $breakpoint + px) {
+		@content;
+	}
+}
+
+
+
+// extends
+//______________________________________________________________________________
+
+%slideout_button {
+  background-color: $color_bg;
+  color: $color_text;
+}
+
+
+
+// styles
+//______________________________________________________________________________
+
+body {
+  .searchspring-overlay {
+    height: 0%;
+    width: 0%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -999999;
+    &.show {
+      z-index: 999998;
+      height: 100%;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  #searchspring-slideout_container {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: -350px;
+    transition: left 0.5s;
+    height: 100%;
+    z-index: 999999;
+    width: $slideout_width;
+    padding: 0px;
+    overflow-y: auto;
+    background: #fff;
+    box-shadow: -1px 0px 5px #999;
+    &.show {
+      display: block;
+      left: 0px;
+      transition: all $slideout_speed + ms;
+    }
+    .searchspring-slideout_button {
+      @extend %slideout_button !optional;
+      background: url('//cdn.searchspring.net/ajax_search/sites/a4dseg/img/back_white.png') no-repeat center center;
+      background-size: 90% 90%;
+      text-align: center;
+      height: 42px;
+      width: 42px;
+      margin: 10px;
+      float: right;
+      &:hover {
+        background-color: $color_hover;
+        cursor: pointer;
+      }
+    }
+  }
+
+  #searchspring-options {
+    .searchspring-slideout_button {
+      @extend %slideout_button !optional;
+      display: none;
+      text-align: center;
+      height: 40px;
+      width: 100%;
+      margin: 0 0 20px;
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-bottom: 3px solid $color_border;
+      position: relative;
+      &:hover {
+        background-color: $color_bg_hover;
+        color: $color_hover_text;
+        cursor: pointer;
+        & > .searchspring-slideout_button_icon {
+          background-position: -90px 0px;
+        }
+      }
+      @include respondpx($slideout_respond_at) {
+        display: block;
+      }
+      .searchspring-slideout_button_icon {
+        width: 30px;
+        height: 20px;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: url("//cdn.searchspring.net/ajax_search/img/sidebar-menuicon.png") no-repeat -30px 0px;
+      }
+      .searchspring-slideout_button_text {
+        line-height: 40px;
+      }
+    }
+  }
+}

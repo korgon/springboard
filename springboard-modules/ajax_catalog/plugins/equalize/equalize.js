@@ -1,10 +1,13 @@
-// equalize v1.0.1 | 3/25/2015
-//
+// equalize plugin [ajax_catalog]
 // for equalizing items in results
+
+// v1.1.0 | 05/21/2015
+// altered to import varialbe sheet
+// modified for springboard
 
 // slideout module
 (function($$) {
-  $$.extend(SearchSpring.Modules, {
+  $$.extend(SearchSpring.Catalog.Plugins, {
 
     // name of module
     equalize: {

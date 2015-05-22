@@ -1,0 +1,3 @@
+$slideout_width: {{ variables.width }};
+$slideout_respond_at: {{ variables.respondAt }};
+$slideout_speed: {{ variables.speed }};

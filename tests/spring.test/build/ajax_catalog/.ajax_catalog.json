@@ -4,7 +4,11 @@
   "enabled": false,
   "description": "searchspring ajax catalog",
   "script": "ajax_catalog.js",
-  "template": "none",
   "variables": {
+    "siteid": {
+      "value": true,
+      "type": "string",
+      "description": "website id"
+    }
   }
 }
