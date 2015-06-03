@@ -1,7 +1,7 @@
 // springboard
 // http service
 
-jade = require('jade');
+var jade = require('jade');
 
 var view_dir = __dirname + '/../views/';
 
