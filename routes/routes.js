@@ -9,8 +9,8 @@ var view_dir = __dirname + '/../views/';
 module.exports = function(springboard) {
   return {
     editor: function*() {
+      var site = springboard.watching();
       var sites = springboard.getSites();
-      var site = springboard.getSite();
       // redirect if no sites
       if (Object.keys(sites).length == 0 || site === undefined) {
         this.status = 307;
@@ -21,6 +21,7 @@ module.exports = function(springboard) {
       this.body = jade.renderFile(view_dir + 'editor.jade', {pretty:true, sites: sites, site: site});
     },
     gallery: function*() {
+      var site = springboard.watching();
       var sites = springboard.getSites();
       this.body = jade.renderFile(view_dir + 'gallery.jade', {pretty:true, sites: sites});
     }

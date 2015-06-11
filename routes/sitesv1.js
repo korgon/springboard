@@ -1,5 +1,6 @@
 // springboard
-// api for mockups not restful... just whatever is needed
+// api for mockups
+// not restful... just whatever is needed is GETed and POSTed
 
 /*
 /api/v1/
@@ -36,16 +37,16 @@ module.exports = function(springboard) {
     },
 
     use: function*() {
-    // runs the useSite function that triggers gulp watches of js/scss/html
+    // runs the watchSite function that triggers gulp watches of js/scss/html
       try {
-        var data = yield springboard.useSite(this.params.site);
+        var data = yield springboard.watchSite(this.params.site);
         this.response.type = 'json';
         this.response.body = data;
       }
       catch(err) {
         console.log(err);
         this.response.type = 'json';
-        this.response.body = { error: 'could not switch to ' + this.params.site };
+        this.response.body = { error: true, message: 'could not switch to ' + this.params.site };
       }
     },
 
@@ -58,7 +59,7 @@ module.exports = function(springboard) {
       catch(err) {
         console.log(err);
         this.response.type = 'json';
-        this.response.body = { error: 'site could not be published' };
+        this.response.body = { error: true, message: 'site could not be published' };
       }
     },
 
@@ -70,11 +71,11 @@ module.exports = function(springboard) {
       }
       catch(err) {
         this.response.type = 'json';
-        this.response.body = { error: 'site could not be commited' };
+        this.response.body = { error: true, message: 'site could not be commited' };
       }
     },
 
-    pushit: function*() {
+    push: function*() {
       try {
         var data = yield springboard.pushSite();
         this.response.type = 'json';
@@ -83,20 +84,21 @@ module.exports = function(springboard) {
       catch(err) {
         console.log(err);
         this.response.type = 'json';
-        this.response.body = { error: 'site could not be pushed' };
+        this.response.body = { error: true, message: 'site could not be pushed' };
       }
     },
 
     mergeit: function*() {
       try {
-        var data = yield springboard.mergeSite();
+        // var data = yield springboard.mergeSite();
+        var data = { message: 'not really merged dude...' };
         this.response.type = 'json';
         this.response.body = data;
       }
       catch(err) {
         console.log(err);
         this.response.type = 'json';
-        this.response.body = { error: 'site could not be merged' };
+        this.response.body = { error: true, message: 'site could not be merged' };
       }
     },
 
@@ -109,38 +111,57 @@ module.exports = function(springboard) {
       catch(err) {
         console.log(err);
         this.response.type = 'json';
-        this.response.body = { error: 'failed to sync with repository', err: err, loaded: 'false' };
+        this.response.body = { error: true, message: 'failed to sync with repository: ' + err.message };
       }
     },
 
+    // installModule: function*() {
+    //   this.response.type = 'json';
+    //   console.log('checking for valid module...');
+    //   console.log(springboard.modules);
+    //
+    //   // check if module name is directory name friendly
+    //   if (!newsite.module_name.match(/^[^\.][a-z0-9\-_\.]+$/i)) {
+    //     this.response.status = 400;
+    //     this.response.body = { error: true, message: 'invalid module name' };
+    //     return;
+    //   }
+    // },
+
+    // add new site
     create: function*() {
       this.response.type = 'json';
-      // add new site
       var newsite = this.request.body.fields;
-      if (!newsite.name || !newsite.siteid || !newsite.template) {
+      if (!newsite.name || !newsite.siteid || !newsite.backend || !newsite.cart) {
         this.response.status = 400;
-        this.response.body = { error: 'missing required fields' };
+        this.response.body = { error: true, message: 'missing required fields' };
         return;
       }
 
+      // TODO better verification of inputs
       // check to make sure inputs are valid
-      if (!newsite.name.match(/.*\..+/i)) {
+
+      // check if domain name format (example.com)
+      if (!newsite.name.match(/^[^\_\.].+\..{2,}$/i)) {
         this.response.status = 400;
-        this.response.body = { error: 'invalid sitename' };
+        this.response.body = { error: true, message: 'invalid sitename' };
         return;
       }
-      if (!newsite.siteid.match(/[a-z0-9]{6}/i)) {
+      // check if exactly 6 characters, number or letter (siteid)
+      if (!newsite.siteid.match(/^[a-z0-9]{6}$/i)) {
         this.response.status = 400;
-        this.response.body = { error: 'invalid siteid' };
+        this.response.body = { error: true, message: 'invalid siteid' };
         return;
       }
 
       try {
+        console.log('creating site...');
         var site = yield springboard.newSite(newsite);
+        //var site = { error: false, message: 'site created success!' };
       }
       catch(err) {
         this.response.status = 400;
-        this.response.body = { error: 'an error occured during site creation', message: err.message };
+        this.response.body = { error: true, message: 'an error occured during site creation' + err.message };
         return;
       }
 

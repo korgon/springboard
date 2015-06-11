@@ -63,7 +63,7 @@ app.use(serve(__dirname + '/.cache'));
 // ----------------
 // begin route definitions
 var routes = require(__dirname + '/routes/routes.js')(springboard);
-router.get('/', routes.editor);
+router.get('/', routes.gallery);
 router.get('/sites', routes.gallery);
 // api routes
 var sitesapi = require(__dirname + '/routes/sitesv1.js')(springboard);
@@ -72,7 +72,7 @@ router.get('/api/sites/use/:site', sitesapi.use);
 router.get('/api/sites/sync', sitesapi.sync);
 router.get('/api/sites/commit', sitesapi.commit);
 router.get('/api/sites/publish', sitesapi.publish);
-router.get('/api/sites/push', sitesapi.pushit);
+router.get('/api/sites/push', sitesapi.push);
 router.get('/api/sites/merge', sitesapi.mergeit);
 router.post('/api/sites/create', koaBody(), sitesapi.create);
 
