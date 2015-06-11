@@ -36,17 +36,22 @@ module.exports = function(springboard) {
       this.response.body = data;
     },
 
-    use: function*() {
+    watch: function*() {
     // runs the watchSite function that triggers gulp watches of js/scss/html
       try {
-        var data = yield springboard.watchSite(this.params.site);
-        this.response.type = 'json';
-        this.response.body = data;
+        var site = springboard.getSite(this.params.site);
+        if (site.error) {
+          throw("Site is invalid");
+        } else {
+           var data = yield springboard.watchSite(site.name);
+           this.response.type = 'json';
+           this.response.body = data;
+         }
       }
       catch(err) {
         console.log(err);
         this.response.type = 'json';
-        this.response.body = { error: true, message: 'could not switch to ' + this.params.site };
+        this.response.body = { error: true, message: 'could not watch ' + this.params.site };
       }
     },
 

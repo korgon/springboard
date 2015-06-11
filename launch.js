@@ -64,11 +64,12 @@ app.use(serve(__dirname + '/.cache'));
 // begin route definitions
 var routes = require(__dirname + '/routes/routes.js')(springboard);
 router.get('/', routes.gallery);
-router.get('/sites', routes.gallery);
+router.get(['/sites', '/gallery'], routes.gallery);
+router.get('/edit/:site', routes.editor);
 // api routes
 var sitesapi = require(__dirname + '/routes/sitesv1.js')(springboard);
 router.get(['/api/sites', '/api/sites/all'], sitesapi.sites);
-router.get('/api/sites/use/:site', sitesapi.use);
+router.get('/api/sites/watch/:site', sitesapi.watch);
 router.get('/api/sites/sync', sitesapi.sync);
 router.get('/api/sites/commit', sitesapi.commit);
 router.get('/api/sites/publish', sitesapi.publish);

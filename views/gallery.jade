@@ -17,7 +17,7 @@ block body
         each site in sites
           li
             -var site_url = '/sites/' + site.name + '/' + site.name + '.html';
-            a(onclick="sb.viewSite('" + site.name + "')")
+            a(href="/edit/" + site.name)
               span= site.name
               if site.status == 'mockup'
                 img(src="/sites/thumbs/" + site.name + "/" + site.name + '.png')
