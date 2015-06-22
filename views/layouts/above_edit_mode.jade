@@ -26,7 +26,7 @@ block headerextend
         ul.sitechoices
           -var show_images = true;
           each site in sites
-            -var site_url = '/sites/' + site.name + '/' + site.name + '.html';
+            -var site_url = '/sites/' + site.name;
             li
               a(onclick="sb.switchSite('" + site.name + "', '" + site_url + "')")
                 .shade

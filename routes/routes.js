@@ -1,7 +1,7 @@
 // springboard
 // http service
 
-var jade = require('jade');
+jade = require('jade');
 
 var view_dir = __dirname + '/../views/';
 
@@ -9,22 +9,26 @@ var view_dir = __dirname + '/../views/';
 module.exports = function(springboard) {
   return {
     editor: function*() {
-      var site = springboard.getSite(this.params.site);
       var sites = springboard.getSites();
-      
+      var site = springboard.watching();
       // redirect if no sites
-      if (site.error) {
+      if (Object.keys(sites).length == 0 || site === undefined) {
         this.status = 307;
-        this.redirect('/gallery');
+        this.redirect('/sites');
         this.body = 'Redirecting to sites. There is no site to edit...';
         return;
+      }
+      this.body = jade.renderFile(view_dir + 'editor.jade', {pretty:true, sites: sites, site: site});
+    },
+    editSite: function*() {
+      var site = springboard.watching();
+      if (site.default_html) {
+        this.redirect('/sites/' + site.name + '/' + site.default_html);
       } else {
-        yield springboard.watchSite(site.name);
-        this.body = jade.renderFile(view_dir + 'editor.jade', {pretty:true, sites: sites, site: site});
+        this.body = jade.renderFile(view_dir + 'edit_site.jade', {pretty:true, site: site});
       }
     },
     gallery: function*() {
-      var site = springboard.watching();
       var sites = springboard.getSites();
       this.body = jade.renderFile(view_dir + 'gallery.jade', {pretty:true, sites: sites});
     }

@@ -149,15 +149,10 @@ function sb() {
 
 	self.pushSite = function() {
 		$('#loading').fadeIn(300);
-		$.get('/api/sites/commit/', function(data) {
+		
+		$.get('/api/sites/push/', function(data) {
 			if (data.site !== undefined) {
-				$.get('/api/sites/push/', function(data) {
-					if (data.site !== undefined) {
-						$('#loading').fadeOut(300);
-					} else {
-						console.log('error: ' + data.error);
-					}
-				});
+				$('#loading').fadeOut(300);
 			} else {
 				console.log('error: ' + data.error);
 			}

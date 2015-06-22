@@ -93,7 +93,20 @@ module.exports = function(springboard) {
       }
     },
 
-    mergeit: function*() {
+    pull: function*() {
+      try {
+        var data = yield springboard.pullSite();
+        this.response.type = 'json';
+        this.response.body = data;
+      }
+      catch(err) {
+        console.log(err);
+        this.response.type = 'json';
+        this.response.body = { error: true, message: 'site could not be pushed' };
+      }
+    },
+
+    merge: function*() {
       try {
         // var data = yield springboard.mergeSite();
         var data = { message: 'not really merged dude...' };
