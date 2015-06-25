@@ -12,7 +12,6 @@
 "use strict";
 
 // include packages
-var co = require('co');
 var koa = require('koa');
 var koaBody = require('koa-better-body');
 var favicon = require('koa-favicon');
@@ -70,16 +69,22 @@ router.get('/sites/:site', routes.editSite);
 // api routes
 var sitesapi = require(__dirname + '/routes/sitesv1.js')(springboard);
 router.get(['/api/sites', '/api/sites/all'], sitesapi.sites);
-router.get('/api/sites/use/:site', sitesapi.watch);
-router.get('/api/sites/sync', sitesapi.sync);
-router.get('/api/sites/commit', sitesapi.commit);
-router.get('/api/sites/push', sitesapi.push);
-router.get('/api/sites/pull', sitesapi.pull);
-router.get('/api/sites/merge', sitesapi.merge);
-router.get('/api/sites/publish', sitesapi.publish);
-router.post('/api/sites/create', koaBody(), sitesapi.create);
-
 router.get('/api/sites/:site', sitesapi.site);
+router.get('/api/use/:site', sitesapi.watch);
+router.get('/api/sites/sync', sitesapi.sync);
+router.post('/api/create', koaBody(), sitesapi.create);
+
+// modules, plugins and themes
+router.get('/api/modules', sitesapi.modules);
+router.get('/api/module/:module', sitesapi.module);
+
+// git & s3
+router.get('/api/site/commit', sitesapi.commit);
+router.get('/api/site/push', sitesapi.push);
+router.get('/api/site/pull', sitesapi.pull);
+router.get('/api/site/merge', sitesapi.merge);
+router.get('/api/site/publish', sitesapi.publish);
+
 // end route definitions
 
 // router middleware
@@ -87,4 +92,4 @@ app.use(router.routes());
 
 // start your engines
 app.listen(global.port + 1);
-// koa serves up at 1338, but browsersync creates a proxy at global.port (1337) for css injection using socket.io
+// koa serves up at 1338 (1337+1), but browsersync creates a proxy at global.port (1337) for css injection using socket.io

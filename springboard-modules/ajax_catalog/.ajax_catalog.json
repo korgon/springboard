@@ -1,5 +1,5 @@
 {
-  "name": "ajax_catalog",
+  "type": "ajax_catalog",
   "version": "1.0.0",
   "enabled": false,
   "description": "searchspring ajax catalog",

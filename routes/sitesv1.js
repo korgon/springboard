@@ -184,6 +184,20 @@ module.exports = function(springboard) {
       }
 
       this.response.body = site;
-    }
+    },
+
+    // Modules, plugins and themes
+
+    modules: function*() {
+      this.response.type = 'json';
+      this.response.body = springboard.getModules();
+    },
+
+    module: function*() {
+      var data = springboard.getModule(this.params.module);
+      this.response.type = 'json';
+      this.response.body = data;
+    },
+
   };
 };

@@ -91,8 +91,8 @@ function sb() {
 		$('#loading').fadeIn(300);
 		$('#frame').hide();
 		// switch the watch of a site
-		$.get('/api/sites/commit', function(data) {
-			$.get('/api/sites/use/' + usesite, function(data) {
+		$.get('/api/site/commit', function(data) {
+			$.get('/api/use/' + usesite, function(data) {
 				if (!data.error) {
 					// update the site selectordiv and frame url
 					$('title, #currentsite').text(data.name);
@@ -110,8 +110,8 @@ function sb() {
 	self.viewSite = function(usesite, url) {
 		// show loading modal
 		$('#loading').fadeIn(300);
-		$.get('/api/sites/commit', function(data) {
-			$.get('/api/sites/use/' + usesite, function(data) {
+		$.get('/api/site/commit', function(data) {
+			$.get('/api/use/' + usesite, function(data) {
 				if (!data.error) {
 					$('#loading').fadeOut(600);
 					self.site = usesite;
@@ -138,7 +138,7 @@ function sb() {
 
 	self.commitSite = function() {
 		$('#loading').fadeIn(300);
-		$.get('/api/sites/commit/', function(data) {
+		$.get('/api/site/commit/', function(data) {
 			if (data.site !== undefined) {
 				$('#loading').fadeOut(300);
 			} else {
@@ -150,7 +150,7 @@ function sb() {
 	self.pushSite = function() {
 		$('#loading').fadeIn(300);
 
-		$.get('/api/sites/push/', function(data) {
+		$.get('/api/site/push/', function(data) {
 			if (data.site !== undefined) {
 				$('#loading').fadeOut(300);
 			} else {
@@ -161,7 +161,7 @@ function sb() {
 
 	self.mergeSite = function() {
 		$('#loading').fadeIn(300);
-		$.get('/api/sites/merge/', function(data) {
+		$.get('/api/site/merge/', function(data) {
 			if (data.site !== undefined) {
 				// update the site selectordiv and frame url
 				$('#loading').fadeOut(300);
@@ -173,7 +173,7 @@ function sb() {
 
 	self.publishSite = function() {
 		$('#loading').fadeIn(300);
-		$.get('/api/sites/publish/', function(data) {
+		$.get('/api/site/publish/', function(data) {
 			if (data.status == 'success') {
 				$('#loading').fadeOut(300);
 			} else {
@@ -192,7 +192,7 @@ function sb() {
 			$('#input').fadeOut(200);
 			$('#loading').fadeIn(300);
 
-			$.post('/api/sites/create', site, function(data) {
+			$.post('/api/site/create', site, function(data) {
 				console.log(data);
 				if (data.name !== undefined) {
 					setTimeout(function() {
