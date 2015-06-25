@@ -37,7 +37,7 @@ module.exports = function(springboard) {
     },
 
     watch: function*() {
-    // runs the watchSite function that triggers gulp watches of js/scss/html
+    // runs the watchSite function that triggers watches of js/scss/html
       try {
         var site = springboard.getSite(this.params.site);
         if (site.error) {

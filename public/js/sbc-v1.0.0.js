@@ -94,7 +94,7 @@ function sb() {
 		// switch the watch of a site
 		$.get('/api/sites/commit', function(data) {
 			$.get('/api/sites/use/' + usesite, function(data) {
-				if (data.name !== undefined) {
+				if (!data.error) {
 					// update the site selectordiv and frame url
 					$('title, #currentsite').text(data.name);
 					self.updateFrame(url);
@@ -102,7 +102,7 @@ function sb() {
 					$('#loading').fadeOut(600);
 					self.site = usesite;
 				} else {
-					console.log('error: ' + data.error);
+					console.log('error: ' + data.message);
 				}
 			});
 		});
@@ -113,12 +113,12 @@ function sb() {
 		$('#loading').fadeIn(300);
 		$.get('/api/sites/commit', function(data) {
 			$.get('/api/sites/use/' + usesite, function(data) {
-				if (data.name !== undefined) {
+				if (!data.error) {
 					$('#loading').fadeOut(600);
 					self.site = usesite;
 					window.location = '/';
 				} else {
-					console.log('error: ' + data.error);
+					console.log('error: ' + data.message);
 				}
 			});
 		});
@@ -150,7 +150,7 @@ function sb() {
 
 	self.pushSite = function() {
 		$('#loading').fadeIn(300);
-		
+
 		$.get('/api/sites/push/', function(data) {
 			if (data.site !== undefined) {
 				$('#loading').fadeOut(300);
