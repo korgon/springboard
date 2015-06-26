@@ -1,4 +1,4 @@
-//
+// inject css
 var head = document.getElementsByTagName('head')[0];
 var css = document.createElement('link');
 css.rel = 'stylesheet';

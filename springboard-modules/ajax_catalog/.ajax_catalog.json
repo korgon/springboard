@@ -1,7 +1,7 @@
 {
   "type": "ajax_catalog",
   "version": "1.0.0",
-  "enabled": false,
+  "enabled": true,
   "description": "searchspring ajax catalog",
   "script": "ajax_catalog.js",
   "theme": "none",

@@ -93,7 +93,7 @@ function sb() {
 		$('#frame').hide();
 		// switch the watch of a site
 		$.get('/api/site/commit', function(data) {
-			$.get('/api/use/' + usesite, function(data) {
+			$.get('/api/sites/watch/' + usesite, function(data) {
 				if (!data.error) {
 					// update the site selectordiv and frame url
 					$('title, #currentsite').text(data.name);
@@ -112,7 +112,7 @@ function sb() {
 		// show loading modal
 		$('#loading').fadeIn(300);
 		$.get('/api/site/commit', function(data) {
-			$.get('/api/use/' + usesite, function(data) {
+			$.get('/api/sites/watch/' + usesite, function(data) {
 				if (!data.error) {
 					$('#loading').fadeOut(600);
 					self.site = usesite;

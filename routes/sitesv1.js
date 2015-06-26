@@ -160,7 +160,7 @@ module.exports = function(springboard) {
       // check to make sure inputs are valid
 
       // check if domain name format (example.com)
-      if (!newsite.name.match(/^[^\_\.].+\..{2,}$/i)) {
+      if (!newsite.name.match(/^[^\_\.]\w+\.\w{2,}$/i)) {
         this.response.status = 400;
         this.response.body = { error: true, message: 'invalid sitename' };
         return;
@@ -195,6 +195,37 @@ module.exports = function(springboard) {
 
     module: function*() {
       var data = springboard.getModule(this.params.module);
+      this.response.type = 'json';
+      this.response.body = data;
+    },
+
+    install: function*() {
+      this.response.type = 'json';
+
+      var info = this.request.body.fields;
+
+      // validate some inputs
+      if (info.install == 'module') {
+        var illegal_names = ['css', 'js', 'scss', 'sass', 'img', 'images', 'build', 'module', 'modules', 'theme', 'themes', 'plugin', 'plugins'];
+        if (info.name) {
+          if (illegal_names.indexOf(info.name) >= 0 || !info.name.match(/^\w{3,}$/)) {
+            this.response.body = { error: true, message: 'invalid module name' };
+            return;
+          }
+        } else {
+          this.response.body = { error: true, message: 'module name required' };
+          return;
+        }
+      } else if (info.install == 'plugin' || info.install == 'theme') {
+
+      }
+      var data = yield springboard.install(info);
+      this.response.body = data;
+    },
+
+    update: function*() {
+      var info = this.request.body.fields;
+      var data = yield springboard.update(info);
       this.response.type = 'json';
       this.response.body = data;
     },

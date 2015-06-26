@@ -70,13 +70,15 @@ router.get('/sites/:site', routes.editSite);
 var sitesapi = require(__dirname + '/routes/sitesv1.js')(springboard);
 router.get(['/api/sites', '/api/sites/all'], sitesapi.sites);
 router.get('/api/sites/:site', sitesapi.site);
-router.get('/api/use/:site', sitesapi.watch);
+router.get('/api/sites/watch/:site', sitesapi.watch);
 router.get('/api/sites/sync', sitesapi.sync);
-router.post('/api/create', koaBody(), sitesapi.create);
+router.post('/api/site/create', koaBody(), sitesapi.create);
 
 // modules, plugins and themes
 router.get('/api/modules', sitesapi.modules);
 router.get('/api/module/:module', sitesapi.module);
+// install anything
+router.post('/api/site/install', koaBody(), sitesapi.install);
 
 // git & s3
 router.get('/api/site/commit', sitesapi.commit);
