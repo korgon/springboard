@@ -4,5 +4,7 @@
   "enabled": true,
   "description": "AJAX autocomplete",
   "script": "autocomplete.js",
-  "scss": "autocomplete.scss"
+  "theme": "none",
+  "variables": {
+  }
 }

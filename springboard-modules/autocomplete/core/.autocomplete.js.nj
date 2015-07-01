@@ -9,8 +9,5 @@ head.appendChild(css);
 // initialize autocomplete
 SearchSpring.Autocomplete.init({
   siteId: '{{ siteid }}',
-  queryClass: 'searchspring-query',
-  modifyDisplay: function() {
-    jQuery('#searchspring-autocomplete_results').css('width', jQuery('#SearchForm').width());
-  }
+  queryClass: 'searchspring-query'
 });
