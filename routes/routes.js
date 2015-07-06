@@ -31,6 +31,9 @@ module.exports = function(springboard) {
     gallery: function*() {
       var sites = springboard.getSites();
       this.body = jade.renderFile(view_dir + 'gallery.jade', {pretty:true, sites: sites});
+    },
+    angular: function*() {
+      this.body = jade.renderFile(view_dir + 'angular.jade');
     }
   };
 };

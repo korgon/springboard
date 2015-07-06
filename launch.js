@@ -63,6 +63,7 @@ app.use(serve(__dirname + '/.cache'));
 // begin route definitions
 var routes = require(__dirname + '/routes/routes.js')(springboard);
 router.get('/', routes.editor);
+router.get('/ng', routes.angular);
 router.get(['/sites', '/gallery'], routes.gallery);
 router.get('/sites/:site', routes.editSite);
 

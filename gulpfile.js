@@ -76,14 +76,18 @@ function logit(alert, message, type) {
 // tasked to watch
 // watch for js, scss, css and jade changes
 gulp.task('watch', function() {
-  gulp.watch('build/js/*.js', ['lint', 'bundlejs', reload]);
+  //gulp.watch('build/js/*.js', ['lint', 'bundlejs', reload]);
   gulp.watch('build/scss/*.scss', ['sass']);
   gulp.watch('public/css/*.css', ['css']);
   gulp.watch('views/**/*.jade').on('change', reload);
 });
 
+gulp.task('watchSBC', function() {
+  gulp.watch('build/js/sbc.js', ['lintSBC', 'bundleSBC', reload]);
+});
+
 // js bundler task (using browserifiy)
-gulp.task('bundlejs', function() {
+gulp.task('bundleSBC', function() {
   var sbc = browserify();
   sbc.add('./build/js/sbc.js');
 
@@ -99,8 +103,39 @@ gulp.task('bundlejs', function() {
     // .pipe(gulp.dest('public/js'));
 });
 
-gulp.task('lint', function() {
+gulp.task('lintSBC', function() {
   return gulp.src('./build/js/sbc.js')
+  .pipe(jshint()).on('error', gutil.log)
+  .pipe(jshint.reporter('jshint-stylish'))
+  .pipe(jshint.reporter('fail')).on('error', function(err) {
+
+    this.emit('end');
+  });
+});
+
+gulp.task('watchAngular', function() {
+  gulp.watch('build/js/angular/**/*.js', ['lintAngular', 'bundleAngular', reload]);
+});
+
+// js bundler task (using browserifiy)
+gulp.task('bundleAngular', function() {
+  var ng = browserify();
+  ng.add('./build/js/angular/main.js');
+
+  return ng.bundle().on('error', browserifyHandler)
+    .pipe(source('sba-v1.0.0.js'))
+    .pipe(gulp.dest('public/js'))
+    .pipe(buffer()) // <----- convert from streaming to buffered vinyl file object
+    .pipe(uglify()).on('error', gutil.log)
+    .pipe(rename({extname: '.min.js'}))
+    .pipe(gulp.dest('public/js'));
+    // .pipe(gzip())
+    // .pipe(rename({extname: '.gzip'}))
+    // .pipe(gulp.dest('public/js'));
+});
+
+gulp.task('lintAngular', function() {
+  return gulp.src('./build/js/angular/src/app.js')
   .pipe(jshint()).on('error', gutil.log)
   .pipe(jshint.reporter('jshint-stylish'))
   .pipe(jshint.reporter('fail')).on('error', function(err) {
@@ -150,4 +185,5 @@ gulp.task('browsersync', function() {
 
 
 // the default gulp task!
-gulp.task('default', ['browsersync', 'watch']);
+//gulp.task('default', ['browsersync', 'watch', 'watchSBC']);
+gulp.task('default', ['browsersync', 'watch', 'watchAngular']);
