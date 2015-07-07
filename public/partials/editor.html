@@ -1,0 +1,9 @@
+<div ng-include src="'/partials/above_editor.html'"></div>
+
+<div id="content">
+  <div id="frame" ng-show="vm.url">
+    <iframe id="frameview" name="frameview" ng-src="{{ vm.url }}"></iframe>
+  </div>
+</div>
+
+<div ng-include src="'/partials/below_default.html'"></div>

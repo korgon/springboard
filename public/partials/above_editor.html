@@ -1,0 +1,57 @@
+<div id="above">
+  <div class="heading">
+    <div class="title">
+      <div class="logo"></div>
+      <div class="subtitle">SPRIΠGBOΛRD</div>
+    </div>
+    <div class="mainmenu">
+      <ul class="menuoptions">
+        <li><a onclick="sb.createSiteInput()"><span class="menuicon newsite"></span><span class="menutext">new site</span></a></li>
+        <li><a href="/"><span class="menuicon editsite"></span><span class="menutext">edit sites</span></a></li>
+        <li><a href="/sites/"><span class="menuicon sitegallery"></span><span class="menutext">view sites</span></a></li>
+        <li><a><span class="menuicon settings"></span><span class="menutext">settings</span></a></li>
+      </ul>
+    </div>
+    <input id="frameurl" name="url" autocomplete="off" spellcheck="false" ng-model="vm.url">
+    <div class="openurl"></div>
+    <div class="line"></div>
+    <div class="worksite"><a class="currentsite"><span id="currentsite">{{ vm.site.name }}</span></a>
+      <div class="siteselect">
+        <ul class="sitebuttons">
+          <li><a onclick="sb.refreshSiteList()" class="refresh"></a></li>
+          <li><a onclick="sb.pushSite()" class="push"></a></li>
+          <li><a onclick="sb.publishSite()" class="upload"></a></li>
+          <li><a onclick="sb.mergeSite()" class="pull"></a></li>
+        </ul>
+        <div class="sitesearch">
+          <input id="searchbox" autocomplete="off">
+          <label for="searchbox" class="lookingglass"></label>
+        </div>
+        <div class="sitescroller">
+          <ul class="sitechoices">
+            <li><a onclick="sb.switchSite('spring.cat', '/sites/spring.cat')">
+                <div class="shade">
+                  <div class="info"><span class="sitename">spring.cat</span></div>
+                </div><img src="/sites/thumbs/spring.cat/spring.cat.png"></a></li>
+            <li><a onclick="sb.switchSite('spring.doge', '/sites/spring.doge')">
+                <div class="shade">
+                  <div class="info"><span class="sitename">spring.doge</span></div>
+                </div><img src="/images/working.png"></a></li>
+            <li><a onclick="sb.switchSite('spring.ox', '/sites/spring.ox')">
+                <div class="shade">
+                  <div class="info"><span class="sitename">spring.ox</span></div>
+                </div><img src="/images/working.png"></a></li>
+            <li><a onclick="sb.switchSite('spring.teea', '/sites/spring.teea')">
+                <div class="shade">
+                  <div class="info"><span class="sitename">spring.teea</span></div>
+                </div><img src="/images/working.png"></a></li>
+            <li><a onclick="sb.switchSite('spring.test', '/sites/spring.test')">
+                <div class="shade">
+                  <div class="info"><span class="sitename">spring.test</span></div>
+                </div><img src="/images/working.png"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

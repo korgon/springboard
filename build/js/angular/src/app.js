@@ -1,23 +1,42 @@
+'use strict';
+
 // main app
 
-var springboardApp = angular.module('springboardApp', [
-  'ngRoute',
-  'springboardControllers',
-  'springboardServices'
-]);
+angular
+  .module('springboardApp', [
+    'ngRoute',
+    'ngAnimate'
+  ])
+  .config(['$routeProvider',
+    function($routeProvider) {
+      $routeProvider.
+        when('/', {
+          title: 'Springboard'
+        }).
+        when('/editor', {
+          title: 'Site Editor',
+          templateUrl: '/partials/editor.html',
+          controller: 'EditorCtrl',
+          controllerAs: 'vm'
+        }).
+        when('/gallery', {
+          title: 'Site Gallery',
+          templateUrl: '/partials/gallery.html',
+          controller: 'GalleryCtrl',
+          controllerAs: 'vm'
+        }).
+        otherwise({
+          redirectTo: '/'
+        });
+    }
+  ])
+  .run(runMe);
 
-springboardApp.config(['$routeProvider',
-  function($routeProvider) {
-    $routeProvider.
-      when('/', {
+runMe.$inject = ['$rootScope', '$route'];
 
-      }).
-      when('/gallery', {
-        templateUrl: '/partials/gallery.html',
-        controller: 'galleryCtrl'
-      }).
-      otherwise({
-        redirectTo: '/'
-      });
-  }
-]);
+function runMe($rootScope, $route) {
+  console.log('loading springboard client here...');
+  $rootScope.$on('$routeChangeSuccess', function() {
+      document.title = $route.current.title;
+  });
+}

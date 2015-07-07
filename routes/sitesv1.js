@@ -49,10 +49,15 @@ module.exports = function(springboard) {
          }
       }
       catch(err) {
-        console.log(err);
         this.response.type = 'json';
         this.response.body = { error: true, message: 'could not watch ' + this.params.site };
       }
+    },
+
+    watching: function*() {
+      var data = springboard.watching();
+      this.response.type = 'json';
+      this.response.body = data;
     },
 
     publish: function*() {

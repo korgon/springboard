@@ -69,17 +69,20 @@ router.get('/sites/:site', routes.editSite);
 
 // api routes
 var sitesapi = require(__dirname + '/routes/sitesv1.js')(springboard);
+
+// reload sites from file (trigger siteLoad)
+router.get('/api/sites/sync', sitesapi.sync);
+
+// get sites or site json data
 router.get(['/api/sites', '/api/sites/all'], sitesapi.sites);
 router.get('/api/sites/:site', sitesapi.site);
-router.get('/api/sites/watch/:site', sitesapi.watch);
-router.get('/api/sites/sync', sitesapi.sync);
-router.post('/api/site/create', koaBody(), sitesapi.create);
 
-// modules, plugins and themes
-router.get('/api/modules', sitesapi.modules);
-router.get('/api/module/:module', sitesapi.module);
-// install anything
-router.post('/api/site/install', koaBody(), sitesapi.install);
+// choose site to begin watching
+router.get('/api/site/watch/:site', sitesapi.watch);
+// see which site is being watched
+router.get('/api/site', sitesapi.watching);
+
+router.post('/api/site/create', koaBody(), sitesapi.create);
 
 // git & s3
 router.get('/api/site/commit', sitesapi.commit);
@@ -87,6 +90,12 @@ router.get('/api/site/push', sitesapi.push);
 router.get('/api/site/pull', sitesapi.pull);
 router.get('/api/site/merge', sitesapi.merge);
 router.get('/api/site/publish', sitesapi.publish);
+
+// modules, plugins and themes
+router.get('/api/modules', sitesapi.modules);
+router.get('/api/module/:module', sitesapi.module);
+// install anything
+router.post('/api/site/install', koaBody(), sitesapi.install);
 
 // end route definitions
 
