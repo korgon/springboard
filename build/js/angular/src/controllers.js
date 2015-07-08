@@ -29,10 +29,11 @@ angular
   .module('springboardApp')
   .controller('EditorCtrl', EditorCtrl);
 
-EditorCtrl.$inject = ['$log', '$location', 'sitemanager'];
+EditorCtrl.$inject = ['$log', '$location', '$window', 'sitemanager'];
 
-function EditorCtrl($log, $location, sitemanager) {
+function EditorCtrl($log, $location, $window, sitemanager) {
   var vm = this;
+
   vm.loading = false;
   $log.log('in editor...');
 
@@ -41,8 +42,13 @@ function EditorCtrl($log, $location, sitemanager) {
     vm.loading = false;
     $log.info('got site...');
     $log.info(site);
-    vm.url = '/sites/' + site.name;
+    var current_url = $location.absUrl().match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
+    vm.url = current_url[0] + 'sites/' + site.name;
   }, function(err) {
     $location.path("/");
   });
+
+  vm.openUrl = function() {
+    $window.open(vm.url, '_blank');
+  }
 }

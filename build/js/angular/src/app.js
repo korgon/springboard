@@ -10,9 +10,10 @@ angular
   .config(['$routeProvider',
     function($routeProvider) {
       $routeProvider.
-        when('/', {
-          title: 'Springboard'
-        }).
+        // TODO make some sort of dashboard
+        // when('/', {
+        //   title: 'Springboard'
+        // }).
         when('/editor', {
           title: 'Site Editor',
           templateUrl: '/partials/editor.html',
@@ -35,7 +36,7 @@ angular
 runMe.$inject = ['$rootScope', '$route'];
 
 function runMe($rootScope, $route) {
-  console.log('loading springboard client here...');
+  console.log('springboard client loading...');
   $rootScope.$on('$routeChangeSuccess', function() {
       document.title = $route.current.title;
   });

@@ -13,7 +13,7 @@
       </ul>
     </div>
     <input id="frameurl" name="url" autocomplete="off" spellcheck="false" ng-model="vm.url">
-    <div class="openurl"></div>
+    <div class="openurl" ng-click="vm.openUrl()"></div>
     <div class="line"></div>
     <div class="worksite"><a class="currentsite"><span id="currentsite">{{ vm.site.name }}</span></a>
       <div class="siteselect">
