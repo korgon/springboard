@@ -61,11 +61,16 @@ app.use(serve(__dirname + '/.cache'));
 // route middleware
 // ----------------
 // begin route definitions
-var routes = require(__dirname + '/routes/routes.js')(springboard);
-router.get('/', routes.editor);
-router.get('/ng', routes.angular);
-router.get(['/sites', '/gallery'], routes.gallery);
-router.get('/sites/:site', routes.editSite);
+
+
+
+// Old pre-angular implementation (using /routes/routes.js)
+
+// var routes = require(__dirname + '/routes/routes.js')(springboard);
+// router.get('/', routes.editor);
+// router.get(['/sites', '/gallery'], routes.gallery);
+// router.get('/sites/:site', routes.editSite);
+
 
 // api routes
 var sitesapi = require(__dirname + '/routes/sitesv1.js')(springboard);

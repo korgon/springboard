@@ -7,10 +7,12 @@ require('./lib/angular-animate-1.4.1.min.js');
 // require('./lib/angular-resource-1.4.1.min.js');
 
 require('./src/app.js');
+require('./src/filters.js');
+require('./src/directives.js');
 require('./src/services.js');
 require('./src/controllers.js');
 
-},{"./lib/angular-1.4.1.min.js":2,"./lib/angular-animate-1.4.1.min.js":3,"./lib/angular-route-1.4.1.min.js":4,"./src/app.js":5,"./src/controllers.js":6,"./src/services.js":7}],2:[function(require,module,exports){
+},{"./lib/angular-1.4.1.min.js":2,"./lib/angular-animate-1.4.1.min.js":3,"./lib/angular-route-1.4.1.min.js":4,"./src/app.js":5,"./src/controllers.js":6,"./src/directives.js":7,"./src/filters.js":8,"./src/services.js":9}],2:[function(require,module,exports){
 /*
  AngularJS v1.4.1
  (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -383,13 +385,16 @@ angular
     'ngRoute',
     'ngAnimate'
   ])
-  .config(['$routeProvider',
-    function($routeProvider) {
+  .config(['$routeProvider', '$locationProvider',
+    function($routeProvider, $locationProvider) {
       $routeProvider.
         // TODO make some sort of dashboard
-        // when('/', {
-        //   title: 'Springboard'
-        // }).
+        when('/', {
+          title: 'Springboard',
+          templateUrl: '/partials/dashboard.html',
+          controller: 'DashboardCtrl',
+          controllerAs: 'vm'
+        }).
         when('/editor', {
           title: 'Site Editor',
           templateUrl: '/partials/editor.html',
@@ -405,6 +410,11 @@ angular
         otherwise({
           redirectTo: '/'
         });
+
+      // TODO later maybe...
+      // use the HTML5 History API
+      // $locationProvider.html5Mode(true);
+      // must add <base href="/"> to <head>
     }
   ])
   .run(runMe);
@@ -439,7 +449,7 @@ function GalleryCtrl($log, sitemanager) {
     vm.loading = false;
     $log.info('got sites...');
   }, function() {
-    console.log('error?');
+    $log.error('Unable to retrieve sites!');
   });
   vm.refresh = function() {
     console.log('refreshing sites...');
@@ -450,9 +460,9 @@ angular
   .module('springboardApp')
   .controller('EditorCtrl', EditorCtrl);
 
-EditorCtrl.$inject = ['$log', '$location', '$window', 'sitemanager'];
+EditorCtrl.$inject = ['$scope', '$log', '$location', '$window', 'sitemanager'];
 
-function EditorCtrl($log, $location, $window, sitemanager) {
+function EditorCtrl($scope, $log, $location, $window, sitemanager) {
   var vm = this;
 
   vm.loading = false;
@@ -464,7 +474,7 @@ function EditorCtrl($log, $location, $window, sitemanager) {
     $log.info('got site...');
     $log.info(site);
     var current_url = $location.absUrl().match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
-    vm.url = current_url[0] + 'sites/' + site.name;
+    vm.url = current_url[0] + 'sites/' + site.name + '/' + site.default_html;
   }, function(err) {
     $location.path("/");
   });
@@ -474,7 +484,61 @@ function EditorCtrl($log, $location, $window, sitemanager) {
   }
 }
 
+angular
+  .module('springboardApp')
+  .controller('DashboardCtrl', DashboardCtrl);
+
+DashboardCtrl.$inject = ['sitemanager'];
+
+function DashboardCtrl(sitemanager) {
+  var vm = this;
+
+  console.log('in dashboard...');
+
+}
+
 },{}],7:[function(require,module,exports){
+// directives
+
+angular
+  .module('springboardApp')
+  .directive('iframer', iframer);
+
+iframer.$inject = ['$document'];
+
+function iframer($document) {
+  return {
+    scope: {
+    },
+    link: function(scope, element, attrs) {
+      console.log(element);
+      element.on('load', function() {
+        var newUrl = element[0].contentDocument.URL;
+        scope.$parent.vm.url = newUrl;
+        var frameurl = angular.element(document.getElementById('frameurl'));
+        console.log(frameurl);
+        frameurl.val(newUrl);
+      })
+    }
+  }
+}
+
+},{}],8:[function(require,module,exports){
+// filters
+
+angular
+  .module('springboardApp')
+  .filter('trustAsResourceUrl', trustAsResourceUrl);
+
+trustAsResourceUrl.$inject = ['$sce'];
+
+function trustAsResourceUrl($sce) {
+  return function(val) {
+    return $sce.trustAsResourceUrl(val);
+  };
+}
+
+},{}],9:[function(require,module,exports){
 'use strict';
 
 // services...

@@ -18,7 +18,7 @@ function GalleryCtrl($log, sitemanager) {
     vm.loading = false;
     $log.info('got sites...');
   }, function() {
-    console.log('error?');
+    $log.error('Unable to retrieve sites!');
   });
   vm.refresh = function() {
     console.log('refreshing sites...');
@@ -29,9 +29,9 @@ angular
   .module('springboardApp')
   .controller('EditorCtrl', EditorCtrl);
 
-EditorCtrl.$inject = ['$log', '$location', '$window', 'sitemanager'];
+EditorCtrl.$inject = ['$scope', '$log', '$location', '$window', 'sitemanager'];
 
-function EditorCtrl($log, $location, $window, sitemanager) {
+function EditorCtrl($scope, $log, $location, $window, sitemanager) {
   var vm = this;
 
   vm.loading = false;
@@ -43,7 +43,7 @@ function EditorCtrl($log, $location, $window, sitemanager) {
     $log.info('got site...');
     $log.info(site);
     var current_url = $location.absUrl().match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
-    vm.url = current_url[0] + 'sites/' + site.name;
+    vm.url = current_url[0] + 'sites/' + site.name + '/' + site.default_html;
   }, function(err) {
     $location.path("/");
   });
@@ -51,4 +51,17 @@ function EditorCtrl($log, $location, $window, sitemanager) {
   vm.openUrl = function() {
     $window.open(vm.url, '_blank');
   }
+}
+
+angular
+  .module('springboardApp')
+  .controller('DashboardCtrl', DashboardCtrl);
+
+DashboardCtrl.$inject = ['sitemanager'];
+
+function DashboardCtrl(sitemanager) {
+  var vm = this;
+
+  console.log('in dashboard...');
+
 }

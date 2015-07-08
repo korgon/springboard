@@ -7,13 +7,16 @@ angular
     'ngRoute',
     'ngAnimate'
   ])
-  .config(['$routeProvider',
-    function($routeProvider) {
+  .config(['$routeProvider', '$locationProvider',
+    function($routeProvider, $locationProvider) {
       $routeProvider.
         // TODO make some sort of dashboard
-        // when('/', {
-        //   title: 'Springboard'
-        // }).
+        when('/', {
+          title: 'Springboard',
+          templateUrl: '/partials/dashboard.html',
+          controller: 'DashboardCtrl',
+          controllerAs: 'vm'
+        }).
         when('/editor', {
           title: 'Site Editor',
           templateUrl: '/partials/editor.html',
@@ -29,6 +32,11 @@ angular
         otherwise({
           redirectTo: '/'
         });
+
+      // TODO later maybe...
+      // use the HTML5 History API
+      // $locationProvider.html5Mode(true);
+      // must add <base href="/"> to <head>
     }
   ])
   .run(runMe);

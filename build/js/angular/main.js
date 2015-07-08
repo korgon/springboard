@@ -6,5 +6,7 @@ require('./lib/angular-animate-1.4.1.min.js');
 // require('./lib/angular-resource-1.4.1.min.js');
 
 require('./src/app.js');
+require('./src/filters.js');
+require('./src/directives.js');
 require('./src/services.js');
 require('./src/controllers.js');

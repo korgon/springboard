@@ -1,16 +1,7 @@
-<div id="above">
-  <div class="heading">
-    <div class="title">
-      <div class="logo"></div>
-      <div class="subtitle">SPRIΠGBOΛRD</div>
-    </div>
-    <div class="mainmenu">
-      <ul class="menuoptions">
-        <li><a onclick="sb.createSiteInput()"><span class="menuicon newsite"></span><span class="menutext">new site</span></a></li>
-        <li><a href="/"><span class="menuicon editsite"></span><span class="menutext">edit sites</span></a></li>
-        <li><a href="/sites/"><span class="menuicon sitegallery"></span><span class="menutext">view sites</span></a></li>
-        <li><a><span class="menuicon settings"></span><span class="menutext">settings</span></a></li>
-      </ul>
-    </div>
+<div class="heading">
+  <div class="title">
+    <div class="logo"></div>
+    <div class="subtitle" ng-click="showMenu = !showMenu">SPRIΠGBOΛRD</div>
   </div>
+  <div class="mainmenu" ng-include src="'/partials/above_menu.html'" ng-class="{'show': showMenu}" ng-init="showMenu = false"></div>
 </div>

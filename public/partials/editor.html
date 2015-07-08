@@ -1,9 +1,11 @@
-<div ng-include src="'/partials/above_editor.html'"></div>
+<div id="above" ng-include src="'/partials/above_editor.html'"></div>
 
 <div id="content">
   <div id="frame" ng-show="vm.url">
-    <iframe id="frameview" name="frameview" ng-src="{{ vm.url }}"></iframe>
+    <iframe id="frameview" name="frameview" ng-src="{{ vm.url | trustAsResourceUrl }}" iframer></iframe>
   </div>
 </div>
 
-<div ng-include src="'/partials/below_default.html'"></div>
+<!-- http://stackoverflow.com/questions/16649617/angularjs-change-partial-in-controller-on-click -->
+
+<div id="footer" ng-include src="'/partials/below_default.html'"></div>
