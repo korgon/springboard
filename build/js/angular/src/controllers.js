@@ -6,11 +6,11 @@ angular
   .module('springboardApp')
   .controller('GalleryCtrl', GalleryCtrl);
 
-GalleryCtrl.$inject = ['$log', 'sitemanager'];
+GalleryCtrl.$inject = ['$log', '$location', 'sitemanager'];
 
-function GalleryCtrl($log, sitemanager) {
+function GalleryCtrl($log, $location, sitemanager) {
   var vm = this;
-  vm.loading = false;
+  vm.loading = true;
   $log.log('in gallery...');
 
   sitemanager.getSites().then(function(sites) {
@@ -20,6 +20,18 @@ function GalleryCtrl($log, sitemanager) {
   }, function() {
     $log.error('Unable to retrieve sites!');
   });
+
+  vm.editSite = function(site) {
+    vm.loading = true;
+    sitemanager.editSite(site).then(function() {
+      vm.loading = false;
+      $location.path("/editor");
+    }, function(err){
+      vm.loading = false;
+      console.error(err);
+    });
+  }
+
   vm.refresh = function() {
     console.log('refreshing sites...');
   }

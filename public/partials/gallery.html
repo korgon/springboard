@@ -4,7 +4,7 @@
   <div id="gallery">
     <div id="siteshow">
       <ul>
-        <li ng-repeat="site in vm.sites"><a><span>{{ site.name }}</span><img src=""></a></li>
+        <li ng-repeat="site in vm.sites"><a ng-click="vm.editSite(site.name)"><span>{{ site.name }}</span><img src=""></a></li>
       </ul>
     </div>
   </div>

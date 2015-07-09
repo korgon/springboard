@@ -437,11 +437,11 @@ angular
   .module('springboardApp')
   .controller('GalleryCtrl', GalleryCtrl);
 
-GalleryCtrl.$inject = ['$log', 'sitemanager'];
+GalleryCtrl.$inject = ['$log', '$location', 'sitemanager'];
 
-function GalleryCtrl($log, sitemanager) {
+function GalleryCtrl($log, $location, sitemanager) {
   var vm = this;
-  vm.loading = false;
+  vm.loading = true;
   $log.log('in gallery...');
 
   sitemanager.getSites().then(function(sites) {
@@ -451,6 +451,18 @@ function GalleryCtrl($log, sitemanager) {
   }, function() {
     $log.error('Unable to retrieve sites!');
   });
+
+  vm.editSite = function(site) {
+    vm.loading = true;
+    sitemanager.editSite(site).then(function() {
+      vm.loading = false;
+      $location.path("/editor");
+    }, function(err){
+      vm.loading = false;
+      console.error(err);
+    });
+  }
+
   vm.refresh = function() {
     console.log('refreshing sites...');
   }
@@ -590,6 +602,7 @@ function sitemanager($http, $q, $timeout) {
   // switch to a new site for editing
   function editSite(site) {
     var promise = $q.defer();
+
     $http({
       method: 'GET',
       url: '/api/site/watch/' + site
@@ -600,33 +613,32 @@ function sitemanager($http, $q, $timeout) {
       site = data;
       promise.resolve(site);
     }).error(promise.reject);
+
     return promise.promise;
   }
 
   // return site object or check server if site being watched
   function getSite() {
     var promise = $q.defer();
-    if (site.name) {
-      console.log('have the site allready...');
+
+    $http({
+      method: 'GET',
+      url: '/api/site'
+    }).success(function(data, status, headers) {
+      if (data.error) {
+        promise.reject(data.message);
+      }
+      site = data;
       promise.resolve(site);
-    } else {
-      $http({
-        method: 'GET',
-        url: '/api/site'
-      }).success(function(data, status, headers) {
-        if (data.error) {
-          promise.reject(data.message);
-        }
-        site = data;
-        promise.resolve(site);
-      }).error(promise.reject);
-    }
+    }).error(promise.reject);
+
     return promise.promise;
   }
 
   // return sites object or get sites from server
   function getSites() {
     var promise = $q.defer();
+
     if (Object.keys(sites).length > 0) {
       console.log('have sites allready...');
       promise.resolve(sites);
@@ -639,12 +651,14 @@ function sitemanager($http, $q, $timeout) {
         promise.resolve(sites);
       }).error(promise.reject);
     }
+
     return promise.promise;
   }
 
   // (save) commit the site locally
   function commitSite() {
     var promise = $q.defer();
+
     if (site.name) {
       $http({
         method: 'GET',
@@ -659,12 +673,14 @@ function sitemanager($http, $q, $timeout) {
     } else {
       promise.reject({ error: true, message: 'not editing any site!'});
     }
+
     return promise.promise;
   }
 
   // (save) commit the site locally
   function pushSite() {
     var promise = $q.defer();
+
     if (site.name) {
       $http({
         method: 'GET',
@@ -679,6 +695,7 @@ function sitemanager($http, $q, $timeout) {
     } else {
       promise.reject({ error: true, message: 'not editing any site!'});
     }
+    
     return promise.promise;
   }
 }
