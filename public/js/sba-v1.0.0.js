@@ -465,14 +465,14 @@ EditorCtrl.$inject = ['$scope', '$log', '$location', '$window', 'sitemanager'];
 function EditorCtrl($scope, $log, $location, $window, sitemanager) {
   var vm = this;
 
-  vm.loading = false;
-  $log.log('in editor...');
+  vm.loading = true;
+  $log.log('in editor...?');
 
   sitemanager.getSite().then(function(site) {
     vm.site = site;
     vm.loading = false;
     $log.info('got site...');
-    $log.info(site);
+    //$log.info(site);
     var current_url = $location.absUrl().match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
     vm.url = current_url[0] + 'sites/' + site.name + '/' + site.default_html;
   }, function(err) {
@@ -481,6 +481,28 @@ function EditorCtrl($scope, $log, $location, $window, sitemanager) {
 
   vm.openUrl = function() {
     $window.open(vm.url, '_blank');
+  }
+
+  vm.commitSite = function() {
+    vm.loading = true;
+    sitemanager.commitSite().then(function() {
+      console.log('site commited yo!');
+      vm.loading = false;
+    }, function(err) {
+      console.log(err);
+      vm.loading = false;
+    });
+  }
+
+  vm.pushSite = function() {
+    vm.loading = true;
+    sitemanager.pushSite().then(function() {
+      console.log('site pushed yo!');
+      vm.loading = false;
+    }, function(err) {
+      console.log(err);
+      vm.loading = false;
+    });
   }
 }
 
@@ -511,12 +533,10 @@ function iframer($document) {
     scope: {
     },
     link: function(scope, element, attrs) {
-      console.log(element);
       element.on('load', function() {
         var newUrl = element[0].contentDocument.URL;
         scope.$parent.vm.url = newUrl;
         var frameurl = angular.element(document.getElementById('frameurl'));
-        console.log(frameurl);
         frameurl.val(newUrl);
       })
     }
@@ -550,14 +570,19 @@ angular
 sitemanager.$inject = ['$http', '$q', '$timeout'];
 
 function sitemanager($http, $q, $timeout) {
-  var site = {};
+  // object containing every site object
   var sites = {};
+  // object containing the current (editing) site
+  var site = {};
+
 
   var service = {
     // reloadSites: function() { return reloadSites(); },
     getSites: getSites,
     getSite: getSite,
-    editSite: editSite
+    editSite: editSite,
+    commitSite: commitSite,
+    pushSite: pushSite
   };
 
   return service;
@@ -613,6 +638,46 @@ function sitemanager($http, $q, $timeout) {
         sites = data;
         promise.resolve(sites);
       }).error(promise.reject);
+    }
+    return promise.promise;
+  }
+
+  // (save) commit the site locally
+  function commitSite() {
+    var promise = $q.defer();
+    if (site.name) {
+      $http({
+        method: 'GET',
+        url: '/api/site/commit'
+      }).success(function(data, status, headers) {
+        if (data.error) {
+          promise.reject(data.message);
+        } else {
+          promise.resolve();
+        }
+      }).error(promise.reject);
+    } else {
+      promise.reject({ error: true, message: 'not editing any site!'});
+    }
+    return promise.promise;
+  }
+
+  // (save) commit the site locally
+  function pushSite() {
+    var promise = $q.defer();
+    if (site.name) {
+      $http({
+        method: 'GET',
+        url: '/api/site/push'
+      }).success(function(data, status, headers) {
+        if (data.error) {
+          promise.reject(data.message);
+        } else {
+          promise.resolve();
+        }
+      }).error(promise.reject);
+    } else {
+      promise.reject({ error: true, message: 'not editing any site!'});
     }
     return promise.promise;
   }

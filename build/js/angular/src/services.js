@@ -9,14 +9,19 @@ angular
 sitemanager.$inject = ['$http', '$q', '$timeout'];
 
 function sitemanager($http, $q, $timeout) {
-  var site = {};
+  // object containing every site object
   var sites = {};
+  // object containing the current (editing) site
+  var site = {};
+
 
   var service = {
     // reloadSites: function() { return reloadSites(); },
     getSites: getSites,
     getSite: getSite,
-    editSite: editSite
+    editSite: editSite,
+    commitSite: commitSite,
+    pushSite: pushSite
   };
 
   return service;
@@ -72,6 +77,46 @@ function sitemanager($http, $q, $timeout) {
         sites = data;
         promise.resolve(sites);
       }).error(promise.reject);
+    }
+    return promise.promise;
+  }
+
+  // (save) commit the site locally
+  function commitSite() {
+    var promise = $q.defer();
+    if (site.name) {
+      $http({
+        method: 'GET',
+        url: '/api/site/commit'
+      }).success(function(data, status, headers) {
+        if (data.error) {
+          promise.reject(data.message);
+        } else {
+          promise.resolve();
+        }
+      }).error(promise.reject);
+    } else {
+      promise.reject({ error: true, message: 'not editing any site!'});
+    }
+    return promise.promise;
+  }
+
+  // (save) commit the site locally
+  function pushSite() {
+    var promise = $q.defer();
+    if (site.name) {
+      $http({
+        method: 'GET',
+        url: '/api/site/push'
+      }).success(function(data, status, headers) {
+        if (data.error) {
+          promise.reject(data.message);
+        } else {
+          promise.resolve();
+        }
+      }).error(promise.reject);
+    } else {
+      promise.reject({ error: true, message: 'not editing any site!'});
     }
     return promise.promise;
   }

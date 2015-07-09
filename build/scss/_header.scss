@@ -246,6 +246,9 @@ body {
 									cursor: pointer;
 									opacity: 1;
 								}
+								&.save {
+									background-image: url('/images/icons/save.png');
+								}
 								&.refresh {
 									background-image: url('/images/icons/refresh.png');
 								}

@@ -34,14 +34,14 @@ EditorCtrl.$inject = ['$scope', '$log', '$location', '$window', 'sitemanager'];
 function EditorCtrl($scope, $log, $location, $window, sitemanager) {
   var vm = this;
 
-  vm.loading = false;
-  $log.log('in editor...');
+  vm.loading = true;
+  $log.log('in editor...?');
 
   sitemanager.getSite().then(function(site) {
     vm.site = site;
     vm.loading = false;
     $log.info('got site...');
-    $log.info(site);
+    //$log.info(site);
     var current_url = $location.absUrl().match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
     vm.url = current_url[0] + 'sites/' + site.name + '/' + site.default_html;
   }, function(err) {
@@ -50,6 +50,28 @@ function EditorCtrl($scope, $log, $location, $window, sitemanager) {
 
   vm.openUrl = function() {
     $window.open(vm.url, '_blank');
+  }
+
+  vm.commitSite = function() {
+    vm.loading = true;
+    sitemanager.commitSite().then(function() {
+      console.log('site commited yo!');
+      vm.loading = false;
+    }, function(err) {
+      console.log(err);
+      vm.loading = false;
+    });
+  }
+
+  vm.pushSite = function() {
+    vm.loading = true;
+    sitemanager.pushSite().then(function() {
+      console.log('site pushed yo!');
+      vm.loading = false;
+    }, function(err) {
+      console.log(err);
+      vm.loading = false;
+    });
   }
 }
 
