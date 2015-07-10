@@ -57,6 +57,7 @@ function EditorCtrl($scope, $log, $location, $window, sitemanager) {
     var current_url = $location.absUrl().match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
     vm.url = current_url[0] + 'sites/' + site.name + '/' + site.default_html;
   }, function(err) {
+    // not editing any site...
     $location.path("/");
   });
 
