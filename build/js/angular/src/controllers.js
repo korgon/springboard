@@ -1,7 +1,10 @@
 'use strict';
 
-// controllers
+// Controllers
+/*************/
 
+// Gallery Controller
+/********************/
 angular
   .module('springboardApp')
   .controller('GalleryCtrl', GalleryCtrl);
@@ -37,6 +40,9 @@ function GalleryCtrl($log, $location, sitemanager) {
   }
 }
 
+
+// Editor Controller
+/*******************/
 angular
   .module('springboardApp')
   .controller('EditorCtrl', EditorCtrl);
@@ -103,6 +109,8 @@ function EditorCtrl($scope, $log, $location, $window, sitemanager, modalmanager)
   }
 }
 
+// Dashboard Controller
+/*******************/
 angular
   .module('springboardApp')
   .controller('DashboardCtrl', DashboardCtrl);
@@ -116,9 +124,13 @@ function DashboardCtrl(sitemanager) {
 
 }
 
-// modal controllers
+/*******************/
+// Modal Controllers
+/*******************/
 
-// alert modal
+
+// Alert Modal Controller
+/************************/
 angular
   .module('springboardApp')
   .controller('ModalAlertCtrl', ModalAlertCtrl);

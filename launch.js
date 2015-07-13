@@ -80,19 +80,18 @@ router.get('/api/sites/sync', sitesapi.sync);
 
 // get sites or site json data
 router.get(['/api/sites', '/api/sites/all'], sitesapi.sites);
-router.get('/api/sites/:site', sitesapi.site);
 
 // choose site to begin watching
 router.get('/api/site/watch/:site', sitesapi.watch);
 // see which site is being watched
-router.get('/api/site', sitesapi.watching);
+router.get('/api/site', sitesapi.site);
 
 router.post('/api/site/create', koaBody(), sitesapi.create);
 
 // git & s3
+router.get('/api/site/status', sitesapi.status);
 router.get('/api/site/commit', sitesapi.commit);
 router.get('/api/site/push', sitesapi.push);
-router.get('/api/site/pull', sitesapi.pull);
 router.get('/api/site/merge', sitesapi.merge);
 router.get('/api/site/publish', sitesapi.publish);
 

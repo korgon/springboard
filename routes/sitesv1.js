@@ -5,18 +5,14 @@
 /*
 /api/v1/
 ------------------
-GET   api/sites/all/
-GET   api/sites/sync/
-GET   api/sites/{{ name }}
-GET   api/sites/{{ name }}/commit/
-GET   api/sites/{{ name }}/push/
-GET   api/sites/{{ name }}/publish/{{ live/mockup }}
-GET   api/sites/{{ name }}/merge/
+/api/sites
+/api/site
+/api/site/commit
+/api/site/push
 
-GET   api/springboard/watch/{{ name }}
 
-POST  api/sites/create/
-... add more ...
+
+
 */
 
 //var parse = require('co-body');
@@ -25,11 +21,13 @@ POST  api/sites/create/
 module.exports = function(springboard) {
   return {
 
+    // get every site in object notation
     sites: function*() {
       this.response.type = 'json';
       this.response.body = springboard.getSites();
     },
 
+    // get the current site or a specific one
     site: function*() {
       var data = springboard.getSite(this.params.site);
       this.response.type = 'json';
@@ -54,12 +52,6 @@ module.exports = function(springboard) {
       }
     },
 
-    watching: function*() {
-      var data = springboard.watching();
-      this.response.type = 'json';
-      this.response.body = data;
-    },
-
     publish: function*() {
       try {
         var data = yield springboard.publishSiteMockup();
@@ -73,6 +65,19 @@ module.exports = function(springboard) {
       }
     },
 
+    status: function*() {
+      try {
+        var data = yield springboard.gitStatus();
+        this.response.type = 'json';
+        this.response.body = data;
+      }
+      catch(err) {
+        this.response.type = 'json';
+        this.response.body = { error: true, message: 'site git status undetermined' };
+      }
+    },
+
+    // commit the current site
     commit: function*() {
       try {
         var data = yield springboard.commitSite();
@@ -81,10 +86,11 @@ module.exports = function(springboard) {
       }
       catch(err) {
         this.response.type = 'json';
-        this.response.body = { error: true, message: 'site could not be commited' };
+        this.response.body = err;
       }
     },
 
+    // push the current site
     push: function*() {
       try {
         var data = yield springboard.pushSite();
@@ -92,24 +98,23 @@ module.exports = function(springboard) {
         this.response.body = data;
       }
       catch(err) {
-        console.log(err);
         this.response.type = 'json';
-        this.response.body = { error: true, message: 'site could not be pushed' };
+        this.response.body = err;
       }
     },
 
-    pull: function*() {
-      try {
-        var data = yield springboard.pullSite();
-        this.response.type = 'json';
-        this.response.body = data;
-      }
-      catch(err) {
-        console.log(err);
-        this.response.type = 'json';
-        this.response.body = { error: true, message: 'site could not be pushed' };
-      }
-    },
+    // pull: function*() {
+    //   try {
+    //     var data = yield springboard.pullSite();
+    //     this.response.type = 'json';
+    //     this.response.body = data;
+    //   }
+    //   catch(err) {
+    //     console.log(err);
+    //     this.response.type = 'json';
+    //     this.response.body = { error: true, message: 'site could not be pushed' };
+    //   }
+    // },
 
     merge: function*() {
       try {
