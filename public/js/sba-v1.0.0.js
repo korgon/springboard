@@ -472,9 +472,9 @@ angular
   .module('springboardApp')
   .controller('EditorCtrl', EditorCtrl);
 
-EditorCtrl.$inject = ['$scope', '$log', '$location', '$window', 'sitemanager'];
+EditorCtrl.$inject = ['$scope', '$log', '$location', '$window', 'sitemanager', 'modalmanager'];
 
-function EditorCtrl($scope, $log, $location, $window, sitemanager) {
+function EditorCtrl($scope, $log, $location, $window, sitemanager, modalmanager) {
   var vm = this;
 
   vm.loading = true;
@@ -494,6 +494,21 @@ function EditorCtrl($scope, $log, $location, $window, sitemanager) {
 
   vm.openUrl = function() {
     $window.open(vm.url, '_blank');
+  }
+
+  vm.prompty = function() {
+    var promise = modalmanager.open(
+      'alert',
+      {
+        message: 'are you going to do that?'
+      }
+    );
+
+    promise.then(function(response) {
+      console.log('pull alert was resolved');
+    }, function(err) {
+      console.warn('pull alert rejected...');
+    });
   }
 
   vm.commitSite = function() {
@@ -532,9 +547,38 @@ function DashboardCtrl(sitemanager) {
 
 }
 
+// modal controllers
+
+// alert modal
+angular
+  .module('springboardApp')
+  .controller('ModalAlertCtrl', ModalAlertCtrl);
+
+ModalAlertCtrl.$inject = ['$scope', 'modalmanager'];
+
+function ModalAlertCtrl($scope, modalmanager) {
+
+  console.log('in alert modal');
+
+  var params = modalmanager.params();
+  var mm = {};
+  $scope.mm = mm;
+
+  // Setup defaults using the modal params.
+  mm.message = ( params.message || 'Do the thing?' );
+
+  // modal resolution
+  mm.closeModal = function() {
+    console.log('close the modal yo');
+    modalmanager.resolve();
+  }
+}
+
 },{}],7:[function(require,module,exports){
 // directives
 
+// iframer
+// used to help keep the iframe url and the url input box in sync
 angular
   .module('springboardApp')
   .directive('iframer', iframer);
@@ -552,6 +596,41 @@ function iframer($document) {
         var frameurl = angular.element(document.getElementById('frameurl'));
         frameurl.val(newUrl);
       })
+    }
+  }
+}
+
+
+// modaly
+// used to show / hide and choose which modal to show
+angular
+  .module('springboardApp')
+  .directive('modaly', modaly);
+
+modaly.$inject = ['$rootScope', 'modalmanager'];
+
+function modaly($rootScope, modalmanager) {
+  return {
+    link: function(scope, element, attrs) {
+      scope.vm.modalview = null;
+
+      // click on the modals container will auto reject the modal
+      element.on('click', function handleClickEvent(event) {
+        if (element[0] !== event.target) {
+          return;
+        }
+        scope.$apply(modalmanager.reject);
+      });
+
+      // listen for modal open emission
+      $rootScope.$on('modals.open', function(event, modalType) {
+        scope.vm.modalview = modalType;
+      });
+
+      // listen for modal close emmision
+      $rootScope.$on('modals.close', function(event) {
+        scope.vm.modalview = null;
+      });
     }
   }
 }
@@ -576,6 +655,9 @@ function trustAsResourceUrl($sce) {
 
 // services...
 
+// sitemanager
+// manages site data
+
 angular
   .module('springboardApp')
   .factory('sitemanager', sitemanager);
@@ -588,17 +670,15 @@ function sitemanager($http, $q, $timeout) {
   // object containing the current (editing) site
   var site = {};
 
-
-  var service = {
+  // service api
+  return({
     // reloadSites: function() { return reloadSites(); },
     getSites: getSites,
     getSite: getSite,
     editSite: editSite,
     commitSite: commitSite,
     pushSite: pushSite
-  };
-
-  return service;
+  });
 
   // switch to a new site for editing
   function editSite(site) {
@@ -696,8 +776,90 @@ function sitemanager($http, $q, $timeout) {
     } else {
       promise.reject({ error: true, message: 'not editing any site!'});
     }
-    
+
     return promise.promise;
+  }
+}
+
+// modal service
+angular
+  .module('springboardApp')
+  .factory('modalmanager', modalmanager);
+
+modalmanager.$inject = ['$rootScope', '$q'];
+
+function modalmanager($rootScope, $q) {
+
+  // current modal in use
+  var modal = {
+    deferred: null,
+    params: null
+  }
+
+  // service api
+  return({
+    open: open,
+    params: params,
+    proceedTo: proceedTo,
+    reject: reject,
+    resolve: resolve
+  });
+
+  function open( type, params, pipeResponse ) {
+    var previousDeferred = modal.deferred;
+
+    // set current modal
+    modal.deferred = $q.defer();
+    modal.params = params;
+
+    // if a modal existed, pipe response
+    if ( previousDeferred && pipeResponse ) {
+      modal.deferred.promise.then(previousDeferred.resolve, previousDeferred.reject);
+    // no piping - reject
+    } else if (previousDeferred) {
+      previousDeferred.reject();
+    }
+
+    // open modal (using directive)
+    $rootScope.$emit('modals.open', type);
+
+    return(modal.deferred.promise);
+  }
+
+  // return current params
+  function params() {
+    return( modal.params || {} );
+  }
+
+  // used for passing modal params
+  function proceedTo(type, params) {
+    return(open(type, params, true));
+  }
+
+  // reject modal
+  function reject(reason) {
+    if (!modal.deferred) {
+      return;
+    }
+
+    modal.deferred.reject( reason );
+
+    // close the modal
+    modal.deferred = modal.params = null;
+    $rootScope.$emit('modals.close');
+  }
+
+  // resolve modal
+  function resolve(response) {
+    if (!modal.deferred) {
+      return;
+    }
+
+    modal.deferred.resolve(response);
+
+    // close the modal
+    modal.deferred = modal.params = null;
+    $rootScope.$emit('modals.close');
   }
 }
 

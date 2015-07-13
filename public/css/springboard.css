@@ -36,8 +36,7 @@ body {
       top: 0; }
 
 /* line 7, /home/korgon/Work/springboard/build/scss/_modals.scss */
-body .modal {
-  display: none;
+.modals .modal {
   position: fixed;
   top: 0;
   right: 0;
@@ -46,15 +45,15 @@ body .modal {
   background: rgba(0, 0, 0, 0.9);
   z-index: 999999; }
 
-/* line 18, /home/korgon/Work/springboard/build/scss/_modals.scss */
-body .boxwrap {
+/* line 17, /home/korgon/Work/springboard/build/scss/_modals.scss */
+.modals .boxwrap {
   position: relative;
   margin: 90px auto 0px;
   padding: 20px;
   pointer-events: auto; }
 
-/* line 26, /home/korgon/Work/springboard/build/scss/_modals.scss */
-body #loading {
+/* line 25, /home/korgon/Work/springboard/build/scss/_modals.scss */
+.modals #loading {
   position: fixed;
   top: 0;
   right: 0;
@@ -65,11 +64,11 @@ body #loading {
   -webkit-transition: all linear 0.5s;
   transition: all linear 0.5s;
   text-align: center; }
-  /* line 37, /home/korgon/Work/springboard/build/scss/_modals.scss */
-  body #loading.ng-hide {
+  /* line 36, /home/korgon/Work/springboard/build/scss/_modals.scss */
+  .modals #loading.ng-hide {
     opacity: 0; }
-  /* line 40, /home/korgon/Work/springboard/build/scss/_modals.scss */
-  body #loading .wrap {
+  /* line 39, /home/korgon/Work/springboard/build/scss/_modals.scss */
+  .modals #loading .wrap {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
@@ -80,74 +79,74 @@ body #loading {
     background-color: #001A2B;
     border: 1px solid #354E66;
     box-shadow: 0px 0px 20px #DD8500; }
-    /* line 51, /home/korgon/Work/springboard/build/scss/_modals.scss */
-    body #loading .wrap .loadImage {
+    /* line 50, /home/korgon/Work/springboard/build/scss/_modals.scss */
+    .modals #loading .wrap .loadImage {
+      background: url("/images/loading.gif");
       position: absolute;
-      left: 5px;
-      top: 9px;
-      width: 111px;
-      height: 111px; }
+      left: 0;
+      width: 124px;
+      height: 128px; }
 
-/* line 63, /home/korgon/Work/springboard/build/scss/_modals.scss */
-body #input .boxwrap {
+/* line 61, /home/korgon/Work/springboard/build/scss/_modals.scss */
+.modals .boxwrap {
   width: 250px;
   height: auto;
   border: 1px solid #1B3141;
   padding: 0; }
-  /* line 68, /home/korgon/Work/springboard/build/scss/_modals.scss */
-  body #input .boxwrap .boxtop {
+  /* line 66, /home/korgon/Work/springboard/build/scss/_modals.scss */
+  .modals .boxwrap .boxtop {
     height: 22px;
     overflow: hidden;
     background-color: #0E1920;
     background-image: linear-gradient(#354957, #1B3141);
     border-bottom: 1px solid #1B3141; }
-    /* line 74, /home/korgon/Work/springboard/build/scss/_modals.scss */
-    body #input .boxwrap .boxtop ul.boxbuttons {
+    /* line 72, /home/korgon/Work/springboard/build/scss/_modals.scss */
+    .modals .boxwrap .boxtop ul.boxbuttons {
       display: flex;
       align-items: center;
       justify-content: flex-end;
       list-style: none;
       margin: 0;
       padding: 0; }
-      /* line 81, /home/korgon/Work/springboard/build/scss/_modals.scss */
-      body #input .boxwrap .boxtop ul.boxbuttons li {
+      /* line 79, /home/korgon/Work/springboard/build/scss/_modals.scss */
+      .modals .boxwrap .boxtop ul.boxbuttons li {
         display: inline-block;
         margin: 4px; }
-        /* line 84, /home/korgon/Work/springboard/build/scss/_modals.scss */
-        body #input .boxwrap .boxtop ul.boxbuttons li a {
+        /* line 82, /home/korgon/Work/springboard/build/scss/_modals.scss */
+        .modals .boxwrap .boxtop ul.boxbuttons li a {
           display: inline-block;
           width: 15px;
           height: 15px;
           opacity: 0.5;
           background-repeat: no-repeat; }
-          /* line 90, /home/korgon/Work/springboard/build/scss/_modals.scss */
-          body #input .boxwrap .boxtop ul.boxbuttons li a.close {
+          /* line 88, /home/korgon/Work/springboard/build/scss/_modals.scss */
+          .modals .boxwrap .boxtop ul.boxbuttons li a.close {
             background-image: url("/images/icons/close_tiny.png");
             background-size: 15px; }
-            /* line 93, /home/korgon/Work/springboard/build/scss/_modals.scss */
-            body #input .boxwrap .boxtop ul.boxbuttons li a.close:hover {
+            /* line 91, /home/korgon/Work/springboard/build/scss/_modals.scss */
+            .modals .boxwrap .boxtop ul.boxbuttons li a.close:hover {
               opacity: 1;
               cursor: pointer; }
-        /* line 99, /home/korgon/Work/springboard/build/scss/_modals.scss */
-        body #input .boxwrap .boxtop ul.boxbuttons li.move {
+        /* line 97, /home/korgon/Work/springboard/build/scss/_modals.scss */
+        .modals .boxwrap .boxtop ul.boxbuttons li.move {
           margin: 0;
           flex-grow: 12;
           height: 27px; }
-          /* line 103, /home/korgon/Work/springboard/build/scss/_modals.scss */
-          body #input .boxwrap .boxtop ul.boxbuttons li.move:hover {
+          /* line 101, /home/korgon/Work/springboard/build/scss/_modals.scss */
+          .modals .boxwrap .boxtop ul.boxbuttons li.move:hover {
             cursor: move; }
-  /* line 110, /home/korgon/Work/springboard/build/scss/_modals.scss */
-  body #input .boxwrap .boxcontent {
+  /* line 108, /home/korgon/Work/springboard/build/scss/_modals.scss */
+  .modals .boxwrap .boxcontent {
     background-color: #00121E;
     padding: 10px; }
-    /* line 113, /home/korgon/Work/springboard/build/scss/_modals.scss */
-    body #input .boxwrap .boxcontent label {
+    /* line 111, /home/korgon/Work/springboard/build/scss/_modals.scss */
+    .modals .boxwrap .boxcontent label {
       margin-bottom: 6px;
       display: block;
       color: #3F525F;
       font-size: 18px; }
-    /* line 119, /home/korgon/Work/springboard/build/scss/_modals.scss */
-    body #input .boxwrap .boxcontent input[type="text"], body #input .boxwrap .boxcontent select {
+    /* line 117, /home/korgon/Work/springboard/build/scss/_modals.scss */
+    .modals .boxwrap .boxcontent input[type="text"], .modals .boxwrap .boxcontent select {
       width: 100%;
       box-sizing: border-box;
       border-radius: 3px;
@@ -155,14 +154,14 @@ body #input .boxwrap {
       border: 1px solid #354E66;
       color: #61717B;
       margin-bottom: 10px; }
-      /* line 127, /home/korgon/Work/springboard/build/scss/_modals.scss */
-      body #input .boxwrap .boxcontent input[type="text"]:focus, body #input .boxwrap .boxcontent input[type="text"]:active, body #input .boxwrap .boxcontent select:focus, body #input .boxwrap .boxcontent select:active {
+      /* line 125, /home/korgon/Work/springboard/build/scss/_modals.scss */
+      .modals .boxwrap .boxcontent input[type="text"]:focus, .modals .boxwrap .boxcontent input[type="text"]:active, .modals .boxwrap .boxcontent select:focus, .modals .boxwrap .boxcontent select:active {
         color: #7194AD; }
-    /* line 131, /home/korgon/Work/springboard/build/scss/_modals.scss */
-    body #input .boxwrap .boxcontent .buttons {
+    /* line 129, /home/korgon/Work/springboard/build/scss/_modals.scss */
+    .modals .boxwrap .boxcontent .buttons {
       margin-top: 30px; }
-    /* line 134, /home/korgon/Work/springboard/build/scss/_modals.scss */
-    body #input .boxwrap .boxcontent input[type="submit"], body #input .boxwrap .boxcontent input[type="button"] {
+    /* line 132, /home/korgon/Work/springboard/build/scss/_modals.scss */
+    .modals .boxwrap .boxcontent input[type="submit"], .modals .boxwrap .boxcontent input[type="button"] {
       text-transform: uppercase;
       width: 100%;
       border: 1px solid #1B3141;
@@ -171,13 +170,13 @@ body #input .boxwrap {
       background-image: linear-gradient(#1B3141, #1B3141);
       color: #718599;
       text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25); }
-      /* line 143, /home/korgon/Work/springboard/build/scss/_modals.scss */
-      body #input .boxwrap .boxcontent input[type="submit"]:hover, body #input .boxwrap .boxcontent input[type="button"]:hover {
+      /* line 141, /home/korgon/Work/springboard/build/scss/_modals.scss */
+      .modals .boxwrap .boxcontent input[type="submit"]:hover, .modals .boxwrap .boxcontent input[type="button"]:hover {
         cursor: pointer;
         background-image: linear-gradient(#354957, #354957);
         color: #718599; }
-    /* line 149, /home/korgon/Work/springboard/build/scss/_modals.scss */
-    body #input .boxwrap .boxcontent input[type="button"] {
+    /* line 147, /home/korgon/Work/springboard/build/scss/_modals.scss */
+    .modals .boxwrap .boxcontent input[type="button"] {
       float: right; }
 
 /* line 6, /home/korgon/Work/springboard/build/scss/_header.scss */
@@ -422,14 +421,14 @@ body #above {
                 cursor: pointer;
                 opacity: 1; }
               /* line 249, /home/korgon/Work/springboard/build/scss/_header.scss */
-              body #above .heading .worksite .siteselect ul.sitebuttons li a.save {
-                background-image: url("/images/icons/save.png"); }
+              body #above .heading .worksite .siteselect ul.sitebuttons li a.commit {
+                background-image: url("/images/icons/commit.png"); }
               /* line 252, /home/korgon/Work/springboard/build/scss/_header.scss */
               body #above .heading .worksite .siteselect ul.sitebuttons li a.refresh {
                 background-image: url("/images/icons/refresh.png"); }
               /* line 255, /home/korgon/Work/springboard/build/scss/_header.scss */
               body #above .heading .worksite .siteselect ul.sitebuttons li a.push {
-                background-image: url("/images/icons/commit.png"); }
+                background-image: url("/images/icons/push.png"); }
               /* line 258, /home/korgon/Work/springboard/build/scss/_header.scss */
               body #above .heading .worksite .siteselect ul.sitebuttons li a.upload {
                 background-image: url("/images/icons/upload.png"); }

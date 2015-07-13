@@ -41,9 +41,9 @@ angular
   .module('springboardApp')
   .controller('EditorCtrl', EditorCtrl);
 
-EditorCtrl.$inject = ['$scope', '$log', '$location', '$window', 'sitemanager'];
+EditorCtrl.$inject = ['$scope', '$log', '$location', '$window', 'sitemanager', 'modalmanager'];
 
-function EditorCtrl($scope, $log, $location, $window, sitemanager) {
+function EditorCtrl($scope, $log, $location, $window, sitemanager, modalmanager) {
   var vm = this;
 
   vm.loading = true;
@@ -63,6 +63,21 @@ function EditorCtrl($scope, $log, $location, $window, sitemanager) {
 
   vm.openUrl = function() {
     $window.open(vm.url, '_blank');
+  }
+
+  vm.prompty = function() {
+    var promise = modalmanager.open(
+      'alert',
+      {
+        message: 'are you going to do that?'
+      }
+    );
+
+    promise.then(function(response) {
+      console.log('pull alert was resolved');
+    }, function(err) {
+      console.warn('pull alert rejected...');
+    });
   }
 
   vm.commitSite = function() {
@@ -99,4 +114,31 @@ function DashboardCtrl(sitemanager) {
 
   console.log('in dashboard...');
 
+}
+
+// modal controllers
+
+// alert modal
+angular
+  .module('springboardApp')
+  .controller('ModalAlertCtrl', ModalAlertCtrl);
+
+ModalAlertCtrl.$inject = ['$scope', 'modalmanager'];
+
+function ModalAlertCtrl($scope, modalmanager) {
+
+  console.log('in alert modal');
+
+  var params = modalmanager.params();
+  var mm = {};
+  $scope.mm = mm;
+
+  // Setup defaults using the modal params.
+  mm.message = ( params.message || 'Do the thing?' );
+
+  // modal resolution
+  mm.closeModal = function() {
+    console.log('close the modal yo');
+    modalmanager.resolve();
+  }
 }

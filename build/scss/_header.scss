@@ -246,14 +246,14 @@ body {
 									cursor: pointer;
 									opacity: 1;
 								}
-								&.save {
-									background-image: url('/images/icons/save.png');
+								&.commit {
+									background-image: url('/images/icons/commit.png');
 								}
 								&.refresh {
 									background-image: url('/images/icons/refresh.png');
 								}
 								&.push {
-									background-image: url('/images/icons/commit.png');
+									background-image: url('/images/icons/push.png');
 								}
 								&.upload {
 									background-image: url('/images/icons/upload.png');

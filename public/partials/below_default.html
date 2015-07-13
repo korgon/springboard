@@ -1,6 +1,18 @@
-<div id="input" class="modal">
-  <div class="wrap"></div>
-</div>
-<div id="loading" ng-show="vm.loading">
-  <div class="wrap"><img src="/images/loading.gif" class="loadImage"></div>
+<div class="modals">
+
+  <!-- loading modal -->
+  <div id="loading" ng-show="vm.loading">
+    <div class="wrap"><span class="loadImage"></div>
+  </div>
+
+  <div class="modal" modaly ng-show="vm.modalview" ng-switch="vm.modalview">
+    <!-- alert modal -->
+    <div ng-switch-when="alert" ng-controller="ModalAlertCtrl">
+      <p class="message">{{ mm.message }}</p>
+      <div class="modal_buttons">
+        <span class="modal_button" ng-click="mm.closeModal()">Close</span>
+      </div>
+    </div>
+
+  </div>
 </div>
