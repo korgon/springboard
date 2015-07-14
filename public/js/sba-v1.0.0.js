@@ -456,6 +456,11 @@ function GalleryCtrl($log, $location, sitemanager) {
   });
 
   vm.editSite = function(site) {
+    // TODO
+    // need to check to see if current has any uncommited changes (gitStatus)
+    // if so, pop a modal asking to commit changes or drop them
+    // ^ do something similar for refreshing sites
+
     vm.loading = true;
     sitemanager.editSite(site).then(function() {
       vm.loading = false;
