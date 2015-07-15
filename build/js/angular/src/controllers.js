@@ -112,10 +112,24 @@ function EditorCtrl($scope, $log, $location, $window, sitemanager, modalmanager)
       vm.loading = false;
     });
   }
+
+  vm.publishMockup = function() {
+    vm.loading = true;
+    sitemanager.publishSiteMockup().then(function() {
+      console.log('site published!');
+      vm.loading = false;
+    }, function(err) {
+      console.log(err);
+      vm.loading = false;
+    });
+  }
 }
 
 // Dashboard Controller
 /*******************/
+
+// TODO
+// build out a dashboard
 angular
   .module('springboardApp')
   .controller('DashboardCtrl', DashboardCtrl);
@@ -128,6 +142,22 @@ function DashboardCtrl(sitemanager) {
   console.log('in dashboard...');
 
 }
+
+// Settings Controller
+/*******************/
+angular
+  .module('springboardApp')
+  .controller('SettingsCtrl', SettingsCtrl);
+
+SettingsCtrl.$inject = ['sitemanager'];
+
+function SettingsCtrl(sitemanager) {
+  var vm = this;
+
+  console.log('in settings...');
+
+}
+
 
 /*******************/
 // Modal Controllers

@@ -7,6 +7,7 @@
 ------------------
 /api/sites
 /api/site
+/api/site/edit
 /api/site/commit
 /api/site/push
 
@@ -34,14 +35,15 @@ module.exports = function(springboard) {
       this.response.body = data;
     },
 
-    watch: function*() {
-    // runs the watchSite function that triggers watches of js/scss/html
+    // determine which site to edit
+    // runs the editSite function that triggers watches of js/scss/html
+    edit: function*() {
       try {
         var site = springboard.getSite(this.params.site);
         if (site.error) {
           throw("Site is invalid");
         } else {
-           var data = yield springboard.watchSite(site.name);
+           var data = yield springboard.editSite(site.name);
            this.response.type = 'json';
            this.response.body = data;
          }
@@ -52,7 +54,20 @@ module.exports = function(springboard) {
       }
     },
 
-    publish: function*() {
+    publishMockup: function*() {
+      try {
+        var data = yield springboard.publishSiteMockup();
+        this.response.type = 'json';
+        this.response.body = data;
+      }
+      catch(err) {
+        console.log(err);
+        this.response.type = 'json';
+        this.response.body = { error: true, message: 'site could not be published' };
+      }
+    },
+
+    publishLive: function*() {
       try {
         var data = yield springboard.publishSiteMockup();
         this.response.type = 'json';
@@ -119,7 +134,7 @@ module.exports = function(springboard) {
     merge: function*() {
       try {
         // var data = yield springboard.mergeSite();
-        var data = { message: 'not really merged dude...' };
+        var data = { error: false, message: 'not really merged dude...' };
         this.response.type = 'json';
         this.response.body = data;
       }
@@ -201,12 +216,6 @@ module.exports = function(springboard) {
     modules: function*() {
       this.response.type = 'json';
       this.response.body = springboard.getModules();
-    },
-
-    module: function*() {
-      var data = springboard.getModule(this.params.module);
-      this.response.type = 'json';
-      this.response.body = data;
     },
 
     install: function*() {

@@ -24,7 +24,8 @@ function sitemanager($http, $q, $timeout) {
     getSite: getSite,
     editSite: editSite,
     commitSite: commitSite,
-    pushSite: pushSite
+    pushSite: pushSite,
+    publishSiteMockup: publishSiteMockup
   });
 
   // switch to a new site for editing
@@ -33,11 +34,13 @@ function sitemanager($http, $q, $timeout) {
 
     $http({
       method: 'GET',
-      url: '/api/site/watch/' + site
+      url: '/api/site/edit/' + site
     }).success(function(data, status, headers) {
       if (data.error) {
         promise.reject(data.message);
       }
+      // empty the sites object
+      sites = {}
       site = data;
       promise.resolve(site);
     }).error(promise.reject);
@@ -45,7 +48,7 @@ function sitemanager($http, $q, $timeout) {
     return promise.promise;
   }
 
-  // return site object or check server if site being watched
+  // get current details of site under edit
   function getSite() {
     var promise = $q.defer();
 
@@ -63,22 +66,19 @@ function sitemanager($http, $q, $timeout) {
     return promise.promise;
   }
 
-  // return sites object or get sites from server
+  // return sites objects
   function getSites() {
     var promise = $q.defer();
 
-    if (Object.keys(sites).length > 0) {
-      console.log('have sites allready...');
+    $http({
+      method: 'GET',
+      url: '/api/sites'
+    }).success(function(data, status, headers) {
+      // empty site object
+      site = {};
+      sites = data;
       promise.resolve(sites);
-    } else {
-      $http({
-        method: 'GET',
-        url: '/api/sites'
-      }).success(function(data, status, headers) {
-        sites = data;
-        promise.resolve(sites);
-      }).error(promise.reject);
-    }
+    }).error(promise.reject);
 
     return promise.promise;
   }
@@ -95,7 +95,7 @@ function sitemanager($http, $q, $timeout) {
         if (data.error) {
           promise.reject(data.message);
         } else {
-          promise.resolve();
+          promise.resolve(data);
         }
       }).error(promise.reject);
     } else {
@@ -117,7 +117,28 @@ function sitemanager($http, $q, $timeout) {
         if (data.error) {
           promise.reject(data.message);
         } else {
-          promise.resolve();
+          promise.resolve(data);
+        }
+      }).error(promise.reject);
+    } else {
+      promise.reject({ error: true, message: 'not editing any site!'});
+    }
+
+    return promise.promise;
+  }
+
+  function publishSiteMockup() {
+    var promise = $q.defer();
+
+    if (site.name) {
+      $http({
+        method: 'GET',
+        url: '/api/site/publish/mockup'
+      }).success(function(data, status, headers) {
+        if (data.error) {
+          promise.reject(data.message);
+        } else {
+          promise.resolve(data);
         }
       }).error(promise.reject);
     } else {

@@ -45,6 +45,8 @@ runMe.$inject = ['$rootScope', '$route'];
 
 function runMe($rootScope, $route) {
   console.log('springboard client loading...');
+
+  // modify the title
   $rootScope.$on('$routeChangeSuccess', function() {
       document.title = $route.current.title;
   });

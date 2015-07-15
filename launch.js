@@ -66,7 +66,7 @@ app.use(serve(__dirname + '/.cache'));
 
 // Old pre-angular implementation (using /routes/routes.js)
 
-// var routes = require(__dirname + '/routes/routes.js')(springboard);
+// var routes = require(__dirname + '/routes/routes.js')();
 // router.get('/', routes.editor);
 // router.get(['/sites', '/gallery'], routes.gallery);
 // router.get('/sites/:site', routes.editSite);
@@ -79,13 +79,14 @@ var sitesapi = require(__dirname + '/routes/sitesv1.js')(springboard);
 router.get('/api/sites/sync', sitesapi.sync);
 
 // get sites or site json data
-router.get(['/api/sites', '/api/sites/all'], sitesapi.sites);
+router.get('/api/sites', sitesapi.sites);
 
 // choose site to begin watching
-router.get('/api/site/watch/:site', sitesapi.watch);
+router.get('/api/site/edit/:site', sitesapi.edit);
 // see which site is being watched
 router.get('/api/site', sitesapi.site);
 
+// create a new site
 router.post('/api/site/create', koaBody(), sitesapi.create);
 
 // git & s3
@@ -93,11 +94,12 @@ router.get('/api/site/status', sitesapi.status);
 router.get('/api/site/commit', sitesapi.commit);
 router.get('/api/site/push', sitesapi.push);
 router.get('/api/site/merge', sitesapi.merge);
-router.get('/api/site/publish', sitesapi.publish);
+router.get('/api/site/publish/mockup', sitesapi.publishMockup);
+router.get('/api/site/publish/live', sitesapi.publishLive);
 
 // modules, plugins and themes
 router.get('/api/modules', sitesapi.modules);
-router.get('/api/module/:module', sitesapi.module);
+
 // install anything
 router.post('/api/site/install', koaBody(), sitesapi.install);
 
