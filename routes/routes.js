@@ -1,6 +1,6 @@
 // springboard
 // http service
-// replaced by angular app
+// made obsolete by angular app
 
 module.exports = function() {
   return {

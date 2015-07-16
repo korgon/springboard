@@ -104,10 +104,16 @@ gulp.task('sass', function() {
   return gulp.src('build/scss/*.scss')
     .pipe(sourcemaps.init())
     .pipe(sass({
-        errLogToConsole: true,
-        sourceComments: 'map',
-        sourceMap: 'scss'
-      }))
+      sourceComments: 'map',
+      sourceMap: 'scss'
+    }))
+    .on('error', function(err) {
+			console.log(err);
+			console.log(err.message.red);
+			this.emit('end');
+			return;
+		})
+    .pipe(reload({stream: true})).on('error', gutil.log)
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('public/css'))
 });
@@ -115,7 +121,6 @@ gulp.task('sass', function() {
 // css task for injection
 gulp.task('css', function() {
   return gulp.src(['public/css/*.css', '!public/css/*.min.css'])
-  .pipe(reload({stream: true})).on('error', gutil.log)
   .pipe(rename({extname: '.min.css'}))
   .pipe(minify())
   .pipe(gulp.dest('public/css'));

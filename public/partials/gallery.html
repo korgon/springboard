@@ -4,7 +4,14 @@
   <div id="gallery">
     <div id="siteshow">
       <ul>
-        <li ng-repeat="site in vm.sites"><a ng-click="vm.editSite(site.name)"><span>{{ site.name }}</span><img src=""></a></li>
+        <li class="site" ng-repeat="site in vm.sites">
+          <img src="{{ site.thumb }}">
+          <div class="controls">
+            <a ng-click="vm.editSite(site.name)"><span class="button edit"></span></a>
+            <a href="/sites/{{ site.name }}/{{ site.default_html }}"><span class="button open"></span></a>
+          </div>
+          <div class="details">{{ site.name }}</div>
+        </li>
       </ul>
     </div>
   </div>

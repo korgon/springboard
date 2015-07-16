@@ -56,8 +56,6 @@ ng-switch:
 http://stackoverflow.com/questions/16649617/angularjs-change-partial-in-controller-on-click
 
 NEXT TODO
-Rewrite initialization
- - separate edit mode (branch checked out) from gallery mode (master checked out)
 Require user entry of name and s3 info
 Move modules folder to repository
 

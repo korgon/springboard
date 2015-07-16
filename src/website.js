@@ -103,7 +103,9 @@ function website(options, louser) {
 		this.getConfig();
 	}
 	else {
+		// new site defaults
 		this.default_html = this.name + '.html';
+		this.thumb = '/images/working.png';
 		this.saveConfig();
 	}
 }
@@ -221,7 +223,7 @@ website.prototype.capture = function(url) {
 
 						image.writeFile(output_path, function(err) {
 							if (err) return reject(err);
-							self.thumb = output_file;
+							self.thumb = '/sites/' + self.name + '/' + '.thumbs/' + output_file;
 							self.saveConfig();
 							return resolve(true);
 						});

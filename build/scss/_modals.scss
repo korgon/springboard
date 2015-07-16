@@ -14,13 +14,6 @@
     z-index: 999999;
   }
 
-  .boxwrap {
-    position: relative;
-    margin: 90px auto 0px;
-    padding: 20px;
-    pointer-events: auto;
-  }
-
   // loading modal
   #loading {
     position: fixed;
@@ -61,13 +54,14 @@
   .boxwrap {
     width: 250px;
     height: auto;
-    border: 1px solid $bluedark;
+    border: 1px solid $bluehighlight;
+    margin: 90px auto 0px;
     padding: 0;
     .boxtop {
       height: 22px;
       overflow: hidden;
       background-color: $bluedarkestest;
-      background-image: linear-gradient($bluefaded, $bluedark);
+      background-image: linear-gradient($bluefaded, $bluehighlight);
       border-bottom: 1px solid $bluedark;
       ul.boxbuttons {
         display: flex;
@@ -106,8 +100,12 @@
       }
     }
     .boxcontent {
-      background-color: $blueblack;
+      background-color: $bluedarkest;
       padding: 10px;
+      color: $bluegrey;
+      .message {
+        text-align: center;
+      }
       label {
         margin-bottom: 6px;
         display: block;
@@ -129,19 +127,23 @@
       .buttons {
         margin-top: 30px;
       }
-      input[type="submit"], input[type="button"] {
+      input[type="submit"], input[type="button"], button {
         text-transform: uppercase;
         width: 100%;
-        border: 1px solid $bluedark;
+        border: 1px solid $orange;
         border-radius: 3px;
-        background-color: $bluedarkestest;
-        background-image: linear-gradient($bluedark, $bluedark);
-        color: $bluegrey;
+        background-color: $bluehighlight;
+        background-image: linear-gradient($orange, $orangefaded);
+        color: $orangedark;
         text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
         &:hover {
           cursor: pointer;
-          background-image: linear-gradient($bluefaded, $bluefaded);
-          color: $bluegrey;
+          //border-color: $orangefaded;
+          background-image: linear-gradient($orange - #111, $orangefaded - #111);
+          color: $orangedark;
+        }
+        &:focus {
+          outline: 0;
         }
       }
       input[type="button"] {

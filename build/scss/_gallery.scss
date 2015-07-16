@@ -13,45 +13,73 @@ body {
 				list-style: none;
 				margin: 0;
 				padding: 0;
-				li {
+				.site {
 					box-sizing: border-box;
-					max-width: 320px;
-					max-height: 180px;
-					width: 24%;
+					width: 320px;
+					height: 180px;
 					position: relative;
 					font-size: 14px;
 					border: 1px solid $bluedarkest;
 					margin: 0.5%;
-					&:first-of-type {
-						border-top: 0;
+					overflow: hidden;
+					&:hover > .controls {
+						top: 0;
 					}
-					@include respondpx(768) {
-						width: 45%;
-					}
-					a {
+					img {
 						display: block;
-						span {
-							position: absolute;
-							box-sizing: border-box;
-							width: 100%;
+						max-width: 100%;
+					}
+					.controls {
+						transition: top 222ms ease;
+						background: rgba(0, 12, 22, 0.8);
+						position: absolute;
+						top: 180px - 33px;
+						height: 100%;
+						width: 100%;
+						text-align: center;
+						&.visible {
 							top: 0;
-							padding-left: 12px;
-							color: $bluetext;
-							display: block;
-							line-height: 33px;
-							background: rgba(0, 12, 22, 0.9);
 						}
-						img {
-							display: block;
-							max-width: 100%;
+						a {
+							display: inline-block;
+							margin: 40px 20px 20px;
+							&:hover {
+								color: $orange;
+								cursor: pointer;
+							}
+							&:hover > span {
+								color: $orange;
+							}
 						}
-						&:hover {
-							color: $orange;
-							cursor: pointer;
+						.button {
+							display: inline-block;
+							width: 50px;
+							height: 50px;
+							padding: 10px;
+							background-repeat: no-repeat;
+							background-position: center center;
+
+							&:hover {
+
+							}
 						}
-						&:hover > span {
-							color: $orange;
+						.edit {
+							background-image: url('/images/icons/edit.png');
 						}
+						.open {
+							background-image: url('/images/icons/open.png');
+						}
+					}
+					.details {
+						position: absolute;
+						display: block;
+						bottom: 0;
+						box-sizing: border-box;
+						width: 100%;
+						padding-left: 12px;
+						color: $bluegrey;
+						display: block;
+						line-height: 33px;
 					}
 				}
 			}

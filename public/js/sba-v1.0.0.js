@@ -514,7 +514,7 @@ function EditorCtrl($scope, $log, $location, $window, sitemanager, modalmanager)
     var promise = modalmanager.open(
       'alert',
       {
-        message: 'are you going to do that?'
+        message: 'Are you going to do that?'
       }
     );
 

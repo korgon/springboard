@@ -25,7 +25,7 @@ global.dirname = __dirname;
 global.site_repository_dirname = __dirname + "/searchspring-sites";
 
 // local modules
-var springboard = require(__dirname + "/lib/springboard.js");
+var springboard = require(__dirname + "/src/springboard.js");
 
 // start
 var app = koa();
