@@ -58,9 +58,12 @@ body {
 							padding: 10px;
 							background-repeat: no-repeat;
 							background-position: center center;
-
+  						border-radius: 50px;
+							transition: all 222ms ease;
+							transition-property: box-shadow, background-color;
 							&:hover {
-
+								//box-shadow: inset 0px 0px 9px #688BA3;
+								//background-color: rgba(0, 12, 22, 0.6);
 							}
 						}
 						.edit {

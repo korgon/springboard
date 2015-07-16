@@ -372,81 +372,96 @@ function springboard() {
 	self.newSite = function(details) {
 		// promisified
 		return new Promise(function(resolve, reject) {
-			// purify all things
-			details.name = details.name.toLowerCase();
-			details.siteid = details.siteid.toLowerCase();
-			details.backend = details.backend.toLowerCase();
-			details.cart = details.cart.toLowerCase();
 
-			if (details === undefined || details.name === undefined || details.siteid === undefined) {
-				return reject(Error('cannot create site: need more detials.'));
-			}
-			else {
-				git.checkout('master', function(err) {
-					if (err) return reject(err);
-				}).clean().fetch(function(err) {
-					if (err) return reject(err);
-					// check if site already exists
-					if (fs.existsSync(sites_dir + '/' + details.name)) {
-						console.log('site exists!');
-						return reject(Error('cannot create site: site exists.'));
-					}
-				}).checkout('site/_template', function(err) {
-					if (err) return reject(err);
-				}).fetch(function(err) {
-					if (err) return reject(err);
-				}).checkoutLocalBranch('site/' + details.name, function (err) {
-					if (err) return reject(err);
-				}).then(function() {
-					// create new folder
-					var site_folder = sites_dir + '/' + details.name;
-					fs.mkdirSync(site_folder);
-					// create html file (for now)
-					// modules will create their own html with script tags and skeleton frameworks
-					var htmls = '<html>\n\t<head></head>\n\t<body>';
-					htmls += '\n\t\t<h1>' + details.name + '</h1>';
-					htmls += '\n\t</body>\n</html>';
-					try {
-						fs.writeFileSync(site_folder + '/' + details.name + '.html', htmls);
-					}
-					catch(err) {
-						return reject(err);
-					}
-				}).then(function() {
-					// create new site object
-					try {
-						details.directory = sites_dir + '/' + details.name;
-						details.gitstatus = 'mockup';
-						details.status = 'new';
-						sites[details.name] = new website(details, options.user, git, s3);
-						site = sites[details.name];
-						if (!sites[details.name].valid) {
-							delete sites[details.name];
-							site = {};
-							throw(details.name);
-						} else {
-							options.current_site = site.name;
-							writeConfig();
+			// TODO
+			// check if site was being worked on to check for uncommited work
+			// commit site if so.
+			self.gitStatus().then(function(status) {
+				if (status.changes) {
+					// there are uncommited changes on current site
+					return reject({ error: true, message: 'need to commit changes' });
+				} else if (status.ahead) {
+					// there are unpushed commits on current site
+					return reject({ error: true, message: 'need to push changes' });
+				}
+
+				// purify all things
+				details.name = details.name.toLowerCase();
+				details.siteid = details.siteid.toLowerCase();
+				details.backend = details.backend.toLowerCase();
+				details.cart = details.cart.toLowerCase();
+
+				if (details === undefined || details.name === undefined || details.siteid === undefined) {
+					return reject(Error('cannot create site: need more detials.'));
+				}
+				else {
+					git.checkout('master', function(err) {
+						if (err) return reject(err);
+					}).clean().fetch(function(err) {
+						if (err) return reject(err);
+						// check if site already exists
+						if (fs.existsSync(sites_dir + '/' + details.name)) {
+							console.log('site exists!');
+							return reject(Error('cannot create site: site exists.'));
 						}
-					}
-					catch(err) {
-						var errormsg = 'failed to create: ' + err;
-						throw(errormsg);
-					}
-				}).then(function() {
-					// do something with modules
-				}).then(function() {
-					var commitmsg = options.user.name + '@springboard >>> CREATED >>> ' + site.name;
-					mergeSite(commitmsg).then(function() {
-						logit.log('new site', 'new branch created for ' + site.name, 'pass');
-						console.log(site.directory.green + '\n');
-						return resolve(site);
-					}).catch(function(err) {
-						console.error(err);
-						return reject(err);
+					}).checkout('site/_template', function(err) {
+						if (err) return reject(err);
+					}).fetch(function(err) {
+						if (err) return reject(err);
+					}).checkoutLocalBranch('site/' + details.name, function (err) {
+						if (err) return reject(err);
+					}).then(function() {
+						// create new folder
+						var site_folder = sites_dir + '/' + details.name;
+						fs.mkdirSync(site_folder);
+						// create html file (for now)
+						// modules will create their own html with script tags and skeleton frameworks
+						var htmls = '<html>\n\t<head></head>\n\t<body>';
+						htmls += '\n\t\t<h1>' + details.name + '</h1>';
+						htmls += '\n\t</body>\n</html>';
+						try {
+							fs.writeFileSync(site_folder + '/' + details.name + '.html', htmls);
+						}
+						catch(err) {
+							return reject(err);
+						}
+					}).then(function() {
+						// create new site object
+						try {
+							details.directory = sites_dir + '/' + details.name;
+							details.gitstatus = 'mockup';
+							details.status = 'new';
+							sites[details.name] = new website(details, options.user, git, s3);
+							site = sites[details.name];
+							if (!sites[details.name].valid) {
+								delete sites[details.name];
+								site = {};
+								throw(details.name);
+							} else {
+								options.current_site = site.name;
+								writeConfig();
+							}
+						}
+						catch(err) {
+							var errormsg = 'failed to create: ' + err;
+							throw(errormsg);
+						}
+					}).then(function() {
+						// do something with modules
+					}).then(function() {
+						var commitmsg = options.user.name + '@springboard >>> CREATED >>> ' + site.name;
+						mergeSite(commitmsg).then(function() {
+							logit.log('new site', 'new branch created for ' + site.name, 'pass');
+							console.log(site.directory.green + '\n');
+							self.editSite(site.name);
+							return resolve(site);
+						}).catch(function(err) {
+							console.error(err);
+							return reject(err);
+						});
 					});
-				});
-			}
+				}
+			});
 		});
 	}
 
@@ -826,8 +841,7 @@ function springboard() {
 			if (message === undefined) {
 				message = options.user.name + '@springboard >>> MERGED >>> ' + site.name;
 			}
-			stopWatch();
-			site.push(message).then(function(){
+			self.pushSite(message).then(function(){
 				git.checkout('master', function(err) {
 					if (err) return reject(err);
 				}).merge(message, 'site/' + site.name, function(err) {
@@ -838,6 +852,9 @@ function springboard() {
 					logit.log('merged', site.name + ' >>> ' + 'master', 'warn');
 					return resolve(true);
 				});
+			}).catch(function(err) {
+				console.log(err);
+				return reject(err);
 			});
 		});
 	}

@@ -608,14 +608,17 @@ body #gallery #siteshow {
           height: 50px;
           padding: 10px;
           background-repeat: no-repeat;
-          background-position: center center; }
-        /* line 66, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+          background-position: center center;
+          border-radius: 50px;
+          transition: all 222ms ease;
+          transition-property: box-shadow, background-color; }
+        /* line 69, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
         body #gallery #siteshow ul .site .controls .edit {
           background-image: url("/images/icons/edit.png"); }
-        /* line 69, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+        /* line 72, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
         body #gallery #siteshow ul .site .controls .open {
           background-image: url("/images/icons/open.png"); }
-      /* line 73, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      /* line 76, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
       body #gallery #siteshow ul .site .details {
         position: absolute;
         display: block;
