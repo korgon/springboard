@@ -76,7 +76,7 @@ app.use(serve(__dirname + '/.cache'));
 var sitesapi = require(__dirname + '/routes/sitesv1.js')(springboard);
 
 // reload sites from file (trigger siteLoad)
-router.get('/api/sites/sync', sitesapi.sync);
+router.get('/api/sites/load', sitesapi.loadSites);
 
 // get sites or site json data
 router.get('/api/sites', sitesapi.sites);

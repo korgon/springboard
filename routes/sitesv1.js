@@ -28,6 +28,19 @@ module.exports = function(springboard) {
       this.response.body = springboard.getSites();
     },
 
+    // stop editing and load sites
+    loadSites: function*() {
+      try {
+        var data = yield springboard.loadSites();
+        this.response.type = 'json';
+        this.response.body = data;
+      }
+      catch(err) {
+        this.response.type = 'json';
+        this.response.body = { error: true, message: 'failed to sync with repository: ' + err.message };
+      }
+    },
+
     // get the current site or a specific one
     site: function*() {
       var data = springboard.getSite(this.params.site);
@@ -50,7 +63,7 @@ module.exports = function(springboard) {
       }
       catch(err) {
         this.response.type = 'json';
-        this.response.body = { error: true, message: 'could not watch ' + this.params.site };
+        this.response.body = { error: true, message: 'could not edit ' + this.params.site };
       }
     },
 
@@ -61,7 +74,6 @@ module.exports = function(springboard) {
         this.response.body = data;
       }
       catch(err) {
-        console.log(err);
         this.response.type = 'json';
         this.response.body = { error: true, message: 'site could not be published' };
       }
@@ -74,7 +86,6 @@ module.exports = function(springboard) {
         this.response.body = data;
       }
       catch(err) {
-        console.log(err);
         this.response.type = 'json';
         this.response.body = { error: true, message: 'site could not be published' };
       }
@@ -142,19 +153,6 @@ module.exports = function(springboard) {
         console.log(err);
         this.response.type = 'json';
         this.response.body = { error: true, message: 'site could not be merged' };
-      }
-    },
-
-    sync: function*() {
-      try {
-        var data = yield springboard.loadSites();
-        this.response.type = 'json';
-        this.response.body = data;
-      }
-      catch(err) {
-        console.log(err);
-        this.response.type = 'json';
-        this.response.body = { error: true, message: 'failed to sync with repository: ' + err.message };
       }
     },
 

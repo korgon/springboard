@@ -449,12 +449,13 @@ function GalleryCtrl($log, $location, sitemanager) {
   vm.loading = true;
   $log.log('in gallery...');
 
-  sitemanager.getSites().then(function(sites) {
+  sitemanager.loadSites().then(function(sites) {
     vm.sites = sites;
     vm.loading = false;
     $log.info('got sites...');
   }, function() {
     $log.error('Unable to retrieve sites!');
+    // maybe go back to previous page
   });
 
   vm.editSite = function(site) {
@@ -722,7 +723,7 @@ function sitemanager($http, $q, $timeout) {
   // service api
   return({
     // reloadSites: function() { return reloadSites(); },
-    getSites: getSites,
+    loadSites: loadSites,
     getSite: getSite,
     editSite: editSite,
     commitSite: commitSite,
@@ -769,12 +770,12 @@ function sitemanager($http, $q, $timeout) {
   }
 
   // return sites objects
-  function getSites() {
+  function loadSites() {
     var promise = $q.defer();
 
     $http({
       method: 'GET',
-      url: '/api/sites'
+      url: '/api/sites/load'
     }).success(function(data, status, headers) {
       // empty site object
       site = {};

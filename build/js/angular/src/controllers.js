@@ -16,12 +16,13 @@ function GalleryCtrl($log, $location, sitemanager) {
   vm.loading = true;
   $log.log('in gallery...');
 
-  sitemanager.getSites().then(function(sites) {
+  sitemanager.loadSites().then(function(sites) {
     vm.sites = sites;
     vm.loading = false;
     $log.info('got sites...');
   }, function() {
     $log.error('Unable to retrieve sites!');
+    // maybe go back to previous page
   });
 
   vm.editSite = function(site) {
