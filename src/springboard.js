@@ -369,7 +369,7 @@ function springboard() {
 
 	// create new site
 	// assuming that current site has been commited
-	self.newSite = function(details) {
+	self.addSite = function(details) {
 		// promisified
 		return new Promise(function(resolve, reject) {
 
@@ -394,19 +394,16 @@ function springboard() {
 				if (details === undefined || details.name === undefined || details.siteid === undefined) {
 					return reject(Error('cannot create site: need more detials.'));
 				}
-				else {
+				gitReset().then(function() {
 					git.checkout('master', function(err) {
 						if (err) return reject(err);
-					}).clean().fetch(function(err) {
-						if (err) return reject(err);
+
 						// check if site already exists
 						if (fs.existsSync(sites_dir + '/' + details.name)) {
 							console.log('site exists!');
 							return reject(Error('cannot create site: site exists.'));
 						}
 					}).checkout('site/_template', function(err) {
-						if (err) return reject(err);
-					}).fetch(function(err) {
 						if (err) return reject(err);
 					}).checkoutLocalBranch('site/' + details.name, function (err) {
 						if (err) return reject(err);
@@ -447,8 +444,6 @@ function springboard() {
 							throw(errormsg);
 						}
 					}).then(function() {
-						// do something with modules
-					}).then(function() {
 						var commitmsg = options.user.name + '@springboard >>> CREATED >>> ' + site.name;
 						mergeSite(commitmsg).then(function() {
 							logit.log('new site', 'new branch created for ' + site.name, 'pass');
@@ -460,7 +455,7 @@ function springboard() {
 							return reject(err);
 						});
 					});
-				}
+				});
 			});
 		});
 	}
@@ -590,14 +585,14 @@ function springboard() {
 							// check if offline
 							if (err.message.indexOf('Could not resolve hostname') > -1) {
 								logit.log('warning', 'working offline...', 'fail');
-								return reject({ error: false, site: site.name, action: 'push', status: 'failed', message: 'working offline' });
+								return reject({ error: false, site: site.name, action: 'pushup', status: 'failed', message: 'working offline' });
 							} else {
-								return reject({ error: true, site: site.name, action: 'push', message: err.message });
+								return reject({ error: true, site: site.name, action: 'pushup', message: err.message });
 							}
 						} else {
 							logit.log('pushed', site.name + ' has been pushed to gitland', 'pass');
 
-							return resolve({ error: false, site: site.name, action: 'push', status: 'success', message: 'site pushed to the newly created branch on the repo' });
+							return resolve({ error: false, site: site.name, action: 'pushup', status: 'success', message: 'site pushed to the newly created branch on the repo' });
 						}
 					});
 				} else {
@@ -778,14 +773,15 @@ function springboard() {
 			// determine last state based on repo branch
 			git.on(function(err, data) {
 				if (err) reject(err);
-
 				if (data == 'master') {
 					self.loadSites().then(function() {
 						return resolve(true);
 					}).catch(function(err) {
 						return reject(err);
 					});
-				} else {
+				} else if (data.indexOf('site/') > -1 && data != 'site/_template') {
+					console.log('here?'.bold.red);
+					console.log(data);
 					// check if on current site branch
 					if (options.current_site && options.current_site.toLowerCase() != null) {
 						// on current site branch
@@ -818,6 +814,15 @@ function springboard() {
 							return reject(err);
 						});
 					}
+				} else {
+					// on a strange branch...
+					gitReset().then(function() {
+						return self.loadSites()
+					}).then(function() {
+						return resolve(true);
+					}).catch(function(err) {
+						return reject(err);
+					});
 				}
 			});
 		});
@@ -848,13 +853,21 @@ function springboard() {
 					if (err) return reject(err);
 				}).push('origin', 'master', function(err) {
 					if (err) return reject(err);
-				}).then(function() {
+
 					logit.log('merged', site.name + ' >>> ' + 'master', 'warn');
 					return resolve(true);
 				});
 			}).catch(function(err) {
-				console.log(err);
-				return reject(err);
+				// TODO FIX THIS
+				// check if offline
+				if (err.message.indexOf('Could not resolve hostname') > -1) {
+					logit.log('warning', 'working offline!', 'fail');
+					console.log('unable to merge new site...'.red);
+					return resolve(true);
+				} else {
+					console.log(err);
+					return reject(err);
+				}
 			});
 		});
 	}
@@ -979,7 +992,7 @@ function springboard() {
 		// new watching method to rid ourselves of gulp
 		var watch_list = [site.directory + '/scss/**/*.scss', site.directory + '/scss/**/*.sass'];
 		eye_of_sauron = chokidar.watch(watch_list, { ignoreInitial: true });
-		eye_of_sauron.on('change', function(path) {
+		eye_of_sauron.on(['change', 'add'], function(path) {
 			scssBuilder(path);
 		})
 		.on('add', function(path) {

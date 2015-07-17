@@ -104,6 +104,7 @@ function website(options, louser) {
 	}
 	else {
 		// new site defaults
+		this.created = new Date().getTime();
 		this.default_html = this.name + '.html';
 		this.thumb = '/images/working.png';
 		this.saveConfig();

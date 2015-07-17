@@ -724,6 +724,7 @@ function sitemanager($http, $q, $timeout) {
   return({
     // reloadSites: function() { return reloadSites(); },
     loadSites: loadSites,
+    getSites: getSites,
     getSite: getSite,
     editSite: editSite,
     commitSite: commitSite,
@@ -769,6 +770,7 @@ function sitemanager($http, $q, $timeout) {
     return promise.promise;
   }
 
+  // triggers complete reload of sites (including pull)
   // return sites objects
   function loadSites() {
     var promise = $q.defer();
@@ -776,6 +778,23 @@ function sitemanager($http, $q, $timeout) {
     $http({
       method: 'GET',
       url: '/api/sites/load'
+    }).success(function(data, status, headers) {
+      // empty site object
+      site = {};
+      sites = data;
+      promise.resolve(sites);
+    }).error(promise.reject);
+
+    return promise.promise;
+  }
+
+  // return sites objects
+  function getSites() {
+    var promise = $q.defer();
+
+    $http({
+      method: 'GET',
+      url: '/api/sites'
     }).success(function(data, status, headers) {
       // empty site object
       site = {};
