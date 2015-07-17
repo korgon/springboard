@@ -1,26 +1,26 @@
-/* line 24, stdin */
+/* line 25, stdin */
 body {
   padding: 0;
   margin: 0;
   font-family: 'Roboto', sans-serif;
   background-color: #354E66;
   color: #0E1920; }
-  /* line 32, stdin */
+  /* line 33, stdin */
   body a {
-    color: #DD8500;
+    color: #CC5200;
     font-weight: bold;
     text-decoration: none; }
-  /* line 37, stdin */
+  /* line 38, stdin */
   body input, body select, body textarea {
     padding: 7px;
     border: 0;
     color: #7194AD;
     font-weight: bold;
     background-color: #001A2B; }
-    /* line 43, stdin */
+    /* line 44, stdin */
     body input:focus, body input:active, body select:focus, body select:active, body textarea:focus, body textarea:active {
       outline: 0; }
-  /* line 47, stdin */
+  /* line 48, stdin */
   body #content {
     top: 40px;
     left: 0;
@@ -31,7 +31,7 @@ body {
     background-size: cover;
     background-position: 0px 0px;
     overflow: auto; }
-    /* line 57, stdin */
+    /* line 58, stdin */
     body #content.fullscreen {
       top: 0; }
 
@@ -71,7 +71,7 @@ body {
     margin: 0 auto;
     background-color: #001A2B;
     border: 1px solid #354E66;
-    box-shadow: 0px 0px 20px #DD8500; }
+    box-shadow: 0px 0px 20px #CC5200; }
     /* line 43, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
     .modals #loading .wrap .loadImage {
       background: url("/images/loading.gif");
@@ -160,23 +160,24 @@ body {
       margin-top: 30px; }
     /* line 130, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
     .modals .boxwrap .boxcontent input[type="submit"], .modals .boxwrap .boxcontent input[type="button"], .modals .boxwrap .boxcontent button {
+      border: solid 1px #ff6600;
+      border-radius: 2px;
+      background: #CC5200;
+      color: white;
+      font-size: 12px;
+      cursor: pointer;
+      padding: 4px 12px;
+      text-decoration: none;
       text-transform: uppercase;
-      width: 100%;
-      border: 1px solid #DD8500;
-      border-radius: 3px;
-      background-color: #304B66;
-      background-image: linear-gradient(#DD8500, #724911);
-      color: #352C17;
-      text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25); }
-      /* line 139, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+      width: 100%; }
+      /* line 148, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
       .modals .boxwrap .boxcontent input[type="submit"]:hover, .modals .boxwrap .boxcontent input[type="button"]:hover, .modals .boxwrap .boxcontent button:hover {
-        cursor: pointer;
-        background-image: linear-gradient(#cc7400, #613800);
-        color: #352C17; }
-      /* line 145, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+        background: #352C17;
+        border-color: #352C17; }
+      /* line 152, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
       .modals .boxwrap .boxcontent input[type="submit"]:focus, .modals .boxwrap .boxcontent input[type="button"]:focus, .modals .boxwrap .boxcontent button:focus {
         outline: 0; }
-    /* line 149, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+    /* line 156, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
     .modals .boxwrap .boxcontent input[type="button"] {
       float: right; }
 
@@ -321,7 +322,7 @@ body #above {
       /* line 147, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
       body #above .heading #frameurl:focus {
         background-color: #0E1920;
-        color: #DD8500; }
+        color: #CC5200; }
     /* line 152, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
     body #above .heading .openurl {
       order: 3;
@@ -501,7 +502,7 @@ body #above {
                 transition: all 222ms ease; }
                 /* line 328, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
                 body #above .heading .worksite .siteselect .sitescroller ul.sitechoices li a:hover {
-                  color: #DD8500;
+                  color: #CC5200;
                   height: 141px;
                   cursor: pointer; }
                 /* line 333, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
@@ -596,11 +597,11 @@ body #gallery #siteshow {
           margin: 40px 20px 20px; }
           /* line 46, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
           body #gallery #siteshow ul .site .controls a:hover {
-            color: #DD8500;
+            color: #CC5200;
             cursor: pointer; }
           /* line 50, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
           body #gallery #siteshow ul .site .controls a:hover > span {
-            color: #DD8500; }
+            color: #CC5200; }
         /* line 54, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
         body #gallery #siteshow ul .site .controls .button {
           display: inline-block;
