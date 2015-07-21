@@ -3,12 +3,30 @@
 <div id="content">
   <div id="gallery">
     <div id="siteshow">
-      <ul>
+      <ul ng-cloak>
+        <li ng-hide="vm.loading" class="site">
+          <div class="site_new">
+            <div class="button_add" ng-hide="input_site"><a ng-click="input_site = true"><span class="site_button add"></span></a></div>
+            <form id="createSite" ng-class="{'visible' : input_site}">
+              <label for="input_name">Site Name</label>
+              <input type="text" name="name" id="input_name" autocomplete="off" ng-model="new_site.name">
+              <select ng-model="new_site.cart" ng-options="cart as cart for cart in vm.carts" ng-init="new_site.cart = 'custom'">
+              </select>
+              <label for="input_siteid">Siteid</label>
+              <input type="text" name="siteid" id="input_siteid" autocomplete="off" ng-model="new_site.siteid">
+              <select ng-model="new_site.backend" ng-options="backend as backend for backend in vm.backends" ng-init="new_site.backend = 'solr'"></select>
+              <div class="buttons">
+                <input class="button new_add" type="submit" name="submit" value="Add" ng-click="vm.newSite(new_site)">
+                <input class="button new_cancel" type="button" value="Cancel" ng-click="input_site = false">
+              </div>
+            </form>
+          </div>
+        </li>
         <li class="site" ng-repeat="site in vm.sites">
-          <img src="{{ site.thumb }}">
+          <img ng-src="{{ site.thumb }}">
           <div class="controls">
-            <a ng-click="vm.editSite(site.name)"><span class="button edit"></span></a>
-            <a href="/sites/{{ site.name }}/{{ site.default_html }}" target="_blank"><span class="button open"></span></a>
+            <a ng-click="vm.editSite(site.name)"><span class="site_button edit"></span></a>
+            <a href="/sites/{{ site.name }}/{{ site.default_html }}" target="_blank"><span class="site_button open"></span></a>
           </div>
           <div class="details">{{ site.name }}</div>
         </li>

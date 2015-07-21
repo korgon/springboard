@@ -96,7 +96,7 @@ var browserSync = require('browser-sync');
 // local modules
 var website = require('./website.js');
 var mod = require('./mod.js');
-var logit = require('./logit.js')();
+var logit = require('./logit.js');
 var git = require('./git.js')();
 var gitmod = require('./git.js')();
 var s3w = require('./s3w.js');
@@ -283,6 +283,8 @@ function springboard() {
 					// first empty sites object (to start fresh)
 					for (var del in sites) delete sites[del];
 
+					gc();
+
 					for (var folder of folders) {
 						// ignore non directories... or hidden folders (^.*)
 						if (!fs.lstatSync(sites_dir + '/' + folder).isDirectory() || folder.match(/^\./))
@@ -350,8 +352,8 @@ function springboard() {
 						// start watching
 						watchScss();
 						watchHtml();
-						watchJSON();
-						watchJs();
+						//watchJSON();
+						//watchJs();
 						logit.log('editing site', 'now watching for changes on ' + site.name.bold, 'warn');
 
 						return resolve(site);
@@ -780,8 +782,6 @@ function springboard() {
 						return reject(err);
 					});
 				} else if (data.indexOf('site/') > -1 && data != 'site/_template') {
-					console.log('here?'.bold.red);
-					console.log(data);
 					// check if on current site branch
 					if (options.current_site && options.current_site.toLowerCase() != null) {
 						// on current site branch
@@ -980,8 +980,9 @@ function springboard() {
 		// blinding the eyes
 		if (eye_of_sauron) eye_of_sauron.close();
 		if (eye_of_horus)	eye_of_horus.close();
-		if (eye_of_saturn)	eye_of_saturn.end();
-		if (all_seeing_eye)	all_seeing_eye.end();
+		gc();
+		//if (eye_of_saturn)	eye_of_saturn.end();
+		//if (all_seeing_eye)	all_seeing_eye.end();
 		return;
 	}
 

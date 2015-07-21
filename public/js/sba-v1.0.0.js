@@ -449,6 +449,9 @@ function GalleryCtrl($log, $location, sitemanager) {
   vm.loading = true;
   $log.log('in gallery...');
 
+  vm.backends = ['solr', 'saluki'];
+  vm.carts = ['custom', 'magento', 'bigcommerce'];
+
   sitemanager.loadSites().then(function(sites) {
     vm.sites = sites;
     vm.loading = false;

@@ -1,5 +1,7 @@
 #Build and watch
-These scripts are used to build the other scripts...
+Angular js resides in js/angular
+scss files contain styling for springboard
+files are watched and built using gulp
 
 ##Using gulp:
 Watch for design changes and reload.

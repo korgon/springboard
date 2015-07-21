@@ -13,6 +13,48 @@ body {
 				list-style: none;
 				margin: 0;
 				padding: 0;
+				.site_new {
+					background: rgba(0, 12, 22, 0.8);
+					padding: 20px;
+					position: relative;
+					width: 100%;
+					height: 100%;
+					box-sizing: border-box;
+					.button_add {
+						position: absolute;
+						top: 0;
+						left: 0;
+						z-index: 1;
+						text-align: center;
+						width: 100%;
+						height: 100%;
+						a {
+							display: inline-block;
+							margin: 50px auto;
+							&:hover {
+								cursor: pointer;
+							}
+						}
+					}
+					#createSite {
+						transition: opacity 222ms ease;
+						opacity: 0;
+						&.visible {
+							opacity: 1;
+						}
+						.buttons {
+							overflow: auto;
+							text-align: center;
+							.new_add {
+								width: 80px;
+								margin-right: 10px;
+							}
+							.new_cancel {
+								width: 80px;
+							}
+						}
+					}
+				}
 				.site {
 					box-sizing: border-box;
 					width: 320px;
@@ -44,33 +86,8 @@ body {
 							display: inline-block;
 							margin: 40px 20px 20px;
 							&:hover {
-								color: $orange;
 								cursor: pointer;
 							}
-							&:hover > span {
-								color: $orange;
-							}
-						}
-						.button {
-							display: inline-block;
-							width: 50px;
-							height: 50px;
-							padding: 10px;
-							background-repeat: no-repeat;
-							background-position: center center;
-  						border-radius: 50px;
-							transition: all 222ms ease;
-							transition-property: box-shadow, background-color;
-							&:hover {
-								//box-shadow: inset 0px 0px 9px #688BA3;
-								//background-color: rgba(0, 12, 22, 0.6);
-							}
-						}
-						.edit {
-							background-image: url('/images/icons/edit.png');
-						}
-						.open {
-							background-image: url('/images/icons/open.png');
 						}
 					}
 					.details {
@@ -83,6 +100,30 @@ body {
 						color: $bluegrey;
 						display: block;
 						line-height: 33px;
+					}
+				}
+				.site_button {
+					display: inline-block;
+					width: 50px;
+					height: 50px;
+					padding: 10px;
+					background-repeat: no-repeat;
+					background-position: center center;
+					border-radius: 50px;
+					transition: all 222ms ease;
+					transition-property: box-shadow, background-color;
+					&:hover {
+						//box-shadow: inset 0px 0px 9px #688BA3;
+						//background-color: rgba(0, 12, 22, 0.6);
+					}
+					&.edit {
+						background-image: url('/images/icons/edit.png');
+					}
+					&.open {
+						background-image: url('/images/icons/open.png');
+					}
+					&.add {
+						background-image: url('/images/icons/newsite.png');
 					}
 				}
 			}

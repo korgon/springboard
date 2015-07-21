@@ -5,11 +5,7 @@
 
   var colors = require('colors');
 
-  function logit() {
-     // not doing any constructor thingies...
-  }
-
-  logit.prototype.log = function(alert, message, type) {
+  var log = function(alert, message, type) {
     alert = ' ' + alert + ' ';
     var boxtopper = '┌' + '─'.repeat(alert.length) + '┐';
     var boxbottom = '└' + '─'.repeat(alert.length) + '┘';
@@ -46,8 +42,9 @@
     }
   }
 
-  module.exports = function() {
-     return new logit();
-  };
+  // returned object
+  module.exports = {
+    log: log
+  }
 
-}());
+})();

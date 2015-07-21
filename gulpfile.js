@@ -3,7 +3,6 @@
 // using gulp browsersync and browserify
 
 var gulp = require('gulp');
-var colors = require('colors');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var browserify = require('browserify');
@@ -34,38 +33,7 @@ gulp.task('watch', function() {
   //gulp.watch('build/js/*.js', ['lint', 'bundlejs', reload]);
   gulp.watch('build/scss/*.scss', ['sass']);
   gulp.watch('public/css/*.css', ['css']);
-  gulp.watch('views/**/*.jade').on('change', reload);
-});
-
-gulp.task('watchSBC', function() {
-  gulp.watch('build/js/sbc.js', ['lintSBC', 'bundleSBC', reload]);
-});
-
-// js bundler task (using browserifiy)
-gulp.task('bundleSBC', function() {
-  var sbc = browserify();
-  sbc.add('./build/js/sbc.js');
-
-  return sbc.bundle().on('error', browserifyHandler)
-    .pipe(source('sbc-v1.0.0.js'))
-    .pipe(gulp.dest('public/js'))
-    .pipe(buffer()) // <----- convert from streaming to buffered vinyl file object
-    .pipe(uglify()).on('error', gutil.log)
-    .pipe(rename({extname: '.min.js'}))
-    .pipe(gulp.dest('public/js'));
-    // .pipe(gzip())
-    // .pipe(rename({extname: '.gzip'}))
-    // .pipe(gulp.dest('public/js'));
-});
-
-gulp.task('lintSBC', function() {
-  return gulp.src('./build/js/sbc.js')
-  .pipe(jshint()).on('error', gutil.log)
-  .pipe(jshint.reporter('jshint-stylish'))
-  .pipe(jshint.reporter('fail')).on('error', function(err) {
-
-    this.emit('end');
-  });
+  gulp.watch('public/**/*.html').on('change', reload);
 });
 
 gulp.task('watchAngular', function() {
@@ -145,5 +113,4 @@ gulp.task('browsersync', function() {
 
 
 // the default gulp task!
-//gulp.task('default', ['browsersync', 'watch', 'watchSBC']);
 gulp.task('default', ['browsersync', 'watch', 'watchAngular']);

@@ -14,10 +14,12 @@ $bluehighlight: #304B66;
 $bluegrey: #718599;
 $bluetext: #3F525F;
 $grey: #61717B;
-$orange: #CC5200;
+$orange: #C87C0F;
+$orangebright: #CC5200;
 $orangelight: #ff6600;
 $orangefaded: #724911;
-$orangedark: #352C17;
+$orangedark: #993d00;
+$orangedarkest: #352C17;
 $red: #A12B00;
 
 $heightheader: 40px;
@@ -39,7 +41,6 @@ body {
 		padding: 7px;
 		border: 0;
 		color: $bluelightest;
-		font-weight: bold;
 		background-color: $bluedarkest;
 		&:focus, &:active {
 			outline: 0;
@@ -63,8 +64,12 @@ body {
 
 // imported scss
 @import "_mixins.scss";
-@import "_modals.scss";
+@import "_gui.scss";
+
 @import "_header.scss";
+
 @import "_editor.scss";
 @import "_gallery.scss";
+
+@import "_modals.scss";
 @import "_footer.scss";

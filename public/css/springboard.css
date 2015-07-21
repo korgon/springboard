@@ -1,26 +1,25 @@
-/* line 25, stdin */
+/* line 27, stdin */
 body {
   padding: 0;
   margin: 0;
   font-family: 'Roboto', sans-serif;
   background-color: #354E66;
   color: #0E1920; }
-  /* line 33, stdin */
+  /* line 35, stdin */
   body a {
-    color: #CC5200;
+    color: #C87C0F;
     font-weight: bold;
     text-decoration: none; }
-  /* line 38, stdin */
+  /* line 40, stdin */
   body input, body select, body textarea {
     padding: 7px;
     border: 0;
     color: #7194AD;
-    font-weight: bold;
     background-color: #001A2B; }
-    /* line 44, stdin */
+    /* line 45, stdin */
     body input:focus, body input:active, body select:focus, body select:active, body textarea:focus, body textarea:active {
       outline: 0; }
-  /* line 48, stdin */
+  /* line 49, stdin */
   body #content {
     top: 40px;
     left: 0;
@@ -31,155 +30,49 @@ body {
     background-size: cover;
     background-position: 0px 0px;
     overflow: auto; }
-    /* line 58, stdin */
+    /* line 59, stdin */
     body #content.fullscreen {
       top: 0; }
 
-/* line 7, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
-.modals .modal {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.9);
-  z-index: 999999; }
+/* line 5, /Users/khogg/Workbox/springboard/build/scss/_gui.scss */
+.button {
+  border: solid 1px #C87C0F;
+  border-radius: 2px;
+  background: #C87C0F;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 4px 12px;
+  text-decoration: none;
+  text-transform: uppercase; }
+  /* line 22, /Users/khogg/Workbox/springboard/build/scss/_gui.scss */
+  .button:hover {
+    background: #724911;
+    border-color: #724911; }
+  /* line 26, /Users/khogg/Workbox/springboard/build/scss/_gui.scss */
+  .button:focus {
+    outline: 0; }
+  /* line 29, /Users/khogg/Workbox/springboard/build/scss/_gui.scss */
+  .button.right {
+    float: right; }
 
-/* line 18, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
-.modals #loading {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.9);
-  z-index: 999999;
-  -webkit-transition: all linear 0.5s;
-  transition: all linear 0.5s;
-  text-align: center; }
-  /* line 29, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
-  .modals #loading.ng-hide {
-    opacity: 0; }
-  /* line 32, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
-  .modals #loading .wrap {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 120px;
-    width: 120px;
-    border-radius: 60px;
-    margin: 0 auto;
-    background-color: #001A2B;
-    border: 1px solid #354E66;
-    box-shadow: 0px 0px 20px #CC5200; }
-    /* line 43, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
-    .modals #loading .wrap .loadImage {
-      background: url("/images/loading.gif");
-      position: absolute;
-      left: 0;
-      width: 124px;
-      height: 128px; }
+/* line 34, /Users/khogg/Workbox/springboard/build/scss/_gui.scss */
+label {
+  margin-bottom: 6px;
+  display: block;
+  color: #3F525F; }
 
-/* line 54, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
-.modals .boxwrap {
-  width: 250px;
-  height: auto;
-  border: 1px solid #304B66;
-  margin: 90px auto 0px;
-  padding: 0; }
-  /* line 60, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
-  .modals .boxwrap .boxtop {
-    height: 22px;
-    overflow: hidden;
-    background-color: #0E1920;
-    background-image: linear-gradient(#354957, #304B66);
-    border-bottom: 1px solid #1B3141; }
-    /* line 66, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
-    .modals .boxwrap .boxtop ul.boxbuttons {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      list-style: none;
-      margin: 0;
-      padding: 0; }
-      /* line 73, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
-      .modals .boxwrap .boxtop ul.boxbuttons li {
-        display: inline-block;
-        margin: 4px; }
-        /* line 76, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
-        .modals .boxwrap .boxtop ul.boxbuttons li a {
-          display: inline-block;
-          width: 15px;
-          height: 15px;
-          opacity: 0.5;
-          background-repeat: no-repeat; }
-          /* line 82, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
-          .modals .boxwrap .boxtop ul.boxbuttons li a.close {
-            background-image: url("/images/icons/close_tiny.png");
-            background-size: 15px; }
-            /* line 85, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
-            .modals .boxwrap .boxtop ul.boxbuttons li a.close:hover {
-              opacity: 1;
-              cursor: pointer; }
-        /* line 91, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
-        .modals .boxwrap .boxtop ul.boxbuttons li.move {
-          margin: 0;
-          flex-grow: 12;
-          height: 27px; }
-          /* line 95, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
-          .modals .boxwrap .boxtop ul.boxbuttons li.move:hover {
-            cursor: move; }
-  /* line 102, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
-  .modals .boxwrap .boxcontent {
-    background-color: #001A2B;
-    padding: 10px;
-    color: #718599; }
-    /* line 106, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
-    .modals .boxwrap .boxcontent .message {
-      text-align: center; }
-    /* line 109, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
-    .modals .boxwrap .boxcontent label {
-      margin-bottom: 6px;
-      display: block;
-      color: #3F525F;
-      font-size: 18px; }
-    /* line 115, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
-    .modals .boxwrap .boxcontent input[type="text"], .modals .boxwrap .boxcontent select {
-      width: 100%;
-      box-sizing: border-box;
-      border-radius: 3px;
-      background-color: #001A2B;
-      border: 1px solid #354E66;
-      color: #61717B;
-      margin-bottom: 10px; }
-      /* line 123, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
-      .modals .boxwrap .boxcontent input[type="text"]:focus, .modals .boxwrap .boxcontent input[type="text"]:active, .modals .boxwrap .boxcontent select:focus, .modals .boxwrap .boxcontent select:active {
-        color: #7194AD; }
-    /* line 127, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
-    .modals .boxwrap .boxcontent .buttons {
-      margin-top: 30px; }
-    /* line 130, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
-    .modals .boxwrap .boxcontent input[type="submit"], .modals .boxwrap .boxcontent input[type="button"], .modals .boxwrap .boxcontent button {
-      border: solid 1px #ff6600;
-      border-radius: 2px;
-      background: #CC5200;
-      color: white;
-      font-size: 12px;
-      cursor: pointer;
-      padding: 4px 12px;
-      text-decoration: none;
-      text-transform: uppercase;
-      width: 100%; }
-      /* line 148, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
-      .modals .boxwrap .boxcontent input[type="submit"]:hover, .modals .boxwrap .boxcontent input[type="button"]:hover, .modals .boxwrap .boxcontent button:hover {
-        background: #352C17;
-        border-color: #352C17; }
-      /* line 152, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
-      .modals .boxwrap .boxcontent input[type="submit"]:focus, .modals .boxwrap .boxcontent input[type="button"]:focus, .modals .boxwrap .boxcontent button:focus {
-        outline: 0; }
-    /* line 156, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
-    .modals .boxwrap .boxcontent input[type="button"] {
-      float: right; }
+/* line 40, /Users/khogg/Workbox/springboard/build/scss/_gui.scss */
+input[type="text"], select {
+  box-sizing: border-box;
+  border-radius: 3px;
+  background-color: #001A2B;
+  border: 1px solid #354E66;
+  color: #61717B;
+  margin-bottom: 10px; }
+  /* line 47, /Users/khogg/Workbox/springboard/build/scss/_gui.scss */
+  input[type="text"]:focus, input[type="text"]:active, select:focus, select:active {
+    color: #7194AD; }
 
 /* line 6, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
 body #above {
@@ -322,7 +215,7 @@ body #above {
       /* line 147, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
       body #above .heading #frameurl:focus {
         background-color: #0E1920;
-        color: #CC5200; }
+        color: #C87C0F; }
     /* line 152, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
     body #above .heading .openurl {
       order: 3;
@@ -502,7 +395,7 @@ body #above {
                 transition: all 222ms ease; }
                 /* line 328, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
                 body #above .heading .worksite .siteselect .sitescroller ul.sitechoices li a:hover {
-                  color: #CC5200;
+                  color: #C87C0F;
                   height: 141px;
                   cursor: pointer; }
                 /* line 333, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
@@ -563,6 +456,48 @@ body #gallery #siteshow {
     margin: 0;
     padding: 0; }
     /* line 16, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+    body #gallery #siteshow ul .site_new {
+      background: rgba(0, 12, 22, 0.8);
+      padding: 20px;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box; }
+      /* line 23, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      body #gallery #siteshow ul .site_new .button_add {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        text-align: center;
+        width: 100%;
+        height: 100%; }
+        /* line 31, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+        body #gallery #siteshow ul .site_new .button_add a {
+          display: inline-block;
+          margin: 50px auto; }
+          /* line 34, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+          body #gallery #siteshow ul .site_new .button_add a:hover {
+            cursor: pointer; }
+      /* line 39, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      body #gallery #siteshow ul .site_new #createSite {
+        transition: opacity 222ms ease;
+        opacity: 0; }
+        /* line 42, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+        body #gallery #siteshow ul .site_new #createSite.visible {
+          opacity: 1; }
+        /* line 45, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+        body #gallery #siteshow ul .site_new #createSite .buttons {
+          overflow: auto;
+          text-align: center; }
+          /* line 48, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+          body #gallery #siteshow ul .site_new #createSite .buttons .new_add {
+            width: 80px;
+            margin-right: 10px; }
+          /* line 52, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+          body #gallery #siteshow ul .site_new #createSite .buttons .new_cancel {
+            width: 80px; }
+    /* line 58, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
     body #gallery #siteshow ul .site {
       box-sizing: border-box;
       width: 320px;
@@ -572,14 +507,14 @@ body #gallery #siteshow {
       border: 1px solid #001A2B;
       margin: 0.5%;
       overflow: hidden; }
-      /* line 25, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      /* line 67, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
       body #gallery #siteshow ul .site:hover > .controls {
         top: 0; }
-      /* line 28, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      /* line 70, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
       body #gallery #siteshow ul .site img {
         display: block;
         max-width: 100%; }
-      /* line 32, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      /* line 74, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
       body #gallery #siteshow ul .site .controls {
         transition: top 222ms ease;
         background: rgba(0, 12, 22, 0.8);
@@ -588,38 +523,17 @@ body #gallery #siteshow {
         height: 100%;
         width: 100%;
         text-align: center; }
-        /* line 40, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+        /* line 82, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
         body #gallery #siteshow ul .site .controls.visible {
           top: 0; }
-        /* line 43, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+        /* line 85, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
         body #gallery #siteshow ul .site .controls a {
           display: inline-block;
           margin: 40px 20px 20px; }
-          /* line 46, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+          /* line 88, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
           body #gallery #siteshow ul .site .controls a:hover {
-            color: #CC5200;
             cursor: pointer; }
-          /* line 50, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
-          body #gallery #siteshow ul .site .controls a:hover > span {
-            color: #CC5200; }
-        /* line 54, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
-        body #gallery #siteshow ul .site .controls .button {
-          display: inline-block;
-          width: 50px;
-          height: 50px;
-          padding: 10px;
-          background-repeat: no-repeat;
-          background-position: center center;
-          border-radius: 50px;
-          transition: all 222ms ease;
-          transition-property: box-shadow, background-color; }
-        /* line 69, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
-        body #gallery #siteshow ul .site .controls .edit {
-          background-image: url("/images/icons/edit.png"); }
-        /* line 72, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
-        body #gallery #siteshow ul .site .controls .open {
-          background-image: url("/images/icons/open.png"); }
-      /* line 76, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      /* line 93, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
       body #gallery #siteshow ul .site .details {
         position: absolute;
         display: block;
@@ -630,5 +544,131 @@ body #gallery #siteshow {
         color: #718599;
         display: block;
         line-height: 33px; }
+    /* line 105, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+    body #gallery #siteshow ul .site_button {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      padding: 10px;
+      background-repeat: no-repeat;
+      background-position: center center;
+      border-radius: 50px;
+      transition: all 222ms ease;
+      transition-property: box-shadow, background-color; }
+      /* line 119, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      body #gallery #siteshow ul .site_button.edit {
+        background-image: url("/images/icons/edit.png"); }
+      /* line 122, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      body #gallery #siteshow ul .site_button.open {
+        background-image: url("/images/icons/open.png"); }
+      /* line 125, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      body #gallery #siteshow ul .site_button.add {
+        background-image: url("/images/icons/newsite.png"); }
+
+/* line 7, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+.modals .modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 999999; }
+
+/* line 18, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+.modals #loading {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 999999;
+  -webkit-transition: all linear 0.5s;
+  transition: all linear 0.5s;
+  text-align: center; }
+  /* line 29, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+  .modals #loading.ng-hide {
+    opacity: 0; }
+  /* line 32, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+  .modals #loading .wrap {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 120px;
+    width: 120px;
+    border-radius: 60px;
+    margin: 0 auto;
+    background-color: #001A2B;
+    border: 1px solid #354E66;
+    box-shadow: 0px 0px 20px #C87C0F; }
+    /* line 43, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+    .modals #loading .wrap .loadImage {
+      background: url("/images/loading.gif");
+      position: absolute;
+      left: 0;
+      width: 124px;
+      height: 128px; }
+
+/* line 54, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+.modals .boxwrap {
+  width: 250px;
+  height: auto;
+  border: 1px solid #304B66;
+  margin: 90px auto 0px;
+  padding: 0; }
+  /* line 60, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+  .modals .boxwrap .boxtop {
+    height: 22px;
+    overflow: hidden;
+    background-color: #0E1920;
+    background-image: linear-gradient(#354957, #304B66);
+    border-bottom: 1px solid #1B3141; }
+    /* line 66, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+    .modals .boxwrap .boxtop ul.boxbuttons {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      list-style: none;
+      margin: 0;
+      padding: 0; }
+      /* line 73, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+      .modals .boxwrap .boxtop ul.boxbuttons li {
+        display: inline-block;
+        margin: 4px; }
+        /* line 76, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+        .modals .boxwrap .boxtop ul.boxbuttons li a {
+          display: inline-block;
+          width: 15px;
+          height: 15px;
+          opacity: 0.5;
+          background-repeat: no-repeat; }
+          /* line 82, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+          .modals .boxwrap .boxtop ul.boxbuttons li a.close {
+            background-image: url("/images/icons/close_tiny.png");
+            background-size: 15px; }
+            /* line 85, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+            .modals .boxwrap .boxtop ul.boxbuttons li a.close:hover {
+              opacity: 1;
+              cursor: pointer; }
+        /* line 91, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+        .modals .boxwrap .boxtop ul.boxbuttons li.move {
+          margin: 0;
+          flex-grow: 12;
+          height: 27px; }
+          /* line 95, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+          .modals .boxwrap .boxtop ul.boxbuttons li.move:hover {
+            cursor: move; }
+  /* line 102, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+  .modals .boxwrap .boxcontent {
+    background-color: #001A2B;
+    padding: 10px;
+    color: #718599; }
+    /* line 106, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+    .modals .boxwrap .boxcontent .message {
+      text-align: center; }
+    /* line 109, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+    .modals .boxwrap .boxcontent .buttons {
+      margin-top: 30px; }
 
 /*# sourceMappingURL=springboard.css.map */

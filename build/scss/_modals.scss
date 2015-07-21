@@ -106,55 +106,8 @@
       .message {
         text-align: center;
       }
-      label {
-        margin-bottom: 6px;
-        display: block;
-        color: $bluetext;
-        font-size: 18px;
-      }
-      input[type="text"], select {
-        width: 100%;
-        box-sizing: border-box;
-        border-radius: 3px;
-        background-color: $bluedarkest;
-        border: 1px solid $bluebase;
-        color: $grey;
-        margin-bottom: 10px;
-        &:focus, &:active {
-          color: $bluelightest;
-        }
-      }
       .buttons {
         margin-top: 30px;
-      }
-      input[type="submit"], input[type="button"], button {
-        border: solid 1px $orangelight;
-        border-radius: 2px;
-        background: $orange;
-        color: white;
-        font-size: 12px;
-        cursor: pointer;
-        padding: 4px 12px;
-        text-decoration: none;
-        text-transform: uppercase;
-        width: 100%;
-
-        // border: 1px solid $orange;
-        // border-radius: 3px;
-        // background-color: $bluehighlight;
-        // background-image: linear-gradient($orange, $orangefaded);
-        // color: $orangedark;
-        // text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
-        &:hover {
-          background: $orangedark;
-          border-color: $orangedark;
-        }
-        &:focus {
-          outline: 0;
-        }
-      }
-      input[type="button"] {
-        float: right;
       }
     }
   }

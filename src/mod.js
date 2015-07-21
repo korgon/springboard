@@ -80,6 +80,9 @@ var thm = require('./thm');
 // compile functions
 var compile = require('./compile');
 
+// module specific extensions
+var types = require('./modules/');
+
 // construction
 // options initially only contain module folder name and directory
 // usually named modulename.json
@@ -101,7 +104,7 @@ function mod(options) {
 		this.loadPlugins();
 	}
 	// based on the module type, extend the object with new functions
-	this.extendModule();
+	types.extend(this);
 }
 
 /*	_________________	*\
@@ -217,15 +220,9 @@ mod.prototype.loadThemes = function() {
 	}
 }
 
-// testing some things out with extending functions...
-mod.prototype.extendModule = function() {
-	if (typeof compile[this.type] === 'function') {
-		this.compile = compile[this.type];
-	}
-}
-
+// compile function for unknown module type
 mod.prototype.compile = function() {
-	console.log('default compile function');
+	console.log('module type is not supported');
 }
 
 mod.prototype.render = function(template, output) {
