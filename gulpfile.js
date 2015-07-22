@@ -75,11 +75,11 @@ gulp.task('sass', function() {
       sourceMap: 'scss'
     }))
     .on('error', function(err) {
-			console.log(err);
-			console.log(err.message.red);
-			this.emit('end');
-			return;
-		})
+      console.log(err);
+      console.log(err.message.red);
+      this.emit('end');
+      return;
+    })
     .pipe(reload({stream: true})).on('error', gutil.log)
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('public/css'))
