@@ -4,7 +4,7 @@
 
   <div id="gallery">
 
-    <ul ng-hide="vm.loading">
+    <ul class="sites" ng-hide="vm.loading">
 
       <li class="site">
         <div class="createsite">
@@ -31,7 +31,14 @@
           <a ng-click="vm.editSite(site.name)"><span class="sitebutton edit"></span></a>
           <a href="/sites/{{ site.name }}/{{ site.default_html }}" target="_blank"><span class="sitebutton open"></span></a>
         </div>
-        <div class="details"><span class="name">{{ site.name }}</span><span class="cart_icon tiny {{ site.cart }}"></span></div>
+        <div class="details">
+          <span class="name">{{ site.name }}</span>
+          <ul class="detailsicons">
+            <li class="icon {{ site.backend }}"></li>
+            <li class="icon {{ site.cart }}"></li>
+            <li class="icon {{ site.status }}"></li>
+          </ul>
+        </div>
       </li>
 
     </ul>
