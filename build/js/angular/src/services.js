@@ -23,11 +23,34 @@ function sitemanager($http, $q, $timeout) {
     loadSites: loadSites,
     getSites: getSites,
     getSite: getSite,
+    createSite: createSite,
     editSite: editSite,
     commitSite: commitSite,
     pushSite: pushSite,
     publishSiteMockup: publishSiteMockup
   });
+
+  // switch to a new site for editing
+  function createSite(site) {
+    var promise = $q.defer();
+
+    $http({
+      method: 'POST',
+      data: site,
+      url: '/api/site/create'
+    }).success(function(data, status, headers) {
+      if (data.error) {
+        promise.reject(data.message);
+      }
+      getSites().then(function(sites) {
+        promise.resolve(sites);
+      }, function(err) {
+        promise.reject();
+      });
+    }).error(promise.reject);
+
+    return promise.promise;
+  }
 
   // switch to a new site for editing
   function editSite(site) {
@@ -247,5 +270,22 @@ function modalmanager($rootScope, $q) {
     // close the modal
     modal.deferred = modal.params = null;
     $rootScope.$emit('modals.close');
+  }
+}
+
+
+// focus service
+angular
+  .module('springboardApp')
+  .factory('focus', focus);
+
+focus.$inject = ['$rootScope', '$timeout'];
+
+function focus($rootScope, $timeout) {
+  // service api returns a single function
+  return function(focus_attr) {
+    $timeout(function() {
+      $rootScope.$broadcast('focusOn', focus_attr);
+    });
   }
 }

@@ -1,38 +1,43 @@
 <div id="above" ng-include src="'/partials/above_gallery.html'"></div>
 
 <div id="content">
+
   <div id="gallery">
-    <div id="siteshow">
-      <ul ng-cloak>
-        <li ng-hide="vm.loading" class="site">
-          <div class="site_new">
-            <div class="button_add" ng-hide="input_site"><a ng-click="input_site = true"><span class="site_button add"></span></a></div>
-            <form id="createSite" ng-class="{'visible' : input_site}">
-              <label for="input_name">Site Name</label>
-              <input type="text" name="name" id="input_name" autocomplete="off" ng-model="new_site.name">
-              <select ng-model="new_site.cart" ng-options="cart as cart for cart in vm.carts" ng-init="new_site.cart = 'custom'">
-              </select>
-              <label for="input_siteid">Siteid</label>
-              <input type="text" name="siteid" id="input_siteid" autocomplete="off" ng-model="new_site.siteid">
-              <select ng-model="new_site.backend" ng-options="backend as backend for backend in vm.backends" ng-init="new_site.backend = 'solr'"></select>
-              <div class="buttons">
-                <input class="button new_add" type="submit" name="submit" value="Add" ng-click="vm.newSite(new_site)">
-                <input class="button new_cancel" type="button" value="Cancel" ng-click="input_site = false">
-              </div>
-            </form>
-          </div>
-        </li>
-        <li class="site" ng-repeat="site in vm.sites">
-          <img ng-src="{{ site.thumb }}">
-          <div class="controls">
-            <a ng-click="vm.editSite(site.name)"><span class="site_button edit"></span></a>
-            <a href="/sites/{{ site.name }}/{{ site.default_html }}" target="_blank"><span class="site_button open"></span></a>
-          </div>
-          <div class="details">{{ site.name }}</div>
-        </li>
-      </ul>
-    </div>
+
+    <ul ng-hide="vm.loading">
+
+      <li class="site">
+        <div class="createsite">
+          <div id="createbutton" ng-click="vm.showInput()" ng-hide="vm.show_input"><span class="sitebutton add"></span></div>
+          <form id="createinput" name="createForm" novalidate ng-class="{'visible' : vm.show_input}">
+            <label for="input_name">Site Name</label>
+            <input type="text" name="name" id="input_name" autocomplete="off" focus-on="siteName" ng-model="vm.new_site.name" required ng-pattern="/^[^\_\.]\w+\.\w{2,}$/i">
+            <select required ng-model="vm.new_site.cart" ng-options="cart as cart for cart in vm.carts" ng-init="vm.new_site.cart = 'custom'">
+            </select>
+            <label for="input_siteid">Siteid</label>
+            <input type="text" name="siteid" id="input_siteid" autocomplete="off" maxlength="6" ng-model="vm.new_site.siteid" required ng-pattern="/^[a-z0-9]{6}$/i">
+            <select required ng-model="vm.new_site.backend" ng-options="backend as backend for backend in vm.backends" ng-init="vm.new_site.backend = 'solr'"></select>
+            <div class="buttons">
+              <input class="button new_add" type="submit" value="Add" ng-click="vm.createSite()" ng-disabled="createForm.$invalid">
+              <input class="button new_cancel" type="button" value="Cancel" ng-click="vm.hideInput()">
+            </div>
+          </form>
+        </div>
+      </li>
+
+      <li class="site" ng-repeat="site in vm.sites">
+        <a href="/sites/{{ site.name }}/{{ site.default_html }}" target="_blank"><img ng-src="{{ site.thumb }}"></a>
+        <div class="controls">
+          <a ng-click="vm.editSite(site.name)"><span class="sitebutton edit"></span></a>
+          <a href="/sites/{{ site.name }}/{{ site.default_html }}" target="_blank"><span class="sitebutton open"></span></a>
+        </div>
+        <div class="details"><span class="name">{{ site.name }}</span><span class="cart_icon tiny {{ site.cart }}"></span></div>
+      </li>
+
+    </ul>
+
   </div>
+
 </div>
 
 <div id="footer" ng-include src="'/partials/below_default.html'"></div>

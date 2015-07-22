@@ -7,10 +7,13 @@
 
   <div class="modal" modaly ng-show="vm.modalview" ng-switch="vm.modalview">
     <!-- alert modal -->
-    <div class="boxwrap" ng-switch-when="alert" ng-controller="ModalAlertCtrl">
+    <div class="boxwrap alert" ng-switch-when="alert" ng-controller="ModalAlertCtrl">
       <div class="boxtop"></div>
       <div class="boxcontent">
-        <p class="message">{{ mm.message }}</p>
+        <div class="boxmessage">
+          <span class="messageicon alert"></span>
+          <p class="message">{{ mm.message }}</p>
+        </div>
         <div class="buttons">
           <button ng-click="mm.closeModal()" class="button">Close</button>
         </div>

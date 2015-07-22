@@ -46,7 +46,7 @@ gulp.task('bundleAngular', function() {
   ng.add('./build/js/angular/main.js');
 
   return ng.bundle().on('error', browserifyHandler)
-    .pipe(source('sba-v1.0.0.js'))
+    .pipe(source('sba-v1.0.1.js'))
     .pipe(gulp.dest('public/js'))
     .pipe(buffer()) // <----- convert from streaming to buffered vinyl file object
     .pipe(uglify()).on('error', gutil.log)
@@ -58,11 +58,10 @@ gulp.task('bundleAngular', function() {
 });
 
 gulp.task('lintAngular', function() {
-  return gulp.src('./build/js/angular/src/app.js')
+  return gulp.src('./build/js/angular/src/*.js')
   .pipe(jshint()).on('error', gutil.log)
   .pipe(jshint.reporter('jshint-stylish'))
   .pipe(jshint.reporter('fail')).on('error', function(err) {
-    console.log(err);
     this.emit('end');
   });
 });

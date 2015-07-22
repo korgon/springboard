@@ -283,7 +283,8 @@ function springboard() {
 					// first empty sites object (to start fresh)
 					for (var del in sites) delete sites[del];
 
-					gc();
+					// force garbage collection (reduces memory footprint)
+					global.gc();
 
 					for (var folder of folders) {
 						// ignore non directories... or hidden folders (^.*)
@@ -980,7 +981,8 @@ function springboard() {
 		// blinding the eyes
 		if (eye_of_sauron) eye_of_sauron.close();
 		if (eye_of_horus)	eye_of_horus.close();
-		gc();
+		// force garbage collection (reduces memory footprint)
+		global.gc();
 		//if (eye_of_saturn)	eye_of_saturn.end();
 		//if (all_seeing_eye)	all_seeing_eye.end();
 		return;

@@ -379,6 +379,7 @@ q.directive("ngView",v);q.directive("ngView",A);v.$inject=["$route","$anchorScro
 'use strict';
 
 // main app
+// version 1.0.1
 
 angular
   .module('springboardApp', [
@@ -442,25 +443,27 @@ angular
   .module('springboardApp')
   .controller('GalleryCtrl', GalleryCtrl);
 
-GalleryCtrl.$inject = ['$log', '$location', 'sitemanager'];
+GalleryCtrl.$inject = ['$location', 'focus', 'sitemanager', 'modalmanager'];
 
-function GalleryCtrl($log, $location, sitemanager) {
+function GalleryCtrl($location, focus, sitemanager, modalmanager) {
   var vm = this;
+  vm.new_site = {};
   vm.loading = true;
-  $log.log('in gallery...');
+  console.log('in gallery...');
 
   vm.backends = ['solr', 'saluki'];
-  vm.carts = ['custom', 'magento', 'bigcommerce'];
+  vm.carts = ['custom', 'magento', 'bigcommerce', 'miva', 'shopify'];
 
   sitemanager.loadSites().then(function(sites) {
     vm.sites = sites;
     vm.loading = false;
-    $log.info('got sites...');
+    console.info('got sites...');
   }, function() {
-    $log.error('Unable to retrieve sites!');
+    console.error('Unable to retrieve sites!');
     // maybe go back to previous page
   });
 
+  // start editing a new site
   vm.editSite = function(site) {
     // TODO
     // need to check to see if current has any uncommited changes (gitStatus)
@@ -477,9 +480,45 @@ function GalleryCtrl($log, $location, sitemanager) {
     });
   }
 
+  // reload sites
   vm.refresh = function() {
     console.log('refreshing sites...');
   }
+
+  // create new site
+  vm.createSite = function() {
+    console.log(vm.new_site);
+    vm.loading = true;
+    sitemanager.createSite(vm.new_site).then(function() {
+      vm.loading = false;
+      $location.path("/editor");
+    }, function(err){
+      vm.loading = false;
+      var promise = modalmanager.open(
+        'alert',
+        {
+          message: err.message
+        }
+      );
+
+      // promise.then(function(response) {
+      //   console.log('pull alert was resolved');
+      // }, function(err) {
+      //   console.warn('pull alert rejected...');
+      // });
+    });
+  }
+
+  vm.showInput = function() {
+    vm.new_site = { cart: 'custom', backend: 'solr' };
+    vm.show_input = true;
+    focus('siteName');
+  }
+
+  vm.hideInput = function() {
+    vm.show_input = false;
+  }
+
 }
 
 
@@ -489,19 +528,18 @@ angular
   .module('springboardApp')
   .controller('EditorCtrl', EditorCtrl);
 
-EditorCtrl.$inject = ['$scope', '$log', '$location', '$window', 'sitemanager', 'modalmanager'];
+EditorCtrl.$inject = ['$location', '$window', 'sitemanager', 'modalmanager'];
 
-function EditorCtrl($scope, $log, $location, $window, sitemanager, modalmanager) {
+function EditorCtrl($location, $window, sitemanager, modalmanager) {
   var vm = this;
 
   vm.loading = true;
-  $log.log('in editor...?');
+  console.log('in editor...?');
 
   sitemanager.getSite().then(function(site) {
     vm.site = site;
     vm.loading = false;
-    $log.info('got site...');
-    //$log.info(site);
+    console.info('got site...');
     var current_url = $location.absUrl().match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
     vm.url = current_url[0] + 'sites/' + site.name + '/' + site.default_html;
   }, function(err) {
@@ -688,6 +726,22 @@ function modaly($rootScope, modalmanager) {
   }
 }
 
+// focus directive
+// element gains focus set by focus service
+angular
+  .module('springboardApp')
+  .directive('focusOn', focusOn);
+
+function focusOn() {
+  return function(scope, element, attrs) {
+    scope.$on('focusOn', function(e, name) {
+      if(name === attrs.focusOn) {
+        element[0].focus();
+      }
+    });
+  }
+}
+
 },{}],8:[function(require,module,exports){
 // filters
 
@@ -729,11 +783,34 @@ function sitemanager($http, $q, $timeout) {
     loadSites: loadSites,
     getSites: getSites,
     getSite: getSite,
+    createSite: createSite,
     editSite: editSite,
     commitSite: commitSite,
     pushSite: pushSite,
     publishSiteMockup: publishSiteMockup
   });
+
+  // switch to a new site for editing
+  function createSite(site) {
+    var promise = $q.defer();
+
+    $http({
+      method: 'POST',
+      data: site,
+      url: '/api/site/create'
+    }).success(function(data, status, headers) {
+      if (data.error) {
+        promise.reject(data.message);
+      }
+      getSites().then(function(sites) {
+        promise.resolve(sites);
+      }, function(err) {
+        promise.reject();
+      });
+    }).error(promise.reject);
+
+    return promise.promise;
+  }
 
   // switch to a new site for editing
   function editSite(site) {
@@ -953,6 +1030,23 @@ function modalmanager($rootScope, $q) {
     // close the modal
     modal.deferred = modal.params = null;
     $rootScope.$emit('modals.close');
+  }
+}
+
+
+// focus service
+angular
+  .module('springboardApp')
+  .factory('focus', focus);
+
+focus.$inject = ['$rootScope', '$timeout'];
+
+function focus($rootScope, $timeout) {
+  // service api returns a single function
+  return function(focus_attr) {
+    $timeout(function() {
+      $rootScope.$broadcast('focusOn', focus_attr);
+    });
   }
 }
 

@@ -1,6 +1,7 @@
 'use strict';
 
 // main app
+// version 1.0.1
 
 angular
   .module('springboardApp', [

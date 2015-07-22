@@ -202,7 +202,7 @@ module.exports = function(springboard) {
       }
       catch(err) {
         this.response.status = 400;
-        this.response.body = { error: true, message: 'an error occured during site creation: ' + err.message };
+        this.response.body = { error: true, message: err.message };
         return;
       }
 

@@ -9,25 +9,27 @@ angular
   .module('springboardApp')
   .controller('GalleryCtrl', GalleryCtrl);
 
-GalleryCtrl.$inject = ['$log', '$location', 'sitemanager'];
+GalleryCtrl.$inject = ['$location', 'focus', 'sitemanager', 'modalmanager'];
 
-function GalleryCtrl($log, $location, sitemanager) {
+function GalleryCtrl($location, focus, sitemanager, modalmanager) {
   var vm = this;
+  vm.new_site = {};
   vm.loading = true;
-  $log.log('in gallery...');
+  console.log('in gallery...');
 
   vm.backends = ['solr', 'saluki'];
-  vm.carts = ['custom', 'magento', 'bigcommerce'];
+  vm.carts = ['custom', 'magento', 'bigcommerce', 'miva', 'shopify'];
 
   sitemanager.loadSites().then(function(sites) {
     vm.sites = sites;
     vm.loading = false;
-    $log.info('got sites...');
+    console.info('got sites...');
   }, function() {
-    $log.error('Unable to retrieve sites!');
+    console.error('Unable to retrieve sites!');
     // maybe go back to previous page
   });
 
+  // start editing a new site
   vm.editSite = function(site) {
     // TODO
     // need to check to see if current has any uncommited changes (gitStatus)
@@ -44,9 +46,45 @@ function GalleryCtrl($log, $location, sitemanager) {
     });
   }
 
+  // reload sites
   vm.refresh = function() {
     console.log('refreshing sites...');
   }
+
+  // create new site
+  vm.createSite = function() {
+    console.log(vm.new_site);
+    vm.loading = true;
+    sitemanager.createSite(vm.new_site).then(function() {
+      vm.loading = false;
+      $location.path("/editor");
+    }, function(err){
+      vm.loading = false;
+      var promise = modalmanager.open(
+        'alert',
+        {
+          message: err.message
+        }
+      );
+
+      // promise.then(function(response) {
+      //   console.log('pull alert was resolved');
+      // }, function(err) {
+      //   console.warn('pull alert rejected...');
+      // });
+    });
+  }
+
+  vm.showInput = function() {
+    vm.new_site = { cart: 'custom', backend: 'solr' };
+    vm.show_input = true;
+    focus('siteName');
+  }
+
+  vm.hideInput = function() {
+    vm.show_input = false;
+  }
+
 }
 
 
@@ -56,19 +94,18 @@ angular
   .module('springboardApp')
   .controller('EditorCtrl', EditorCtrl);
 
-EditorCtrl.$inject = ['$scope', '$log', '$location', '$window', 'sitemanager', 'modalmanager'];
+EditorCtrl.$inject = ['$location', '$window', 'sitemanager', 'modalmanager'];
 
-function EditorCtrl($scope, $log, $location, $window, sitemanager, modalmanager) {
+function EditorCtrl($location, $window, sitemanager, modalmanager) {
   var vm = this;
 
   vm.loading = true;
-  $log.log('in editor...?');
+  console.log('in editor...?');
 
   sitemanager.getSite().then(function(site) {
     vm.site = site;
     vm.loading = false;
-    $log.info('got site...');
-    //$log.info(site);
+    console.info('got site...');
     var current_url = $location.absUrl().match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
     vm.url = current_url[0] + 'sites/' + site.name + '/' + site.default_html;
   }, function(err) {

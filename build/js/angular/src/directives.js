@@ -57,3 +57,19 @@ function modaly($rootScope, modalmanager) {
     }
   }
 }
+
+// focus directive
+// element gains focus set by focus service
+angular
+  .module('springboardApp')
+  .directive('focusOn', focusOn);
+
+function focusOn() {
+  return function(scope, element, attrs) {
+    scope.$on('focusOn', function(e, name) {
+      if(name === attrs.focusOn) {
+        element[0].focus();
+      }
+    });
+  }
+}
