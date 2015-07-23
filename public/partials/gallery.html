@@ -25,7 +25,7 @@
         </div>
       </li>
 
-      <li class="site" ng-repeat="site in vm.sites">
+      <li class="site" ng-repeat="site in vm.sites | filter:vm.query">
         <a href="/sites/{{ site.name }}/{{ site.default_html }}" target="_blank"><img ng-src="{{ site.thumb }}"></a>
         <div class="controls">
           <a ng-click="vm.editSite(site.name)"><span class="sitebutton edit"></span></a>
@@ -34,9 +34,9 @@
         <div class="details">
           <span class="name">{{ site.name }}</span>
           <ul class="detailsicons">
-            <li class="icon {{ site.backend }}"></li>
-            <li class="icon {{ site.cart }}"></li>
-            <li class="icon {{ site.status }}"></li>
+            <li class="icon status-{{ site.status }}"></li>
+            <li class="icon backend-{{ site.backend }}"></li>
+            <li class="icon cart-{{ site.cart }}"></li>
           </ul>
         </div>
       </li>

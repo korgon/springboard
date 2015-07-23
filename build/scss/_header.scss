@@ -24,6 +24,9 @@ body {
 			background-color: $bluedarkest;
 			color: $bluefaded;
 			border-bottom: 1px solid $bluehighlight;
+			&.gallery {
+				justify-content: space-between;
+			}
 			&.hidden {
 				display: none;
 			}
@@ -149,6 +152,43 @@ body {
 					color: $orange;
 				}
 			}
+			.sitesearch {
+				display: flex;
+				order: 3;
+				flex: 0 0 auto;
+				margin: 0 10px;
+				justify-content: flex-start;
+				background-color: $blueblack;
+				border-radius: 6px;
+				border: 1px solid $bluehighlight;
+				width: 240px;
+				#searchbox {
+					order: 2;
+					flex-grow: 2;
+					margin: 7px 13px 0px 0;
+					padding: 0 3px 5px;
+					color: $bluedarkestest_text;
+					background-color: $blueblack;
+					width: auto;
+					transition: all 222ms ease;
+					&:focus {
+						color: $bluelight;
+					}
+					&:focus ~ .lookingglass {
+						opacity: 1;
+					}
+				}
+				.lookingglass {
+					order: 1;
+					width: 40px;
+					margin: 0;
+					opacity: .6;
+					background-image: url('/images/icons/search_tiny.png');
+					background-position: center;
+					background-repeat: no-repeat;
+					transition: all 222ms ease;
+				}
+			}
 			.openurl {
 				order: 3;
 				flex: 0 0 auto;
@@ -262,43 +302,6 @@ body {
 									background-image: url('/images/icons/pull_request.png');
 								}
 							}
-						}
-					}
-					.sitesearch {
-						display: flex;
-						justify-content: flex-start;
-						background-color: $blueblack;
-						border-left: 1px solid $bluedarkestest_text;
-						width: 240px;
-						clear: right;
-						float: right;
-						position: relative;
-						#searchbox {
-							order: 2;
-							flex-grow: 2;
-							margin: 11px 12px 9px 0;
-							padding: 0 3px 5px;
-							color: $bluedarkestest_text;
-							background-color: $blueblack;
-							border-bottom: 1px solid $bluedarkestest_text;
-							width: auto;
-							transition: all 222ms ease;
-							&:focus {
-								color: $bluelight;
-								border-bottom: 1px solid $bluehighlight;
-							}
-							&:focus ~ .lookingglass {
-								opacity: 1;
-							}
-						}
-						.lookingglass {
-							order: 1;
-							width: 40px;
-							opacity: .6;
-							background-image: url('/images/icons/search_tiny.png');
-							background-position: center;
-							background-repeat: no-repeat;
-							transition: all 222ms ease;
 						}
 					}
 					.sitescroller {

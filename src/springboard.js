@@ -216,10 +216,13 @@ function springboard() {
 	// stop editing site, checkout master
 	self.getSites = function() {
 		try {
-			return sites;
+			return Object.keys(sites).reduce(function(sites_array, site) {
+				sites_array.push(sites[site]);
+				return sites_array;
+			}, []);
 		}
 		catch(err) {
-			return { error: true, message: err };
+			return { error: true, message: err.message };
 		}
 	}
 
@@ -313,7 +316,7 @@ function springboard() {
 					if (folders) console.log('\n');
 					logit.log('load complete', total + ' sites loaded', 'blue');
 
-					return resolve(sites);
+					return resolve(self.getSites());
 				});
 			});
 		});
@@ -668,7 +671,7 @@ function springboard() {
 			site.capture().then(function() {
 				// TODO some s3 stuff...
 				// copy mockup data into s3 mockup folder
-				//site.setStatus({ status: 'mockup' });
+				site.setStatus({ status: 'mockup' });
 				logit.log('publish', site.name + ' has been published to S3 MOCKUP', 'pass');
 				return resolve( { error: false, site: site.name, action: 'publish', status: 'success', message: 'published mockup files to s3' } );
 			}).catch(function(err) {
