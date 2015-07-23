@@ -992,9 +992,15 @@ function springboard() {
 		site = null;
 		// blinding the eyes
 		if (eye_of_sauron) eye_of_sauron.close();
+		eye_of_sauron = null;
 		if (eye_of_horus)	eye_of_horus.close();
+		eye_of_horus = null;
 		//if (eye_of_saturn)	eye_of_saturn.end();
 		//if (all_seeing_eye)	all_seeing_eye.end();
+
+		// force garbage collection (reduces memory footprint)
+		global.gc();
+
 		return;
 	}
 
