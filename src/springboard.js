@@ -260,13 +260,23 @@ function springboard() {
 
 				stopWatch();
 
-				git.checkout('master', function(err) {
+				git.fetch(null, null, function(err) {
+					if (err) {
+						// check if offline
+						if (err.message.indexOf('Could not resolve hostname') > -1) {
+							logit.log('warning', 'working offline!', 'fail');
+						} else {
+							return reject(err);
+						}
+					}
+				}).checkout('master', function(err) {
 					if (err) return reject({ error: true, message: err.message });
 				}).pull('origin', 'master', function (err) {
 					if (err) {
 						// check if offline
 						if (err.message.indexOf('Could not resolve hostname') > -1) {
-							logit.log('warning', 'working offline!', 'fail');
+							// working offline
+							// logit.log('warning', 'working offline!', 'fail');
 						} else {
 							return reject(err);
 						}
@@ -335,7 +345,7 @@ function springboard() {
 						console.log('dude, need to commit that shit!');
 						return reject({ error: true, site: site.name, action: 'checkout', status: 'failed', message: err });
 					}
-				}).clean().then(function() {
+				}).then(function() {
 					self.pullSite().then(function(pulled) {
 						site.reload();
 						site.compile();
@@ -385,7 +395,7 @@ function springboard() {
 			self.gitStatus().then(function(status) {
 				if (status.changes) {
 					// there are uncommited changes on current site
-					return reject({ error: true, message: 'need to commit changes' });
+					return reject({ error: true, message: 'there are uncommit changes' });
 				} else if (status.ahead) {
 					// there are unpushed commits on current site
 					return reject({ error: true, message: 'need to push changes' });
@@ -536,13 +546,13 @@ function springboard() {
 		});
 	}
 
-	self.commitSite = function(message, status) {
+	self.commitSite = function(message, new_status) {
 		// promisified
 		return new Promise(function(resolve, reject) {
 			if (!site) return reject({ error: true, message: 'not editing a site...' });
 
-			if (message === undefined) message = options.user.name + '@springboard >>> COMMITED >>> ' + site.name;
-			if (status === undefined) status == 'commited';
+			if (!message) message = options.user.name + '@springboard >>> COMMITED >>> ' + site.name;
+			if (!new_status) new_status = 'commited';
 
 			// check for changes first to see if commit is needed
 			git.status(function(err, status_data) {
@@ -550,7 +560,7 @@ function springboard() {
 
 				if (status_data.changed) {
 					// changes to be commited
-					site.setStatus({ gitstatus: status });
+					site.setStatus({ gitstatus: new_status });
 
 					git.add([sites_dir + '/' + site.name], function(err, data) {
 						if (err) return reject({ error: true, site: site.name, action: 'commit', message: err.message });
@@ -560,11 +570,10 @@ function springboard() {
 							return reject({ error: true, site: site.name, action: 'commit', message: err.message });
 						}
 						logit.log('commit', message, 'pass');
-						return resolve({ error: false, site: site.name, action: 'commit', message: 'success', changes: status });
+						return resolve({ error: false, site: site.name, action: 'commit', message: 'success', changes: new_status });
 					});
 				} else if (status_data.ahead) {
 					// no changes, but unpushed commits so don't reject
-					site.setStatus({ gitstatus: status });
 					logit.log('commit', site.name.bold + ' nothing to commit');
 
 					return resolve({ error: false, site: site.name, action: 'commit', message: 'nothing to commit' });
@@ -984,8 +993,6 @@ function springboard() {
 		// blinding the eyes
 		if (eye_of_sauron) eye_of_sauron.close();
 		if (eye_of_horus)	eye_of_horus.close();
-		// force garbage collection (reduces memory footprint)
-		global.gc();
 		//if (eye_of_saturn)	eye_of_saturn.end();
 		//if (all_seeing_eye)	all_seeing_eye.end();
 		return;
@@ -998,10 +1005,10 @@ function springboard() {
 		// new watching method to rid ourselves of gulp
 		var watch_list = [site.directory + '/scss/**/*.scss', site.directory + '/scss/**/*.sass'];
 		eye_of_sauron = chokidar.watch(watch_list, { ignoreInitial: true });
-		eye_of_sauron.on(['change', 'add'], function(path) {
+		eye_of_sauron.on('add', function(path) {
 			scssBuilder(path);
 		})
-		.on('add', function(path) {
+		eye_of_sauron.on('change', function(path) {
 			scssBuilder(path);
 		});
 

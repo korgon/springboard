@@ -107,6 +107,7 @@ function website(options, louser) {
 		this.created = new Date().getTime();
 		this.default_html = this.name + '.html';
 		this.thumb = '/images/working.png';
+		this.history = [];
 		this.saveConfig();
 	}
 }
@@ -136,6 +137,10 @@ website.prototype.getConfig = function() {
 			for (var key in config) {
 				this[key] = config[key];
 			}
+
+			// for older sites with no history
+			this.history = this.history || []
+
 			// check for valid options
 			// verify that modules are loaded and configured
 			// TBD
@@ -173,10 +178,11 @@ website.prototype.saveConfig = function() {
 // git status		uncommited, commited, pushed, merged
 // site status	mockup	live
 website.prototype.setStatus = function(newstatus) {
+	//console.log('changing status:', newstatus);
 	if (newstatus.status) this.status = newstatus.status;
 	if (newstatus.gitstatus) this.gitstatus = newstatus.gitstatus;
 	this.saveConfig();
-	this.appendHistory();
+	if (this.status != newstatus.status) this.appendHistory();
 	return;
 }
 
@@ -191,7 +197,13 @@ website.prototype.appendHistory = function(username, message) {
 	}
 	*/
 	var time = new Date().getTime();
-	//console.log('re-writing the books...');
+	var moment = {
+		time: time,
+		user: user.name,
+		status: this.status
+	}
+	this.history.push(moment);
+	// console.log(user.name, time, this.status, this.gitstatus);
 }
 
 // take a screen shot of website

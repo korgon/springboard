@@ -19,10 +19,10 @@ function GalleryCtrl($location, focus, sitemanager, modalmanager) {
   console.log('in gallery...');
 
   vm.backends = ['solr', 'saluki'];
-  vm.carts = ['custom', 'magento', 'bigcommerce', 'miva', 'shopify', '3dcart', 'yahoo'];
+  vm.carts = ['custom', 'magento', 'bigcommerce', 'miva', 'shopify', '3dcart', 'yahoo', 'volusion', 'commercev3'];
 
   sitemanager.loadSites().then(function(sites) {
-    vm.sites = sites;
+    vm.sites = sites.error ? [] : sites;
     vm.loading = false;
     console.info('got sites...');
   }, function() {

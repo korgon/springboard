@@ -12,11 +12,11 @@
           <form id="createinput" name="createForm" novalidate ng-class="{'visible' : vm.show_input}">
             <label for="input_name">Site Name</label>
             <input type="text" name="name" id="input_name" autocomplete="off" focus-on="siteName" ng-model="vm.new_site.name" required ng-pattern="/^[^\_\.]\w+\.\w{2,}$/i">
-            <select required ng-model="vm.new_site.cart" ng-options="cart as cart for cart in vm.carts" ng-init="vm.new_site.cart = 'custom'">
+            <select required ng-model="vm.new_site.cart" ng-options="cart as cart for cart in vm.carts | orderBy: 'toString()'" ng-init="vm.new_site.cart = 'custom'">
             </select>
             <label for="input_siteid">Siteid</label>
             <input type="text" name="siteid" id="input_siteid" autocomplete="off" maxlength="6" ng-model="vm.new_site.siteid" required ng-pattern="/^[a-z0-9]{6}$/i">
-            <select required ng-model="vm.new_site.backend" ng-options="backend as backend for backend in vm.backends" ng-init="vm.new_site.backend = 'solr'"></select>
+            <select required ng-model="vm.new_site.backend" ng-options="backend as backend for backend in vm.backends | orderBy: 'toString()'" ng-init="vm.new_site.backend = 'solr'"></select>
             <div class="buttons">
               <input class="button new_add" type="submit" value="Add" ng-click="vm.createSite()" ng-disabled="createForm.$invalid">
               <input class="button new_cancel" type="button" value="Cancel" ng-click="vm.hideInput()">

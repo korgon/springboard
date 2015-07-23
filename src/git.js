@@ -91,7 +91,7 @@
   * @param {Function} [then]
   */
   Git.prototype.status = function(then) {
-    this._suppressOutput = true;
+    this._suppressOutput = false;
     return this._run(['status --porcelain'], function(err, data) {
       if (!err) {
         var commitStatus = this._parseStatus(data);
@@ -180,8 +180,8 @@
   * @param {Function} [then]
   */
   Git.prototype.add = function(files, then) {
-    this._suppressOutput = false;
-    return this._run(['add "%s"', [].concat(files).join('" "')], function(err, data) {
+    this._suppressOutput = true;
+    return this._run(['add -A "%s"', [].concat(files).join('" "')], function(err, data) {
       then && then(err);
     });
   };

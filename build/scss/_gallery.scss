@@ -3,7 +3,7 @@
 body {
 	#gallery {
 		width: auto;
-		margin: 20px;
+		margin: 20px 20px 60px;
 		.sites {
 			width: 100%;
 			display: flex;
@@ -151,6 +151,12 @@ body {
 							}
 							&.cart-custom {
 								background: url('/images/icons/meta/custom.png') no-repeat center;
+							}
+							&.cart-volusion {
+								background: url('/images/icons/meta/volusion.png') no-repeat center;
+							}
+							&.cart-commercev3 {
+								background: url('/images/icons/meta/cv3.png') no-repeat center;
 							}
 							&.backend-solr {
 								background: url('/images/icons/meta/solr.png') no-repeat center;
