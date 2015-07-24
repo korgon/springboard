@@ -442,7 +442,7 @@ function springboard() {
 						// create new site object
 						try {
 							details.directory = sites_dir + '/' + details.name;
-							details.gitstatus = 'mockup';
+							details.gitstatus = 'new';
 							details.status = 'new';
 							sites[details.name] = new website(details, options.user, git, s3);
 							site = sites[details.name];
@@ -535,12 +535,12 @@ function springboard() {
 				}
 				// check for file changes
 				if (data.changed) {
-					return resolve({ error: false, message: 'files were changed', changes: data });
+					return resolve({ error: false, pending: 'commit', message: 'files were changed', changes: data });
 				} else if (data.ahead) {
-					return resolve({ error: false, message: 'commits to be pushed', ahead: data.count });
+					return resolve({ error: false, pending: 'push', message: 'commits to be pushed', ahead: data.count });
 				} else {
 					// no changes
-					return resolve({ error: false, message: 'no changes to commit' });
+					return resolve({ error: false, pending: false, message: 'no changes to commit' });
 				}
 			});
 		});
@@ -1009,14 +1009,38 @@ function springboard() {
 		if (eye_of_sauron) eye_of_sauron.close();
 
 		// new watching method to rid ourselves of gulp
-		var watch_list = [site.directory + '/scss/**/*.scss', site.directory + '/scss/**/*.sass'];
+		var watch_list = [site.directory + '/**/*.scss', site.directory + '/scss/**/*.sass'];
 		eye_of_sauron = chokidar.watch(watch_list, { ignoreInitial: true });
+
+		// watch for when new files are created
 		eye_of_sauron.on('add', function(path) {
-			scssBuilder(path);
-		})
-		eye_of_sauron.on('change', function(path) {
-			scssBuilder(path);
+			actOnChange(path);
 		});
+
+		// watch for when files are changed
+		eye_of_sauron.on('change', function(path) {
+			actOnChange(path);
+		});
+
+		function actOnChange(path) {
+			site.setStatus({ gitstatus: 'uncommited' });
+
+			var file_path = path.replace(site.directory, '');
+			var file_root_directory = file_path.match(/\/[^\/]*\//) ? file_path.match(/\/[^\/]*\//)[0] : '/';
+			var file = file_path.replace(/^.*[\\\/]/, '');
+
+			console.log('A file has changed:', file);
+			console.log('In the directory:', file_root_directory);
+
+			// check if file is within a module
+			var module_dir = file_root_directory.replace(/\//g, '');
+			if (Object.keys(site.modules).indexOf(module_dir) > -1) {
+				// file is in a module!
+				console.log('Part of module:', module_dir);
+			} else {
+				scssBuilder(path);
+			}
+		}
 
 		// ran by the watcher to compile and minify scss
 		function scssBuilder(path) {
@@ -1058,11 +1082,9 @@ function springboard() {
 					var minified = new ccss(ccss_options).minify(result.css).styles;
 					fs.writeFileSync(dest_min, minified);
 					fs.writeFileSync(dest_css, result.css);
-					//fs.writeFileSync(destination, result.css);
-					browserSync.reload([dest_css, dest_min]);
 					fs.writeFileSync(dest_map, result.map);
+					browserSync.reload([dest_css, dest_min]);
 					logit.log('scss', 'compiled and minified ' + source_file, 'pass');
-					site.setStatus({ gitstatus: 'uncommited' });
 				}
 			});
 		}

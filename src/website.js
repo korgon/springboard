@@ -179,10 +179,14 @@ website.prototype.saveConfig = function() {
 // site status	mockup	live
 website.prototype.setStatus = function(newstatus) {
 	//console.log('changing status:', newstatus);
-	if (newstatus.status) this.status = newstatus.status;
 	if (newstatus.gitstatus) this.gitstatus = newstatus.gitstatus;
+
+	if (newstatus.status && this.status != newstatus.status) {
+		console.log(this.status + ' -> ' + newstatus.status);
+		this.status = newstatus.status;
+		this.appendHistory();
+	}
 	this.saveConfig();
-	if (this.status != newstatus.status) this.appendHistory();
 	return;
 }
 

@@ -91,7 +91,7 @@
   * @param {Function} [then]
   */
   Git.prototype.status = function(then) {
-    this._suppressOutput = false;
+    this._suppressOutput = true;
     return this._run(['status --porcelain'], function(err, data) {
       if (!err) {
         var commitStatus = this._parseStatus(data);
