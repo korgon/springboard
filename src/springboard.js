@@ -1009,7 +1009,11 @@ function springboard() {
 		if (eye_of_sauron) eye_of_sauron.close();
 
 		// new watching method to rid ourselves of gulp
-		var watch_list = [site.directory + '/**/*.scss', site.directory + '/scss/**/*.sass'];
+		var watch_list = [ site.directory + '/**/*.scss',
+											 site.directory + '/**/.*.scss',
+											 site.directory + '/**/*.sass',
+											 site.directory + '/**/.*.sass' ];
+
 		eye_of_sauron = chokidar.watch(watch_list, { ignoreInitial: true });
 
 		// watch for when new files are created

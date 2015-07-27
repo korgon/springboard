@@ -1,18 +1,20 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
+// angular libraries
 require('./lib/angular-1.4.1.min.js');
 require('./lib/angular-route-1.4.1.min.js');
 require('./lib/angular-animate-1.4.1.min.js');
 // require('./lib/angular-resource-1.4.1.min.js');
 
+// springboard app files
 require('./src/app.js');
-require('./src/filters.js');
-require('./src/directives.js');
-require('./src/services.js');
-require('./src/controllers.js');
+require('./src/filters/filters.js');
+require('./src/directives/directives.js');
+require('./src/services/services.js');
+require('./src/controllers/controllers.js');
 
-},{"./lib/angular-1.4.1.min.js":2,"./lib/angular-animate-1.4.1.min.js":3,"./lib/angular-route-1.4.1.min.js":4,"./src/app.js":5,"./src/controllers.js":6,"./src/directives.js":7,"./src/filters.js":8,"./src/services.js":9}],2:[function(require,module,exports){
+},{"./lib/angular-1.4.1.min.js":2,"./lib/angular-animate-1.4.1.min.js":3,"./lib/angular-route-1.4.1.min.js":4,"./src/app.js":5,"./src/controllers/controllers.js":6,"./src/directives/directives.js":12,"./src/filters/filters.js":13,"./src/services/services.js":16}],2:[function(require,module,exports){
 /*
  AngularJS v1.4.1
  (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -437,91 +439,46 @@ function runMe($rootScope, $route) {
 // Controllers
 /*************/
 
-// Gallery Controller
-/********************/
+require('./galleryctrl.js');
+require('./editorctrl.js');
+require('./dashboardctrl.js');
+require('./settingsctrl.js');
+require('./modalctrlrs.js');
+
+},{"./dashboardctrl.js":7,"./editorctrl.js":8,"./galleryctrl.js":9,"./modalctrlrs.js":10,"./settingsctrl.js":11}],7:[function(require,module,exports){
+'use strict';
+
+// Dashboard Controller
+/*******************/
+
+// TODO
+// build out a dashboard?
+// for now redirect to previously edited site
 angular
   .module('springboardApp')
-  .controller('GalleryCtrl', GalleryCtrl);
+  .controller('DashboardCtrl', DashboardCtrl);
 
-GalleryCtrl.$inject = ['$location', 'focus', 'sitemanager', 'modalmanager'];
+DashboardCtrl.$inject = ['$location', 'sitemanager'];
 
-function GalleryCtrl($location, focus, sitemanager, modalmanager) {
+function DashboardCtrl($location, sitemanager) {
   var vm = this;
-  vm.new_site = {};
   vm.loading = true;
-  vm.query = "";
-  console.log('in gallery...');
 
-  vm.backends = ['solr', 'saluki'];
-  vm.carts = ['custom', 'magento', 'bigcommerce', 'miva', 'shopify', '3dcart', 'yahoo', 'volusion', 'commercev3'];
-
-  sitemanager.loadSites().then(function(sites) {
-    vm.sites = sites.error ? [] : sites;
+  sitemanager.getSite().then(function(site) {
     vm.loading = false;
-    console.info('got sites...');
-  }, function() {
-    console.error('Unable to retrieve sites!');
-    // maybe go back to previous page
+    $location.path("/editor");
+  }, function(err) {
+    // not editing any site...
+    vm.loading = false;
+    $location.path("/gallery");
   });
 
-  // start editing a new site
-  vm.editSite = function(site) {
-    // TODO
-    // need to check to see if current has any uncommited changes (gitStatus)
-    // if so, pop a modal asking to commit changes or drop them
-    // ^ do something similar for refreshing sites
-
-    vm.loading = true;
-    sitemanager.editSite(site).then(function() {
-      vm.loading = false;
-      $location.path("/editor");
-    }, function(err){
-      vm.loading = false;
-      console.error(err);
-    });
-  }
-
-  // reload sites
-  vm.refresh = function() {
-    console.log('refreshing sites...');
-  }
-
-  // create new site
-  vm.createSite = function() {
-    console.log(vm.new_site);
-    vm.loading = true;
-    sitemanager.createSite(vm.new_site).then(function() {
-      vm.loading = false;
-      $location.path("/editor");
-    }, function(err){
-      vm.loading = false;
-      var promise = modalmanager.open(
-        'alert',
-        {
-          message: err.message
-        }
-      );
-
-      // promise.then(function(response) {
-      //   console.log('pull alert was resolved');
-      // }, function(err) {
-      //   console.warn('pull alert rejected...');
-      // });
-    });
-  }
-
-  vm.showInput = function() {
-    vm.new_site = { cart: 'custom', backend: 'solr' };
-    vm.show_input = true;
-    focus('siteName');
-  }
-
-  vm.hideInput = function() {
-    vm.show_input = false;
-  }
+  console.log('in dashboard...');
 
 }
 
+},{}],8:[function(require,module,exports){
+'use strict';
 
 // Editor Controller
 /*******************/
@@ -601,39 +558,96 @@ function EditorCtrl($location, $window, sitemanager, modalmanager) {
   }
 }
 
-// Dashboard Controller
-/*******************/
+},{}],9:[function(require,module,exports){
+'use strict';
 
-// TODO
-// build out a dashboard
+// Gallery Controller
+/********************/
 angular
   .module('springboardApp')
-  .controller('DashboardCtrl', DashboardCtrl);
+  .controller('GalleryCtrl', GalleryCtrl);
 
-DashboardCtrl.$inject = ['sitemanager'];
+GalleryCtrl.$inject = ['$location', 'focus', 'sitemanager', 'modalmanager'];
 
-function DashboardCtrl(sitemanager) {
+function GalleryCtrl($location, focus, sitemanager, modalmanager) {
   var vm = this;
+  vm.new_site = {};
+  vm.loading = true;
+  vm.query = "";
+  console.log('in gallery...');
 
-  console.log('in dashboard...');
+  vm.backends = ['solr', 'saluki'];
+  vm.carts = ['custom', 'magento', 'bigcommerce', 'miva', 'shopify', '3dcart', 'yahoo', 'volusion', 'commercev3', 'netsuite'];
+
+  sitemanager.loadSites().then(function(sites) {
+    vm.sites = sites.error ? [] : sites;
+    vm.loading = false;
+    console.info('got sites...');
+  }, function() {
+    console.error('Unable to retrieve sites!');
+    // maybe go back to previous page
+  });
+
+  // start editing a new site
+  vm.editSite = function(site) {
+    // TODO
+    // need to check to see if current has any uncommited changes (gitStatus)
+    // if so, pop a modal asking to commit changes or drop them
+    // ^ do something similar for refreshing sites
+
+    vm.loading = true;
+    sitemanager.editSite(site).then(function() {
+      vm.loading = false;
+      $location.path("/editor");
+    }, function(err){
+      vm.loading = false;
+      console.error(err);
+    });
+  }
+
+  // reload sites
+  vm.refresh = function() {
+    console.log('refreshing sites...');
+  }
+
+  // create new site
+  vm.createSite = function() {
+    console.log(vm.new_site);
+    vm.loading = true;
+    sitemanager.createSite(vm.new_site).then(function() {
+      vm.loading = false;
+      $location.path("/editor");
+    }, function(err){
+      vm.loading = false;
+      var promise = modalmanager.open(
+        'alert',
+        {
+          message: err.message
+        }
+      );
+
+      // promise.then(function(response) {
+      //   console.log('pull alert was resolved');
+      // }, function(err) {
+      //   console.warn('pull alert rejected...');
+      // });
+    });
+  }
+
+  vm.showInput = function() {
+    vm.new_site = { cart: 'custom', backend: 'solr' };
+    vm.show_input = true;
+    focus('siteName');
+  }
+
+  vm.hideInput = function() {
+    vm.show_input = false;
+  }
 
 }
 
-// Settings Controller
-/*******************/
-angular
-  .module('springboardApp')
-  .controller('SettingsCtrl', SettingsCtrl);
-
-SettingsCtrl.$inject = ['sitemanager'];
-
-function SettingsCtrl(sitemanager) {
-  var vm = this;
-
-  console.log('in settings...');
-
-}
-
+},{}],10:[function(require,module,exports){
+'use strict';
 
 /*******************/
 // Modal Controllers
@@ -666,7 +680,25 @@ function ModalAlertCtrl($scope, modalmanager) {
   }
 }
 
-},{}],7:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
+'use strict';
+
+// Settings Controller
+/*******************/
+angular
+  .module('springboardApp')
+  .controller('SettingsCtrl', SettingsCtrl);
+
+SettingsCtrl.$inject = ['usermanager'];
+
+function SettingsCtrl(usermanager) {
+  var vm = this;
+
+  console.log('in settings...');
+
+}
+
+},{}],12:[function(require,module,exports){
 // directives
 
 // iframer
@@ -743,7 +775,7 @@ function focusOn() {
   }
 }
 
-},{}],8:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 // filters
 
 angular
@@ -758,7 +790,120 @@ function trustAsResourceUrl($sce) {
   };
 }
 
-},{}],9:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
+'use strict';
+
+// focus service
+angular
+  .module('springboardApp')
+  .factory('focus', focus);
+
+focus.$inject = ['$rootScope', '$timeout'];
+
+function focus($rootScope, $timeout) {
+  // service api returns a single function
+  return function(focus_attr) {
+    $timeout(function() {
+      $rootScope.$broadcast('focusOn', focus_attr);
+    });
+  }
+}
+
+},{}],15:[function(require,module,exports){
+'use strict';
+
+// modal service
+angular
+  .module('springboardApp')
+  .factory('modalmanager', modalmanager);
+
+modalmanager.$inject = ['$rootScope', '$q'];
+
+function modalmanager($rootScope, $q) {
+
+  // current modal in use
+  var modal = {
+    deferred: null,
+    params: null
+  }
+
+  // service api
+  return({
+    open: open,
+    params: params,
+    proceedTo: proceedTo,
+    reject: reject,
+    resolve: resolve
+  });
+
+  function open( type, params, pipeResponse ) {
+    var previousDeferred = modal.deferred;
+
+    // set current modal
+    modal.deferred = $q.defer();
+    modal.params = params;
+
+    // if a modal existed, pipe response
+    if ( previousDeferred && pipeResponse ) {
+      modal.deferred.promise.then(previousDeferred.resolve, previousDeferred.reject);
+    // no piping - reject
+    } else if (previousDeferred) {
+      previousDeferred.reject();
+    }
+
+    // open modal (using directive)
+    $rootScope.$emit('modals.open', type);
+
+    return(modal.deferred.promise);
+  }
+
+  // return current params
+  function params() {
+    return( modal.params || {} );
+  }
+
+  // used for passing modal params
+  function proceedTo(type, params) {
+    return(open(type, params, true));
+  }
+
+  // reject modal
+  function reject(reason) {
+    if (!modal.deferred) {
+      return;
+    }
+
+    modal.deferred.reject( reason );
+
+    // close the modal
+    modal.deferred = modal.params = null;
+    $rootScope.$emit('modals.close');
+  }
+
+  // resolve modal
+  function resolve(response) {
+    if (!modal.deferred) {
+      return;
+    }
+
+    modal.deferred.resolve(response);
+
+    // close the modal
+    modal.deferred = modal.params = null;
+    $rootScope.$emit('modals.close');
+  }
+}
+
+},{}],16:[function(require,module,exports){
+'use strict';
+
+// services...
+
+require('./sitemanager.js');
+require('./modalmanager.js');
+require('./focus.js');
+
+},{"./focus.js":14,"./modalmanager.js":15,"./sitemanager.js":17}],17:[function(require,module,exports){
 'use strict';
 
 // services...
@@ -949,105 +1094,6 @@ function sitemanager($http, $q, $timeout) {
     }
 
     return promise.promise;
-  }
-}
-
-// modal service
-angular
-  .module('springboardApp')
-  .factory('modalmanager', modalmanager);
-
-modalmanager.$inject = ['$rootScope', '$q'];
-
-function modalmanager($rootScope, $q) {
-
-  // current modal in use
-  var modal = {
-    deferred: null,
-    params: null
-  }
-
-  // service api
-  return({
-    open: open,
-    params: params,
-    proceedTo: proceedTo,
-    reject: reject,
-    resolve: resolve
-  });
-
-  function open( type, params, pipeResponse ) {
-    var previousDeferred = modal.deferred;
-
-    // set current modal
-    modal.deferred = $q.defer();
-    modal.params = params;
-
-    // if a modal existed, pipe response
-    if ( previousDeferred && pipeResponse ) {
-      modal.deferred.promise.then(previousDeferred.resolve, previousDeferred.reject);
-    // no piping - reject
-    } else if (previousDeferred) {
-      previousDeferred.reject();
-    }
-
-    // open modal (using directive)
-    $rootScope.$emit('modals.open', type);
-
-    return(modal.deferred.promise);
-  }
-
-  // return current params
-  function params() {
-    return( modal.params || {} );
-  }
-
-  // used for passing modal params
-  function proceedTo(type, params) {
-    return(open(type, params, true));
-  }
-
-  // reject modal
-  function reject(reason) {
-    if (!modal.deferred) {
-      return;
-    }
-
-    modal.deferred.reject( reason );
-
-    // close the modal
-    modal.deferred = modal.params = null;
-    $rootScope.$emit('modals.close');
-  }
-
-  // resolve modal
-  function resolve(response) {
-    if (!modal.deferred) {
-      return;
-    }
-
-    modal.deferred.resolve(response);
-
-    // close the modal
-    modal.deferred = modal.params = null;
-    $rootScope.$emit('modals.close');
-  }
-}
-
-
-// focus service
-angular
-  .module('springboardApp')
-  .factory('focus', focus);
-
-focus.$inject = ['$rootScope', '$timeout'];
-
-function focus($rootScope, $timeout) {
-  // service api returns a single function
-  return function(focus_attr) {
-    $timeout(function() {
-      $rootScope.$broadcast('focusOn', focus_attr);
-    });
   }
 }
 
