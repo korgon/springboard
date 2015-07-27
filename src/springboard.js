@@ -9,7 +9,7 @@
 
 /*
 
-avg ram usage 112MB, 97MB
+avg ram usage 112MB, 97MB, 114MB, 100MB
 
 // ideas
 
@@ -213,7 +213,7 @@ function springboard() {
 		}
 	}
 
-	// stop editing site, checkout master
+	// return sites
 	self.getSites = function() {
 		try {
 			return Object.keys(sites).reduce(function(sites_array, site) {
@@ -246,9 +246,8 @@ function springboard() {
 		// promisified
 		return new Promise(function(resolve, reject) {
 
-			// TODO
 			// check if site was being worked on to check for uncommited work
-			// commit site if so.
+			// also check for unpushed commits
 			self.gitStatus().then(function(status) {
 				if (status.changes) {
 					// there are uncommited changes on current site
@@ -490,7 +489,10 @@ function springboard() {
 								// install module
 								site.installModule({ name: info.name, type: info.type, directory: modules[info.type].directory }).then(function(status) {
 									// success!!!
-									return resolve(status);
+									if (status.error) {
+										return resolve({ error: true, message: status.message });
+									}
+									return resolve(site);
 								}).catch(function(err) {
 									// fail!!!
 									return resolve(err);

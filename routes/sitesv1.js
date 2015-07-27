@@ -196,7 +196,6 @@ module.exports = function(springboard) {
       }
 
       try {
-        console.log('creating site...');
         var site = yield springboard.addSite(newsite);
         //var site = { error: false, message: 'site created success!' };
       }

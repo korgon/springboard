@@ -212,8 +212,8 @@ body {
 			}
 			.worksite {
 				order: 4;
-				flex-basis: 250px;
-				width: 250px;
+				flex-basis: 252px;
+				width: 252px;
 				height: $heightheader;
 				a.currentsite {
 					display: block;
@@ -235,17 +235,17 @@ body {
 					&:hover {
 						cursor: pointer;
 					}
-					&:hover + .siteselect {
+					&:hover + .optionselect {
 						max-height: 1200px;
 					}
 				}
-				.siteselect {
+				.optionselect {
 					position: absolute;
 					right: 0;
 					width: 252px;
 					max-height: 1px;
 					overflow: hidden;
-					margin: -1px -1px 0 -1px;
+					margin: 1px 0 0;
 					border-top: 0;
 					transition: max-height 144ms ease, max-height 400ms ease-out;
 					z-index: 7;
@@ -255,7 +255,18 @@ body {
 					&.show {
 						max-height: 1200px;
 					}
-					ul.sitebuttons {
+					.spacer {
+						display: flex;
+						justify-content: flex-start;
+						background-color: $blueblack;
+						border-left: 1px solid $bluedarkestest_text;
+						width: 240px;
+						height: 5px;
+						clear: right;
+						float: right;
+						position: relative;
+					}
+					ul.gitbuttons {
 						width: 250px;
 						float: right;
 						display: flex;
@@ -265,7 +276,6 @@ body {
 						margin: 0;
 						padding: 0;
 						border: 1px solid $bluehighlight;
-						border-top: 0;
 						background-color: $bluedarkest;
 						li {
 							display: inline-block;
@@ -304,14 +314,14 @@ body {
 							}
 						}
 					}
-					.sitescroller {
+					.modulescroller {
 						clear: both;
 						float: right;
 						width: 252px;
 						border-top: 1px solid $bluehighlight;
 						max-height: 1200px;
 						overflow-y: auto;
-						ul.sitechoices {
+						ul.modulechoices {
 							list-style: none;
 							margin: 0;
 							padding: 0;
