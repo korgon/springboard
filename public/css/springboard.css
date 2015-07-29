@@ -135,51 +135,51 @@ body #above {
     body #above .heading .mainmenu {
       position: absolute;
       left: -1px;
-      top: 40px;
+      top: 41px;
       box-sizing: border-box;
       width: auto;
       max-height: 0px;
       overflow: hidden;
       margin: 0;
-      background-color: #001A2B;
       transition: max-height 144ms ease;
       z-index: 7; }
-      /* line 76, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+      /* line 75, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
       body #above .heading .mainmenu:hover {
         max-height: 300px;
         overflow: initial; }
-      /* line 80, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+      /* line 79, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
       body #above .heading .mainmenu.show {
         max-height: 300px; }
-      /* line 83, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+      /* line 82, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
       body #above .heading .mainmenu ul.menuoptions {
+        clear: left;
+        float: left;
         list-style: none;
         margin: 0;
         padding: 0; }
-        /* line 87, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+        /* line 88, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
         body #above .heading .mainmenu ul.menuoptions li {
-          width: 222px; }
-          /* line 89, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
-          body #above .heading .mainmenu ul.menuoptions li:last-of-type {
-            border: 0; }
-          /* line 92, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+          width: 222px;
+          clear: left; }
+          /* line 91, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
           body #above .heading .mainmenu ul.menuoptions li a {
             display: flex;
             flex-direction: row;
             justify-content: left;
             align-items: center;
-            height: 50px;
+            height: 40px;
             width: 100%;
-            border: 1px solid #001A2B;
+            background-color: #00121E;
+            border: 1px solid #00121E;
             color: #3F525F;
             transition: border 144ms ease;
             text-transform: uppercase; }
             /* line 103, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
             body #above .heading .mainmenu ul.menuoptions li a:hover, body #above .heading .mainmenu ul.menuoptions li a:active {
-              background-color: #00121E;
+              background-color: #001A2B;
               cursor: pointer;
               color: #718599;
-              border: 4px solid #00121E;
+              border: 4px solid #001A2B;
               box-shadow: 0px 1px 3px #354E66;
               margin-left: -4px; }
             /* line 111, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
@@ -189,7 +189,7 @@ body #above {
             body #above .heading .mainmenu ul.menuoptions li a span.menuicon {
               display: inline-block;
               width: 60px;
-              height: 50px;
+              height: 40px;
               opacity: 0.7;
               background-repeat: no-repeat;
               background-size: 25px;
@@ -311,9 +311,9 @@ body #above {
         position: absolute;
         right: 0;
         width: 252px;
-        max-height: 1px;
+        max-height: 0px;
         overflow: hidden;
-        margin: 1px 0 0;
+        margin: 1px -1px 0;
         border-top: 0;
         transition: max-height 144ms ease, max-height 400ms ease-out;
         z-index: 7; }
