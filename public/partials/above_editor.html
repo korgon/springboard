@@ -7,8 +7,8 @@
   <input id="frameurl" name="url" autocomplete="off" spellcheck="false" ng-model="vm.url">
   <div class="openurl" ng-click="vm.openUrl()"></div>
   <div class="line"></div>
-  <div class="worksite"><a class="currentsite"><span id="currentsite">{{ vm.site.name }}</span></a>
-    <div class="optionselect">
+  <div class="worksite"><a class="currentsite" ng-click="showOptions = !showOptions"><span id="currentsite">{{ vm.site.name }}</span></a>
+    <div class="optionselect" ng-class="{'show': showOptions}" ng-init="showOptions = false">
       <div class="spacer"></div>
       <ul class="gitbuttons">
         <li><a ng-click="vm.commitSite()" class="commit"></a></li>
@@ -19,26 +19,20 @@
       <div class="spacer"></div>
       <div class="modulescroller">
         <ul class="modulechoices">
-          <li><a onclick="sb.switchSite('spring.cat', '/sites/spring.cat')">
+          <li ng-repeat="modules in vm.site.modules">
+            <a>
               <div class="shade">
-                <div class="info"><span class="sitename">spring.cat</span></div>
-              </div><img src="/sites/thumbs/spring.cat/spring.cat.png"></a></li>
-          <li><a onclick="sb.switchSite('spring.doge', '/sites/spring.doge')">
+                <div class="info"><span class="sitename">{{ modules.name }}</span></div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a>
               <div class="shade">
-                <div class="info"><span class="sitename">spring.doge</span></div>
-              </div><img src="/images/working.png"></a></li>
-          <li><a onclick="sb.switchSite('spring.ox', '/sites/spring.ox')">
-              <div class="shade">
-                <div class="info"><span class="sitename">spring.ox</span></div>
-              </div><img src="/images/working.png"></a></li>
-          <li><a onclick="sb.switchSite('spring.teea', '/sites/spring.teea')">
-              <div class="shade">
-                <div class="info"><span class="sitename">spring.teea</span></div>
-              </div><img src="/images/working.png"></a></li>
-          <li><a onclick="sb.switchSite('spring.test', '/sites/spring.test')">
-              <div class="shade">
-                <div class="info"><span class="sitename">spring.test</span></div>
-              </div><img src="/images/working.png"></a></li>
+                <div class="info"><span class="sitename">Install Module</span></div>
+              </div>
+            </a>
+          </li>
         </ul>
       </div>
     </div>

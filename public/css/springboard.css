@@ -152,16 +152,17 @@ body #above {
         max-height: 300px; }
       /* line 82, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
       body #above .heading .mainmenu ul.menuoptions {
+        background-color: #00121E;
         clear: left;
         float: left;
         list-style: none;
         margin: 0;
         padding: 0; }
-        /* line 88, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+        /* line 89, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
         body #above .heading .mainmenu ul.menuoptions li {
           width: 222px;
           clear: left; }
-          /* line 91, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+          /* line 92, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
           body #above .heading .mainmenu ul.menuoptions li a {
             display: flex;
             flex-direction: row;
@@ -169,23 +170,24 @@ body #above {
             align-items: center;
             height: 40px;
             width: 100%;
-            background-color: #00121E;
             border: 1px solid #00121E;
             color: #3F525F;
             transition: border 144ms ease;
-            text-transform: uppercase; }
-            /* line 103, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+            text-transform: uppercase;
+            z-index: 3px; }
+            /* line 104, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
             body #above .heading .mainmenu ul.menuoptions li a:hover, body #above .heading .mainmenu ul.menuoptions li a:active {
-              background-color: #001A2B;
+              background-color: #00121E;
               cursor: pointer;
               color: #718599;
-              border: 4px solid #001A2B;
+              border: 4px solid #00121E;
               box-shadow: 0px 1px 3px #354E66;
-              margin-left: -4px; }
-            /* line 111, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              margin-left: -4px;
+              z-index: 5px; }
+            /* line 113, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
             body #above .heading .mainmenu ul.menuoptions li a:hover > .menuicon {
               opacity: 1; }
-            /* line 114, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+            /* line 116, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
             body #above .heading .mainmenu ul.menuoptions li a span.menuicon {
               display: inline-block;
               width: 60px;
@@ -194,19 +196,19 @@ body #above {
               background-repeat: no-repeat;
               background-size: 25px;
               background-position: center; }
-              /* line 122, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 124, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
               body #above .heading .mainmenu ul.menuoptions li a span.menuicon.editsite {
                 background-image: url("/images/icons/editsite.png"); }
-              /* line 125, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 127, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
               body #above .heading .mainmenu ul.menuoptions li a span.menuicon.newsite {
                 background-image: url("/images/icons/newsite.png"); }
-              /* line 128, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 130, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
               body #above .heading .mainmenu ul.menuoptions li a span.menuicon.settings {
                 background-image: url("/images/icons/settings.png"); }
-              /* line 131, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 133, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
               body #above .heading .mainmenu ul.menuoptions li a span.menuicon.sitegallery {
                 background-image: url("/images/icons/site.png"); }
-    /* line 142, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+    /* line 144, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
     body #above .heading #frameurl {
       order: 2;
       flex: 1 1 33%;
@@ -215,11 +217,11 @@ body #above {
       border-radius: 6px;
       border: 1px solid #304B66;
       width: 100%; }
-      /* line 150, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+      /* line 152, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
       body #above .heading #frameurl:focus {
         background-color: #0E1920;
         color: #C87C0F; }
-    /* line 155, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+    /* line 157, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
     body #above .heading .sitesearch {
       display: flex;
       order: 3;
@@ -230,7 +232,7 @@ body #above {
       border-radius: 6px;
       border: 1px solid #304B66;
       width: 240px; }
-      /* line 165, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+      /* line 167, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
       body #above .heading .sitesearch #searchbox {
         order: 2;
         flex-grow: 2;
@@ -240,13 +242,13 @@ body #above {
         background-color: #00121E;
         width: auto;
         transition: all 222ms ease; }
-        /* line 174, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+        /* line 176, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
         body #above .heading .sitesearch #searchbox:focus {
           color: #688BA3; }
-        /* line 177, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+        /* line 179, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
         body #above .heading .sitesearch #searchbox:focus ~ .lookingglass {
           opacity: 1; }
-      /* line 181, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+      /* line 183, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
       body #above .heading .sitesearch .lookingglass {
         order: 1;
         width: 40px;
@@ -256,7 +258,7 @@ body #above {
         background-position: center;
         background-repeat: no-repeat;
         transition: all 222ms ease; }
-    /* line 192, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+    /* line 194, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
     body #above .heading .openurl {
       order: 3;
       flex: 0 0 auto;
@@ -267,23 +269,23 @@ body #above {
       background-repeat: no-repeat;
       background-size: 20px;
       margin-right: 9px; }
-      /* line 202, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+      /* line 204, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
       body #above .heading .openurl:hover {
         cursor: pointer;
         opacity: 1; }
-    /* line 207, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+    /* line 209, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
     body #above .heading .line {
       order: 4;
       height: 40px;
       border-right: 1px solid #304B66;
       border-left: 1px solid #001A2B; }
-    /* line 213, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+    /* line 215, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
     body #above .heading .worksite {
       order: 4;
       flex-basis: 252px;
       width: 252px;
       height: 40px; }
-      /* line 218, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+      /* line 220, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
       body #above .heading .worksite a.currentsite {
         display: block;
         position: relative;
@@ -293,20 +295,20 @@ body #above {
         line-height: 40px;
         height: 40px;
         z-index: 9; }
-        /* line 228, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+        /* line 230, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
         body #above .heading .worksite a.currentsite span {
           display: inline-block;
           width: 100%;
           font-size: 14px;
           font-weight: bold;
           color: #718599; }
-        /* line 235, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+        /* line 237, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
         body #above .heading .worksite a.currentsite:hover {
           cursor: pointer; }
-        /* line 238, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+        /* line 240, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
         body #above .heading .worksite a.currentsite:hover + .optionselect {
           max-height: 1200px; }
-      /* line 242, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+      /* line 244, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
       body #above .heading .worksite .optionselect {
         position: absolute;
         right: 0;
@@ -317,13 +319,13 @@ body #above {
         border-top: 0;
         transition: max-height 144ms ease, max-height 400ms ease-out;
         z-index: 7; }
-        /* line 252, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+        /* line 254, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
         body #above .heading .worksite .optionselect:hover {
           max-height: 1200px; }
-        /* line 255, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+        /* line 257, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
         body #above .heading .worksite .optionselect.show {
           max-height: 1200px; }
-        /* line 258, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+        /* line 260, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
         body #above .heading .worksite .optionselect .spacer {
           display: flex;
           justify-content: flex-start;
@@ -334,7 +336,7 @@ body #above {
           clear: right;
           float: right;
           position: relative; }
-        /* line 269, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+        /* line 271, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
         body #above .heading .worksite .optionselect ul.gitbuttons {
           width: 250px;
           float: right;
@@ -346,13 +348,13 @@ body #above {
           padding: 0;
           border: 1px solid #304B66;
           background-color: #001A2B; }
-          /* line 280, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+          /* line 282, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
           body #above .heading .worksite .optionselect ul.gitbuttons li {
             display: inline-block;
             flex-grow: 1;
             text-align: center;
             height: 40px; }
-            /* line 285, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+            /* line 287, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
             body #above .heading .worksite .optionselect ul.gitbuttons li a {
               display: inline-block;
               width: 100%;
@@ -361,26 +363,26 @@ body #above {
               background-repeat: no-repeat;
               background-size: 20px;
               background-position: center center; }
-              /* line 293, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 295, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
               body #above .heading .worksite .optionselect ul.gitbuttons li a:hover {
                 cursor: pointer;
                 opacity: 1; }
-              /* line 299, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 301, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
               body #above .heading .worksite .optionselect ul.gitbuttons li a.commit {
                 background-image: url("/images/icons/commit.png"); }
-              /* line 302, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 304, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
               body #above .heading .worksite .optionselect ul.gitbuttons li a.refresh {
                 background-image: url("/images/icons/refresh.png"); }
-              /* line 305, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 307, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
               body #above .heading .worksite .optionselect ul.gitbuttons li a.push {
                 background-image: url("/images/icons/push.png"); }
-              /* line 308, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 310, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
               body #above .heading .worksite .optionselect ul.gitbuttons li a.upload {
                 background-image: url("/images/icons/upload.png"); }
-              /* line 311, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 313, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
               body #above .heading .worksite .optionselect ul.gitbuttons li a.pull {
                 background-image: url("/images/icons/pull_request.png"); }
-        /* line 317, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+        /* line 319, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
         body #above .heading .worksite .optionselect .modulescroller {
           clear: both;
           float: right;
@@ -388,33 +390,33 @@ body #above {
           border-top: 1px solid #304B66;
           max-height: 1200px;
           overflow-y: auto; }
-          /* line 324, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+          /* line 326, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
           body #above .heading .worksite .optionselect .modulescroller ul.modulechoices {
             list-style: none;
             margin: 0;
             padding: 0; }
-            /* line 328, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+            /* line 330, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
             body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li {
               position: relative;
               font-size: 14px;
               border: 1px solid #304B66;
               border-top: 0; }
-              /* line 335, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 337, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
               body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li a {
                 position: relative;
                 display: block;
                 height: 33px;
                 overflow: hidden;
                 transition: all 222ms ease; }
-                /* line 341, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+                /* line 343, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
                 body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li a:hover {
                   color: #C87C0F;
                   height: 141px;
                   cursor: pointer; }
-                /* line 346, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+                /* line 348, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
                 body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li a:hover > .shade {
                   height: 141px; }
-                /* line 349, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+                /* line 351, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
                 body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li a .shade {
                   display: block;
                   position: absolute;
@@ -428,13 +430,13 @@ body #above {
                   line-height: 33px;
                   background: rgba(0, 25, 42, 0.7);
                   transition: height 222ms ease; }
-                  /* line 362, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+                  /* line 364, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
                   body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li a .shade:hover {
                     background: rgba(0, 12, 22, 0.9); }
-                  /* line 365, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+                  /* line 367, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
                   body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li a .shade .info {
                     padding: 0 12px; }
-                /* line 371, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+                /* line 373, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
                 body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li a img {
                   display: block;
                   position: absolute;

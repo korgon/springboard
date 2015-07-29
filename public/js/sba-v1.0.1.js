@@ -425,7 +425,7 @@ angular
 runMe.$inject = ['$rootScope', '$route'];
 
 function runMe($rootScope, $route) {
-  console.log('springboard client loading...');
+  console.log('springboard client initializing...');
 
   // modify the title
   $rootScope.$on('$routeChangeSuccess', function() {
