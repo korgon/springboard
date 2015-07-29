@@ -91,7 +91,7 @@ router.post('/api/site/create', koaBody(), sitesapi.create);
 
 // git & s3
 router.get('/api/site/status', sitesapi.status);
-router.get('/api/site/commit', sitesapi.commit);
+router.post('/api/site/commit', koaBody(), sitesapi.commit);
 router.get('/api/site/push', sitesapi.push);
 router.get('/api/site/merge', sitesapi.merge);
 router.get('/api/site/publish/mockup', sitesapi.publishMockup);

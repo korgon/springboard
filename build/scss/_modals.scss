@@ -61,6 +61,9 @@
     &.alert {
       width: 350px;
     }
+    &.input {
+      width: 350px;
+    }
     .boxtop {
       height: 22px;
       overflow: hidden;
@@ -121,11 +124,22 @@
             background: url('/images/icons/alert.png') no-repeat center;
             background-size: 30px;
           }
+          &.commit {
+            background: url('/images/icons/commit.png') no-repeat center;
+            background-size: 30px;
+          }
         }
         .message {
           display: table-cell;
           vertical-align: middle;
           text-align: center;
+        }
+      }
+      .inputs {
+        width: 90%;
+        margin: 0px auto 10px;
+        input {
+          width: 100%;
         }
       }
       .buttons {

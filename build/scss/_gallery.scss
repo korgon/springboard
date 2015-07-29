@@ -61,11 +61,6 @@ body {
 						.new_add {
 							width: 80px;
 							margin-right: 10px;
-							&:disabled {
-								border: $orangedarkest;
-								background: $orangedarkest;
-								cursor: default;
-							}
 						}
 						.new_cancel {
 							width: 80px;

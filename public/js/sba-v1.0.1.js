@@ -505,6 +505,13 @@ function EditorCtrl($location, $window, sitemanager, modalmanager) {
     $location.path("/");
   });
 
+  sitemanager.getModules().then(function(modules) {
+    vm.modules = modules;
+  }, function(err) {
+    console.error('Failed to get listing of available modules.');
+    console.log(err);
+  })
+
   vm.openUrl = function() {
     $window.open(vm.url, '_blank');
   }
@@ -513,7 +520,8 @@ function EditorCtrl($location, $window, sitemanager, modalmanager) {
     var promise = modalmanager.open(
       'alert',
       {
-        message: 'Are you going to do that?'
+        message: 'Are you going to do that?',
+        button_confirm: 'Okay...'
       }
     );
 
@@ -525,13 +533,26 @@ function EditorCtrl($location, $window, sitemanager, modalmanager) {
   }
 
   vm.commitSite = function() {
-    vm.loading = true;
-    sitemanager.commitSite().then(function() {
-      console.log('site commited yo!');
-      vm.loading = false;
+    var promise = modalmanager.open(
+      'input',
+      {
+        message: 'Commit message for changes',
+        message_icon: 'commit',
+        button_cancel: 'Cancel',
+        button_confirm: 'Save'
+      }
+    );
+
+    promise.then(function(response) {
+      vm.loading = true;
+      sitemanager.commitSite(response).then(function() {
+        vm.loading = false;
+      }, function(err) {
+        console.log(err);
+        vm.loading = false;
+      });
     }, function(err) {
-      console.log(err);
-      vm.loading = false;
+      console.error(err);
     });
   }
 
@@ -541,7 +562,7 @@ function EditorCtrl($location, $window, sitemanager, modalmanager) {
       console.log('site pushed yo!');
       vm.loading = false;
     }, function(err) {
-      console.log(err);
+      console.error(err);
       vm.loading = false;
     });
   }
@@ -688,19 +709,57 @@ ModalAlertCtrl.$inject = ['$scope', 'modalmanager'];
 
 function ModalAlertCtrl($scope, modalmanager) {
 
-  console.log('in alert modal');
+  var params = modalmanager.params();
+  var mm = {};
+  $scope.mm = mm;
+
+  // Setup defaults using the modal params.
+  mm.message_icon = ( params.message_icon || 'alert' );
+  mm.message = ( params.message || 'Do the thing?' );
+  mm.button_confirm = ( params.button_confirm || 'Close' );
+
+  // focus on the close button
+  focus('modalClose');
+
+  // modal resolution
+  mm.closeModal = function() {
+    modalmanager.resolve();
+  }
+}
+
+// Input Modal Controller
+/************************/
+angular
+  .module('springboardApp')
+  .controller('ModalInputCtrl', ModalInputCtrl);
+
+ModalInputCtrl.$inject = ['$scope', 'modalmanager', 'focus'];
+
+function ModalInputCtrl($scope, modalmanager, focus) {
 
   var params = modalmanager.params();
   var mm = {};
   $scope.mm = mm;
 
   // Setup defaults using the modal params.
+  mm.message_icon = ( params.message_icon || 'alert' );
   mm.message = ( params.message || 'Do the thing?' );
+  mm.button_cancel = ( params.button_cancel || 'Cancel' );
+  mm.button_confirm = ( params.button_confirm || 'Ok' );
+
+  // focus on the input
+  focus('modalInput');
+
+  console.log('what modal input?');
 
   // modal resolution
   mm.closeModal = function() {
-    console.log('close the modal yo');
-    modalmanager.resolve();
+    modalmanager.reject();
+  }
+
+  // modal resolution
+  mm.resolveModal = function() {
+    modalmanager.resolve(mm.input);
   }
 }
 
@@ -957,7 +1016,8 @@ function sitemanager($http, $q, $timeout) {
     editSite: editSite,
     commitSite: commitSite,
     pushSite: pushSite,
-    publishSiteMockup: publishSiteMockup
+    publishSiteMockup: publishSiteMockup,
+    getModules: getModules
   });
 
   // switch to a new site for editing
@@ -1056,12 +1116,13 @@ function sitemanager($http, $q, $timeout) {
   }
 
   // (save) commit the site locally
-  function commitSite() {
+  function commitSite(commit_message) {
     var promise = $q.defer();
 
     if (site.name) {
       $http({
-        method: 'GET',
+        method: 'POST',
+        data: { message: commit_message },
         url: '/api/site/commit'
       }).success(function(data, status, headers) {
         if (data.error) {
@@ -1119,6 +1180,25 @@ function sitemanager($http, $q, $timeout) {
 
     return promise.promise;
   }
+
+  // get a listing of available modules
+  function getModules() {
+    var promise = $q.defer();
+
+    $http({
+      method: 'GET',
+      url: '/api/modules'
+    }).success(function(data, status, headers) {
+      if (data.error) {
+        promise.reject(data.message);
+      } else {
+        promise.resolve(data);
+      }
+    }).error(promise.reject);
+
+    return promise.promise;
+  }
+
 }
 
 },{}]},{},[1]);

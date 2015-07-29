@@ -15,18 +15,56 @@ ModalAlertCtrl.$inject = ['$scope', 'modalmanager'];
 
 function ModalAlertCtrl($scope, modalmanager) {
 
-  console.log('in alert modal');
+  var params = modalmanager.params();
+  var mm = {};
+  $scope.mm = mm;
+
+  // Setup defaults using the modal params.
+  mm.message_icon = ( params.message_icon || 'alert' );
+  mm.message = ( params.message || 'Do the thing?' );
+  mm.button_confirm = ( params.button_confirm || 'Close' );
+
+  // focus on the close button
+  focus('modalClose');
+
+  // modal resolution
+  mm.closeModal = function() {
+    modalmanager.resolve();
+  }
+}
+
+// Input Modal Controller
+/************************/
+angular
+  .module('springboardApp')
+  .controller('ModalInputCtrl', ModalInputCtrl);
+
+ModalInputCtrl.$inject = ['$scope', 'modalmanager', 'focus'];
+
+function ModalInputCtrl($scope, modalmanager, focus) {
 
   var params = modalmanager.params();
   var mm = {};
   $scope.mm = mm;
 
   // Setup defaults using the modal params.
+  mm.message_icon = ( params.message_icon || 'alert' );
   mm.message = ( params.message || 'Do the thing?' );
+  mm.button_cancel = ( params.button_cancel || 'Cancel' );
+  mm.button_confirm = ( params.button_confirm || 'Ok' );
+
+  // focus on the input
+  focus('modalInput');
+
+  console.log('what modal input?');
 
   // modal resolution
   mm.closeModal = function() {
-    console.log('close the modal yo');
-    modalmanager.resolve();
+    modalmanager.reject();
+  }
+
+  // modal resolution
+  mm.resolveModal = function() {
+    modalmanager.resolve(mm.input);
   }
 }

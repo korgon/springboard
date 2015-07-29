@@ -46,23 +46,28 @@ body {
   text-decoration: none;
   text-transform: uppercase; }
   /* line 22, /Users/khogg/Workbox/springboard/build/scss/_gui.scss */
-  .button:hover {
+  .button:disabled {
+    border: #352C17;
+    background: #352C17;
+    cursor: default; }
+  /* line 27, /Users/khogg/Workbox/springboard/build/scss/_gui.scss */
+  .button:hover:not(:disabled) {
     background: #724911;
     border-color: #724911; }
-  /* line 26, /Users/khogg/Workbox/springboard/build/scss/_gui.scss */
+  /* line 31, /Users/khogg/Workbox/springboard/build/scss/_gui.scss */
   .button:focus {
     outline: 0; }
-  /* line 29, /Users/khogg/Workbox/springboard/build/scss/_gui.scss */
+  /* line 34, /Users/khogg/Workbox/springboard/build/scss/_gui.scss */
   .button.right {
     float: right; }
 
-/* line 34, /Users/khogg/Workbox/springboard/build/scss/_gui.scss */
+/* line 39, /Users/khogg/Workbox/springboard/build/scss/_gui.scss */
 label {
   margin-bottom: 6px;
   display: block;
   color: #3F525F; }
 
-/* line 40, /Users/khogg/Workbox/springboard/build/scss/_gui.scss */
+/* line 45, /Users/khogg/Workbox/springboard/build/scss/_gui.scss */
 input[type="text"], select {
   box-sizing: border-box;
   border-radius: 3px;
@@ -70,7 +75,7 @@ input[type="text"], select {
   border: 1px solid #354E66;
   color: #61717B;
   margin-bottom: 10px; }
-  /* line 47, /Users/khogg/Workbox/springboard/build/scss/_gui.scss */
+  /* line 52, /Users/khogg/Workbox/springboard/build/scss/_gui.scss */
   input[type="text"]:focus, input[type="text"]:active, select:focus, select:active {
     color: #7194AD; }
 
@@ -523,15 +528,10 @@ body #gallery {
           body #gallery .sites .createsite #createinput .buttons .new_add {
             width: 80px;
             margin-right: 10px; }
-            /* line 64, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
-            body #gallery .sites .createsite #createinput .buttons .new_add:disabled {
-              border: #352C17;
-              background: #352C17;
-              cursor: default; }
-          /* line 70, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+          /* line 65, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
           body #gallery .sites .createsite #createinput .buttons .new_cancel {
             width: 80px; }
-    /* line 76, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+    /* line 71, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
     body #gallery .sites .site {
       box-sizing: border-box;
       width: 320px;
@@ -541,14 +541,14 @@ body #gallery {
       border: 1px solid #001A2B;
       margin: 0.5%;
       overflow: hidden; }
-      /* line 85, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      /* line 80, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
       body #gallery .sites .site:hover > .controls {
         top: 0; }
-      /* line 88, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      /* line 83, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
       body #gallery .sites .site img {
         display: block;
         max-width: 100%; }
-      /* line 92, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      /* line 87, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
       body #gallery .sites .site .controls {
         transition: top 222ms ease;
         background: rgba(0, 12, 22, 0.8);
@@ -557,17 +557,17 @@ body #gallery {
         height: 100%;
         width: 100%;
         text-align: center; }
-        /* line 100, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+        /* line 95, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
         body #gallery .sites .site .controls.visible {
           top: 0; }
-        /* line 103, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+        /* line 98, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
         body #gallery .sites .site .controls a {
           display: inline-block;
           margin: 40px 20px 20px; }
-          /* line 106, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+          /* line 101, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
           body #gallery .sites .site .controls a:hover {
             cursor: pointer; }
-      /* line 111, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      /* line 106, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
       body #gallery .sites .site .details {
         position: absolute;
         display: block;
@@ -577,58 +577,58 @@ body #gallery {
         color: #718599;
         display: block;
         height: 30px; }
-        /* line 120, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+        /* line 115, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
         body #gallery .sites .site .details .name {
           line-height: 30px;
           padding-left: 12px;
           float: left; }
-        /* line 125, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+        /* line 120, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
         body #gallery .sites .site .details .detailsicons {
           float: right; }
-          /* line 128, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+          /* line 123, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
           body #gallery .sites .site .details .detailsicons .icon {
             display: inline-block;
             width: 30px;
             height: 30px;
             margin-right: 5px;
             opacity: 0.4; }
-            /* line 134, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+            /* line 129, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
             body #gallery .sites .site .details .detailsicons .icon.cart-magento {
               background: url("/images/icons/meta/magento.png") no-repeat center; }
-            /* line 137, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+            /* line 132, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
             body #gallery .sites .site .details .detailsicons .icon.cart-bigcommerce {
               background: url("/images/icons/meta/bigcommerce.png") no-repeat center; }
-            /* line 140, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+            /* line 135, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
             body #gallery .sites .site .details .detailsicons .icon.cart-3dcart {
               background: url("/images/icons/meta/3dcart.png") no-repeat center; }
-            /* line 143, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+            /* line 138, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
             body #gallery .sites .site .details .detailsicons .icon.cart-miva {
               background: url("/images/icons/meta/miva.png") no-repeat center; }
-            /* line 146, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+            /* line 141, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
             body #gallery .sites .site .details .detailsicons .icon.cart-shopify {
               background: url("/images/icons/meta/shopify.png") no-repeat center; }
-            /* line 149, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+            /* line 144, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
             body #gallery .sites .site .details .detailsicons .icon.cart-yahoo {
               background: url("/images/icons/meta/yahoo.png") no-repeat center; }
-            /* line 152, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+            /* line 147, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
             body #gallery .sites .site .details .detailsicons .icon.cart-custom {
               background: url("/images/icons/meta/custom.png") no-repeat center; }
-            /* line 155, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+            /* line 150, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
             body #gallery .sites .site .details .detailsicons .icon.cart-netsuite {
               background: url("/images/icons/meta/netsuite.png") no-repeat center; }
-            /* line 158, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+            /* line 153, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
             body #gallery .sites .site .details .detailsicons .icon.cart-volusion {
               background: url("/images/icons/meta/volusion.png") no-repeat center; }
-            /* line 161, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+            /* line 156, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
             body #gallery .sites .site .details .detailsicons .icon.cart-commercev3 {
               background: url("/images/icons/meta/cv3.png") no-repeat center; }
-            /* line 164, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+            /* line 159, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
             body #gallery .sites .site .details .detailsicons .icon.backend-solr {
               background: url("/images/icons/meta/solr.png") no-repeat center; }
-            /* line 167, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+            /* line 162, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
             body #gallery .sites .site .details .detailsicons .icon.backend-saluki {
               background: url("/images/icons/meta/saluki.png") no-repeat center; }
-    /* line 174, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+    /* line 169, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
     body #gallery .sites .sitebutton {
       display: inline-block;
       width: 50px;
@@ -638,17 +638,17 @@ body #gallery {
       background-position: center center;
       border-radius: 50px;
       transition: all 222ms ease; }
-      /* line 183, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      /* line 178, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
       body #gallery .sites .sitebutton:hover {
         -webkit-filter: drop-shadow(0px 0px 3px #688BA3);
         filter: drop-shadow(0px 0px 3px #688BA3); }
-      /* line 187, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      /* line 182, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
       body #gallery .sites .sitebutton.edit {
         background-image: url("/images/icons/gears.png"); }
-      /* line 190, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      /* line 185, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
       body #gallery .sites .sitebutton.open {
         background-image: url("/images/icons/open.png"); }
-      /* line 193, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      /* line 188, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
       body #gallery .sites .sitebutton.add {
         background-image: url("/images/icons/newsite.png"); }
 
@@ -709,13 +709,16 @@ body #gallery {
   .modals .boxwrap.alert {
     width: 350px; }
   /* line 64, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+  .modals .boxwrap.input {
+    width: 350px; }
+  /* line 67, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
   .modals .boxwrap .boxtop {
     height: 22px;
     overflow: hidden;
     background-color: #0E1920;
     background-image: linear-gradient(#354957, #304B66);
     border-bottom: 1px solid #1B3141; }
-    /* line 70, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+    /* line 73, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
     .modals .boxwrap .boxtop ul.boxbuttons {
       display: flex;
       align-items: center;
@@ -723,58 +726,69 @@ body #gallery {
       list-style: none;
       margin: 0;
       padding: 0; }
-      /* line 77, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+      /* line 80, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
       .modals .boxwrap .boxtop ul.boxbuttons li {
         display: inline-block;
         margin: 4px; }
-        /* line 80, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+        /* line 83, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
         .modals .boxwrap .boxtop ul.boxbuttons li a {
           display: inline-block;
           width: 15px;
           height: 15px;
           opacity: 0.5;
           background-repeat: no-repeat; }
-          /* line 86, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+          /* line 89, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
           .modals .boxwrap .boxtop ul.boxbuttons li a.close {
             background-image: url("/images/icons/close_tiny.png");
             background-size: 15px; }
-            /* line 89, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+            /* line 92, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
             .modals .boxwrap .boxtop ul.boxbuttons li a.close:hover {
               opacity: 1;
               cursor: pointer; }
-        /* line 95, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+        /* line 98, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
         .modals .boxwrap .boxtop ul.boxbuttons li.move {
           margin: 0;
           flex-grow: 12;
           height: 27px; }
-          /* line 99, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+          /* line 102, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
           .modals .boxwrap .boxtop ul.boxbuttons li.move:hover {
             cursor: move; }
-  /* line 106, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+  /* line 109, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
   .modals .boxwrap .boxcontent {
     text-align: center;
     background-color: #001A2B;
     padding: 10px;
     color: #718599; }
-    /* line 111, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+    /* line 114, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
     .modals .boxwrap .boxcontent .boxmessage {
       display: table;
       border-spacing: 20px;
       width: 100%; }
-      /* line 115, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+      /* line 118, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
       .modals .boxwrap .boxcontent .boxmessage .messageicon {
         display: table-cell;
         vertical-align: middle;
         width: 30px;
         height: 30px; }
-        /* line 120, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+        /* line 123, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
         .modals .boxwrap .boxcontent .boxmessage .messageicon.alert {
           background: url("/images/icons/alert.png") no-repeat center;
           background-size: 30px; }
-      /* line 125, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+        /* line 127, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+        .modals .boxwrap .boxcontent .boxmessage .messageicon.commit {
+          background: url("/images/icons/commit.png") no-repeat center;
+          background-size: 30px; }
+      /* line 132, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
       .modals .boxwrap .boxcontent .boxmessage .message {
         display: table-cell;
         vertical-align: middle;
         text-align: center; }
+    /* line 138, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+    .modals .boxwrap .boxcontent .inputs {
+      width: 90%;
+      margin: 0px auto 10px; }
+      /* line 141, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+      .modals .boxwrap .boxcontent .inputs input {
+        width: 100%; }
 
 /*# sourceMappingURL=springboard.css.map */

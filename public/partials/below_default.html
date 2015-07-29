@@ -7,17 +7,37 @@
 
   <div class="modal" modaly ng-show="vm.modalview" ng-switch="vm.modalview">
     <!-- alert modal -->
-    <div class="boxwrap alert" ng-switch-when="alert" ng-controller="ModalAlertCtrl">
+    <div class="boxwrap {{ vm.modalview }}" ng-switch-when="alert" ng-controller="ModalAlertCtrl">
       <div class="boxtop"></div>
       <div class="boxcontent">
         <div class="boxmessage">
-          <span class="messageicon alert"></span>
+          <span class="messageicon {{ mm.message_icon }}"></span>
           <p class="message">{{ mm.message }}</p>
         </div>
         <div class="buttons">
-          <button ng-click="mm.closeModal()" class="button">Close</button>
+          <button class="button" ng-click="mm.closeModal()" focus-on="modalClose">{{ mm.button_confirm }}</button>
         </div>
       </div>
+    </div>
+
+    <!-- single input modal -->
+    <div class="boxwrap {{ vm.modalview }}" ng-switch-when="input" ng-controller="ModalInputCtrl">
+      <div class="boxtop"></div>
+      <form id="modalInput" name="modalInputForm" novalidate>
+        <div class="boxcontent">
+          <div class="boxmessage">
+            <span class="messageicon {{ mm.message_icon }}"></span>
+            <p class="message">{{ mm.message }}</p>
+          </div>
+          <div class="inputs">
+            <input type="text" ng-model="mm.input" required focus-on="modalInput">
+          </div>
+          <div class="buttons">
+            <input type="submit" class="button" value="{{ mm.button_confirm }}" ng-click="mm.resolveModal()" ng-disabled="modalInputForm.$invalid">
+            <button ng-click="mm.closeModal()" class="button">{{ mm.button_cancel }}</button>
+          </div>
+        </div>
+      </form>
     </div>
 
   </div>

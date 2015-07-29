@@ -25,6 +25,13 @@ function EditorCtrl($location, $window, sitemanager, modalmanager) {
     $location.path("/");
   });
 
+  sitemanager.getModules().then(function(modules) {
+    vm.modules = modules;
+  }, function(err) {
+    console.error('Failed to get listing of available modules.');
+    console.log(err);
+  })
+
   vm.openUrl = function() {
     $window.open(vm.url, '_blank');
   }
@@ -33,7 +40,8 @@ function EditorCtrl($location, $window, sitemanager, modalmanager) {
     var promise = modalmanager.open(
       'alert',
       {
-        message: 'Are you going to do that?'
+        message: 'Are you going to do that?',
+        button_confirm: 'Okay...'
       }
     );
 
@@ -45,13 +53,26 @@ function EditorCtrl($location, $window, sitemanager, modalmanager) {
   }
 
   vm.commitSite = function() {
-    vm.loading = true;
-    sitemanager.commitSite().then(function() {
-      console.log('site commited yo!');
-      vm.loading = false;
+    var promise = modalmanager.open(
+      'input',
+      {
+        message: 'Commit message for changes',
+        message_icon: 'commit',
+        button_cancel: 'Cancel',
+        button_confirm: 'Save'
+      }
+    );
+
+    promise.then(function(response) {
+      vm.loading = true;
+      sitemanager.commitSite(response).then(function() {
+        vm.loading = false;
+      }, function(err) {
+        console.log(err);
+        vm.loading = false;
+      });
     }, function(err) {
-      console.log(err);
-      vm.loading = false;
+      console.error(err);
     });
   }
 
@@ -61,7 +82,7 @@ function EditorCtrl($location, $window, sitemanager, modalmanager) {
       console.log('site pushed yo!');
       vm.loading = false;
     }, function(err) {
-      console.log(err);
+      console.error(err);
       vm.loading = false;
     });
   }

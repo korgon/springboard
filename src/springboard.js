@@ -554,6 +554,8 @@ function springboard() {
 			if (!site) return reject({ error: true, message: 'not editing a site...' });
 
 			if (!message) message = options.user.name + '@springboard >>> COMMITED >>> ' + site.name;
+			else message = options.user.name + '@springboard >>> ' + message;
+			
 			if (!new_status) new_status = 'commited';
 
 			// check for changes first to see if commit is needed

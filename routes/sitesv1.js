@@ -105,8 +105,11 @@ module.exports = function(springboard) {
 
     // commit the current site
     commit: function*() {
+      var message = this.request.body.fields.message || '';
+      if (message.trim() == '') message = false;
+
       try {
-        var data = yield springboard.commitSite();
+        var data = yield springboard.commitSite(message);
         this.response.type = 'json';
         this.response.body = data;
       }

@@ -19,7 +19,12 @@
   // background-image: linear-gradient($orange, $orangefaded);
   // color: $orangedark;
   // text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
-  &:hover {
+  &:disabled {
+    border: $orangedarkest;
+    background: $orangedarkest;
+    cursor: default;
+  }
+  &:hover:not(:disabled) {
     background: $orangefaded;
     border-color: $orangefaded;
   }

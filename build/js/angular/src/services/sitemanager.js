@@ -27,7 +27,8 @@ function sitemanager($http, $q, $timeout) {
     editSite: editSite,
     commitSite: commitSite,
     pushSite: pushSite,
-    publishSiteMockup: publishSiteMockup
+    publishSiteMockup: publishSiteMockup,
+    getModules: getModules
   });
 
   // switch to a new site for editing
@@ -126,12 +127,13 @@ function sitemanager($http, $q, $timeout) {
   }
 
   // (save) commit the site locally
-  function commitSite() {
+  function commitSite(commit_message) {
     var promise = $q.defer();
 
     if (site.name) {
       $http({
-        method: 'GET',
+        method: 'POST',
+        data: { message: commit_message },
         url: '/api/site/commit'
       }).success(function(data, status, headers) {
         if (data.error) {
@@ -189,4 +191,23 @@ function sitemanager($http, $q, $timeout) {
 
     return promise.promise;
   }
+
+  // get a listing of available modules
+  function getModules() {
+    var promise = $q.defer();
+
+    $http({
+      method: 'GET',
+      url: '/api/modules'
+    }).success(function(data, status, headers) {
+      if (data.error) {
+        promise.reject(data.message);
+      } else {
+        promise.resolve(data);
+      }
+    }).error(promise.reject);
+
+    return promise.promise;
+  }
+
 }
