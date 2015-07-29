@@ -97,4 +97,17 @@ function EditorCtrl($location, $window, sitemanager, modalmanager) {
       vm.loading = false;
     });
   }
+
+  vm.installModule = function() {
+    vm.loading = true;
+    sitemanager.installModule(module_data).then(function(updated_site) {
+      vm.site = updated_site;
+      console.log('module installed!');
+      vm.loading = false;
+    }, function(err) {
+      console.log(err);
+      vm.loading = false;
+    });
+  }
+
 }

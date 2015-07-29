@@ -577,6 +577,19 @@ function EditorCtrl($location, $window, sitemanager, modalmanager) {
       vm.loading = false;
     });
   }
+
+  vm.installModule = function() {
+    vm.loading = true;
+    sitemanager.installModule(module_data).then(function(updated_site) {
+      vm.site = updated_site;
+      console.log('module installed!');
+      vm.loading = false;
+    }, function(err) {
+      console.log(err);
+      vm.loading = false;
+    });
+  }
+
 }
 
 },{}],9:[function(require,module,exports){
@@ -749,8 +762,6 @@ function ModalInputCtrl($scope, modalmanager, focus) {
 
   // focus on the input
   focus('modalInput');
-
-  console.log('what modal input?');
 
   // modal resolution
   mm.closeModal = function() {
@@ -1017,7 +1028,8 @@ function sitemanager($http, $q, $timeout) {
     commitSite: commitSite,
     pushSite: pushSite,
     publishSiteMockup: publishSiteMockup,
-    getModules: getModules
+    getModules: getModules,
+    installModule: installModule
   });
 
   // switch to a new site for editing
@@ -1195,6 +1207,36 @@ function sitemanager($http, $q, $timeout) {
         promise.resolve(data);
       }
     }).error(promise.reject);
+
+    return promise.promise;
+  }
+
+  // install a module
+  function installModule(module) {
+    var promise = $q.defer();
+
+    install = {
+      install: 'module',
+      name: module.name,
+      type: module.type
+    }
+
+    if (site.name) {
+      $http({
+        method: 'POST',
+        data: install,
+        url: '/api/site/install'
+      }).success(function(data, status, headers) {
+        if (data.error) {
+          promise.reject(data.message);
+        } else {
+          site = data;
+          promise.resolve(data);
+        }
+      }).error(promise.reject);
+    } else {
+      promise.reject({ error: true, message: 'not editing any site!'});
+    }
 
     return promise.promise;
   }
