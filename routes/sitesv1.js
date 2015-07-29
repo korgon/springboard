@@ -37,7 +37,7 @@ module.exports = function(springboard) {
       }
       catch(err) {
         this.response.type = 'json';
-        this.response.body = { error: true, message: 'failed to sync with repository: ' + err.message };
+        this.response.body = { error: true, message: err.message };
       }
     },
 

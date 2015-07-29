@@ -251,10 +251,10 @@ function springboard() {
 			self.gitStatus().then(function(status) {
 				if (status.changes) {
 					// there are uncommited changes on current site
-					return reject({ error: true, message: 'need to commit changes' });
+					return reject({ error: true, message: 'There are uncommited changes!' });
 				} else if (status.ahead) {
 					// there are unpushed commits on current site
-					return reject({ error: true, message: 'need to push changes' });
+					return reject({ error: true, message: 'There are unpushed changes!' });
 				}
 
 				stopWatch();

@@ -15,13 +15,37 @@ function GalleryCtrl($location, focus, sitemanager, modalmanager) {
   vm.query = "";
   console.log('in gallery...');
 
+  // arrays used for site creation options
   vm.backends = ['solr', 'saluki'];
   vm.carts = ['custom', 'magento', 'bigcommerce', 'miva', 'shopify', '3dcart', 'yahoo', 'volusion', 'commercev3', 'netsuite'];
 
+  // get sites
   sitemanager.loadSites().then(function(sites) {
-    vm.sites = sites.error ? [] : sites;
-    vm.loading = false;
-    console.info('got sites...');
+    if (sites.error) {
+      // uncommited or unpushed site edits...
+      vm.loading = false;
+
+      console.log(sites);
+      var promise = modalmanager.open(
+        'alert',
+        {
+          message: sites.message
+        }
+      );
+
+      console.log('rly?');
+
+      promise.then(function(response) {
+        $location.path("/editor");
+      }, function(err) {
+        $location.path("/editor");
+      });
+
+    } else {
+      console.info('got sites...');
+      vm.loading = false;
+      vm.sites = sites;
+    }
   }, function() {
     console.error('Unable to retrieve sites!');
     // maybe go back to previous page
