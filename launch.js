@@ -56,7 +56,6 @@ if (log_http) {
 app.use(favicon(__dirname + '/public/images/favicon.png'));
 app.use(serve(__dirname + '/public/'));
 app.use(serve(global.site_repository_dirname));
-app.use(serve(__dirname + '/.cache'));
 
 // route middleware
 // ----------------

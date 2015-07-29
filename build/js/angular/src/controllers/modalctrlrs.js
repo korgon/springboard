@@ -56,8 +56,6 @@ function ModalInputCtrl($scope, modalmanager, focus) {
   // focus on the input
   focus('modalInput');
 
-  console.log('what modal input?');
-
   // modal resolution
   mm.closeModal = function() {
     modalmanager.reject();
