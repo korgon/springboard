@@ -1,5 +1,5 @@
 // ajax_catalog extensions
-// object extension for module
+// object extension for module (mod.js)
 // used to de-cluter the mod.js file
 // separates out module specific functions
 

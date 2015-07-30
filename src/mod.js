@@ -73,12 +73,9 @@ var fs = require('fs-extra');
 // templating
 var nja = require('nunjucks');
 
-// sub classes
+// sub classes (themes and plugins)
 var plgn = require('./plgn');
 var thm = require('./thm');
-
-// compile functions
-var compile = require('./compile');
 
 // module specific extensions
 var types = require('./modules/');
