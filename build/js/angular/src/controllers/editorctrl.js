@@ -10,6 +10,7 @@ EditorCtrl.$inject = ['$location', '$window', 'sitemanager', 'modalmanager'];
 
 function EditorCtrl($location, $window, sitemanager, modalmanager) {
   var vm = this;
+  vm.tab = 'modules';
 
   vm.loading = true;
   console.log('in editor...?');
@@ -108,6 +109,10 @@ function EditorCtrl($location, $window, sitemanager, modalmanager) {
       console.log(err);
       vm.loading = false;
     });
+  }
+
+  vm.switchTab = function(new_tab) {
+    vm.tab = new_tab;
   }
 
 }

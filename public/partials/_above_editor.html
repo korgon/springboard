@@ -9,6 +9,19 @@
   <div class="line"></div>
   <div class="worksite"><a class="currentsite" ng-click="showOptions = !showOptions"><span id="currentsite">{{ vm.site.name }}</span></a>
     <div class="optionselect" ng-class="{'show': showOptions}" ng-init="showOptions = false">
+
+      <ul class="tabcontrol">
+        <li><a class="modules" ng-class="{ 'active': (vm.tab == 'modules')}" ng-click="vm.tab = 'modules'"></a></li>
+        <li><a class="tags" ng-class="{ 'active': (vm.tab == 'tags')}" ng-click="vm.tab = 'tags'"></a></li>
+        <li><a class="files" ng-class="{ 'active': (vm.tab == 'files')}" ng-click="vm.tab = 'files'"></a></li>
+        <li><a class="settings" ng-class="{ 'active': (vm.tab == 'settings')}" ng-click="vm.tab = 'settings'"></a></li>
+      </ul>
+      <div class="tabwrap" ng-switch="vm.tab">
+        <div class="tabcontent" ng-switch-when="modules">modules</div>
+        <div class="tabcontent" ng-switch-when="tags">tags</div>
+        <div class="tabcontent" ng-switch-when="files">files</div>
+        <div class="tabcontent" ng-switch-when="settings">settings</div>
+      </div>
       <div class="spacer"></div>
       <ul class="gitbuttons">
         <li><a ng-click="vm.commitSite()" class="commit"></a></li>
@@ -16,8 +29,8 @@
         <li><a ng-click="vm.publishMockup()" class="upload"></a></li>
         <li><a ng-click="vm.prompty()" class="pull"></a></li>
       </ul>
-      <div class="spacer"></div>
-      <div class="modulescroller">
+
+      <!-- <div class="modulescroller">
         <ul class="modulechoices">
           <li ng-repeat="modules in vm.site.modules">
             <a>
@@ -35,7 +48,7 @@
             </a>
           </li>
         </ul>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
