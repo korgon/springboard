@@ -348,7 +348,6 @@ function springboard() {
 					self.pullSite().then(function(pulled) {
 						site.reload();
 						site.compile();
-						console.log(site);
 
 						// recent sites
 						var recents = options.recent_sites.indexOf(site.name);
@@ -482,34 +481,28 @@ function springboard() {
 			try {
 				if (site.directory) {
 					if (info.install == 'module') {
-						// check if module exists
-						if (modules[info.type]) {
-							// check if the name is in use by other modules
-							if (!site.modules[info.name]) {
-								// install module
-								site.installModule({ name: info.name, type: info.type, directory: modules[info.type].directory }).then(function(status) {
-									// success!!!
-									if (status.error) {
-										return resolve({ error: true, message: status.message });
-									}
-									return resolve(site);
-								}).catch(function(err) {
-									// fail!!!
-									return resolve(err);
-								});
-							} else {
-								throw('module ' + info.name + ' exists');
+						// ensure module type
+						if (!modules[info.type]) throw('invalid module type');
+						// check if the name is in use by other modules
+						if (site.modules[info.name]) throw('module ' + info.name + ' allready exists');
+							// install module
+						site.installModule({ name: info.name, type: info.type, directory: modules[info.type].directory })
+						.then(function(status) {
+							// success!!!
+							if (status.error) {
+								return resolve({ error: true, message: status.message });
 							}
-						} else {
-							throw('invalid module type');
-						}
+							return resolve(site);
+						}).catch(function(err) {
+							// fail!!!
+							throw(err);
+						});
 					} else if (info.install == 'theme' || info.install == 'plugin') {
 						// check if module installed in site
-						if (site.modules[info.module]) {
-							return resolve({ error: false, message: info.install + ' installed' });
-						} else {
-							throw('parent module not installed');
-						}
+						if (!site.modules[info.module]) throw('parent module not installed');
+						// TODO install theme or plugin
+						// should autocompile plugin and themes on install (eye of chokidar)
+						return resolve({ error: false, message: info.install + ' ' + info.name + '(' + info.type + ') installed' });
 					} else {
 						throw('invalid install type');
 					}
@@ -517,7 +510,7 @@ function springboard() {
 					throw('not editing a site');
 				}
 			} catch (err) {
-				return resolve({ error: true, message: 'could not install ' + info.install + ': ' + err });
+				return resolve({ error: true, message: err });
 			}
 		});
 	}
@@ -555,7 +548,7 @@ function springboard() {
 
 			if (!message) message = options.user.name + '@springboard >>> COMMITED >>> ' + site.name;
 			else message = options.user.name + '@springboard >>> ' + message;
-			
+
 			if (!new_status) new_status = 'commited';
 
 			// check for changes first to see if commit is needed
