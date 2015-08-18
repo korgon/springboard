@@ -34,7 +34,7 @@ body {
     body #content.fullscreen {
       top: 0; }
 
-/* line 5, /Users/khogg/Workbox/springboard/build/scss/_gui.scss */
+/* line 5, /home/korgon/Work/springboard/build/scss/_gui.scss */
 .button {
   border: solid 1px #C87C0F;
   border-radius: 2px;
@@ -45,29 +45,29 @@ body {
   padding: 4px 12px;
   text-decoration: none;
   text-transform: uppercase; }
-  /* line 22, /Users/khogg/Workbox/springboard/build/scss/_gui.scss */
+  /* line 22, /home/korgon/Work/springboard/build/scss/_gui.scss */
   .button:disabled {
     border: #352C17;
     background: #352C17;
     cursor: default; }
-  /* line 27, /Users/khogg/Workbox/springboard/build/scss/_gui.scss */
+  /* line 27, /home/korgon/Work/springboard/build/scss/_gui.scss */
   .button:hover:not(:disabled) {
     background: #724911;
     border-color: #724911; }
-  /* line 31, /Users/khogg/Workbox/springboard/build/scss/_gui.scss */
+  /* line 31, /home/korgon/Work/springboard/build/scss/_gui.scss */
   .button:focus {
     outline: 0; }
-  /* line 34, /Users/khogg/Workbox/springboard/build/scss/_gui.scss */
+  /* line 34, /home/korgon/Work/springboard/build/scss/_gui.scss */
   .button.right {
     float: right; }
 
-/* line 39, /Users/khogg/Workbox/springboard/build/scss/_gui.scss */
+/* line 39, /home/korgon/Work/springboard/build/scss/_gui.scss */
 label {
   margin-bottom: 6px;
   display: block;
   color: #3F525F; }
 
-/* line 45, /Users/khogg/Workbox/springboard/build/scss/_gui.scss */
+/* line 45, /home/korgon/Work/springboard/build/scss/_gui.scss */
 input[type="text"], select {
   box-sizing: border-box;
   border-radius: 3px;
@@ -75,11 +75,11 @@ input[type="text"], select {
   border: 1px solid #354E66;
   color: #61717B;
   margin-bottom: 10px; }
-  /* line 52, /Users/khogg/Workbox/springboard/build/scss/_gui.scss */
+  /* line 52, /home/korgon/Work/springboard/build/scss/_gui.scss */
   input[type="text"]:focus, input[type="text"]:active, select:focus, select:active {
     color: #7194AD; }
 
-/* line 6, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+/* line 6, /home/korgon/Work/springboard/build/scss/_header.scss */
 body #above {
   position: fixed;
   top: 0;
@@ -87,7 +87,7 @@ body #above {
   padding: 0;
   margin: 0;
   z-index: 6; }
-  /* line 16, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+  /* line 16, /home/korgon/Work/springboard/build/scss/_header.scss */
   body #above .heading {
     display: flex;
     flex-direction: row;
@@ -99,13 +99,13 @@ body #above {
     background-color: #001A2B;
     color: #354957;
     border-bottom: 1px solid #304B66; }
-    /* line 27, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+    /* line 27, /home/korgon/Work/springboard/build/scss/_header.scss */
     body #above .heading.gallery {
       justify-content: space-between; }
-    /* line 30, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+    /* line 30, /home/korgon/Work/springboard/build/scss/_header.scss */
     body #above .heading.hidden {
       display: none; }
-    /* line 33, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+    /* line 33, /home/korgon/Work/springboard/build/scss/_header.scss */
     body #above .heading .title {
       flex: 0 0 auto;
       display: flex;
@@ -113,13 +113,13 @@ body #above {
       order: 1;
       height: 40px;
       z-index: 9; }
-      /* line 40, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+      /* line 40, /home/korgon/Work/springboard/build/scss/_header.scss */
       body #above .heading .title:hover {
         cursor: pointer; }
-      /* line 43, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+      /* line 43, /home/korgon/Work/springboard/build/scss/_header.scss */
       body #above .heading .title:hover + .mainmenu {
         max-height: 300px; }
-      /* line 46, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+      /* line 46, /home/korgon/Work/springboard/build/scss/_header.scss */
       body #above .heading .title .logo {
         order: 1;
         background-image: url("/images/springs.png");
@@ -130,13 +130,13 @@ body #above {
         width: 40px;
         height: 40px;
         margin-left: 15px; }
-      /* line 57, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+      /* line 57, /home/korgon/Work/springboard/build/scss/_header.scss */
       body #above .heading .title .subtitle {
         order: 2;
         color: #718599;
         margin: 0 10px;
         font-size: 21px; }
-    /* line 64, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+    /* line 64, /home/korgon/Work/springboard/build/scss/_header.scss */
     body #above .heading .mainmenu {
       position: absolute;
       left: -1px;
@@ -148,14 +148,14 @@ body #above {
       margin: 0;
       transition: max-height 144ms ease;
       z-index: 7; }
-      /* line 75, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+      /* line 75, /home/korgon/Work/springboard/build/scss/_header.scss */
       body #above .heading .mainmenu:hover {
         max-height: 300px;
         overflow: initial; }
-      /* line 79, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+      /* line 79, /home/korgon/Work/springboard/build/scss/_header.scss */
       body #above .heading .mainmenu.show {
         max-height: 300px; }
-      /* line 82, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+      /* line 82, /home/korgon/Work/springboard/build/scss/_header.scss */
       body #above .heading .mainmenu ul.menuoptions {
         background-color: #00121E;
         clear: left;
@@ -163,11 +163,11 @@ body #above {
         list-style: none;
         margin: 0;
         padding: 0; }
-        /* line 89, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+        /* line 89, /home/korgon/Work/springboard/build/scss/_header.scss */
         body #above .heading .mainmenu ul.menuoptions li {
           width: 222px;
           clear: left; }
-          /* line 92, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+          /* line 92, /home/korgon/Work/springboard/build/scss/_header.scss */
           body #above .heading .mainmenu ul.menuoptions li a {
             display: flex;
             flex-direction: row;
@@ -180,7 +180,7 @@ body #above {
             transition: border 144ms ease;
             text-transform: uppercase;
             z-index: 3px; }
-            /* line 104, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+            /* line 104, /home/korgon/Work/springboard/build/scss/_header.scss */
             body #above .heading .mainmenu ul.menuoptions li a:hover, body #above .heading .mainmenu ul.menuoptions li a:active {
               background-color: #00121E;
               cursor: pointer;
@@ -189,10 +189,10 @@ body #above {
               box-shadow: 0px 1px 3px #354E66;
               margin-left: -4px;
               z-index: 5px; }
-            /* line 113, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+            /* line 113, /home/korgon/Work/springboard/build/scss/_header.scss */
             body #above .heading .mainmenu ul.menuoptions li a:hover > .menuicon {
               opacity: 1; }
-            /* line 116, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+            /* line 116, /home/korgon/Work/springboard/build/scss/_header.scss */
             body #above .heading .mainmenu ul.menuoptions li a span.menuicon {
               display: inline-block;
               width: 60px;
@@ -201,19 +201,19 @@ body #above {
               background-repeat: no-repeat;
               background-size: 25px;
               background-position: center; }
-              /* line 124, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 124, /home/korgon/Work/springboard/build/scss/_header.scss */
               body #above .heading .mainmenu ul.menuoptions li a span.menuicon.editsite {
                 background-image: url("/images/icons/editsite.png"); }
-              /* line 127, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 127, /home/korgon/Work/springboard/build/scss/_header.scss */
               body #above .heading .mainmenu ul.menuoptions li a span.menuicon.newsite {
                 background-image: url("/images/icons/newsite.png"); }
-              /* line 130, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 130, /home/korgon/Work/springboard/build/scss/_header.scss */
               body #above .heading .mainmenu ul.menuoptions li a span.menuicon.settings {
                 background-image: url("/images/icons/settings.png"); }
-              /* line 133, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 133, /home/korgon/Work/springboard/build/scss/_header.scss */
               body #above .heading .mainmenu ul.menuoptions li a span.menuicon.sitegallery {
                 background-image: url("/images/icons/site.png"); }
-    /* line 144, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+    /* line 144, /home/korgon/Work/springboard/build/scss/_header.scss */
     body #above .heading #frameurl {
       order: 2;
       flex: 1 1 33%;
@@ -222,11 +222,11 @@ body #above {
       border-radius: 6px;
       border: 1px solid #304B66;
       width: 100%; }
-      /* line 152, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+      /* line 152, /home/korgon/Work/springboard/build/scss/_header.scss */
       body #above .heading #frameurl:focus {
         background-color: #0E1920;
         color: #C87C0F; }
-    /* line 157, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+    /* line 157, /home/korgon/Work/springboard/build/scss/_header.scss */
     body #above .heading .sitesearch {
       display: flex;
       order: 3;
@@ -237,7 +237,7 @@ body #above {
       border-radius: 6px;
       border: 1px solid #304B66;
       width: 240px; }
-      /* line 167, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+      /* line 167, /home/korgon/Work/springboard/build/scss/_header.scss */
       body #above .heading .sitesearch #searchbox {
         order: 2;
         flex-grow: 2;
@@ -247,13 +247,13 @@ body #above {
         background-color: #00121E;
         width: auto;
         transition: all 222ms ease; }
-        /* line 176, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+        /* line 176, /home/korgon/Work/springboard/build/scss/_header.scss */
         body #above .heading .sitesearch #searchbox:focus {
           color: #688BA3; }
-        /* line 179, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+        /* line 179, /home/korgon/Work/springboard/build/scss/_header.scss */
         body #above .heading .sitesearch #searchbox:focus ~ .lookingglass {
           opacity: 1; }
-      /* line 183, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+      /* line 183, /home/korgon/Work/springboard/build/scss/_header.scss */
       body #above .heading .sitesearch .lookingglass {
         order: 1;
         width: 40px;
@@ -263,7 +263,7 @@ body #above {
         background-position: center;
         background-repeat: no-repeat;
         transition: all 222ms ease; }
-    /* line 194, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+    /* line 194, /home/korgon/Work/springboard/build/scss/_header.scss */
     body #above .heading .openurl {
       order: 3;
       flex: 0 0 auto;
@@ -274,23 +274,23 @@ body #above {
       background-repeat: no-repeat;
       background-size: 20px;
       margin-right: 9px; }
-      /* line 204, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+      /* line 204, /home/korgon/Work/springboard/build/scss/_header.scss */
       body #above .heading .openurl:hover {
         cursor: pointer;
         opacity: 1; }
-    /* line 209, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+    /* line 209, /home/korgon/Work/springboard/build/scss/_header.scss */
     body #above .heading .line {
       order: 4;
       height: 40px;
       border-right: 1px solid #304B66;
       border-left: 1px solid #001A2B; }
-    /* line 215, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+    /* line 215, /home/korgon/Work/springboard/build/scss/_header.scss */
     body #above .heading .worksite {
       order: 4;
       flex-basis: 252px;
       width: 252px;
       height: 40px; }
-      /* line 220, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+      /* line 220, /home/korgon/Work/springboard/build/scss/_header.scss */
       body #above .heading .worksite a.currentsite {
         display: block;
         position: relative;
@@ -300,20 +300,20 @@ body #above {
         line-height: 40px;
         height: 40px;
         z-index: 9; }
-        /* line 230, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+        /* line 230, /home/korgon/Work/springboard/build/scss/_header.scss */
         body #above .heading .worksite a.currentsite span {
           display: inline-block;
           width: 100%;
           font-size: 14px;
           font-weight: bold;
           color: #718599; }
-        /* line 237, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+        /* line 237, /home/korgon/Work/springboard/build/scss/_header.scss */
         body #above .heading .worksite a.currentsite:hover {
           cursor: pointer; }
-        /* line 240, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+        /* line 240, /home/korgon/Work/springboard/build/scss/_header.scss */
         body #above .heading .worksite a.currentsite:hover + .optionselect {
           max-height: 1200px; }
-      /* line 244, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+      /* line 244, /home/korgon/Work/springboard/build/scss/_header.scss */
       body #above .heading .worksite .optionselect {
         position: absolute;
         right: 0;
@@ -324,13 +324,13 @@ body #above {
         border-top: 0;
         transition: max-height 144ms ease, max-height 400ms ease-out;
         z-index: 7; }
-        /* line 254, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+        /* line 254, /home/korgon/Work/springboard/build/scss/_header.scss */
         body #above .heading .worksite .optionselect:hover {
           max-height: 1200px; }
-        /* line 257, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+        /* line 257, /home/korgon/Work/springboard/build/scss/_header.scss */
         body #above .heading .worksite .optionselect.show {
           max-height: 1200px; }
-        /* line 261, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+        /* line 261, /home/korgon/Work/springboard/build/scss/_header.scss */
         body #above .heading .worksite .optionselect .spacer {
           display: flex;
           justify-content: flex-start;
@@ -341,7 +341,7 @@ body #above {
           clear: right;
           float: right;
           position: relative; }
-        /* line 273, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+        /* line 273, /home/korgon/Work/springboard/build/scss/_header.scss */
         body #above .heading .worksite .optionselect ul.gitbuttons {
           display: flex;
           width: 250px;
@@ -354,13 +354,13 @@ body #above {
           padding: 0;
           border: 1px solid #304B66;
           background-color: #001A2B; }
-          /* line 285, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+          /* line 285, /home/korgon/Work/springboard/build/scss/_header.scss */
           body #above .heading .worksite .optionselect ul.gitbuttons li {
             display: inline-block;
             flex-grow: 1;
             text-align: center;
             height: 40px; }
-            /* line 290, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+            /* line 290, /home/korgon/Work/springboard/build/scss/_header.scss */
             body #above .heading .worksite .optionselect ul.gitbuttons li a {
               display: inline-block;
               width: 100%;
@@ -369,26 +369,26 @@ body #above {
               background-repeat: no-repeat;
               background-size: 20px;
               background-position: center center; }
-              /* line 298, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 298, /home/korgon/Work/springboard/build/scss/_header.scss */
               body #above .heading .worksite .optionselect ul.gitbuttons li a:hover {
                 cursor: pointer;
                 opacity: 1; }
-              /* line 304, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 304, /home/korgon/Work/springboard/build/scss/_header.scss */
               body #above .heading .worksite .optionselect ul.gitbuttons li a.commit {
                 background-image: url("/images/icons/commit.png"); }
-              /* line 307, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 307, /home/korgon/Work/springboard/build/scss/_header.scss */
               body #above .heading .worksite .optionselect ul.gitbuttons li a.refresh {
                 background-image: url("/images/icons/refresh.png"); }
-              /* line 310, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 310, /home/korgon/Work/springboard/build/scss/_header.scss */
               body #above .heading .worksite .optionselect ul.gitbuttons li a.push {
                 background-image: url("/images/icons/push.png"); }
-              /* line 313, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 313, /home/korgon/Work/springboard/build/scss/_header.scss */
               body #above .heading .worksite .optionselect ul.gitbuttons li a.upload {
                 background-image: url("/images/icons/upload.png"); }
-              /* line 316, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 316, /home/korgon/Work/springboard/build/scss/_header.scss */
               body #above .heading .worksite .optionselect ul.gitbuttons li a.pull {
                 background-image: url("/images/icons/pull_request.png"); }
-        /* line 323, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+        /* line 323, /home/korgon/Work/springboard/build/scss/_header.scss */
         body #above .heading .worksite .optionselect .tabcontrol {
           display: flex;
           width: 240px;
@@ -402,14 +402,14 @@ body #above {
           background-color: #00121E;
           border-left: 1px solid #2B343B;
           position: relative; }
-          /* line 336, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+          /* line 336, /home/korgon/Work/springboard/build/scss/_header.scss */
           body #above .heading .worksite .optionselect .tabcontrol li {
             display: inline-block;
             flex-grow: 1;
             text-align: center;
             height: 40px;
             margin: 0px 3px 0px; }
-            /* line 342, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+            /* line 342, /home/korgon/Work/springboard/build/scss/_header.scss */
             body #above .heading .worksite .optionselect .tabcontrol li a {
               display: inline-block;
               width: 100%;
@@ -420,44 +420,45 @@ body #above {
               background-position: center center;
               border: 1px solid transparent;
               border-bottom: 0; }
-              /* line 352, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 352, /home/korgon/Work/springboard/build/scss/_header.scss */
               body #above .heading .worksite .optionselect .tabcontrol li a.active {
                 background-color: #001A2B;
                 border: 1px solid #304B66;
                 border-bottom: 0;
                 opacity: 1; }
-              /* line 358, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 358, /home/korgon/Work/springboard/build/scss/_header.scss */
               body #above .heading .worksite .optionselect .tabcontrol li a:hover {
                 cursor: pointer;
                 opacity: 1; }
-              /* line 364, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 364, /home/korgon/Work/springboard/build/scss/_header.scss */
               body #above .heading .worksite .optionselect .tabcontrol li a.modules {
                 background-image: url("/images/icons/module.png"); }
-              /* line 367, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 367, /home/korgon/Work/springboard/build/scss/_header.scss */
               body #above .heading .worksite .optionselect .tabcontrol li a.settings {
                 background-image: url("/images/icons/edit.png"); }
-              /* line 370, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 370, /home/korgon/Work/springboard/build/scss/_header.scss */
               body #above .heading .worksite .optionselect .tabcontrol li a.files {
                 background-image: url("/images/icons/folder.png"); }
-              /* line 373, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 373, /home/korgon/Work/springboard/build/scss/_header.scss */
               body #above .heading .worksite .optionselect .tabcontrol li a.tags {
                 background-image: url("/images/icons/tag.png"); }
-              /* line 376, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 376, /home/korgon/Work/springboard/build/scss/_header.scss */
               body #above .heading .worksite .optionselect .tabcontrol li a.variables {
                 background-image: url("/images/icons/variables.png"); }
-        /* line 383, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+        /* line 383, /home/korgon/Work/springboard/build/scss/_header.scss */
         body #above .heading .worksite .optionselect .tabwrap {
           width: 250px;
-          height: 300px;
+          height: auto;
           clear: both;
           float: right;
           border: 1px solid #304B66;
-          background-color: #001A2B; }
-          /* line 390, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+          background-color: #001A2B;
+          transition: height 144ms ease, height 400ms ease-out; }
+          /* line 391, /home/korgon/Work/springboard/build/scss/_header.scss */
           body #above .heading .worksite .optionselect .tabwrap .tabcontent {
             padding: 10px;
             width: auto; }
-        /* line 396, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+        /* line 397, /home/korgon/Work/springboard/build/scss/_header.scss */
         body #above .heading .worksite .optionselect .modulescroller {
           clear: both;
           float: right;
@@ -465,33 +466,33 @@ body #above {
           border-top: 1px solid #304B66;
           max-height: 1200px;
           overflow-y: auto; }
-          /* line 403, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+          /* line 404, /home/korgon/Work/springboard/build/scss/_header.scss */
           body #above .heading .worksite .optionselect .modulescroller ul.modulechoices {
             list-style: none;
             margin: 0;
             padding: 0; }
-            /* line 407, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+            /* line 408, /home/korgon/Work/springboard/build/scss/_header.scss */
             body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li {
               position: relative;
               font-size: 14px;
               border: 1px solid #304B66;
               border-top: 0; }
-              /* line 414, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+              /* line 415, /home/korgon/Work/springboard/build/scss/_header.scss */
               body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li a {
                 position: relative;
                 display: block;
                 height: 33px;
                 overflow: hidden;
                 transition: all 222ms ease; }
-                /* line 420, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+                /* line 421, /home/korgon/Work/springboard/build/scss/_header.scss */
                 body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li a:hover {
                   color: #C87C0F;
                   height: 141px;
                   cursor: pointer; }
-                /* line 425, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+                /* line 426, /home/korgon/Work/springboard/build/scss/_header.scss */
                 body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li a:hover > .shade {
                   height: 141px; }
-                /* line 428, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+                /* line 429, /home/korgon/Work/springboard/build/scss/_header.scss */
                 body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li a .shade {
                   display: block;
                   position: absolute;
@@ -505,13 +506,13 @@ body #above {
                   line-height: 33px;
                   background: rgba(0, 25, 42, 0.7);
                   transition: height 222ms ease; }
-                  /* line 441, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+                  /* line 442, /home/korgon/Work/springboard/build/scss/_header.scss */
                   body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li a .shade:hover {
                     background: rgba(0, 12, 22, 0.9); }
-                  /* line 444, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+                  /* line 445, /home/korgon/Work/springboard/build/scss/_header.scss */
                   body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li a .shade .info {
                     padding: 0 12px; }
-                /* line 450, /Users/khogg/Workbox/springboard/build/scss/_header.scss */
+                /* line 451, /home/korgon/Work/springboard/build/scss/_header.scss */
                 body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li a img {
                   display: block;
                   position: absolute;
@@ -520,7 +521,7 @@ body #above {
                   width: 250px;
                   margin-bottom: -3px; }
 
-/* line 6, /Users/khogg/Workbox/springboard/build/scss/_editor.scss */
+/* line 6, /home/korgon/Work/springboard/build/scss/_editor.scss */
 body #frame iframe {
   position: absolute;
   top: 0px;
@@ -528,15 +529,15 @@ body #frame iframe {
   border: none;
   width: 100%;
   height: 100%; }
-  /* line 13, /Users/khogg/Workbox/springboard/build/scss/_editor.scss */
+  /* line 13, /home/korgon/Work/springboard/build/scss/_editor.scss */
   body #frame iframe.maximized {
     top: 0px; }
 
-/* line 4, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+/* line 4, /home/korgon/Work/springboard/build/scss/_gallery.scss */
 body #gallery {
   width: auto;
   margin: 20px 20px 60px; }
-  /* line 7, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+  /* line 7, /home/korgon/Work/springboard/build/scss/_gallery.scss */
   body #gallery .sites {
     width: 100%;
     display: flex;
@@ -545,13 +546,13 @@ body #gallery {
     list-style: none;
     margin: 0;
     padding: 0; }
-    /* line 15, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+    /* line 15, /home/korgon/Work/springboard/build/scss/_gallery.scss */
     body #gallery .sites .createsite {
       position: relative;
       width: 100%;
       height: 100%;
       box-sizing: border-box; }
-      /* line 20, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      /* line 20, /home/korgon/Work/springboard/build/scss/_gallery.scss */
       body #gallery .sites .createsite #createbutton {
         background: rgba(0, 12, 22, 0.8);
         position: absolute;
@@ -561,18 +562,18 @@ body #gallery {
         text-align: center;
         width: 100%;
         height: 100%; }
-        /* line 29, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+        /* line 29, /home/korgon/Work/springboard/build/scss/_gallery.scss */
         body #gallery .sites .createsite #createbutton:hover {
           cursor: pointer;
           background: rgba(0, 12, 22, 0.9); }
-          /* line 32, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+          /* line 32, /home/korgon/Work/springboard/build/scss/_gallery.scss */
           body #gallery .sites .createsite #createbutton:hover .sitebutton {
             -webkit-filter: drop-shadow(0px 0px 3px #688BA3);
             filter: drop-shadow(0px 0px 3px #688BA3); }
-        /* line 37, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+        /* line 37, /home/korgon/Work/springboard/build/scss/_gallery.scss */
         body #gallery .sites .createsite #createbutton .sitebutton {
           margin-top: 50px; }
-      /* line 41, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      /* line 41, /home/korgon/Work/springboard/build/scss/_gallery.scss */
       body #gallery .sites .createsite #createinput {
         background: rgba(0, 12, 22, 0.9);
         position: absolute;
@@ -583,25 +584,25 @@ body #gallery {
         height: 100%;
         box-sizing: border-box;
         padding: 10px 20px; }
-        /* line 51, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+        /* line 51, /home/korgon/Work/springboard/build/scss/_gallery.scss */
         body #gallery .sites .createsite #createinput.visible {
           opacity: 1; }
-        /* line 54, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+        /* line 54, /home/korgon/Work/springboard/build/scss/_gallery.scss */
         body #gallery .sites .createsite #createinput input {
           width: 150px; }
-        /* line 57, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+        /* line 57, /home/korgon/Work/springboard/build/scss/_gallery.scss */
         body #gallery .sites .createsite #createinput .buttons {
           margin-top: 5px;
           overflow: auto;
           text-align: center; }
-          /* line 61, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+          /* line 61, /home/korgon/Work/springboard/build/scss/_gallery.scss */
           body #gallery .sites .createsite #createinput .buttons .new_add {
             width: 80px;
             margin-right: 10px; }
-          /* line 65, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+          /* line 65, /home/korgon/Work/springboard/build/scss/_gallery.scss */
           body #gallery .sites .createsite #createinput .buttons .new_cancel {
             width: 80px; }
-    /* line 71, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+    /* line 71, /home/korgon/Work/springboard/build/scss/_gallery.scss */
     body #gallery .sites .site {
       box-sizing: border-box;
       width: 320px;
@@ -611,14 +612,14 @@ body #gallery {
       border: 1px solid #001A2B;
       margin: 0.5%;
       overflow: hidden; }
-      /* line 80, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      /* line 80, /home/korgon/Work/springboard/build/scss/_gallery.scss */
       body #gallery .sites .site:hover > .controls {
         top: 0; }
-      /* line 83, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      /* line 83, /home/korgon/Work/springboard/build/scss/_gallery.scss */
       body #gallery .sites .site img {
         display: block;
         max-width: 100%; }
-      /* line 87, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      /* line 87, /home/korgon/Work/springboard/build/scss/_gallery.scss */
       body #gallery .sites .site .controls {
         transition: top 222ms ease;
         background: rgba(0, 12, 22, 0.8);
@@ -627,17 +628,17 @@ body #gallery {
         height: 100%;
         width: 100%;
         text-align: center; }
-        /* line 95, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+        /* line 95, /home/korgon/Work/springboard/build/scss/_gallery.scss */
         body #gallery .sites .site .controls.visible {
           top: 0; }
-        /* line 98, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+        /* line 98, /home/korgon/Work/springboard/build/scss/_gallery.scss */
         body #gallery .sites .site .controls a {
           display: inline-block;
           margin: 40px 20px 20px; }
-          /* line 101, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+          /* line 101, /home/korgon/Work/springboard/build/scss/_gallery.scss */
           body #gallery .sites .site .controls a:hover {
             cursor: pointer; }
-      /* line 106, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      /* line 106, /home/korgon/Work/springboard/build/scss/_gallery.scss */
       body #gallery .sites .site .details {
         position: absolute;
         display: block;
@@ -647,58 +648,58 @@ body #gallery {
         color: #718599;
         display: block;
         height: 30px; }
-        /* line 115, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+        /* line 115, /home/korgon/Work/springboard/build/scss/_gallery.scss */
         body #gallery .sites .site .details .name {
           line-height: 30px;
           padding-left: 12px;
           float: left; }
-        /* line 120, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+        /* line 120, /home/korgon/Work/springboard/build/scss/_gallery.scss */
         body #gallery .sites .site .details .detailsicons {
           float: right; }
-          /* line 123, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+          /* line 123, /home/korgon/Work/springboard/build/scss/_gallery.scss */
           body #gallery .sites .site .details .detailsicons .icon {
             display: inline-block;
             width: 30px;
             height: 30px;
             margin-right: 5px;
             opacity: 0.4; }
-            /* line 129, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+            /* line 129, /home/korgon/Work/springboard/build/scss/_gallery.scss */
             body #gallery .sites .site .details .detailsicons .icon.cart-magento {
               background: url("/images/icons/meta/magento.png") no-repeat center; }
-            /* line 132, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+            /* line 132, /home/korgon/Work/springboard/build/scss/_gallery.scss */
             body #gallery .sites .site .details .detailsicons .icon.cart-bigcommerce {
               background: url("/images/icons/meta/bigcommerce.png") no-repeat center; }
-            /* line 135, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+            /* line 135, /home/korgon/Work/springboard/build/scss/_gallery.scss */
             body #gallery .sites .site .details .detailsicons .icon.cart-3dcart {
               background: url("/images/icons/meta/3dcart.png") no-repeat center; }
-            /* line 138, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+            /* line 138, /home/korgon/Work/springboard/build/scss/_gallery.scss */
             body #gallery .sites .site .details .detailsicons .icon.cart-miva {
               background: url("/images/icons/meta/miva.png") no-repeat center; }
-            /* line 141, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+            /* line 141, /home/korgon/Work/springboard/build/scss/_gallery.scss */
             body #gallery .sites .site .details .detailsicons .icon.cart-shopify {
               background: url("/images/icons/meta/shopify.png") no-repeat center; }
-            /* line 144, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+            /* line 144, /home/korgon/Work/springboard/build/scss/_gallery.scss */
             body #gallery .sites .site .details .detailsicons .icon.cart-yahoo {
               background: url("/images/icons/meta/yahoo.png") no-repeat center; }
-            /* line 147, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+            /* line 147, /home/korgon/Work/springboard/build/scss/_gallery.scss */
             body #gallery .sites .site .details .detailsicons .icon.cart-custom {
               background: url("/images/icons/meta/custom.png") no-repeat center; }
-            /* line 150, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+            /* line 150, /home/korgon/Work/springboard/build/scss/_gallery.scss */
             body #gallery .sites .site .details .detailsicons .icon.cart-netsuite {
               background: url("/images/icons/meta/netsuite.png") no-repeat center; }
-            /* line 153, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+            /* line 153, /home/korgon/Work/springboard/build/scss/_gallery.scss */
             body #gallery .sites .site .details .detailsicons .icon.cart-volusion {
               background: url("/images/icons/meta/volusion.png") no-repeat center; }
-            /* line 156, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+            /* line 156, /home/korgon/Work/springboard/build/scss/_gallery.scss */
             body #gallery .sites .site .details .detailsicons .icon.cart-commercev3 {
               background: url("/images/icons/meta/cv3.png") no-repeat center; }
-            /* line 159, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+            /* line 159, /home/korgon/Work/springboard/build/scss/_gallery.scss */
             body #gallery .sites .site .details .detailsicons .icon.backend-solr {
               background: url("/images/icons/meta/solr.png") no-repeat center; }
-            /* line 162, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+            /* line 162, /home/korgon/Work/springboard/build/scss/_gallery.scss */
             body #gallery .sites .site .details .detailsicons .icon.backend-saluki {
               background: url("/images/icons/meta/saluki.png") no-repeat center; }
-    /* line 169, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+    /* line 169, /home/korgon/Work/springboard/build/scss/_gallery.scss */
     body #gallery .sites .sitebutton {
       display: inline-block;
       width: 50px;
@@ -708,21 +709,21 @@ body #gallery {
       background-position: center center;
       border-radius: 50px;
       transition: all 222ms ease; }
-      /* line 178, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      /* line 178, /home/korgon/Work/springboard/build/scss/_gallery.scss */
       body #gallery .sites .sitebutton:hover {
         -webkit-filter: drop-shadow(0px 0px 3px #688BA3);
         filter: drop-shadow(0px 0px 3px #688BA3); }
-      /* line 182, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      /* line 182, /home/korgon/Work/springboard/build/scss/_gallery.scss */
       body #gallery .sites .sitebutton.edit {
         background-image: url("/images/icons/gears.png"); }
-      /* line 185, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      /* line 185, /home/korgon/Work/springboard/build/scss/_gallery.scss */
       body #gallery .sites .sitebutton.open {
         background-image: url("/images/icons/open.png"); }
-      /* line 188, /Users/khogg/Workbox/springboard/build/scss/_gallery.scss */
+      /* line 188, /home/korgon/Work/springboard/build/scss/_gallery.scss */
       body #gallery .sites .sitebutton.add {
         background-image: url("/images/icons/add.png"); }
 
-/* line 7, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+/* line 7, /home/korgon/Work/springboard/build/scss/_modals.scss */
 #modals .modal {
   position: fixed;
   top: 0;
@@ -732,7 +733,7 @@ body #gallery {
   background: rgba(0, 0, 0, 0.9);
   z-index: 999999; }
 
-/* line 18, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+/* line 18, /home/korgon/Work/springboard/build/scss/_modals.scss */
 #modals #loading {
   position: fixed;
   top: 0;
@@ -745,10 +746,10 @@ body #gallery {
   transition: all linear 0.5s;
   text-align: center;
   opacity: .6; }
-  /* line 30, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+  /* line 30, /home/korgon/Work/springboard/build/scss/_modals.scss */
   #modals #loading.ng-hide {
     opacity: 0; }
-  /* line 33, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+  /* line 33, /home/korgon/Work/springboard/build/scss/_modals.scss */
   #modals #loading .wrap {
     position: relative;
     top: 50%;
@@ -760,7 +761,7 @@ body #gallery {
     background-color: #001A2B;
     border: 1px solid #354E66;
     box-shadow: 0px 0px 20px #C87C0F; }
-    /* line 44, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+    /* line 44, /home/korgon/Work/springboard/build/scss/_modals.scss */
     #modals #loading .wrap .loadImage {
       background: url("/images/loading.gif");
       position: absolute;
@@ -768,27 +769,27 @@ body #gallery {
       width: 124px;
       height: 128px; }
 
-/* line 55, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+/* line 55, /home/korgon/Work/springboard/build/scss/_modals.scss */
 #modals .boxwrap {
   width: 250px;
   height: auto;
   border: 1px solid #304B66;
   margin: 90px auto 0px;
   padding: 0; }
-  /* line 61, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+  /* line 61, /home/korgon/Work/springboard/build/scss/_modals.scss */
   #modals .boxwrap.alert {
     width: 350px; }
-  /* line 64, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+  /* line 64, /home/korgon/Work/springboard/build/scss/_modals.scss */
   #modals .boxwrap.input {
     width: 350px; }
-  /* line 67, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+  /* line 67, /home/korgon/Work/springboard/build/scss/_modals.scss */
   #modals .boxwrap .boxtop {
     height: 22px;
     overflow: hidden;
     background-color: #0E1920;
     background-image: linear-gradient(#354957, #304B66);
     border-bottom: 1px solid #1B3141; }
-    /* line 73, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+    /* line 73, /home/korgon/Work/springboard/build/scss/_modals.scss */
     #modals .boxwrap .boxtop ul.boxbuttons {
       display: flex;
       align-items: center;
@@ -796,68 +797,68 @@ body #gallery {
       list-style: none;
       margin: 0;
       padding: 0; }
-      /* line 80, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+      /* line 80, /home/korgon/Work/springboard/build/scss/_modals.scss */
       #modals .boxwrap .boxtop ul.boxbuttons li {
         display: inline-block;
         margin: 4px; }
-        /* line 83, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+        /* line 83, /home/korgon/Work/springboard/build/scss/_modals.scss */
         #modals .boxwrap .boxtop ul.boxbuttons li a {
           display: inline-block;
           width: 15px;
           height: 15px;
           opacity: 0.5;
           background-repeat: no-repeat; }
-          /* line 89, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+          /* line 89, /home/korgon/Work/springboard/build/scss/_modals.scss */
           #modals .boxwrap .boxtop ul.boxbuttons li a.close {
             background-image: url("/images/icons/close_tiny.png");
             background-size: 15px; }
-            /* line 92, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+            /* line 92, /home/korgon/Work/springboard/build/scss/_modals.scss */
             #modals .boxwrap .boxtop ul.boxbuttons li a.close:hover {
               opacity: 1;
               cursor: pointer; }
-        /* line 98, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+        /* line 98, /home/korgon/Work/springboard/build/scss/_modals.scss */
         #modals .boxwrap .boxtop ul.boxbuttons li.move {
           margin: 0;
           flex-grow: 12;
           height: 27px; }
-          /* line 102, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+          /* line 102, /home/korgon/Work/springboard/build/scss/_modals.scss */
           #modals .boxwrap .boxtop ul.boxbuttons li.move:hover {
             cursor: move; }
-  /* line 109, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+  /* line 109, /home/korgon/Work/springboard/build/scss/_modals.scss */
   #modals .boxwrap .boxcontent {
     text-align: center;
     background-color: #001A2B;
     padding: 10px;
     color: #718599; }
-    /* line 114, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+    /* line 114, /home/korgon/Work/springboard/build/scss/_modals.scss */
     #modals .boxwrap .boxcontent .boxmessage {
       display: table;
       border-spacing: 20px;
       width: 100%; }
-      /* line 118, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+      /* line 118, /home/korgon/Work/springboard/build/scss/_modals.scss */
       #modals .boxwrap .boxcontent .boxmessage .messageicon {
         display: table-cell;
         vertical-align: middle;
         width: 30px;
         height: 30px; }
-        /* line 123, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+        /* line 123, /home/korgon/Work/springboard/build/scss/_modals.scss */
         #modals .boxwrap .boxcontent .boxmessage .messageicon.alert {
           background: url("/images/icons/alert.png") no-repeat center;
           background-size: 30px; }
-        /* line 127, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+        /* line 127, /home/korgon/Work/springboard/build/scss/_modals.scss */
         #modals .boxwrap .boxcontent .boxmessage .messageicon.commit {
           background: url("/images/icons/commit.png") no-repeat center;
           background-size: 30px; }
-      /* line 132, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+      /* line 132, /home/korgon/Work/springboard/build/scss/_modals.scss */
       #modals .boxwrap .boxcontent .boxmessage .message {
         display: table-cell;
         vertical-align: middle;
         text-align: center; }
-    /* line 138, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+    /* line 138, /home/korgon/Work/springboard/build/scss/_modals.scss */
     #modals .boxwrap .boxcontent .inputs {
       width: 90%;
       margin: 0px auto 10px; }
-      /* line 141, /Users/khogg/Workbox/springboard/build/scss/_modals.scss */
+      /* line 141, /home/korgon/Work/springboard/build/scss/_modals.scss */
       #modals .boxwrap .boxcontent .inputs input {
         width: 100%; }
 

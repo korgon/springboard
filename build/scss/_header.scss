@@ -382,11 +382,12 @@ body {
 
 					.tabwrap {
 						width: 250px;
-						height: 300px;
+						height: auto;
 						clear: both;
 						float: right;
 						border: 1px solid $bluehighlight;
 						background-color: $bluedarkest;
+						transition: height 144ms ease, height 400ms ease-out;
 						.tabcontent {
 							padding: 10px;
 							width: auto;

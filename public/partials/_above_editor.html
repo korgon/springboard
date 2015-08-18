@@ -11,15 +11,15 @@
     <div class="optionselect" ng-class="{'show': showOptions}" ng-init="showOptions = false">
 
       <ul class="tabcontrol">
-        <li><a class="modules" ng-class="{ 'active': (vm.tab == 'modules')}" ng-click="vm.tab = 'modules'"></a></li>
-        <li><a class="tags" ng-class="{ 'active': (vm.tab == 'tags')}" ng-click="vm.tab = 'tags'"></a></li>
-        <li><a class="files" ng-class="{ 'active': (vm.tab == 'files')}" ng-click="vm.tab = 'files'"></a></li>
-        <li><a class="settings" ng-class="{ 'active': (vm.tab == 'settings')}" ng-click="vm.tab = 'settings'"></a></li>
+        <li><a class="modules" ng-class="{ 'active': (vm.tab == 'modules')}" ng-click="vm.switchTab('modules')"></a></li>
+        <li><a class="tags" ng-class="{ 'active': (vm.tab == 'tags')}" ng-click="vm.switchTab('tags')"></a></li>
+        <li><a class="files" ng-class="{ 'active': (vm.tab == 'files')}" ng-click="vm.switchTab('files')"></a></li>
+        <li><a class="settings" ng-class="{ 'active': (vm.tab == 'settings')}" ng-click="vm.switchTab('settings')"></a></li>
       </ul>
       <div class="tabwrap" ng-switch="vm.tab">
         <div class="tabcontent" ng-switch-when="modules">modules</div>
         <div class="tabcontent" ng-switch-when="tags">tags</div>
-        <div class="tabcontent" ng-switch-when="files">files</div>
+        <div class="tabcontent" ng-switch-when="files">files<p>directories</p><p>more files</p></div>
         <div class="tabcontent" ng-switch-when="settings">settings</div>
       </div>
       <div class="spacer"></div>
