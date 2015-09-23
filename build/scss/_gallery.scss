@@ -3,14 +3,14 @@
 body {
 	#gallery {
 		width: auto;
-		margin: 20px;
+		margin: 0;
 		.sites {
 			width: 100%;
 			display: flex;
 			flex-flow: row wrap;
 			justify-content: center;
 			list-style: none;
-			margin: 0;
+			margin: 20px 0;
 			padding: 0;
 			.createsite {
 				position: relative;
@@ -75,7 +75,7 @@ body {
 				position: relative;
 				font-size: 14px;
 				border: 1px solid $bluedarkest;
-				margin: 0.5%;
+				margin: 5px 0.5%;
 				overflow: hidden;
 				&:hover > .controls {
 					top: 0;

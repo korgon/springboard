@@ -155,6 +155,9 @@ body {
 				border-radius: 6px;
 				border: 1px solid $bluehighlight;
 				width: 240px;
+				@include respondpx(480) {
+					display: none;
+				}
 				#searchbox {
 					order: 2;
 					flex-grow: 2;
