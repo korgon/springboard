@@ -26,6 +26,7 @@ function sitemanager($http, $q, $timeout) {
     createSite: createSite,
     editSite: editSite,
     commitSite: commitSite,
+    resetSite: resetSite,
     pushSite: pushSite,
     publishSiteMockup: publishSiteMockup,
     getModules: getModules,
@@ -94,12 +95,12 @@ function sitemanager($http, $q, $timeout) {
 
   // triggers complete reload of sites (including pull)
   // return sites objects
-  function loadSites() {
+  function loadSites(ignore) {
     var promise = $q.defer();
 
     $http({
       method: 'GET',
-      url: '/api/sites/load'
+      url: (ignore) ? '/api/sites/load/ignore' : '/api/sites/load'
     }).success(function(data, status, headers) {
       // empty site object
       site = {};
@@ -146,6 +147,24 @@ function sitemanager($http, $q, $timeout) {
     } else {
       promise.reject({ error: true, message: 'not editing any site!'});
     }
+
+    return promise.promise;
+  }
+
+  // reset the changes made to the site
+  function resetSite() {
+    var promise = $q.defer();
+
+    $http({
+      method: 'GET',
+      url: '/api/site/reset'
+    }).success(function(data, status, headers) {
+      if (data.error) {
+        promise.reject(data.message);
+      } else {
+        promise.resolve(data);
+      }
+    }).error(promise.reject);
 
     return promise.promise;
   }

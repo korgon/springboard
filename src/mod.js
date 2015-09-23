@@ -81,7 +81,7 @@ var thm = require('./thm');
 var types = require('./modules/');
 
 // construction
-// options initially only contain module folder name and directory
+// options initially only contain module folder name and directory (or new flag options.new)
 // usually named modulename.json
 module.exports = mod;
 function mod(options) {
@@ -92,16 +92,28 @@ function mod(options) {
 		this[key] = options[key];
 	}
 
-	this.loadConfig();
-	// create spaces
-	this.themes = {};
-	this.plugins = {};
+	if (!this.new) {
+		this.loadConfig();
+	}
+
+	// based on the module type, extend the object with new functions
+	// module specific functions (install, compile)
+	types.extend(this);
+
+	// installaltion of new module using module specific function
+	if (this.new) {
+		this.install();
+		this.loadConfig();
+	}
+
 	if (this.valid) {
+		// create spaces
+		this.themes = {};
+		this.plugins = {};
+
 		this.loadThemes();
 		this.loadPlugins();
 	}
-	// based on the module type, extend the object with new functions
-	types.extend(this);
 }
 
 /*	_________________	*\
@@ -215,6 +227,11 @@ mod.prototype.loadThemes = function() {
 			}
 		}
 	}
+}
+
+// compile function for unknown module type
+mod.prototype.install = function() {
+	console.log('module type is not supported');
 }
 
 // compile function for unknown module type

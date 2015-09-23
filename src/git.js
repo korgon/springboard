@@ -174,6 +174,18 @@
   };
 
   /**
+  * Add all new files to source control
+  *
+  * @param {Function} [then]
+  */
+  Git.prototype.addAll = function(then) {
+    this._suppressOutput = true;
+    return this._run(['add -A'], function(err, data) {
+      then && then(err);
+    });
+  };
+
+  /**
   * Adds one or more files to source control
   *
   * @param {String|String[]} files

@@ -10,6 +10,7 @@
 /api/site/edit
 /api/site/commit
 /api/site/push
+/api/site/reset
 
 
 
@@ -30,14 +31,15 @@ module.exports = function(springboard) {
 
     // stop editing and load sites
     loadSites: function*() {
+      var ignore = this.params.ignore;
       try {
-        var data = yield springboard.loadSites();
+        var data = yield springboard.loadSites((ignore) ? true : false);
         this.response.type = 'json';
         this.response.body = data;
       }
       catch(err) {
         this.response.type = 'json';
-        this.response.body = { error: true, message: err.message };
+        this.response.body = err;
       }
     },
 
@@ -123,6 +125,19 @@ module.exports = function(springboard) {
     push: function*() {
       try {
         var data = yield springboard.pushSite();
+        this.response.type = 'json';
+        this.response.body = data;
+      }
+      catch(err) {
+        this.response.type = 'json';
+        this.response.body = err;
+      }
+    },
+
+    // reset the current site
+    reset: function*() {
+      try {
+        var data = yield springboard.resetSite();
         this.response.type = 'json';
         this.response.body = data;
       }

@@ -4,7 +4,7 @@
   "description": "default autocomplete style",
   "cart": "none",
   "colors": ["none"],
-  "type": "desktop",
+  "devices": ["responsive"],
   "variables": {
   }
 }

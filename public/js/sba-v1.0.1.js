@@ -626,22 +626,68 @@ function GalleryCtrl($location, focus, sitemanager, modalmanager) {
       vm.loading = false;
 
       console.log(sites);
-      var promise = modalmanager.open(
-        'alert',
-        {
-          message: sites.message
-        }
-      );
 
-      console.log('rly?');
+      if (sites.action == 'push') {
+        console.log('yea?');
+        // unpushed commits
+        var promise = modalmanager.open(
+          'alert',
+          {
+            message: sites.message,
+            button_cancel: 'Back',
+            button_confirm: 'Ignore'
+          }
+        );
 
-      promise.then(function(response) {
-        $location.path("/editor");
-      }, function(err) {
-        $location.path("/editor");
-      });
+        // modal response
+        promise.then(function(response) {
+          // 'ignore' chosen
+          vm.loading = true;
+          sitemanager.loadSites(true).then(function(sites) {
+            if (sites.error) {
+              $location.path("/editor");
+            } else {
+              vm.loading = false;
+              vm.sites = sites;
+            }
+          });
+        }, function(err) {
+          // 'back' chosen
+          $location.path("/editor");
+        });
+      } else if (sites.action == 'commit') {
+        // uncommited changes
+        var promise = modalmanager.open(
+          'alert',
+          {
+            message: sites.message,
+            button_cancel: 'Back',
+            button_confirm: 'Discard'
+          }
+        );
+
+        // modal alert response
+        promise.then(function(response) {
+          // 'discard' chosen
+          vm.loading = true;
+          sitemanager.resetSite().then(function() {
+            sitemanager.loadSites().then(function(sites) {
+              if (sites.error) {
+                $location.path("/editor");
+              } else {
+                vm.loading = false;
+                vm.sites = sites;
+              }
+            });
+          });
+        }, function(err) {
+          // 'back' chosen
+          $location.path("/editor");
+        });
+      }
 
     } else {
+      // got site data
       console.info('got sites...');
       vm.loading = false;
       vm.sites = sites;
@@ -723,9 +769,9 @@ angular
   .module('springboardApp')
   .controller('ModalAlertCtrl', ModalAlertCtrl);
 
-ModalAlertCtrl.$inject = ['$scope', 'modalmanager'];
+ModalAlertCtrl.$inject = ['$scope', 'modalmanager', 'focus'];
 
-function ModalAlertCtrl($scope, modalmanager) {
+function ModalAlertCtrl($scope, modalmanager, focus) {
 
   var params = modalmanager.params();
   var mm = {};
@@ -734,15 +780,22 @@ function ModalAlertCtrl($scope, modalmanager) {
   // Setup defaults using the modal params.
   mm.message_icon = ( params.message_icon || 'alert' );
   mm.message = ( params.message || 'Do the thing?' );
-  mm.button_confirm = ( params.button_confirm || 'Close' );
+  mm.button_confirm = ( params.button_confirm || 'Ok' );
+  mm.button_cancel = ( params.button_cancel || 'Close' );
 
   // focus on the close button
   focus('modalClose');
 
   // modal resolution
   mm.closeModal = function() {
+    modalmanager.reject();
+  }
+
+  // modal resolution
+  mm.resolveModal = function() {
     modalmanager.resolve();
   }
+
 }
 
 // Input Modal Controller
@@ -935,7 +988,7 @@ function modalmanager($rootScope, $q) {
     resolve: resolve
   });
 
-  function open( type, params, pipeResponse ) {
+  function open(type, params, pipeResponse) {
     var previousDeferred = modal.deferred;
 
     // set current modal
@@ -943,7 +996,7 @@ function modalmanager($rootScope, $q) {
     modal.params = params;
 
     // if a modal existed, pipe response
-    if ( previousDeferred && pipeResponse ) {
+    if (previousDeferred && pipeResponse) {
       modal.deferred.promise.then(previousDeferred.resolve, previousDeferred.reject);
     // no piping - reject
     } else if (previousDeferred) {
@@ -958,7 +1011,7 @@ function modalmanager($rootScope, $q) {
 
   // return current params
   function params() {
-    return( modal.params || {} );
+    return(modal.params || {});
   }
 
   // used for passing modal params
@@ -972,7 +1025,7 @@ function modalmanager($rootScope, $q) {
       return;
     }
 
-    modal.deferred.reject( reason );
+    modal.deferred.reject(reason);
 
     // close the modal
     modal.deferred = modal.params = null;
@@ -1031,6 +1084,7 @@ function sitemanager($http, $q, $timeout) {
     createSite: createSite,
     editSite: editSite,
     commitSite: commitSite,
+    resetSite: resetSite,
     pushSite: pushSite,
     publishSiteMockup: publishSiteMockup,
     getModules: getModules,
@@ -1099,12 +1153,12 @@ function sitemanager($http, $q, $timeout) {
 
   // triggers complete reload of sites (including pull)
   // return sites objects
-  function loadSites() {
+  function loadSites(ignore) {
     var promise = $q.defer();
 
     $http({
       method: 'GET',
-      url: '/api/sites/load'
+      url: (ignore) ? '/api/sites/load/ignore' : '/api/sites/load'
     }).success(function(data, status, headers) {
       // empty site object
       site = {};
@@ -1151,6 +1205,24 @@ function sitemanager($http, $q, $timeout) {
     } else {
       promise.reject({ error: true, message: 'not editing any site!'});
     }
+
+    return promise.promise;
+  }
+
+  // reset the changes made to the site
+  function resetSite() {
+    var promise = $q.defer();
+
+    $http({
+      method: 'GET',
+      url: '/api/site/reset'
+    }).success(function(data, status, headers) {
+      if (data.error) {
+        promise.reject(data.message);
+      } else {
+        promise.resolve(data);
+      }
+    }).error(promise.reject);
 
     return promise.promise;
   }

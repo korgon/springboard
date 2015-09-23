@@ -263,16 +263,10 @@ website.prototype.installModule = function(new_mod) {
 		var template_dir = new_mod.directory;
 		var module_dir = self.directory + '/' + new_mod.name;
 		try {
+			// ensure module name (directory) not in use
 			if (!fs.existsSync(module_dir)) {
-				fs.copySync(template_dir + '/core', module_dir + '/core');
-				// rename the json config file for the module to the new name
-				var config_file = template_dir + '/.' + new_mod.type + '.json';
-				var new_config_file = module_dir + '/.' + new_mod.name + '.json';
-
-				fs.copySync(config_file, new_config_file);
-
 				// create new module object
-				self.modules[new_mod.name] = new mod({ name: new_mod.name, directory: module_dir });
+				self.modules[new_mod.name] = new mod({ name: new_mod.name, type: new_mod.type, directory: module_dir, template_dir: new_mod.template_dir, new: true });
 				return resolve({ error: false, message: 'module installed' });
 
 			} else {

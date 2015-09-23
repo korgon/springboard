@@ -24,7 +24,7 @@ function modalmanager($rootScope, $q) {
     resolve: resolve
   });
 
-  function open( type, params, pipeResponse ) {
+  function open(type, params, pipeResponse) {
     var previousDeferred = modal.deferred;
 
     // set current modal
@@ -32,7 +32,7 @@ function modalmanager($rootScope, $q) {
     modal.params = params;
 
     // if a modal existed, pipe response
-    if ( previousDeferred && pipeResponse ) {
+    if (previousDeferred && pipeResponse) {
       modal.deferred.promise.then(previousDeferred.resolve, previousDeferred.reject);
     // no piping - reject
     } else if (previousDeferred) {
@@ -47,7 +47,7 @@ function modalmanager($rootScope, $q) {
 
   // return current params
   function params() {
-    return( modal.params || {} );
+    return(modal.params || {});
   }
 
   // used for passing modal params
@@ -61,7 +61,7 @@ function modalmanager($rootScope, $q) {
       return;
     }
 
-    modal.deferred.reject( reason );
+    modal.deferred.reject(reason);
 
     // close the modal
     modal.deferred = modal.params = null;

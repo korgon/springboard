@@ -10,56 +10,11 @@
 
 /* ideas
 
-load module tree library from springboard-modules directory
-use json files to grow tree, use this object for reference (installation)
 
-load module trees per site on site load (load themes and plugins per module also)
-
-/*
-
-json
-object prototype example
-{
-  "name": "slideout",
-  "version": "1.1.1",
-  "enabled": false,
-  "requires_module": ["ajax_catalog"],
-	"requires_plugin": [],
-  "description": "slide out facet container for responsive sites",
-  "script": "slideout.js",
-  "scss": "_slideout.scss",
-  "variables": {
-    "hideOnClick": {
-      "value": true,
-      "type": "boolean",
-      "description": "hide the slideout when a facet option is clicked"
-    },
-    "respondAt": {
-      "value": 999999,
-      "type": "integer",
-      "description": "display slideout at this width (px)"
-    },
-    "speed": {
-      "value": 666,
-      "type": "integer",
-      "description": "speed to hide slideout container (ms)"
-    },
-    "width": {
-      "value": 333,
-      "type": "integer",
-      "description": "width of slideout container (px)"
-    }
-  }
-}
-additional attributes only used for springboard at runtime:
-{
-	"directory": "",			// location of plugin relative to springboard
-	"valid": true					// used to validate module
-}
 */
 
 // the object properties that should be written to file (modname.json)
-var export_options = ['name', 'version', 'enabled', 'requires_module', 'requires_plugin', 'description', 'script', 'scss', 'variables'];
+var export_options = ['name', 'version', 'description', 'cart', 'colors', 'devices', 'variables'];
 
 // include packages
 var fs = require('fs-extra');

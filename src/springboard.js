@@ -242,7 +242,7 @@ function springboard() {
 		}
 	}
 
-	self.loadSites = function() {
+	self.loadSites = function(ignore) {
 		// promisified
 		return new Promise(function(resolve, reject) {
 
@@ -251,10 +251,10 @@ function springboard() {
 			self.gitStatus().then(function(status) {
 				if (status.changes) {
 					// there are uncommited changes on current site
-					return reject({ error: true, message: 'There are uncommited changes!' });
-				} else if (status.ahead) {
+					return reject({ error: true, action: 'commit', message: 'There are uncommited changes!' });
+				} else if (status.ahead && !ignore) {
 					// there are unpushed commits on current site
-					return reject({ error: true, message: 'There are unpushed changes!' });
+					return reject({ error: true, action: 'push', message: 'There are unpushed changes!' });
 				}
 
 				stopWatch();
@@ -393,7 +393,7 @@ function springboard() {
 			self.gitStatus().then(function(status) {
 				if (status.changes) {
 					// there are uncommited changes on current site
-					return reject({ error: true, message: 'there are uncommit changes' });
+					return reject({ error: true, message: 'there are uncommited changes' });
 				} else if (status.ahead) {
 					// there are unpushed commits on current site
 					return reject({ error: true, message: 'need to push changes' });
@@ -479,19 +479,25 @@ function springboard() {
 		// promisified
 		return new Promise(function(resolve, reject) {
 			try {
+				// ensure a site is currently being edited
 				if (site.directory) {
 					if (info.install == 'module') {
-						// ensure module type
+
+						// ensure module type is valid
 						if (!modules[info.type]) throw('invalid module type');
+
 						// check if the name is in use by other modules
 						if (site.modules[info.name]) throw('module ' + info.name + ' allready exists');
-							// install module
-						site.installModule({ name: info.name, type: info.type, directory: modules[info.type].directory })
+
+						// install module
+						site.installModule({ name: info.name, type: info.type, template_dir: modules[info.type].directory })
 						.then(function(status) {
-							// success!!!
+							// some problem occurred
 							if (status.error) {
 								return resolve({ error: true, message: status.message });
 							}
+
+							// success!!!
 							return resolve(site);
 						}).catch(function(err) {
 							// fail!!!
@@ -500,10 +506,12 @@ function springboard() {
 					} else if (info.install == 'theme' || info.install == 'plugin') {
 						// check if module installed in site
 						if (!site.modules[info.module]) throw('parent module not installed');
+
 						// TODO install theme or plugin
 						// should autocompile plugin and themes on install (eye of chokidar)
 						return resolve({ error: false, message: info.install + ' ' + info.name + '(' + info.type + ') installed' });
 					} else {
+						// not a valid install type (module, theme, plugin)
 						throw('invalid install type');
 					}
 				} else {
@@ -559,7 +567,7 @@ function springboard() {
 					// changes to be commited
 					site.setStatus({ gitstatus: new_status });
 
-					git.add([sites_dir + '/' + site.name], function(err, data) {
+					git.addAll(function(err, data) {
 						if (err) return reject({ error: true, site: site.name, action: 'commit', message: err.message });
 					}).commit(message, function(err) {
 						if (err) {
@@ -664,7 +672,7 @@ function springboard() {
 			if (!site) return reject({ error: true, message: 'not editing a site...' });
 
 			logit.log('pull request', 'pull request made for ' + site.name, 'warn');
-			return resolve( { site: site.name, action: 'pullrequest', status: 'success' } )
+			return resolve( { error: false, site: site.name, action: 'pullrequest', status: 'success' } )
 		});
 	}
 
@@ -685,6 +693,21 @@ function springboard() {
 				console.error(err.red);
 
 				return reject({ error: true, site: site.name, action: 'publish', status: 'failed', message: err.message });
+			});
+		});
+	}
+
+	self.resetSite = function() {
+		// promisified
+		return new Promise(function(resolve, reject) {
+			if (!site) return reject({ error: true, message: 'not editing a site...' });
+
+			git.reset(function(err) {
+				if (err) return resolve({ error: true, site: site.name, action: 'reset', status: 'failed', message: err.message });
+				git.reset(function(err) {
+					if (err) return resolve({ error: true, site: site.name, action: 'reset', status: 'failed', message: err.message });
+					return resolve({ error: false, site: site.name, action: 'reset', status: 'success' });
+				});
 			});
 		});
 	}
@@ -1006,10 +1029,7 @@ function springboard() {
 		if (eye_of_sauron) eye_of_sauron.close();
 
 		// new watching method to rid ourselves of gulp
-		var watch_list = [ site.directory + '/**/*.scss',
-											 site.directory + '/**/.*.scss',
-											 site.directory + '/**/*.sass',
-											 site.directory + '/**/.*.sass' ];
+		var watch_list = [ site.directory + '/**/*.scss'];
 
 		eye_of_sauron = chokidar.watch(watch_list, { ignoreInitial: true });
 
@@ -1043,7 +1063,7 @@ function springboard() {
 			}
 		}
 
-		// ran by the watcher to compile and minify scss
+		// ran by the watcher to compile to css and minify
 		function scssBuilder(path) {
 			var source_file = path.replace(/^(.*\/)(.*)\.(.*)$/, '$2.$3');
 
@@ -1096,7 +1116,8 @@ function springboard() {
 		if (eye_of_horus)	eye_of_horus.close();
 
 		// new watching method to rid ourselves of gulp
-		var watch_list = [site.directory + '/*.html'];
+		var watch_list = [site.directory + '/*.html',
+											site.directory + '/*.htm'];
 		eye_of_horus = chokidar.watch(watch_list, { ignoreInitial: true });
 
 		eye_of_horus.on('change', function(path) {

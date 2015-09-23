@@ -26,22 +26,68 @@ function GalleryCtrl($location, focus, sitemanager, modalmanager) {
       vm.loading = false;
 
       console.log(sites);
-      var promise = modalmanager.open(
-        'alert',
-        {
-          message: sites.message
-        }
-      );
 
-      console.log('rly?');
+      if (sites.action == 'push') {
+        console.log('yea?');
+        // unpushed commits
+        var promise = modalmanager.open(
+          'alert',
+          {
+            message: sites.message,
+            button_cancel: 'Back',
+            button_confirm: 'Ignore'
+          }
+        );
 
-      promise.then(function(response) {
-        $location.path("/editor");
-      }, function(err) {
-        $location.path("/editor");
-      });
+        // modal response
+        promise.then(function(response) {
+          // 'ignore' chosen
+          vm.loading = true;
+          sitemanager.loadSites(true).then(function(sites) {
+            if (sites.error) {
+              $location.path("/editor");
+            } else {
+              vm.loading = false;
+              vm.sites = sites;
+            }
+          });
+        }, function(err) {
+          // 'back' chosen
+          $location.path("/editor");
+        });
+      } else if (sites.action == 'commit') {
+        // uncommited changes
+        var promise = modalmanager.open(
+          'alert',
+          {
+            message: sites.message,
+            button_cancel: 'Back',
+            button_confirm: 'Discard'
+          }
+        );
+
+        // modal alert response
+        promise.then(function(response) {
+          // 'discard' chosen
+          vm.loading = true;
+          sitemanager.resetSite().then(function() {
+            sitemanager.loadSites().then(function(sites) {
+              if (sites.error) {
+                $location.path("/editor");
+              } else {
+                vm.loading = false;
+                vm.sites = sites;
+              }
+            });
+          });
+        }, function(err) {
+          // 'back' chosen
+          $location.path("/editor");
+        });
+      }
 
     } else {
+      // got site data
       console.info('got sites...');
       vm.loading = false;
       vm.sites = sites;

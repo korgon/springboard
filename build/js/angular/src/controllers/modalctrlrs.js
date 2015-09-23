@@ -11,9 +11,9 @@ angular
   .module('springboardApp')
   .controller('ModalAlertCtrl', ModalAlertCtrl);
 
-ModalAlertCtrl.$inject = ['$scope', 'modalmanager'];
+ModalAlertCtrl.$inject = ['$scope', 'modalmanager', 'focus'];
 
-function ModalAlertCtrl($scope, modalmanager) {
+function ModalAlertCtrl($scope, modalmanager, focus) {
 
   var params = modalmanager.params();
   var mm = {};
@@ -22,15 +22,22 @@ function ModalAlertCtrl($scope, modalmanager) {
   // Setup defaults using the modal params.
   mm.message_icon = ( params.message_icon || 'alert' );
   mm.message = ( params.message || 'Do the thing?' );
-  mm.button_confirm = ( params.button_confirm || 'Close' );
+  mm.button_confirm = ( params.button_confirm || 'Ok' );
+  mm.button_cancel = ( params.button_cancel || 'Close' );
 
   // focus on the close button
   focus('modalClose');
 
   // modal resolution
   mm.closeModal = function() {
+    modalmanager.reject();
+  }
+
+  // modal resolution
+  mm.resolveModal = function() {
     modalmanager.resolve();
   }
+
 }
 
 // Input Modal Controller
