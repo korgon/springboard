@@ -2,17 +2,11 @@
 
 body {
 	// iframe for view/edit
-  #frame {
-    iframe {
-      position: absolute;
-      top: 0px;
-      background-color: #fff;
-      border: none;
-      width: 100%;
-      height: 100%;
-			&.maximized {
-				top: 0px;
-			}
-    }
+  iframe {
+    display: block;
+    background-color: #fff;
+    border: none;
+    width: 100%;
+    height: 100%;
   }
 }

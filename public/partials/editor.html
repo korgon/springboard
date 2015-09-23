@@ -1,9 +1,7 @@
 <div id="above" ng-include src="'/partials/_above_editor.html'"></div>
 
 <div id="content">
-  <div id="frame" ng-show="vm.url">
-    <iframe id="frameview" name="frameview" ng-src="{{ vm.url | trustAsResourceUrl }}" iframer></iframe>
-  </div>
+    <iframe id="frameview" name="frameview" ng-show="vm.url" ng-src="{{ vm.url | trustAsResourceUrl }}" iframer></iframe>
 </div>
 
-<div id="footer" ng-include src="'/partials/_below.html'"></div>
+<div id="below" ng-include src="'/partials/_below.html'"></div>

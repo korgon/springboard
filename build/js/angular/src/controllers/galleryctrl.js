@@ -28,7 +28,6 @@ function GalleryCtrl($location, focus, sitemanager, modalmanager) {
       console.log(sites);
 
       if (sites.action == 'push') {
-        console.log('yea?');
         // unpushed commits
         var promise = modalmanager.open(
           'alert',

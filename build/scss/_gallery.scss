@@ -3,7 +3,7 @@
 body {
 	#gallery {
 		width: auto;
-		margin: 20px 20px 60px;
+		margin: 20px;
 		.sites {
 			width: 100%;
 			display: flex;
@@ -97,7 +97,7 @@ body {
 					}
 					a {
 						display: inline-block;
-						margin: 40px 20px 20px;
+						margin: 55px 20px 20px;
 						&:hover {
 							cursor: pointer;
 						}

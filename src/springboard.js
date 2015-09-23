@@ -32,7 +32,7 @@ High Level TODO
 		b.	put module funtions in mod module (class)
 
 
-2.	tie together s3 releases with tagging
+2.	get s3 uploading working
 
 3.	update UI
 		a.	main menu dropdown
