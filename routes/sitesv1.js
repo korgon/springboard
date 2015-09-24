@@ -197,8 +197,11 @@ module.exports = function(springboard) {
         return;
       }
 
-      // TODO better verification of inputs
-      // check to make sure inputs are valid
+      // purify all things
+      newsite.name = newsite.name.toLowerCase();
+      newsite.siteid = newsite.siteid.toLowerCase();
+      newsite.backend = newsite.backend.toLowerCase();
+      newsite.cart = newsite.cart.toLowerCase();
 
       // check if domain name format (example.com)
       if (!newsite.name.match(/^[^\_\.]\w+\.\w{2,}$/i)) {

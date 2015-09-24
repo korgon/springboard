@@ -780,7 +780,7 @@ function ModalAlertCtrl($scope, modalmanager, focus) {
   mm.message_icon = ( params.message_icon || 'alert' );
   mm.message = ( params.message || 'Do the thing?' );
   mm.button_confirm = ( params.button_confirm || 'Ok' );
-  mm.button_cancel = ( params.button_cancel || 'Close' );
+  mm.button_cancel = ( params.button_cancel || '' );
 
   // focus on the close button
   focus('modalClose');

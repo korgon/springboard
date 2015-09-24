@@ -16,7 +16,7 @@
       </div>
       <div class="buttons">
         <button class="button" ng-if="mm.button_confirm" ng-click="mm.resolveModal()">{{ mm.button_confirm }}</button>
-        <button class="button" ng-click="mm.closeModal()" focus-on="modalClose">{{ mm.button_cancel }}</button>
+        <button class="button" ng-if="mm.button_cancel" ng-click="mm.closeModal()" focus-on="modalClose">{{ mm.button_cancel }}</button>
       </div>
     </div>
   </div>

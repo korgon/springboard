@@ -185,6 +185,7 @@ function springboard() {
 			}).then(function() {
 				return startBrowserSync();
 			}).then(function() {
+				// finished initializing
 				return resolve(true);
 			}).catch(function(err) {
 				return reject(err);
@@ -393,82 +394,75 @@ function springboard() {
 			self.gitStatus().then(function(status) {
 				if (status.changes) {
 					// there are uncommited changes on current site
-					return reject({ error: true, message: 'there are uncommited changes' });
+					return reject({ error: true, message: 'There are uncommited changes!' });
 				} else if (status.ahead) {
 					// there are unpushed commits on current site
-					return reject({ error: true, message: 'need to push changes' });
+					return reject({ error: true, message: 'There are unpushed changes!' });
 				}
 
-				// purify all things
-				details.name = details.name.toLowerCase();
-				details.siteid = details.siteid.toLowerCase();
-				details.backend = details.backend.toLowerCase();
-				details.cart = details.cart.toLowerCase();
+				return gitReset();
+			}).then(function() {
+				git.checkout('master', function(err) {
+					if (err) return reject(err);
 
-				if (details === undefined || details.name === undefined || details.siteid === undefined) {
-					return reject(Error('cannot create site: need more detials.'));
-				}
-				gitReset().then(function() {
-					git.checkout('master', function(err) {
-						if (err) return reject(err);
-
-						// check if site already exists
-						if (fs.existsSync(sites_dir + '/' + details.name)) {
-							console.log('site exists!');
-							return reject(Error('cannot create site: site exists.'));
-						}
-					}).checkout('site/_template', function(err) {
-						if (err) return reject(err);
-					}).checkoutLocalBranch('site/' + details.name, function (err) {
-						if (err) return reject(err);
-					}).then(function() {
-						// create new folder
-						var site_folder = sites_dir + '/' + details.name;
-						fs.mkdirSync(site_folder);
-						// create html file (for now)
-						// modules will create their own html with script tags and skeleton frameworks
-						var htmls = '<html>\n\t<head></head>\n\t<body>';
-						htmls += '\n\t\t<h1>' + details.name + '</h1>';
-						htmls += '\n\t</body>\n</html>';
-						try {
-							fs.writeFileSync(site_folder + '/' + details.name + '.html', htmls);
-						}
-						catch(err) {
-							return reject(err);
-						}
-					}).then(function() {
-						// create new site object
-						try {
-							details.directory = sites_dir + '/' + details.name;
-							details.gitstatus = 'new';
-							details.status = 'new';
-							sites[details.name] = new website(details, options.user, git, s3);
-							site = sites[details.name];
-							if (!sites[details.name].valid) {
-								delete sites[details.name];
-								site = {};
-								throw(details.name);
-							} else {
-								options.current_site = site.name;
-								writeConfig();
+					// check if site already exists
+					if (fs.existsSync(sites_dir + '/' + details.name)) {
+						return reject(Error(details.name + ' already exists!'));
+					}
+					else {
+						git.checkout('site/_template', function(err) {
+							if (err) return reject(err);
+						}).checkoutLocalBranch('site/' + details.name, function (err) {
+							if (err) return reject(err);
+						}).then(function() {
+							// create new folder
+							var site_folder = sites_dir + '/' + details.name;
+							fs.mkdirSync(site_folder);
+							// create html file (for now)
+							// modules will create their own html with script tags and skeleton frameworks
+							var htmls = '<html>\n\t<head></head>\n\t<body>';
+							htmls += '\n\t\t<h1>' + details.name + '</h1>';
+							htmls += '\n\t</body>\n</html>';
+							try {
+								fs.writeFileSync(site_folder + '/' + details.name + '.html', htmls);
 							}
-						}
-						catch(err) {
-							var errormsg = 'failed to create: ' + err;
-							throw(errormsg);
-						}
-					}).then(function() {
-						var commitmsg = options.user.name + '@springboard >>> CREATED >>> ' + site.name;
-						mergeSite(commitmsg).then(function() {
-							logit.log('new site', 'new branch created for ' + site.name, 'pass');
-							console.log(site.directory.green + '\n');
-							self.editSite(site.name);
-							return resolve(site);
-						}).catch(function(err) {
-							console.error(err);
-							return reject(err);
+							catch(err) {
+								return reject(err);
+							}
+						}).then(function() {
+							// create new site object
+							try {
+								details.directory = sites_dir + '/' + details.name;
+								details.gitstatus = 'new';
+								details.status = 'new';
+								sites[details.name] = new website(details, options.user, git, s3);
+								site = sites[details.name];
+								if (!sites[details.name].valid) {
+									delete sites[details.name];
+									site = {};
+									throw(details.name);
+								} else {
+									options.current_site = site.name;
+									writeConfig();
+								}
+							}
+							catch(err) {
+								var errormsg = 'failed to create: ' + err;
+								throw(errormsg);
+							}
+						}).then(function() {
+							var commitmsg = options.user.name + '@springboard >>> CREATED >>> ' + site.name;
+							mergeSite(commitmsg).then(function() {
+								logit.log('new site', 'new branch created for ' + site.name, 'pass');
+								console.log(site.directory.green + '\n');
+								self.editSite(site.name);
+								return resolve(site);
+							}).catch(function(err) {
+								console.error(err);
+								return reject(err);
+							});
 						});
-					});
+					}
 				});
 			});
 		});
@@ -487,7 +481,7 @@ function springboard() {
 						if (!modules[info.type]) throw('invalid module type');
 
 						// check if the name is in use by other modules
-						if (site.modules[info.name]) throw('module ' + info.name + ' allready exists');
+						if (site.modules[info.name]) throw('module ' + info.name + ' already exists');
 
 						// install module
 						site.installModule({ name: info.name, type: info.type, template_dir: modules[info.type].directory })
