@@ -425,7 +425,7 @@ angular
 runMe.$inject = ['$rootScope', '$route'];
 
 function runMe($rootScope, $route) {
-  console.log('springboard client initializing...');
+  console.warn('springboard client initializing...');
 
   // modify the title
   $rootScope.$on('$routeChangeSuccess', function() {
@@ -486,21 +486,36 @@ angular
   .module('springboardApp')
   .controller('EditorCtrl', EditorCtrl);
 
-EditorCtrl.$inject = ['$location', '$window', 'sitemanager', 'modalmanager'];
+EditorCtrl.$inject = ['$location', '$window', 'focus', 'sitemanager', 'modalmanager'];
 
-function EditorCtrl($location, $window, sitemanager, modalmanager) {
+function EditorCtrl($location, $window, focus, sitemanager, modalmanager) {
   var vm = this;
-  vm.tab = 'modules';
+  vm.new_module = {};
 
   vm.loading = true;
-  console.log('in editor...?');
 
   sitemanager.getSite().then(function(site) {
     vm.site = site;
     vm.loading = false;
-    console.info('got site...');
-    var current_url = $location.absUrl().match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
-    vm.url = current_url[0] + 'sites/' + site.name + '/' + site.default_html;
+    console.info('editing ' + site.name + '...');
+
+    // setting defaults or loading previous values from window storage
+    var session = angular.fromJson($window.sessionStorage.getItem('storage')) || {};
+
+    vm.showOptions = (Object.keys(session).length > 0) ? session.show : false;
+    vm.tab = (Object.keys(session).length > 0) ? session.tab : 'modules';
+    vm.url = (Object.keys(session).length > 0) ? session.url : false;
+    if (!vm.url) {
+      var current_url = $location.absUrl().match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
+      vm.url = current_url[0] + 'sites/' + site.name + '/' + site.default_html;
+    }
+
+    // set listner to store values for preservation on refresh
+    $window.addEventListener('beforeunload', function() {
+      console.log('saving session data...');
+      var storage = { tab: vm.tab, url: vm.url, show: vm.showOptions };
+      $window.sessionStorage.setItem('storage', angular.toJson(storage));
+    });
   }, function(err) {
     // not editing any site...
     $location.path("/");
@@ -511,7 +526,7 @@ function EditorCtrl($location, $window, sitemanager, modalmanager) {
   }, function(err) {
     console.error('Failed to get listing of available modules.');
     console.log(err);
-  })
+  });
 
   vm.openUrl = function() {
     $window.open(vm.url, '_blank');
@@ -581,18 +596,38 @@ function EditorCtrl($location, $window, sitemanager, modalmanager) {
 
   vm.installModule = function() {
     vm.loading = true;
+    var module_data = { type: vm.new_module.type, name: vm.new_module.name };
     sitemanager.installModule(module_data).then(function(updated_site) {
       vm.site = updated_site;
-      console.log('module installed!');
+      vm.hideModuleInput();
+      vm.new_module.name = '';
       vm.loading = false;
     }, function(err) {
-      console.log(err);
       vm.loading = false;
+      var promise = modalmanager.open(
+        'alert',
+        {
+          message: err.message
+        }
+      );
     });
   }
 
   vm.switchTab = function(new_tab) {
     vm.tab = new_tab;
+  }
+
+  vm.switchVtab = function(new_tab) {
+    vm.vtab = new_tab;
+  }
+
+  vm.showModuleInput = function() {
+    vm.new_module = { type: 'autocomplete' };
+    vm.new_module_show = true;
+    focus('moduleName');
+  }
+  vm.hideModuleInput = function() {
+    vm.new_module_show = false;
   }
 
 }
@@ -606,14 +641,13 @@ angular
   .module('springboardApp')
   .controller('GalleryCtrl', GalleryCtrl);
 
-GalleryCtrl.$inject = ['$location', 'focus', 'sitemanager', 'modalmanager'];
+GalleryCtrl.$inject = ['$window', '$location', 'focus', 'sitemanager', 'modalmanager'];
 
-function GalleryCtrl($location, focus, sitemanager, modalmanager) {
+function GalleryCtrl($window, $location, focus, sitemanager, modalmanager) {
   var vm = this;
   vm.new_site = {};
   vm.loading = true;
   vm.query = "";
-  console.log('in gallery...');
 
   // arrays used for site creation options
   vm.backends = ['solr', 'saluki'];
@@ -624,8 +658,6 @@ function GalleryCtrl($location, focus, sitemanager, modalmanager) {
     if (sites.error) {
       // uncommited or unpushed site edits...
       vm.loading = false;
-
-      console.log(sites);
 
       if (sites.action == 'push') {
         // unpushed commits
@@ -672,10 +704,11 @@ function GalleryCtrl($location, focus, sitemanager, modalmanager) {
           sitemanager.resetSite().then(function() {
             sitemanager.loadSites().then(function(sites) {
               if (sites.error) {
-                $location.path("/editor");
+                console.log('error!');
+                console.log(sites);
+                //$location.path("/editor");
               } else {
-                vm.loading = false;
-                vm.sites = sites;
+                init(sites);
               }
             });
           });
@@ -686,23 +719,23 @@ function GalleryCtrl($location, focus, sitemanager, modalmanager) {
       }
 
     } else {
-      // got site data
-      console.info('got sites...');
-      vm.loading = false;
-      vm.sites = sites;
+      init(sites);
     }
   }, function() {
     console.error('Unable to retrieve sites!');
     // maybe go back to previous page
   });
 
+  function init(sites) {
+    // got site data
+    vm.loading = false;
+    vm.sites = sites;
+    // reset session storage
+    $window.sessionStorage.setItem('storage', angular.toJson({}));
+  }
+
   // start editing a new site
   vm.editSite = function(site) {
-    // TODO
-    // need to check to see if current has any uncommited changes (gitStatus)
-    // if so, pop a modal asking to commit changes or drop them
-    // ^ do something similar for refreshing sites
-
     vm.loading = true;
     sitemanager.editSite(site).then(function() {
       vm.loading = false;
@@ -780,7 +813,7 @@ function ModalAlertCtrl($scope, modalmanager, focus) {
   mm.message_icon = ( params.message_icon || 'alert' );
   mm.message = ( params.message || 'Do the thing?' );
   mm.button_confirm = ( params.button_confirm || 'Ok' );
-  mm.button_cancel = ( params.button_cancel || '' );
+  mm.button_cancel = ( params.button_cancel || false );
 
   // focus on the close button
   focus('modalClose');
@@ -1291,11 +1324,11 @@ function sitemanager($http, $q, $timeout) {
   function installModule(module) {
     var promise = $q.defer();
 
-    install = {
+    var install = {
       install: 'module',
       name: module.name,
       type: module.type
-    }
+    };
 
     if (site.name) {
       $http({
@@ -1304,7 +1337,7 @@ function sitemanager($http, $q, $timeout) {
         url: '/api/site/install'
       }).success(function(data, status, headers) {
         if (data.error) {
-          promise.reject(data.message);
+          promise.reject(data);
         } else {
           site = data;
           promise.resolve(data);

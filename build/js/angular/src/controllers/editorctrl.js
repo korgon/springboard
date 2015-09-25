@@ -6,21 +6,36 @@ angular
   .module('springboardApp')
   .controller('EditorCtrl', EditorCtrl);
 
-EditorCtrl.$inject = ['$location', '$window', 'sitemanager', 'modalmanager'];
+EditorCtrl.$inject = ['$location', '$window', 'focus', 'sitemanager', 'modalmanager'];
 
-function EditorCtrl($location, $window, sitemanager, modalmanager) {
+function EditorCtrl($location, $window, focus, sitemanager, modalmanager) {
   var vm = this;
-  vm.tab = 'modules';
+  vm.new_module = {};
 
   vm.loading = true;
-  console.log('in editor...?');
 
   sitemanager.getSite().then(function(site) {
     vm.site = site;
     vm.loading = false;
-    console.info('got site...');
-    var current_url = $location.absUrl().match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
-    vm.url = current_url[0] + 'sites/' + site.name + '/' + site.default_html;
+    console.info('editing ' + site.name + '...');
+
+    // setting defaults or loading previous values from window storage
+    var session = angular.fromJson($window.sessionStorage.getItem('storage')) || {};
+
+    vm.showOptions = (Object.keys(session).length > 0) ? session.show : false;
+    vm.tab = (Object.keys(session).length > 0) ? session.tab : 'modules';
+    vm.url = (Object.keys(session).length > 0) ? session.url : false;
+    if (!vm.url) {
+      var current_url = $location.absUrl().match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
+      vm.url = current_url[0] + 'sites/' + site.name + '/' + site.default_html;
+    }
+
+    // set listner to store values for preservation on refresh
+    $window.addEventListener('beforeunload', function() {
+      console.log('saving session data...');
+      var storage = { tab: vm.tab, url: vm.url, show: vm.showOptions };
+      $window.sessionStorage.setItem('storage', angular.toJson(storage));
+    });
   }, function(err) {
     // not editing any site...
     $location.path("/");
@@ -31,7 +46,7 @@ function EditorCtrl($location, $window, sitemanager, modalmanager) {
   }, function(err) {
     console.error('Failed to get listing of available modules.');
     console.log(err);
-  })
+  });
 
   vm.openUrl = function() {
     $window.open(vm.url, '_blank');
@@ -101,18 +116,38 @@ function EditorCtrl($location, $window, sitemanager, modalmanager) {
 
   vm.installModule = function() {
     vm.loading = true;
+    var module_data = { type: vm.new_module.type, name: vm.new_module.name };
     sitemanager.installModule(module_data).then(function(updated_site) {
       vm.site = updated_site;
-      console.log('module installed!');
+      vm.hideModuleInput();
+      vm.new_module.name = '';
       vm.loading = false;
     }, function(err) {
-      console.log(err);
       vm.loading = false;
+      var promise = modalmanager.open(
+        'alert',
+        {
+          message: err.message
+        }
+      );
     });
   }
 
   vm.switchTab = function(new_tab) {
     vm.tab = new_tab;
+  }
+
+  vm.switchVtab = function(new_tab) {
+    vm.vtab = new_tab;
+  }
+
+  vm.showModuleInput = function() {
+    vm.new_module = { type: 'autocomplete' };
+    vm.new_module_show = true;
+    focus('moduleName');
+  }
+  vm.hideModuleInput = function() {
+    vm.new_module_show = false;
   }
 
 }

@@ -239,29 +239,25 @@ mod.prototype.compile = function() {
 	console.log('module type is not supported');
 }
 
-mod.prototype.render = function(template, output) {
-	console.log('rendering files...');
+mod.prototype.render = function (inputfile, outputfile, data) {
+	// promisified
+	return new Promise(function(resolve, reject) {
+		if (fs.existsSync(inputfile)) {
+			var filename = inputfile.replace(/^.*[\\\/]/, '');
+			//console.log('rendering from ' + inputfile);
+			var filestring = fs.readFileSync(inputfile).toString();
+			nja.configure({ watch: false, autoescape: false });
+			nja.renderString(filestring, data, function(err, result) {
+				if (err) return reject(err);
+				fs.writeFileSync(outputfile, result);
+				return resolve(true);
+			});
+		} else {
+			return reject(new Error(inputfile + ': file not found'));
+		}
+	});
 }
 
-// // From springboard
-// // pass in the directory of the view and the data
-// function render(inputfile, outputfile, data) {
-// 	// promisified
-// 	return new Promise(function(resolve, reject) {
-// 		if (fs.existsSync(inputfile)) {
-// 			var filename = inputfile.replace(/^.*[\\\/]/, '');
-// 			//console.log('rendering from ' + inputfile);
-// 			var filestring = fs.readFileSync(inputfile).toString();
-// 			nja.configure({ watch: false, autoescape: false });
-// 			nja.renderString(filestring, data, function(err, result) {
-// 				if (err) return reject(err);
-// 				fs.writeFileSync(outputfile, result);
-// 				return resolve(true);
-// 			});
-// 		} else {
-// 			return reject(new Error(inputfile + ': file not found'));
-// 		}
-// 	});
 // }
 //
 // function renderInitScript() {

@@ -241,6 +241,9 @@ module.exports = function(springboard) {
 
       var info = this.request.body.fields;
 
+      // purify all things
+      info.name = info.name.toLowerCase();
+
       // validate some inputs
       if (info.install == 'module') {
         var illegal_names = ['css', 'js', 'scss', 'sass', 'img', 'images', 'build', 'module', 'modules', 'theme', 'themes', 'plugin', 'plugins'];

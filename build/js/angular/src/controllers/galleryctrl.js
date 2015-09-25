@@ -6,14 +6,13 @@ angular
   .module('springboardApp')
   .controller('GalleryCtrl', GalleryCtrl);
 
-GalleryCtrl.$inject = ['$location', 'focus', 'sitemanager', 'modalmanager'];
+GalleryCtrl.$inject = ['$window', '$location', 'focus', 'sitemanager', 'modalmanager'];
 
-function GalleryCtrl($location, focus, sitemanager, modalmanager) {
+function GalleryCtrl($window, $location, focus, sitemanager, modalmanager) {
   var vm = this;
   vm.new_site = {};
   vm.loading = true;
   vm.query = "";
-  console.log('in gallery...');
 
   // arrays used for site creation options
   vm.backends = ['solr', 'saluki'];
@@ -24,8 +23,6 @@ function GalleryCtrl($location, focus, sitemanager, modalmanager) {
     if (sites.error) {
       // uncommited or unpushed site edits...
       vm.loading = false;
-
-      console.log(sites);
 
       if (sites.action == 'push') {
         // unpushed commits
@@ -72,10 +69,11 @@ function GalleryCtrl($location, focus, sitemanager, modalmanager) {
           sitemanager.resetSite().then(function() {
             sitemanager.loadSites().then(function(sites) {
               if (sites.error) {
-                $location.path("/editor");
+                console.log('error!');
+                console.log(sites);
+                //$location.path("/editor");
               } else {
-                vm.loading = false;
-                vm.sites = sites;
+                init(sites);
               }
             });
           });
@@ -86,23 +84,23 @@ function GalleryCtrl($location, focus, sitemanager, modalmanager) {
       }
 
     } else {
-      // got site data
-      console.info('got sites...');
-      vm.loading = false;
-      vm.sites = sites;
+      init(sites);
     }
   }, function() {
     console.error('Unable to retrieve sites!');
     // maybe go back to previous page
   });
 
+  function init(sites) {
+    // got site data
+    vm.loading = false;
+    vm.sites = sites;
+    // reset session storage
+    $window.sessionStorage.setItem('storage', angular.toJson({}));
+  }
+
   // start editing a new site
   vm.editSite = function(site) {
-    // TODO
-    // need to check to see if current has any uncommited changes (gitStatus)
-    // if so, pop a modal asking to commit changes or drop them
-    // ^ do something similar for refreshing sites
-
     vm.loading = true;
     sitemanager.editSite(site).then(function() {
       vm.loading = false;

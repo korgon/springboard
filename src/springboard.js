@@ -41,8 +41,8 @@ High Level TODO
 				|-	tabbed settings (modules, config etc...)
 		c.	gallery (view sites)
 
+4.	angular module
 x.	playable theme/module sandbox
-x.	angular module
 
 
 To read:
@@ -478,10 +478,10 @@ function springboard() {
 					if (info.install == 'module') {
 
 						// ensure module type is valid
-						if (!modules[info.type]) throw('invalid module type');
+						if (!modules[info.type]) throw('Invalid module type!');
 
 						// check if the name is in use by other modules
-						if (site.modules[info.name]) throw('module ' + info.name + ' already exists');
+						if (site.modules[info.name]) throw('Module ' + info.name + ' already exists!');
 
 						// install module
 						site.installModule({ name: info.name, type: info.type, template_dir: modules[info.type].directory })
@@ -499,17 +499,17 @@ function springboard() {
 						});
 					} else if (info.install == 'theme' || info.install == 'plugin') {
 						// check if module installed in site
-						if (!site.modules[info.module]) throw('parent module not installed');
+						if (!site.modules[info.module]) throw('Parent module not installed!');
 
 						// TODO install theme or plugin
 						// should autocompile plugin and themes on install (eye of chokidar)
 						return resolve({ error: false, message: info.install + ' ' + info.name + '(' + info.type + ') installed' });
 					} else {
 						// not a valid install type (module, theme, plugin)
-						throw('invalid install type');
+						throw('Invalid install type!');
 					}
 				} else {
-					throw('not editing a site');
+					throw('Not editing a site!');
 				}
 			} catch (err) {
 				return resolve({ error: true, message: err });
@@ -696,11 +696,13 @@ function springboard() {
 		return new Promise(function(resolve, reject) {
 			if (!site) return reject({ error: true, message: 'not editing a site...' });
 
-			git.reset(function(err) {
-				if (err) return resolve({ error: true, site: site.name, action: 'reset', status: 'failed', message: err.message });
+			git.clean().then(function() {
 				git.reset(function(err) {
 					if (err) return resolve({ error: true, site: site.name, action: 'reset', status: 'failed', message: err.message });
-					return resolve({ error: false, site: site.name, action: 'reset', status: 'success' });
+					git.reset(function(err) {
+						if (err) return resolve({ error: true, site: site.name, action: 'reset', status: 'failed', message: err.message });
+						return resolve({ error: false, site: site.name, action: 'reset', status: 'success' });
+					});
 				});
 			});
 		});

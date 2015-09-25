@@ -234,11 +234,11 @@ function sitemanager($http, $q, $timeout) {
   function installModule(module) {
     var promise = $q.defer();
 
-    install = {
+    var install = {
       install: 'module',
       name: module.name,
       type: module.type
-    }
+    };
 
     if (site.name) {
       $http({
@@ -247,7 +247,7 @@ function sitemanager($http, $q, $timeout) {
         url: '/api/site/install'
       }).success(function(data, status, headers) {
         if (data.error) {
-          promise.reject(data.message);
+          promise.reject(data);
         } else {
           site = data;
           promise.resolve(data);
