@@ -1,6 +1,7 @@
 // scss for springboard general gui
 // buttons
 // labels
+// icons
 
 .button {
   min-width: 80px;
@@ -43,6 +44,25 @@ label {
   color: $bluetext;
 }
 
+fieldset {
+  text-align: center;
+  margin: 25px 0 5px;
+  border: 1px solid $blueaccent;
+  position: relative;
+}
+
+legend {
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: 12px;
+  text-align: left;
+  background-color: $blueaccent;
+  padding: 6px;
+  position: absolute;
+  top: -26px;
+  left: -1px;
+}
+
 input[type="text"], select {
   box-sizing: border-box;
   border-radius: 3px;
@@ -52,5 +72,60 @@ input[type="text"], select {
   margin-bottom: 10px;
   &:focus, &:active {
     color: $bluelightest;
+  }
+}
+
+.icon {
+  display: inline-block;
+  width: 33px;
+  height: 33px;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-position: center center;
+  vertical-align: middle;
+  &.active {
+    background-image: url('/images/icons/active.png');
+  }
+  &.commit {
+    background-image: url('/images/icons/commit.png');
+  }
+  &.modules {
+    background-image: url('/images/icons/module.png');
+  }
+  &.files {
+    background-image: url('/images/icons/files.png');
+  }
+  &.history {
+    background-image: url('/images/icons/history.png');
+  }
+  &.install {
+    background-image: url('/images/icons/install.png');
+  }
+  &.plugins {
+    background-image: url('/images/icons/plugin.png');
+  }
+  &.pull {
+    background-image: url('/images/icons/pull_request.png');
+  }
+  &.push {
+    background-image: url('/images/icons/push.png');
+  }
+  &.refresh {
+    background-image: url('/images/icons/refresh.png');
+  }
+  &.settings {
+    background-image: url('/images/icons/settings.png');
+  }
+  &.tags {
+    background-image: url('/images/icons/tag.png');
+  }
+  &.themes {
+    background-image: url('/images/icons/theme.png');
+  }
+  &.upload {
+    background-image: url('/images/icons/upload.png');
+  }
+  &.variables {
+    background-image: url('/images/icons/variable.png');
   }
 }

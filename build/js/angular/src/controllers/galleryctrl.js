@@ -96,7 +96,7 @@ function GalleryCtrl($window, $location, focus, sitemanager, modalmanager) {
     vm.loading = false;
     vm.sites = sites;
     // reset session storage
-    $window.sessionStorage.setItem('storage', angular.toJson({}));
+    $window.sessionStorage.removeItem('storage');
   }
 
   // start editing a new site

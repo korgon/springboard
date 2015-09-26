@@ -3,47 +3,72 @@
     <div class="logo"></div>
     <div class="subtitle" ng-click="showMenu = !showMenu">SPRIΠGBOΛRD</div>
   </div>
-  <div class="mainmenu" ng-include src="'/partials/_above_menu.html'" ng-class="{'show': showMenu}" ng-init="showMenu = false"></div>
-  <input id="frameurl" name="url" autocomplete="off" spellcheck="false" ng-model="vm.url">
+  <div class="mainmenu" ng-include src="'/partials/_above_menu.html'" ng-class="{ 'show': showMenu }" ng-init="showMenu = false"></div>
+  <input id="frameurl" name="url" autocomplete="off" spellcheck="false" ng-model="vm.session.url">
   <div class="openurl" ng-click="vm.openUrl()"></div>
   <div class="line"></div>
-  <div class="worksite"><a class="currentsite" ng-click="vm.showOptions = !vm.showOptions"><span id="currentsite">{{ vm.site.name }}</span></a>
-    <div class="optionselect" ng-class="{'show': vm.showOptions}">
+  <div class="worksite"><a class="currentsite" ng-click="vm.session.showOptions = !vm.session.showOptions"><span id="currentsite">{{ vm.site.name }}</span></a>
+    <div class="optionselect" ng-class="{'show': vm.session.showOptions}">
 
-      <ul class="tabcontrol">
-        <li><a class="modules" ng-class="{ 'active': (vm.tab == 'modules')}" ng-click="vm.switchTab('modules')"></a></li>
-        <li><a class="files" ng-class="{ 'active': (vm.tab == 'files')}" ng-click="vm.switchTab('files')"></a></li>
-        <li><a class="tags" ng-class="{ 'active': (vm.tab == 'tags')}" ng-click="vm.switchTab('tags')"></a></li>
-        <li><a class="history" ng-class="{ 'active': (vm.tab == 'history')}" ng-click="vm.switchTab('history')"></a></li>
-        <li><a class="settings" ng-class="{ 'active': (vm.tab == 'settings')}" ng-click="vm.switchTab('settings')"></a></li>
+      <div class="spacer"></div>
+
+      <ul class="gitbuttons">
+        <li><a ng-click="vm.commitSite()"><span class="icon commit"></span></a></li>
+        <li><a ng-click="vm.pushSite()"><span class="icon push"></span></a></li>
+        <li><a ng-click="vm.publishMockup()"><span class="icon upload"></span></a></li>
+        <li><a ng-click="vm.prompty()"><span class="icon pull"></span></a></li>
       </ul>
 
-      <div ng-if="vm.tab" ng-switch="vm.tab">
+      <ul class="tabcontrol">
+        <li><a ng-class="{ 'active': (vm.session.tab == 'modules')}" ng-click="vm.switchTab('modules')"><span class="icon modules"></span></a></li>
+        <li><a ng-class="{ 'active': (vm.session.tab == 'files')}" ng-click="vm.switchTab('files')"><span class="icon files"></span></a></li>
+        <li><a ng-class="{ 'active': (vm.session.tab == 'tags')}" ng-click="vm.switchTab('tags')"><span class="icon tags"></span></a></li>
+        <li><a ng-class="{ 'active': (vm.session.tab == 'history')}" ng-click="vm.switchTab('history')"><span class="icon history"></span></a></li>
+        <li><a ng-class="{ 'active': (vm.session.tab == 'settings')}" ng-click="vm.switchTab('settings')"><span class="icon settings"></span></a></li>
+      </ul>
+
+      <div ng-if="vm.session.tab" ng-switch="vm.session.tab">
         <div ng-switch-when="modules">
           <div class="modulescroller">
             <ul class="modulechoices">
-              <li ng-repeat="modules in vm.site.modules">
-                <a class="name">{{ modules.name }}</a>
-                <div class="vtabwrap">
-                  <div class="vtabcontrolwrap">
-                    <ul class="vtabcontrol">
-                      <li></li>
-                      <li><a class="plugins" ng-class="{ 'active': (vm.vtab == 'plugins')}" ng-click="vm.switchVtab('plugins')"></a></li>
-                      <li><a class="variables" ng-class="{ 'active': (vm.vtab == 'variables')}" ng-click="vm.switchVtab('variables')"></a></li>
-                      <li><a class="themes" ng-class="{ 'active': (vm.vtab == 'themes')}" ng-click="vm.switchVtab('themes')"></a></li>
-                      <li><a class="settings" ng-class="{ 'active': (vm.vtab == 'settings')}" ng-click="vm.switchVtab('settings')"></a></li>
-                      <li></li>
-                    </ul>
+              <li ng-repeat="module in vm.site.modules" id="{{ 'module_' + module.name }}" ng-init="vm.initVtab(module.name)">
+                <a class="module" ng-click="vm.session.vtab[module.name].visible = !vm.session.vtab[module.name].visible">{{ module.name }}</a>
+                <div ng-if="vm.session.vtab[module.name].visible">
+                  <div class="vtabwrap">
+                    <div class="vtabcontrolwrap">
+                      <ul class="vtabcontrol">
+                        <li ng-if="!vm.isEmpty(vm.modules[module.type].plugins)"><a ng-class="{ 'active': (vm.session.vtab[module.name].tab == 'plugins')}" ng-click="vm.switchVtab('plugins', module.name)"><span class="icon plugins"></span></a></li>
+                        <li ng-if="!vm.isEmpty(vm.modules[module.type].themes)"><a ng-class="{ 'active': (vm.session.vtab[module.name].tab == 'themes')}" ng-click="vm.switchVtab('themes', module.name)"><span class="icon themes"></span></a></li>
+                        <li><a ng-class="{ 'active': (vm.session.vtab[module.name].tab == 'variables')}" ng-click="vm.switchVtab('variables', module.name)"><span class="icon variables"></span></a></li>
+                        <li><a ng-class="{ 'active': (vm.session.vtab[module.name].tab == 'settings')}" ng-click="vm.switchVtab('settings', module.name)"><span class="icon settings"></span></a></li>
+                      </ul>
+                    </div>
+                    <div class="vtabcontents" ng-switch="vm.session.vtab[module.name].tab">
+                      <fieldset>
+                        <legend>{{ vm.session.vtab[module.name].tab }}</legend>
+                        <div ng-switch-when="plugins">Plugins</div>
+                        <div ng-switch-when="themes">
+                          <ul class="moduletheme">
+                            <li ng-repeat="theme in vm.modules[module.type].themes">
+                              <span class="themename">{{ theme.name }}</span>
+                              <span class="icon install"></span>
+                              <span class="icon active"></span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div ng-switch-when="variables">Variables</div>
+                        <div ng-switch-when="settings">Settings</div>
+                      </fieldset>
+                    </div>
                   </div>
-                  <div class="vtabcontents"></div>
                 </div>
               </li>
               <li>
-                <div class="addmodule">
+                <div class="addmodule" ng-class="{ 'solo': vm.isEmpty(vm.site.modules) }">
                   <div id="addbutton" ng-click="vm.showModuleInput()" ng-hide="vm.new_module_show"><span class="add"></span></div>
                   <form id="addmoduleinput" name="addModuleForm" novalidate ng-class="{'visible' : vm.new_module_show}">
                     <label for="modulename_input">Name</label>
-                    <input type="text" name="name" id="modulename_input" autocomplete="off" focus-on="moduleName" ng-model="vm.new_module.name" required ng-pattern="/^[^\_\.]\w{2,}$/i">
+                    <input type="text" name="name" id="modulename_input" autocomplete="off" focus-on="moduleName" ng-model="vm.new_module.name" required ng-pattern="/^\w{3,}$/i">
                     <label for="moduletype_input">Type</label>
                     <select id="moduletype_input" required ng-model="vm.new_module.type" ng-options="module.type as module.type for module in vm.modules | orderBy: 'toString()'" ng-init="vm.new_module.type = 'autocomplete'">
                     </select>
@@ -53,6 +78,7 @@
                     </div>
                   </form>
                 </div>
+                <div class="spacer" ng-if="vm.isEmpty(vm.site.modules)"></div>
                 <!-- <i ng-repeat="module in vm.modules">{{ module.name }}</i> -->
               </li>
             </ul>
@@ -60,6 +86,7 @@
         </div>
         <div ng-switch-when="files">
           <div class="tabwrap">files<p>directories</p><p>more files</p></div>
+          <div class="spacer"></div>
         </div>
         <div ng-switch-when="tags">
           <div class="tabwrap">
@@ -73,22 +100,17 @@
               tag?
             </div>
           </div>
+          <div class="spacer"></div>
         </div>
         <div ng-switch-when="history">
           <div class="tabwrap">history</div>
+          <div class="spacer"></div>
         </div>
         <div ng-switch-when="settings">
           <div class="tabwrap">settings</div>
+          <div class="spacer"></div>
         </div>
       </div>
-
-      <div class="spacer"></div>
-      <ul class="gitbuttons">
-        <li><a ng-click="vm.commitSite()" class="commit"></a></li>
-        <li><a ng-click="vm.pushSite()" class="push"></a></li>
-        <li><a ng-click="vm.publishMockup()" class="upload"></a></li>
-        <li><a ng-click="vm.prompty()" class="pull"></a></li>
-      </ul>
 
     </div>
   </div>

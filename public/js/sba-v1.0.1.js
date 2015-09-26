@@ -500,21 +500,18 @@ function EditorCtrl($location, $window, focus, sitemanager, modalmanager) {
     console.info('editing ' + site.name + '...');
 
     // setting defaults or loading previous values from window storage
-    var session = angular.fromJson($window.sessionStorage.getItem('storage')) || {};
+    var session_defaults = { showOptions: false, tab: 'modules', vtab: {}, url: false };
+    vm.session = angular.fromJson($window.sessionStorage.getItem('storage')) || session_defaults;
 
-    vm.showOptions = (Object.keys(session).length > 0) ? session.show : false;
-    vm.tab = (Object.keys(session).length > 0) ? session.tab : 'modules';
-    vm.url = (Object.keys(session).length > 0) ? session.url : false;
-    if (!vm.url) {
+    if (Object.keys(vm.session).length == 0 || !vm.session.url) {
       var current_url = $location.absUrl().match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
-      vm.url = current_url[0] + 'sites/' + site.name + '/' + site.default_html;
+      vm.session.url = current_url[0] + 'sites/' + site.name + '/' + site.default_html;
     }
 
     // set listner to store values for preservation on refresh
     $window.addEventListener('beforeunload', function() {
       console.log('saving session data...');
-      var storage = { tab: vm.tab, url: vm.url, show: vm.showOptions };
-      $window.sessionStorage.setItem('storage', angular.toJson(storage));
+      $window.sessionStorage.setItem('storage', angular.toJson(vm.session));
     });
   }, function(err) {
     // not editing any site...
@@ -529,7 +526,7 @@ function EditorCtrl($location, $window, focus, sitemanager, modalmanager) {
   });
 
   vm.openUrl = function() {
-    $window.open(vm.url, '_blank');
+    $window.open(vm.session.url, '_blank');
   }
 
   vm.prompty = function() {
@@ -600,6 +597,8 @@ function EditorCtrl($location, $window, focus, sitemanager, modalmanager) {
     sitemanager.installModule(module_data).then(function(updated_site) {
       vm.site = updated_site;
       vm.hideModuleInput();
+      vm.session.vtab[vm.new_module.name] = {};
+      vm.session.vtab[vm.new_module.name].visible = true;
       vm.new_module.name = '';
       vm.loading = false;
     }, function(err) {
@@ -614,11 +613,27 @@ function EditorCtrl($location, $window, focus, sitemanager, modalmanager) {
   }
 
   vm.switchTab = function(new_tab) {
-    vm.tab = new_tab;
+    vm.session.tab = new_tab;
   }
 
-  vm.switchVtab = function(new_tab) {
-    vm.vtab = new_tab;
+  vm.switchVtab = function(new_tab, module) {
+    vm.session.vtab[module].tab = new_tab;
+  }
+
+  vm.initVtab = function(module) {
+    if (!vm.session.vtab[module]) {
+      vm.session.vtab[module] = {};
+    }
+
+    if (!angular.equals({}, vm.site.modules[module].plugins))
+      vm.session.vtab[module].tab = 'plugins';
+    else if (!angular.equals({}, vm.site.modules[module].themes))
+      vm.session.vtab[module].tab = 'themes';
+    else
+      vm.session.vtab[module].tab = 'variables';
+
+    if (!vm.session.vtab[module].visible)
+      vm.session.vtab[module].visible = false;
   }
 
   vm.showModuleInput = function() {
@@ -628,6 +643,10 @@ function EditorCtrl($location, $window, focus, sitemanager, modalmanager) {
   }
   vm.hideModuleInput = function() {
     vm.new_module_show = false;
+  }
+
+  vm.isEmpty = function(obj) {
+    return angular.equals({}, obj);
   }
 
 }
@@ -731,7 +750,7 @@ function GalleryCtrl($window, $location, focus, sitemanager, modalmanager) {
     vm.loading = false;
     vm.sites = sites;
     // reset session storage
-    $window.sessionStorage.setItem('storage', angular.toJson({}));
+    $window.sessionStorage.removeItem('storage');
   }
 
   // start editing a new site
@@ -900,7 +919,7 @@ function iframer($document) {
     link: function(scope, element, attrs) {
       element.on('load', function() {
         var newUrl = element[0].contentDocument.URL;
-        scope.$parent.vm.url = newUrl;
+        scope.$parent.vm.session.url = newUrl;
         var frameurl = angular.element(document.getElementById('frameurl'));
         frameurl.val(newUrl);
       })

@@ -231,12 +231,12 @@ mod.prototype.loadThemes = function() {
 
 // compile function for unknown module type
 mod.prototype.install = function() {
-	console.log('module type is not supported');
+	return { error: true, message: 'Module type is not supported!' };
 }
 
 // compile function for unknown module type
 mod.prototype.compile = function() {
-	console.log('module type is not supported');
+	return { error: true, message: 'Module type is not supported!' };
 }
 
 mod.prototype.render = function (inputfile, outputfile, data) {

@@ -56,6 +56,9 @@ ng-switch:
 http://stackoverflow.com/questions/16649617/angularjs-change-partial-in-controller-on-click
 
 NEXT TODO
+Finish out module tab
+Finish out remaining tabs (maybe skip tags)
+Refactor code; move all sync -> async; fix promises (git library, etc...)
 Require user entry of name and s3 info
 Move modules folder to repository
 
@@ -486,16 +489,11 @@ function springboard() {
 						// install module
 						site.installModule({ name: info.name, type: info.type, template_dir: modules[info.type].directory })
 						.then(function(status) {
-							// some problem occurred
-							if (status.error) {
-								return resolve({ error: true, message: status.message });
-							}
-
 							// success!!!
 							return resolve(site);
 						}).catch(function(err) {
 							// fail!!!
-							throw(err);
+							return resolve({ error: true, message: err.message });
 						});
 					} else if (info.install == 'theme' || info.install == 'plugin') {
 						// check if module installed in site

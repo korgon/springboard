@@ -246,14 +246,14 @@ module.exports = function(springboard) {
 
       // validate some inputs
       if (info.install == 'module') {
-        var illegal_names = ['css', 'js', 'scss', 'sass', 'img', 'images', 'build', 'module', 'modules', 'theme', 'themes', 'plugin', 'plugins'];
+        var illegal_names = ['css', 'js', 'scss', 'sass', 'html', 'img', 'image', 'images', 'build', 'module', 'modules', 'theme', 'themes', 'plugin', 'plugins'];
         if (info.name) {
           if (illegal_names.indexOf(info.name) >= 0 || !info.name.match(/^\w{3,}$/)) {
-            this.response.body = { error: true, message: 'invalid module name' };
+            this.response.body = { error: true, message: 'Invalid module name!' };
             return;
           }
         } else {
-          this.response.body = { error: true, message: 'module name required' };
+          this.response.body = { error: true, message: 'Module name is required!' };
           return;
         }
       } else if (info.install == 'plugin' || info.install == 'theme') {

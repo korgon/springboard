@@ -5,12 +5,16 @@
 
 (function() {
 
+  var install = function() {
+    console.log('installing ajax_catalog from extension...');
+  }
+
   var compile = function() {
-    console.log(this.script);
     console.log('compiling ajax_catalog from extension...');
   }
 
   module.exports = {
+    
     compile: compile
   }
 })()

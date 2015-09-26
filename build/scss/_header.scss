@@ -298,29 +298,14 @@ body {
 								width: 100%;
 								height: $heightheader;
 								opacity: 0.5;
-								background-repeat: no-repeat;
-								background-size: 20px;
-								background-position: center center;
 								&:hover {
 									// -webkit-filter: drop-shadow(0px 0px 3px $bluelight);
 									// filter: drop-shadow(0px 0px 3px $bluelight);
 									cursor: pointer;
 									opacity: 1;
 								}
-								&.commit {
-									background-image: url('/images/icons/commit.png');
-								}
-								&.refresh {
-									background-image: url('/images/icons/refresh.png');
-								}
-								&.push {
-									background-image: url('/images/icons/push.png');
-								}
-								&.upload {
-									background-image: url('/images/icons/upload.png');
-								}
-								&.pull {
-									background-image: url('/images/icons/pull_request.png');
+								.icon {
+									margin-top: 3px;
 								}
 							}
 						}
@@ -350,9 +335,6 @@ body {
 								width: 100%;
 								height: 33px;
 								opacity: 0.5;
-								background-repeat: no-repeat;
-								background-size: 20px;
-								background-position: center center;
 								border: 1px solid transparent;
 								border-bottom: 0;
 								&.active {
@@ -367,44 +349,24 @@ body {
 									cursor: pointer;
 									opacity: 1;
 								}
-								&.modules {
-									background-image: url('/images/icons/module.png');
-								}
-								&.settings {
-									background-image: url('/images/icons/edit.png');
-								}
-								&.files {
-									background-image: url('/images/icons/files.png');
-								}
-								&.history {
-									background-image: url('/images/icons/history.png');
-								}
-								&.tags {
-									background-image: url('/images/icons/tag.png');
-								}
-								&.variables {
-									background-image: url('/images/icons/variable.png');
-								}
-								&.themes {
-									background-image: url('/images/icons/theme.png');
-								}
-								&.plugins {
-									background-image: url('/images/icons/plugin.png');
+								.icon {
+									width: 100%;
 								}
 							}
 						}
 					}
 
 					.tabwrap {
-						width: 250px;
+						width: 251px;
 						height: auto;
 						clear: both;
 						float: right;
 						border: 1px solid $bluehighlight;
+						border-right: 0;
 						background-color: $bluedarkest;
 						transition: height 144ms ease, height 400ms ease-out;
 						.tabcontent {
-							padding: 10px;
+							padding: 5px;
 							width: auto;
 						}
 					}
@@ -424,11 +386,9 @@ body {
 								position: relative;
 								&:first-of-type {
 								}
-								.name {
+								.module {
 									display: block;
 									height: 33px;
-									overflow: hidden;
-									transition: all 222ms ease;
 									padding: 0 12px;
 									background-color: $bluedarkest;
 									border-left: 1px solid $bluehighlight;
@@ -446,81 +406,97 @@ body {
 									border-left: 1px solid $bluehighlight;
 									border-bottom: 1px solid $bluehighlight;
 									display: table;
-								}
-								.vtabcontents {
-									display: table-cell;
-									vertical-align: top;
-									width: 100%;
-									padding: 10px;
-								}
-								.vtabcontrolwrap {
-									display: table-cell;
-									padding: 4px 0;
-									background-color: $blueblack;
-									border-right: 1px solid $bluehighlight;
-								}
-								.vtabcontrol {
-									display: flex;
-									float: left;
-									flex-flow: column wrap;
-									justify-content: space-around;
-									clear: both;
-									list-style: none;
-									margin: 0;
-									padding: 0;
-									background-color: $blueblack;
-									border-left: 1px solid $bluedarkestest_text;
-									li {
-										flex: 1 1 auto;
-										text-align: center;
-										width: 34px;
-										margin: 0;
-										a {
-											display: inline-block;
-											width: 100%;
-											height: 33px;
-											opacity: 0.5;
-											background-repeat: no-repeat;
-											background-size: 20px;
-											background-position: center center;
-											border: 1px solid transparent;
-											border-right: 0;
-											&.active {
-												background-color: $bluedarkest;
-												border: 1px solid $bluehighlight;
-												border-right: 0;
-												opacity: 1;
+									.vtabcontrolwrap {
+										display: table-cell;
+										padding: 4px 0;
+										background-color: $blueblack;
+										border-right: 1px solid $bluehighlight;
+										.vtabcontrol {
+											display: flex;
+											float: left;
+											flex-flow: column wrap;
+											justify-content: space-around;
+											clear: both;
+											list-style: none;
+											margin: 0;
+											padding: 0;
+											background-color: $blueblack;
+											border-left: 1px solid $blueblack;
+											li {
+												flex: 1 1 auto;
+												text-align: center;
+												width: 34px;
+												margin: 0;
+												a {
+													display: inline-block;
+													width: 100%;
+													height: 33px;
+													opacity: 0.5;
+													border: 1px solid transparent;
+													border-right: 0;
+													&.active {
+														background-color: $bluedarkest;
+														border: 1px solid $bluehighlight;
+														border-right: 0;
+														opacity: 1;
+													}
+													&:hover {
+														// -webkit-filter: drop-shadow(0px 0px 3px $bluelight);
+														// filter: drop-shadow(0px 0px 3px $bluelight);
+														cursor: pointer;
+														opacity: 1;
+													}
+													.class {
+														width: 100%;
+													}
+												}
 											}
-											&:hover {
-												// -webkit-filter: drop-shadow(0px 0px 3px $bluelight);
-												// filter: drop-shadow(0px 0px 3px $bluelight);
-												cursor: pointer;
-												opacity: 1;
+										}
+									}
+									.vtabcontents {
+										display: table-cell;
+										vertical-align: top;
+										width: 100%;
+										padding: 10px;
+										.moduletheme {
+											list-style: none;
+											.themename {
+												color: $orangeyellow;
+												font-size: 10px;
+												text-transform: uppercase;
 											}
-											&.settings {
-												background-image: url('/images/icons/edit.png');
-											}
-											&.variables {
-												background-image: url('/images/icons/variable.png');
-											}
-											&.themes {
-												background-image: url('/images/icons/theme.png');
-											}
-											&.plugins {
-												background-image: url('/images/icons/plugin.png');
+											.icon {
+												background-size: 12px;
+												width: 24px;
+												&.disabled {
+													opacity: 0.2;
+												}
+												&:hover {
+													cursor: pointer;
+												}
 											}
 										}
 									}
 								}
+
 								.addmodule {
 									text-align: center;
 									clear: both;
-									background-color: $bluedarkest;
-									border: 1px solid $bluehighlight;
-									border-top: 0;
+									background-color: $blueblack;
+									border: 0;
+									border-left: 1px solid $bluedarkestest_text;
 									border-right: 0;
-									width: 100%;
+									width: 245px;
+									float: right;
 									box-sizing: border-box;
+									&.solo {
+										background-color: $bluedarkest;
+										border: 1px solid $bluehighlight;
+										border-right: 0;
+										border-top: 0;
+										width: 100%;
+										float: none;
+									}
 									#addbutton {
 										height: 33px;
 										.add {

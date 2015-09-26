@@ -19,6 +19,7 @@ var fs = require('fs-extra');
       fs.copySync(config_file, new_config_file);
     } catch(error) {
       console.error(error);
+      return { error: true, message: 'Module install has failed!' };
     }
   }
 

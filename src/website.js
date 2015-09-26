@@ -267,12 +267,17 @@ website.prototype.installModule = function(new_mod) {
 			if (!fs.existsSync(module_dir)) {
 				// create new module object
 				self.modules[new_mod.name] = new mod({ name: new_mod.name, type: new_mod.type, directory: module_dir, template_dir: new_mod.template_dir, new: true });
-				return resolve({ error: false, message: 'module installed' });
+
+				if (self.modules[new_mod.name].valid)
+					return resolve({ error: false, message: 'Module installed!' });
+				else
+					throw('Module install failed!');
 
 			} else {
-				return reject({ error: true, message: 'directory exists...' });
+				throw ('Directory exists...');
 			}
 		} catch(err) {
+			console.log(err);
 			return reject({ error: true, message: err });
 		}
 	});
