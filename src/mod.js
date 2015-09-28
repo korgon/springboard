@@ -66,7 +66,7 @@ additional attributes only used for springboard at runtime:
 */
 
 // the object properties that should be written to file (modname.json)
-var export_options = ['name', 'version', 'enabled', 'description', 'script', 'variables', 'theme'];
+var export_options = ['name', 'siteid', 'version', 'enabled', 'description', 'script', 'variables', 'theme'];
 
 // include packages
 var fs = require('fs-extra');

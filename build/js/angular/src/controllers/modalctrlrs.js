@@ -21,7 +21,7 @@ function ModalAlertCtrl($scope, modalmanager, focus) {
 
   // Setup defaults using the modal params.
   mm.message_icon = ( params.message_icon || 'alert' );
-  mm.message = ( params.message || 'Do the thing?' );
+  mm.message = ( params.message || 'Whoops... Something failed...' );
   mm.button_confirm = ( params.button_confirm || 'Ok' );
   mm.button_cancel = ( params.button_cancel || false );
 

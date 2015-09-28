@@ -86,8 +86,9 @@ router.get('/api/site/edit/:site', sitesapi.edit);
 // see which site is being watched
 router.get('/api/site', sitesapi.site);
 
-// create a new site
+// create/update a new site
 router.post('/api/site/create', koaBody(), sitesapi.create);
+router.post('/api/site/update', koaBody(), sitesapi.update);
 
 // git & s3
 router.get('/api/site/status', sitesapi.status);

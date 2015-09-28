@@ -458,21 +458,42 @@ body {
 										vertical-align: top;
 										width: 100%;
 										padding: 10px;
-										.moduletheme {
-											list-style: none;
-											padding: 0;
-											.themename {
-												color: $orangeyellow;
-												font-size: 10px;
-												text-transform: uppercase;
-												display: inline-block;
-												width: 111px;
-												overflow: hidden;
-												vertical-align: middle;
+										.vtabhead {
+											display: inline-block;
+											font-weight: bold;
+											text-transform: capitalize;
+											font-size: 12px;
+											text-align: left;
+											background-color: $blueaccent;
+											border-radius: 2px 2px 0 0;
+											padding: 6px;
+										}
+										.buttons {
+											text-align: right;
+											.button {
+												min-width: initial;
+												padding: 6px;
+												margin-left: 1px;
+												border-color: $blueaccent;
+												background-color: $blueaccent;
+												border-radius: 0 0 2px 2px;
+												color: $bluegrey;
+												&:hover:not(:disabled) {
+													background: $blueblack;
+													border-color: $blueblack;
+													color: $whitefaded;
+												}
 											}
+										}
+										ul {
+											list-style: none;
+											min-height: 45px;
+											padding: 10px;
+											border: 1px solid #052238;
 											.icon {
 												background-size: 12px;
-												width: 24px;
+												width: 30px;
+												height: 25px;
 												&:hover {
 													cursor: pointer;
 												}
@@ -493,6 +514,18 @@ body {
 												&.hidden {
 													visibility: hidden;
 												}
+											}
+										}
+										.modulethemes {
+											.themename {
+												color: $orangeyellow;
+												font-size: 10px;
+												text-transform: uppercase;
+												display: inline-block;
+												width: 100px;
+												overflow: hidden;
+												vertical-align: middle;
+												text-align: center;
 											}
 										}
 									}

@@ -24,6 +24,7 @@ function sitemanager($http, $q, $timeout) {
     getSites: getSites,
     getSite: getSite,
     createSite: createSite,
+    updateSite: updateSite,
     editSite: editSite,
     commitSite: commitSite,
     resetSite: resetSite,
@@ -33,66 +34,6 @@ function sitemanager($http, $q, $timeout) {
     installModule: installModule,
     installModuleTheme: installModuleTheme
   });
-
-  // switch to a new site for editing
-  function createSite(site) {
-    var promise = $q.defer();
-
-    $http({
-      method: 'POST',
-      data: site,
-      url: '/api/site/create'
-    }).success(function(data, status, headers) {
-      if (data.error) {
-        promise.reject(data.message);
-      }
-      getSites().then(function(sites) {
-        promise.resolve(sites);
-      }, function(err) {
-        promise.reject();
-      });
-    }).error(promise.reject);
-
-    return promise.promise;
-  }
-
-  // switch to a new site for editing
-  function editSite(site) {
-    var promise = $q.defer();
-
-    $http({
-      method: 'GET',
-      url: '/api/site/edit/' + site
-    }).success(function(data, status, headers) {
-      if (data.error) {
-        promise.reject(data.message);
-      }
-      // empty the sites object
-      sites = {}
-      site = data;
-      promise.resolve(site);
-    }).error(promise.reject);
-
-    return promise.promise;
-  }
-
-  // get current details of site under edit
-  function getSite() {
-    var promise = $q.defer();
-
-    $http({
-      method: 'GET',
-      url: '/api/site'
-    }).success(function(data, status, headers) {
-      if (data.error) {
-        promise.reject(data.message);
-      }
-      site = data;
-      promise.resolve(site);
-    }).error(promise.reject);
-
-    return promise.promise;
-  }
 
   // triggers complete reload of sites (including pull)
   // return sites objects
@@ -124,6 +65,85 @@ function sitemanager($http, $q, $timeout) {
       site = {};
       sites = data;
       promise.resolve(sites);
+    }).error(promise.reject);
+
+    return promise.promise;
+  }
+
+  // get current details of site under edit
+  function getSite() {
+    var promise = $q.defer();
+
+    $http({
+      method: 'GET',
+      url: '/api/site'
+    }).success(function(data, status, headers) {
+      if (data.error) {
+        promise.reject(data.message);
+      }
+      site = data;
+      promise.resolve(site);
+    }).error(promise.reject);
+
+    return promise.promise;
+  }
+
+  // switch to a new site for editing
+  function createSite(site) {
+    var promise = $q.defer();
+
+    $http({
+      method: 'POST',
+      data: site,
+      url: '/api/site/create'
+    }).success(function(data, status, headers) {
+      if (data.error) {
+        promise.reject(data.message);
+      }
+      getSites().then(function(sites) {
+        promise.resolve(sites);
+      }, function(err) {
+        promise.reject();
+      });
+    }).error(promise.reject);
+
+    return promise.promise;
+  }
+
+  // update site
+  function updateSite(updatedsite) {
+    var promise = $q.defer();
+
+    $http({
+      method: 'POST',
+      data: updatedsite,
+      url: '/api/site/update'
+    }).success(function(data, status, headers) {
+      if (data.error) {
+        promise.reject(data.message);
+      }
+      site = data;
+      promise.resolve(site);
+    }).error(promise.reject);
+
+    return promise.promise;
+  }
+
+  // switch to a new site for editing
+  function editSite(site) {
+    var promise = $q.defer();
+
+    $http({
+      method: 'GET',
+      url: '/api/site/edit/' + site
+    }).success(function(data, status, headers) {
+      if (data.error) {
+        promise.reject(data.message);
+      }
+      // empty the sites object
+      sites = {}
+      site = data;
+      promise.resolve(site);
     }).error(promise.reject);
 
     return promise.promise;

@@ -335,56 +335,6 @@ function springboard() {
 		});
 	}
 
-	self.editSite = function(thesite) {
-		// promisified function that returns a site object
-		return new Promise(function(resolve, reject) {
-			if (sites[thesite]) {
-
-				stopWatch();
-				site = sites[thesite];
-
-				git.checkout(site.branch, function(err) {
-					if (err) {
-						console.log('dude, need to commit that shit!');
-						return reject({ error: true, site: site.name, action: 'checkout', status: 'failed', message: err });
-					}
-				}).then(function() {
-					self.pullSite().then(function(pulled) {
-						site.reload();
-						site.compile();
-
-						// recent sites
-						var recents = options.recent_sites.indexOf(site.name);
-						if (recents != -1) {
-							options.recent_sites.splice(recents, 1);
-						}
-						var max_number_of_recents = 12;
-						if (options.recent_sites.push(site.name) > max_number_of_recents) {
-							options.recent_sites.shift();
-						}
-						options.current_site = site.name;
-						writeConfig();
-
-						// start watching
-						watchScss();
-						watchHtml();
-						//watchJSON();
-						//watchJs();
-						logit.log('editing site', 'now watching for changes on ' + site.name.bold, 'warn');
-
-						return resolve(site);
-					}).catch(function(err) {
-						console.log('got an error...');
-						return reject(err);
-					});
-				});
-			}
-			else {
-				return reject(Error(thesite + ' is not a valid site!'));
-			}
-		});
-	}
-
 	// create new site
 	// assuming that current site has been commited
 	self.addSite = function(details) {
@@ -471,6 +421,56 @@ function springboard() {
 		});
 	}
 
+	self.editSite = function(thesite) {
+		// promisified function that returns a site object
+		return new Promise(function(resolve, reject) {
+			if (sites[thesite]) {
+
+				stopWatch();
+				site = sites[thesite];
+
+				git.checkout(site.branch, function(err) {
+					if (err) {
+						console.log('dude, need to commit that shit!');
+						return reject({ error: true, site: site.name, action: 'checkout', status: 'failed', message: err });
+					}
+				}).then(function() {
+					self.pullSite().then(function(pulled) {
+						site.reload();
+						site.compile();
+
+						// recent sites
+						var recents = options.recent_sites.indexOf(site.name);
+						if (recents != -1) {
+							options.recent_sites.splice(recents, 1);
+						}
+						var max_number_of_recents = 12;
+						if (options.recent_sites.push(site.name) > max_number_of_recents) {
+							options.recent_sites.shift();
+						}
+						options.current_site = site.name;
+						writeConfig();
+
+						// start watching
+						watchScss();
+						watchHtml();
+						//watchJSON();
+						//watchJs();
+						logit.log('editing site', 'now watching for changes on ' + site.name.bold, 'warn');
+
+						return resolve(site);
+					}).catch(function(err) {
+						console.log('got an error...');
+						return reject(err);
+					});
+				});
+			}
+			else {
+				return reject(Error(thesite + ' is not a valid site!'));
+			}
+		});
+	}
+
 	// install module or plugin or theme
 	self.install = function(info) {
 		// promisified
@@ -522,10 +522,18 @@ function springboard() {
 					throw('Not editing a site!');
 				}
 			} catch (err) {
-				console.log(err);
 				return resolve({ error: true, message: err });
 			}
 		});
+	}
+
+	// update the current site
+	self.updateSite = function(changes) {
+		if (site && site.name) {
+			// TODO this...
+		} else {
+			return { error: true, message: 'Not editing a site!' };
+		}
 	}
 
 	/* ************************** */

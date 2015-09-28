@@ -14,6 +14,13 @@ function EditorCtrl($location, $window, focus, sitemanager, modalmanager) {
 
   vm.loading = true;
 
+  sitemanager.getModules().then(function(modules) {
+    vm.modules = modules;
+  }, function(err) {
+    console.error('Failed to get listing of available modules.');
+    console.log(err);
+  });
+
   sitemanager.getSite().then(function(site) {
     vm.site = site;
     vm.loading = false;
@@ -35,13 +42,6 @@ function EditorCtrl($location, $window, focus, sitemanager, modalmanager) {
   }, function(err) {
     // not editing any site...
     $location.path("/");
-  });
-
-  sitemanager.getModules().then(function(modules) {
-    vm.modules = modules;
-  }, function(err) {
-    console.error('Failed to get listing of available modules.');
-    console.log(err);
   });
 
   vm.openUrl = function() {
@@ -148,6 +148,27 @@ function EditorCtrl($location, $window, focus, sitemanager, modalmanager) {
     });
   }
 
+  vm.useModuleTheme = function(data) {
+    if (vm.site.modules[data.module].theme != data.theme) {
+      vm.loading = true;
+      var modified_site = angular.copy(vm.site);
+      modified_site.modules[data.module].theme = data.theme;
+      // update the site
+      sitemanager.updateSite(modified_site).then(function(updated_site) {
+        vm.site = updated_site;
+        vm.loading = false;
+      }, function(err) {
+        vm.loading = false;
+        var promise = modalmanager.open(
+          'alert',
+          {
+            message: err.message
+          }
+        );
+      });
+    }
+  }
+
   vm.switchTab = function(new_tab) {
     vm.session.tab = new_tab;
   }
@@ -160,11 +181,11 @@ function EditorCtrl($location, $window, focus, sitemanager, modalmanager) {
     if (!vm.session.vtab[module]) {
       vm.session.vtab[module] = {};
     }
-
+    var type = vm.site.modules[module].type;
     if (!vm.session.vtab[module].tab) {
-      if (!angular.equals({}, vm.site.modules[module].plugins))
+      if (!angular.equals({}, vm.modules[type].plugins))
         vm.session.vtab[module].tab = 'plugins';
-      else if (!angular.equals({}, vm.site.modules[module].themes))
+      else if (!angular.equals({}, vm.modules[type].themes))
         vm.session.vtab[module].tab = 'themes';
       else
         vm.session.vtab[module].tab = 'variables';

@@ -5,11 +5,12 @@
 
 .button {
   min-width: 80px;
-  border: solid 1px $orange;
+  border: solid 1px $orangefaded;
   border-radius: 2px;
-  background: $orange;
-  color: white;
-  font-size: 12px;
+  background: $orangefaded;
+  color: $whitefaded;
+  font-size: 10px;
+  font-weight: bold;
   cursor: pointer;
   padding: 4px 12px;
   text-decoration: none;
@@ -27,14 +28,21 @@
     cursor: default;
   }
   &:hover:not(:disabled) {
-    background: $orangefaded;
-    border-color: $orangefaded;
+    background: $orangedark;
+    border-color: $orangedark;
+    color: $whitefaded;
   }
   &:focus {
     outline: 0;
   }
   &.right {
     float: right;
+  }
+  & > .icon {
+    background-size: 14px;
+    background-position: left center;
+    width: 20px;
+    height: 12px;
   }
 }
 
@@ -46,9 +54,8 @@ label {
 
 fieldset {
   text-align: center;
-  margin: 25px 0 0;
+  margin: 10px 0;
   border: 1px solid $blueaccent;
-  position: relative;
 }
 
 legend {
@@ -57,10 +64,8 @@ legend {
   font-size: 12px;
   text-align: left;
   background-color: $blueaccent;
+  border-radius: 2px;
   padding: 6px;
-  position: absolute;
-  top: -26px;
-  left: -1px;
 }
 
 input[type="text"], select {
@@ -80,7 +85,7 @@ input[type="text"], select {
   width: 33px;
   height: 33px;
   background-repeat: no-repeat;
-  background-size: 20px;
+  background-size: 22px;
   background-position: center center;
   vertical-align: middle;
   &.active {
@@ -116,6 +121,9 @@ input[type="text"], select {
   &.refresh {
     background-image: url('/images/icons/refresh.png');
   }
+  &.save {
+    background-image: url('/images/icons/save.png');
+  }
   &.settings {
     background-image: url('/images/icons/settings.png');
   }
@@ -124,6 +132,9 @@ input[type="text"], select {
   }
   &.themes {
     background-image: url('/images/icons/theme.png');
+  }
+  &.undo {
+    background-image: url('/images/icons/undo.png');
   }
   &.upload {
     background-image: url('/images/icons/upload.png');

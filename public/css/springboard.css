@@ -1,11 +1,11 @@
-/* line 29, stdin */
+/* line 30, stdin */
 html {
   height: 100%;
   min-height: 100%;
   padding: 0;
   margin: 0; }
 
-/* line 36, stdin */
+/* line 37, stdin */
 body {
   height: 100%;
   min-height: 100%;
@@ -14,33 +14,33 @@ body {
   font-family: 'Roboto', sans-serif;
   background-color: #354E66;
   color: #0E1920; }
-  /* line 46, stdin */
+  /* line 47, stdin */
   body a {
     color: #C87C0F;
     font-weight: bold;
     text-decoration: none; }
-  /* line 51, stdin */
+  /* line 52, stdin */
   body input, body select, body textarea {
     padding: 7px;
     color: #7194AD;
     background-color: #001A2B; }
-    /* line 55, stdin */
+    /* line 56, stdin */
     body input:focus, body input:active, body select:focus, body select:active, body textarea:focus, body textarea:active {
       outline: 0; }
-  /* line 59, stdin */
+  /* line 60, stdin */
   body #main {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap; }
-    /* line 65, stdin */
+    /* line 66, stdin */
     body #main #above {
       flex-shrink: 0;
       padding: 0;
       margin: 0;
       z-index: 6; }
-    /* line 74, stdin */
+    /* line 75, stdin */
     body #main #content {
       display: flex;
       flex-direction: column;
@@ -50,67 +50,72 @@ body {
       background: url("/images/sitebg.jpg") center center fixed;
       background-size: cover;
       background-position: 0px 0px; }
-      /* line 83, stdin */
+      /* line 84, stdin */
       body #main #content.fullscreen {
         top: 0; }
-    /* line 87, stdin */
+    /* line 88, stdin */
     body #main #below {
       flex-shrink: 0; }
 
 /* line 6, /home/korgon/Work/springboard/build/scss/_gui.scss */
 .button {
   min-width: 80px;
-  border: solid 1px #C87C0F;
+  border: solid 1px #946018;
   border-radius: 2px;
-  background: #C87C0F;
-  color: white;
-  font-size: 12px;
+  background: #946018;
+  color: #CACACA;
+  font-size: 10px;
+  font-weight: bold;
   cursor: pointer;
   padding: 4px 12px;
   text-decoration: none;
   text-transform: uppercase; }
-  /* line 24, /home/korgon/Work/springboard/build/scss/_gui.scss */
+  /* line 25, /home/korgon/Work/springboard/build/scss/_gui.scss */
   .button:disabled {
     border: #352C17;
     background: #352C17;
     cursor: default; }
-  /* line 29, /home/korgon/Work/springboard/build/scss/_gui.scss */
+  /* line 30, /home/korgon/Work/springboard/build/scss/_gui.scss */
   .button:hover:not(:disabled) {
     background: #724911;
-    border-color: #724911; }
-  /* line 33, /home/korgon/Work/springboard/build/scss/_gui.scss */
+    border-color: #724911;
+    color: #CACACA; }
+  /* line 35, /home/korgon/Work/springboard/build/scss/_gui.scss */
   .button:focus {
     outline: 0; }
-  /* line 36, /home/korgon/Work/springboard/build/scss/_gui.scss */
+  /* line 38, /home/korgon/Work/springboard/build/scss/_gui.scss */
   .button.right {
     float: right; }
+  /* line 41, /home/korgon/Work/springboard/build/scss/_gui.scss */
+  .button > .icon {
+    background-size: 14px;
+    background-position: left center;
+    width: 20px;
+    height: 12px; }
 
-/* line 41, /home/korgon/Work/springboard/build/scss/_gui.scss */
+/* line 49, /home/korgon/Work/springboard/build/scss/_gui.scss */
 label {
   margin-bottom: 6px;
   display: block;
   color: #3F525F; }
 
-/* line 47, /home/korgon/Work/springboard/build/scss/_gui.scss */
+/* line 55, /home/korgon/Work/springboard/build/scss/_gui.scss */
 fieldset {
   text-align: center;
-  margin: 25px 0 0;
-  border: 1px solid #052238;
-  position: relative; }
+  margin: 10px 0;
+  border: 1px solid #052238; }
 
-/* line 54, /home/korgon/Work/springboard/build/scss/_gui.scss */
+/* line 61, /home/korgon/Work/springboard/build/scss/_gui.scss */
 legend {
   font-weight: bold;
   text-transform: capitalize;
   font-size: 12px;
   text-align: left;
   background-color: #052238;
-  padding: 6px;
-  position: absolute;
-  top: -26px;
-  left: -1px; }
+  border-radius: 2px;
+  padding: 6px; }
 
-/* line 66, /home/korgon/Work/springboard/build/scss/_gui.scss */
+/* line 71, /home/korgon/Work/springboard/build/scss/_gui.scss */
 input[type="text"], select {
   box-sizing: border-box;
   border-radius: 3px;
@@ -118,65 +123,71 @@ input[type="text"], select {
   border: 1px solid #354E66;
   color: #61717B;
   margin-bottom: 10px; }
-  /* line 73, /home/korgon/Work/springboard/build/scss/_gui.scss */
+  /* line 78, /home/korgon/Work/springboard/build/scss/_gui.scss */
   input[type="text"]:focus, input[type="text"]:active, select:focus, select:active {
     color: #7194AD; }
 
-/* line 78, /home/korgon/Work/springboard/build/scss/_gui.scss */
+/* line 83, /home/korgon/Work/springboard/build/scss/_gui.scss */
 .icon {
   display: inline-block;
   width: 33px;
   height: 33px;
   background-repeat: no-repeat;
-  background-size: 20px;
+  background-size: 22px;
   background-position: center center;
   vertical-align: middle; }
-  /* line 86, /home/korgon/Work/springboard/build/scss/_gui.scss */
+  /* line 91, /home/korgon/Work/springboard/build/scss/_gui.scss */
   .icon.active {
     background-image: url("/images/icons/active.png"); }
-  /* line 89, /home/korgon/Work/springboard/build/scss/_gui.scss */
+  /* line 94, /home/korgon/Work/springboard/build/scss/_gui.scss */
   .icon.commit {
     background-image: url("/images/icons/commit.png"); }
-  /* line 92, /home/korgon/Work/springboard/build/scss/_gui.scss */
+  /* line 97, /home/korgon/Work/springboard/build/scss/_gui.scss */
   .icon.custom {
     background-image: url("/images/icons/custom.png"); }
-  /* line 95, /home/korgon/Work/springboard/build/scss/_gui.scss */
+  /* line 100, /home/korgon/Work/springboard/build/scss/_gui.scss */
   .icon.modules {
     background-image: url("/images/icons/module.png"); }
-  /* line 98, /home/korgon/Work/springboard/build/scss/_gui.scss */
+  /* line 103, /home/korgon/Work/springboard/build/scss/_gui.scss */
   .icon.files {
     background-image: url("/images/icons/files.png"); }
-  /* line 101, /home/korgon/Work/springboard/build/scss/_gui.scss */
+  /* line 106, /home/korgon/Work/springboard/build/scss/_gui.scss */
   .icon.history {
     background-image: url("/images/icons/history.png"); }
-  /* line 104, /home/korgon/Work/springboard/build/scss/_gui.scss */
+  /* line 109, /home/korgon/Work/springboard/build/scss/_gui.scss */
   .icon.install {
     background-image: url("/images/icons/install.png"); }
-  /* line 107, /home/korgon/Work/springboard/build/scss/_gui.scss */
+  /* line 112, /home/korgon/Work/springboard/build/scss/_gui.scss */
   .icon.plugins {
     background-image: url("/images/icons/plugin.png"); }
-  /* line 110, /home/korgon/Work/springboard/build/scss/_gui.scss */
+  /* line 115, /home/korgon/Work/springboard/build/scss/_gui.scss */
   .icon.pull {
     background-image: url("/images/icons/pull_request.png"); }
-  /* line 113, /home/korgon/Work/springboard/build/scss/_gui.scss */
+  /* line 118, /home/korgon/Work/springboard/build/scss/_gui.scss */
   .icon.push {
     background-image: url("/images/icons/push.png"); }
-  /* line 116, /home/korgon/Work/springboard/build/scss/_gui.scss */
+  /* line 121, /home/korgon/Work/springboard/build/scss/_gui.scss */
   .icon.refresh {
     background-image: url("/images/icons/refresh.png"); }
-  /* line 119, /home/korgon/Work/springboard/build/scss/_gui.scss */
+  /* line 124, /home/korgon/Work/springboard/build/scss/_gui.scss */
+  .icon.save {
+    background-image: url("/images/icons/save.png"); }
+  /* line 127, /home/korgon/Work/springboard/build/scss/_gui.scss */
   .icon.settings {
     background-image: url("/images/icons/settings.png"); }
-  /* line 122, /home/korgon/Work/springboard/build/scss/_gui.scss */
+  /* line 130, /home/korgon/Work/springboard/build/scss/_gui.scss */
   .icon.tags {
     background-image: url("/images/icons/tag.png"); }
-  /* line 125, /home/korgon/Work/springboard/build/scss/_gui.scss */
+  /* line 133, /home/korgon/Work/springboard/build/scss/_gui.scss */
   .icon.themes {
     background-image: url("/images/icons/theme.png"); }
-  /* line 128, /home/korgon/Work/springboard/build/scss/_gui.scss */
+  /* line 136, /home/korgon/Work/springboard/build/scss/_gui.scss */
+  .icon.undo {
+    background-image: url("/images/icons/undo.png"); }
+  /* line 139, /home/korgon/Work/springboard/build/scss/_gui.scss */
   .icon.upload {
     background-image: url("/images/icons/upload.png"); }
-  /* line 131, /home/korgon/Work/springboard/build/scss/_gui.scss */
+  /* line 142, /home/korgon/Work/springboard/build/scss/_gui.scss */
   .icon.variables {
     background-image: url("/images/icons/variable.png"); }
 
@@ -627,41 +638,72 @@ body #above .heading {
                 width: 100%;
                 padding: 10px; }
                 /* line 461, /home/korgon/Work/springboard/build/scss/_header.scss */
-                body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .vtabwrap .vtabcontents .moduletheme {
-                  list-style: none;
-                  padding: 0; }
-                  /* line 464, /home/korgon/Work/springboard/build/scss/_header.scss */
-                  body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .vtabwrap .vtabcontents .moduletheme .themename {
-                    color: #7F6E14;
-                    font-size: 10px;
-                    text-transform: uppercase;
-                    display: inline-block;
-                    width: 111px;
-                    overflow: hidden;
-                    vertical-align: middle; }
+                body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .vtabwrap .vtabcontents .vtabhead {
+                  display: inline-block;
+                  font-weight: bold;
+                  text-transform: capitalize;
+                  font-size: 12px;
+                  text-align: left;
+                  background-color: #052238;
+                  border-radius: 2px 2px 0 0;
+                  padding: 6px; }
+                /* line 471, /home/korgon/Work/springboard/build/scss/_header.scss */
+                body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .vtabwrap .vtabcontents .buttons {
+                  text-align: right; }
                   /* line 473, /home/korgon/Work/springboard/build/scss/_header.scss */
-                  body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .vtabwrap .vtabcontents .moduletheme .icon {
+                  body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .vtabwrap .vtabcontents .buttons .button {
+                    min-width: initial;
+                    padding: 6px;
+                    margin-left: 1px;
+                    border-color: #052238;
+                    background-color: #052238;
+                    border-radius: 0 0 2px 2px;
+                    color: #718599; }
+                    /* line 481, /home/korgon/Work/springboard/build/scss/_header.scss */
+                    body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .vtabwrap .vtabcontents .buttons .button:hover:not(:disabled) {
+                      background: #00121E;
+                      border-color: #00121E;
+                      color: #CACACA; }
+                /* line 488, /home/korgon/Work/springboard/build/scss/_header.scss */
+                body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .vtabwrap .vtabcontents ul {
+                  list-style: none;
+                  min-height: 45px;
+                  padding: 10px;
+                  border: 1px solid #052238; }
+                  /* line 493, /home/korgon/Work/springboard/build/scss/_header.scss */
+                  body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .vtabwrap .vtabcontents ul .icon {
                     background-size: 12px;
-                    width: 24px; }
-                    /* line 476, /home/korgon/Work/springboard/build/scss/_header.scss */
-                    body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .vtabwrap .vtabcontents .moduletheme .icon:hover {
+                    width: 30px;
+                    height: 25px; }
+                    /* line 497, /home/korgon/Work/springboard/build/scss/_header.scss */
+                    body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .vtabwrap .vtabcontents ul .icon:hover {
                       cursor: pointer; }
-                    /* line 479, /home/korgon/Work/springboard/build/scss/_header.scss */
-                    body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .vtabwrap .vtabcontents .moduletheme .icon.disabled {
+                    /* line 500, /home/korgon/Work/springboard/build/scss/_header.scss */
+                    body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .vtabwrap .vtabcontents ul .icon.disabled {
                       opacity: 0.2; }
-                      /* line 481, /home/korgon/Work/springboard/build/scss/_header.scss */
-                      body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .vtabwrap .vtabcontents .moduletheme .icon.disabled:hover {
+                      /* line 502, /home/korgon/Work/springboard/build/scss/_header.scss */
+                      body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .vtabwrap .vtabcontents ul .icon.disabled:hover {
                         cursor: default; }
-                    /* line 485, /home/korgon/Work/springboard/build/scss/_header.scss */
-                    body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .vtabwrap .vtabcontents .moduletheme .icon.off {
+                    /* line 506, /home/korgon/Work/springboard/build/scss/_header.scss */
+                    body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .vtabwrap .vtabcontents ul .icon.off {
                       opacity: 0.2; }
-                    /* line 489, /home/korgon/Work/springboard/build/scss/_header.scss */
-                    body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .vtabwrap .vtabcontents .moduletheme .icon.on:hover {
+                    /* line 510, /home/korgon/Work/springboard/build/scss/_header.scss */
+                    body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .vtabwrap .vtabcontents ul .icon.on:hover {
                       cursor: default; }
-                    /* line 493, /home/korgon/Work/springboard/build/scss/_header.scss */
-                    body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .vtabwrap .vtabcontents .moduletheme .icon.hidden {
+                    /* line 514, /home/korgon/Work/springboard/build/scss/_header.scss */
+                    body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .vtabwrap .vtabcontents ul .icon.hidden {
                       visibility: hidden; }
-            /* line 501, /home/korgon/Work/springboard/build/scss/_header.scss */
+                /* line 520, /home/korgon/Work/springboard/build/scss/_header.scss */
+                body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .vtabwrap .vtabcontents .modulethemes .themename {
+                  color: #7F6E14;
+                  font-size: 10px;
+                  text-transform: uppercase;
+                  display: inline-block;
+                  width: 100px;
+                  overflow: hidden;
+                  vertical-align: middle;
+                  text-align: center; }
+            /* line 534, /home/korgon/Work/springboard/build/scss/_header.scss */
             body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .addmodule {
               text-align: center;
               clear: both;
@@ -672,7 +714,7 @@ body #above .heading {
               width: 245px;
               float: right;
               box-sizing: border-box; }
-              /* line 511, /home/korgon/Work/springboard/build/scss/_header.scss */
+              /* line 544, /home/korgon/Work/springboard/build/scss/_header.scss */
               body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .addmodule.solo {
                 background-color: #001A2B;
                 border: 1px solid #304B66;
@@ -680,10 +722,10 @@ body #above .heading {
                 border-top: 0;
                 width: 100%;
                 float: none; }
-              /* line 519, /home/korgon/Work/springboard/build/scss/_header.scss */
+              /* line 552, /home/korgon/Work/springboard/build/scss/_header.scss */
               body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .addmodule #addbutton {
                 height: 33px; }
-                /* line 521, /home/korgon/Work/springboard/build/scss/_header.scss */
+                /* line 554, /home/korgon/Work/springboard/build/scss/_header.scss */
                 body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .addmodule #addbutton .add {
                   display: inline-block;
                   width: 15px;
@@ -694,25 +736,25 @@ body #above .heading {
                   transition: all 222ms ease;
                   background-image: url("/images/icons/add.png");
                   background-size: 25px; }
-                /* line 532, /home/korgon/Work/springboard/build/scss/_header.scss */
+                /* line 565, /home/korgon/Work/springboard/build/scss/_header.scss */
                 body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .addmodule #addbutton:hover {
                   cursor: pointer; }
-                /* line 535, /home/korgon/Work/springboard/build/scss/_header.scss */
+                /* line 568, /home/korgon/Work/springboard/build/scss/_header.scss */
                 body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .addmodule #addbutton:hover > .add {
                   -webkit-filter: drop-shadow(0px 0px 3px #688BA3);
                   filter: drop-shadow(0px 0px 3px #688BA3); }
-              /* line 540, /home/korgon/Work/springboard/build/scss/_header.scss */
+              /* line 573, /home/korgon/Work/springboard/build/scss/_header.scss */
               body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .addmodule label {
                 display: inline-block;
                 width: 40px; }
-              /* line 544, /home/korgon/Work/springboard/build/scss/_header.scss */
+              /* line 577, /home/korgon/Work/springboard/build/scss/_header.scss */
               body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .addmodule #addmoduleinput {
                 padding: 10px 0;
                 display: none; }
-                /* line 547, /home/korgon/Work/springboard/build/scss/_header.scss */
+                /* line 580, /home/korgon/Work/springboard/build/scss/_header.scss */
                 body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .addmodule #addmoduleinput.visible {
                   display: block; }
-                /* line 550, /home/korgon/Work/springboard/build/scss/_header.scss */
+                /* line 583, /home/korgon/Work/springboard/build/scss/_header.scss */
                 body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .addmodule #addmoduleinput #modulename_input, body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .addmodule #addmoduleinput #moduletype_input {
                   width: 180px;
                   height: 33px;

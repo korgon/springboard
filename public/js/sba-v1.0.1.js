@@ -494,6 +494,13 @@ function EditorCtrl($location, $window, focus, sitemanager, modalmanager) {
 
   vm.loading = true;
 
+  sitemanager.getModules().then(function(modules) {
+    vm.modules = modules;
+  }, function(err) {
+    console.error('Failed to get listing of available modules.');
+    console.log(err);
+  });
+
   sitemanager.getSite().then(function(site) {
     vm.site = site;
     vm.loading = false;
@@ -515,13 +522,6 @@ function EditorCtrl($location, $window, focus, sitemanager, modalmanager) {
   }, function(err) {
     // not editing any site...
     $location.path("/");
-  });
-
-  sitemanager.getModules().then(function(modules) {
-    vm.modules = modules;
-  }, function(err) {
-    console.error('Failed to get listing of available modules.');
-    console.log(err);
   });
 
   vm.openUrl = function() {
@@ -628,6 +628,27 @@ function EditorCtrl($location, $window, focus, sitemanager, modalmanager) {
     });
   }
 
+  vm.useModuleTheme = function(data) {
+    if (vm.site.modules[data.module].theme != data.theme) {
+      vm.loading = true;
+      var modified_site = angular.copy(vm.site);
+      modified_site.modules[data.module].theme = data.theme;
+      // update the site
+      sitemanager.updateSite(modified_site).then(function(updated_site) {
+        vm.site = updated_site;
+        vm.loading = false;
+      }, function(err) {
+        vm.loading = false;
+        var promise = modalmanager.open(
+          'alert',
+          {
+            message: err.message
+          }
+        );
+      });
+    }
+  }
+
   vm.switchTab = function(new_tab) {
     vm.session.tab = new_tab;
   }
@@ -640,11 +661,11 @@ function EditorCtrl($location, $window, focus, sitemanager, modalmanager) {
     if (!vm.session.vtab[module]) {
       vm.session.vtab[module] = {};
     }
-
+    var type = vm.site.modules[module].type;
     if (!vm.session.vtab[module].tab) {
-      if (!angular.equals({}, vm.site.modules[module].plugins))
+      if (!angular.equals({}, vm.modules[type].plugins))
         vm.session.vtab[module].tab = 'plugins';
-      else if (!angular.equals({}, vm.site.modules[module].themes))
+      else if (!angular.equals({}, vm.modules[type].themes))
         vm.session.vtab[module].tab = 'themes';
       else
         vm.session.vtab[module].tab = 'variables';
@@ -848,7 +869,7 @@ function ModalAlertCtrl($scope, modalmanager, focus) {
 
   // Setup defaults using the modal params.
   mm.message_icon = ( params.message_icon || 'alert' );
-  mm.message = ( params.message || 'Do the thing?' );
+  mm.message = ( params.message || 'Whoops... Something failed...' );
   mm.button_confirm = ( params.button_confirm || 'Ok' );
   mm.button_cancel = ( params.button_cancel || false );
 
@@ -1151,6 +1172,7 @@ function sitemanager($http, $q, $timeout) {
     getSites: getSites,
     getSite: getSite,
     createSite: createSite,
+    updateSite: updateSite,
     editSite: editSite,
     commitSite: commitSite,
     resetSite: resetSite,
@@ -1160,66 +1182,6 @@ function sitemanager($http, $q, $timeout) {
     installModule: installModule,
     installModuleTheme: installModuleTheme
   });
-
-  // switch to a new site for editing
-  function createSite(site) {
-    var promise = $q.defer();
-
-    $http({
-      method: 'POST',
-      data: site,
-      url: '/api/site/create'
-    }).success(function(data, status, headers) {
-      if (data.error) {
-        promise.reject(data.message);
-      }
-      getSites().then(function(sites) {
-        promise.resolve(sites);
-      }, function(err) {
-        promise.reject();
-      });
-    }).error(promise.reject);
-
-    return promise.promise;
-  }
-
-  // switch to a new site for editing
-  function editSite(site) {
-    var promise = $q.defer();
-
-    $http({
-      method: 'GET',
-      url: '/api/site/edit/' + site
-    }).success(function(data, status, headers) {
-      if (data.error) {
-        promise.reject(data.message);
-      }
-      // empty the sites object
-      sites = {}
-      site = data;
-      promise.resolve(site);
-    }).error(promise.reject);
-
-    return promise.promise;
-  }
-
-  // get current details of site under edit
-  function getSite() {
-    var promise = $q.defer();
-
-    $http({
-      method: 'GET',
-      url: '/api/site'
-    }).success(function(data, status, headers) {
-      if (data.error) {
-        promise.reject(data.message);
-      }
-      site = data;
-      promise.resolve(site);
-    }).error(promise.reject);
-
-    return promise.promise;
-  }
 
   // triggers complete reload of sites (including pull)
   // return sites objects
@@ -1251,6 +1213,85 @@ function sitemanager($http, $q, $timeout) {
       site = {};
       sites = data;
       promise.resolve(sites);
+    }).error(promise.reject);
+
+    return promise.promise;
+  }
+
+  // get current details of site under edit
+  function getSite() {
+    var promise = $q.defer();
+
+    $http({
+      method: 'GET',
+      url: '/api/site'
+    }).success(function(data, status, headers) {
+      if (data.error) {
+        promise.reject(data.message);
+      }
+      site = data;
+      promise.resolve(site);
+    }).error(promise.reject);
+
+    return promise.promise;
+  }
+
+  // switch to a new site for editing
+  function createSite(site) {
+    var promise = $q.defer();
+
+    $http({
+      method: 'POST',
+      data: site,
+      url: '/api/site/create'
+    }).success(function(data, status, headers) {
+      if (data.error) {
+        promise.reject(data.message);
+      }
+      getSites().then(function(sites) {
+        promise.resolve(sites);
+      }, function(err) {
+        promise.reject();
+      });
+    }).error(promise.reject);
+
+    return promise.promise;
+  }
+
+  // update site
+  function updateSite(updatedsite) {
+    var promise = $q.defer();
+
+    $http({
+      method: 'POST',
+      data: updatedsite,
+      url: '/api/site/update'
+    }).success(function(data, status, headers) {
+      if (data.error) {
+        promise.reject(data.message);
+      }
+      site = data;
+      promise.resolve(site);
+    }).error(promise.reject);
+
+    return promise.promise;
+  }
+
+  // switch to a new site for editing
+  function editSite(site) {
+    var promise = $q.defer();
+
+    $http({
+      method: 'GET',
+      url: '/api/site/edit/' + site
+    }).success(function(data, status, headers) {
+      if (data.error) {
+        promise.reject(data.message);
+      }
+      // empty the sites object
+      sites = {}
+      site = data;
+      promise.resolve(site);
     }).error(promise.reject);
 
     return promise.promise;

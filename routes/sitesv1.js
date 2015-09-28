@@ -229,8 +229,15 @@ module.exports = function(springboard) {
       this.response.body = site;
     },
 
-    // Modules, plugins and themes
+    update: function*() {
+      this.response.type = 'json';
+      var changes = this.request.body.fields;
+      springboard.updateSite(changes);
+      this.response.body = springboard.getSite();
+    },
 
+
+    // Modules, plugins and themes
     modules: function*() {
       this.response.type = 'json';
       this.response.body = springboard.getModules();
@@ -262,14 +269,7 @@ module.exports = function(springboard) {
       }
       var data = yield springboard.install(info);
       this.response.body = data;
-    },
-
-    update: function*() {
-      var info = this.request.body.fields;
-      var data = yield springboard.update(info);
-      this.response.type = 'json';
-      this.response.body = data;
-    },
+    }
 
   };
 };

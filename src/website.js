@@ -171,6 +171,8 @@ website.prototype.saveConfig = function() {
 		console.error('failed to write website config: ');
 		console.error(err);
 	}
+	// modules save
+	
 	return;
 }
 
@@ -266,7 +268,7 @@ website.prototype.installModule = function(new_mod) {
 			// ensure module name (directory) not in use
 			if (!fs.existsSync(module_dir)) {
 				// create new module object
-				self.modules[new_mod.name] = new mod({ name: new_mod.name, type: new_mod.type, directory: module_dir, template_dir: new_mod.template_dir, new: true });
+				self.modules[new_mod.name] = new mod({ siteid: self.siteid, name: new_mod.name, type: new_mod.type, directory: module_dir, template_dir: new_mod.template_dir, new: true });
 
 				if (self.modules[new_mod.name].valid)
 					return resolve({ error: false, message: 'Module installed!' });
