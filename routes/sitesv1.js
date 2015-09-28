@@ -241,13 +241,10 @@ module.exports = function(springboard) {
 
       var info = this.request.body.fields;
 
-      // purify all things
-      info.name = info.name.toLowerCase();
-
-      // validate some inputs
       if (info.install == 'module') {
         var illegal_names = ['css', 'js', 'scss', 'sass', 'html', 'img', 'image', 'images', 'build', 'module', 'modules', 'theme', 'themes', 'plugin', 'plugins'];
         if (info.name) {
+          info.name = info.name.toLowerCase();
           if (illegal_names.indexOf(info.name) >= 0 || !info.name.match(/^\w{3,}$/)) {
             this.response.body = { error: true, message: 'Invalid module name!' };
             return;
@@ -256,8 +253,12 @@ module.exports = function(springboard) {
           this.response.body = { error: true, message: 'Module name is required!' };
           return;
         }
-      } else if (info.install == 'plugin' || info.install == 'theme') {
-
+      } else if (info.install == 'plugin') {
+        info.module = info.module.toLowerCase();
+        info.plugin = info.plugin.toLowerCase();
+      } else if (info.install == 'theme') {
+        info.module = info.module.toLowerCase();
+        info.theme = info.theme.toLowerCase();
       }
       var data = yield springboard.install(info);
       this.response.body = data;

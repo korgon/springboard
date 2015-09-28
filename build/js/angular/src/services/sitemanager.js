@@ -30,7 +30,8 @@ function sitemanager($http, $q, $timeout) {
     pushSite: pushSite,
     publishSiteMockup: publishSiteMockup,
     getModules: getModules,
-    installModule: installModule
+    installModule: installModule,
+    installModuleTheme: installModuleTheme
   });
 
   // switch to a new site for editing
@@ -145,7 +146,7 @@ function sitemanager($http, $q, $timeout) {
         }
       }).error(promise.reject);
     } else {
-      promise.reject({ error: true, message: 'not editing any site!'});
+      promise.reject({ error: true, message: 'Not editing any site!'});
     }
 
     return promise.promise;
@@ -185,7 +186,7 @@ function sitemanager($http, $q, $timeout) {
         }
       }).error(promise.reject);
     } else {
-      promise.reject({ error: true, message: 'not editing any site!'});
+      promise.reject({ error: true, message: 'Not editing any site!'});
     }
 
     return promise.promise;
@@ -206,7 +207,7 @@ function sitemanager($http, $q, $timeout) {
         }
       }).error(promise.reject);
     } else {
-      promise.reject({ error: true, message: 'not editing any site!'});
+      promise.reject({ error: true, message: 'Not editing any site!'});
     }
 
     return promise.promise;
@@ -254,7 +255,37 @@ function sitemanager($http, $q, $timeout) {
         }
       }).error(promise.reject);
     } else {
-      promise.reject({ error: true, message: 'not editing any site!'});
+      promise.reject({ error: true, message: 'Not editing any site!'});
+    }
+
+    return promise.promise;
+  }
+
+  // install a module theme
+  function installModuleTheme(info) {
+    var promise = $q.defer();
+
+    var install = {
+      install: 'theme',
+      module: info.module,
+      theme: info.theme
+    };
+
+    if (site.name) {
+      $http({
+        method: 'POST',
+        data: install,
+        url: '/api/site/install'
+      }).success(function(data, status, headers) {
+        if (data.error) {
+          promise.reject(data);
+        } else {
+          site = data;
+          promise.resolve(data);
+        }
+      }).error(promise.reject);
+    } else {
+      promise.reject({ error: true, message: 'Not editing any site!'});
     }
 
     return promise.promise;

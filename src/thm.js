@@ -14,7 +14,7 @@
 */
 
 // the object properties that should be written to file (modname.json)
-var export_options = ['name', 'version', 'description', 'cart', 'colors', 'devices', 'variables'];
+var export_options = ['name', 'version', 'description', 'author', 'cart', 'colors', 'devices', 'variables'];
 
 // include packages
 var fs = require('fs-extra');
@@ -103,7 +103,6 @@ thm.prototype.saveConfig = function() {
 	}
 	return;
 }
-
 
 
 // // crap taken from springboard

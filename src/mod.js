@@ -111,6 +111,11 @@ function mod(options) {
 		this.themes = {};
 		this.plugins = {};
 
+		// install default theme
+		if (this.new) {
+			this.installTheme({ theme: 'default', template_dir: this.template_dir });
+		}
+
 		this.loadThemes();
 		this.loadPlugins();
 	}
@@ -237,6 +242,27 @@ mod.prototype.install = function() {
 // compile function for unknown module type
 mod.prototype.compile = function() {
 	return { error: true, message: 'Module type is not supported!' };
+}
+
+mod.prototype.installTheme = function(info) {
+	var self = this;
+	return new Promise(function(resolve, reject) {
+		// check if theme already installed
+		if (self.themes[info.theme]) {
+			return reject({ error: true, message: 'Theme is already installed!' });
+		} else {
+			fs.copySync(info.template_dir + '/themes/' + info.theme, self.directory + '/themes/' + info.theme);
+			var themes_dir = self.directory + '/themes';
+			var theme_dir = themes_dir + '/' + info.theme;
+			self.themes[info.theme] = new thm({ id: info.theme, directory: theme_dir });
+			if (self.themes[info.theme].valid) {
+				self.theme = info.theme;
+				return resolve(true);
+			} else {
+				return reject({ error: true, message: 'Failed to install theme!' });
+			}
+		}
+	});
 }
 
 mod.prototype.render = function (inputfile, outputfile, data) {

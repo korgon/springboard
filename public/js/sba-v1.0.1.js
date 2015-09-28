@@ -507,7 +507,6 @@ function EditorCtrl($location, $window, focus, sitemanager, modalmanager) {
       var current_url = $location.absUrl().match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
       vm.session.url = current_url[0] + 'sites/' + site.name + '/' + site.default_html;
     }
-
     // set listner to store values for preservation on refresh
     $window.addEventListener('beforeunload', function() {
       console.log('saving session data...');
@@ -598,8 +597,25 @@ function EditorCtrl($location, $window, focus, sitemanager, modalmanager) {
       vm.site = updated_site;
       vm.hideModuleInput();
       vm.session.vtab[vm.new_module.name] = {};
+      // vm.initVtab(vm.new_module.name);
       vm.session.vtab[vm.new_module.name].visible = true;
       vm.new_module.name = '';
+      vm.loading = false;
+    }, function(err) {
+      vm.loading = false;
+      var promise = modalmanager.open(
+        'alert',
+        {
+          message: err.message
+        }
+      );
+    });
+  }
+
+  vm.installModuleTheme = function(data) {
+    vm.loading = true;
+    sitemanager.installModuleTheme(data).then(function(updated_site) {
+      vm.site = updated_site;
       vm.loading = false;
     }, function(err) {
       vm.loading = false;
@@ -625,12 +641,14 @@ function EditorCtrl($location, $window, focus, sitemanager, modalmanager) {
       vm.session.vtab[module] = {};
     }
 
-    if (!angular.equals({}, vm.site.modules[module].plugins))
-      vm.session.vtab[module].tab = 'plugins';
-    else if (!angular.equals({}, vm.site.modules[module].themes))
-      vm.session.vtab[module].tab = 'themes';
-    else
-      vm.session.vtab[module].tab = 'variables';
+    if (!vm.session.vtab[module].tab) {
+      if (!angular.equals({}, vm.site.modules[module].plugins))
+        vm.session.vtab[module].tab = 'plugins';
+      else if (!angular.equals({}, vm.site.modules[module].themes))
+        vm.session.vtab[module].tab = 'themes';
+      else
+        vm.session.vtab[module].tab = 'variables';
+    }
 
     if (!vm.session.vtab[module].visible)
       vm.session.vtab[module].visible = false;
@@ -1139,7 +1157,8 @@ function sitemanager($http, $q, $timeout) {
     pushSite: pushSite,
     publishSiteMockup: publishSiteMockup,
     getModules: getModules,
-    installModule: installModule
+    installModule: installModule,
+    installModuleTheme: installModuleTheme
   });
 
   // switch to a new site for editing
@@ -1254,7 +1273,7 @@ function sitemanager($http, $q, $timeout) {
         }
       }).error(promise.reject);
     } else {
-      promise.reject({ error: true, message: 'not editing any site!'});
+      promise.reject({ error: true, message: 'Not editing any site!'});
     }
 
     return promise.promise;
@@ -1294,7 +1313,7 @@ function sitemanager($http, $q, $timeout) {
         }
       }).error(promise.reject);
     } else {
-      promise.reject({ error: true, message: 'not editing any site!'});
+      promise.reject({ error: true, message: 'Not editing any site!'});
     }
 
     return promise.promise;
@@ -1315,7 +1334,7 @@ function sitemanager($http, $q, $timeout) {
         }
       }).error(promise.reject);
     } else {
-      promise.reject({ error: true, message: 'not editing any site!'});
+      promise.reject({ error: true, message: 'Not editing any site!'});
     }
 
     return promise.promise;
@@ -1363,7 +1382,37 @@ function sitemanager($http, $q, $timeout) {
         }
       }).error(promise.reject);
     } else {
-      promise.reject({ error: true, message: 'not editing any site!'});
+      promise.reject({ error: true, message: 'Not editing any site!'});
+    }
+
+    return promise.promise;
+  }
+
+  // install a module theme
+  function installModuleTheme(info) {
+    var promise = $q.defer();
+
+    var install = {
+      install: 'theme',
+      module: info.module,
+      theme: info.theme
+    };
+
+    if (site.name) {
+      $http({
+        method: 'POST',
+        data: install,
+        url: '/api/site/install'
+      }).success(function(data, status, headers) {
+        if (data.error) {
+          promise.reject(data);
+        } else {
+          site = data;
+          promise.resolve(data);
+        }
+      }).error(promise.reject);
+    } else {
+      promise.reject({ error: true, message: 'Not editing any site!'});
     }
 
     return promise.promise;

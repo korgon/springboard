@@ -460,19 +460,38 @@ body {
 										padding: 10px;
 										.moduletheme {
 											list-style: none;
+											padding: 0;
 											.themename {
 												color: $orangeyellow;
 												font-size: 10px;
 												text-transform: uppercase;
+												display: inline-block;
+												width: 111px;
+												overflow: hidden;
+												vertical-align: middle;
 											}
 											.icon {
 												background-size: 12px;
 												width: 24px;
-												&.disabled {
-													opacity: 0.2;
-												}
 												&:hover {
 													cursor: pointer;
+												}
+												&.disabled {
+													opacity: 0.2;
+													&:hover {
+														cursor: default;
+													}
+												}
+												&.off {
+													opacity: 0.2;
+												}
+												&.on {
+													&:hover {
+														cursor: default;
+													}
+												}
+												&.hidden {
+													visibility: hidden;
 												}
 											}
 										}

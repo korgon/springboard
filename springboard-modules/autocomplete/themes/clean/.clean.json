@@ -1,7 +1,7 @@
 {
-  "name": "default",
+  "name": "clean",
   "version": "1.0.0",
-  "description": "default autocomplete style",
+  "description": "clean autocomplete style",
   "author": "searchspring",
   "cart": "none",
   "colors": ["none"],

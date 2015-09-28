@@ -46,7 +46,7 @@ label {
 
 fieldset {
   text-align: center;
-  margin: 25px 0 5px;
+  margin: 25px 0 0;
   border: 1px solid $blueaccent;
   position: relative;
 }
@@ -88,6 +88,9 @@ input[type="text"], select {
   }
   &.commit {
     background-image: url('/images/icons/commit.png');
+  }
+  &.custom {
+    background-image: url('/images/icons/custom.png');
   }
   &.modules {
     background-image: url('/images/icons/module.png');

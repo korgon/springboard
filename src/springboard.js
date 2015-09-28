@@ -496,12 +496,24 @@ function springboard() {
 							return resolve({ error: true, message: err.message });
 						});
 					} else if (info.install == 'theme' || info.install == 'plugin') {
-						// check if module installed in site
-						if (!site.modules[info.module]) throw('Parent module not installed!');
 
-						// TODO install theme or plugin
+						if (info.install == 'theme') {
+							var type = (site.modules[info.module]) ? site.modules[info.module].type : false;
+							if ( !type || !modules[type]) throw('Invalid module!');
+							else if (!modules[type].themes[info.theme]) throw('Theme does not exist!');
+							else {
+								info.template_dir = modules[type].directory;
+								site.installTheme(info).then(function() {
+									// success!!!
+									return resolve(site);
+								}).catch(function(err) {
+									return resolve({ error: true, message: err.message });
+								});
+							}
+						}
+
+						// TODO plugin
 						// should autocompile plugin and themes on install (eye of chokidar)
-						return resolve({ error: false, message: info.install + ' ' + info.name + '(' + info.type + ') installed' });
 					} else {
 						// not a valid install type (module, theme, plugin)
 						throw('Invalid install type!');
@@ -510,6 +522,7 @@ function springboard() {
 					throw('Not editing a site!');
 				}
 			} catch (err) {
+				console.log(err);
 				return resolve({ error: true, message: err });
 			}
 		});

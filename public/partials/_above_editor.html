@@ -49,14 +49,20 @@
                         <div ng-switch-when="plugins">Plugins</div>
                         <div ng-switch-when="themes">
                           <ul class="moduletheme">
-                            <li ng-repeat="theme in vm.modules[module.type].themes">
+                            <li ng-repeat="theme in vm.site.modules[module.name].themes">
                               <span class="themename">{{ theme.name }}</span>
-                              <span class="icon install"></span>
-                              <span class="icon active"></span>
+                              <span title="custom" class="icon custom disabled" ng-if="!vm.modules[module.type].themes[theme.name]"></span>
+                              <span title="installed" class="icon install disabled" ng-if="vm.modules[module.type].themes[theme.name]"></span>
+                              <span title="{{ vm.site.modules[module.name].theme == theme.name ? 'active' : 'inactive' }}" class="icon active" ng-class="{ 'off': vm.site.modules[module.name].theme != theme.name, 'on': vm.site.modules[module.name].theme == theme.name }"></span>
+                            </li>
+                            <li ng-repeat="theme in vm.modules[module.type].themes" ng-if="!vm.site.modules[module.name].themes[theme.name]">
+                              <span class="themename">{{ theme.name }}</span>
+                              <span title="{{ vm.site.modules[module.name].themes[theme.name] ? 'installed' : 'install' }}" class="icon install" ng-class="{ 'disabled': vm.site.modules[module.name].themes[theme.name] }" ng-click="vm.installModuleTheme({ module: module.name, theme: theme.name })"></span>
+                              <span title="{{ vm.site.modules[module.name].theme == theme.name ? 'active' : 'inactive' }}" class="icon active" ng-class="{ 'off': vm.site.modules[module.name].theme != theme.name, 'on': vm.site.modules[module.name].theme == theme.name, 'hidden': !vm.site.modules[module.name].themes[theme.name] }"></span>
                             </li>
                           </ul>
                         </div>
-                        <div ng-switch-when="variables">Variables</div>
+                        <div ng-switch-when="variables">{{ module.name }} Variables</div>
                         <div ng-switch-when="settings">Settings</div>
                       </fieldset>
                     </div>

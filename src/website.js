@@ -283,6 +283,22 @@ website.prototype.installModule = function(new_mod) {
 	});
 }
 
+// install module theme
+website.prototype.installTheme = function(info) {
+	var self = this;
+	return new Promise(function(resolve, reject) {
+		// check if module installed in site
+		if (!self.modules[info.module]) return reject({ error: true, message: 'Parent module not installed!' });
+		else {
+			self.modules[info.module].installTheme(info).then(function() {
+				return resolve();
+			}).catch(function(err) {
+				return reject(err);
+			})
+		}
+	});
+}
+
 // TODO FINISH THIS
 // load modules
 website.prototype.loadModules = function() {
