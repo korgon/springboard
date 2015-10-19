@@ -65,7 +65,7 @@ function ModalInputCtrl($scope, modalmanager, focus) {
 
   // modal resolution
   mm.closeModal = function() {
-    modalmanager.reject();
+    modalmanager.reject('closed');
   }
 
   // modal resolution

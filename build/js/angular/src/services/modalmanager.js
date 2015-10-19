@@ -58,6 +58,7 @@ function modalmanager($rootScope, $q) {
   // reject modal
   function reject(reason) {
     if (!modal.deferred) {
+      console.log('differed...');
       return;
     }
 
@@ -65,6 +66,7 @@ function modalmanager($rootScope, $q) {
 
     // close the modal
     modal.deferred = modal.params = null;
+    console.log('closing...');
     $rootScope.$emit('modals.close');
   }
 

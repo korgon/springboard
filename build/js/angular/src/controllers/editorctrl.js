@@ -14,6 +14,7 @@ function EditorCtrl($location, $window, focus, sitemanager, modalmanager) {
 
   vm.loading = true;
 
+  // get available modules
   sitemanager.getModules().then(function(modules) {
     vm.modules = modules;
   }, function(err) {
@@ -21,14 +22,17 @@ function EditorCtrl($location, $window, focus, sitemanager, modalmanager) {
     console.log(err);
   });
 
+  // get site to be edited
   sitemanager.getSite().then(function(site) {
     vm.site = site;
     vm.loading = false;
     console.info('editing ' + site.name + '...');
 
     // setting defaults or loading previous values from window storage
-    var session_defaults = { showOptions: false, tab: 'modules', vtab: {}, url: false };
+    var session_defaults = { site: site.name, showOptions: false, tab: 'modules', vtab: {}, url: false };
+
     vm.session = angular.fromJson($window.sessionStorage.getItem('storage')) || session_defaults;
+    if (vm.session.site != site.name) vm.session = session_defaults;
 
     if (Object.keys(vm.session).length == 0 || !vm.session.url) {
       var current_url = $location.absUrl().match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);

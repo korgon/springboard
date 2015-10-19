@@ -35,6 +35,7 @@ modaly.$inject = ['$rootScope', 'modalmanager'];
 function modaly($rootScope, modalmanager) {
   return {
     link: function(scope, element, attrs) {
+      console.log('modaly init... linking');
       scope.vm.modalview = null;
 
       // click on the modals container will auto reject the modal
@@ -47,11 +48,13 @@ function modaly($rootScope, modalmanager) {
 
       // listen for modal open emission
       $rootScope.$on('modals.open', function(event, modalType) {
+        console.log('opening modal...');
         scope.vm.modalview = modalType;
       });
 
       // listen for modal close emmision
       $rootScope.$on('modals.close', function(event) {
+        console.log('closing modal...');
         scope.vm.modalview = null;
       });
     }

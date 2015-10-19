@@ -494,6 +494,7 @@ function EditorCtrl($location, $window, focus, sitemanager, modalmanager) {
 
   vm.loading = true;
 
+  // get available modules
   sitemanager.getModules().then(function(modules) {
     vm.modules = modules;
   }, function(err) {
@@ -501,14 +502,17 @@ function EditorCtrl($location, $window, focus, sitemanager, modalmanager) {
     console.log(err);
   });
 
+  // get site to be edited
   sitemanager.getSite().then(function(site) {
     vm.site = site;
     vm.loading = false;
     console.info('editing ' + site.name + '...');
 
     // setting defaults or loading previous values from window storage
-    var session_defaults = { showOptions: false, tab: 'modules', vtab: {}, url: false };
+    var session_defaults = { site: site.name, showOptions: false, tab: 'modules', vtab: {}, url: false };
+
     vm.session = angular.fromJson($window.sessionStorage.getItem('storage')) || session_defaults;
+    if (vm.session.site != site.name) vm.session = session_defaults;
 
     if (Object.keys(vm.session).length == 0 || !vm.session.url) {
       var current_url = $location.absUrl().match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
@@ -714,12 +718,14 @@ function GalleryCtrl($window, $location, focus, sitemanager, modalmanager) {
   // get sites
   sitemanager.loadSites().then(function(sites) {
     if (sites.error) {
+      console.log(sites);
       // uncommited or unpushed site edits...
       vm.loading = false;
 
       if (sites.action == 'push') {
+        console.log('no push?');
         // unpushed commits
-        var promise = modalmanager.open(
+        var pushpromise = modalmanager.open(
           'alert',
           {
             message: sites.message,
@@ -727,9 +733,9 @@ function GalleryCtrl($window, $location, focus, sitemanager, modalmanager) {
             button_confirm: 'Ignore'
           }
         );
-
+        console.log('error!');
         // modal response
-        promise.then(function(response) {
+        pushpromise.then(function(response) {
           // 'ignore' chosen
           vm.loading = true;
           sitemanager.loadSites(true).then(function(sites) {
@@ -746,7 +752,7 @@ function GalleryCtrl($window, $location, focus, sitemanager, modalmanager) {
         });
       } else if (sites.action == 'commit') {
         // uncommited changes
-        var promise = modalmanager.open(
+        var commitpromise = modalmanager.open(
           'alert',
           {
             message: sites.message,
@@ -756,16 +762,18 @@ function GalleryCtrl($window, $location, focus, sitemanager, modalmanager) {
         );
 
         // modal alert response
-        promise.then(function(response) {
+        commitpromise.then(function(response) {
           // 'discard' chosen
           vm.loading = true;
           sitemanager.resetSite().then(function() {
             sitemanager.loadSites().then(function(sites) {
               if (sites.error) {
-                console.log('error!');
+                throw(sites.message);
+                console.log('error???');
                 console.log(sites);
                 //$location.path("/editor");
               } else {
+                console.log('error!!!!!!!');
                 init(sites);
               }
             });
@@ -913,7 +921,7 @@ function ModalInputCtrl($scope, modalmanager, focus) {
 
   // modal resolution
   mm.closeModal = function() {
-    modalmanager.reject();
+    modalmanager.reject('closed');
   }
 
   // modal resolution
@@ -978,6 +986,7 @@ modaly.$inject = ['$rootScope', 'modalmanager'];
 function modaly($rootScope, modalmanager) {
   return {
     link: function(scope, element, attrs) {
+      console.log('modaly init... linking');
       scope.vm.modalview = null;
 
       // click on the modals container will auto reject the modal
@@ -990,11 +999,13 @@ function modaly($rootScope, modalmanager) {
 
       // listen for modal open emission
       $rootScope.$on('modals.open', function(event, modalType) {
+        console.log('opening modal...');
         scope.vm.modalview = modalType;
       });
 
       // listen for modal close emmision
       $rootScope.$on('modals.close', function(event) {
+        console.log('closing modal...');
         scope.vm.modalview = null;
       });
     }
@@ -1112,6 +1123,7 @@ function modalmanager($rootScope, $q) {
   // reject modal
   function reject(reason) {
     if (!modal.deferred) {
+      console.log('differed...');
       return;
     }
 
@@ -1119,6 +1131,7 @@ function modalmanager($rootScope, $q) {
 
     // close the modal
     modal.deferred = modal.params = null;
+    console.log('closing...');
     $rootScope.$emit('modals.close');
   }
 

@@ -21,12 +21,14 @@ function GalleryCtrl($window, $location, focus, sitemanager, modalmanager) {
   // get sites
   sitemanager.loadSites().then(function(sites) {
     if (sites.error) {
+      console.log(sites);
       // uncommited or unpushed site edits...
       vm.loading = false;
 
       if (sites.action == 'push') {
+        console.log('no push?');
         // unpushed commits
-        var promise = modalmanager.open(
+        var pushpromise = modalmanager.open(
           'alert',
           {
             message: sites.message,
@@ -34,9 +36,9 @@ function GalleryCtrl($window, $location, focus, sitemanager, modalmanager) {
             button_confirm: 'Ignore'
           }
         );
-
+        console.log('error!');
         // modal response
-        promise.then(function(response) {
+        pushpromise.then(function(response) {
           // 'ignore' chosen
           vm.loading = true;
           sitemanager.loadSites(true).then(function(sites) {
@@ -53,7 +55,7 @@ function GalleryCtrl($window, $location, focus, sitemanager, modalmanager) {
         });
       } else if (sites.action == 'commit') {
         // uncommited changes
-        var promise = modalmanager.open(
+        var commitpromise = modalmanager.open(
           'alert',
           {
             message: sites.message,
@@ -63,16 +65,18 @@ function GalleryCtrl($window, $location, focus, sitemanager, modalmanager) {
         );
 
         // modal alert response
-        promise.then(function(response) {
+        commitpromise.then(function(response) {
           // 'discard' chosen
           vm.loading = true;
           sitemanager.resetSite().then(function() {
             sitemanager.loadSites().then(function(sites) {
               if (sites.error) {
-                console.log('error!');
+                throw(sites.message);
+                console.log('error???');
                 console.log(sites);
                 //$location.path("/editor");
               } else {
+                console.log('error!!!!!!!');
                 init(sites);
               }
             });
