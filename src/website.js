@@ -67,7 +67,7 @@ s3 info
 var fs = require('fs-extra');
 // screen capture image/resize
 var webshot = require('webshot');
-var lwip = require('lwip');
+//var lwip = require('lwip');
 // templating
 var nja = require('nunjucks');
 
@@ -172,7 +172,7 @@ website.prototype.saveConfig = function() {
 		console.error(err);
 	}
 	// modules save
-	
+
 	return;
 }
 
@@ -233,21 +233,21 @@ website.prototype.capture = function(url) {
 		try {
 			webshot(url, output_path, options, function(err) {
 				// after taking screen capture scale image to thumbnail size using lwip
-				lwip.open(output_path, function(err, image) {
-					if (err) return reject(err);
-
-					// scale image
-					image.scale(0.50, function(err, image) {
-						if (err) return reject(err);
-
-						image.writeFile(output_path, function(err) {
-							if (err) return reject(err);
-							self.thumb = '/sites/' + self.name + '/' + '.thumbs/' + output_file;
-							self.saveConfig();
-							return resolve(true);
-						});
-					});
-				});
+				// lwip.open(output_path, function(err, image) {
+				// 	if (err) return reject(err);
+				//
+				// 	// scale image
+				// 	image.scale(0.50, function(err, image) {
+				// 		if (err) return reject(err);
+				//
+				// 		image.writeFile(output_path, function(err) {
+				// 			if (err) return reject(err);
+				// 			self.thumb = '/sites/' + self.name + '/' + '.thumbs/' + output_file;
+				// 			self.saveConfig();
+				// 			return resolve(true);
+				// 		});
+				// 	});
+				// });
 			});
 		} catch(err) {
 			console.error(err);

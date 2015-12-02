@@ -5,7 +5,7 @@ var colors = require('colors');
 
 function logit() {
   return {
-    log: function(alert, message, type) {
+    log: function log(alert, message, type) {
       alert = ' ' + alert + ' ';
       var boxtopper = '┌' + '─'.repeat(alert.length) + '┐';
       var boxbottom = '└' + '─'.repeat(alert.length) + '┘';
@@ -40,6 +40,7 @@ function logit() {
           console.log(boxbottom.white);
           break;
       }
+    }
   }
 }
 
