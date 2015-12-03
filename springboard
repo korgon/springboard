@@ -1,3 +1,4 @@
 #!/bin/sh
 # code to run node with harmony flag for ecma6 support
-node --harmony --expose_gc launch.js
+# expose garbage collection --expose_gc
+node --harmony index.js

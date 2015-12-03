@@ -1,0 +1,15 @@
+{
+    "version": "1.0.12",
+    "user": {
+        "name": "anon",
+        "s3_key_id": "",
+        "s3_key_secret": ""
+    },
+    "sites_repo": "git@github.com:korgon/searchspring-sites.git",
+    "log_http": true,
+    "recent_sites": [
+        "blah.moa",
+        "3dcart.site"
+    ],
+    "current_site": "3dcart.site"
+}

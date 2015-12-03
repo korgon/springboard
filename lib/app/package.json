@@ -1,0 +1,19 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "koa server for springboard",
+  "main": "index.js",
+  "dependencies": {
+    "koa": "^0.18.1",
+    "koa-better-body": "^1.0.17",
+    "koa-favicon": "^1.2.0",
+    "koa-logger": "^1.2.2",
+    "koa-router": "^4.2.0",
+    "koa-static": "^1.4.9"
+  },
+  "devDependencies": {},
+  "scripts": {},
+  "keywords": [],
+  "author": "searchspring",
+  "license": "MIT"
+}

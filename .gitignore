@@ -1,17 +1,15 @@
 # ignore the node_modules folder
-node_modules/
+**/node_modules/**
+!node_modules/_
 
 # ignore the searchspring-mockups repo
 searchspring-sites/
 
-# ignore the configuration options
-options.json
+# ignore the user configuration options
+lib/config/user.js
 
 # ignore the jshint config
 .jshintrc
 
 # ignore annoying files
 .DS_Store
-
-# ignore cache directory (for thumbs)
-.cache

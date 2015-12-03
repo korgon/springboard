@@ -1,8 +1,0 @@
-{
-  "name": "autocomplete",
-  "version": "2.0.0",
-  "enabled": false,
-  "description": "autocomplete",
-  "script": "autocomplete.js",
-  "scss": "autocomplete.scss"
-}
