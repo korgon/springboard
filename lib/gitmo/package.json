@@ -1,0 +1,14 @@
+{
+  "name": "gitmo",
+  "version": "1.0.0",
+  "description": "Git functionality for springboard using promises",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "SearchSpring",
+  "license": "MIT"
+}
