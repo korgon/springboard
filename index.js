@@ -1,7 +1,6 @@
 "use strict";
 
 var conf = require('_/config')(__dirname);
-var logit = require('_/logit');
 var springboard = require('_/springboard');
 
 springboard.init(conf).then(function() {
