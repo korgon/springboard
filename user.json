@@ -2,6 +2,10 @@
   "name": "anon",
   "s3_key_id": "",
   "s3_key_secret": "",
-  "recent_sites": [],
-  "current_site": ""
+  "recent_sites": [
+    "spring.cat",
+    "blah.moa",
+    "spring.ox"
+  ],
+  "current_site": "spring.ox"
 }

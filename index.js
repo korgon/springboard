@@ -4,6 +4,7 @@ var conf = require('_/config')(__dirname);
 var springboard = require('_/springboard');
 
 springboard.init(conf).then(function() {
+  console.log('starting koa...');
   var app = require('_/app')(springboard);
   console.log('success!');
 }).catch(function(err) {
