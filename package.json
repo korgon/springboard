@@ -4,11 +4,7 @@
   "description": "spring into the future",
   "main": "index.js",
   "dependencies": {},
-  "devDependencies": {
-    "proxyquire": "^1.7.3",
-    "sinon": "^1.17.2",
-    "tape": "^4.2.2"
-  },
+  "devDependencies": {},
   "scripts": {
     "preinstall": "node bin/preinstall"
   },

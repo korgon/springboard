@@ -6,7 +6,7 @@
 searchspring-sites/
 
 # ignore the user configuration options
-lib/config/user.js
+lib/config/user.json
 
 # ignore the jshint config
 .jshintrc
