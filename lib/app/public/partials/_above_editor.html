@@ -12,13 +12,16 @@
 
       <ul class="tabcontrol">
         <li><a ng-class="{ 'active': (vm.session.tab == 'modules')}" ng-click="vm.switchTab('modules')"><span class="icon modules"></span></a></li>
-        <li><a ng-class="{ 'active': (vm.session.tab == 'files')}" ng-click="vm.switchTab('files')"><span class="icon files"></span></a></li>
-        <li><a ng-class="{ 'active': (vm.session.tab == 'tags')}" ng-click="vm.switchTab('tags')"><span class="icon tags"></span></a></li>
-        <li><a ng-class="{ 'active': (vm.session.tab == 'history')}" ng-click="vm.switchTab('history')"><span class="icon history"></span></a></li>
         <li><a ng-class="{ 'active': (vm.session.tab == 'settings')}" ng-click="vm.switchTab('settings')"><span class="icon settings"></span></a></li>
       </ul>
 
       <div ng-if="vm.session.tab" ng-switch="vm.session.tab">
+
+        <div ng-switch-when="settings">
+          <div class="tabwrap">settings</div>
+          <div class="spacer"></div>
+        </div>
+
         <div ng-switch-when="modules">
           <div class="modulescroller">
             <ul class="modulechoices">
@@ -89,32 +92,7 @@
             </ul>
           </div>
         </div>
-        <div ng-switch-when="files">
-          <div class="tabwrap">files<p>directories</p><p>more files</p></div>
-          <div class="spacer"></div>
-        </div>
-        <div ng-switch-when="tags">
-          <div class="tabwrap">
-            <div class="tabcontent">
-              tag
-            </div>
-          </div>
-          <div class="spacer"></div>
-          <div class="tabwrap">
-            <div class="tabcontent">
-              tag?
-            </div>
-          </div>
-          <div class="spacer"></div>
-        </div>
-        <div ng-switch-when="history">
-          <div class="tabwrap">history</div>
-          <div class="spacer"></div>
-        </div>
-        <div ng-switch-when="settings">
-          <div class="tabwrap">settings</div>
-          <div class="spacer"></div>
-        </div>
+
       </div>
 
       <ul class="gitbuttons">

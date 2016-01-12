@@ -97,11 +97,17 @@ input[type="text"], select {
   &.custom {
     background-image: url('/images/icons/custom.png');
   }
-  &.modules {
+  &.module {
     background-image: url('/images/icons/module.png');
   }
-  &.files {
-    background-image: url('/images/icons/files.png');
+  &.modules {
+    background-image: url('/images/icons/modules.png');
+  }
+  &.folder {
+    background-image: url('/images/icons/folder.png');
+  }
+  &.folder-open {
+    background-image: url('/images/icons/folder_open.png');
   }
   &.history {
     background-image: url('/images/icons/history.png');
