@@ -133,7 +133,7 @@ input[type="text"], select {
   .icon.install {
     background-image: url("/images/icons/install.png"); }
   .icon.plugins {
-    background-image: url("/images/icons/plugin.png"); }
+    background-image: url("/images/icons/module.png"); }
   .icon.pull {
     background-image: url("/images/icons/pull_request.png"); }
   .icon.push {
@@ -154,6 +154,42 @@ input[type="text"], select {
     background-image: url("/images/icons/upload.png"); }
   .icon.variables {
     background-image: url("/images/icons/variable.png"); }
+
+.animate-spin-cw {
+  -webkit-animation: spincw 12s linear infinite;
+  -moz-animation: spincw 12s linear infinite;
+  animation: spincw 12s linear infinite; }
+
+.animate-spin-ccw {
+  -webkit-animation: spinccw 12s linear infinite;
+  -moz-animation: spinccw 12s linear infinite;
+  animation: spinccw 12s linear infinite; }
+
+@-moz-keyframes spincw {
+  100% {
+    -moz-transform: rotate(360deg); } }
+
+@-webkit-keyframes spincw {
+  100% {
+    -webkit-transform: rotate(360deg); } }
+
+@keyframes spincw {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@-moz-keyframes spinccw {
+  100% {
+    -moz-transform: rotate(-360deg); } }
+
+@-webkit-keyframes spinccw {
+  100% {
+    -webkit-transform: rotate(-360deg); } }
+
+@keyframes spinccw {
+  100% {
+    -webkit-transform: rotate(-360deg);
+    transform: rotate(-360deg); } }
 
 body #above .heading {
   display: flex;

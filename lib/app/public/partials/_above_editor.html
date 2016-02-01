@@ -38,7 +38,11 @@
                       </ul>
                     </div>
                     <div class="vtabcontents" ng-switch="vm.session.vtab[module.name].tab">
-                      <div ng-switch-when="plugins"></div>
+                      <div ng-switch-when="plugins">
+                        <div class="vtabhead">{{ vm.session.vtab[module.name].tab }}</div>
+                        <ul class="modulemodules">
+                        </ul>
+                      </div>
                       <div ng-switch-when="themes">
                         <div class="vtabhead">{{ vm.session.vtab[module.name].tab }}</div>
                         <ul class="modulethemes">
