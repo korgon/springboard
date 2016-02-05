@@ -375,14 +375,14 @@ body {
 							&.ui {
 								&:before {
 									left: 14px;
-									background: url("/images/icons/modules.png") no-repeat center;
+									background: url("/images/icons/modules.png") no-repeat 14px 10px;
 									background-size: 46px;
 								}
 							}
 							&.settings {
 								&:before {
 									right: 5px;
-									background: url("/images/icons/gears.png") no-repeat center;
+									background: url("/images/icons/gears.png") no-repeat 40px 17px;
 									background-size: 33px;
 								}
 							}

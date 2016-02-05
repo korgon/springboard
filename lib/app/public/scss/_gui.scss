@@ -94,6 +94,9 @@ input[type="text"], select {
   &.commit {
     background-image: url('/images/icons/commit.png');
   }
+  &.config {
+    background-image: url('/images/icons/config.png');
+  }
   &.custom {
     background-image: url('/images/icons/custom.png');
   }
@@ -102,6 +105,9 @@ input[type="text"], select {
   }
   &.modules {
     background-image: url('/images/icons/modules.png');
+  }
+  &.files {
+    background-image: url('/images/icons/filestruct.png');
   }
   &.folder {
     background-image: url('/images/icons/folder.png');
@@ -123,6 +129,9 @@ input[type="text"], select {
   }
   &.push {
     background-image: url('/images/icons/push.png');
+  }
+  &.proxy {
+    background-image: url('/images/icons/proxy.png');
   }
   &.refresh {
     background-image: url('/images/icons/refresh.png');

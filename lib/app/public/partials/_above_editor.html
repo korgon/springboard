@@ -11,11 +11,11 @@
     <div class="optionselect" ng-class="{'show': vm.session.showOptions}">
 
       <ul class="tabcontrol">
-        <li><a ng-class="{ 'active': (vm.session.tab == 'modules')}" ng-click="vm.switchTab('modules')"><span class="icon modules"></span></a></li>
-        <li><a ng-class="{ 'active': (vm.session.tab == 'settings')}" ng-click="vm.switchTab('settings')"><span class="icon settings"></span></a></li>
+        <li><a ng-class="{ 'active': (vm.session.current_tab == 'uigen')}" ng-click="vm.switchTab('uigen')"><span class="icon modules"></span></a></li>
+        <li><a ng-class="{ 'active': (vm.session.current_tab == 'settings')}" ng-click="vm.switchTab('settings')"><span class="icon config"></span></a></li>
       </ul>
 
-      <div ng-if="vm.session.tab" ng-switch="vm.session.tab">
+      <div ng-if="vm.session.current_tab" ng-switch="vm.session.current_tab">
 
         <div ng-switch-when="settings">
           <div class="tabwrap">
@@ -26,32 +26,15 @@
             <div class="vtabwrap">
               <div class="vtabcontrolwrap">
                 <ul class="vtabcontrol">
-                  <li ng-if="!vm.isEmpty(vm.modules[module.type].plugins)"><a ng-class="{ 'active': (vm.session.vtab[module.name].tab == 'plugins')}" ng-click="vm.switchVtab('plugins', module.name)"><span class="icon plugins"></span></a></li>
-                  <li ng-if="!vm.isEmpty(vm.modules[module.type].themes)"><a ng-class="{ 'active': (vm.session.vtab[module.name].tab == 'themes')}" ng-click="vm.switchVtab('themes', module.name)"><span class="icon themes"></span></a></li>
-                  <li><a ng-class="{ 'active': (vm.session.vtab[module.name].tab == 'variables')}" ng-click="vm.switchVtab('variables', module.name)"><span class="icon variables"></span></a></li>
-                  <li><a ng-class="{ 'active': (vm.session.vtab[module.name].tab == 'settings')}" ng-click="vm.switchVtab('settings', module.name)"><span class="icon settings"></span></a></li>
+                  <li ng-if="!vm.isEmpty(vm.modules[module.type].plugins)"><a ng-class="{ 'active': (vm.session.vtab[module.name].tab == 'plugins')}" ng-click="vm.switchVtab('plugins', module.name)"><span class="icon variables"></span></a></li>
+                  <li ng-if="!vm.isEmpty(vm.modules[module.type].themes)"><a ng-class="{ 'active': (vm.session.vtab[module.name].tab == 'themes')}" ng-click="vm.switchVtab('themes', module.name)"><span class="icon files"></span></a></li>
+                  <li><a ng-class="{ 'active': (vm.session.vtab[module.name].tab == 'settings')}" ng-click="vm.switchVtab('settings', module.name)"><span class="icon proxy"></span></a></li>
                 </ul>
               </div>
               <div class="vtabcontents" ng-switch="vm.session.vtab[module.name].tab">
                 <div ng-switch-when="plugins">
                   <div class="vtabhead">{{ vm.session.vtab[module.name].tab }}</div>
                   <ul class="modulemodules">
-                  </ul>
-                </div>
-                <div ng-switch-when="themes">
-                  <div class="vtabhead">{{ vm.session.vtab[module.name].tab }}</div>
-                  <ul class="modulethemes">
-                    <li ng-repeat="theme in vm.site.modules[module.name].themes">
-                      <span class="themename">{{ theme.name }}</span>
-                      <span title="custom" class="icon custom disabled" ng-if="!vm.modules[module.type].themes[theme.name]"></span>
-                      <span title="installed" class="icon install disabled" ng-if="vm.modules[module.type].themes[theme.name]"></span>
-                      <span title="{{ vm.site.modules[module.name].theme == theme.name ? 'active' : 'inactive' }}" class="icon active" ng-class="{ 'off': vm.site.modules[module.name].theme != theme.name, 'on': vm.site.modules[module.name].theme == theme.name }" ng-click="vm.useModuleTheme({ module: module.name, theme: theme.name });"></span>
-                    </li>
-                    <li ng-repeat="theme in vm.modules[module.type].themes" ng-if="!vm.site.modules[module.name].themes[theme.name]">
-                      <span class="themename">{{ theme.name }}</span>
-                      <span title="{{ vm.site.modules[module.name].themes[theme.name] ? 'installed' : 'install' }}" class="icon install" ng-class="{ 'disabled': vm.site.modules[module.name].themes[theme.name] }" ng-click="vm.installModuleTheme({ module: module.name, theme: theme.name })"></span>
-                      <span title="{{ vm.site.modules[module.name].theme == theme.name ? 'active' : 'inactive' }}" class="icon active" ng-class="{ 'off': vm.site.modules[module.name].theme != theme.name, 'on': vm.site.modules[module.name].theme == theme.name, 'hidden': !vm.site.modules[module.name].themes[theme.name] }"></span>
-                    </li>
                   </ul>
                 </div>
                 <div ng-switch-when="variables">
@@ -73,7 +56,7 @@
           <div class="spacer"></div>
         </div>
 
-        <div ng-switch-when="modules">
+        <div ng-switch-when="uigen">
           <div class="tabwrap">
             <div class="header ui"><span>UI Generator</span></div>
           </div>
@@ -141,7 +124,7 @@
                     <label for="modulename_input">Name</label>
                     <input type="text" name="name" id="modulename_input" autocomplete="off" focus-on="moduleName" ng-model="vm.new_module.name" required ng-pattern="/^\w{3,}$/i">
                     <label for="moduletype_input">Type</label>
-                    <select id="moduletype_input" required ng-model="vm.new_module.type" ng-options="module.type as module.type for module in vm.modules | orderBy: 'toString()'" ng-init="vm.new_module.type = 'autocomplete'">
+                    <select id="moduletype_input" required ng-model="vm.new_module.type" ng-options="module.type as module.type for module in vm.modules | orderBy: 'toString()'" ng-init="vm.new_module.type = 'v3'">
                     </select>
                     <div class="buttons">
                       <input class="button" type="submit" value="Add" ng-click="vm.installModule()" ng-disabled="addModuleForm.$invalid">

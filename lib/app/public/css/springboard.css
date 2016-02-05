@@ -118,12 +118,16 @@ input[type="text"], select {
     background-image: url("/images/icons/active.png"); }
   .icon.commit {
     background-image: url("/images/icons/commit.png"); }
+  .icon.config {
+    background-image: url("/images/icons/config.png"); }
   .icon.custom {
     background-image: url("/images/icons/custom.png"); }
   .icon.module {
     background-image: url("/images/icons/module.png"); }
   .icon.modules {
     background-image: url("/images/icons/modules.png"); }
+  .icon.files {
+    background-image: url("/images/icons/filestruct.png"); }
   .icon.folder {
     background-image: url("/images/icons/folder.png"); }
   .icon.folder-open {
@@ -138,6 +142,8 @@ input[type="text"], select {
     background-image: url("/images/icons/pull_request.png"); }
   .icon.push {
     background-image: url("/images/icons/push.png"); }
+  .icon.proxy {
+    background-image: url("/images/icons/proxy.png"); }
   .icon.refresh {
     background-image: url("/images/icons/refresh.png"); }
   .icon.save {
@@ -499,11 +505,11 @@ body #above .heading {
           position: relative; }
           body #above .heading .worksite .optionselect .tabwrap .header.ui:before {
             left: 14px;
-            background: url("/images/icons/modules.png") no-repeat center;
+            background: url("/images/icons/modules.png") no-repeat 14px 10px;
             background-size: 46px; }
           body #above .heading .worksite .optionselect .tabwrap .header.settings:before {
             right: 5px;
-            background: url("/images/icons/gears.png") no-repeat center;
+            background: url("/images/icons/gears.png") no-repeat 40px 17px;
             background-size: 33px; }
           body #above .heading .worksite .optionselect .tabwrap .header:before {
             content: ' ';
