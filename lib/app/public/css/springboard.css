@@ -602,7 +602,8 @@ body #above .heading {
             list-style: none;
             min-height: 45px;
             padding: 10px;
-            border: 1px solid #052238; }
+            border: 1px solid #052238;
+            margin: 0; }
             body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon {
               background-size: 12px;
               width: 30px;
