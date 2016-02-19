@@ -124,8 +124,8 @@ input[type="text"], select {
     background-image: url("/images/icons/custom.png"); }
   .icon.module {
     background-image: url("/images/icons/module.png"); }
-  .icon.modules {
-    background-image: url("/images/icons/modules.png"); }
+  .icon.uis {
+    background-image: url("/images/icons/uis.png"); }
   .icon.files {
     background-image: url("/images/icons/filestruct.png"); }
   .icon.folder {
@@ -380,337 +380,6 @@ body #above .heading {
     height: 40px;
     border-right: 1px solid #304b66;
     border-left: 1px solid #001a2b; }
-  body #above .heading .worksite {
-    order: 4;
-    flex-basis: 252px;
-    width: 252px;
-    height: 40px; }
-    body #above .heading .worksite a.currentsite {
-      display: block;
-      position: relative;
-      text-align: center;
-      padding: 0;
-      margin: 0;
-      line-height: 40px;
-      height: 40px;
-      z-index: 9; }
-      body #above .heading .worksite a.currentsite span {
-        display: inline-block;
-        width: 100%;
-        font-size: 14px;
-        font-weight: bold;
-        color: #718599; }
-      body #above .heading .worksite a.currentsite:hover {
-        cursor: pointer; }
-      body #above .heading .worksite a.currentsite:hover + .optionselect {
-        max-height: 1200px; }
-    body #above .heading .worksite .optionselect {
-      position: absolute;
-      right: 0;
-      width: 290px;
-      max-height: 0px;
-      overflow: hidden;
-      margin: 1px 0 0;
-      transition: max-height 144ms ease, max-height 400ms ease-out;
-      z-index: 7; }
-      body #above .heading .worksite .optionselect:hover {
-        max-height: 1200px; }
-      body #above .heading .worksite .optionselect.show {
-        max-height: 1200px; }
-      body #above .heading .worksite .optionselect .spacer {
-        background-color: #00121e;
-        border-left: 1px solid #2b343b;
-        width: 244px;
-        height: 5px;
-        clear: right;
-        float: right; }
-        body #above .heading .worksite .optionselect .spacer.large {
-          height: 20px; }
-      body #above .heading .worksite .optionselect ul.gitbuttons {
-        display: flex;
-        width: 251px;
-        flex-flow: row nowrap;
-        justify-content: space-around;
-        float: right;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        border: 1px solid #304b66;
-        border-right: 0;
-        background-color: #001a2b; }
-        body #above .heading .worksite .optionselect ul.gitbuttons li {
-          display: inline-block;
-          flex-grow: 1;
-          text-align: center; }
-          body #above .heading .worksite .optionselect ul.gitbuttons li a {
-            display: inline-block;
-            width: 100%;
-            opacity: 0.5; }
-            body #above .heading .worksite .optionselect ul.gitbuttons li a:hover {
-              cursor: pointer;
-              opacity: 1; }
-      body #above .heading .worksite .optionselect .tabcontrol {
-        display: flex;
-        width: 244px;
-        flex-flow: row nowrap;
-        justify-content: space-around;
-        clear: both;
-        float: right;
-        list-style: none;
-        margin: 0;
-        padding: 4px 0 0;
-        background-color: #00121e;
-        border-left: 1px solid #2b343b;
-        position: relative; }
-        body #above .heading .worksite .optionselect .tabcontrol li {
-          display: inline-block;
-          flex-grow: 1;
-          text-align: center;
-          height: 33px;
-          margin: 0px 6px 0px; }
-          body #above .heading .worksite .optionselect .tabcontrol li a {
-            display: inline-block;
-            width: 100%;
-            height: 33px;
-            opacity: 0.5;
-            border: 1px solid transparent;
-            border-bottom: 0; }
-            body #above .heading .worksite .optionselect .tabcontrol li a.active {
-              background-color: #001A2B;
-              border: 1px solid #304B66;
-              border-bottom: 0;
-              opacity: 1; }
-            body #above .heading .worksite .optionselect .tabcontrol li a:hover {
-              cursor: pointer;
-              opacity: 1; }
-            body #above .heading .worksite .optionselect .tabcontrol li a .icon {
-              width: 100%; }
-      body #above .heading .worksite .optionselect .tabwrap {
-        width: 251px;
-        height: auto;
-        clear: both;
-        float: right;
-        border: 1px solid #304b66;
-        border-right: 0;
-        background-color: #001a2b;
-        transition: height 144ms ease, height 400ms ease-out; }
-        body #above .heading .worksite .optionselect .tabwrap .header {
-          height: 33px;
-          padding: 0 12px;
-          font-size: 10px;
-          font-weight: bold;
-          text-transform: uppercase;
-          text-align: center;
-          color: #354957;
-          position: relative; }
-          body #above .heading .worksite .optionselect .tabwrap .header.ui:before {
-            left: 14px;
-            background: url("/images/icons/modules.png") no-repeat 14px 10px;
-            background-size: 46px; }
-          body #above .heading .worksite .optionselect .tabwrap .header.settings:before {
-            right: 5px;
-            background: url("/images/icons/gears.png") no-repeat 40px 17px;
-            background-size: 33px; }
-          body #above .heading .worksite .optionselect .tabwrap .header:before {
-            content: ' ';
-            position: absolute;
-            bottom: 0;
-            width: 110px;
-            height: 66px;
-            opacity: .7;
-            border: 0; }
-          body #above .heading .worksite .optionselect .tabwrap .header span {
-            line-height: 33px; }
-        body #above .heading .worksite .optionselect .tabwrap .tabcontent {
-          padding: 5px;
-          width: auto; }
-      body #above .heading .worksite .optionselect .vtabwrap {
-        display: table;
-        clear: both;
-        width: 251px;
-        float: right;
-        background-color: #001a2b;
-        border-left: 1px solid #304b66;
-        border-bottom: 1px solid #304b66; }
-        body #above .heading .worksite .optionselect .vtabwrap .vtabcontrolwrap {
-          display: table-cell;
-          padding: 4px 0;
-          background-color: #00121e;
-          border-right: 1px solid #304b66; }
-          body #above .heading .worksite .optionselect .vtabwrap .vtabcontrolwrap .vtabcontrol {
-            display: flex;
-            float: left;
-            flex-flow: column wrap;
-            justify-content: space-around;
-            clear: both;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            background-color: #00121e;
-            border-left: 1px solid #00121e; }
-            body #above .heading .worksite .optionselect .vtabwrap .vtabcontrolwrap .vtabcontrol li {
-              flex: 1 1 auto;
-              text-align: center;
-              width: 34px;
-              margin: 0; }
-              body #above .heading .worksite .optionselect .vtabwrap .vtabcontrolwrap .vtabcontrol li a {
-                display: inline-block;
-                width: 100%;
-                height: 33px;
-                opacity: 0.5;
-                border: 1px solid transparent;
-                border-right: 0; }
-                body #above .heading .worksite .optionselect .vtabwrap .vtabcontrolwrap .vtabcontrol li a.active {
-                  background-color: #001a2b;
-                  border: 1px solid #304b66;
-                  border-right: 0;
-                  opacity: 1; }
-                body #above .heading .worksite .optionselect .vtabwrap .vtabcontrolwrap .vtabcontrol li a:hover {
-                  cursor: pointer;
-                  opacity: 1; }
-                body #above .heading .worksite .optionselect .vtabwrap .vtabcontrolwrap .vtabcontrol li a .class {
-                  width: 100%; }
-        body #above .heading .worksite .optionselect .vtabwrap .vtabcontents {
-          display: table-cell;
-          vertical-align: top;
-          width: 100%;
-          padding: 10px; }
-          body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .vtabhead {
-            display: inline-block;
-            font-weight: bold;
-            text-transform: capitalize;
-            font-size: 12px;
-            text-align: left;
-            background-color: #052238;
-            border-radius: 2px 2px 0 0;
-            padding: 6px; }
-          body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .buttons {
-            text-align: right; }
-            body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .buttons .button {
-              min-width: initial;
-              padding: 6px;
-              margin-left: 1px;
-              border-color: #052238;
-              background-color: #052238;
-              border-radius: 0 0 2px 2px;
-              color: #718599; }
-              body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .buttons .button:hover:not(:disabled) {
-                background: #00121e;
-                border-color: #00121e;
-                color: #cacaca; }
-          body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul {
-            list-style: none;
-            min-height: 45px;
-            padding: 10px;
-            border: 1px solid #052238;
-            margin: 0; }
-            body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon {
-              background-size: 12px;
-              width: 30px;
-              height: 25px; }
-              body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon:hover {
-                cursor: pointer; }
-              body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon.disabled {
-                opacity: 0.2; }
-                body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon.disabled:hover {
-                  cursor: default; }
-              body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon.off {
-                opacity: 0.2; }
-              body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon.on:hover {
-                cursor: default; }
-              body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon.hidden {
-                visibility: hidden; }
-          body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .modulethemes .themename {
-            color: #7f6e14;
-            font-size: 10px;
-            text-transform: uppercase;
-            display: inline-block;
-            width: 100px;
-            overflow: hidden;
-            vertical-align: middle;
-            text-align: center; }
-      body #above .heading .worksite .optionselect .modulescroller {
-        clear: both;
-        float: right;
-        width: 252px; }
-        body #above .heading .worksite .optionselect .modulescroller ul.modulechoices {
-          list-style: none;
-          margin: 0;
-          padding: 0; }
-          body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li {
-            font-size: 14px;
-            color: #718599;
-            position: relative; }
-            body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .module {
-              display: block;
-              height: 33px;
-              padding: 0 12px;
-              background-color: #001a2b;
-              border-left: 1px solid #304b66;
-              border-bottom: 1px solid #304b66;
-              line-height: 33px;
-              color: #718599;
-              text-align: center;
-              font-weight: bold;
-              position: relative; }
-              body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .module span.brackets {
-                display: none; }
-              body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .module.active span, body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .module:hover span {
-                transition: padding 222ms ease;
-                text-shadow: #304b66 0px 0px 12px;
-                padding: 0 5px; }
-                body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .module.active span.brackets, body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .module:hover span.brackets {
-                  display: inline;
-                  text-shadow: none;
-                  color: #946018; }
-              body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .module:hover {
-                cursor: pointer; }
-            body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .addmodule {
-              text-align: center;
-              clear: both;
-              background-color: #00121e;
-              border: 0;
-              border-left: 1px solid #2b343b;
-              border-right: 0;
-              width: 245px;
-              float: right;
-              box-sizing: border-box; }
-              body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .addmodule.solo {
-                background-color: #001a2b;
-                border: 1px solid #304b66;
-                border-right: 0;
-                border-top: 0;
-                width: 100%;
-                float: none; }
-              body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .addmodule #addbutton {
-                height: 33px; }
-                body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .addmodule #addbutton .add {
-                  display: inline-block;
-                  width: 15px;
-                  height: 30px;
-                  background-repeat: no-repeat;
-                  background-position: center center;
-                  border-radius: 50px;
-                  transition: all 222ms ease;
-                  background-image: url("/images/icons/add.png");
-                  background-size: 25px; }
-                body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .addmodule #addbutton:hover {
-                  cursor: pointer; }
-                body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .addmodule #addbutton:hover > .add {
-                  -webkit-filter: drop-shadow(0px 0px 3px #688ba3);
-                  filter: drop-shadow(0px 0px 3px #688ba3); }
-              body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .addmodule label {
-                display: inline-block;
-                width: 40px; }
-              body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .addmodule #addmoduleinput {
-                padding: 10px 0;
-                display: none; }
-                body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .addmodule #addmoduleinput.visible {
-                  display: block; }
-                body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .addmodule #addmoduleinput #modulename_input, body #above .heading .worksite .optionselect .modulescroller ul.modulechoices li .addmodule #addmoduleinput #moduletype_input {
-                  width: 180px;
-                  height: 33px;
-                  background-color: #00121E; }
 
 body iframe {
   display: block;
@@ -718,6 +387,337 @@ body iframe {
   border: none;
   width: 100%;
   height: 100%; }
+body #above .heading .worksite {
+  order: 4;
+  flex-basis: 252px;
+  width: 252px;
+  height: 40px; }
+  body #above .heading .worksite .currentsite {
+    display: block;
+    position: relative;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    line-height: 40px;
+    height: 40px;
+    z-index: 9; }
+    body #above .heading .worksite .currentsite span {
+      display: inline-block;
+      width: 100%;
+      font-size: 14px;
+      font-weight: bold;
+      color: #718599; }
+    body #above .heading .worksite .currentsite:hover {
+      cursor: pointer; }
+    body #above .heading .worksite .currentsite:hover + .optionselect {
+      max-height: 1200px; }
+  body #above .heading .worksite .optionselect {
+    position: absolute;
+    right: 0;
+    width: 290px;
+    max-height: 0px;
+    overflow: hidden;
+    margin: 1px 0 0;
+    transition: max-height 144ms ease, max-height 400ms ease-out;
+    z-index: 7; }
+    body #above .heading .worksite .optionselect:hover {
+      max-height: 1200px; }
+    body #above .heading .worksite .optionselect.show {
+      max-height: 1200px; }
+    body #above .heading .worksite .optionselect .spacer {
+      background-color: #00121e;
+      border-left: 1px solid #2b343b;
+      width: 244px;
+      height: 5px;
+      clear: right;
+      float: right; }
+      body #above .heading .worksite .optionselect .spacer.large {
+        height: 20px; }
+    body #above .heading .worksite .optionselect .gitbuttons {
+      display: flex;
+      width: 251px;
+      flex-flow: row nowrap;
+      justify-content: space-around;
+      float: right;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border: 1px solid #304b66;
+      border-right: 0;
+      background-color: #001a2b; }
+      body #above .heading .worksite .optionselect .gitbuttons li {
+        display: inline-block;
+        flex-grow: 1;
+        text-align: center; }
+        body #above .heading .worksite .optionselect .gitbuttons li a {
+          display: inline-block;
+          width: 100%;
+          opacity: 0.5; }
+          body #above .heading .worksite .optionselect .gitbuttons li a:hover {
+            cursor: pointer;
+            opacity: 1; }
+    body #above .heading .worksite .optionselect .tabcontrol {
+      display: flex;
+      width: 244px;
+      flex-flow: row nowrap;
+      justify-content: space-around;
+      clear: both;
+      float: right;
+      list-style: none;
+      margin: 0;
+      padding: 4px 0 0;
+      background-color: #00121e;
+      border-left: 1px solid #2b343b;
+      position: relative; }
+      body #above .heading .worksite .optionselect .tabcontrol li {
+        display: inline-block;
+        flex-grow: 1;
+        text-align: center;
+        height: 33px;
+        margin: 0px 6px 0px; }
+        body #above .heading .worksite .optionselect .tabcontrol li a {
+          display: inline-block;
+          width: 100%;
+          height: 33px;
+          opacity: 0.5;
+          border: 1px solid transparent;
+          border-bottom: 0; }
+          body #above .heading .worksite .optionselect .tabcontrol li a.active {
+            background-color: #001A2B;
+            border: 1px solid #304B66;
+            border-bottom: 0;
+            opacity: 1; }
+          body #above .heading .worksite .optionselect .tabcontrol li a:hover {
+            cursor: pointer;
+            opacity: 1; }
+          body #above .heading .worksite .optionselect .tabcontrol li a .icon {
+            width: 100%; }
+    body #above .heading .worksite .optionselect .tabwrap {
+      width: 251px;
+      height: auto;
+      clear: both;
+      float: right;
+      border: 1px solid #304b66;
+      border-right: 0;
+      background-color: #001a2b;
+      transition: height 144ms ease, height 400ms ease-out; }
+      body #above .heading .worksite .optionselect .tabwrap .header {
+        height: 33px;
+        padding: 0 12px;
+        font-size: 10px;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: center;
+        color: #354957;
+        position: relative; }
+        body #above .heading .worksite .optionselect .tabwrap .header.ui:before {
+          left: 14px;
+          background: url("/images/icons/uis.png") no-repeat 14px 10px;
+          background-size: 46px; }
+        body #above .heading .worksite .optionselect .tabwrap .header.settings:before {
+          right: 5px;
+          background: url("/images/icons/gears.png") no-repeat 40px 17px;
+          background-size: 33px; }
+        body #above .heading .worksite .optionselect .tabwrap .header:before {
+          content: ' ';
+          position: absolute;
+          bottom: 0;
+          width: 110px;
+          height: 66px;
+          opacity: .7;
+          border: 0; }
+        body #above .heading .worksite .optionselect .tabwrap .header span {
+          line-height: 33px; }
+      body #above .heading .worksite .optionselect .tabwrap .tabcontent {
+        padding: 5px;
+        width: auto; }
+    body #above .heading .worksite .optionselect .vtabwrap {
+      display: table;
+      clear: both;
+      width: 251px;
+      float: right;
+      background-color: #001a2b;
+      border-left: 1px solid #304b66;
+      border-bottom: 1px solid #304b66; }
+      body #above .heading .worksite .optionselect .vtabwrap .vtabcontrolwrap {
+        display: table-cell;
+        padding: 4px 0;
+        background-color: #00121e;
+        border-right: 1px solid #304b66; }
+        body #above .heading .worksite .optionselect .vtabwrap .vtabcontrolwrap .vtabcontrol {
+          display: flex;
+          float: left;
+          flex-flow: column wrap;
+          justify-content: space-around;
+          clear: both;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          background-color: #00121e;
+          border-left: 1px solid #00121e; }
+          body #above .heading .worksite .optionselect .vtabwrap .vtabcontrolwrap .vtabcontrol li {
+            flex: 1 1 auto;
+            text-align: center;
+            width: 34px;
+            margin: 0; }
+            body #above .heading .worksite .optionselect .vtabwrap .vtabcontrolwrap .vtabcontrol li a {
+              display: inline-block;
+              width: 100%;
+              height: 33px;
+              opacity: 0.5;
+              border: 1px solid transparent;
+              border-right: 0; }
+              body #above .heading .worksite .optionselect .vtabwrap .vtabcontrolwrap .vtabcontrol li a.active {
+                background-color: #001a2b;
+                border: 1px solid #304b66;
+                border-right: 0;
+                opacity: 1; }
+              body #above .heading .worksite .optionselect .vtabwrap .vtabcontrolwrap .vtabcontrol li a:hover {
+                cursor: pointer;
+                opacity: 1; }
+              body #above .heading .worksite .optionselect .vtabwrap .vtabcontrolwrap .vtabcontrol li a .class {
+                width: 100%; }
+      body #above .heading .worksite .optionselect .vtabwrap .vtabcontents {
+        display: table-cell;
+        vertical-align: top;
+        width: 100%;
+        padding: 10px; }
+        body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .vtabhead {
+          display: inline-block;
+          font-weight: bold;
+          text-transform: capitalize;
+          font-size: 12px;
+          text-align: left;
+          background-color: #052238;
+          border-radius: 2px 2px 0 0;
+          padding: 6px; }
+        body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .buttons {
+          text-align: right; }
+          body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .buttons .button {
+            min-width: initial;
+            padding: 6px;
+            margin-left: 1px;
+            border-color: #052238;
+            background-color: #052238;
+            border-radius: 0 0 2px 2px;
+            color: #718599; }
+            body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .buttons .button:hover:not(:disabled) {
+              background: #00121e;
+              border-color: #00121e;
+              color: #cacaca; }
+        body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul {
+          list-style: none;
+          min-height: 45px;
+          padding: 10px;
+          border: 1px solid #052238;
+          margin: 0; }
+          body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon {
+            background-size: 12px;
+            width: 30px;
+            height: 25px; }
+            body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon:hover {
+              cursor: pointer; }
+            body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon.disabled {
+              opacity: 0.2; }
+              body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon.disabled:hover {
+                cursor: default; }
+            body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon.off {
+              opacity: 0.2; }
+            body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon.on:hover {
+              cursor: default; }
+            body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon.hidden {
+              visibility: hidden; }
+        body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .uithemes .themename {
+          color: #7f6e14;
+          font-size: 10px;
+          text-transform: uppercase;
+          display: inline-block;
+          width: 100px;
+          overflow: hidden;
+          vertical-align: middle;
+          text-align: center; }
+    body #above .heading .worksite .optionselect .uiscroller {
+      clear: both;
+      float: right;
+      width: 252px; }
+      body #above .heading .worksite .optionselect .uiscroller .uichoices {
+        list-style: none;
+        margin: 0;
+        padding: 0; }
+        body #above .heading .worksite .optionselect .uiscroller .uichoices li {
+          font-size: 14px;
+          color: #718599;
+          position: relative; }
+          body #above .heading .worksite .optionselect .uiscroller .uichoices li .ui {
+            display: block;
+            height: 33px;
+            padding: 0 12px;
+            background-color: #001a2b;
+            border-left: 1px solid #304b66;
+            border-bottom: 1px solid #304b66;
+            line-height: 33px;
+            color: #718599;
+            text-align: center;
+            font-weight: bold;
+            position: relative; }
+            body #above .heading .worksite .optionselect .uiscroller .uichoices li .ui span.brackets {
+              display: none; }
+            body #above .heading .worksite .optionselect .uiscroller .uichoices li .ui.active span, body #above .heading .worksite .optionselect .uiscroller .uichoices li .ui:hover span {
+              transition: padding 222ms ease;
+              text-shadow: #304b66 0px 0px 12px;
+              padding: 0 5px; }
+              body #above .heading .worksite .optionselect .uiscroller .uichoices li .ui.active span.brackets, body #above .heading .worksite .optionselect .uiscroller .uichoices li .ui:hover span.brackets {
+                display: inline;
+                text-shadow: none;
+                color: #946018; }
+            body #above .heading .worksite .optionselect .uiscroller .uichoices li .ui:hover {
+              cursor: pointer; }
+          body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui {
+            text-align: center;
+            clear: both;
+            background-color: #00121e;
+            border: 0;
+            border-left: 1px solid #2b343b;
+            border-right: 0;
+            width: 245px;
+            float: right;
+            box-sizing: border-box; }
+            body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui.solo {
+              background-color: #001a2b;
+              border: 1px solid #304b66;
+              border-right: 0;
+              border-top: 0;
+              width: 100%;
+              float: none; }
+            body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #addbutton {
+              height: 33px; }
+              body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #addbutton .add {
+                display: inline-block;
+                width: 15px;
+                height: 30px;
+                background-repeat: no-repeat;
+                background-position: center center;
+                border-radius: 50px;
+                transition: all 222ms ease;
+                background-image: url("/images/icons/add.png");
+                background-size: 25px; }
+              body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #addbutton:hover {
+                cursor: pointer; }
+              body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #addbutton:hover > .add {
+                -webkit-filter: drop-shadow(0px 0px 3px #688ba3);
+                filter: drop-shadow(0px 0px 3px #688ba3); }
+            body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui label {
+              display: inline-block;
+              width: 40px; }
+            body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #adduiinput {
+              padding: 10px 0;
+              display: none; }
+              body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #adduiinput.visible {
+                display: block; }
+              body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #adduiinput #uiname_input, body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #adduiinput #uitype_input {
+                width: 180px;
+                height: 33px;
+                background-color: #00121E; }
 
 body #gallery {
   width: auto;
@@ -766,6 +766,8 @@ body #gallery {
           opacity: 1; }
         body #gallery .sites .createsite #createinput input {
           width: 150px; }
+          body #gallery .sites .createsite #createinput input#input_name {
+            width: 270px; }
         body #gallery .sites .createsite #createinput .buttons {
           margin-top: 5px;
           overflow: auto;
