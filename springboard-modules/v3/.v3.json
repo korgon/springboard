@@ -3,14 +3,13 @@
   "version": "1.0.0",
   "description": "AJAX UI v3",
   "created": "timestamp",
-  "lastmodified": "timestamp",
   "settings": {
     "siteid": {
       "value": "",
       "default": "",
       "type": "siteid",
-      "description": "theme color"
-    },
+      "description": "six digit alphanumeric"
+    }
   },
   "variables": {},
   "styles": {
