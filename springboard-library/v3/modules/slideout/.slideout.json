@@ -1,0 +1,7 @@
+{
+  "type": "v3/slideout",
+  "version": "1.0.0",
+  "enabled": true,
+  "description": "slideout facet container for responsive and mobile sites",
+  "theme": null
+}
