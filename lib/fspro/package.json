@@ -1,0 +1,8 @@
+{
+  "name": "fspro",
+  "version": "1.0.0",
+  "description": "Several FS methods for springboard using promises",
+  "main": "index.js",
+  "author": "SearchSpring",
+  "license": "MIT"
+}
