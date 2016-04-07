@@ -9,6 +9,12 @@
 			"default": "",
 			"type": "siteid",
 			"description": "six digit alphanumeric"
+		},
+		"eslint": {
+			"value": true,
+			"default": true,
+			"type": "boolean",
+			"description": "enable linting of JS files"
 		}
 	},
 	"variables": {},
