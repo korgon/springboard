@@ -78,7 +78,7 @@ body {
 			flex-grow: 1;
 			overflow: auto;
 			height: 100%;
-			background: url('/images/sitebg.jpg') center center fixed;
+			background: url('/images/sitebg.jpg') center center;
 			background-size: cover;
 			background-position: 0px 0px;
 			&.fullscreen {

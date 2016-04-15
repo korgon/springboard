@@ -39,7 +39,7 @@ body {
       flex-grow: 1;
       overflow: auto;
       height: 100%;
-      background: url("/images/sitebg.jpg") center center fixed;
+      background: url("/images/sitebg.jpg") center center;
       background-size: cover;
       background-position: 0px 0px; }
       body #main #content.fullscreen {
@@ -585,6 +585,7 @@ body #above .heading .worksite {
         body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .vtabhead {
           display: inline-block;
           font-weight: bold;
+          color: #718599;
           text-transform: capitalize;
           font-size: 12px;
           text-align: left;

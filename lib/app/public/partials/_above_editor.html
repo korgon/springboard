@@ -67,13 +67,13 @@
 
           <div class="uiscroller">
             <ul class="uichoices">
-              <li ng-repeat="ui in vm.site.uis" id="{{ 'ui_' + ui.name }}" ng-init="vm.initVtab(ui.name)">
-                <div class="ui" ng-class="{ active: vm.session.tab['uigen'].vtab[ui.name].visible }" ng-click="vm.toggleUI(ui.name)">
+              <li class="uicontainer" ng-repeat="ui in vm.site.catalogs" id="{{ 'ui_' + ui.name }}" ng-init="vm.initVtab(ui.name)">
+                <div class="ui" ng-class="{ active: vm.session.tab['uigen'].vtab[ui.name].visible && vm.session.tab['uigen'].current == ui.name }" ng-click="vm.toggleUI(ui.name)" ng-if="!vm.session.tab['uigen'].current || vm.session.tab['uigen'].current == ui.name || !vm.site.catalogs[vm.session.tab['uigen'].current]">
                   <span class="brackets">[</span>
                   <span>{{ ui.name }}</span>
                   <span class="brackets">]</span>
                 </div>
-                <div ng-if="vm.session.tab['uigen'].vtab[ui.name].visible">
+                <div ng-if="vm.session.tab['uigen'].vtab[ui.name].visible && vm.session.tab['uigen'].current == ui.name">
                   <div class="vtabwrap">
                     <div class="vtabcontrolwrap">
                       <ul class="vtabcontrol">
@@ -93,16 +93,16 @@
                       <div ng-switch-when="themes">
                         <div class="vtabhead">{{ vm.session.tab['uigen'].vtab[ui.name].tab }}</div>
                         <ul class="uithemes">
-                          <li ng-repeat="theme in vm.site.uis[ui.name].themes">
+                          <li ng-repeat="theme in vm.site.catalogs[ui.name].themes">
                             <span class="themename">{{ theme.name }}</span>
                             <span title="custom" class="icon custom disabled" ng-if="!vm.uis[ui.type].themes[theme.name]"></span>
                             <span title="installed" class="icon install disabled" ng-if="vm.uis[ui.type].themes[theme.name]"></span>
-                            <span title="{{ vm.site.uis[ui.name].theme == theme.name ? 'active' : 'inactive' }}" class="icon active" ng-class="{ 'off': vm.site.uis[ui.name].theme != theme.name, 'on': vm.site.uis[ui.name].theme == theme.name }" ng-click=""></span>
+                            <span title="{{ vm.site.catalogs[ui.name].theme == theme.name ? 'active' : 'inactive' }}" class="icon active" ng-class="{ 'off': vm.site.catalogs[ui.name].theme != theme.name, 'on': vm.site.catalogs[ui.name].theme == theme.name }" ng-click=""></span>
                           </li>
-                          <li ng-repeat="theme in vm.uis[ui.type].themes" ng-if="!vm.site.uis[ui.name].themes[theme.name]">
+                          <li ng-repeat="theme in vm.uis[ui.type].themes" ng-if="!vm.site.catalogs[ui.name].themes[theme.name]">
                             <span class="themename">{{ theme.name }}</span>
-                            <span title="{{ vm.site.uis[ui.name].themes[theme.name] ? 'installed' : 'install' }}" class="icon install" ng-class="{ 'disabled': vm.site.uis[ui.name].themes[theme.name] }" ng-click=""></span>
-                            <span title="{{ vm.site.uis[ui.name].theme == theme.name ? 'active' : 'inactive' }}" class="icon active" ng-class="{ 'off': vm.site.uis[ui.name].theme != theme.name, 'on': vm.site.uis[ui.name].theme == theme.name, 'hidden': !vm.site.uis[ui.name].themes[theme.name] }"></span>
+                            <span title="{{ vm.site.catalogs[ui.name].themes[theme.name] ? 'installed' : 'install' }}" class="icon install" ng-class="{ 'disabled': vm.site.catalogs[ui.name].themes[theme.name] }" ng-click=""></span>
+                            <span title="{{ vm.site.catalogs[ui.name].theme == theme.name ? 'active' : 'inactive' }}" class="icon active" ng-class="{ 'off': vm.site.catalogs[ui.name].theme != theme.name, 'on': vm.site.catalogs[ui.name].theme == theme.name, 'hidden': !vm.site.catalogs[ui.name].themes[theme.name] }"></span>
                           </li>
                         </ul>
                       </div>
@@ -123,21 +123,23 @@
                 </div>
               </li>
               <li>
-                <div class="addui" ng-class="{ 'solo': vm.isEmpty(vm.site.uis) }">
+                <div class="addui" ng-class="{ 'solo': vm.isEmpty(vm.site.catalogs) }">
                   <div id="addbutton" ng-click="vm.showAddInput()" ng-hide="vm.new_ui_show"><span class="add"></span></div>
                   <form id="adduiinput" name="UIform" novalidate class="visible" ng-if="vm.new_ui_show">
                     <label for="uiname_input">Name</label>
-                    <input type="text" name="uiname" id="uiname_input" autocomplete="off" focus-on ng-model="vm.new_ui.name" required ng-pattern="/^\w{3,}$/i">
-                    <label for="uitypeinput">Type</label>
-                    <select id="uitypeinput" required ng-model="vm.new_ui.type" ng-options="ui.type as ui.type for ui in vm.uis | orderBy: 'toString()'" ng-init="vm.new_ui.type = 'v3'">
+                    <input type="text" name="uiname" id="uiname_input" autocomplete="off" focus-on ng-model="vm.new_ui.name" required ng-pattern="/^\w{2,}$/i" ng-init="vm.new_ui.type = vm.uis[0].type">
+
+                    <label for="uitypeinput" ng-if="vm.uis.length > 1">Type</label>
+                    <select id="uitypeinput" ng-if="vm.uis.length > 1" required ng-model="vm.new_ui.type" ng-options="ui.type as ui.type for ui in vm.uis | orderBy: 'toString()'">
                     </select>
+
                     <div class="buttons">
                       <input class="button" type="submit" value="Add" ng-click="vm.installUI()" ng-disabled="UIform.$invalid">
                       <input class="button" type="button" value="Cancel" ng-click="vm.hideAddInput()">
                     </div>
                   </form>
                 </div>
-                <div class="spacer" ng-if="vm.isEmpty(vm.site.uis)"></div>
+                <div class="spacer" ng-if="vm.isEmpty(vm.site.catalogs)"></div>
               </li>
             </ul>
           </div>
