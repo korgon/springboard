@@ -225,6 +225,7 @@ body {
 								border-left: 1px solid $blueblack;
 								li {
 									flex: 1 1 auto;
+                  order: 1;
 									text-align: center;
 									width: 34px;
 									margin: 0;
@@ -235,12 +236,6 @@ body {
 										opacity: 0.5;
 										border: 1px solid transparent;
 										border-right: 0;
-										&.active {
-											background-color: $bluedarkest;
-											border: 1px solid $bluehighlight;
-											border-right: 0;
-											opacity: 1;
-										}
 										&:hover {
 											// -webkit-filter: drop-shadow(0px 0px 3px $bluelight);
 											// filter: drop-shadow(0px 0px 3px $bluelight);
@@ -251,6 +246,15 @@ body {
 											width: 100%;
 										}
 									}
+                  &.active {
+                    //order: 0;
+                    a {
+                      background-color: $bluedarkest;
+                      border: 1px solid $bluehighlight;
+                      border-right: 0;
+                      opacity: 1;
+                    }
+                  }
 								}
 							}
 						}

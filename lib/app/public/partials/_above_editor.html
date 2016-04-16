@@ -1,173 +1,177 @@
 <div class="heading">
-  <div class="title">
-    <div class="logo"></div>
-    <div class="subtitle" ng-click="showMenu = !showMenu">SPRIΠGBOΛRD</div>
-  </div>
-  <div class="mainmenu" ng-include src="'/partials/_above_menu.html'" ng-class="{ 'show': showMenu }" ng-init="showMenu = false"></div>
-  <input id="frameurl" name="url" autocomplete="off" spellcheck="false" ng-model="vm.session.url" ng-change="vm.saveEditorSession()">
-  <div class="openurl" ng-click="vm.openUrl()"></div>
-  <div class="line"></div>
-  <div class="worksite"><a class="currentsite" ng-click="vm.session.showOptions = !vm.session.showOptions"><span id="currentsite">{{ vm.site.name }}</span></a>
-    <div class="optionselect" ng-class="{'show': vm.session.showOptions}">
+	<div class="title">
+		<div class="logo"></div>
+		<div class="subtitle" ng-click="showMenu = !showMenu">SPRIΠGBOΛRD</div>
+	</div>
+	<div class="mainmenu" ng-include src="'/partials/_above_menu.html'" ng-class="{ 'show': showMenu }" ng-init="showMenu = false"></div>
+	<input id="frameurl" name="url" autocomplete="off" spellcheck="false" ng-model="vm.session.url" ng-change="vm.saveEditorSession()">
+	<div class="openurl" ng-click="vm.openUrl()"></div>
+	<div class="line"></div>
+	<div class="worksite"><a class="currentsite" ng-click="vm.session.showOptions = !vm.session.showOptions"><span id="currentsite">{{ vm.site.name }}</span></a>
+		<div class="optionselect" ng-class="{'show': vm.session.showOptions}">
 
-      <ul class="tabcontrol">
-        <li><a ng-class="{ 'active': (vm.session.current_tab == 'uigen')}" ng-click="vm.switchTab('uigen')"><span class="icon uis"></span></a></li>
-        <li><a ng-class="{ 'active': (vm.session.current_tab == 'settings')}" ng-click="vm.switchTab('settings')"><span class="icon config"></span></a></li>
-      </ul>
+			<ul class="tabcontrol">
+				<li><a ng-class="{ 'active': (vm.session.current_tab == 'uigen')}" ng-click="vm.switchTab('uigen')"><span class="icon uis"></span></a></li>
+				<li><a ng-class="{ 'active': (vm.session.current_tab == 'settings')}" ng-click="vm.switchTab('settings')"><span class="icon config"></span></a></li>
+			</ul>
 
-      <div ng-if="vm.session.current_tab" ng-switch="vm.session.current_tab">
+			<div ng-if="vm.session.current_tab" ng-switch="vm.session.current_tab">
 
-        <div ng-switch-when="settings" ng-init="vm.initVtab('default')">
-          <div class="tabwrap">
-            <div class="header settings"><span>settings</span></div>
-          </div>
+				<div ng-switch-when="settings" ng-init="vm.initVtab('default')">
+					<div class="tabwrap">
+						<div class="header settings"><span>settings</span></div>
+					</div>
 
-          <div>
-            <div class="vtabwrap">
-              <div class="vtabcontrolwrap">
-                <ul class="vtabcontrol">
-                  <li><a ng-class="{ 'active': vm.activeVtab('default') == 'variables' }" ng-click="vm.switchVtab('variables', 'default')"><span class="icon variables"></span></a></li>
-                  <li><a ng-class="{ 'active': vm.activeVtab('default') == 'files' }" ng-click="vm.switchVtab('files', 'default')"><span class="icon files"></span></a></li>
-                  <li><a ng-class="{ 'active': vm.activeVtab('default') == 'proxy' }" ng-click="vm.switchVtab('proxy', 'default')"><span class="icon proxy"></span></a></li>
-                </ul>
-              </div>
+					<div>
+						<div class="vtabwrap">
+							<div class="vtabcontrolwrap">
+								<ul class="vtabcontrol">
+									<li ng-class="{ 'active': vm.activeVtab('default') == 'variables' }"><a ng-click="vm.switchVtab('variables', 'default')"><span class="icon variables"></span></a></li>
+									<li ng-class="{ 'active': vm.activeVtab('default') == 'files' }"><a ng-click="vm.switchVtab('files', 'default')"><span class="icon files"></span></a></li>
+									<li ng-class="{ 'active': vm.activeVtab('default') == 'proxy' }"><a ng-click="vm.switchVtab('proxy', 'default')"><span class="icon proxy"></span></a></li>
+								</ul>
+							</div>
 
-              <div class="vtabcontents" ng-switch="vm.session.tab['settings'].vtab['default'].tab">
+							<div class="vtabcontents" ng-switch="vm.session.tab['settings'].vtab['default'].tab">
 
-                <div ng-switch-when="variables">
-                  <div class="vtabhead">{{ vm.session.tab['settings'].vtab['default'].tab }}</div>
-                  <ul class="settings-variables">
-                  </ul>
-                  <div class="buttons"><button class="button"><span class="icon undo"></span>Reset</button><button class="button"><span class="icon save"></span>Save</button></div>
-                </div>
+								<div ng-switch-when="variables">
+									<div class="vtabhead">{{ vm.session.tab['settings'].vtab['default'].tab }}</div>
+									<ul class="settings-variables">
+									</ul>
+									<div class="buttons"><button class="button"><span class="icon undo"></span>Reset</button><button class="button"><span class="icon save"></span>Save</button></div>
+								</div>
 
-                <div ng-switch-when="files">
-                  <div class="vtabhead">{{ vm.session.tab['settings'].vtab['default'].tab }}</div>
-                  <ul class="settings-files">
-                  </ul>
-                </div>
+								<div ng-switch-when="files">
+									<div class="vtabhead">{{ vm.session.tab['settings'].vtab['default'].tab }}</div>
+									<ul class="settings-files">
+									</ul>
+								</div>
 
-                <div ng-switch-when="proxy">
-                  <div class="vtabhead">{{ vm.session.tab['settings'].vtab['default'].tab }}</div>
-                  <ul class="settings-proxy">
-                  </ul>
-                  <div class="buttons"><button class="button"><span class="icon undo"></span>Reset</button><button class="button"><span class="icon save"></span>Save</button></div>
-                </div>
+								<div ng-switch-when="proxy">
+									<div class="vtabhead">{{ vm.session.tab['settings'].vtab['default'].tab }}</div>
+									<ul class="settings-proxy">
+									</ul>
+									<div class="buttons"><button class="button"><span class="icon undo"></span>Reset</button><button class="button"><span class="icon save"></span>Save</button></div>
+								</div>
 
-              </div>
-            </div>
-          </div>
+							</div>
+						</div>
+					</div>
 
-          <div class="spacer"></div>
-        </div>
+					<div class="spacer"></div>
+				</div>
 
-        <div ng-switch-when="uigen">
-          <div class="tabwrap">
-            <div class="header ui"><span>UI Generator</span></div>
-          </div>
+				<div ng-switch-when="uigen">
+					<div class="tabwrap">
+						<div class="header ui"><span>UI Generator</span></div>
+					</div>
 
-          <div class="uiscroller">
-            <ul class="uichoices">
-              <li class="uicontainer" ng-repeat="ui in vm.site.catalogs" id="{{ 'ui_' + ui.name }}" ng-init="vm.initVtab(ui.name)">
-                <div class="ui" ng-class="{ active: vm.session.tab['uigen'].vtab[ui.name].visible && vm.session.tab['uigen'].current == ui.name }" ng-click="vm.toggleUI(ui.name)" ng-if="!vm.session.tab['uigen'].current || vm.session.tab['uigen'].current == ui.name || !vm.site.catalogs[vm.session.tab['uigen'].current]">
-                  <span class="brackets">[</span>
-                  <span>{{ ui.name }}</span>
-                  <span class="brackets">]</span>
-                </div>
-                <div ng-if="vm.session.tab['uigen'].vtab[ui.name].visible && vm.session.tab['uigen'].current == ui.name">
-                  <div class="vtabwrap">
+					<div class="uiscroller">
+						<ul class="uichoices">
+							<li class="uicontainer" ng-repeat="ui in vm.site.catalogs" id="{{ 'ui_' + ui.name }}" ng-init="vm.initVtab(ui.name)">
+								<div class="ui" ng-class="{ active: vm.session.tab['uigen'].vtab[ui.name].visible && vm.session.tab['uigen'].current == ui.name }" ng-click="vm.toggleUI(ui.name)" ng-if="!vm.session.tab['uigen'].current || vm.session.tab['uigen'].current == ui.name || !vm.site.catalogs[vm.session.tab['uigen'].current]">
+									<span class="brackets">[</span>
+									<span>{{ ui.name }}</span>
+									<span class="brackets">]</span>
+								</div>
+								<div ng-if="vm.session.tab['uigen'].vtab[ui.name].visible && vm.session.tab['uigen'].current == ui.name">
+									<div class="vtabwrap">
 
-                    <div class="vtabcontrolwrap">
-                      <ul class="vtabcontrol">
-                        <li><a ng-class="{ 'active': vm.activeVtab(ui.name) == 'plugins' }" ng-click="vm.switchVtab('plugins', ui.name)"><span class="icon plugins"></span></a></li>
-                        <li><a ng-class="{ 'active': vm.activeVtab(ui.name) == 'colors' }" ng-click="vm.switchVtab('colors', ui.name)"><span class="icon colors"></span></a></li>
-                        <li><a ng-class="{ 'active': vm.activeVtab(ui.name) == 'variables' }" ng-click="vm.switchVtab('variables', ui.name)"><span class="icon variables"></span></a></li>
-                        <li><a ng-class="{ 'active': vm.activeVtab(ui.name) == 'settings' }" ng-click="vm.switchVtab('settings', ui.name)"><span class="icon settings"></span></a></li>
-                      </ul>
-                    </div>
+										<div class="vtabcontrolwrap">
+											<ul class="vtabcontrol">
+												<li ng-repeat="module in ui.modules" ng-class="{ 'active': vm.activeVtab(ui.name) == 'module_' + module.name }"><a ng-click="vm.switchVtab('module_' + module.name, ui.name)"><span class="icon module"></span></a></li>
 
-                    <div class="vtabcontents" ng-switch="vm.session.tab['uigen'].vtab[ui.name].tab">
+												<li><a ng-click=""><span class="icon add"></span></a></li>
 
-                      <div ng-switch-when="plugins">
-                        <div class="vtabhead">{{ vm.session.tab['uigen'].vtab[ui.name].tab }}</div>
-                        <ul class="uimodules">
-                        </ul>
-                      </div>
+												<li ng-class="{ 'active': vm.activeVtab(ui.name) == 'colors' }"><a ng-click="vm.switchVtab('colors', ui.name)"><span class="icon colors"></span></a></li>
 
-                      <div ng-switch-when="themes">
-                        <div class="vtabhead">{{ vm.session.tab['uigen'].vtab[ui.name].tab }}</div>
-                        <ul class="uithemes">
-                          <li ng-repeat="theme in vm.site.catalogs[ui.name].themes">
-                            <span class="themename">{{ theme.name }}</span>
-                            <span title="custom" class="icon custom disabled" ng-if="!vm.uis[ui.type].themes[theme.name]"></span>
-                            <span title="installed" class="icon install disabled" ng-if="vm.uis[ui.type].themes[theme.name]"></span>
-                            <span title="{{ vm.site.catalogs[ui.name].theme == theme.name ? 'active' : 'inactive' }}" class="icon active" ng-class="{ 'off': vm.site.catalogs[ui.name].theme != theme.name, 'on': vm.site.catalogs[ui.name].theme == theme.name }" ng-click=""></span>
-                          </li>
-                          <li ng-repeat="theme in vm.uis[ui.type].themes" ng-if="!vm.site.catalogs[ui.name].themes[theme.name]">
-                            <span class="themename">{{ theme.name }}</span>
-                            <span title="{{ vm.site.catalogs[ui.name].themes[theme.name] ? 'installed' : 'install' }}" class="icon install" ng-class="{ 'disabled': vm.site.catalogs[ui.name].themes[theme.name] }" ng-click=""></span>
-                            <span title="{{ vm.site.catalogs[ui.name].theme == theme.name ? 'active' : 'inactive' }}" class="icon active" ng-class="{ 'off': vm.site.catalogs[ui.name].theme != theme.name, 'on': vm.site.catalogs[ui.name].theme == theme.name, 'hidden': !vm.site.catalogs[ui.name].themes[theme.name] }"></span>
-                          </li>
-                        </ul>
-                      </div>
+												<li ng-class="{ 'active': vm.activeVtab(ui.name) == 'variables' }"><a ng-click="vm.switchVtab('variables', ui.name)"><span class="icon variables"></span></a></li>
 
-                      <div ng-switch-when="colors">
-                        <div class="vtabhead">{{ vm.session.tab['uigen'].vtab[ui.name].tab }}</div>
-                        <ul class="uicolors">
-                        </ul>
-                        <div class="buttons"><button class="button"><span class="icon undo"></span>Reset</button><button class="button"><span class="icon save"></span>Save</button></div>
-                      </div>
+												<li ng-class="{ 'active': vm.activeVtab(ui.name) == 'settings' }"><a ng-click="vm.switchVtab('settings', ui.name)"><span class="icon settings"></span></a></li>
+											</ul>
+										</div>
 
-                      <div ng-switch-when="variables">
-                        <div class="vtabhead">{{ vm.session.tab['uigen'].vtab[ui.name].tab }}</div>
-                        <ul class="uivariables">
-                        </ul>
-                        <div class="buttons"><button class="button"><span class="icon undo"></span>Reset</button><button class="button"><span class="icon save"></span>Save</button></div>
-                      </div>
+										<div class="vtabcontents" ng-switch="vm.session.tab['uigen'].vtab[ui.name].tab">
+											<div ng-switch-when="themes">
+												<div class="vtabhead">{{ vm.session.tab['uigen'].vtab[ui.name].tab }}</div>
+												<ul class="uithemes">
+													<li ng-repeat="theme in vm.site.catalogs[ui.name].themes">
+														<span class="themename">{{ theme.name }}</span>
+														<span title="custom" class="icon custom disabled" ng-if="!vm.uis[ui.type].themes[theme.name]"></span>
+														<span title="installed" class="icon install disabled" ng-if="vm.uis[ui.type].themes[theme.name]"></span>
+														<span title="{{ vm.site.catalogs[ui.name].theme == theme.name ? 'active' : 'inactive' }}" class="icon active" ng-class="{ 'off': vm.site.catalogs[ui.name].theme != theme.name, 'on': vm.site.catalogs[ui.name].theme == theme.name }" ng-click=""></span>
+													</li>
+													<li ng-repeat="theme in vm.uis[ui.type].themes" ng-if="!vm.site.catalogs[ui.name].themes[theme.name]">
+														<span class="themename">{{ theme.name }}</span>
+														<span title="{{ vm.site.catalogs[ui.name].themes[theme.name] ? 'installed' : 'install' }}" class="icon install" ng-class="{ 'disabled': vm.site.catalogs[ui.name].themes[theme.name] }" ng-click=""></span>
+														<span title="{{ vm.site.catalogs[ui.name].theme == theme.name ? 'active' : 'inactive' }}" class="icon active" ng-class="{ 'off': vm.site.catalogs[ui.name].theme != theme.name, 'on': vm.site.catalogs[ui.name].theme == theme.name, 'hidden': !vm.site.catalogs[ui.name].themes[theme.name] }"></span>
+													</li>
+												</ul>
+											</div>
 
-                      <div ng-switch-when="settings">
-                        <div class="vtabhead">{{ vm.session.tab['uigen'].vtab[ui.name].tab }}</div>
-                        <ul class="uisettings">
-                        </ul>
-                        <div class="buttons"><button class="button"><span class="icon save"></span>Save</button></div>
-                      </div>
+											<div ng-switch-when="colors">
+												<div class="vtabhead">{{ vm.session.tab['uigen'].vtab[ui.name].tab }}</div>
+												<ul class="uicolors">
+												</ul>
+												<div class="buttons"><button class="button"><span class="icon undo"></span>Reset</button><button class="button"><span class="icon save"></span>Save</button></div>
+											</div>
 
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="addui" ng-class="{ 'solo': vm.isEmpty(vm.site.catalogs) }">
-                  <div id="addbutton" ng-click="vm.showAddInput()" ng-hide="vm.new_ui_show"><span class="add"></span></div>
-                  <form id="adduiinput" name="UIform" novalidate class="visible" ng-if="vm.new_ui_show">
-                    <label for="uiname_input">Name</label>
-                    <input type="text" name="uiname" id="uiname_input" autocomplete="off" focus-on ng-model="vm.new_ui.name" required ng-pattern="/^\w{2,}$/i" ng-init="vm.new_ui.type = vm.uis[0].type">
+											<div ng-switch-when="variables">
+												<div class="vtabhead">{{ vm.session.tab['uigen'].vtab[ui.name].tab }}</div>
+												<ul class="uivariables">
+												</ul>
+												<div class="buttons"><button class="button"><span class="icon undo"></span>Reset</button><button class="button"><span class="icon save"></span>Save</button></div>
+											</div>
 
-                    <label for="uitypeinput" ng-if="vm.uis.length > 1">Type</label>
-                    <select id="uitypeinput" ng-if="vm.uis.length > 1" required ng-model="vm.new_ui.type" ng-options="ui.type as ui.type for ui in vm.uis | orderBy: 'toString()'">
-                    </select>
+											<div ng-switch-when="settings">
+												<div class="vtabhead">{{ vm.session.tab['uigen'].vtab[ui.name].tab }}</div>
+												<ul class="uisettings">
+												</ul>
+												<div class="buttons"><button class="button"><span class="icon save"></span>Save</button></div>
+											</div>
 
-                    <div class="buttons">
-                      <input class="button" type="submit" value="Add" ng-click="vm.installUI()" ng-disabled="UIform.$invalid">
-                      <input class="button" type="button" value="Cancel" ng-click="vm.hideAddInput()">
-                    </div>
-                  </form>
-                </div>
-                <div class="spacer" ng-if="vm.isEmpty(vm.site.catalogs)"></div>
-              </li>
-            </ul>
-          </div>
-        </div>
+											<div ng-switch-default>
+												<div ng-repeat="module in ui.modules" class="vtabhead" ng-if="vm.session.tab['uigen'].vtab[ui.name].tab == 'module_' + module.name">{{ module.name }}</div>
+												<ul class="uimodules">
+												</ul>
+											</div>
 
-      </div>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="addui" ng-class="{ 'solo': vm.isEmpty(vm.site.catalogs) }">
+									<div id="addbutton" ng-click="vm.showAddInput()" ng-hide="vm.new_ui_show"><span class="add"></span></div>
+									<form id="adduiinput" name="UIform" novalidate class="visible" ng-if="vm.new_ui_show">
+										<label for="uiname_input">Name</label>
+										<input type="text" name="uiname" id="uiname_input" autocomplete="off" focus-on ng-model="vm.new_ui.name" required ng-pattern="/^\w{2,}$/i" ng-init="vm.new_ui.type = vm.uis[0].type">
 
-      <ul class="gitbuttons">
-        <li><a ng-click="vm.commitSite()"><span class="icon commit"></span></a></li>
-        <li><a ng-click="vm.pushSite()"><span class="icon push"></span></a></li>
-        <li><a ng-click="vm.publishMockup()"><span class="icon upload"></span></a></li>
-        <li><a ng-click="vm.prompty()"><span class="icon pull"></span></a></li>
-      </ul>
+										<label for="uitypeinput" ng-if="vm.uis.length > 1">Type</label>
+										<select id="uitypeinput" ng-if="vm.uis.length > 1" required ng-model="vm.new_ui.type" ng-options="ui.type as ui.type for ui in vm.uis | orderBy: 'toString()'">
+										</select>
 
-    </div>
-  </div>
+										<div class="buttons">
+											<input class="button" type="submit" value="Add" ng-click="vm.installUI()" ng-disabled="UIform.$invalid">
+											<input class="button" type="button" value="Cancel" ng-click="vm.hideAddInput()">
+										</div>
+									</form>
+								</div>
+								<div class="spacer" ng-if="vm.isEmpty(vm.site.catalogs)"></div>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+
+			<ul class="gitbuttons">
+				<li><a ng-click="vm.commitSite()"><span class="icon commit"></span></a></li>
+				<li><a ng-click="vm.pushSite()"><span class="icon push"></span></a></li>
+				<li><a ng-click="vm.publishMockup()"><span class="icon upload"></span></a></li>
+				<li><a ng-click="vm.prompty()"><span class="icon pull"></span></a></li>
+			</ul>
+
+		</div>
+	</div>
 </div>

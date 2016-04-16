@@ -116,6 +116,8 @@ input[type="text"], select {
   vertical-align: middle; }
   .icon.active {
     background-image: url("/images/icons/active.png"); }
+  .icon.add {
+    background-image: url("/images/icons/add.png"); }
   .icon.colors {
     background-image: url("/images/icons/palette.png"); }
   .icon.commit {
@@ -559,6 +561,7 @@ body #above .heading .worksite {
           border-left: 1px solid #00121e; }
           body #above .heading .worksite .optionselect .vtabwrap .vtabcontrolwrap .vtabcontrol li {
             flex: 1 1 auto;
+            order: 1;
             text-align: center;
             width: 34px;
             margin: 0; }
@@ -569,16 +572,16 @@ body #above .heading .worksite {
               opacity: 0.5;
               border: 1px solid transparent;
               border-right: 0; }
-              body #above .heading .worksite .optionselect .vtabwrap .vtabcontrolwrap .vtabcontrol li a.active {
-                background-color: #001a2b;
-                border: 1px solid #304b66;
-                border-right: 0;
-                opacity: 1; }
               body #above .heading .worksite .optionselect .vtabwrap .vtabcontrolwrap .vtabcontrol li a:hover {
                 cursor: pointer;
                 opacity: 1; }
               body #above .heading .worksite .optionselect .vtabwrap .vtabcontrolwrap .vtabcontrol li a .class {
                 width: 100%; }
+            body #above .heading .worksite .optionselect .vtabwrap .vtabcontrolwrap .vtabcontrol li.active a {
+              background-color: #001a2b;
+              border: 1px solid #304b66;
+              border-right: 0;
+              opacity: 1; }
       body #above .heading .worksite .optionselect .vtabwrap .vtabcontents {
         display: table-cell;
         vertical-align: top;
