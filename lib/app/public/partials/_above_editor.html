@@ -31,6 +31,7 @@
                   <li><a ng-class="{ 'active': vm.activeVtab('default') == 'proxy' }" ng-click="vm.switchVtab('proxy', 'default')"><span class="icon proxy"></span></a></li>
                 </ul>
               </div>
+
               <div class="vtabcontents" ng-switch="vm.session.tab['settings'].vtab['default'].tab">
 
                 <div ng-switch-when="variables">
@@ -75,14 +76,16 @@
                 </div>
                 <div ng-if="vm.session.tab['uigen'].vtab[ui.name].visible && vm.session.tab['uigen'].current == ui.name">
                   <div class="vtabwrap">
+
                     <div class="vtabcontrolwrap">
                       <ul class="vtabcontrol">
                         <li><a ng-class="{ 'active': vm.activeVtab(ui.name) == 'plugins' }" ng-click="vm.switchVtab('plugins', ui.name)"><span class="icon plugins"></span></a></li>
-                        <li><a ng-class="{ 'active': vm.activeVtab(ui.name) == 'themes' }" ng-click="vm.switchVtab('themes', ui.name)"><span class="icon themes"></span></a></li>
+                        <li><a ng-class="{ 'active': vm.activeVtab(ui.name) == 'colors' }" ng-click="vm.switchVtab('colors', ui.name)"><span class="icon colors"></span></a></li>
                         <li><a ng-class="{ 'active': vm.activeVtab(ui.name) == 'variables' }" ng-click="vm.switchVtab('variables', ui.name)"><span class="icon variables"></span></a></li>
                         <li><a ng-class="{ 'active': vm.activeVtab(ui.name) == 'settings' }" ng-click="vm.switchVtab('settings', ui.name)"><span class="icon settings"></span></a></li>
                       </ul>
                     </div>
+
                     <div class="vtabcontents" ng-switch="vm.session.tab['uigen'].vtab[ui.name].tab">
 
                       <div ng-switch-when="plugins">
@@ -90,6 +93,7 @@
                         <ul class="uimodules">
                         </ul>
                       </div>
+
                       <div ng-switch-when="themes">
                         <div class="vtabhead">{{ vm.session.tab['uigen'].vtab[ui.name].tab }}</div>
                         <ul class="uithemes">
@@ -106,18 +110,28 @@
                           </li>
                         </ul>
                       </div>
+
+                      <div ng-switch-when="colors">
+                        <div class="vtabhead">{{ vm.session.tab['uigen'].vtab[ui.name].tab }}</div>
+                        <ul class="uicolors">
+                        </ul>
+                        <div class="buttons"><button class="button"><span class="icon undo"></span>Reset</button><button class="button"><span class="icon save"></span>Save</button></div>
+                      </div>
+
                       <div ng-switch-when="variables">
                         <div class="vtabhead">{{ vm.session.tab['uigen'].vtab[ui.name].tab }}</div>
                         <ul class="uivariables">
                         </ul>
                         <div class="buttons"><button class="button"><span class="icon undo"></span>Reset</button><button class="button"><span class="icon save"></span>Save</button></div>
                       </div>
+
                       <div ng-switch-when="settings">
                         <div class="vtabhead">{{ vm.session.tab['uigen'].vtab[ui.name].tab }}</div>
                         <ul class="uisettings">
                         </ul>
                         <div class="buttons"><button class="button"><span class="icon save"></span>Save</button></div>
                       </div>
+
                     </div>
                   </div>
                 </div>

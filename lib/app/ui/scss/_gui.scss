@@ -91,6 +91,12 @@ input[type="text"], select {
   &.active {
     background-image: url('/images/icons/active.png');
   }
+  &.add {
+    background-image: url('/images/icons/add.png');
+  }
+  &.colors {
+    background-image: url('/images/icons/palette.png');
+  }
   &.commit {
     background-image: url('/images/icons/commit.png');
   }

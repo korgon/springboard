@@ -116,6 +116,8 @@ input[type="text"], select {
   vertical-align: middle; }
   .icon.active {
     background-image: url("/images/icons/active.png"); }
+  .icon.colors {
+    background-image: url("/images/icons/palette.png"); }
   .icon.commit {
     background-image: url("/images/icons/commit.png"); }
   .icon.config {
