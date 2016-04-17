@@ -27,8 +27,14 @@
 							<div class="vtabcontrolwrap">
 								<ul class="vtabcontrol">
 									<li ng-class="{ 'active': vm.activeVtab('default') == 'variables' }"><a ng-click="vm.switchVtab('variables', 'default')"><span class="icon variables"></span></a></li>
+
 									<li ng-class="{ 'active': vm.activeVtab('default') == 'files' }"><a ng-click="vm.switchVtab('files', 'default')"><span class="icon files"></span></a></li>
+
 									<li ng-class="{ 'active': vm.activeVtab('default') == 'proxy' }"><a ng-click="vm.switchVtab('proxy', 'default')"><span class="icon proxy"></span></a></li>
+
+									<li ng-class="{ 'active': vm.activeVtab('default') == 'tags' }"><a ng-click="vm.switchVtab('tags', 'default')"><span class="icon tags"></span></a></li>
+
+									<li ng-class="{ 'active': vm.activeVtab('default') == 'history' }"><a ng-click="vm.switchVtab('history', 'default')"><span class="icon history"></span></a></li>
 								</ul>
 							</div>
 
@@ -52,6 +58,18 @@
 									<ul class="settings-proxy">
 									</ul>
 									<div class="buttons"><button class="button"><span class="icon undo"></span>Reset</button><button class="button"><span class="icon save"></span>Save</button></div>
+								</div>
+
+								<div ng-switch-when="tags">
+									<div class="vtabhead">{{ vm.session.tab['settings'].vtab['default'].tab }}</div>
+									<ul class="settings-tags">
+									</ul>
+								</div>
+
+								<div ng-switch-when="history">
+									<div class="vtabhead">{{ vm.session.tab['settings'].vtab['default'].tab }}</div>
+									<ul class="settings-history">
+									</ul>
 								</div>
 
 							</div>
@@ -93,16 +111,14 @@
 
 										<div class="vtabcontents" ng-switch="vm.session.tab['uigen'].vtab[ui.name].tab">
 											<div ng-switch-when="module_add">
-												<div class="vtabhead">Install {{ ui.name }} Module</div>
+												<div class="vtabhead">Install {{ ui.name }} Modules</div>
 												<ul class="uimodules">
-													<label for="modulename_input">Name</label>
-													<input type="text" name="modulename" id="modulename_input" autocomplete="off" focus-on ng-model="vm.new_module.name" required ng-pattern="/^\w{2,}$/i">
-
-													<label for="moduletypeinput">Type</label>
-													<select id="moduletypeinput" required ng-model="vm.new_module.type" ng-options="module.type as module.type for module in vm.uis[ui.name].modules | orderBy: 'toString()'">
-													</select>
+													<li ng-repeat="module in vm.uis[ui.type].modules">
+														<span class="themename">{{ module.name }}</span>
+														<span title="{{ vm.site.catalogs[ui.name].modules[module.name] ? 'installed' : 'install' }}" class="icon install" ng-class="{ 'disabled': vm.site.catalogs[ui.name].modules[module.name] }" ng-click=""></span>
+														<span class="icon active"></span>
+													</li>
 												</ul>
-												<div class="buttons"><button class="button"><span class="icon install"></span>Install</button></div>
 											</div>
 
 											<div ng-switch-when="themes">
