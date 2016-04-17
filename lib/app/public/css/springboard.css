@@ -126,22 +126,22 @@ input[type="text"], select {
     background-image: url("/images/icons/config.png"); }
   .icon.custom {
     background-image: url("/images/icons/custom.png"); }
-  .icon.module {
-    background-image: url("/images/icons/module.png"); }
-  .icon.uis {
-    background-image: url("/images/icons/uis.png"); }
   .icon.files {
     background-image: url("/images/icons/filestruct.png"); }
   .icon.folder {
     background-image: url("/images/icons/folder.png"); }
   .icon.folder-open {
     background-image: url("/images/icons/folder_open.png"); }
+  .icon.help {
+    background-image: url("/images/icons/help.png"); }
   .icon.history {
     background-image: url("/images/icons/history.png"); }
   .icon.install {
     background-image: url("/images/icons/install.png"); }
-  .icon.plugins {
+  .icon.module {
     background-image: url("/images/icons/module.png"); }
+  .icon.module-add {
+    background-image: url("/images/icons/module_add.png"); }
   .icon.pull {
     background-image: url("/images/icons/pull_request.png"); }
   .icon.push {
@@ -158,6 +158,8 @@ input[type="text"], select {
     background-image: url("/images/icons/tag.png"); }
   .icon.themes {
     background-image: url("/images/icons/theme.png"); }
+  .icon.uis {
+    background-image: url("/images/icons/uis.png"); }
   .icon.undo {
     background-image: url("/images/icons/undo.png"); }
   .icon.upload {
@@ -364,19 +366,6 @@ body #above .heading {
     background-size: 20px;
     margin-right: 9px; }
     body #above .heading .openurl:hover {
-      cursor: pointer;
-      opacity: 1; }
-  body #above .heading .refresh {
-    order: 3;
-    flex: 0 0 auto;
-    width: 20px;
-    height: 20px;
-    opacity: 0.5;
-    background-image: url("/images/icons/refresh.png");
-    background-repeat: no-repeat;
-    background-size: 20px;
-    margin-right: 9px; }
-    body #above .heading .refresh:hover {
       cursor: pointer;
       opacity: 1; }
   body #above .heading .line {

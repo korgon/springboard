@@ -4,163 +4,166 @@
 // icons
 
 .button {
-  min-width: 80px;
-  border: solid 1px $orangefaded;
-  border-radius: 2px;
-  background: $orangefaded;
-  color: $whitefaded;
-  font-size: 10px;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 4px 12px;
-  text-decoration: none;
-  text-transform: uppercase;
+	min-width: 80px;
+	border: solid 1px $orangefaded;
+	border-radius: 2px;
+	background: $orangefaded;
+	color: $whitefaded;
+	font-size: 10px;
+	font-weight: bold;
+	cursor: pointer;
+	padding: 4px 12px;
+	text-decoration: none;
+	text-transform: uppercase;
 
-  // border: 1px solid $orange;
-  // border-radius: 3px;
-  // background-color: $bluehighlight;
-  // background-image: linear-gradient($orange, $orangefaded);
-  // color: $orangedark;
-  // text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
-  &:disabled {
-    border: $orangedarkest;
-    background: $orangedarkest;
-    cursor: default;
-  }
-  &:hover:not(:disabled) {
-    background: $orangedark;
-    border-color: $orangedark;
-    color: $whitefaded;
-  }
-  &:focus {
-    outline: 0;
-  }
-  &.right {
-    float: right;
-  }
-  & > .icon {
-    background-size: 14px;
-    background-position: left center;
-    width: 20px;
-    height: 12px;
-  }
+	// border: 1px solid $orange;
+	// border-radius: 3px;
+	// background-color: $bluehighlight;
+	// background-image: linear-gradient($orange, $orangefaded);
+	// color: $orangedark;
+	// text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
+	&:disabled {
+		border: $orangedarkest;
+		background: $orangedarkest;
+		cursor: default;
+	}
+	&:hover:not(:disabled) {
+		background: $orangedark;
+		border-color: $orangedark;
+		color: $whitefaded;
+	}
+	&:focus {
+		outline: 0;
+	}
+	&.right {
+		float: right;
+	}
+	& > .icon {
+		background-size: 14px;
+		background-position: left center;
+		width: 20px;
+		height: 12px;
+	}
 }
 
 label {
-  margin-bottom: 6px;
-  display: block;
-  color: $bluetext;
+	margin-bottom: 6px;
+	display: block;
+	color: $bluetext;
 }
 
 fieldset {
-  text-align: center;
-  margin: 10px 0;
-  border: 1px solid $blueaccent;
+	text-align: center;
+	margin: 10px 0;
+	border: 1px solid $blueaccent;
 }
 
 legend {
-  font-weight: bold;
-  text-transform: capitalize;
-  font-size: 12px;
-  text-align: left;
-  background-color: $blueaccent;
-  border-radius: 2px;
-  padding: 6px;
+	font-weight: bold;
+	text-transform: capitalize;
+	font-size: 12px;
+	text-align: left;
+	background-color: $blueaccent;
+	border-radius: 2px;
+	padding: 6px;
 }
 
 input[type="text"], select {
-  box-sizing: border-box;
-  border-radius: 3px;
-  background-color: $bluedarkest;
-  border: 1px solid $bluebase;
-  color: $grey;
-  margin-bottom: 10px;
-  &:focus, &:active {
-    color: $bluelightest;
-  }
+	box-sizing: border-box;
+	border-radius: 3px;
+	background-color: $bluedarkest;
+	border: 1px solid $bluebase;
+	color: $grey;
+	margin-bottom: 10px;
+	&:focus, &:active {
+		color: $bluelightest;
+	}
 }
 
 .icon {
-  display: inline-block;
-  width: 33px;
-  height: 33px;
-  background-repeat: no-repeat;
-  background-size: 22px;
-  background-position: center center;
-  vertical-align: middle;
-  &.active {
-    background-image: url('/images/icons/active.png');
-  }
-  &.add {
-    background-image: url('/images/icons/add.png');
-  }
-  &.colors {
-    background-image: url('/images/icons/palette.png');
-  }
-  &.commit {
-    background-image: url('/images/icons/commit.png');
-  }
-  &.config {
-    background-image: url('/images/icons/config.png');
-  }
-  &.custom {
-    background-image: url('/images/icons/custom.png');
-  }
-  &.module {
-    background-image: url('/images/icons/module.png');
-  }
-  &.uis {
-    background-image: url('/images/icons/uis.png');
-  }
-  &.files {
-    background-image: url('/images/icons/filestruct.png');
-  }
-  &.folder {
-    background-image: url('/images/icons/folder.png');
-  }
-  &.folder-open {
-    background-image: url('/images/icons/folder_open.png');
-  }
-  &.history {
-    background-image: url('/images/icons/history.png');
-  }
-  &.install {
-    background-image: url('/images/icons/install.png');
-  }
-  &.module {
-    background-image: url('/images/icons/module.png');
-  }
-  &.pull {
-    background-image: url('/images/icons/pull_request.png');
-  }
-  &.push {
-    background-image: url('/images/icons/push.png');
-  }
-  &.proxy {
-    background-image: url('/images/icons/proxy.png');
-  }
-  &.refresh {
-    background-image: url('/images/icons/refresh.png');
-  }
-  &.save {
-    background-image: url('/images/icons/save.png');
-  }
-  &.settings {
-    background-image: url('/images/icons/settings.png');
-  }
-  &.tags {
-    background-image: url('/images/icons/tag.png');
-  }
-  &.themes {
-    background-image: url('/images/icons/theme.png');
-  }
-  &.undo {
-    background-image: url('/images/icons/undo.png');
-  }
-  &.upload {
-    background-image: url('/images/icons/upload.png');
-  }
-  &.variables {
-    background-image: url('/images/icons/variable.png');
-  }
+	display: inline-block;
+	width: 33px;
+	height: 33px;
+	background-repeat: no-repeat;
+	background-size: 22px;
+	background-position: center center;
+	vertical-align: middle;
+	&.active {
+		background-image: url('/images/icons/active.png');
+	}
+	&.add {
+		background-image: url('/images/icons/add.png');
+	}
+	&.colors {
+		background-image: url('/images/icons/palette.png');
+	}
+	&.commit {
+		background-image: url('/images/icons/commit.png');
+	}
+	&.config {
+		background-image: url('/images/icons/config.png');
+	}
+	&.custom {
+		background-image: url('/images/icons/custom.png');
+	}
+	&.files {
+		background-image: url('/images/icons/filestruct.png');
+	}
+	&.folder {
+		background-image: url('/images/icons/folder.png');
+	}
+	&.folder-open {
+		background-image: url('/images/icons/folder_open.png');
+	}
+	&.help {
+		background-image: url('/images/icons/help.png');
+	}
+	&.history {
+		background-image: url('/images/icons/history.png');
+	}
+	&.install {
+		background-image: url('/images/icons/install.png');
+	}
+	&.module {
+		background-image: url('/images/icons/module.png');
+	}
+	&.module-add {
+		background-image: url('/images/icons/module_add.png');
+	}
+	&.pull {
+		background-image: url('/images/icons/pull_request.png');
+	}
+	&.push {
+		background-image: url('/images/icons/push.png');
+	}
+	&.proxy {
+		background-image: url('/images/icons/proxy.png');
+	}
+	&.refresh {
+		background-image: url('/images/icons/refresh.png');
+	}
+	&.save {
+		background-image: url('/images/icons/save.png');
+	}
+	&.settings {
+		background-image: url('/images/icons/settings.png');
+	}
+	&.tags {
+		background-image: url('/images/icons/tag.png');
+	}
+	&.themes {
+		background-image: url('/images/icons/theme.png');
+	}
+	&.uis {
+		background-image: url('/images/icons/uis.png');
+	}
+	&.undo {
+		background-image: url('/images/icons/undo.png');
+	}
+	&.upload {
+		background-image: url('/images/icons/upload.png');
+	}
+	&.variables {
+		background-image: url('/images/icons/variable.png');
+	}
 }

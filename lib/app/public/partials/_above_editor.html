@@ -79,9 +79,9 @@
 
 										<div class="vtabcontrolwrap">
 											<ul class="vtabcontrol">
-												<li ng-repeat="module in ui.modules" ng-class="{ 'active': vm.activeVtab(ui.name) == 'module_' + module.name }"><a ng-click="vm.switchVtab('module_' + module.name, ui.name)"><span class="icon module"></span></a></li>
+												<li ng-class="{ 'active': vm.activeVtab(ui.name) == 'module_add' }"><a ng-click="vm.switchVtab('module_add', ui.name)"><span class="icon module-add"></span></a></li>
 
-												<li><a ng-click=""><span class="icon add"></span></a></li>
+												<li ng-repeat="module in ui.modules" ng-class="{ 'active': vm.activeVtab(ui.name) == 'module_' + module.name }"><a ng-click="vm.switchVtab('module_' + module.name, ui.name)"><span class="icon module"></span></a></li>
 
 												<li ng-class="{ 'active': vm.activeVtab(ui.name) == 'colors' }"><a ng-click="vm.switchVtab('colors', ui.name)"><span class="icon colors"></span></a></li>
 
@@ -92,6 +92,19 @@
 										</div>
 
 										<div class="vtabcontents" ng-switch="vm.session.tab['uigen'].vtab[ui.name].tab">
+											<div ng-switch-when="module_add">
+												<div class="vtabhead">Install {{ ui.name }} Module</div>
+												<ul class="uimodules">
+													<label for="modulename_input">Name</label>
+													<input type="text" name="modulename" id="modulename_input" autocomplete="off" focus-on ng-model="vm.new_module.name" required ng-pattern="/^\w{2,}$/i">
+
+													<label for="moduletypeinput">Type</label>
+													<select id="moduletypeinput" required ng-model="vm.new_module.type" ng-options="module.type as module.type for module in vm.uis[ui.name].modules | orderBy: 'toString()'">
+													</select>
+												</ul>
+												<div class="buttons"><button class="button"><span class="icon install"></span>Install</button></div>
+											</div>
+
 											<div ng-switch-when="themes">
 												<div class="vtabhead">{{ vm.session.tab['uigen'].vtab[ui.name].tab }}</div>
 												<ul class="uithemes">
@@ -127,13 +140,16 @@
 												<div class="vtabhead">{{ vm.session.tab['uigen'].vtab[ui.name].tab }}</div>
 												<ul class="uisettings">
 												</ul>
-												<div class="buttons"><button class="button"><span class="icon save"></span>Save</button></div>
+												<div class="buttons"><button class="button"><span class="icon undo"></span>Reset</button><button class="button"><span class="icon save"></span>Save</button></div>
 											</div>
 
 											<div ng-switch-default>
-												<div ng-repeat="module in ui.modules" class="vtabhead" ng-if="vm.session.tab['uigen'].vtab[ui.name].tab == 'module_' + module.name">{{ module.name }}</div>
-												<ul class="uimodules">
-												</ul>
+												<div ng-repeat="module in ui.modules" ng-if="vm.session.tab['uigen'].vtab[ui.name].tab == 'module_' + module.name">
+													<div class="vtabhead">{{ module.name }}</div>
+
+													<ul class="uimodules">
+													</ul>
+												</div>
 											</div>
 
 										</div>
@@ -141,7 +157,7 @@
 								</div>
 							</li>
 							<li>
-								<div class="addui" ng-class="{ 'solo': vm.isEmpty(vm.site.catalogs) }">
+								<div class="addui" ng-class="{ 'solo': vm.isEmpty(vm.site.catalogs) }" ng-if="vm.isEmpty(vm.site.catalogs) || !vm.session.tab['uigen'].current" ng-init="vm.new_ui_show = (vm.isEmpty(vm.site.catalogs) ? true : false)">
 									<div id="addbutton" ng-click="vm.showAddInput()" ng-hide="vm.new_ui_show"><span class="add"></span></div>
 									<form id="adduiinput" name="UIform" novalidate class="visible" ng-if="vm.new_ui_show">
 										<label for="uiname_input">Name</label>
@@ -157,7 +173,7 @@
 										</div>
 									</form>
 								</div>
-								<div class="spacer" ng-if="vm.isEmpty(vm.site.catalogs)"></div>
+								<div class="spacer" ng-if="vm.isEmpty(vm.site.catalogs) || (vm.session.tab['uigen'].current && vm.site.catalogs[vm.session.tab['uigen'].current])"></div>
 							</li>
 						</ul>
 					</div>
@@ -169,7 +185,7 @@
 				<li><a ng-click="vm.commitSite()"><span class="icon commit"></span></a></li>
 				<li><a ng-click="vm.pushSite()"><span class="icon push"></span></a></li>
 				<li><a ng-click="vm.publishMockup()"><span class="icon upload"></span></a></li>
-				<li><a ng-click="vm.prompty()"><span class="icon pull"></span></a></li>
+				<li><a ng-click="vm.reloadSite()"><span class="icon refresh"></span></a></li>
 			</ul>
 
 		</div>

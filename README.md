@@ -27,6 +27,7 @@ node.js (>=0.12.0)
 
 Springboard assumes that you have setup your git account with SSH. If you have not [please do.](https://confluence.atlassian.com/display/BITBUCKET/Use+the+SSH+protocol+with+Bitbucket)  
 Springboard also assumes you have setup your username globally. Springboard will fail to commit changes if you have not setup a [username](https://help.github.com/articles/setting-your-username-in-git/) and email for the searchspring-mockups repo.  
+
 Get the latest springboard from the repo, then install node modules:
 
 ```shellsession
@@ -57,7 +58,7 @@ Modify ~/.bin/springboard to read:
 ```
 #!/bin/sh
 # code to run node with harmony flag (ES6 support)
-node --harmony ~/{{ path/to/ }} springboard/launch.js
+node --harmony ~/{{ path/to/ }} springboard/index.js
 ```
 
 Add a line to .bashrc:
@@ -76,19 +77,12 @@ Now you can use the command springboard in your terminal. How exciting!
 To get up to speed on this "node" thing and join the development.  
 [Ya gotta learn it...](./learn.md)
 
-##Short Term Goals:
+##Goals:
 * Easier and maintainable objects (website, module)
 * Modular modules (plug and play)
 * Theme based (templates)
 * Merge conflict prevention
-
-##To Do
-####No real order...
-* More documentation
-* Unit testing (yuno)!!!
-* Build out api/ui (new site, publish site, integration request(pull))
-* Add site details and screen captures
-* Implement simple module mode (use browserify)
+* Proxy for test integrations
 
 
 ##Long Term Ideas:
@@ -98,18 +92,12 @@ To get up to speed on this "node" thing and join the development.
 * Login and API Authentication (json web tokens)
 * Talk to SMC API (if one doesn't exist build it)
 * Get URL for feed data, provide front end for looking at data
-* Themes / Automockup / Previewer (create new api manipulator / modify ajaxcatalog)
 
-**Remove our middlemen where possible**
-* Create our own forms and store the data in a database (replaces formstack)
-* Store and retrieve passwords securely (replaces Teampass)
-* With a bit more work Kanban could be replaced as well
 
 ##Wish List
 ####Ordered by implementation... mostly...
-* Database (mongodb or couchdb)
+* Socket.io for realtime updating of UI
 * User class for login (or split project into client/server model)
+* Database (mongodb or couchdb) for saving state instead of json files
 * Online presence
 * Webhooks (github mostly)
-* Socket.io for realtime updating.
-* Build out client side with emberjs or angularjs or somesuch

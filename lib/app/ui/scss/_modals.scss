@@ -3,148 +3,148 @@
 // input modal (#input)
 
 #modals {
-  // modals
-  .modal {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.9);
-    z-index: 999999;
-  }
+	// modals
+	.modal {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: rgba(0, 0, 0, 0.9);
+		z-index: 999999;
+	}
 
-  // loading modal
-  #loading {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.9);
-    z-index: 999999;
-    -webkit-transition: all linear 0.5s;
-    transition: all linear 0.5s;
-    text-align: center;
-    opacity: .6;
-    &.ng-hide {
-      opacity: 0;
-    }
-    .wrap {
-      position: relative;
-      top: 0;
-      transform: translateY(-50%);
-      height: 120px;
-      width: 120px;
-      border-radius: 60px;
-      margin: 0 auto;
-      background-color: $bluedarkest;
-      border: 1px solid $bluebase;
-      box-shadow: 0px 0px 20px $orange;
-      .loadImage {
-        background: url('/images/loading.gif');
-        position: absolute;
-        left: 0;
-        width: 124px;
-        height: 128px;
-      }
-    }
-  }
+	// loading modal
+	#loading {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: rgba(0, 0, 0, 0.9);
+		z-index: 999999;
+		-webkit-transition: all linear 0.5s;
+		transition: all linear 0.5s;
+		text-align: center;
+		opacity: .6;
+		&.ng-hide {
+			opacity: 0;
+		}
+		.wrap {
+			position: relative;
+			top: 0;
+			transform: translateY(-50%);
+			height: 120px;
+			width: 120px;
+			border-radius: 60px;
+			margin: 0 auto;
+			background-color: $bluedarkest;
+			border: 1px solid $bluebase;
+			box-shadow: 0px 0px 20px $orange;
+			.loadImage {
+				background: url('/images/loading.gif');
+				position: absolute;
+				left: 0;
+				width: 124px;
+				height: 128px;
+			}
+		}
+	}
 
-  // input box used by sbc javascripts
-  .boxwrap {
-    width: 250px;
-    height: auto;
-    border: 1px solid $bluehighlight;
-    margin: 90px auto 0px;
-    padding: 0;
-    &.alert {
-      width: 350px;
-    }
-    &.input {
-      width: 350px;
-    }
-    .boxtop {
-      height: 22px;
-      overflow: hidden;
-      background-color: $bluedarkestest;
-      background-image: linear-gradient($bluefaded, $bluehighlight);
-      border-bottom: 1px solid $bluedark;
-      ul.boxbuttons {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        li {
-          display: inline-block;
-          margin: 4px;
-          a {
-            display: inline-block;
-            width: 15px;
-            height: 15px;
-            opacity: 0.5;
-            background-repeat: no-repeat;
-            &.close {
-              background-image: url('/images/icons/close_tiny.png');
-              background-size: 15px;
-              &:hover {
-                opacity: 1;
-                cursor: pointer;
-              }
-            }
-          }
-          &.move {
-            margin: 0;
-            flex-grow: 12;
-            height: 27px;
-            &:hover {
-              cursor: move;
-            }
-          }
-        }
-      }
-    }
-    .boxcontent {
-      text-align: center;
-      background-color: $bluedarkest;
-      padding: 10px;
-      color: $bluegrey;
-      .boxmessage {
-        display: table;
-        border-spacing: 20px;
-        width: 100%;
-        .messageicon {
-          display: table-cell;
-          vertical-align: middle;
-          width: 30px;
-          height: 30px;
-          &.alert {
-            background: url('/images/icons/alert.png') no-repeat center;
-            background-size: 30px;
-          }
-          &.commit {
-            background: url('/images/icons/commit.png') no-repeat center;
-            background-size: 30px;
-          }
-        }
-        .message {
-          display: table-cell;
-          vertical-align: middle;
-          text-align: left;
-        }
-      }
-      .inputs {
-        width: 90%;
-        margin: 0px auto 10px;
-        input {
-          width: 100%;
-        }
-      }
-      .buttons {
+	// input box used by sbc javascripts
+	.boxwrap {
+		width: 250px;
+		height: auto;
+		border: 1px solid $bluehighlight;
+		margin: 90px auto 0px;
+		padding: 0;
+		&.alert {
+			width: 350px;
+		}
+		&.input {
+			width: 350px;
+		}
+		.boxtop {
+			height: 22px;
+			overflow: hidden;
+			background-color: $bluedarkestest;
+			background-image: linear-gradient($bluefaded, $bluehighlight);
+			border-bottom: 1px solid $bluedark;
+			ul.boxbuttons {
+				display: flex;
+				align-items: center;
+				justify-content: flex-end;
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				li {
+					display: inline-block;
+					margin: 4px;
+					a {
+						display: inline-block;
+						width: 15px;
+						height: 15px;
+						opacity: 0.5;
+						background-repeat: no-repeat;
+						&.close {
+							background-image: url('/images/icons/close_tiny.png');
+							background-size: 15px;
+							&:hover {
+								opacity: 1;
+								cursor: pointer;
+							}
+						}
+					}
+					&.move {
+						margin: 0;
+						flex-grow: 12;
+						height: 27px;
+						&:hover {
+							cursor: move;
+						}
+					}
+				}
+			}
+		}
+		.boxcontent {
+			text-align: center;
+			background-color: $bluedarkest;
+			padding: 10px;
+			color: $bluegrey;
+			.boxmessage {
+				display: table;
+				border-spacing: 20px;
+				width: 100%;
+				.messageicon {
+					display: table-cell;
+					vertical-align: middle;
+					width: 30px;
+					height: 30px;
+					&.alert {
+						background: url('/images/icons/alert.png') no-repeat center;
+						background-size: 30px;
+					}
+					&.commit {
+						background: url('/images/icons/commit.png') no-repeat center;
+						background-size: 30px;
+					}
+				}
+				.message {
+					display: table-cell;
+					vertical-align: middle;
+					text-align: left;
+				}
+			}
+			.inputs {
+				width: 90%;
+				margin: 0px auto 10px;
+				input {
+					width: 100%;
+				}
+			}
+			.buttons {
 
-      }
-    }
-  }
+			}
+		}
+	}
 }
