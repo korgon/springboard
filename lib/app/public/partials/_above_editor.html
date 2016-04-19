@@ -111,7 +111,7 @@
 
 										<div class="vtabcontents" ng-switch="vm.session.tab['uigen'].vtab[ui.name].tab">
 											<div ng-switch-when="module_add">
-												<div class="vtabhead">Install {{ ui.name }} Modules</div>
+												<div class="vtabhead">Install {{ ui.type }} Modules</div>
 												<ul class="uimodules">
 													<li ng-repeat="module in vm.uis[ui.type].modules">
 														<span class="themename">{{ module.name }}</span>

@@ -28,7 +28,7 @@
         <a href="/sites/{{ site.name }}/{{ site.default_html }}" target="_blank"><img ng-src="{{ site.thumb }}"></a>
         <div class="controls">
           <a ng-click="vm.editSite(site.name)"><span class="sitebutton edit"></span></a>
-          <a href="/sites/{{ site.name }}/{{ site.default_html }}" target="_blank" ng-if="site.default_html"><span class="sitebutton open"></span></a>
+          <a href="/sites/{{ site.name }}/{{ site.default_html }}" target="_blank" ng-if="site.default_html && !site.proxy"><span class="sitebutton open"></span></a>
         </div>
         <div class="details">
           <span class="name">{{ site.name }}</span>
