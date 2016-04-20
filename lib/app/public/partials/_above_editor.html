@@ -4,7 +4,7 @@
 		<div class="subtitle" ng-click="showMenu = !showMenu">SPRIΠGBOΛRD</div>
 	</div>
 	<div class="mainmenu" ng-include src="'/partials/_above_menu.html'" ng-class="{ 'show': showMenu }" ng-init="showMenu = false"></div>
-	<input id="frameurl" name="url" autocomplete="off" spellcheck="false" ng-model="vm.session.url" ng-change="vm.saveEditorSession()">
+	<input id="frameurl" name="url" autocomplete="off" spellcheck="false" ng-model="vm.session.url" ng-change="vm.changeUrl()">
 	<div class="openurl" ng-click="vm.openUrl()"></div>
 	<div class="line"></div>
 	<div class="worksite"><a class="currentsite" ng-click="vm.session.showOptions = !vm.session.showOptions"><span id="currentsite">{{ vm.site.name }}</span></a>
@@ -177,7 +177,7 @@
 									<div id="addbutton" ng-click="vm.showAddInput()" ng-hide="vm.new_ui_show"><span class="add"></span></div>
 									<form id="adduiinput" name="UIform" novalidate class="visible" ng-if="vm.new_ui_show">
 										<label for="uiname_input">Name</label>
-										<input type="text" name="uiname" id="uiname_input" autocomplete="off" focus-on ng-model="vm.new_ui.name" required ng-pattern="/^\w{2,}$/i" ng-init="vm.new_ui.type = vm.uis[0].type">
+										<input type="text" name="uiname" id="uiname_input" autocomplete="off" focus-on ng-model="vm.new_ui.name" required ng-pattern="/^\w{2,}$/i" ng-init="vm.new_ui.type = 'v3'">
 
 										<label for="uitypeinput" ng-if="vm.uis.length > 1">Type</label>
 										<select id="uitypeinput" ng-if="vm.uis.length > 1" required ng-model="vm.new_ui.type" ng-options="ui.type as ui.type for ui in vm.uis | orderBy: 'toString()'">
