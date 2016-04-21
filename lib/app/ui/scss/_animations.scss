@@ -1,45 +1,64 @@
+// Spin clockwise
 .animate-spin-cw {
-		-webkit-animation: spincw 12s linear infinite;
-		-moz-animation: spincw 12s linear infinite;
-		animation: spincw 12s linear infinite;
+	-webkit-animation: spincw 12s linear infinite;
+	-moz-animation: spincw 12s linear infinite;
+	animation: spincw 12s linear infinite;
 }
-
-.animate-spin-ccw {
-		-webkit-animation: spinccw 12s linear infinite;
-		-moz-animation: spinccw 12s linear infinite;
-		animation: spinccw 12s linear infinite;
-}
-
 @-moz-keyframes spincw {
-		100% {
-				-moz-transform: rotate(360deg);
-		}
+	100% {
+		-moz-transform: rotate(360deg);
+	}
 }
 @-webkit-keyframes spincw {
-		100% {
-				-webkit-transform: rotate(360deg);
-		}
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
 }
 @keyframes spincw {
-		100% {
-				-webkit-transform: rotate(360deg);
-				transform: rotate(360deg);
-		}
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
 }
 
+// Spin counter clockwise
+.animate-spin-ccw {
+	-webkit-animation: spinccw 12s linear infinite;
+	-moz-animation: spinccw 12s linear infinite;
+	animation: spinccw 12s linear infinite;
+}
 @-moz-keyframes spinccw {
-		100% {
-				-moz-transform: rotate(-360deg);
-		}
+	100% {
+		-moz-transform: rotate(-360deg);
+	}
 }
 @-webkit-keyframes spinccw {
-		100% {
-				-webkit-transform: rotate(-360deg);
-		}
+	100% {
+		-webkit-transform: rotate(-360deg);
+	}
 }
 @keyframes spinccw {
-		100% {
-				-webkit-transform: rotate(-360deg);
-				transform: rotate(-360deg);
-		}
+	100% {
+		-webkit-transform: rotate(-360deg);
+		transform: rotate(-360deg);
+	}
+}
+
+// fade in
+.animate-fadein {
+	-webkit-animation: fadein 300ms;
+	-moz-animation: fadein 300ms;
+	animation: fadein 300ms;
+}
+@-moz-keyframes fadein {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+@-webkit-keyframes fadein {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+@keyframes fadein {
+	from { opacity: 0; }
+	to { opacity: 1; }
 }

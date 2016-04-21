@@ -7,8 +7,11 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"use tape or faucet in test directory...\" && exit 1"
   },
   "author": "SearchSpring",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "tape": "^4.5.1"
+  }
 }
