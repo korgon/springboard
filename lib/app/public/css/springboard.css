@@ -891,15 +891,7 @@ body #gallery {
       body #gallery .sites .sitebutton.add {
         background-image: url("/images/icons/add.png"); }
 
-#modals .modal {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.9);
-  z-index: 999999; }
-#modals #loading {
+#loading {
   position: fixed;
   top: 0;
   right: 0;
@@ -911,9 +903,9 @@ body #gallery {
   transition: all linear 0.5s;
   text-align: center;
   opacity: .6; }
-  #modals #loading.ng-hide {
+  #loading.ng-hide {
     opacity: 0; }
-  #modals #loading .wrap {
+  #loading .wrap {
     position: relative;
     top: 0;
     transform: translateY(-50%);
@@ -924,12 +916,21 @@ body #gallery {
     background-color: #001a2b;
     border: 1px solid #354e66;
     box-shadow: 0px 0px 20px #c87c0f; }
-    #modals #loading .wrap .loadImage {
+    #loading .wrap .loadImage {
       background: url("/images/loading.gif");
       position: absolute;
       left: 0;
       width: 124px;
       height: 128px; }
+
+#modals .modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 999999; }
 #modals .boxwrap {
   width: 250px;
   height: auto;

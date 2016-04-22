@@ -2,16 +2,22 @@
 
 <html ng-app="springboardApp">
 
-  <head>
-    <link href="/css/springboard.css" rel="stylesheet">
-    <title>Springboard</title>
-  </head>
+	<head>
+		<link href="/css/springboard.css" rel="stylesheet">
+		<title>Springboard</title>
+	</head>
 
-  <body>
-    <div id="main" ng-view></div>
+	<body ng-controller="MainCtrl">
+		<div id="main" ng-view></div>
 
-    <script src="/js/sbc.js"></script>
+		<script src="/js/sbc.js"></script>
 
-  </body>
+		<div id="loading" ng-show="loading.show">
+			<div class="wrap">
+				<span class="loadImage animate-spin-cw">
+			</div>
+		</div>
+
+	</body>
 
 </html>

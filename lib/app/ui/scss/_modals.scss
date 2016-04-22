@@ -2,6 +2,43 @@
 // loading modal (#loading)
 // input modal (#input)
 
+// loading modal
+#loading {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.9);
+	z-index: 999999;
+	-webkit-transition: all linear 0.5s;
+	transition: all linear 0.5s;
+	text-align: center;
+	opacity: .6;
+	&.ng-hide {
+		opacity: 0;
+	}
+	.wrap {
+		position: relative;
+		top: 0;
+		transform: translateY(-50%);
+		height: 120px;
+		width: 120px;
+		border-radius: 60px;
+		margin: 0 auto;
+		background-color: $bluedarkest;
+		border: 1px solid $bluebase;
+		box-shadow: 0px 0px 20px $orange;
+		.loadImage {
+			background: url('/images/loading.gif');
+			position: absolute;
+			left: 0;
+			width: 124px;
+			height: 128px;
+		}
+	}
+}
+
 #modals {
 	// modals
 	.modal {
@@ -12,43 +49,6 @@
 		left: 0;
 		background: rgba(0, 0, 0, 0.9);
 		z-index: 999999;
-	}
-
-	// loading modal
-	#loading {
-		position: fixed;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		background: rgba(0, 0, 0, 0.9);
-		z-index: 999999;
-		-webkit-transition: all linear 0.5s;
-		transition: all linear 0.5s;
-		text-align: center;
-		opacity: .6;
-		&.ng-hide {
-			opacity: 0;
-		}
-		.wrap {
-			position: relative;
-			top: 0;
-			transform: translateY(-50%);
-			height: 120px;
-			width: 120px;
-			border-radius: 60px;
-			margin: 0 auto;
-			background-color: $bluedarkest;
-			border: 1px solid $bluebase;
-			box-shadow: 0px 0px 20px $orange;
-			.loadImage {
-				background: url('/images/loading.gif');
-				position: absolute;
-				left: 0;
-				width: 124px;
-				height: 128px;
-			}
-		}
 	}
 
 	// input box used by sbc javascripts
