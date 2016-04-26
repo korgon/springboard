@@ -2,7 +2,24 @@
 
 <div id="content">
   <div id="settings">
+    <div class="box">
+      <div class="user-settings">
+        <form id="userinput" name="userForm" novalidate>
+          <label for="user_name">Name</label>
+          <input type="text" name="name" id="user_name" autocomplete="off" maxlength="30" focus-on ng-model="vm.user.name" required ng-pattern="/^[\ |\w]{3,}$/">
+          <label for="user_email">Email</label>
+          <input type="text" name="email" id="user_email" autocomplete="off" maxlength="30" ng-model="vm.user.email" required ng-pattern="/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/">
 
+          <label for="s3_id">s3 id</label>
+          <input type="text" name="s3id" id="s3_id" autocomplete="off" maxlength="20" focus-on ng-model="vm.user.s3.key_id" required ng-pattern="/^\w{20}$/">
+          <label for="s3_key">s3 secret key</label>
+          <input type="password" name="s3key" id="s3_key" autocomplete="off" maxlength="40" focus-on ng-model="vm.user.s3.key_secret" required ng-pattern="/^[\W|\w]{40}$/">
+          <div class="buttons">
+            <input class="button new_add" type="submit" value="Save" ng-click="vm.saveUserSettings()" ng-disabled="userForm.$invalid">
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
 
