@@ -8,8 +8,8 @@ searchspring-sites/
 # ignore the user configuration options
 lib/config/user.json
 
-# ignore the jshint config
-.jshintrc
+# ignore the dev sass cache
+lib/app/ui/scss/.sass-cache
 
 # ignore annoying files
 .DS_Store
