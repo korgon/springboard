@@ -698,6 +698,12 @@ body #above .heading .worksite {
               border-top: 0;
               width: 100%;
               float: none; }
+            body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui span.brackets {
+              vertical-align: bottom;
+              line-height: 33px;
+              font-size: 14px;
+              font-weight: bold;
+              display: none; }
             body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #addbutton {
               height: 33px; }
               body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #addbutton .add {
@@ -708,13 +714,21 @@ body #above .heading .worksite {
                 background-position: center center;
                 border-radius: 50px;
                 transition: all 222ms ease;
-                background-image: url("/images/icons/add.png");
+                background-image: url("/images/icons/add_small.png");
                 background-size: 25px; }
               body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #addbutton:hover {
                 cursor: pointer; }
               body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #addbutton:hover > .add {
                 -webkit-filter: drop-shadow(0px 0px 3px #688BA3);
                 filter: drop-shadow(0px 0px 3px #688BA3); }
+              body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #addbutton.active span, body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #addbutton:hover span {
+                transition: padding 222ms ease;
+                text-shadow: #304B66 0px 0px 12px;
+                padding: 0 5px; }
+                body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #addbutton.active span.brackets, body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #addbutton:hover span.brackets {
+                  display: inline;
+                  text-shadow: none;
+                  color: #946018; }
             body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui label {
               display: inline-block;
               width: 40px; }

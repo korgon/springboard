@@ -402,6 +402,13 @@ body {
 										width: 100%;
 										float: none;
 									}
+									span.brackets {
+										vertical-align: bottom;
+										line-height: 33px;
+										font-size: 14px;
+										font-weight: bold;
+										display: none;
+									}
 									#addbutton {
 										height: 33px;
 										.add {
@@ -412,7 +419,7 @@ body {
 											background-position: center center;
 											border-radius: 50px;
 											transition: all 222ms ease;
-											background-image: url('/images/icons/add.png');
+											background-image: url('/images/icons/add_small.png');
 											background-size: 25px;
 										}
 										&:hover {
@@ -421,6 +428,18 @@ body {
 										&:hover > .add {
 											-webkit-filter: drop-shadow(0px 0px 3px $bluelight);
 											filter: drop-shadow(0px 0px 3px $bluelight);
+										}
+										&.active, &:hover {
+											span {
+												transition: padding 222ms ease;
+												text-shadow: $bluehighlight 0px 0px 12px;
+												padding: 0 5px;
+												&.brackets {
+													display: inline;
+													text-shadow: none;
+													color: $orangefaded;
+												}
+											}
 										}
 									}
 									label {

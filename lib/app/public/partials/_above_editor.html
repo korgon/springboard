@@ -173,8 +173,12 @@
 								</div>
 							</li>
 							<li>
-								<div class="addui" ng-class="{ 'solo': vm.isEmpty(vm.site.catalogs) }" ng-if="vm.isEmpty(vm.site.catalogs) || !vm.session.tab['uigen'].current" ng-init="vm.new_ui_show = (vm.isEmpty(vm.site.catalogs) ? true : false)">
-									<div id="addbutton" ng-click="vm.showAddInput()" ng-hide="vm.new_ui_show"><span class="add"></span></div>
+								<div class="addui solo" ng-if="vm.isEmpty(vm.site.catalogs) || !(vm.session.tab['uigen'].current && vm.site.catalogs[vm.session.tab['uigen'].current])" ng-init="vm.new_ui_show = (vm.isEmpty(vm.site.catalogs) ? true : false)">
+									<div id="addbutton" ng-click="vm.showAddInput()" ng-hide="vm.new_ui_show">
+										<span class="brackets">[</span>
+										<span class="add"></span>
+										<span class="brackets">]</span>
+									</div>
 									<form id="adduiinput" name="UIform" novalidate class="visible" ng-if="vm.new_ui_show">
 										<label for="uiname_input">Name</label>
 										<input type="text" name="uiname" id="uiname_input" autocomplete="off" focus-on ng-model="vm.new_ui.name" required ng-pattern="/^\w{2,}$/i" ng-init="vm.new_ui.type = 'v3'">
@@ -189,7 +193,7 @@
 										</div>
 									</form>
 								</div>
-								<div class="spacer" ng-if="vm.isEmpty(vm.site.catalogs) || (vm.session.tab['uigen'].current && vm.site.catalogs[vm.session.tab['uigen'].current])"></div>
+								<div class="spacer"></div>
 							</li>
 						</ul>
 					</div>
@@ -201,7 +205,7 @@
 				<li><a ng-click="vm.commitSite()"><span class="icon commit"></span></a></li>
 				<li><a ng-click="vm.pushSite()"><span class="icon push"></span></a></li>
 				<li><a ng-click="vm.publishMockup()"><span class="icon upload"></span></a></li>
-				<li><a ng-click="vm.reloadSite(); vm.prompty();"><span class="icon refresh"></span></a></li>
+				<li><a ng-click="vm.reloadSite()"><span class="icon refresh"></span></a></li>
 			</ul>
 
 		</div>
