@@ -141,7 +141,7 @@ input[type="text"], select {
   .icon.module {
     background-image: url("/images/icons/module.png"); }
   .icon.module-add {
-    background-image: url("/images/icons/add.png"); }
+    background-image: url("/images/icons/module_add.png"); }
   .icon.pull {
     background-image: url("/images/icons/pull_request.png"); }
   .icon.push {
