@@ -77,6 +77,18 @@ body {
     width: 20px;
     height: 12px; }
 
+.toggle {
+  display: inline-block;
+  width: 33px;
+  height: 15px;
+  background-image: url("/images/icons/toggle_on.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  vertical-align: middle;
+  cursor: pointer; }
+  .toggle.off {
+    background-image: url("/images/icons/toggle_off.png"); }
+
 label {
   margin-bottom: 6px;
   display: block;
@@ -114,6 +126,24 @@ input[type="text"], select {
   background-size: 22px;
   background-position: center center;
   vertical-align: middle; }
+  .icon.small {
+    background-size: 14px;
+    width: 14px;
+    height: 14px; }
+  .icon.removed {
+    opacity: .5; }
+    .icon.removed:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      background-image: url("/images/icons/disabled.png");
+      width: 33px;
+      background-size: 12px;
+      background-repeat: no-repeat;
+      background-position: 20px 18px;
+      height: 33px; }
+  .icon.disabled {
+    opacity: 0.2; }
   .icon.active {
     background-image: url("/images/icons/active.png"); }
   .icon.add {
@@ -139,9 +169,23 @@ input[type="text"], select {
   .icon.install {
     background-image: url("/images/icons/install.png"); }
   .icon.module {
-    background-image: url("/images/icons/module.png"); }
+    background-image: url("/images/icons/modules/module.png"); }
   .icon.module-add {
-    background-image: url("/images/icons/module_add.png"); }
+    background-image: url("/images/icons/modules/module_add.png"); }
+  .icon.module-autocomplete {
+    background-image: url("/images/icons/modules/module_autocomplete.png"); }
+  .icon.module-image {
+    background-image: url("/images/icons/modules/module_image.png"); }
+  .icon.module-infinite {
+    background-image: url("/images/icons/modules/module_infinite.png"); }
+  .icon.module-left {
+    background-image: url("/images/icons/modules/module_left.png"); }
+  .icon.module-right {
+    background-image: url("/images/icons/modules/module_right.png"); }
+  .icon.module-slideout {
+    background-image: url("/images/icons/modules/module_slideout.png"); }
+  .icon.module-top {
+    background-image: url("/images/icons/modules/module_top.png"); }
   .icon.pull {
     background-image: url("/images/icons/pull_request.png"); }
   .icon.push {
@@ -590,6 +634,45 @@ body #above .heading .worksite {
         vertical-align: top;
         width: 100%;
         padding: 10px; }
+        body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .modulehead {
+          color: #946018;
+          font-size: 12px;
+          text-transform: uppercase;
+          font-weight: bold;
+          padding: 6px; }
+          body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .modulehead .toggle {
+            float: right; }
+        body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .modulesubhead {
+          color: #354957;
+          font-size: 10px;
+          text-transform: lowercase;
+          font-weight: bold;
+          padding: 0 6px; }
+        body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .modulecontents {
+          position: relative;
+          z-index: 2; }
+          body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .modulecontents.disabled {
+            opacity: .2; }
+          body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .modulecontents .moduleoverlay {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            z-index: 3; }
+          body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .modulecontents .moduleblock {
+            margin-bottom: 5px; }
+            body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .modulecontents .moduleblock .moduleblockhead {
+              font-weight: bold;
+              font-size: 10px;
+              padding: 6px; }
+            body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .modulecontents .moduleblock .modulethemes .themename {
+              color: #7F6E14;
+              font-size: 10px;
+              text-transform: uppercase;
+              display: inline-block;
+              width: 100px;
+              overflow: hidden;
+              vertical-align: middle;
+              text-align: center; }
         body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .vtabhead {
           display: inline-block;
           font-weight: bold;
@@ -626,25 +709,14 @@ body #above .heading .worksite {
             height: 25px; }
             body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon:hover {
               cursor: pointer; }
-            body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon.disabled {
-              opacity: 0.2; }
-              body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon.disabled:hover {
-                cursor: default; }
+            body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon.disabled:hover {
+              cursor: default; }
             body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon.off {
               opacity: 0.2; }
             body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon.on:hover {
               cursor: default; }
             body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon.hidden {
               visibility: hidden; }
-        body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .uithemes .themename {
-          color: #7F6E14;
-          font-size: 10px;
-          text-transform: uppercase;
-          display: inline-block;
-          width: 100px;
-          overflow: hidden;
-          vertical-align: middle;
-          text-align: center; }
     body #above .heading .worksite .optionselect .uiscroller {
       clear: both;
       float: right;

@@ -263,6 +263,56 @@ body {
 							vertical-align: top;
 							width: 100%;
 							padding: 10px;
+							.modulehead {
+								color: $orangefaded;
+								font-size: 12px;
+								text-transform: uppercase;
+								font-weight: bold;
+								padding: 6px;
+								.toggle {
+									float: right;
+								}
+							}
+							.modulesubhead {
+								color: $bluefaded;
+								font-size: 10px;
+								text-transform: lowercase;
+								font-weight: bold;
+								padding: 0 6px;
+							}
+							.modulecontents {
+								position: relative;
+								z-index: 2;
+								&.disabled {
+									opacity: .2;
+								}
+								.moduleoverlay {
+									position: absolute;
+									height: 100%;
+									width: 100%;
+									z-index: 3;
+								}
+								.moduleblock {
+									margin-bottom: 5px;
+									.moduleblockhead {
+										font-weight: bold;
+										font-size: 10px;
+										padding: 6px;
+									}
+									.modulethemes {
+										.themename {
+											color: $orangeyellow;
+											font-size: 10px;
+											text-transform: uppercase;
+											display: inline-block;
+											width: 100px;
+											overflow: hidden;
+											vertical-align: middle;
+											text-align: center;
+										}
+									}
+								}
+							}
 							.vtabhead {
 								display: inline-block;
 								font-weight: bold;
@@ -305,7 +355,6 @@ body {
 										cursor: pointer;
 									}
 									&.disabled {
-										opacity: 0.2;
 										&:hover {
 											cursor: default;
 										}
@@ -321,18 +370,6 @@ body {
 									&.hidden {
 										visibility: hidden;
 									}
-								}
-							}
-							.uithemes {
-								.themename {
-									color: $orangeyellow;
-									font-size: 10px;
-									text-transform: uppercase;
-									display: inline-block;
-									width: 100px;
-									overflow: hidden;
-									vertical-align: middle;
-									text-align: center;
 								}
 							}
 						}

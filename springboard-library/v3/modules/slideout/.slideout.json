@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"description": "slideout facet container for responsive and mobile sites",
 	"multiples": false,
+	"icon": "slideout",
 	"enabled": true,
 	"theme": null
 }

@@ -46,6 +46,20 @@
 	}
 }
 
+.toggle {
+	display: inline-block;
+	width: 33px;
+	height: 15px;
+	background-image: url('/images/icons/toggle_on.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	vertical-align: middle;
+	cursor: pointer;
+	&.off {
+		background-image: url('/images/icons/toggle_off.png');
+	}
+}
+
 label {
 	margin-bottom: 6px;
 	display: block;
@@ -88,6 +102,33 @@ input[type="text"], select {
 	background-size: 22px;
 	background-position: center center;
 	vertical-align: middle;
+	// icon sizes
+	&.small {
+		background-size: 14px;
+		width: 14px;
+		height: 14px;
+	}
+
+	// icon styles
+	&.removed {
+		opacity: .5;
+		&:before {
+			content: '';
+	    position: absolute;
+	    left: 0;
+	    background-image: url("/images/icons/disabled.png");
+	    width: 33px;
+	    background-size: 12px;
+	    background-repeat: no-repeat;
+	    background-position: 20px 18px;
+	    height: 33px;
+		}
+	}
+	&.disabled {
+		opacity: 0.2;
+	}
+
+	// icons
 	&.active {
 		background-image: url('/images/icons/active.png');
 	}
@@ -125,10 +166,31 @@ input[type="text"], select {
 		background-image: url('/images/icons/install.png');
 	}
 	&.module {
-		background-image: url('/images/icons/module.png');
+		background-image: url('/images/icons/modules/module.png');
 	}
 	&.module-add {
-		background-image: url('/images/icons/module_add.png');
+		background-image: url('/images/icons/modules/module_add.png');
+	}
+	&.module-autocomplete {
+		background-image: url('/images/icons/modules/module_autocomplete.png');
+	}
+	&.module-image {
+		background-image: url('/images/icons/modules/module_image.png');
+	}
+	&.module-infinite {
+		background-image: url('/images/icons/modules/module_infinite.png');
+	}
+	&.module-left {
+		background-image: url('/images/icons/modules/module_left.png');
+	}
+	&.module-right {
+		background-image: url('/images/icons/modules/module_right.png');
+	}
+	&.module-slideout {
+		background-image: url('/images/icons/modules/module_slideout.png');
+	}
+	&.module-top {
+		background-image: url('/images/icons/modules/module_top.png');
 	}
 	&.pull {
 		background-image: url('/images/icons/pull_request.png');
