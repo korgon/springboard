@@ -663,7 +663,9 @@ body #above .heading .worksite {
             body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .modulecontents .moduleblock .moduleblockhead {
               font-weight: bold;
               font-size: 10px;
-              padding: 6px; }
+              padding: 6px;
+              text-transform: uppercase;
+              border-bottom: 1px solid #052238; }
             body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .modulecontents .moduleblock .modulethemes .themename {
               color: #7F6E14;
               font-size: 10px;
@@ -701,11 +703,10 @@ body #above .heading .worksite {
           list-style: none;
           min-height: 45px;
           padding: 10px;
-          border: 1px solid #052238;
           margin: 0; }
           body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon {
-            background-size: 12px;
-            width: 30px;
+            background-size: 11px;
+            width: 20px;
             height: 25px; }
             body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon:hover {
               cursor: pointer; }

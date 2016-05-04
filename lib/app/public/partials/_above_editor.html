@@ -153,30 +153,19 @@
 														<div class="moduleoverlay" ng-hide="module.enabled"></div>
 
 														<div class="moduleblock">
-															<div class="moduleblockhead"></span><span class="icon small themes"></span><span> Themes</span></div>
+															<div class="moduleblockhead">Themes</div>
 
 															<ul class="modulethemes">
 																<li ng-repeat="theme in module.themes">
 																	<span class="themename">{{ theme.name }}</span>
+																	<span title="{{ vm.site.catalogs[ui.name].modules[module.name].theme == theme.name ? 'active' : 'inactive' }}" class="icon active" ng-class="{ 'off': vm.site.catalogs[ui.name].modules[module.name].theme != theme.name, 'on': vm.site.catalogs[ui.name].modules[module.name].theme == theme.name }" ng-click="vm.selectModuleTheme({ catalog: ui.name, module: module.name, theme: theme.name })"></span>
 																	<span title="custom" class="icon custom disabled" ng-if="!vm.uis[ui.type].modules[module.type.split('/')[1]].themes[theme.name]"></span>
-																	<span title="installed" class="icon install disabled" ng-if="vm.site.catalogs[ui.name].modules[module.name].themes[theme.name]"></span>
-																	<span title="{{ vm.site.catalogs[ui.name].modules[module.name].theme == theme.name ? 'active' : 'inactive' }}" class="icon active" ng-class="{ 'off': vm.site.catalogs[ui.name].modules[module.name].theme != theme.name, 'on': vm.site.catalogs[ui.name].modules[module.name].theme == theme.name }" ng-click=""></span>
 																</li>
 																<li ng-repeat="theme in vm.uis[ui.type].modules[module.type.split('/')[1]].themes" ng-if="!vm.site.catalogs[ui.name].modules[module.name].themes[theme.name]">
 																	<span class="themename">{{ theme.name }}</span>
-																	<span title="{{ vm.site.catalogs[ui.name].modules[module.name].themes[theme.name] ? 'installed' : 'install' }}" class="icon install" ng-class="{ 'disabled': vm.site.catalogs[ui.name].modules[module.name].themes[theme.name] }" ng-click=""></span>
-																	<span title="{{ vm.site.catalogs[ui.name].modules[module.name].theme == theme.name ? 'active' : 'inactive' }}" class="icon active" ng-class="{ 'off': vm.site.catalogs[ui.name].modules[module.name].theme != theme.name, 'on': vm.site.catalogs[ui.name].modules[module.name].theme == theme.name, 'hidden': !vm.site.catalogs[ui.name].modules[module.name].themes[theme.name] }"></span>
+																	<span title="{{ vm.site.catalogs[ui.name].modules[module.name].themes[theme.name] ? 'installed' : 'install' }}" class="icon install" ng-click="vm.installModuleTheme({ catalog: ui.name, module: module.name, theme: theme.name })"></span>
 																</li>
 															</ul>
-														</div>
-
-														<div class="moduleblock">
-															<div class="moduleblockhead">Options</div>
-
-															<ul class="modulesoptions">
-
-															</ul>
-															<div class="buttons"><button class="button"><span class="icon undo"></span>Reset</button><button class="button"><span class="icon save"></span>Save</button></div>
 														</div>
 
 													</div>

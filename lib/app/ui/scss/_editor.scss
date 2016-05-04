@@ -298,6 +298,8 @@ body {
 										font-weight: bold;
 										font-size: 10px;
 										padding: 6px;
+										text-transform: uppercase;
+										border-bottom: 1px solid $blueaccent;
 									}
 									.modulethemes {
 										.themename {
@@ -345,11 +347,10 @@ body {
 								list-style: none;
 								min-height: 45px;
 								padding: 10px;
-								border: 1px solid #052238;
 								margin: 0;
 								.icon {
-									background-size: 12px;
-									width: 30px;
+									background-size: 11px;
+									width: 20px;
 									height: 25px;
 									&:hover {
 										cursor: pointer;
