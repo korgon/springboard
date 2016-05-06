@@ -111,7 +111,6 @@ input[type="text"], select {
 
 	// icon styles
 	&.removed {
-		opacity: .5;
 		&:before {
 			content: '';
 	    position: absolute;
@@ -120,7 +119,7 @@ input[type="text"], select {
 	    width: 33px;
 	    background-size: 12px;
 	    background-repeat: no-repeat;
-	    background-position: 20px 18px;
+	    background-position: 9px 18px;
 	    height: 33px;
 		}
 	}
@@ -134,9 +133,6 @@ input[type="text"], select {
 	}
 	&.add {
 		background-image: url('/images/icons/add.png');
-	}
-	&.colors {
-		background-image: url('/images/icons/palette.png');
 	}
 	&.commit {
 		background-image: url('/images/icons/commit.png');
@@ -209,6 +205,9 @@ input[type="text"], select {
 	}
 	&.settings {
 		background-image: url('/images/icons/settings.png');
+	}
+	&.styles {
+		background-image: url('/images/icons/palette.png');
 	}
 	&.tags {
 		background-image: url('/images/icons/tag.png');

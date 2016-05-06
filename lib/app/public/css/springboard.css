@@ -130,26 +130,22 @@ input[type="text"], select {
     background-size: 14px;
     width: 14px;
     height: 14px; }
-  .icon.removed {
-    opacity: .5; }
-    .icon.removed:before {
-      content: '';
-      position: absolute;
-      left: 0;
-      background-image: url("/images/icons/disabled.png");
-      width: 33px;
-      background-size: 12px;
-      background-repeat: no-repeat;
-      background-position: 20px 18px;
-      height: 33px; }
+  .icon.removed:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    background-image: url("/images/icons/disabled.png");
+    width: 33px;
+    background-size: 12px;
+    background-repeat: no-repeat;
+    background-position: 9px 18px;
+    height: 33px; }
   .icon.disabled {
     opacity: 0.2; }
   .icon.active {
     background-image: url("/images/icons/active.png"); }
   .icon.add {
     background-image: url("/images/icons/add.png"); }
-  .icon.colors {
-    background-image: url("/images/icons/palette.png"); }
   .icon.commit {
     background-image: url("/images/icons/commit.png"); }
   .icon.config {
@@ -198,6 +194,8 @@ input[type="text"], select {
     background-image: url("/images/icons/save.png"); }
   .icon.settings {
     background-image: url("/images/icons/settings.png"); }
+  .icon.styles {
+    background-image: url("/images/icons/palette.png"); }
   .icon.tags {
     background-image: url("/images/icons/tag.png"); }
   .icon.themes {
@@ -462,7 +460,7 @@ body #above .heading .worksite {
       cursor: pointer; }
     body #above .heading .worksite .currentsite:hover + .optionselect {
       max-height: 1200px; }
-  body #above .heading .worksite .optionselect {
+  body #above .heading .worksite .editor-container {
     position: absolute;
     right: 0;
     width: 290px;
@@ -471,20 +469,20 @@ body #above .heading .worksite {
     margin: 1px 0 0;
     transition: max-height 144ms ease, max-height 400ms ease-out;
     z-index: 7; }
-    body #above .heading .worksite .optionselect:hover {
+    body #above .heading .worksite .editor-container:hover {
       max-height: 1200px; }
-    body #above .heading .worksite .optionselect.show {
+    body #above .heading .worksite .editor-container.show {
       max-height: 1200px; }
-    body #above .heading .worksite .optionselect .spacer {
+    body #above .heading .worksite .editor-container .spacer {
       background-color: #00121E;
       border-left: 1px solid #2B343B;
       width: 244px;
       height: 5px;
       clear: right;
       float: right; }
-      body #above .heading .worksite .optionselect .spacer.large {
+      body #above .heading .worksite .editor-container .spacer.large {
         height: 20px; }
-    body #above .heading .worksite .optionselect .gitbuttons {
+    body #above .heading .worksite .editor-container .git-buttons {
       display: flex;
       width: 251px;
       flex-flow: row nowrap;
@@ -496,18 +494,18 @@ body #above .heading .worksite {
       border: 1px solid #304B66;
       border-right: 0;
       background-color: #001A2B; }
-      body #above .heading .worksite .optionselect .gitbuttons li {
+      body #above .heading .worksite .editor-container .git-buttons li {
         display: inline-block;
         flex-grow: 1;
         text-align: center; }
-        body #above .heading .worksite .optionselect .gitbuttons li a {
+        body #above .heading .worksite .editor-container .git-buttons li a {
           display: inline-block;
           width: 100%;
           opacity: 0.5; }
-          body #above .heading .worksite .optionselect .gitbuttons li a:hover {
+          body #above .heading .worksite .editor-container .git-buttons li a:hover {
             cursor: pointer;
             opacity: 1; }
-    body #above .heading .worksite .optionselect .tabcontrol {
+    body #above .heading .worksite .editor-container .tab-control {
       display: flex;
       width: 244px;
       flex-flow: row nowrap;
@@ -520,30 +518,30 @@ body #above .heading .worksite {
       background-color: #00121E;
       border-left: 1px solid #2B343B;
       position: relative; }
-      body #above .heading .worksite .optionselect .tabcontrol li {
+      body #above .heading .worksite .editor-container .tab-control li {
         display: inline-block;
         flex-grow: 1;
         text-align: center;
         height: 33px;
         margin: 0px 6px 0px; }
-        body #above .heading .worksite .optionselect .tabcontrol li a {
+        body #above .heading .worksite .editor-container .tab-control li a {
           display: inline-block;
           width: 100%;
           height: 33px;
           opacity: 0.5;
           border: 1px solid transparent;
           border-bottom: 0; }
-          body #above .heading .worksite .optionselect .tabcontrol li a.active {
+          body #above .heading .worksite .editor-container .tab-control li a.active {
             background-color: #001A2B;
             border: 1px solid #304B66;
             border-bottom: 0;
             opacity: 1; }
-          body #above .heading .worksite .optionselect .tabcontrol li a:hover {
+          body #above .heading .worksite .editor-container .tab-control li a:hover {
             cursor: pointer;
             opacity: 1; }
-          body #above .heading .worksite .optionselect .tabcontrol li a .icon {
+          body #above .heading .worksite .editor-container .tab-control li a .icon {
             width: 100%; }
-    body #above .heading .worksite .optionselect .tabwrap {
+    body #above .heading .worksite .editor-container .tab-wrap {
       width: 251px;
       height: auto;
       clear: both;
@@ -552,7 +550,7 @@ body #above .heading .worksite {
       border-right: 0;
       background-color: #001A2B;
       transition: height 144ms ease, height 400ms ease-out; }
-      body #above .heading .worksite .optionselect .tabwrap .header {
+      body #above .heading .worksite .editor-container .tab-wrap .header {
         height: 33px;
         padding: 0 12px;
         font-size: 10px;
@@ -561,15 +559,15 @@ body #above .heading .worksite {
         text-align: center;
         color: #354957;
         position: relative; }
-        body #above .heading .worksite .optionselect .tabwrap .header.ui:before {
+        body #above .heading .worksite .editor-container .tab-wrap .header.ui:before {
           left: 14px;
           background: url("/images/icons/uis.png") no-repeat 14px 10px;
           background-size: 46px; }
-        body #above .heading .worksite .optionselect .tabwrap .header.settings:before {
+        body #above .heading .worksite .editor-container .tab-wrap .header.settings:before {
           right: 5px;
           background: url("/images/icons/gears_color.png") no-repeat 40px 17px;
           background-size: 33px; }
-        body #above .heading .worksite .optionselect .tabwrap .header:before {
+        body #above .heading .worksite .editor-container .tab-wrap .header:before {
           content: ' ';
           position: absolute;
           bottom: 0;
@@ -577,12 +575,12 @@ body #above .heading .worksite {
           height: 66px;
           opacity: .7;
           border: 0; }
-        body #above .heading .worksite .optionselect .tabwrap .header span {
+        body #above .heading .worksite .editor-container .tab-wrap .header span {
           line-height: 33px; }
-      body #above .heading .worksite .optionselect .tabwrap .tabcontent {
+      body #above .heading .worksite .editor-container .tab-wrap .tab-content {
         padding: 5px;
         width: auto; }
-    body #above .heading .worksite .optionselect .vtabwrap {
+    body #above .heading .worksite .editor-container .vtab-wrap {
       display: table;
       clear: both;
       width: 251px;
@@ -590,12 +588,12 @@ body #above .heading .worksite {
       background-color: #001A2B;
       border-left: 1px solid #304B66;
       border-bottom: 1px solid #304B66; }
-      body #above .heading .worksite .optionselect .vtabwrap .vtabcontrolwrap {
+      body #above .heading .worksite .editor-container .vtab-wrap .vtab-control-wrap {
         display: table-cell;
         padding: 4px 0;
         background-color: #00121E;
         border-right: 1px solid #304B66; }
-        body #above .heading .worksite .optionselect .vtabwrap .vtabcontrolwrap .vtabcontrol {
+        body #above .heading .worksite .editor-container .vtab-wrap .vtab-control-wrap .vtab-control {
           display: flex;
           float: left;
           flex-flow: column wrap;
@@ -606,88 +604,119 @@ body #above .heading .worksite {
           padding: 0;
           background-color: #00121E;
           border-left: 1px solid #00121E; }
-          body #above .heading .worksite .optionselect .vtabwrap .vtabcontrolwrap .vtabcontrol li {
+          body #above .heading .worksite .editor-container .vtab-wrap .vtab-control-wrap .vtab-control li {
             flex: 1 1 auto;
             order: 1;
             text-align: center;
             width: 34px;
             margin: 0; }
-            body #above .heading .worksite .optionselect .vtabwrap .vtabcontrolwrap .vtabcontrol li a {
+            body #above .heading .worksite .editor-container .vtab-wrap .vtab-control-wrap .vtab-control li a {
               display: inline-block;
               width: 100%;
               height: 33px;
               opacity: 0.5;
               border: 1px solid transparent;
               border-right: 0; }
-              body #above .heading .worksite .optionselect .vtabwrap .vtabcontrolwrap .vtabcontrol li a:hover {
+              body #above .heading .worksite .editor-container .vtab-wrap .vtab-control-wrap .vtab-control li a:hover {
                 cursor: pointer;
                 opacity: 1; }
-              body #above .heading .worksite .optionselect .vtabwrap .vtabcontrolwrap .vtabcontrol li a .class {
+              body #above .heading .worksite .editor-container .vtab-wrap .vtab-control-wrap .vtab-control li a .class {
                 width: 100%; }
-            body #above .heading .worksite .optionselect .vtabwrap .vtabcontrolwrap .vtabcontrol li.active a {
+            body #above .heading .worksite .editor-container .vtab-wrap .vtab-control-wrap .vtab-control li.active a {
               background-color: #001A2B;
               border: 1px solid #304B66;
               border-right: 0;
               opacity: 1; }
-      body #above .heading .worksite .optionselect .vtabwrap .vtabcontents {
+      body #above .heading .worksite .editor-container .vtab-wrap .vtab {
         display: table-cell;
         vertical-align: top;
         width: 100%;
         padding: 10px; }
-        body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .modulehead {
+        body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-head {
           color: #946018;
           font-size: 12px;
           text-transform: uppercase;
           font-weight: bold;
           padding: 6px; }
-          body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .modulehead .toggle {
+          body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-head .toggle {
             float: right; }
-        body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .modulesubhead {
+        body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-subhead {
           color: #354957;
           font-size: 10px;
           text-transform: lowercase;
           font-weight: bold;
-          padding: 0 6px; }
-        body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .modulecontents {
+          padding: 3px 6px; }
+        body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-contents {
           position: relative;
           z-index: 2; }
-          body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .modulecontents.disabled {
+          body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-contents.disabled {
             opacity: .2; }
-          body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .modulecontents .moduleoverlay {
+          body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-contents .vtab-overlay {
             position: absolute;
             height: 100%;
             width: 100%;
             z-index: 3; }
-          body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .modulecontents .moduleblock {
-            margin-bottom: 5px; }
-            body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .modulecontents .moduleblock .moduleblockhead {
-              font-weight: bold;
-              font-size: 10px;
-              padding: 6px;
-              text-transform: uppercase;
-              border-bottom: 1px solid #052238; }
-            body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .modulecontents .moduleblock .modulethemes .themename {
+        body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block {
+          margin-bottom: 5px; }
+          body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .vtab-blockhead {
+            font-weight: bold;
+            font-size: 10px;
+            padding: 6px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #052238; }
+          body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .module-themes-container {
+            padding: 6px 0; }
+            body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .module-themes-container .theme-name {
               color: #7F6E14;
               font-size: 10px;
               text-transform: uppercase;
               display: inline-block;
-              width: 100px;
+              width: 111px;
               overflow: hidden;
               vertical-align: middle;
               text-align: center; }
-        body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .vtabhead {
-          display: inline-block;
-          font-weight: bold;
-          color: #718599;
-          text-transform: capitalize;
-          font-size: 12px;
-          text-align: left;
-          background-color: #052238;
-          border-radius: 2px 2px 0 0;
-          padding: 6px; }
-        body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .buttons {
+          body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-container {
+            margin-bottom: 10px; }
+          body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-description {
+            color: #354957;
+            font-size: 10px;
+            text-transform: lowercase;
+            font-weight: bold;
+            padding: 3px 6px;
+            width: 150px; }
+          body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-input {
+            width: 100%;
+            box-sizing: border-box;
+            border: 0;
+            background-color: #001A2B;
+            border: 1px solid #001A2B;
+            color: #946018;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer; }
+            body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-input:focus {
+              background-color: #00121E;
+              cursor: text; }
+            body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-input::-webkit-input-placeholder {
+              color: #7F6E14;
+              font-weight: normal;
+              font-style: italic; }
+          body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-color {
+            position: absolute;
+            right: 0;
+            top: 6px;
+            width: 33px;
+            height: 33px;
+            border-radius: 33px; }
+            body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-color.invalid {
+              background-image: url("/images/icons/warning.png");
+              background-size: 33px;
+              background-color: #00121E; }
+          body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .toggle {
+            float: right; }
+        body #above .heading .worksite .editor-container .vtab-wrap .vtab .buttons {
           text-align: right; }
-          body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .buttons .button {
+          body #above .heading .worksite .editor-container .vtab-wrap .vtab .buttons .button {
             min-width: initial;
             padding: 6px;
             margin-left: 1px;
@@ -695,42 +724,42 @@ body #above .heading .worksite {
             background-color: #052238;
             border-radius: 0 0 2px 2px;
             color: #718599; }
-            body #above .heading .worksite .optionselect .vtabwrap .vtabcontents .buttons .button:hover:not(:disabled) {
+            body #above .heading .worksite .editor-container .vtab-wrap .vtab .buttons .button:hover:not(:disabled) {
               background: #00121E;
               border-color: #00121E;
               color: #CACACA; }
-        body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul {
+        body #above .heading .worksite .editor-container .vtab-wrap .vtab ul {
           list-style: none;
           min-height: 45px;
-          padding: 10px;
-          margin: 0; }
-          body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon {
+          margin: 0;
+          padding: 0; }
+          body #above .heading .worksite .editor-container .vtab-wrap .vtab ul .icon {
             background-size: 11px;
             width: 20px;
             height: 25px; }
-            body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon:hover {
+            body #above .heading .worksite .editor-container .vtab-wrap .vtab ul .icon:hover {
               cursor: pointer; }
-            body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon.disabled:hover {
+            body #above .heading .worksite .editor-container .vtab-wrap .vtab ul .icon.disabled:hover {
               cursor: default; }
-            body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon.off {
+            body #above .heading .worksite .editor-container .vtab-wrap .vtab ul .icon.off {
               opacity: 0.2; }
-            body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon.on:hover {
+            body #above .heading .worksite .editor-container .vtab-wrap .vtab ul .icon.on:hover {
               cursor: default; }
-            body #above .heading .worksite .optionselect .vtabwrap .vtabcontents ul .icon.hidden {
+            body #above .heading .worksite .editor-container .vtab-wrap .vtab ul .icon.hidden {
               visibility: hidden; }
-    body #above .heading .worksite .optionselect .uiscroller {
+    body #above .heading .worksite .editor-container .ui-scroller {
       clear: both;
       float: right;
       width: 252px; }
-      body #above .heading .worksite .optionselect .uiscroller .uichoices {
+      body #above .heading .worksite .editor-container .ui-scroller .ui-choices {
         list-style: none;
         margin: 0;
         padding: 0; }
-        body #above .heading .worksite .optionselect .uiscroller .uichoices li {
+        body #above .heading .worksite .editor-container .ui-scroller .ui-choices li {
           font-size: 14px;
           color: #718599;
           position: relative; }
-          body #above .heading .worksite .optionselect .uiscroller .uichoices li .ui {
+          body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui {
             display: block;
             height: 33px;
             padding: 0 12px;
@@ -742,19 +771,19 @@ body #above .heading .worksite {
             text-align: center;
             font-weight: bold;
             position: relative; }
-            body #above .heading .worksite .optionselect .uiscroller .uichoices li .ui span.brackets {
+            body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui span.brackets {
               display: none; }
-            body #above .heading .worksite .optionselect .uiscroller .uichoices li .ui.active span, body #above .heading .worksite .optionselect .uiscroller .uichoices li .ui:hover span {
+            body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui.active span, body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui:hover span {
               transition: padding 222ms ease;
               text-shadow: #304B66 0px 0px 12px;
               padding: 0 5px; }
-              body #above .heading .worksite .optionselect .uiscroller .uichoices li .ui.active span.brackets, body #above .heading .worksite .optionselect .uiscroller .uichoices li .ui:hover span.brackets {
+              body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui.active span.brackets, body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui:hover span.brackets {
                 display: inline;
                 text-shadow: none;
                 color: #946018; }
-            body #above .heading .worksite .optionselect .uiscroller .uichoices li .ui:hover {
+            body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui:hover {
               cursor: pointer; }
-          body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui {
+          body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add {
             text-align: center;
             clear: both;
             background-color: #00121E;
@@ -764,22 +793,22 @@ body #above .heading .worksite {
             width: 245px;
             float: right;
             box-sizing: border-box; }
-            body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui.solo {
+            body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add.solo {
               background-color: #001A2B;
               border: 1px solid #304B66;
               border-right: 0;
               border-top: 0;
               width: 100%;
               float: none; }
-            body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui span.brackets {
+            body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add span.brackets {
               vertical-align: bottom;
               line-height: 33px;
               font-size: 14px;
               font-weight: bold;
               display: none; }
-            body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #addbutton {
+            body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add #addbutton {
               height: 33px; }
-              body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #addbutton .add {
+              body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add #addbutton .add {
                 display: inline-block;
                 width: 15px;
                 height: 30px;
@@ -789,28 +818,28 @@ body #above .heading .worksite {
                 transition: all 222ms ease;
                 background-image: url("/images/icons/add_small.png");
                 background-size: 25px; }
-              body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #addbutton:hover {
+              body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add #addbutton:hover {
                 cursor: pointer; }
-              body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #addbutton:hover > .add {
+              body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add #addbutton:hover > .add {
                 -webkit-filter: drop-shadow(0px 0px 3px #688BA3);
                 filter: drop-shadow(0px 0px 3px #688BA3); }
-              body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #addbutton.active span, body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #addbutton:hover span {
+              body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add #addbutton.active span, body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add #addbutton:hover span {
                 transition: padding 222ms ease;
                 text-shadow: #304B66 0px 0px 12px;
                 padding: 0 5px; }
-                body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #addbutton.active span.brackets, body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #addbutton:hover span.brackets {
+                body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add #addbutton.active span.brackets, body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add #addbutton:hover span.brackets {
                   display: inline;
                   text-shadow: none;
                   color: #946018; }
-            body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui label {
+            body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add label {
               display: inline-block;
               width: 40px; }
-            body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #adduiinput {
+            body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add #adduiinput {
               padding: 10px 0;
               display: none; }
-              body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #adduiinput.visible {
+              body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add #adduiinput.visible {
                 display: block; }
-              body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #adduiinput #uiname_input, body #above .heading .worksite .optionselect .uiscroller .uichoices li .addui #adduiinput #uitype_input {
+              body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add #adduiinput #uiname_input, body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add #adduiinput #uitype_input {
                 width: 180px;
                 height: 33px;
                 background-color: #00121E; }

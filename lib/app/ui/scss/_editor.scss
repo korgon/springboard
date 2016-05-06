@@ -45,7 +45,7 @@ body {
 						max-height: 1200px;
 					}
 				}
-				.optionselect {
+				.editor-container {
 					position: absolute;
 					right: 0;
 					width: 290px;
@@ -73,7 +73,7 @@ body {
 						}
 					}
 
-					.gitbuttons {
+					.git-buttons {
 						display: flex;
 						width: 251px;
 						flex-flow: row nowrap;
@@ -103,7 +103,7 @@ body {
 						}
 					}
 
-					.tabcontrol {
+					.tab-control {
 						display: flex;
 						width: 244px;
 						flex-flow: row nowrap;
@@ -148,7 +148,7 @@ body {
 						}
 					}
 
-					.tabwrap {
+					.tab-wrap {
 						width: 251px;
 						height: auto;
 						clear: both;
@@ -193,13 +193,13 @@ body {
 								line-height: 33px;
 							}
 						}
-						.tabcontent {
+						.tab-content {
 							padding: 5px;
 							width: auto;
 						}
 					}
 
-					.vtabwrap {
+					.vtab-wrap {
 						display: table;
 						clear: both;
 						width: 251px;
@@ -207,12 +207,12 @@ body {
 						background-color: $bluedarkest;
 						border-left: 1px solid $bluehighlight;
 						border-bottom: 1px solid $bluehighlight;
-						.vtabcontrolwrap {
+						.vtab-control-wrap {
 							display: table-cell;
 							padding: 4px 0;
 							background-color: $blueblack;
 							border-right: 1px solid $bluehighlight;
-							.vtabcontrol {
+							.vtab-control {
 								display: flex;
 								float: left;
 								flex-flow: column wrap;
@@ -258,12 +258,13 @@ body {
 								}
 							}
 						}
-						.vtabcontents {
+						.vtab {
 							display: table-cell;
 							vertical-align: top;
 							width: 100%;
 							padding: 10px;
-							.modulehead {
+
+							.vtab-head {
 								color: $orangefaded;
 								font-size: 12px;
 								text-transform: uppercase;
@@ -273,58 +274,100 @@ body {
 									float: right;
 								}
 							}
-							.modulesubhead {
+							.vtab-subhead {
 								color: $bluefaded;
 								font-size: 10px;
 								text-transform: lowercase;
 								font-weight: bold;
-								padding: 0 6px;
+								padding: 3px 6px;
 							}
-							.modulecontents {
+
+							.vtab-contents {
 								position: relative;
 								z-index: 2;
 								&.disabled {
 									opacity: .2;
 								}
-								.moduleoverlay {
+								.vtab-overlay {
 									position: absolute;
 									height: 100%;
 									width: 100%;
 									z-index: 3;
 								}
-								.moduleblock {
-									margin-bottom: 5px;
-									.moduleblockhead {
-										font-weight: bold;
+							}
+							.vtab-block {
+								margin-bottom: 5px;
+								.vtab-blockhead {
+									font-weight: bold;
+									font-size: 10px;
+									padding: 6px;
+									text-transform: uppercase;
+									border-bottom: 1px solid $blueaccent;
+								}
+								.module-themes-container {
+									padding: 6px 0;
+									.theme-name {
+										color: $orangeyellow;
 										font-size: 10px;
-										padding: 6px;
 										text-transform: uppercase;
-										border-bottom: 1px solid $blueaccent;
-									}
-									.modulethemes {
-										.themename {
-											color: $orangeyellow;
-											font-size: 10px;
-											text-transform: uppercase;
-											display: inline-block;
-											width: 100px;
-											overflow: hidden;
-											vertical-align: middle;
-											text-align: center;
-										}
+										display: inline-block;
+										width: 111px;
+										overflow: hidden;
+										vertical-align: middle;
+										text-align: center;
 									}
 								}
-							}
-							.vtabhead {
-								display: inline-block;
-								font-weight: bold;
-								color: #718599;
-								text-transform: capitalize;
-								font-size: 12px;
-								text-align: left;
-								background-color: $blueaccent;
-								border-radius: 2px 2px 0 0;
-								padding: 6px;
+								.variable-wrap {
+									.variable-container {
+										margin-bottom: 10px
+									}
+									.variable-description {
+										color: $bluefaded;
+										font-size: 10px;
+										text-transform: lowercase;
+										font-weight: bold;
+										padding: 3px 6px;
+										width: 150px;
+									}
+									.variable-input {
+										width: 100%;
+										box-sizing: border-box;
+										border: 0;
+										background-color: $bluedarkest;
+										border: 1px solid $bluedarkest;
+										color: $orangefaded;
+										font-size: 12px;
+										font-weight: bold;
+										cursor: pointer;
+										&:focus {
+											background-color: $blueblack;
+											//border-color: $bluehighlight;
+											//border-radius: 7px;
+											cursor: text;
+										}
+										&::-webkit-input-placeholder {
+											color: $orangeyellow;
+											font-weight: normal;
+											font-style: italic;
+										}
+									}
+									.variable-color {
+										position: absolute;
+										right: 0;
+										top: 6px;
+										width: 33px;
+										height: 33px;
+										border-radius: 33px;
+										&.invalid {
+											background-image: url('/images/icons/warning.png');
+											background-size: 33px;
+											background-color: $blueblack;
+										}
+									}
+									.toggle {
+										float: right;
+									}
+								}
 							}
 							.buttons {
 								text-align: right;
@@ -346,8 +389,8 @@ body {
 							ul {
 								list-style: none;
 								min-height: 45px;
-								padding: 10px;
 								margin: 0;
+								padding: 0;
 								.icon {
 									background-size: 11px;
 									width: 20px;
@@ -376,11 +419,11 @@ body {
 						}
 					}
 
-					.uiscroller {
+					.ui-scroller {
 						clear: both;
 						float: right;
 						width: 252px;
-						.uichoices {
+						.ui-choices {
 							list-style: none;
 							margin: 0;
 							padding: 0;
@@ -422,7 +465,7 @@ body {
 									}
 								}
 
-								.addui {
+								.ui-add {
 									text-align: center;
 									clear: both;
 									background-color: $blueblack;
