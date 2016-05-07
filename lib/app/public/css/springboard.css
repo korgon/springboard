@@ -702,12 +702,14 @@ body #above .heading .worksite {
               font-weight: normal;
               font-style: italic; }
           body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-color {
+            font-size: 40px;
+            display: block;
             position: absolute;
-            right: 0;
-            top: 6px;
-            width: 33px;
-            height: 33px;
-            border-radius: 33px; }
+            right: -1px;
+            top: -8px; }
+            body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-color.background {
+              color: #052238;
+              font-size: 42px; }
             body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-color.invalid {
               background-image: url("/images/icons/warning.png");
               background-size: 33px;

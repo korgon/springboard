@@ -129,7 +129,8 @@
 														<li class="variable-container" ng-repeat="(name, style) in ui.styles">
 															<div class="vtab-blockhead">
 																<span>{{ name }}</span>
-																<span ng-if="style.type == 'color'" class="variable-color" style="background-color: {{ style.value }};"></span>
+																<span class="variable-color background">&#x2B22;</span>
+																<span ng-if="style.type == 'color'" class="variable-color" style="color: {{ style.value }};">&#x2B22;</span>
 															</div>
 															<div>
 																<div ng-if="style.description" class="variable-description">{{ style.description }}</div>
