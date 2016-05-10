@@ -458,7 +458,7 @@ body #above .heading .worksite {
       color: #718599; }
     body #above .heading .worksite .currentsite:hover {
       cursor: pointer; }
-    body #above .heading .worksite .currentsite:hover + .optionselect {
+    body #above .heading .worksite .currentsite:hover + .editor-container {
       max-height: 1200px; }
   body #above .heading .worksite .editor-container {
     position: absolute;

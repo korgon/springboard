@@ -41,7 +41,7 @@ body {
 					&:hover {
 						cursor: pointer;
 					}
-					&:hover + .optionselect {
+					&:hover + .editor-container {
 						max-height: 1200px;
 					}
 				}
