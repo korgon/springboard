@@ -197,7 +197,7 @@ input[type="text"], select {
 	&.proxy {
 		background-image: url('/images/icons/proxy.png');
 	}
-	&.refresh {
+	&.reload {
 		background-image: url('/images/icons/refresh.png');
 	}
 	&.save {
@@ -220,6 +220,9 @@ input[type="text"], select {
 	}
 	&.undo {
 		background-image: url('/images/icons/undo.png');
+	}
+	&.update {
+		background-image: url('/images/icons/update.png');
 	}
 	&.upload {
 		background-image: url('/images/icons/upload.png');

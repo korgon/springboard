@@ -36,7 +36,7 @@
 
 									<li ng-class="{ 'active': vm.activeVtab('default') == 'history' }"><a ng-click="vm.switchVtab('history', 'default')"><span class="icon history"></span></a></li>
 
-									<li><a ng-click="vm.reloadSite()"><span class="icon refresh"></span></a></li>
+									<li><a ng-click="vm.reloadSite()"><span class="icon reload"></span></a></li>
 								</ul>
 							</div>
 
@@ -134,7 +134,7 @@
 															</div>
 															<div>
 																<div ng-if="style.description" class="variable-description">{{ style.description }}</div>
-																<input class="variable-input" ng-model="style.value" placeholder="..." autocomplete="off" spellcheck="false">
+																<input class="variable-input" ng-change="vm.checkChange()" ng-model="style.value" placeholder="..." autocomplete="off" spellcheck="false">
 															</div>
 														</li>
 														<li ng-if="vm.isEmpty(ui.styles)">
@@ -151,7 +151,7 @@
 															<div class="vtab-blockhead">{{ name }}</div>
 															<div>
 																<div ng-if="variable.description" class="variable-description">{{ variable.description }}</div>
-																<input class="variable-input" value="{{ variable.value }}" placeholder="..." autocomplete="off" spellcheck="false">
+																<input class="variable-input" ng-change="vm.checkChange()" ng-model="variable.value" placeholder="..." autocomplete="off" spellcheck="false">
 															</div>
 														</li>
 														<li ng-if="vm.isEmpty(ui.variables)">
@@ -167,11 +167,11 @@
 														<li class="variable-container" ng-repeat="(name, setting) in ui.settings">
 															<div class="vtab-blockhead">
 																<span>{{ name }}</span>
-																<span ng-if="setting.type == 'boolean'" ng-click="setting.value = !setting.value" ng-model="setting.value" class="toggle" ng-class="{ off: !setting.value}"></span>
+																<span ng-if="setting.type == 'boolean'" ng-click="setting.value = !setting.value; vm.checkChange();" ng-model="setting.value" class="toggle" ng-class="{ off: !setting.value}"></span>
 															</div>
 															<div>
 																<div ng-if="setting.description" class="variable-description">{{ setting.description }}</div>
-																<input ng-if="setting.type != 'boolean'" class="variable-input" value="{{ style.value }}" placeholder="..." autocomplete="off" spellcheck="false">
+																<input ng-if="setting.type != 'boolean'" ng-change="vm.checkChange()" class="variable-input" ng-model= "setting.value" placeholder="..." autocomplete="off" spellcheck="false">
 															</div>
 														</li>
 														<li ng-if="vm.isEmpty(ui.settings)">
@@ -244,10 +244,16 @@
 
 			</div>
 
-			<ul class="git-buttons">
+			<ul class="action-buttons" ng-if="vm.changed">
+				<li><a ng-click="vm.updateSite()" title="update"><span class="icon save"></span></a></li>
+				<li><a ng-click="vm.updateSite()" title="update"><span class="icon update"></span></a></li>
+				<li><a ng-click="vm.reloadSite()" title="reload"><span class="icon reload"></span></a></li>
+			</ul>
+
+			<ul class="action-buttons" ng-if="!vm.changed">
 				<li><a ng-click="vm.commitSite()"><span class="icon commit"></span></a></li>
 				<li><a ng-click="vm.pushSite()"><span class="icon push"></span></a></li>
-				<li><a ng-click="vm.publishMockup()"><span class="icon upload"></span></a></li>
+				<li><a ng-click="vm.publishSite()"><span class="icon upload"></span></a></li>
 			</ul>
 
 		</div>

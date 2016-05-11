@@ -188,7 +188,7 @@ input[type="text"], select {
     background-image: url("/images/icons/push.png"); }
   .icon.proxy {
     background-image: url("/images/icons/proxy.png"); }
-  .icon.refresh {
+  .icon.reload {
     background-image: url("/images/icons/refresh.png"); }
   .icon.save {
     background-image: url("/images/icons/save.png"); }
@@ -204,6 +204,8 @@ input[type="text"], select {
     background-image: url("/images/icons/uis.png"); }
   .icon.undo {
     background-image: url("/images/icons/undo.png"); }
+  .icon.update {
+    background-image: url("/images/icons/update.png"); }
   .icon.upload {
     background-image: url("/images/icons/upload.png"); }
   .icon.variables {
@@ -482,7 +484,7 @@ body #above .heading .worksite {
       float: right; }
       body #above .heading .worksite .editor-container .spacer.large {
         height: 20px; }
-    body #above .heading .worksite .editor-container .git-buttons {
+    body #above .heading .worksite .editor-container .action-buttons {
       display: flex;
       width: 251px;
       flex-flow: row nowrap;
@@ -494,15 +496,15 @@ body #above .heading .worksite {
       border: 1px solid #304B66;
       border-right: 0;
       background-color: #001A2B; }
-      body #above .heading .worksite .editor-container .git-buttons li {
+      body #above .heading .worksite .editor-container .action-buttons li {
         display: inline-block;
         flex-grow: 1;
         text-align: center; }
-        body #above .heading .worksite .editor-container .git-buttons li a {
+        body #above .heading .worksite .editor-container .action-buttons li a {
           display: inline-block;
           width: 100%;
           opacity: 0.5; }
-          body #above .heading .worksite .editor-container .git-buttons li a:hover {
+          body #above .heading .worksite .editor-container .action-buttons li a:hover {
             cursor: pointer;
             opacity: 1; }
     body #above .heading .worksite .editor-container .tab-control {
