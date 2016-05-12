@@ -146,6 +146,12 @@ body {
 								}
 							}
 						}
+						&.disabled {
+							li a:not(.active), li a:hover {
+								cursor: default;
+								opacity: 0.1;
+							}
+						}
 					}
 
 					.tab-wrap {
@@ -254,6 +260,12 @@ body {
 											border-right: 0;
 											opacity: 1;
 										}
+									}
+								}
+								&.disabled {
+									li:not(.active) a, li:not(.active) a:hover {
+										cursor: default;
+										opacity: 0.1;
 									}
 								}
 							}
@@ -372,23 +384,6 @@ body {
 									}
 								}
 							}
-							.buttons {
-								text-align: right;
-								.button {
-									min-width: initial;
-									padding: 6px;
-									margin-left: 1px;
-									border-color: $blueaccent;
-									background-color: $blueaccent;
-									border-radius: 0 0 2px 2px;
-									color: $bluegrey;
-									&:hover:not(:disabled) {
-										background: $blueblack;
-										border-color: $blueblack;
-										color: $whitefaded;
-									}
-								}
-							}
 							ul {
 								list-style: none;
 								min-height: 45px;
@@ -450,6 +445,9 @@ body {
 									position: relative;
 									span.brackets {
 										display: none;
+									}
+									&.disabled:hover {
+										cursor: default;
 									}
 									&.active, &:hover {
 										span {
