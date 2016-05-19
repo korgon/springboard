@@ -167,6 +167,9 @@ input[type="text"], select {
 	&.module {
 		background-image: url('/images/icons/modules/module.png');
 	}
+	&.module-generic {
+		background-image: url('/images/icons/modules/module.png');
+	}
 	&.module-add {
 		background-image: url('/images/icons/modules/module_add.png');
 	}
