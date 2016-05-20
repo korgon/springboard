@@ -8,8 +8,7 @@
 			"value": 768,
 			"default": 768,
 			"type": "integer",
-			"description": "display slideout at this width in pixels"
+			"description": "slideout at this width (in px)"
 		}
-	},
-	"styles": {}
+	}
 }

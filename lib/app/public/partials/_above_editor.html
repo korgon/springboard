@@ -188,6 +188,21 @@
 														<div class="vtab-overlay" ng-hide="module.enabled"></div>
 
 														<div class="vtab-block">
+															<ul class="variable-wrap">
+																<li class="variable-container" ng-repeat="(name, variable) in vm.site.catalogs[ui.name].modules[module.name].themes[vm.site.catalogs[ui.name].modules[module.name].theme].variables">
+																	<div class="vtab-blockhead">{{ name }}</div>
+																	<div>
+																		<div ng-if="variable.description" class="variable-description">{{ variable.description }}</div>
+																		<input class="variable-input" ng-change="vm.checkChange()" ng-model="variable.value" placeholder="..." autocomplete="off" spellcheck="false">
+																	</div>
+																</li>
+																<li ng-if="vm.isEmpty(ui.variables)">
+																	<div class="vtab-subhead">nothing to see here...</div>
+																</li>
+															</ul>
+														</div>
+
+														<div class="vtab-block" ng-if="!vm.isSingular(vm.uis[ui.type].modules[module.type.split('/')[1]].themes)">
 															<div class="vtab-blockhead">Themes</div>
 
 															<ul class="module-themes-container">
