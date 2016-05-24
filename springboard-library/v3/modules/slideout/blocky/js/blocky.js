@@ -1,1 +1,1 @@
-this.importer.include('slideout', { width: 767 });
+this.importer.include('slideout', modules.slideout);

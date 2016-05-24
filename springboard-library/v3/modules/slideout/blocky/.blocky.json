@@ -4,7 +4,7 @@
 	"description": "blocky slideout style",
 	"author": "searchspring",
 	"variables": {
-		"respondAt": {
+		"width": {
 			"value": 768,
 			"default": 768,
 			"type": "integer",

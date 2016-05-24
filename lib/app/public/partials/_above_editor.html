@@ -187,7 +187,7 @@
 													<div class="vtab-contents" ng-class="{ disabled: !module.enabled }">
 														<div class="vtab-overlay" ng-hide="module.enabled"></div>
 
-														<div class="vtab-block">
+														<div class="vtab-block" ng-if="!vm.isEmpty(vm.site.catalogs[ui.name].modules[module.name].themes[vm.site.catalogs[ui.name].modules[module.name].theme].variables)">
 															<ul class="variable-wrap">
 																<li class="variable-container" ng-repeat="(name, variable) in vm.site.catalogs[ui.name].modules[module.name].themes[vm.site.catalogs[ui.name].modules[module.name].theme].variables">
 																	<div class="vtab-blockhead">{{ name }}</div>
@@ -196,8 +196,8 @@
 																		<input class="variable-input" ng-change="vm.checkChange()" ng-model="variable.value" placeholder="..." autocomplete="off" spellcheck="false">
 																	</div>
 																</li>
-																<li ng-if="vm.isEmpty(ui.variables)">
-																	<div class="vtab-subhead">nothing to see here...</div>
+																<li ng-if="vm.isEmpty(vm.site.catalogs[ui.name].modules[module.name].themes[vm.site.catalogs[ui.name].modules[module.name].theme].variables)">
+																	<div class="vtab-subhead">no variables defined...</div>
 																</li>
 															</ul>
 														</div>

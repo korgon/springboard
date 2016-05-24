@@ -166,6 +166,8 @@ input[type="text"], select {
     background-image: url("/images/icons/info.png"); }
   .icon.install {
     background-image: url("/images/icons/install.png"); }
+  .icon.instructions {
+    background-image: url("/images/icons/instructions.png"); }
   .icon.module {
     background-image: url("/images/icons/modules/module.png"); }
   .icon.module-generic {
@@ -174,6 +176,8 @@ input[type="text"], select {
     background-image: url("/images/icons/modules/module_add.png"); }
   .icon.module-autocomplete {
     background-image: url("/images/icons/modules/module_autocomplete.png"); }
+  .icon.module-compare {
+    background-image: url("/images/icons/modules/module_compare.png"); }
   .icon.module-image {
     background-image: url("/images/icons/modules/module_image.png"); }
   .icon.module-infinite {

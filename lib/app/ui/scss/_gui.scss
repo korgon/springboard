@@ -164,6 +164,9 @@ input[type="text"], select {
 	&.install {
 		background-image: url('/images/icons/install.png');
 	}
+	&.instructions {
+		background-image: url('/images/icons/instructions.png');
+	}
 	&.module {
 		background-image: url('/images/icons/modules/module.png');
 	}
@@ -175,6 +178,9 @@ input[type="text"], select {
 	}
 	&.module-autocomplete {
 		background-image: url('/images/icons/modules/module_autocomplete.png');
+	}
+	&.module-compare {
+		background-image: url('/images/icons/modules/module_compare.png');
 	}
 	&.module-image {
 		background-image: url('/images/icons/modules/module_image.png');
