@@ -99,7 +99,7 @@ input[type="text"], select {
 	width: 33px;
 	height: 33px;
 	background-repeat: no-repeat;
-	background-size: 22px;
+	background-size: 27px;
 	background-position: center center;
 	vertical-align: middle;
 	// icon sizes
@@ -117,9 +117,9 @@ input[type="text"], select {
 	    left: 0;
 	    background-image: url("/images/icons/disabled.png");
 	    width: 33px;
-	    background-size: 12px;
+	    background-size: 21px;
 	    background-repeat: no-repeat;
-	    background-position: 9px 18px;
+	    background-position: 3px 12px;
 	    height: 33px;
 		}
 	}
@@ -182,8 +182,14 @@ input[type="text"], select {
 	&.module-compare {
 		background-image: url('/images/icons/modules/module_compare.png');
 	}
-	&.module-image {
-		background-image: url('/images/icons/modules/module_image.png');
+	&.module-facet_slider {
+		background-image: url('/images/icons/modules/module_facet_slider.png');
+	}
+	&.module-image_load {
+		background-image: url('/images/icons/modules/module_image_load.png');
+	}
+	&.module-image_swap {
+		background-image: url('/images/icons/modules/module_image_swap.png');
 	}
 	&.module-infinite {
 		background-image: url('/images/icons/modules/module_infinite.png');

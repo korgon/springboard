@@ -123,7 +123,7 @@ input[type="text"], select {
   width: 33px;
   height: 33px;
   background-repeat: no-repeat;
-  background-size: 22px;
+  background-size: 27px;
   background-position: center center;
   vertical-align: middle; }
   .icon.small {
@@ -136,9 +136,9 @@ input[type="text"], select {
     left: 0;
     background-image: url("/images/icons/disabled.png");
     width: 33px;
-    background-size: 12px;
+    background-size: 21px;
     background-repeat: no-repeat;
-    background-position: 9px 18px;
+    background-position: 3px 12px;
     height: 33px; }
   .icon.disabled {
     opacity: 0.2; }
@@ -178,8 +178,12 @@ input[type="text"], select {
     background-image: url("/images/icons/modules/module_autocomplete.png"); }
   .icon.module-compare {
     background-image: url("/images/icons/modules/module_compare.png"); }
-  .icon.module-image {
-    background-image: url("/images/icons/modules/module_image.png"); }
+  .icon.module-facet_slider {
+    background-image: url("/images/icons/modules/module_facet_slider.png"); }
+  .icon.module-image_load {
+    background-image: url("/images/icons/modules/module_image_load.png"); }
+  .icon.module-image_swap {
+    background-image: url("/images/icons/modules/module_image_swap.png"); }
   .icon.module-infinite {
     background-image: url("/images/icons/modules/module_infinite.png"); }
   .icon.module-left {
@@ -605,7 +609,7 @@ body #above .heading .worksite {
       border-bottom: 1px solid #304B66; }
       body #above .heading .worksite .editor-container .vtab-wrap .vtab-control-wrap {
         display: table-cell;
-        padding: 4px 0;
+        padding: 3px 0px 3px 2px;
         background-color: #00121E;
         border-right: 1px solid #304B66; }
         body #above .heading .worksite .editor-container .vtab-wrap .vtab-control-wrap .vtab-control {
@@ -623,12 +627,12 @@ body #above .heading .worksite {
             flex: 1 1 auto;
             order: 1;
             text-align: center;
-            width: 34px;
+            width: 36px;
             margin: 0; }
             body #above .heading .worksite .editor-container .vtab-wrap .vtab-control-wrap .vtab-control li a {
               display: inline-block;
               width: 100%;
-              height: 33px;
+              padding: 3px 0;
               opacity: 0.5;
               border: 1px solid transparent;
               border-right: 0; }
