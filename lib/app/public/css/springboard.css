@@ -454,8 +454,8 @@ body iframe {
   height: 100%; }
 body #above .heading .worksite {
   order: 4;
-  flex-basis: 252px;
-  width: 252px;
+  flex-basis: 270px;
+  width: 270px;
   height: 40px; }
   body #above .heading .worksite .currentsite {
     display: block;
@@ -492,7 +492,7 @@ body #above .heading .worksite {
     body #above .heading .worksite .editor-container .spacer {
       background-color: #00121E;
       border-left: 1px solid #2B343B;
-      width: 244px;
+      width: 261px;
       height: 5px;
       clear: right;
       float: right; }
@@ -500,7 +500,7 @@ body #above .heading .worksite {
         height: 20px; }
     body #above .heading .worksite .editor-container .action-buttons {
       display: flex;
-      width: 251px;
+      width: 267px;
       flex-flow: row nowrap;
       justify-content: space-around;
       float: right;
@@ -523,7 +523,7 @@ body #above .heading .worksite {
             opacity: 1; }
     body #above .heading .worksite .editor-container .tab-control {
       display: flex;
-      width: 244px;
+      width: 261px;
       flex-flow: row nowrap;
       justify-content: space-around;
       clear: both;
@@ -561,7 +561,7 @@ body #above .heading .worksite {
         cursor: default;
         opacity: 0.1; }
     body #above .heading .worksite .editor-container .tab-wrap {
-      width: 251px;
+      width: 267px;
       height: auto;
       clear: both;
       float: right;
@@ -602,7 +602,7 @@ body #above .heading .worksite {
     body #above .heading .worksite .editor-container .vtab-wrap {
       display: table;
       clear: both;
-      width: 251px;
+      width: 267px;
       float: right;
       background-color: #001A2B;
       border-left: 1px solid #304B66;
@@ -693,7 +693,7 @@ body #above .heading .worksite {
               font-size: 10px;
               text-transform: uppercase;
               display: inline-block;
-              width: 111px;
+              width: 130px;
               overflow: hidden;
               vertical-align: middle;
               text-align: center; }
@@ -704,8 +704,7 @@ body #above .heading .worksite {
             font-size: 10px;
             text-transform: lowercase;
             font-weight: bold;
-            padding: 3px 6px;
-            width: 150px; }
+            padding: 6px; }
           body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-input {
             width: 100%;
             box-sizing: border-box;
@@ -724,14 +723,16 @@ body #above .heading .worksite {
               font-weight: normal;
               font-style: italic; }
           body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-color {
-            font-size: 40px;
+            font-size: 33px;
             display: block;
             position: absolute;
-            right: -1px;
-            top: -8px; }
+            right: 1px;
+            top: -4px; }
             body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-color.background {
               color: #052238;
-              font-size: 42px; }
+              font-size: 40px;
+              right: -2px;
+              top: -8px; }
             body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-color.invalid {
               background-image: url("/images/icons/warning.png");
               background-size: 33px;
@@ -760,7 +761,7 @@ body #above .heading .worksite {
     body #above .heading .worksite .editor-container .ui-scroller {
       clear: both;
       float: right;
-      width: 252px; }
+      width: 268px; }
       body #above .heading .worksite .editor-container .ui-scroller .ui-choices {
         list-style: none;
         margin: 0;

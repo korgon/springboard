@@ -208,7 +208,8 @@
 															<ul class="module-themes-container">
 																<li ng-repeat="theme in module.themes">
 																	<span class="theme-name">{{ theme.name }}</span>
-																	<span title="{{ vm.site.catalogs[ui.name].modules[module.name].theme == theme.name ? 'active' : 'inactive' }}" class="icon active" ng-class="{ 'off': vm.site.catalogs[ui.name].modules[module.name].theme != theme.name, 'on': vm.site.catalogs[ui.name].modules[module.name].theme == theme.name }" ng-click="vm.site.catalogs[ui.name].modules[module.name].theme = theme.name; vm.updateModule(ui.name, module.name);"></span>
+																	<span ng-if="vm.site.catalogs[ui.name].modules[module.name].theme == theme.name" title="active" class="icon active on"></span>
+																	<span ng-if="vm.site.catalogs[ui.name].modules[module.name].theme != theme.name" title="inactive" class="icon active off" ng-click="vm.site.catalogs[ui.name].modules[module.name].theme = theme.name; vm.updateModule(ui.name, module.name);"></span>
 																	<span title="custom" class="icon custom disabled" ng-if="!vm.uis[ui.type].modules[module.type.split('/')[1]].themes[theme.name]"></span>
 																</li>
 																<li ng-repeat="theme in vm.uis[ui.type].modules[module.type.split('/')[1]].themes" ng-if="!vm.site.catalogs[ui.name].modules[module.name].themes[theme.name]">

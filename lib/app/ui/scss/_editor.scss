@@ -18,8 +18,8 @@ body {
 		.heading {
 			.worksite {
 				order: 4;
-				flex-basis: 252px;
-				width: 252px;
+				flex-basis: 270px;
+				width: 270px;
 				height: $heightheader;
 				.currentsite {
 					display: block;
@@ -64,7 +64,7 @@ body {
 					.spacer {
 						background-color: $blueblack;
 						border-left: 1px solid $bluedarkestest_text;
-						width: 244px;
+						width: 261px;
 						height: 5px;
 						clear: right;
 						float: right;
@@ -75,7 +75,7 @@ body {
 
 					.action-buttons {
 						display: flex;
-						width: 251px;
+						width: 267px;
 						flex-flow: row nowrap;
 						justify-content: space-around;
 						float: right;
@@ -105,7 +105,7 @@ body {
 
 					.tab-control {
 						display: flex;
-						width: 244px;
+						width: 261px;
 						flex-flow: row nowrap;
 						justify-content: space-around;
 						clear: both;
@@ -155,7 +155,7 @@ body {
 					}
 
 					.tab-wrap {
-						width: 251px;
+						width: 267px;
 						height: auto;
 						clear: both;
 						float: right;
@@ -208,7 +208,7 @@ body {
 					.vtab-wrap {
 						display: table;
 						clear: both;
-						width: 251px;
+						width: 267px;
 						float: right;
 						background-color: $bluedarkest;
 						border-left: 1px solid $bluehighlight;
@@ -323,7 +323,7 @@ body {
 										font-size: 10px;
 										text-transform: uppercase;
 										display: inline-block;
-										width: 111px;
+										width: 130px;
 										overflow: hidden;
 										vertical-align: middle;
 										text-align: center;
@@ -338,8 +338,7 @@ body {
 										font-size: 10px;
 										text-transform: lowercase;
 										font-weight: bold;
-										padding: 3px 6px;
-										width: 150px;
+										padding: 6px;
 									}
 									.variable-input {
 										width: 100%;
@@ -364,14 +363,16 @@ body {
 										}
 									}
 									.variable-color {
-										font-size: 40px;
+										font-size: 33px;
 										display: block;
 										position: absolute;
-										right: -1px;
-										top: -8px;
+										right: 1px;
+										top: -4px;
 										&.background {
 											color: $blueaccent;;
-											font-size: 42px;
+											font-size: 40px;
+											right: -2px;
+											top: -8px;
 										}
 										&.invalid {
 											background-image: url('/images/icons/warning.png');
@@ -420,7 +421,7 @@ body {
 					.ui-scroller {
 						clear: both;
 						float: right;
-						width: 252px;
+						width: 268px;
 						.ui-choices {
 							list-style: none;
 							margin: 0;
