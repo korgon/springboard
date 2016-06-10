@@ -49,6 +49,7 @@
 		left: 0;
 		background: rgba(0, 0, 0, 0.9);
 		z-index: 999999;
+		overflow: auto;
 	}
 
 	// input box used by sbc javascripts
@@ -56,7 +57,7 @@
 		width: 250px;
 		height: auto;
 		border: 1px solid $bluehighlight;
-		margin: 90px auto 0px;
+		margin: 90px auto 40px;
 		padding: 0;
 		&.alert {
 			width: 350px;
@@ -158,8 +159,6 @@
 			  font-size: 10px;
 			  font-weight: bold;
 			  padding: 3px;
-				max-height: 450px;
-				overflow: auto;
 				.git-status {
 					color: #352C17;
 					display: inline-block;

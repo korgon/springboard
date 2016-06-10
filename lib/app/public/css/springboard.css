@@ -1047,12 +1047,13 @@ body #gallery {
   bottom: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.9);
-  z-index: 999999; }
+  z-index: 999999;
+  overflow: auto; }
 #modals .boxwrap {
   width: 250px;
   height: auto;
   border: 1px solid #304B66;
-  margin: 90px auto 0px;
+  margin: 90px auto 40px;
   padding: 0; }
   #modals .boxwrap.alert {
     width: 350px; }
@@ -1131,9 +1132,7 @@ body #gallery {
       color: #354957;
       font-size: 10px;
       font-weight: bold;
-      padding: 3px;
-      max-height: 450px;
-      overflow: auto; }
+      padding: 3px; }
       #modals .boxwrap .git-changes .git-change .git-status {
         color: #352C17;
         display: inline-block;
