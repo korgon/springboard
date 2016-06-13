@@ -4,5 +4,9 @@
   "description": "Several Amazon s3 convenience methods for springboard using promises",
   "main": "index.js",
   "author": "SearchSpring",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.3.19",
+    "co": "^4.6.0"
+  }
 }
