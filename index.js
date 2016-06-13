@@ -1,7 +1,7 @@
 "use strict";
 
 var conf = require('_/config')(__dirname);
-var springboard = require('_/springboard');
+var springboard = require('_/core');
 
 springboard.init(conf).then(function() {
   console.log('starting koa...');

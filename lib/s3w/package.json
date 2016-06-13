@@ -1,0 +1,8 @@
+{
+  "name": "s3w",
+  "version": "1.0.0",
+  "description": "Several Amazon s3 convenience methods for springboard using promises",
+  "main": "index.js",
+  "author": "SearchSpring",
+  "license": "MIT"
+}
