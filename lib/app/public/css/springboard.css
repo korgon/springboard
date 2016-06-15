@@ -579,19 +579,19 @@ body #above .heading .worksite {
         color: #354957;
         position: relative; }
         body #above .heading .worksite .editor-container .tab-wrap .header.ui:before {
-          left: 14px;
-          background: url("/images/icons/uis.png") no-repeat 14px 10px;
+          left: 12px;
+          background: url("/images/icons/uis.png") no-repeat 20px 10px;
           background-size: 46px; }
         body #above .heading .worksite .editor-container .tab-wrap .header.settings:before {
           right: 5px;
-          background: url("/images/icons/gears_color.png") no-repeat 40px 17px;
+          background: url("/images/icons/gears_color.png") no-repeat 46px 20px;
           background-size: 33px; }
         body #above .heading .worksite .editor-container .tab-wrap .header:before {
           content: ' ';
           position: absolute;
           bottom: 0;
-          width: 110px;
-          height: 66px;
+          width: 121px;
+          height: 67px;
           opacity: .7;
           border: 0; }
         body #above .heading .worksite .editor-container .tab-wrap .header span {
