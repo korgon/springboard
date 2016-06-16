@@ -84,7 +84,7 @@
 
 					<div class="ui-scroller">
 						<ul class="ui-choices">
-							<li class="uicontainer" ng-repeat="ui in vm.site.catalogs | orderBy: 'ui.created'" id="{{ 'ui_' + ui.name }}" ng-init="vm.initVtab(ui.name)">
+							<li class="uicontainer" ng-repeat="ui in vm.site.catalogs" id="{{ 'ui_' + ui.name }}" ng-init="vm.initVtab(ui.name)">
 								<div class="ui" ng-class="{ active: vm.session.tab['uigen'].vtab[ui.name].visible && vm.session.tab['uigen'].current == ui.name, disabled: vm.edited }" ng-click="vm.toggleUI(ui.name)" ng-if="!vm.session.tab['uigen'].current || vm.session.tab['uigen'].current == ui.name || !vm.site.catalogs[vm.session.tab['uigen'].current]">
 									<span class="brackets">[</span>
 									<span>{{ ui.name }}</span>
@@ -229,7 +229,7 @@
 										<input type="text" name="uiname" id="uiname_input" autocomplete="off" focus-on ng-model="vm.new_ui.name" required ng-pattern="/^\w{2,}$/i" ng-init="vm.new_ui.type = 'v3'">
 
 										<label for="uitypeinput" ng-if="vm.uis.length > 1">Type</label>
-										<select id="uitypeinput" ng-if="vm.uis.length > 1" required ng-model="vm.new_ui.type" ng-options="ui.type as ui.type for ui in vm.uis | orderBy: 'toString()'">
+										<select id="uitypeinput" ng-if="vm.uis.length > 1" required ng-model="vm.new_ui.type" ng-options="ui.type as ui.type for ui in vm.uis">
 										</select>
 
 										<div class="buttons">

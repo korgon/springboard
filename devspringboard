@@ -1,5 +1,4 @@
-
 #!/bin/sh
 # code to run node with harmony flag for ecma6 support
 # --expose_gc to expose the garbage collector global function gc()
-nodemon --harmony --ignore lib/app/ui/ --ignore gulpfile.js --ignore lib/app/public/ --ignore searchspring-sites/ --ignore user.json index.js
+nodemon --harmony --ignore lib/config/user.json --ignore lib/app/ui/ --ignore lib/sbc/ --ignore lib/app/public/ --ignore searchspring-sites/ --ignore springboard-library/ index.js
