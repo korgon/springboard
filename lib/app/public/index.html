@@ -3,14 +3,14 @@
 <html ng-app="springboardApp">
 
 	<head>
-		<link href="/css/springboard.css" rel="stylesheet">
 		<title>Springboard</title>
+		
+		<link href="/css/springboard.css" rel="stylesheet">
+		<script src="/js/sbc.js"></script>
 	</head>
 
 	<body ng-controller="MainCtrl">
 		<div id="main" ng-view></div>
-
-		<script src="/js/sbc.js"></script>
 
 		<div id="loading" ng-show="loading.show">
 			<div class="wrap">
