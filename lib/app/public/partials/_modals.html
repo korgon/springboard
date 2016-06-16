@@ -44,21 +44,55 @@
 					<span class="messageicon {{ mm.message_icon }}"></span>
 					<p class="message">{{ mm.message }}</p>
 				</div>
-        <div class="inputs">
-          <input type="text" ng-model="mm.input" required focus-on>
-        </div>
+				<div class="inputs">
+					<input type="text" ng-model="mm.input" required focus-on>
+				</div>
 				<div class="buttons">
 					<input type="submit" class="button" value="{{ mm.button_confirm }}" ng-click="mm.resolveModal()" ng-disabled="modalInputForm.$invalid">
 					<button ng-click="mm.closeModal()" class="button">{{ mm.button_cancel }}</button>
 				</div>
 			</div>
 		</form>
-    <div class="git-changes">
-      <div class="git-change" ng-repeat="change in mm.message_data">
-        <span class="git-status {{ change.state == '??' ? 'new' : change.state }}">{{ change.state }}</span>
-        <span class="git-file">{{ change.change }}</span>
-      </div>
-    </div>
+		<div class="git-changes">
+			<div class="git-change" ng-repeat="change in mm.message_data">
+				<span class="git-status {{ change.state == '??' ? 'new' : change.state }}">{{ change.state }}</span>
+				<span class="git-file">{{ change.change }}</span>
+			</div>
+		</div>
+	</div>
+
+	<!-- install module modal -->
+	<div class="boxwrap {{ vm.modalview }}" ng-switch-when="install" ng-controller="ModalInstallCtrl">
+		<div class="boxtop"></div>
+		<form id="modalInstall" name="modalInstallForm" novalidate>
+			<div class="boxcontent">
+				<div class="boxmessage">
+					<span class="messageicon {{ mm.message_icon }}"></span>
+					<p class="message">{{ mm.message }}</p>
+				</div>
+				<div class="inputs">
+					<input type="text" ng-model="mm.input" required focus-on>
+				</div>
+				<div class="buttons">
+					<input type="submit" class="button" value="{{ mm.button_confirm }}" ng-click="mm.resolveModal()" ng-disabled="modalInputForm.$invalid">
+					<button ng-click="mm.closeModal()" class="button">{{ mm.button_cancel }}</button>
+				</div>
+			</div>
+			<div>
+				<div>Install Module</div>
+				<ul class="uimodules">
+					<li ng-repeat="module in mm.library">
+						<span>{{ module.name }}</span>
+					</li>
+				</ul>
+			</div>
+		</form>
+		<div class="git-changes">
+			<div class="git-change" ng-repeat="change in mm.message_data">
+				<span class="git-status {{ change.state == '??' ? 'new' : change.state }}">{{ change.state }}</span>
+				<span class="git-file">{{ change.change }}</span>
+			</div>
+		</div>
 	</div>
 
 </div>
