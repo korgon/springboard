@@ -47,9 +47,17 @@
 		right: 0;
 		bottom: 0;
 		left: 0;
+		-webkit-transition: opacity 0.3s ease-in-out;
+		-moz-transition: opacity 0.3s ease-in-out;
+		-ms-transition: opacity 0.3s ease-in-out;
+		-o-transition: opacity 0.3s ease-in-out;
+		opacity: 1;
 		background: rgba(0, 0, 0, 0.9);
 		z-index: 999999;
 		overflow: auto;
+		&.ng-hide {
+			opacity: 0;
+		}
 	}
 
 	// input box used by sbc javascripts
@@ -68,9 +76,87 @@
 		&.commit {
 			width: 450px;
 		}
-		&.install {
-			width: 750px;
+		&.moduleInfo {
+			width: 550px;
+			.markdown {
+				padding: 0 20px 20px;
+				margin-bottom: 20px;
+			}
 		}
+		&.moduleInstall {
+			width: 750px;
+			.boxcontent {
+				padding: 0;
+				overflow: auto;
+				display: flex;
+				align-items: stretch;
+				align-content: stretch;
+			}
+			.boxleft {
+				flex-basis: 199px;
+				background-color: $blueblack;
+				border-right: 1px solid $bluebase;
+				.uimodules {
+					list-style: none;
+					text-align: left;
+					margin: 10px 0 10px 10px;
+					padding: 0px;
+					text-transform: uppercase;
+					font-size: 14px;
+					font-weight: bold;
+					color: $bluefaded;
+					& > li {
+						padding: 5px;
+						margin-right: -1px;
+						border: 1px solid transparent;
+						border-right: 0;
+						&.selected {
+							color: $bluegrey;
+							background: $bluedarkest;
+							border: 1px solid $bluebase;
+							border-right: 0;
+						}
+						.modulename {
+							cursor: pointer;
+						}
+						.modulethemes {
+							font-size: 10px;
+							list-style: none;
+							padding-left: 33px;
+							li {
+								cursor: pointer;
+								padding: 5px;
+								color: $bluefaded;
+								&.selected {
+									color: $bluegrey;
+								}
+								.themename {
+									height: 15px;
+									span {
+										vertical-align: middle;
+									}
+									.icon {
+										margin-right: 5px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.boxright {
+				flex-grow: 1;
+				.markdown {
+					min-height: 400px;
+					padding: 0 20px 20px;
+					margin-bottom: 20px;
+				}
+				.buttons {
+					margin: 20px;
+				}
+			}
+		}
+
 		.boxtop {
 			height: 22px;
 			overflow: hidden;
@@ -135,6 +221,10 @@
 						background: url('/images/icons/commit.png') no-repeat center;
 						background-size: 30px;
 					}
+					&.info {
+						background: url('/images/icons/info.png') no-repeat center;
+						background-size: 30px;
+					}
 				}
 				.message {
 					display: inline-block;
@@ -158,12 +248,12 @@
 			border-top: 1px solid $bluedarkestest_text;
 			padding: 5px;
 			.git-change {
-				color: #354957;
-			  font-size: 10px;
-			  font-weight: bold;
-			  padding: 3px;
+				color: $bluefaded;
+				font-size: 10px;
+				font-weight: bold;
+				padding: 3px;
 				.git-status {
-					color: #352C17;
+					color: $orangedarkest;
 					display: inline-block;
 					width: 18px;
 					&.D {

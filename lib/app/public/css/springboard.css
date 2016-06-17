@@ -47,9 +47,9 @@ body {
     body #main #below {
       flex-shrink: 0; }
 
-div[markdown-it] {
+.markdown {
   text-align: left; }
-  div[markdown-it] pre {
+  .markdown pre {
     background: #00121E;
     padding: 20px;
     font-size: 11px;
@@ -763,6 +763,8 @@ body #above .heading .worksite {
           text-transform: uppercase;
           font-weight: bold;
           padding: 6px; }
+          body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-head .vtab-title:hover {
+            cursor: pointer; }
           body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-head .toggle {
             float: right; }
         body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-subhead {
@@ -770,7 +772,8 @@ body #above .heading .worksite {
           font-size: 10px;
           text-transform: lowercase;
           font-weight: bold;
-          padding: 3px 6px; }
+          padding: 3px 6px;
+          clear: both; }
         body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-contents {
           position: relative;
           z-index: 2; }
@@ -1148,9 +1151,16 @@ body #gallery {
   right: 0;
   bottom: 0;
   left: 0;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  -ms-transition: opacity 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out;
+  opacity: 1;
   background: rgba(0, 0, 0, 0.9);
   z-index: 999999;
   overflow: auto; }
+  #modals .modal.ng-hide {
+    opacity: 0; }
 #modals .boxwrap {
   width: 250px;
   height: auto;
@@ -1163,8 +1173,68 @@ body #gallery {
     width: 350px; }
   #modals .boxwrap.commit {
     width: 450px; }
-  #modals .boxwrap.install {
+  #modals .boxwrap.moduleInfo {
+    width: 550px; }
+    #modals .boxwrap.moduleInfo .markdown {
+      padding: 0 20px 20px;
+      margin-bottom: 20px; }
+  #modals .boxwrap.moduleInstall {
     width: 750px; }
+    #modals .boxwrap.moduleInstall .boxcontent {
+      padding: 0;
+      overflow: auto;
+      display: flex;
+      align-items: stretch;
+      align-content: stretch; }
+    #modals .boxwrap.moduleInstall .boxleft {
+      flex-basis: 199px;
+      background-color: #00121E;
+      border-right: 1px solid #354E66; }
+      #modals .boxwrap.moduleInstall .boxleft .uimodules {
+        list-style: none;
+        text-align: left;
+        margin: 10px 0 10px 10px;
+        padding: 0px;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: bold;
+        color: #354957; }
+        #modals .boxwrap.moduleInstall .boxleft .uimodules > li {
+          padding: 5px;
+          margin-right: -1px;
+          border: 1px solid transparent;
+          border-right: 0; }
+          #modals .boxwrap.moduleInstall .boxleft .uimodules > li.selected {
+            color: #718599;
+            background: #001A2B;
+            border: 1px solid #354E66;
+            border-right: 0; }
+          #modals .boxwrap.moduleInstall .boxleft .uimodules > li .modulename {
+            cursor: pointer; }
+          #modals .boxwrap.moduleInstall .boxleft .uimodules > li .modulethemes {
+            font-size: 10px;
+            list-style: none;
+            padding-left: 33px; }
+            #modals .boxwrap.moduleInstall .boxleft .uimodules > li .modulethemes li {
+              cursor: pointer;
+              padding: 5px;
+              color: #354957; }
+              #modals .boxwrap.moduleInstall .boxleft .uimodules > li .modulethemes li.selected {
+                color: #718599; }
+              #modals .boxwrap.moduleInstall .boxleft .uimodules > li .modulethemes li .themename {
+                height: 15px; }
+                #modals .boxwrap.moduleInstall .boxleft .uimodules > li .modulethemes li .themename span {
+                  vertical-align: middle; }
+                #modals .boxwrap.moduleInstall .boxleft .uimodules > li .modulethemes li .themename .icon {
+                  margin-right: 5px; }
+    #modals .boxwrap.moduleInstall .boxright {
+      flex-grow: 1; }
+      #modals .boxwrap.moduleInstall .boxright .markdown {
+        min-height: 400px;
+        padding: 0 20px 20px;
+        margin-bottom: 20px; }
+      #modals .boxwrap.moduleInstall .boxright .buttons {
+        margin: 20px; }
   #modals .boxwrap .boxtop {
     height: 22px;
     overflow: hidden;
@@ -1218,6 +1288,9 @@ body #gallery {
           background-size: 30px; }
         #modals .boxwrap .boxcontent .boxmessage .messageicon.commit {
           background: url("/images/icons/commit.png") no-repeat center;
+          background-size: 30px; }
+        #modals .boxwrap .boxcontent .boxmessage .messageicon.info {
+          background: url("/images/icons/info.png") no-repeat center;
           background-size: 30px; }
       #modals .boxwrap .boxcontent .boxmessage .message {
         display: inline-block;

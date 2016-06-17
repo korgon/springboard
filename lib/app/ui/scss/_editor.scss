@@ -282,6 +282,11 @@ body {
 								text-transform: uppercase;
 								font-weight: bold;
 								padding: 6px;
+								.vtab-title {
+									&:hover {
+										cursor: pointer;
+									}
+								}
 								.toggle {
 									float: right;
 								}
@@ -292,6 +297,7 @@ body {
 								text-transform: lowercase;
 								font-weight: bold;
 								padding: 3px 6px;
+								clear: both;
 							}
 
 							.vtab-contents {
