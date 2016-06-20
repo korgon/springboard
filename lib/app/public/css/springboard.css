@@ -47,6 +47,9 @@ body {
     body #main #below {
       flex-shrink: 0; }
 
+/*
+	Custom Markdown theme
+*/
 .markdown {
   text-align: left; }
   .markdown pre {
@@ -54,6 +57,10 @@ body {
     padding: 20px;
     font-size: 11px;
     border-left: 3px solid #718599; }
+  .markdown h1 {
+    border-bottom: 1px solid #354E66; }
+  .markdown hr {
+    border-color: #354E66; }
 
 /*
 highlight.js styles
@@ -1228,7 +1235,7 @@ body #gallery {
                 #modals .boxwrap.moduleInstall .boxleft .uimodules > li .modulethemes li .themename .icon {
                   margin-right: 5px; }
     #modals .boxwrap.moduleInstall .boxright {
-      flex-grow: 1; }
+      flex-basis: 550px; }
       #modals .boxwrap.moduleInstall .boxright .markdown {
         min-height: 400px;
         padding: 0 20px 20px;

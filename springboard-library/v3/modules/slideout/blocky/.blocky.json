@@ -5,8 +5,8 @@
 	"author": "searchspring",
 	"variables": {
 		"width": {
-			"value": 768,
-			"default": 768,
+			"value": 700,
+			"default": 700,
 			"type": "integer",
 			"description": "slideout at this width (in px)"
 		}

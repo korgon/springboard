@@ -1,3 +1,7 @@
+/*
+	Custom Markdown theme
+*/
+
 .markdown {
 	text-align: left;
 
@@ -7,7 +11,17 @@
 		font-size: 11px;
 		border-left: 3px solid $bluegrey;
 	}
+
+	h1 {
+		border-bottom: 1px solid $bluebase;
+	}
+
+	hr {
+		border-color: $bluebase;
+	}
 }
+
+
 /*
 highlight.js styles
 Gruvbox style (dark) (c) Pavel Pertsev (original style at https://github.com/morhetz/gruvbox)
