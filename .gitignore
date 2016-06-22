@@ -9,7 +9,7 @@ searchspring-sites/
 lib/config/user.json
 
 # ignore the dev sass cache
-lib/app/ui/scss/.sass-cache
+lib/app/scss/.sass-cache
 
 # ignore annoying files
 .DS_Store

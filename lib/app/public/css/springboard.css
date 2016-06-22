@@ -9,7 +9,7 @@ body {
   min-height: 100%;
   padding: 0;
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: sans-serif;
   background-color: #354E66;
   color: #0E1920; }
   body a {
@@ -1027,14 +1027,17 @@ body #gallery {
             margin-right: 10px; }
           body #gallery .sites .createsite #createinput .buttons .new_cancel {
             width: 80px; }
+    body #gallery .sites .flex-filler {
+      flex-basis: 320px;
+      margin: 5px; }
     body #gallery .sites .site {
+      flex-basis: 320px;
       box-sizing: border-box;
-      width: 320px;
       height: 180px;
       position: relative;
       font-size: 14px;
       border: 1px solid #001A2B;
-      margin: 5px 0.5%;
+      margin: 5px;
       overflow: hidden; }
       body #gallery .sites .site:hover > .controls {
         top: 0; }

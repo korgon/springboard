@@ -71,14 +71,18 @@ body {
 					}
 				}
 			}
+			.flex-filler {
+				flex-basis: 320px;
+				margin: 5px;
+			}
 			.site {
+				flex-basis: 320px;
 				box-sizing: border-box;
-				width: 320px;
 				height: 180px;
 				position: relative;
 				font-size: 14px;
 				border: 1px solid $bluedarkest;
-				margin: 5px 0.5%;
+				margin: 5px;
 				overflow: hidden;
 				&:hover > .controls {
 					top: 0;
