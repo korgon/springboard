@@ -47,8 +47,11 @@
 								</div>
 
 								<div ng-switch-when="files">
-									<div class="vtab-head">{{ vm.session.tab['settings'].vtab['default'].tab }}</div>
 									<ul class="settings-files">
+										<li class="root"><span class="icon small folder-open"></span><span class="filename"> /</span></li>
+										<ul class="directory-contents">
+											<li class="{{ details.type }} {{ details.extension.replace('.', '') }}" ng-repeat="(name, details) in vm.site.files.root.contents" ng-include="'fileTree'"></li>
+										</ul>
 									</ul>
 								</div>
 
@@ -261,3 +264,22 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/ng-template" id="fileTree">
+
+
+		<span class="filename" ng-if="details.type == 'file'">
+			<span class="icon small extension-{{ details.extension.replace('.', '') }}"></span>
+			<span class="filename">{{ name }}</span>
+		</span>
+
+		<span ng-if="details.type == 'directory'" ng-click="details.collapsed = !details.collapsed">
+			<span ng-if="details.collapsed" class="icon small folder"></span>
+			<span ng-if="!details.collapsed" class="icon small folder-open"></span>
+			<span class="filename">{{ name }}</span>
+		</span>
+
+		<ul class="directory-contents" ng-if="details.type == 'directory'" ng-init="details.collapsed = 'true'" ng-class="{ collapsed: details.collapsed }">
+			<li class="{{ details.type }}" ng-repeat="(name, details) in details.contents" ng-include="'fileTree'"></li>
+		</ul>
+</script>

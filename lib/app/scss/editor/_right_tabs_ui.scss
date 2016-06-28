@@ -1,0 +1,167 @@
+.editor-container {
+	.ui-scroller {
+		clear: both;
+		float: right;
+		width: 268px;
+		.ui-choices {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			li {
+				font-size: 14px;
+				color: $bluegrey;
+				position: relative;
+				&:first-of-type {
+				}
+				.ui {
+					display: block;
+					height: 33px;
+					padding: 0 12px;
+					background-color: $bluedarkest;
+					border-left: 1px solid $bluehighlight;
+					border-bottom: 1px solid $bluehighlight;
+					line-height: 33px;
+					color: $bluegrey;
+					text-align: center;
+					font-weight: bold;
+					position: relative;
+					span.brackets {
+						display: none;
+					}
+					&.disabled:hover {
+						cursor: default;
+					}
+					&.active, &:hover {
+						span {
+							transition: padding 222ms ease;
+							text-shadow: $bluehighlight 0px 0px 12px;
+							padding: 0 5px;
+							&.brackets {
+								display: inline;
+								text-shadow: none;
+								color: $orangefaded;
+							}
+						}
+					}
+					&:hover {
+						cursor: pointer;
+					}
+				}
+
+				.module-themes-container {
+					padding: 6px 0;
+					.theme-name {
+						color: $orangeyellow;
+						font-size: 10px;
+						text-transform: uppercase;
+						display: inline-block;
+						width: 130px;
+						overflow: hidden;
+						vertical-align: middle;
+						text-align: center;
+					}
+					.icon {
+						background-size: 11px;
+						width: 20px;
+						height: 25px;
+						&:hover {
+							cursor: pointer;
+						}
+						&.disabled {
+							&:hover {
+								cursor: default;
+							}
+						}
+						&.off {
+							opacity: 0.2;
+						}
+						&.on {
+							&:hover {
+								cursor: default;
+							}
+						}
+						&.hidden {
+							visibility: hidden;
+						}
+					}
+				}
+
+				.ui-add {
+					text-align: center;
+					clear: both;
+					background-color: $blueblack;
+					border: 0;
+					border-left: 1px solid $bluedarkestest_text;
+					border-right: 0;
+					width: 245px;
+					float: right;
+					box-sizing: border-box;
+					&.solo {
+						background-color: $bluedarkest;
+						border: 1px solid $bluehighlight;
+						border-right: 0;
+						border-top: 0;
+						width: 100%;
+						float: none;
+					}
+					span.brackets {
+						vertical-align: bottom;
+						line-height: 33px;
+						font-size: 14px;
+						font-weight: bold;
+						display: none;
+					}
+					#addbutton {
+						height: 33px;
+						.add {
+							display: inline-block;
+							width: 15px;
+							height: 30px;
+							background-repeat: no-repeat;
+							background-position: center center;
+							border-radius: 50px;
+							transition: all 222ms ease;
+							background-image: url('/images/icons/add_small.png');
+							background-size: 25px;
+						}
+						&:hover {
+							cursor: pointer;
+						}
+						&:hover > .add {
+							-webkit-filter: drop-shadow(0px 0px 3px $bluelight);
+							filter: drop-shadow(0px 0px 3px $bluelight);
+						}
+						&.active, &:hover {
+							span {
+								transition: padding 222ms ease;
+								text-shadow: $bluehighlight 0px 0px 12px;
+								padding: 0 5px;
+								&.brackets {
+									display: inline;
+									text-shadow: none;
+									color: $orangefaded;
+								}
+							}
+						}
+					}
+					label {
+						display: inline-block;
+						width: 40px;
+					}
+					#adduiinput {
+						padding: 10px 0;
+						display: none;
+						&.visible {
+							display: block;
+						}
+						#uiname_input, #uitype_input {
+							width: 180px;
+							height: 33px;
+							background-color: #00121E;
+						}
+					}
+				}
+			}
+		}
+	}
+}

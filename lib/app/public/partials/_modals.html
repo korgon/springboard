@@ -92,7 +92,7 @@
 						<ul class="modulethemes">
 							<li ng-repeat="theme in module.themes" ng-class="{ selected: module.name == mm.selected.module && theme.name == mm.selected.theme }">
 								<div class="themename" ng-click="mm.selectModule(theme.type)">
-									<span class="icon small active" ng-if="mm.selected.module == module.name && mm.selected.theme == theme.name"></span>
+									<span class="icon tiny active" ng-if="mm.selected.module == module.name && mm.selected.theme == theme.name"></span>
 									<span>{{ theme.name }}</span>
 								</div>
 							</li>

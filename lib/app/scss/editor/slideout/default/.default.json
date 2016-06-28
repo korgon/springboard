@@ -1,0 +1,14 @@
+{
+	"type": "v3/slideout/default",
+	"version": "1.0.0",
+	"description": "default slideout style",
+	"author": "searchspring",
+	"variables": {
+		"width": {
+			"value": 768,
+			"default": 768,
+			"type": "integer",
+			"description": "slideout at this width (in px)"
+		}
+	}
+}

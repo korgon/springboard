@@ -1,0 +1,21 @@
+.editor-container {
+	.settings-files {
+		.root {
+		}
+		.filename {
+			font-size: 12px;
+			color: $bluefaded;
+		}
+		.directory {
+			margin: 5px 0;
+		}
+		.directory-contents {
+			&.collapsed {
+				display: none;
+			}
+			& > li {
+				margin-left: 21px;
+			}
+		}
+	}
+}

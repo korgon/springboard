@@ -22,6 +22,10 @@ body {
     background-color: #001A2B; }
     body input:focus, body input:active, body select:focus, body select:active, body textarea:focus, body textarea:active {
       outline: 0; }
+  body ul {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
   body #main {
     width: 100%;
     height: 100%;
@@ -237,6 +241,10 @@ input[type="text"], select {
   background-position: center center;
   vertical-align: middle; }
   .icon.small {
+    background-size: 21px;
+    width: 21px;
+    height: 21px; }
+  .icon.tiny {
     background-size: 14px;
     width: 14px;
     height: 14px; }
@@ -262,6 +270,10 @@ input[type="text"], select {
     background-image: url("/images/icons/config.png"); }
   .icon.custom {
     background-image: url("/images/icons/custom.png"); }
+  .icon.extension-html {
+    background-image: url("/images/icons/extensions/html.png"); }
+  .icon.extension-png {
+    background-image: url("/images/icons/extensions/png.png"); }
   .icon.files {
     background-image: url("/images/icons/filestruct.png"); }
   .icon.folder {
@@ -556,18 +568,12 @@ body #above .heading {
     border-right: 1px solid #304B66;
     border-left: 1px solid #001A2B; }
 
-body iframe {
-  display: block;
-  background-color: #fff;
-  border: none;
-  width: 100%;
-  height: 100%; }
-body #above .heading .worksite {
+#above .heading .worksite {
   order: 4;
   flex-basis: 270px;
   width: 270px;
   height: 40px; }
-  body #above .heading .worksite .currentsite {
+  #above .heading .worksite .currentsite {
     display: block;
     position: relative;
     text-align: center;
@@ -576,17 +582,17 @@ body #above .heading .worksite {
     line-height: 40px;
     height: 40px;
     z-index: 9; }
-    body #above .heading .worksite .currentsite span {
+    #above .heading .worksite .currentsite span {
       display: inline-block;
       width: 100%;
       font-size: 14px;
       font-weight: bold;
       color: #718599; }
-    body #above .heading .worksite .currentsite:hover {
+    #above .heading .worksite .currentsite:hover {
       cursor: pointer; }
-    body #above .heading .worksite .currentsite:hover + .editor-container {
+    #above .heading .worksite .currentsite:hover + .editor-container {
       max-height: 1200px; }
-  body #above .heading .worksite .editor-container {
+  #above .heading .worksite .editor-container {
     position: absolute;
     right: 0;
     width: 290px;
@@ -595,20 +601,20 @@ body #above .heading .worksite {
     margin: 1px 0 0;
     transition: max-height 144ms ease, max-height 400ms ease-out;
     z-index: 7; }
-    body #above .heading .worksite .editor-container:hover {
+    #above .heading .worksite .editor-container:hover {
       max-height: 1200px; }
-    body #above .heading .worksite .editor-container.show {
+    #above .heading .worksite .editor-container.show {
       max-height: 1200px; }
-    body #above .heading .worksite .editor-container .spacer {
+    #above .heading .worksite .editor-container .spacer {
       background-color: #00121E;
       border-left: 1px solid #2B343B;
       width: 261px;
       height: 5px;
       clear: right;
       float: right; }
-      body #above .heading .worksite .editor-container .spacer.large {
+      #above .heading .worksite .editor-container .spacer.large {
         height: 20px; }
-    body #above .heading .worksite .editor-container .action-buttons {
+    #above .heading .worksite .editor-container .action-buttons {
       display: flex;
       width: 267px;
       flex-flow: row nowrap;
@@ -620,354 +626,367 @@ body #above .heading .worksite {
       border: 1px solid #304B66;
       border-right: 0;
       background-color: #001A2B; }
-      body #above .heading .worksite .editor-container .action-buttons li {
+      #above .heading .worksite .editor-container .action-buttons li {
         display: inline-block;
         flex-grow: 1;
         text-align: center; }
-        body #above .heading .worksite .editor-container .action-buttons li a {
+        #above .heading .worksite .editor-container .action-buttons li a {
           display: inline-block;
           width: 100%;
           opacity: 0.5; }
-          body #above .heading .worksite .editor-container .action-buttons li a:hover {
+          #above .heading .worksite .editor-container .action-buttons li a:hover {
             cursor: pointer;
             opacity: 1; }
-    body #above .heading .worksite .editor-container .tab-control {
-      display: flex;
-      width: 261px;
-      flex-flow: row nowrap;
-      justify-content: space-around;
-      clear: both;
-      float: right;
-      list-style: none;
-      margin: 0;
-      padding: 4px 0 0;
-      background-color: #00121E;
-      border-left: 1px solid #2B343B;
+
+.editor-container .ui-scroller {
+  clear: both;
+  float: right;
+  width: 268px; }
+  .editor-container .ui-scroller .ui-choices {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+    .editor-container .ui-scroller .ui-choices li {
+      font-size: 14px;
+      color: #718599;
       position: relative; }
-      body #above .heading .worksite .editor-container .tab-control li {
-        display: inline-block;
-        flex-grow: 1;
-        text-align: center;
-        height: 33px;
-        margin: 0px 6px 0px; }
-        body #above .heading .worksite .editor-container .tab-control li a {
-          display: inline-block;
-          width: 100%;
-          height: 33px;
-          opacity: 0.5;
-          border: 1px solid transparent;
-          border-bottom: 0; }
-          body #above .heading .worksite .editor-container .tab-control li a.active {
-            background-color: #001A2B;
-            border: 1px solid #304B66;
-            border-bottom: 0;
-            opacity: 1; }
-          body #above .heading .worksite .editor-container .tab-control li a:hover {
-            cursor: pointer;
-            opacity: 1; }
-          body #above .heading .worksite .editor-container .tab-control li a .icon {
-            width: 100%; }
-      body #above .heading .worksite .editor-container .tab-control.disabled li a:not(.active), body #above .heading .worksite .editor-container .tab-control.disabled li a:hover {
-        cursor: default;
-        opacity: 0.1; }
-    body #above .heading .worksite .editor-container .tab-wrap {
-      width: 267px;
-      height: auto;
-      clear: both;
-      float: right;
-      border: 1px solid #304B66;
-      border-right: 0;
-      background-color: #001A2B;
-      transition: height 144ms ease, height 400ms ease-out; }
-      body #above .heading .worksite .editor-container .tab-wrap .header {
+      .editor-container .ui-scroller .ui-choices li .ui {
+        display: block;
         height: 33px;
         padding: 0 12px;
-        font-size: 10px;
-        font-weight: bold;
-        text-transform: uppercase;
+        background-color: #001A2B;
+        border-left: 1px solid #304B66;
+        border-bottom: 1px solid #304B66;
+        line-height: 33px;
+        color: #718599;
         text-align: center;
-        color: #354957;
+        font-weight: bold;
         position: relative; }
-        body #above .heading .worksite .editor-container .tab-wrap .header.ui:before {
-          left: 12px;
-          background: url("/images/icons/uis.png") no-repeat 20px 10px;
-          background-size: 46px; }
-        body #above .heading .worksite .editor-container .tab-wrap .header.settings:before {
-          right: 5px;
-          background: url("/images/icons/gears_color.png") no-repeat 46px 20px;
-          background-size: 33px; }
-        body #above .heading .worksite .editor-container .tab-wrap .header:before {
-          content: ' ';
-          position: absolute;
-          bottom: 0;
-          width: 121px;
-          height: 67px;
-          opacity: .7;
-          border: 0; }
-        body #above .heading .worksite .editor-container .tab-wrap .header span {
-          line-height: 33px; }
-      body #above .heading .worksite .editor-container .tab-wrap .tab-content {
-        padding: 5px;
-        width: auto; }
-    body #above .heading .worksite .editor-container .vtab-wrap {
-      display: table;
-      clear: both;
-      width: 267px;
-      float: right;
-      background-color: #001A2B;
-      border-left: 1px solid #304B66;
-      border-bottom: 1px solid #304B66; }
-      body #above .heading .worksite .editor-container .vtab-wrap .vtab-control-wrap {
-        display: table-cell;
-        padding: 3px 0px 3px 2px;
-        background-color: #00121E;
-        border-right: 1px solid #304B66; }
-        body #above .heading .worksite .editor-container .vtab-wrap .vtab-control-wrap .vtab-control {
-          display: flex;
-          float: left;
-          flex-flow: column wrap;
-          justify-content: space-around;
-          clear: both;
-          list-style: none;
-          margin: 0;
-          padding: 0;
-          background-color: #00121E;
-          border-left: 1px solid #00121E; }
-          body #above .heading .worksite .editor-container .vtab-wrap .vtab-control-wrap .vtab-control li {
-            flex: 1 1 auto;
-            order: 1;
-            text-align: center;
-            width: 36px;
-            margin: 0; }
-            body #above .heading .worksite .editor-container .vtab-wrap .vtab-control-wrap .vtab-control li a {
-              display: inline-block;
-              width: 100%;
-              padding: 3px 0;
-              opacity: 0.5;
-              border: 1px solid transparent;
-              border-right: 0; }
-              body #above .heading .worksite .editor-container .vtab-wrap .vtab-control-wrap .vtab-control li a:hover {
-                cursor: pointer;
-                opacity: 1; }
-              body #above .heading .worksite .editor-container .vtab-wrap .vtab-control-wrap .vtab-control li a .class {
-                width: 100%; }
-            body #above .heading .worksite .editor-container .vtab-wrap .vtab-control-wrap .vtab-control li.active a {
-              background-color: #001A2B;
-              border: 1px solid #304B66;
-              border-right: 0;
-              opacity: 1; }
-          body #above .heading .worksite .editor-container .vtab-wrap .vtab-control-wrap .vtab-control.disabled li:not(.active) a, body #above .heading .worksite .editor-container .vtab-wrap .vtab-control-wrap .vtab-control.disabled li:not(.active) a:hover {
-            cursor: default;
-            opacity: 0.1; }
-      body #above .heading .worksite .editor-container .vtab-wrap .vtab {
-        display: table-cell;
-        vertical-align: top;
-        width: 100%;
-        padding: 10px; }
-        body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-head {
-          color: #946018;
-          font-size: 12px;
-          text-transform: uppercase;
-          font-weight: bold;
-          padding: 6px; }
-          body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-head .vtab-title:hover {
-            cursor: pointer; }
-          body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-head .toggle {
-            float: right; }
-        body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-subhead {
-          color: #354957;
+        .editor-container .ui-scroller .ui-choices li .ui span.brackets {
+          display: none; }
+        .editor-container .ui-scroller .ui-choices li .ui.disabled:hover {
+          cursor: default; }
+        .editor-container .ui-scroller .ui-choices li .ui.active span, .editor-container .ui-scroller .ui-choices li .ui:hover span {
+          transition: padding 222ms ease;
+          text-shadow: #304B66 0px 0px 12px;
+          padding: 0 5px; }
+          .editor-container .ui-scroller .ui-choices li .ui.active span.brackets, .editor-container .ui-scroller .ui-choices li .ui:hover span.brackets {
+            display: inline;
+            text-shadow: none;
+            color: #946018; }
+        .editor-container .ui-scroller .ui-choices li .ui:hover {
+          cursor: pointer; }
+      .editor-container .ui-scroller .ui-choices li .module-themes-container {
+        padding: 6px 0; }
+        .editor-container .ui-scroller .ui-choices li .module-themes-container .theme-name {
+          color: #7F6E14;
           font-size: 10px;
-          text-transform: lowercase;
-          font-weight: bold;
-          padding: 3px 6px;
-          clear: both; }
-        body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-contents {
-          position: relative;
-          z-index: 2; }
-          body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-contents.disabled {
-            opacity: .2; }
-          body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-contents .vtab-overlay {
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            z-index: 3; }
-        body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block {
-          margin-bottom: 5px; }
-          body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .vtab-blockhead {
-            font-weight: bold;
-            font-size: 10px;
-            padding: 6px;
-            border-bottom: 1px solid #052238; }
-          body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .module-themes-container {
-            padding: 6px 0; }
-            body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .module-themes-container .theme-name {
-              color: #7F6E14;
-              font-size: 10px;
-              text-transform: uppercase;
-              display: inline-block;
-              width: 130px;
-              overflow: hidden;
-              vertical-align: middle;
-              text-align: center; }
-          body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-container {
-            margin-bottom: 10px; }
-          body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-description {
-            color: #354957;
-            font-size: 10px;
-            text-transform: lowercase;
-            font-weight: bold;
-            padding: 6px; }
-          body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-input {
-            width: 100%;
-            box-sizing: border-box;
-            border: 0;
-            background-color: #001A2B;
-            border: 1px solid #001A2B;
-            color: #946018;
-            font-size: 12px;
-            font-weight: bold;
+          text-transform: uppercase;
+          display: inline-block;
+          width: 130px;
+          overflow: hidden;
+          vertical-align: middle;
+          text-align: center; }
+        .editor-container .ui-scroller .ui-choices li .module-themes-container .icon {
+          background-size: 11px;
+          width: 20px;
+          height: 25px; }
+          .editor-container .ui-scroller .ui-choices li .module-themes-container .icon:hover {
             cursor: pointer; }
-            body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-input:focus {
-              background-color: #00121E;
-              cursor: text; }
-            body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-input::-webkit-input-placeholder {
-              color: #7F6E14;
-              font-weight: normal;
-              font-style: italic; }
-          body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-color {
-            font-size: 33px;
-            display: block;
-            position: absolute;
-            right: 1px;
-            top: -4px; }
-            body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-color.background {
-              color: #052238;
-              font-size: 40px;
-              right: -2px;
-              top: -8px; }
-            body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-color.invalid {
-              background-image: url("/images/icons/warning.png");
-              background-size: 33px;
-              background-color: #00121E; }
-          body #above .heading .worksite .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .toggle {
-            float: right; }
-        body #above .heading .worksite .editor-container .vtab-wrap .vtab ul {
-          list-style: none;
-          min-height: 45px;
-          margin: 0;
-          padding: 0; }
-          body #above .heading .worksite .editor-container .vtab-wrap .vtab ul .icon {
-            background-size: 11px;
-            width: 20px;
-            height: 25px; }
-            body #above .heading .worksite .editor-container .vtab-wrap .vtab ul .icon:hover {
-              cursor: pointer; }
-            body #above .heading .worksite .editor-container .vtab-wrap .vtab ul .icon.disabled:hover {
-              cursor: default; }
-            body #above .heading .worksite .editor-container .vtab-wrap .vtab ul .icon.off {
-              opacity: 0.2; }
-            body #above .heading .worksite .editor-container .vtab-wrap .vtab ul .icon.on:hover {
-              cursor: default; }
-            body #above .heading .worksite .editor-container .vtab-wrap .vtab ul .icon.hidden {
-              visibility: hidden; }
-    body #above .heading .worksite .editor-container .ui-scroller {
-      clear: both;
-      float: right;
-      width: 268px; }
-      body #above .heading .worksite .editor-container .ui-scroller .ui-choices {
-        list-style: none;
-        margin: 0;
-        padding: 0; }
-        body #above .heading .worksite .editor-container .ui-scroller .ui-choices li {
+          .editor-container .ui-scroller .ui-choices li .module-themes-container .icon.disabled:hover {
+            cursor: default; }
+          .editor-container .ui-scroller .ui-choices li .module-themes-container .icon.off {
+            opacity: 0.2; }
+          .editor-container .ui-scroller .ui-choices li .module-themes-container .icon.on:hover {
+            cursor: default; }
+          .editor-container .ui-scroller .ui-choices li .module-themes-container .icon.hidden {
+            visibility: hidden; }
+      .editor-container .ui-scroller .ui-choices li .ui-add {
+        text-align: center;
+        clear: both;
+        background-color: #00121E;
+        border: 0;
+        border-left: 1px solid #2B343B;
+        border-right: 0;
+        width: 245px;
+        float: right;
+        box-sizing: border-box; }
+        .editor-container .ui-scroller .ui-choices li .ui-add.solo {
+          background-color: #001A2B;
+          border: 1px solid #304B66;
+          border-right: 0;
+          border-top: 0;
+          width: 100%;
+          float: none; }
+        .editor-container .ui-scroller .ui-choices li .ui-add span.brackets {
+          vertical-align: bottom;
+          line-height: 33px;
           font-size: 14px;
-          color: #718599;
-          position: relative; }
-          body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui {
-            display: block;
+          font-weight: bold;
+          display: none; }
+        .editor-container .ui-scroller .ui-choices li .ui-add #addbutton {
+          height: 33px; }
+          .editor-container .ui-scroller .ui-choices li .ui-add #addbutton .add {
+            display: inline-block;
+            width: 15px;
+            height: 30px;
+            background-repeat: no-repeat;
+            background-position: center center;
+            border-radius: 50px;
+            transition: all 222ms ease;
+            background-image: url("/images/icons/add_small.png");
+            background-size: 25px; }
+          .editor-container .ui-scroller .ui-choices li .ui-add #addbutton:hover {
+            cursor: pointer; }
+          .editor-container .ui-scroller .ui-choices li .ui-add #addbutton:hover > .add {
+            -webkit-filter: drop-shadow(0px 0px 3px #688BA3);
+            filter: drop-shadow(0px 0px 3px #688BA3); }
+          .editor-container .ui-scroller .ui-choices li .ui-add #addbutton.active span, .editor-container .ui-scroller .ui-choices li .ui-add #addbutton:hover span {
+            transition: padding 222ms ease;
+            text-shadow: #304B66 0px 0px 12px;
+            padding: 0 5px; }
+            .editor-container .ui-scroller .ui-choices li .ui-add #addbutton.active span.brackets, .editor-container .ui-scroller .ui-choices li .ui-add #addbutton:hover span.brackets {
+              display: inline;
+              text-shadow: none;
+              color: #946018; }
+        .editor-container .ui-scroller .ui-choices li .ui-add label {
+          display: inline-block;
+          width: 40px; }
+        .editor-container .ui-scroller .ui-choices li .ui-add #adduiinput {
+          padding: 10px 0;
+          display: none; }
+          .editor-container .ui-scroller .ui-choices li .ui-add #adduiinput.visible {
+            display: block; }
+          .editor-container .ui-scroller .ui-choices li .ui-add #adduiinput #uiname_input, .editor-container .ui-scroller .ui-choices li .ui-add #adduiinput #uitype_input {
+            width: 180px;
             height: 33px;
-            padding: 0 12px;
-            background-color: #001A2B;
-            border-left: 1px solid #304B66;
-            border-bottom: 1px solid #304B66;
-            line-height: 33px;
-            color: #718599;
-            text-align: center;
-            font-weight: bold;
-            position: relative; }
-            body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui span.brackets {
-              display: none; }
-            body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui.disabled:hover {
-              cursor: default; }
-            body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui.active span, body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui:hover span {
-              transition: padding 222ms ease;
-              text-shadow: #304B66 0px 0px 12px;
-              padding: 0 5px; }
-              body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui.active span.brackets, body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui:hover span.brackets {
-                display: inline;
-                text-shadow: none;
-                color: #946018; }
-            body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui:hover {
-              cursor: pointer; }
-          body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add {
-            text-align: center;
-            clear: both;
-            background-color: #00121E;
-            border: 0;
-            border-left: 1px solid #2B343B;
-            border-right: 0;
-            width: 245px;
-            float: right;
-            box-sizing: border-box; }
-            body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add.solo {
-              background-color: #001A2B;
-              border: 1px solid #304B66;
-              border-right: 0;
-              border-top: 0;
-              width: 100%;
-              float: none; }
-            body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add span.brackets {
-              vertical-align: bottom;
-              line-height: 33px;
-              font-size: 14px;
-              font-weight: bold;
-              display: none; }
-            body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add #addbutton {
-              height: 33px; }
-              body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add #addbutton .add {
-                display: inline-block;
-                width: 15px;
-                height: 30px;
-                background-repeat: no-repeat;
-                background-position: center center;
-                border-radius: 50px;
-                transition: all 222ms ease;
-                background-image: url("/images/icons/add_small.png");
-                background-size: 25px; }
-              body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add #addbutton:hover {
-                cursor: pointer; }
-              body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add #addbutton:hover > .add {
-                -webkit-filter: drop-shadow(0px 0px 3px #688BA3);
-                filter: drop-shadow(0px 0px 3px #688BA3); }
-              body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add #addbutton.active span, body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add #addbutton:hover span {
-                transition: padding 222ms ease;
-                text-shadow: #304B66 0px 0px 12px;
-                padding: 0 5px; }
-                body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add #addbutton.active span.brackets, body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add #addbutton:hover span.brackets {
-                  display: inline;
-                  text-shadow: none;
-                  color: #946018; }
-            body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add label {
-              display: inline-block;
-              width: 40px; }
-            body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add #adduiinput {
-              padding: 10px 0;
-              display: none; }
-              body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add #adduiinput.visible {
-                display: block; }
-              body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add #adduiinput #uiname_input, body #above .heading .worksite .editor-container .ui-scroller .ui-choices li .ui-add #adduiinput #uitype_input {
-                width: 180px;
-                height: 33px;
-                background-color: #00121E; }
+            background-color: #00121E; }
+
+.editor-container .settings-files .filename {
+  font-size: 12px;
+  color: #354957; }
+.editor-container .settings-files .directory {
+  margin: 5px 0; }
+.editor-container .settings-files .directory-contents.collapsed {
+  display: none; }
+.editor-container .settings-files .directory-contents > li {
+  margin-left: 21px; }
+
+body iframe {
+  display: block;
+  background-color: #fff;
+  border: none;
+  width: 100%;
+  height: 100%; }
+body #above .editor-container .tab-control {
+  display: flex;
+  width: 261px;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  clear: both;
+  float: right;
+  list-style: none;
+  margin: 0;
+  padding: 4px 0 0;
+  background-color: #00121E;
+  border-left: 1px solid #2B343B;
+  position: relative; }
+  body #above .editor-container .tab-control li {
+    display: inline-block;
+    flex-grow: 1;
+    text-align: center;
+    height: 33px;
+    margin: 0px 6px 0px; }
+    body #above .editor-container .tab-control li a {
+      display: inline-block;
+      width: 100%;
+      height: 33px;
+      opacity: 0.5;
+      border: 1px solid transparent;
+      border-bottom: 0; }
+      body #above .editor-container .tab-control li a.active {
+        background-color: #001A2B;
+        border: 1px solid #304B66;
+        border-bottom: 0;
+        opacity: 1; }
+      body #above .editor-container .tab-control li a:hover {
+        cursor: pointer;
+        opacity: 1; }
+      body #above .editor-container .tab-control li a .icon {
+        width: 100%; }
+  body #above .editor-container .tab-control.disabled li a:not(.active), body #above .editor-container .tab-control.disabled li a:hover {
+    cursor: default;
+    opacity: 0.1; }
+body #above .editor-container .tab-wrap {
+  width: 267px;
+  height: auto;
+  clear: both;
+  float: right;
+  border: 1px solid #304B66;
+  border-right: 0;
+  background-color: #001A2B;
+  transition: height 144ms ease, height 400ms ease-out; }
+  body #above .editor-container .tab-wrap .header {
+    height: 33px;
+    padding: 0 12px;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    color: #354957;
+    position: relative; }
+    body #above .editor-container .tab-wrap .header.ui:before {
+      left: 12px;
+      background: url("/images/icons/uis.png") no-repeat 20px 10px;
+      background-size: 46px; }
+    body #above .editor-container .tab-wrap .header.settings:before {
+      right: 5px;
+      background: url("/images/icons/gears_color.png") no-repeat 46px 20px;
+      background-size: 33px; }
+    body #above .editor-container .tab-wrap .header:before {
+      content: ' ';
+      position: absolute;
+      bottom: 0;
+      width: 121px;
+      height: 67px;
+      opacity: .7;
+      border: 0; }
+    body #above .editor-container .tab-wrap .header span {
+      line-height: 33px; }
+  body #above .editor-container .tab-wrap .tab-content {
+    padding: 5px;
+    width: auto; }
+body #above .editor-container .vtab-wrap {
+  display: table;
+  clear: both;
+  width: 267px;
+  float: right;
+  background-color: #001A2B;
+  border-left: 1px solid #304B66;
+  border-bottom: 1px solid #304B66; }
+  body #above .editor-container .vtab-wrap .vtab-control-wrap {
+    display: table-cell;
+    padding: 3px 0px 3px 2px;
+    background-color: #00121E;
+    border-right: 1px solid #304B66; }
+    body #above .editor-container .vtab-wrap .vtab-control-wrap .vtab-control {
+      display: flex;
+      float: left;
+      flex-flow: column wrap;
+      justify-content: space-around;
+      clear: both;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      background-color: #00121E;
+      border-left: 1px solid #00121E; }
+      body #above .editor-container .vtab-wrap .vtab-control-wrap .vtab-control li {
+        flex: 1 1 auto;
+        order: 1;
+        text-align: center;
+        width: 36px;
+        margin: 0; }
+        body #above .editor-container .vtab-wrap .vtab-control-wrap .vtab-control li a {
+          display: inline-block;
+          width: 100%;
+          padding: 3px 0;
+          opacity: 0.5;
+          border: 1px solid transparent;
+          border-right: 0; }
+          body #above .editor-container .vtab-wrap .vtab-control-wrap .vtab-control li a:hover {
+            cursor: pointer;
+            opacity: 1; }
+          body #above .editor-container .vtab-wrap .vtab-control-wrap .vtab-control li a .class {
+            width: 100%; }
+        body #above .editor-container .vtab-wrap .vtab-control-wrap .vtab-control li.active a {
+          background-color: #001A2B;
+          border: 1px solid #304B66;
+          border-right: 0;
+          opacity: 1; }
+      body #above .editor-container .vtab-wrap .vtab-control-wrap .vtab-control.disabled li:not(.active) a, body #above .editor-container .vtab-wrap .vtab-control-wrap .vtab-control.disabled li:not(.active) a:hover {
+        cursor: default;
+        opacity: 0.1; }
+  body #above .editor-container .vtab-wrap .vtab {
+    display: table-cell;
+    vertical-align: top;
+    width: 100%;
+    padding: 10px; }
+    body #above .editor-container .vtab-wrap .vtab .vtab-head {
+      color: #946018;
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: bold;
+      padding: 6px; }
+      body #above .editor-container .vtab-wrap .vtab .vtab-head .vtab-title:hover {
+        cursor: pointer; }
+      body #above .editor-container .vtab-wrap .vtab .vtab-head .toggle {
+        float: right; }
+    body #above .editor-container .vtab-wrap .vtab .vtab-subhead {
+      color: #354957;
+      font-size: 10px;
+      text-transform: lowercase;
+      font-weight: bold;
+      padding: 3px 6px;
+      clear: both; }
+    body #above .editor-container .vtab-wrap .vtab .vtab-contents {
+      position: relative;
+      z-index: 2; }
+      body #above .editor-container .vtab-wrap .vtab .vtab-contents.disabled {
+        opacity: .2; }
+      body #above .editor-container .vtab-wrap .vtab .vtab-contents .vtab-overlay {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: 3; }
+    body #above .editor-container .vtab-wrap .vtab .vtab-block {
+      margin-bottom: 5px; }
+      body #above .editor-container .vtab-wrap .vtab .vtab-block .vtab-blockhead {
+        font-weight: bold;
+        font-size: 10px;
+        padding: 6px;
+        border-bottom: 1px solid #052238; }
+      body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-container {
+        margin-bottom: 10px; }
+      body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-description {
+        color: #354957;
+        font-size: 10px;
+        text-transform: lowercase;
+        font-weight: bold;
+        padding: 6px; }
+      body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-input {
+        width: 100%;
+        box-sizing: border-box;
+        border: 0;
+        background-color: #001A2B;
+        border: 1px solid #001A2B;
+        color: #946018;
+        font-size: 12px;
+        font-weight: bold;
+        cursor: pointer; }
+        body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-input:focus {
+          background-color: #00121E;
+          cursor: text; }
+        body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-input::-webkit-input-placeholder {
+          color: #7F6E14;
+          font-weight: normal;
+          font-style: italic; }
+      body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-color {
+        font-size: 33px;
+        display: block;
+        position: absolute;
+        right: 1px;
+        top: -4px; }
+        body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-color.background {
+          color: #052238;
+          font-size: 40px;
+          right: -2px;
+          top: -8px; }
+        body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-color.invalid {
+          background-image: url("/images/icons/warning.png");
+          background-size: 33px;
+          background-color: #00121E; }
+      body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .toggle {
+        float: right; }
 
 body #gallery {
   width: auto;

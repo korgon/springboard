@@ -104,6 +104,11 @@ input[type="text"], select {
 	vertical-align: middle;
 	// icon sizes
 	&.small {
+		background-size: 21px;
+		width: 21px;
+		height: 21px;
+	}
+	&.tiny {
 		background-size: 14px;
 		width: 14px;
 		height: 14px;
@@ -142,6 +147,12 @@ input[type="text"], select {
 	}
 	&.custom {
 		background-image: url('/images/icons/custom.png');
+	}
+	&.extension-html {
+		background-image: url('/images/icons/extensions/html.png');
+	}
+	&.extension-png {
+		background-image: url('/images/icons/extensions/png.png');
 	}
 	&.files {
 		background-image: url('/images/icons/filestruct.png');
