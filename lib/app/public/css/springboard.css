@@ -270,16 +270,30 @@ input[type="text"], select {
     background-image: url("/images/icons/config.png"); }
   .icon.custom {
     background-image: url("/images/icons/custom.png"); }
+  .icon.extension-css {
+    background-image: url("/images/icons/extensions/css.png"); }
+  .icon.extension-map {
+    background-image: url("/images/icons/extensions/css_map.png"); }
+  .icon.extension-md {
+    background-image: url("/images/icons/extensions/md.png"); }
   .icon.extension-html {
     background-image: url("/images/icons/extensions/html.png"); }
-  .icon.extension-png {
-    background-image: url("/images/icons/extensions/png.png"); }
+  .icon.extension-js {
+    background-image: url("/images/icons/extensions/js.png"); }
+  .icon.extension-json {
+    background-image: url("/images/icons/extensions/json.png"); }
+  .icon.extension-gif, .icon.extension-jpg, .icon.extension-jpeg, .icon.extension-png {
+    background-image: url("/images/icons/extensions/image.png"); }
+  .icon.extension-sass, .icon.extension-scss {
+    background-image: url("/images/icons/extensions/sass.png"); }
   .icon.files {
     background-image: url("/images/icons/filestruct.png"); }
   .icon.folder {
     background-image: url("/images/icons/folder.png"); }
   .icon.folder-open {
     background-image: url("/images/icons/folder_open.png"); }
+  .icon.folder-root {
+    background-image: url("/images/icons/folder_root.png"); }
   .icon.help {
     background-image: url("/images/icons/help.png"); }
   .icon.history {
@@ -766,11 +780,49 @@ body #above .heading {
   font-size: 12px;
   color: #354957; }
 .editor-container .settings-files .directory {
-  margin: 5px 0; }
+  margin: 0; }
+.editor-container .settings-files .filewrapper {
+  display: inline-block;
+  cursor: pointer; }
 .editor-container .settings-files .directory-contents.collapsed {
   display: none; }
+.editor-container .settings-files .directory-contents:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -9px;
+  width: 9px;
+  height: 100%;
+  border-left: 1px solid #122A3A; }
 .editor-container .settings-files .directory-contents > li {
-  margin-left: 21px; }
+  position: relative;
+  margin-left: 18px; }
+  .editor-container .settings-files .directory-contents > li:before {
+    content: '';
+    position: absolute;
+    left: -9px;
+    width: 9px;
+    height: 21px;
+    border-left: 1px solid #122A3A; }
+  .editor-container .settings-files .directory-contents > li:after {
+    content: '';
+    position: absolute;
+    top: 11px;
+    left: -9px;
+    width: 9px;
+    height: 21px;
+    border-top: 1px solid #122A3A; }
+  .editor-container .settings-files .directory-contents > li:last-child:before {
+    content: '';
+    position: absolute;
+    left: -9px;
+    width: 9px;
+    height: 11px;
+    border-left: 1px solid #122A3A; }
+.editor-container .settings-files > .directory-contents:before {
+  content: none; }
+.editor-container .settings-files > .directory-contents .directory:last-child > .directory-contents:before {
+  content: none; }
 
 body iframe {
   display: block;

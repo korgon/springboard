@@ -1,4 +1,6 @@
 .editor-container {
+
+	// File Structure Styling
 	.settings-files {
 		.root {
 		}
@@ -7,14 +9,71 @@
 			color: $bluefaded;
 		}
 		.directory {
-			margin: 5px 0;
+			margin: 0;
+			& > span {
+
+			}
+		}
+		.filewrapper {
+			display: inline-block;
+			cursor: pointer;
 		}
 		.directory-contents {
 			&.collapsed {
 				display: none;
 			}
+			&:before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -9px;
+				width: 9px;
+				height: 100%;
+				border-left: 1px solid $bluefadeder;
+			}
 			& > li {
-				margin-left: 21px;
+				position: relative;
+				margin-left: 18px;
+				&:before {
+					content: '';
+					position: absolute;
+					left: -9px;
+					width: 9px;
+					height: 21px;
+					border-left: 1px solid $bluefadeder;
+				}
+				&:after {
+					content: '';
+					position: absolute;
+					top: 11px;
+					left: -9px;
+					width: 9px;
+					height: 21px;
+					border-top: 1px solid $bluefadeder;
+				}
+				&:last-child {
+					&:before {
+						content: '';
+						position: absolute;
+						left: -9px;
+						width: 9px;
+						height: 11px;
+						border-left: 1px solid $bluefadeder;
+					}
+				}
+			}
+		}
+		// remove the directory lines on last directories
+		& > .directory-contents {
+			&:before {
+				content: none;
+			}
+			.directory:last-child {
+				& > .directory-contents {
+					&:before {
+						content: none;
+					}
+				}
 			}
 		}
 	}

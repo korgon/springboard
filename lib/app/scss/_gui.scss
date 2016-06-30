@@ -3,6 +3,7 @@
 // labels
 // icons
 
+
 .button {
 	min-width: 80px;
 	border: solid 1px $orangefaded;
@@ -118,14 +119,14 @@ input[type="text"], select {
 	&.removed {
 		&:before {
 			content: '';
-	    position: absolute;
-	    left: 0;
-	    background-image: url("/images/icons/disabled.png");
-	    width: 33px;
-	    background-size: 21px;
-	    background-repeat: no-repeat;
-	    background-position: 3px 12px;
-	    height: 33px;
+			position: absolute;
+			left: 0;
+			background-image: url("/images/icons/disabled.png");
+			width: 33px;
+			background-size: 21px;
+			background-repeat: no-repeat;
+			background-position: 3px 12px;
+			height: 33px;
 		}
 	}
 	&.disabled {
@@ -148,11 +149,33 @@ input[type="text"], select {
 	&.custom {
 		background-image: url('/images/icons/custom.png');
 	}
+	&.extension-css {
+		background-image: url('/images/icons/extensions/css.png');
+	}
+	&.extension-map {
+		background-image: url('/images/icons/extensions/css_map.png');
+	}
+	&.extension-md {
+		background-image: url('/images/icons/extensions/md.png');
+	}
 	&.extension-html {
 		background-image: url('/images/icons/extensions/html.png');
 	}
+	&.extension-js {
+		background-image: url('/images/icons/extensions/js.png');
+	}
+	&.extension-json {
+		background-image: url('/images/icons/extensions/json.png');
+	}
+	&.extension-gif,
+	&.extension-jpg,
+	&.extension-jpeg,
 	&.extension-png {
-		background-image: url('/images/icons/extensions/png.png');
+		background-image: url('/images/icons/extensions/image.png');
+	}
+	&.extension-sass,
+	&.extension-scss {
+		background-image: url('/images/icons/extensions/sass.png');
 	}
 	&.files {
 		background-image: url('/images/icons/filestruct.png');
@@ -162,6 +185,9 @@ input[type="text"], select {
 	}
 	&.folder-open {
 		background-image: url('/images/icons/folder_open.png');
+	}
+	&.folder-root {
+		background-image: url('/images/icons/folder_root.png');
 	}
 	&.help {
 		background-image: url('/images/icons/help.png');

@@ -1,8 +1,0 @@
-{
-	"type": "v3/slideout",
-	"version": "1.0.0",
-	"description": "slideout facet container for responsive and mobile sites",
-	"icon": "slideout",
-	"enabled": true,
-	"theme": null
-}
