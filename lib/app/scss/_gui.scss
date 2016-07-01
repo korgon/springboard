@@ -146,6 +146,9 @@ input[type="text"], select {
 	&.config {
 		background-image: url('/images/icons/config.png');
 	}
+	&.cloud {
+		background-image: url('/images/icons/cloud.png');
+	}
 	&.custom {
 		background-image: url('/images/icons/custom.png');
 	}

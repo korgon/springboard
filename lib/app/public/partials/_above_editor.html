@@ -50,7 +50,7 @@
 									<ul class="settings-files">
 										<li class="root"><span class="icon folder-root"></span></li>
 										<ul class="directory-contents">
-											<li class="{{ details.type }} {{ details.extension.replace('.', '') }}" ng-repeat="(name, details) in vm.site.files.root.contents" ng-include="'fileTree'"></li>
+											<li class="{{ details.type }} {{ details.extension.replace('.', '') }}" ng-repeat="details in vm.site.files.root.contents | orderFilesBy: 'type'" ng-include="'fileTree'"></li>
 										</ul>
 									</ul>
 								</div>
@@ -270,16 +270,16 @@
 
 		<span class="filewrapper" ng-if="details.type == 'file'">
 			<span class="icon small extension-{{ details.extension.replace('.', '') }}"></span>
-			<span class="filename">{{ name }}</span>
+			<span class="filename">{{ details.name }}</span>
 		</span>
 
 		<span class="filewrapper" ng-if="details.type == 'directory'" ng-click="vm.toggleDir(details)">
 			<span ng-if="details.collapsed" class="icon small folder"></span>
 			<span ng-if="!details.collapsed" class="icon small folder-open"></span>
-			<span class="filename">{{ name }}</span>
+			<span class="filename">{{ details.name }}</span>
 		</span>
 
 		<ul class="directory-contents" ng-if="details.type == 'directory'" ng-init="vm.checkDirState(details)" ng-class="{ collapsed: details.collapsed }">
-			<li class="{{ details.type }}" ng-repeat="(name, details) in details.contents" ng-include="'fileTree'"></li>
+			<li class="{{ details.type }}" ng-repeat="details in details.contents | orderFilesBy: 'type'" ng-include="'fileTree'"></li>
 		</ul>
 </script>
