@@ -264,6 +264,8 @@ input[type="text"], select {
     background-image: url("/images/icons/active.png"); }
   .icon.add {
     background-image: url("/images/icons/add.png"); }
+  .icon.capture {
+    background-image: url("/images/icons/capture.png"); }
   .icon.commit {
     background-image: url("/images/icons/commit.png"); }
   .icon.config {

@@ -140,6 +140,9 @@ input[type="text"], select {
 	&.add {
 		background-image: url('/images/icons/add.png');
 	}
+	&.capture {
+		background-image: url('/images/icons/capture.png');
+	}
 	&.commit {
 		background-image: url('/images/icons/commit.png');
 	}

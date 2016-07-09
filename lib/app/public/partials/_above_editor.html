@@ -35,6 +35,8 @@
 									<li ng-class="{ 'active': vm.activeVtab('default') == 'history' }"><a ng-click="vm.switchVtab('history', 'default')"><span class="icon history"></span></a></li>
 
 									<li ng-class="{ 'active': vm.activeVtab('default') == 'settings' }"><a ng-click="vm.switchVtab('settings', 'default')"><span class="icon settings"></span></a></li>
+
+									<li><a ng-click="vm.captureScreen()"><span class="icon capture"></span></a></li>
 								</ul>
 							</div>
 
@@ -50,7 +52,7 @@
 									<ul class="settings-files">
 										<li class="root"><span class="icon folder-root"></span></li>
 										<ul class="directory-contents">
-											<li class="{{ details.type }} {{ details.extension.replace('.', '') }}" ng-repeat="details in vm.site.files.root.contents | orderFilesBy: 'type'" ng-include="'fileTree'"></li>
+											<li class="{{ details.type }} {{ details.extension.replace('.', '') }}" ng-repeat="details in vm.files.root.contents | orderFilesBy: 'type'" ng-include="'fileTree'"></li>
 										</ul>
 									</ul>
 								</div>
@@ -265,9 +267,8 @@
 	</div>
 </div>
 
+<!-- Used for recursive file structure -->
 <script type="text/ng-template" id="fileTree">
-
-
 		<span class="filewrapper" ng-if="details.type == 'file'">
 			<span class="icon small extension-{{ details.extension.replace('.', '') }}"></span>
 			<span class="filename">{{ details.name }}</span>
