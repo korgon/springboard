@@ -61,8 +61,15 @@ body {
     padding: 20px;
     font-size: 11px;
     border-left: 3px solid #718599; }
+  .markdown p {
+    font-size: 12px; }
   .markdown h1 {
+    font-size: 27px;
+    margin: 10px 0;
     border-bottom: 1px solid #354E66; }
+  .markdown h2 {
+    margin: 5px 0;
+    font-size: 20px; }
   .markdown hr {
     border-color: #354E66; }
 

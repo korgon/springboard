@@ -11,11 +11,11 @@
   "dependencies": {
     "angular": "^1.5.7",
     "angular-animate": "^1.5.7",
-    "angular-markdown-it": "^0.4.1",
+    "angular-markdown-it": "^0.6.1",
     "angular-route": "^1.5.7",
     "angular-sanitize": "^1.5.7",
     "highlight.js": "^9.4.0",
     "json-loader": "^0.5.4",
-    "markdown-it": "^6.0.5"
+    "markdown-it": "^7.0.0"
   }
 }
