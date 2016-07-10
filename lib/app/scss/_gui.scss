@@ -255,6 +255,9 @@ input[type="text"], select {
 	&.pull {
 		background-image: url('/images/icons/pull_request.png');
 	}
+	&.pulse {
+		background-image: url('/images/icons/pulse.png');
+	}
 	&.push {
 		background-image: url('/images/icons/push.png');
 	}

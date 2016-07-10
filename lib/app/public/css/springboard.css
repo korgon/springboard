@@ -338,6 +338,8 @@ input[type="text"], select {
     background-image: url("/images/icons/modules/module_translate.png"); }
   .icon.pull {
     background-image: url("/images/icons/pull_request.png"); }
+  .icon.pulse {
+    background-image: url("/images/icons/pulse.png"); }
   .icon.push {
     background-image: url("/images/icons/push.png"); }
   .icon.proxy {

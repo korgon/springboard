@@ -32,7 +32,7 @@
 
 									<li ng-class="{ 'active': vm.activeVtab('default') == 'tags' }"><a ng-click="vm.switchVtab('tags', 'default')"><span class="icon tags"></span></a></li>
 
-									<li ng-class="{ 'active': vm.activeVtab('default') == 'history' }"><a ng-click="vm.switchVtab('history', 'default')"><span class="icon history"></span></a></li>
+									<li ng-class="{ 'active': vm.activeVtab('default') == 'history' }"><a ng-click="vm.switchVtab('history', 'default')"><span class="icon pulse"></span></a></li>
 
 									<li ng-class="{ 'active': vm.activeVtab('default') == 'settings' }"><a ng-click="vm.switchVtab('settings', 'default')"><span class="icon settings"></span></a></li>
 
@@ -117,17 +117,7 @@
 											<div ng-switch-when="styles">
 												<div class="vtab-block">
 													<ul class="variable-wrap">
-														<li class="variable-container" ng-repeat="(name, style) in ui.styles">
-															<div class="vtab-blockhead">
-																<span>{{ name }}</span>
-																<span class="variable-color background">&#x2B22;</span>
-																<span ng-if="style.type == 'color'" class="variable-color" style="color: {{ style.value }};">&#x2B22;</span>
-															</div>
-															<div>
-																<div ng-if="style.description" class="variable-description">{{ style.description }}</div>
-																<input class="variable-input" ng-change="vm.checkChange()" ng-model="style.value" placeholder="..." autocomplete="off" spellcheck="false">
-															</div>
-														</li>
+														<li class="variable-container" ng-repeat="(name, variable) in ui.styles" ng-include="'variables'"></li>
 														<li ng-if="vm.isEmpty(ui.styles)">
 															<div class="vtab-subhead">nothing to see here...</div>
 														</li>
@@ -138,13 +128,7 @@
 											<div ng-switch-when="variables">
 												<div class="vtab-block">
 													<ul class="variable-wrap">
-														<li class="variable-container" ng-repeat="(name, variable) in ui.variables">
-															<div class="vtab-blockhead">{{ name }}</div>
-															<div>
-																<div ng-if="variable.description" class="variable-description">{{ variable.description }}</div>
-																<input class="variable-input" ng-change="vm.checkChange()" ng-model="variable.value" placeholder="..." autocomplete="off" spellcheck="false">
-															</div>
-														</li>
+														<li class="variable-container" ng-repeat="(name, variable) in ui.variables" ng-include="'variables'"></li>
 														<li ng-if="vm.isEmpty(ui.variables)">
 															<div class="vtab-subhead">nothing to see here...</div>
 														</li>
@@ -155,16 +139,7 @@
 											<div ng-switch-when="settings">
 												<div class="vtab-block">
 													<ul class="variable-wrap">
-														<li class="variable-container" ng-repeat="(name, setting) in ui.settings">
-															<div class="vtab-blockhead">
-																<span>{{ name }}</span>
-																<span ng-if="setting.type == 'boolean'" ng-click="setting.value = !setting.value; vm.checkChange();" ng-model="setting.value" class="toggle" ng-class="{ off: !setting.value}"></span>
-															</div>
-															<div>
-																<div ng-if="setting.description" class="variable-description">{{ setting.description }}</div>
-																<input ng-if="setting.type != 'boolean'" ng-change="vm.checkChange()" class="variable-input" ng-model= "setting.value" placeholder="..." autocomplete="off" spellcheck="false">
-															</div>
-														</li>
+														<li class="variable-container" ng-repeat="(name, variable) in ui.settings" ng-include="'variables'"></li>
 														<li ng-if="vm.isEmpty(ui.settings)">
 															<div class="vtab-subhead">nothing to see here...</div>
 														</li>
@@ -266,6 +241,22 @@
 		</div>
 	</div>
 </div>
+
+
+
+<!-- Used for variables (colors, boolean, siteid, etc...) -->
+<script type="text/ng-template" id="variables">
+	<div class="vtab-blockhead">
+		<span>{{ name }}</span>
+		<span ng-if="variable.type == 'boolean'" ng-click="variable.value = !variable.value; vm.checkChange();" ng-model="variable.value" class="toggle" ng-class="{ off: !variable.value}"></span>
+		<span ng-if="variable.type == 'color'" class="variable-color background">&#x2B22;</span>
+		<span ng-if="variable.type == 'color'" class="variable-color" style="color: {{ variable.value }};">&#x2B22;</span>
+	</div>
+	<div>
+		<div ng-if="variable.description" class="variable-description">{{ variable.description }}</div>
+		<input ng-if="variable.type != 'boolean'" ng-change="vm.checkChange()" class="variable-input" ng-model= "variable.value" placeholder="..." autocomplete="off" spellcheck="false">
+	</div>
+</script>
 
 <!-- Used for recursive file structure -->
 <script type="text/ng-template" id="fileTree">
