@@ -83,7 +83,8 @@ legend {
 	padding: 6px;
 }
 
-input[type="text"], select {
+input[type="text"],
+input[type="password"], select {
 	box-sizing: border-box;
 	border-radius: 3px;
 	background-color: $bluedarkest;

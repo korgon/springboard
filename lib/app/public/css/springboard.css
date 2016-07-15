@@ -229,14 +229,17 @@ legend {
   border-radius: 2px;
   padding: 6px; }
 
-input[type="text"], select {
+input[type="text"],
+input[type="password"], select {
   box-sizing: border-box;
   border-radius: 3px;
   background-color: #001A2B;
   border: 1px solid #354E66;
   color: #61717B;
   margin-bottom: 10px; }
-  input[type="text"]:focus, input[type="text"]:active, select:focus, select:active {
+  input[type="text"]:focus, input[type="text"]:active,
+  input[type="password"]:focus,
+  input[type="password"]:active, select:focus, select:active {
     color: #7194AD; }
 
 .icon {
