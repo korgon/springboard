@@ -131,7 +131,7 @@ input[type="password"], select {
 		}
 	}
 	&.disabled {
-		opacity: 0.2;
+		opacity: 0.1;
 	}
 
 	// icons
@@ -155,6 +155,9 @@ input[type="password"], select {
 	}
 	&.custom {
 		background-image: url('/images/icons/custom.png');
+	}
+	&.edit {
+		background-image: url('/images/icons/edit.png');
 	}
 	&.extension-css {
 		background-image: url('/images/icons/extensions/css.png');
@@ -252,6 +255,9 @@ input[type="password"], select {
 	}
 	&.module-translate {
 		background-image: url('/images/icons/modules/module_translate.png');
+	}
+	&.open {
+		background-image: url('/images/icons/open.png');
 	}
 	&.pull {
 		background-image: url('/images/icons/pull_request.png');

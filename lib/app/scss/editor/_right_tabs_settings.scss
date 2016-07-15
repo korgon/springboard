@@ -61,6 +61,78 @@
 						border-left: 1px solid $bluefadeder;
 					}
 				}
+				&.file {
+					.filewrapper:hover,
+					.filewrapper.show {
+						& + .filedetails {
+							visibility: visible;
+							outline: 1px solid $bluefadeder;
+							.filewrapper {
+								opacity: 1;
+								.filename {
+									color: $bluegrey;
+								}
+							}
+							.fileactions {
+								max-height: 27px;
+								padding: 3px;
+							}
+						}
+					}
+					.filedetails {
+						display: inline-block;
+						visibility: hidden;
+						position: absolute;
+						left: -3px;
+						top: 0px;
+						outline: 0px solid $bluefadeder;
+						box-shadow: -3px 6px 10px $blueblack;
+						z-index: 3;
+						transition: visibility 270ms ease;
+						&:hover {
+							visibility: visible;
+							outline: 1px solid $bluefadeder;
+							.filewrapper {
+								opacity: 1;
+								.filename {
+									color: $bluegrey;
+								}
+							}
+							.fileactions {
+								max-height: 27px;
+								padding: 3px;
+							}
+						}
+						.filewrapper {
+							opacity: 0;
+							transition: opacity 270ms ease;
+							background-color: $bluefadeder;
+							display: block;
+							padding: 0 9px 0 3px;
+						}
+						.fileactions {
+							display: flex;
+							flex-flow: row nowrap;
+							justify-content: space-around;
+							max-height: 0px;
+							overflow: hidden;
+							transition: max-height 270ms ease;
+							padding: 0px;
+  						background-color: $blueblack;
+							.icon {
+								flex-grow: 1;
+								cursor: pointer;
+								&.active {
+									background-size: 15px;
+									cursor: default;
+									&.disabled {
+										cursor: pointer;
+									}
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 		// remove the directory lines on last directories
