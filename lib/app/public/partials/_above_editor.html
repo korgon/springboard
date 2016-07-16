@@ -173,7 +173,7 @@
 														</div>
 
 														<div class="vtab-block" ng-if="!vm.isSingular(vm.uis[ui.type].modules[module.type.split('/')[1]].themes)">
-															<div class="vtab-blockhead">Themes</div>
+															<div class="vtab-blockhead">themes</div>
 
 															<ul class="module-themes-container">
 																<li ng-repeat="theme in module.themes">
@@ -260,19 +260,24 @@
 
 <!-- Used for recursive file structure -->
 <script type="text/ng-template" id="fileTree">
+<!--
 		<div class="filewrapper" ng-if="details.type == 'file'" ng-click="details.show = !details.show" ng-init="details.show = false" ng-class="{ show: details.show }">
 			<span class="icon small extension-{{ details.extension.replace('.', '') }}"></span>
 			<span class="filename">{{ details.name }}</span>
 		</div>
-		<div class="filedetails" ng-if="details.type == 'file'">
-			<div class="filewrapper" ng-if="details.type == 'file'" ng-click="details.show = !details.show">
+		-->
+		<div class="filewrapper" ng-if="details.type == 'file'" ng-init="details.show = false" ng-class="{ show: details.show }">
+			<div class="filehead" ng-if="details.type == 'file'" ng-click="details.show = !details.show">
 				<span class="icon small extension-{{ details.extension }}"></span>
 				<span class="filename">{{ details.name }}</span>
 			</div>
-			<div class="fileactions">
-				<span class="icon small active" ng-if="details.extension == 'html'" ng-class="{ disabled: details.path != vm.site.default_html }" ng-click="vm.setDefaultHTML(details.path)"></span>
-				<span class="icon small cloud disabled"></span>
-				<span class="icon small open" ng-click="vm.openUrl(vm.root_url + details.path)"></span>
+			<div class="filedetails">
+				<div class="fileactions">
+					<span class="icon tiny active" ng-if="details.extension == 'html'" ng-class="{ disabled: details.path != vm.site.default_html }" ng-click="vm.setDefaultHTML(details.path)"></span>
+					<span class="icon tiny cloud disabled"></span>
+					<span class="icon tiny open" ng-click="vm.openUrl(vm.root_url + details.path)"></span>
+					<span class="filestats">{{ details.size }}</span>
+				</div>
 			</div>
 		</div>
 

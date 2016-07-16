@@ -822,7 +822,7 @@ body #above .heading {
     position: absolute;
     left: -9px;
     width: 9px;
-    height: 21px;
+    height: 100%;
     border-left: 1px solid #122A3A; }
   .editor-container .settings-files .directory-contents > li:after {
     content: '';
@@ -839,63 +839,43 @@ body #above .heading {
     width: 9px;
     height: 11px;
     border-left: 1px solid #122A3A; }
-  .editor-container .settings-files .directory-contents > li.file .filewrapper:hover + .filedetails,
-  .editor-container .settings-files .directory-contents > li.file .filewrapper.show + .filedetails {
-    visibility: visible;
-    outline: 1px solid #122A3A; }
-    .editor-container .settings-files .directory-contents > li.file .filewrapper:hover + .filedetails .filewrapper,
-    .editor-container .settings-files .directory-contents > li.file .filewrapper.show + .filedetails .filewrapper {
-      opacity: 1; }
-      .editor-container .settings-files .directory-contents > li.file .filewrapper:hover + .filedetails .filewrapper .filename,
-      .editor-container .settings-files .directory-contents > li.file .filewrapper.show + .filedetails .filewrapper .filename {
-        color: #718599; }
-    .editor-container .settings-files .directory-contents > li.file .filewrapper:hover + .filedetails .fileactions,
-    .editor-container .settings-files .directory-contents > li.file .filewrapper.show + .filedetails .fileactions {
-      max-height: 27px;
-      padding: 3px; }
-  .editor-container .settings-files .directory-contents > li.file .filedetails {
-    display: inline-block;
-    visibility: hidden;
-    position: absolute;
-    left: -3px;
-    top: 0px;
-    outline: 0px solid #122A3A;
-    box-shadow: -3px 6px 10px #00121E;
+  .editor-container .settings-files .directory-contents > li.file .filewrapper {
     z-index: 3;
-    transition: visibility 270ms ease; }
-    .editor-container .settings-files .directory-contents > li.file .filedetails:hover {
-      visibility: visible;
-      outline: 1px solid #122A3A; }
-      .editor-container .settings-files .directory-contents > li.file .filedetails:hover .filewrapper {
-        opacity: 1; }
-        .editor-container .settings-files .directory-contents > li.file .filedetails:hover .filewrapper .filename {
-          color: #718599; }
-      .editor-container .settings-files .directory-contents > li.file .filedetails:hover .fileactions {
-        max-height: 27px;
-        padding: 3px; }
-    .editor-container .settings-files .directory-contents > li.file .filedetails .filewrapper {
-      opacity: 0;
-      transition: opacity 270ms ease;
-      background-color: #122A3A;
+    border: 1px solid transparent;
+    transition: all 222ms ease; }
+    .editor-container .settings-files .directory-contents > li.file .filewrapper.show, .editor-container .settings-files .directory-contents > li.file .filewrapper:hover {
+      border: 1px solid #122A3A;
+      background-color: #00121E; }
+      .editor-container .settings-files .directory-contents > li.file .filewrapper.show .filename, .editor-container .settings-files .directory-contents > li.file .filewrapper:hover .filename {
+        color: #718599; }
+      .editor-container .settings-files .directory-contents > li.file .filewrapper.show .filedetails, .editor-container .settings-files .directory-contents > li.file .filewrapper:hover .filedetails {
+        max-height: 45px;
+        cursor: default; }
+    .editor-container .settings-files .directory-contents > li.file .filewrapper .filehead {
       display: block;
-      padding: 0 9px 0 3px; }
-    .editor-container .settings-files .directory-contents > li.file .filedetails .fileactions {
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: space-around;
+      padding: 0 6px 0 0; }
+    .editor-container .settings-files .directory-contents > li.file .filewrapper .filedetails {
+      background-color: #00121E;
       max-height: 0px;
       overflow: hidden;
-      transition: max-height 270ms ease;
-      padding: 0px;
-      background-color: #00121E; }
-      .editor-container .settings-files .directory-contents > li.file .filedetails .fileactions .icon {
-        flex-grow: 1;
-        cursor: pointer; }
-        .editor-container .settings-files .directory-contents > li.file .filedetails .fileactions .icon.active {
-          background-size: 15px;
-          cursor: default; }
-          .editor-container .settings-files .directory-contents > li.file .filedetails .fileactions .icon.active.disabled {
-            cursor: pointer; }
+      transition: max-height 222ms ease;
+      padding: 0px; }
+      .editor-container .settings-files .directory-contents > li.file .filewrapper .filedetails .filestats {
+        font-size: 10px;
+        padding: 1px 6px 3px; }
+      .editor-container .settings-files .directory-contents > li.file .filewrapper .filedetails .fileactions {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-around; }
+        .editor-container .settings-files .directory-contents > li.file .filewrapper .filedetails .fileactions .icon {
+          flex-grow: 1;
+          margin: 0 5px;
+          cursor: pointer; }
+          .editor-container .settings-files .directory-contents > li.file .filewrapper .filedetails .fileactions .icon.active {
+            background-size: 11px;
+            cursor: default; }
+            .editor-container .settings-files .directory-contents > li.file .filewrapper .filedetails .fileactions .icon.active.disabled {
+              cursor: pointer; }
 .editor-container .settings-files > .directory-contents:before {
   content: none; }
 .editor-container .settings-files > .directory-contents .directory:last-child > .directory-contents:before {
