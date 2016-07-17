@@ -269,7 +269,7 @@ input[type="password"], select {
     background-position: 3px 12px;
     height: 33px; }
   .icon.disabled {
-    opacity: 0.1; }
+    opacity: 0.15; }
   .icon.active {
     background-image: url("/images/icons/active.png"); }
   .icon.add {
@@ -362,6 +362,8 @@ input[type="password"], select {
     background-image: url("/images/icons/refresh.png"); }
   .icon.save {
     background-image: url("/images/icons/save.png"); }
+  .icon.selected {
+    background-image: url("/images/icons/selected.png"); }
   .icon.settings {
     background-image: url("/images/icons/settings.png"); }
   .icon.styles {
@@ -604,8 +606,8 @@ body #above .heading {
 
 #above .heading .worksite {
   order: 4;
-  flex-basis: 270px;
-  width: 270px;
+  flex-basis: 280px;
+  width: 280px;
   height: 40px; }
   #above .heading .worksite .currentsite {
     display: block;
@@ -629,7 +631,7 @@ body #above .heading {
   #above .heading .worksite .editor-container {
     position: absolute;
     right: 0;
-    width: 290px;
+    width: 300px;
     max-height: 0px;
     overflow: hidden;
     margin: 1px 0 0;
@@ -642,7 +644,7 @@ body #above .heading {
     #above .heading .worksite .editor-container .spacer {
       background-color: #00121E;
       border-left: 1px solid #2B343B;
-      width: 261px;
+      width: 271px;
       height: 5px;
       clear: right;
       float: right; }
@@ -650,7 +652,7 @@ body #above .heading {
         height: 20px; }
     #above .heading .worksite .editor-container .action-buttons {
       display: flex;
-      width: 267px;
+      width: 277px;
       flex-flow: row nowrap;
       justify-content: space-around;
       float: right;
@@ -667,7 +669,7 @@ body #above .heading {
         #above .heading .worksite .editor-container .action-buttons li a {
           display: inline-block;
           width: 100%;
-          opacity: 0.5; }
+          opacity: 0.6; }
           #above .heading .worksite .editor-container .action-buttons li a:hover {
             cursor: pointer;
             opacity: 1; }
@@ -675,7 +677,7 @@ body #above .heading {
 .editor-container .ui-scroller {
   clear: both;
   float: right;
-  width: 268px; }
+  width: 278px; }
   .editor-container .ui-scroller .ui-choices {
     list-style: none;
     margin: 0;
@@ -798,11 +800,13 @@ body #above .heading {
 
 .editor-container .settings-files .filename {
   font-size: 12px;
+  font-weight: bold;
   color: #354957; }
+  .editor-container .settings-files .filename.cloud {
+    color: #718599; }
 .editor-container .settings-files .directory {
   margin: 0; }
 .editor-container .settings-files .filewrapper {
-  display: inline-block;
   cursor: pointer; }
 .editor-container .settings-files .directory-contents.collapsed {
   display: none; }
@@ -840,27 +844,30 @@ body #above .heading {
     height: 11px;
     border-left: 1px solid #122A3A; }
   .editor-container .settings-files .directory-contents > li.file .filewrapper {
+    vertical-align: top;
+    display: inline-block;
     position: relative;
     z-index: 3;
-    border: 1px solid transparent;
-    transition: all 222ms ease; }
+    outline: 0;
+    transition: background-color 300ms ease; }
     .editor-container .settings-files .directory-contents > li.file .filewrapper.show, .editor-container .settings-files .directory-contents > li.file .filewrapper:hover {
-      border: 1px solid #122A3A;
+      outline: 1px solid #122A3A;
       background-color: #00121E; }
-      .editor-container .settings-files .directory-contents > li.file .filewrapper.show .filename, .editor-container .settings-files .directory-contents > li.file .filewrapper:hover .filename {
-        color: #718599; }
       .editor-container .settings-files .directory-contents > li.file .filewrapper.show .filedetails, .editor-container .settings-files .directory-contents > li.file .filewrapper:hover .filedetails {
-        max-height: 45px;
-        cursor: default; }
-    .editor-container .settings-files .directory-contents > li.file .filewrapper .filehead {
-      display: block;
+        max-height: 21px; }
+    .editor-container .settings-files .directory-contents > li.file .filewrapper .filehead .icon .icon {
+      position: absolute;
+      left: 9px;
+      top: 9px;
+      background-size: 12px; }
+    .editor-container .settings-files .directory-contents > li.file .filewrapper .filehead .filename {
       padding: 0 6px 0 0; }
     .editor-container .settings-files .directory-contents > li.file .filewrapper .filedetails {
       background-color: #00121E;
       max-height: 0px;
       overflow: hidden;
       transition: max-height 222ms ease;
-      padding: 0px; }
+      cursor: default; }
       .editor-container .settings-files .directory-contents > li.file .filewrapper .filedetails .filestats {
         flex-grow: 12;
         text-align: right;
@@ -870,10 +877,11 @@ body #above .heading {
       .editor-container .settings-files .directory-contents > li.file .filewrapper .filedetails .fileactions {
         display: flex;
         flex-flow: row nowrap;
-        justify-content: space-around; }
+        justify-content: space-around;
+        padding: 3px 0; }
         .editor-container .settings-files .directory-contents > li.file .filewrapper .filedetails .fileactions .icon {
           flex-grow: 1;
-          margin: 0 5px;
+          margin: 0 3px;
           cursor: pointer; }
           .editor-container .settings-files .directory-contents > li.file .filewrapper .filedetails .fileactions .icon.active {
             background-size: 12px;
@@ -893,7 +901,7 @@ body iframe {
   height: 100%; }
 body #above .editor-container .tab-control {
   display: flex;
-  width: 261px;
+  width: 271px;
   flex-flow: row nowrap;
   justify-content: space-around;
   clear: both;
@@ -931,7 +939,7 @@ body #above .editor-container .tab-control {
     cursor: default;
     opacity: 0.1; }
 body #above .editor-container .tab-wrap {
-  width: 267px;
+  width: 277px;
   height: auto;
   clear: both;
   float: right;
@@ -953,14 +961,14 @@ body #above .editor-container .tab-wrap {
       background: url("/images/icons/uis.png") no-repeat 20px 10px;
       background-size: 46px; }
     body #above .editor-container .tab-wrap .header.settings:before {
-      right: 5px;
+      right: 3px;
       background: url("/images/icons/gears_color.png") no-repeat 46px 20px;
       background-size: 33px; }
     body #above .editor-container .tab-wrap .header:before {
       content: ' ';
       position: absolute;
       bottom: 0;
-      width: 121px;
+      width: 128px;
       height: 67px;
       opacity: .7;
       border: 0; }
@@ -972,7 +980,7 @@ body #above .editor-container .tab-wrap {
 body #above .editor-container .vtab-wrap {
   display: table;
   clear: both;
-  width: 267px;
+  width: 277px;
   float: right;
   background-color: #001A2B;
   border-left: 1px solid #304B66;

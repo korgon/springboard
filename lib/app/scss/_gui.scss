@@ -17,12 +17,6 @@
 	text-decoration: none;
 	text-transform: uppercase;
 
-	// border: 1px solid $orange;
-	// border-radius: 3px;
-	// background-color: $bluehighlight;
-	// background-image: linear-gradient($orange, $orangefaded);
-	// color: $orangedark;
-	// text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
 	&:disabled {
 		border: $orangedarkest;
 		background: $orangedarkest;
@@ -131,7 +125,7 @@ input[type="password"], select {
 		}
 	}
 	&.disabled {
-		opacity: 0.1;
+		opacity: 0.15;
 	}
 
 	// icons
@@ -276,6 +270,9 @@ input[type="password"], select {
 	}
 	&.save {
 		background-image: url('/images/icons/save.png');
+	}
+	&.selected {
+		background-image: url('/images/icons/selected.png');
 	}
 	&.settings {
 		background-image: url('/images/icons/settings.png');

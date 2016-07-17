@@ -6,13 +6,16 @@
 		}
 		.filename {
 			font-size: 12px;
+			font-weight: bold;
 			color: $bluefaded;
+			&.cloud {
+				color: $bluegrey;
+			}
 		}
 		.directory {
 			margin: 0;
 		}
 		.filewrapper {
-			display: inline-block;
 			cursor: pointer;
 		}
 		.directory-contents {
@@ -60,31 +63,38 @@
 				}
 				&.file {
 					.filewrapper {
+						vertical-align: top;
+						display: inline-block;
 						position: relative;
 						z-index: 3;
-						border: 1px solid transparent;
-						transition: all 222ms ease;
+						outline: 0;
+						transition: background-color 300ms ease;
 						&.show, &:hover {
-							border: 1px solid $bluefadeder;
+							outline: 1px solid $bluefadeder;
 							background-color: $blueblack;
-							.filename {
-								color: $bluegrey;
-							}
 							.filedetails {
-								max-height: 45px;
-								cursor: default;
+								max-height: 21px;
 							}
 						}
 						.filehead {
-							display: block;
-							padding: 0 6px 0 0;
+							.icon {
+								.icon {
+									position: absolute;
+									left: 9px;
+									top: 9px;
+									background-size: 12px;
+								}
+							}
+							.filename {
+								padding: 0 6px 0 0;
+							}
 						}
 						.filedetails {
 							background-color: $blueblack;
 							max-height: 0px;
 							overflow: hidden;
 							transition: max-height 222ms ease;
-							padding: 0px;
+							cursor: default;
 							.filestats {
 								flex-grow: 12;
 								text-align: right;
@@ -96,9 +106,10 @@
 								display: flex;
 								flex-flow: row nowrap;
 								justify-content: space-around;
+								padding: 3px 0;
 								.icon {
 									flex-grow: 1;
-									margin: 0 5px;
+									margin: 0 3px;
 									cursor: pointer;
 									&.active {
 										background-size: 12px;

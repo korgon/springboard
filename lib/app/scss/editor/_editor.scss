@@ -2,6 +2,8 @@
 // scss for springboard header
 // includes dropdowns
 
+$editorwidth: 280px;
+
 // imported scss
 @import "_top.scss";									// very top styles
 @import "_right_tabs_ui.scss";				// ui specific styles
@@ -23,7 +25,7 @@ body {
 		.editor-container {
 			.tab-control {
 				display: flex;
-				width: 261px;
+				width: $editorwidth - 9px;
 				flex-flow: row nowrap;
 				justify-content: space-around;
 				clear: both;
@@ -73,7 +75,7 @@ body {
 			}
 
 			.tab-wrap {
-				width: 267px;
+				width: $editorwidth - 3px;
 				height: auto;
 				clear: both;
 				float: right;
@@ -99,7 +101,7 @@ body {
 					}
 					&.settings {
 						&:before {
-							right: 5px;
+							right: 3px;
 							background: url("/images/icons/gears_color.png") no-repeat 46px 20px;
 							background-size: 33px;
 						}
@@ -108,7 +110,7 @@ body {
 						content: ' ';
 						position: absolute;
 						bottom: 0;
-						width: 121px;
+						width: ($editorwidth / 2) - 12px;
 						height: 67px;
 						opacity: .7;
 						border: 0;
@@ -126,7 +128,7 @@ body {
 			.vtab-wrap {
 				display: table;
 				clear: both;
-				width: 267px;
+				width: $editorwidth - 3px;
 				float: right;
 				background-color: $bluedarkest;
 				border-left: 1px solid $bluehighlight;

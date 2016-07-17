@@ -235,7 +235,7 @@
 			<ul class="action-buttons" ng-if="vm.site && !vm.edited">
 				<li><a ng-click="vm.commitSite()"><span class="icon commit"></span></a></li>
 				<li><a ng-click="vm.pushSite()"><span class="icon push"></span></a></li>
-				<li><a ng-click="vm.publishSite()"><span class="icon upload"></span></a></li>
+				<li><a ng-click="vm.publishSite()"><span class="icon upload" ng-class="{ disabled: !vm.site.cloud_files.length }"></span></a></li>
 			</ul>
 
 		</div>
@@ -263,15 +263,15 @@
 	<div class="filewrapper" ng-if="details.type == 'file'" ng-init="details.show = false" ng-class="{ show: details.show }">
 		<div class="filehead" ng-if="details.type == 'file'" ng-click="details.show = !details.show">
 			<span class="icon small extension-{{ details.extension }}">
-
+				<span class="icon tiny selected" ng-if="vm.site.thumb == ('/sites/' + vm.site.name + '/' + details.path) || details.path == vm.site.default_html"></span>
 			</span>
-			<span class="filename">{{ details.name }}</span>
+			<span class="filename" ng-class="{ cloud: vm.site.cloud_files.indexOf(details.path) != -1 }">{{ details.name }}</span>
 		</div>
 		<div class="filedetails">
 			<div class="fileactions">
 				<span class="icon tiny active" ng-if="details.extension == 'html'" ng-class="{ disabled: details.path != vm.site.default_html }" ng-click="vm.setDefaultHTML(details.path)"></span>
 				<span class="icon tiny active"  ng-if="['png', 'jpeg', 'jpg', 'gif'].indexOf(details.extension) != -1" ng-class="{ disabled: vm.site.thumb != ('/sites/' + vm.site.name + '/' + details.path) }" ng-click="vm.setThumb(details.path)"></span>
-				<span class="icon tiny cloud disabled"></span>
+				<span class="icon tiny cloud" ng-class="{ disabled: vm.site.cloud_files.indexOf(details.path) == -1 }" ng-click="vm.toggleCloudFile(details.path)"></span>
 				<span class="icon tiny open" ng-click="vm.openUrl(vm.root_url + details.path)"></span>
 				<span class="filestats">{{ details.size }}</span>
 			</div>
