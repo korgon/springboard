@@ -840,6 +840,7 @@ body #above .heading {
     height: 11px;
     border-left: 1px solid #122A3A; }
   .editor-container .settings-files .directory-contents > li.file .filewrapper {
+    position: relative;
     z-index: 3;
     border: 1px solid transparent;
     transition: all 222ms ease; }
@@ -861,8 +862,11 @@ body #above .heading {
       transition: max-height 222ms ease;
       padding: 0px; }
       .editor-container .settings-files .directory-contents > li.file .filewrapper .filedetails .filestats {
+        flex-grow: 12;
+        text-align: right;
         font-size: 10px;
-        padding: 1px 6px 3px; }
+        padding: 1px 0 3px;
+        margin: 0 6px; }
       .editor-container .settings-files .directory-contents > li.file .filewrapper .filedetails .fileactions {
         display: flex;
         flex-flow: row nowrap;
@@ -872,7 +876,7 @@ body #above .heading {
           margin: 0 5px;
           cursor: pointer; }
           .editor-container .settings-files .directory-contents > li.file .filewrapper .filedetails .fileactions .icon.active {
-            background-size: 11px;
+            background-size: 12px;
             cursor: default; }
             .editor-container .settings-files .directory-contents > li.file .filewrapper .filedetails .fileactions .icon.active.disabled {
               cursor: pointer; }

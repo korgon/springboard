@@ -260,34 +260,31 @@
 
 <!-- Used for recursive file structure -->
 <script type="text/ng-template" id="fileTree">
-<!--
-		<div class="filewrapper" ng-if="details.type == 'file'" ng-click="details.show = !details.show" ng-init="details.show = false" ng-class="{ show: details.show }">
-			<span class="icon small extension-{{ details.extension.replace('.', '') }}"></span>
+	<div class="filewrapper" ng-if="details.type == 'file'" ng-init="details.show = false" ng-class="{ show: details.show }">
+		<div class="filehead" ng-if="details.type == 'file'" ng-click="details.show = !details.show">
+			<span class="icon small extension-{{ details.extension }}">
+
+			</span>
 			<span class="filename">{{ details.name }}</span>
 		</div>
-		-->
-		<div class="filewrapper" ng-if="details.type == 'file'" ng-init="details.show = false" ng-class="{ show: details.show }">
-			<div class="filehead" ng-if="details.type == 'file'" ng-click="details.show = !details.show">
-				<span class="icon small extension-{{ details.extension }}"></span>
-				<span class="filename">{{ details.name }}</span>
-			</div>
-			<div class="filedetails">
-				<div class="fileactions">
-					<span class="icon tiny active" ng-if="details.extension == 'html'" ng-class="{ disabled: details.path != vm.site.default_html }" ng-click="vm.setDefaultHTML(details.path)"></span>
-					<span class="icon tiny cloud disabled"></span>
-					<span class="icon tiny open" ng-click="vm.openUrl(vm.root_url + details.path)"></span>
-					<span class="filestats">{{ details.size }}</span>
-				</div>
+		<div class="filedetails">
+			<div class="fileactions">
+				<span class="icon tiny active" ng-if="details.extension == 'html'" ng-class="{ disabled: details.path != vm.site.default_html }" ng-click="vm.setDefaultHTML(details.path)"></span>
+				<span class="icon tiny active"  ng-if="['png', 'jpeg', 'jpg', 'gif'].indexOf(details.extension) != -1" ng-class="{ disabled: vm.site.thumb != ('/sites/' + vm.site.name + '/' + details.path) }" ng-click="vm.setThumb(details.path)"></span>
+				<span class="icon tiny cloud disabled"></span>
+				<span class="icon tiny open" ng-click="vm.openUrl(vm.root_url + details.path)"></span>
+				<span class="filestats">{{ details.size }}</span>
 			</div>
 		</div>
+	</div>
 
-		<span class="filewrapper" ng-if="details.type == 'directory'" ng-click="vm.toggleDir(details)">
-			<span ng-if="details.collapsed" class="icon small folder"></span>
-			<span ng-if="!details.collapsed" class="icon small folder-open"></span>
-			<span class="filename">{{ details.name }}</span>
-		</span>
+	<span class="filewrapper" ng-if="details.type == 'directory'" ng-click="vm.toggleDir(details)">
+		<span ng-if="details.collapsed" class="icon small folder"></span>
+		<span ng-if="!details.collapsed" class="icon small folder-open"></span>
+		<span class="filename">{{ details.name }}</span>
+	</span>
 
-		<ul class="directory-contents" ng-if="details.type == 'directory'" ng-init="vm.checkDirState(details)" ng-class="{ collapsed: details.collapsed }">
-			<li class="{{ details.type }}" ng-repeat="details in details.contents | orderFilesBy: 'type'" ng-include="'fileTree'"></li>
-		</ul>
+	<ul class="directory-contents" ng-if="details.type == 'directory'" ng-init="vm.checkDirState(details)" ng-class="{ collapsed: details.collapsed }">
+		<li class="{{ details.type }}" ng-repeat="details in details.contents | orderFilesBy: 'type'" ng-include="'fileTree'"></li>
+	</ul>
 </script>
