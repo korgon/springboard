@@ -235,7 +235,11 @@
 			<ul class="action-buttons" ng-if="vm.site && !vm.edited">
 				<li><a ng-click="vm.commitSite()"><span class="icon commit"></span></a></li>
 				<li><a ng-click="vm.pushSite()"><span class="icon push"></span></a></li>
-				<li><a ng-click="vm.publishSite()"><span class="icon upload" ng-class="{ disabled: !vm.site.cloud_files.length }"></span></a></li>
+				<li>
+					<a ng-click="vm.site.cloud_files.length && vm.publishSite()">
+						<span class="icon upload" ng-class="{ disabled: !vm.site.cloud_files.length }"></span>
+					</a>
+				</li>
 			</ul>
 
 		</div>
@@ -272,6 +276,7 @@
 				<span class="icon tiny active" ng-if="details.extension == 'html'" ng-class="{ disabled: details.path != vm.site.default_html }" ng-click="vm.setDefaultHTML(details.path)"></span>
 				<span class="icon tiny active"  ng-if="['png', 'jpeg', 'jpg', 'gif'].indexOf(details.extension) != -1" ng-class="{ disabled: vm.site.thumb != ('/sites/' + vm.site.name + '/' + details.path) }" ng-click="vm.setThumb(details.path)"></span>
 				<span class="icon tiny cloud" ng-class="{ disabled: vm.site.cloud_files.indexOf(details.path) == -1 }" ng-click="vm.toggleCloudFile(details.path)"></span>
+				<span class="icon tiny view" ng-click="vm.setUrl(vm.root_url + details.path)" ng-class="{ disabled: vm.session.frameurl.match(vm.site.name + '/' + details.path) }"></span>
 				<span class="icon tiny open" ng-click="vm.openUrl(vm.root_url + details.path)"></span>
 				<span class="filestats">{{ details.size }}</span>
 			</div>

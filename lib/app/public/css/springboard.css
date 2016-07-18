@@ -382,6 +382,8 @@ input[type="password"], select {
     background-image: url("/images/icons/upload.png"); }
   .icon.variables {
     background-image: url("/images/icons/variable.png"); }
+  .icon.view {
+    background-image: url("/images/icons/view.png"); }
 
 .animate-spin-cw {
   -webkit-animation: spincw 12s linear infinite;
@@ -655,6 +657,7 @@ body #above .heading {
       width: 277px;
       flex-flow: row nowrap;
       justify-content: space-around;
+      clear: right;
       float: right;
       list-style: none;
       margin: 0;
@@ -668,9 +671,10 @@ body #above .heading {
         text-align: center; }
         #above .heading .worksite .editor-container .action-buttons li a {
           display: inline-block;
-          width: 100%;
-          opacity: 0.6; }
-          #above .heading .worksite .editor-container .action-buttons li a:hover {
+          width: 100%; }
+          #above .heading .worksite .editor-container .action-buttons li a .icon:not(.disabled) {
+            opacity: 0.6; }
+          #above .heading .worksite .editor-container .action-buttons li a:hover .icon:not(.disabled) {
             cursor: pointer;
             opacity: 1; }
 
@@ -724,9 +728,9 @@ body #above .heading {
           vertical-align: middle;
           text-align: center; }
         .editor-container .ui-scroller .ui-choices li .module-themes-container .icon {
-          background-size: 15px;
-          width: 20px;
-          height: 25px; }
+          background-size: 14px;
+          width: 21px;
+          height: 21px; }
           .editor-container .ui-scroller .ui-choices li .module-themes-container .icon:hover {
             cursor: pointer; }
           .editor-container .ui-scroller .ui-choices li .module-themes-container .icon.disabled:hover {
@@ -873,12 +877,12 @@ body #above .heading {
         text-align: right;
         font-size: 10px;
         padding: 1px 0 3px;
-        margin: 0 6px; }
+        margin: 0 3px 0 6px; }
       .editor-container .settings-files .directory-contents > li.file .filewrapper .filedetails .fileactions {
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-around;
-        padding: 3px 0; }
+        padding: 3px; }
         .editor-container .settings-files .directory-contents > li.file .filewrapper .filedetails .fileactions .icon {
           flex-grow: 1;
           margin: 0 3px;
@@ -888,6 +892,10 @@ body #above .heading {
             cursor: default; }
             .editor-container .settings-files .directory-contents > li.file .filewrapper .filedetails .fileactions .icon.active.disabled {
               cursor: pointer; }
+          .editor-container .settings-files .directory-contents > li.file .filewrapper .filedetails .fileactions .icon.view {
+            background-size: 12px; }
+            .editor-container .settings-files .directory-contents > li.file .filewrapper .filedetails .fileactions .icon.view.disabled {
+              cursor: default; }
 .editor-container .settings-files > .directory-contents:before {
   content: none; }
 .editor-container .settings-files > .directory-contents .directory:last-child > .directory-contents:before {

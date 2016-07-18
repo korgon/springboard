@@ -4,6 +4,7 @@
 	"version": "1.0.0",
 	"description": "AJAX UI v3",
 	"created": "timestamp",
+	"creator": "springboard",
 	"settings": {
 		"siteid": {
 			"value": "",
