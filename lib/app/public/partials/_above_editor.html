@@ -30,22 +30,33 @@
 
 									<li ng-class="{ 'active': vm.activeVtab('default') == 'proxy' }"><a ng-click="vm.switchVtab('proxy', 'default')"><span class="icon proxy"></span></a></li>
 
-									<li ng-class="{ 'active': vm.activeVtab('default') == 'tags' }"><a ng-click="vm.switchVtab('tags', 'default')"><span class="icon tags"></span></a></li>
-
 									<li ng-class="{ 'active': vm.activeVtab('default') == 'history' }"><a ng-click="vm.switchVtab('history', 'default')"><span class="icon pulse"></span></a></li>
 
-									<li ng-class="{ 'active': vm.activeVtab('default') == 'settings' }"><a ng-click="vm.switchVtab('settings', 'default')"><span class="icon settings"></span></a></li>
+									<li ng-class="{ 'active': vm.activeVtab('default') == 'tags' }"><a ng-click="vm.switchVtab('tags', 'default')"><span class="icon tags"></span></a></li>
 
-									<li><a ng-click="vm.captureScreen()"><span class="icon capture"></span></a></li>
+									<li ng-class="{ 'active': vm.activeVtab('default') == 'settings' }"><a ng-click="vm.switchVtab('settings', 'default')"><span class="icon settings"></span></a></li>
 								</ul>
 							</div>
 
 							<div class="vtab" ng-switch="vm.session.tab['settings'].vtab['default'].tab">
 
 								<div ng-switch-when="settings">
-									<div class="vtab-head">{{ vm.session.tab['settings'].vtab['default'].tab }}</div>
-									<ul class="settings-variables">
-									</ul>
+									<div class="vtab-block">
+										<ul class="variable-wrap">
+											<li class="variable-container" ng-repeat="(name, variable) in vm.site.settings" ng-include="'variables'"></li>
+											<li>
+												<div class="vtab-blockhead">
+													<span>screen capture</span>
+													<span ng-click="vm.captureScreen()" class="icon small capture"></span>
+												</div>
+												<div>
+													<div class="variable-description">
+														<span>generate screen shot for site</span>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
 								</div>
 
 								<div ng-switch-when="files">
@@ -58,9 +69,11 @@
 								</div>
 
 								<div ng-switch-when="proxy">
-									<div class="vtab-head">{{ vm.session.tab['settings'].vtab['default'].tab }}</div>
-									<ul class="settings-proxy">
-									</ul>
+									<div class="vtab-block">
+										<ul class="variable-wrap">
+											<li class="variable-container" ng-repeat="(name, variable) in vm.site.proxy" ng-include="'variables'"></li>
+										</ul>
+									</div>
 								</div>
 
 								<div ng-switch-when="tags">
@@ -143,13 +156,24 @@
 														<li ng-if="vm.isEmpty(ui.settings)">
 															<div class="vtab-subhead">nothing to see here...</div>
 														</li>
+														<li>
+															<div class="vtab-blockhead">
+																<span>force recompile</span>
+																<span ng-click="vm.forceCompile(ui)" class="icon small compile"></span>
+															</div>
+															<div>
+																<div class="variable-description">
+																	<span>force a compile of the entire ui</span>
+																</div>
+															</div>
+														</li>
 													</ul>
 												</div>
 											</div>
 
 											<div ng-switch-default>
 												<div ng-repeat="module in ui.modules" ng-if="vm.session.tab['uigen'].vtab[ui.name].tab == 'module_' + module.name">
-													<div class="vtab-head"><span class="vtab-title" ng-click="vm.moduleInfo(module)">{{ module.name }}</span><span ng-click="module.enabled = !module.enabled; vm.updateModule(ui.name, module.name)" ng-model="module.enabled" class="toggle" ng-class="{ off: !module.enabled}"></span></div>
+													<div class="vtab-head"><span class="vtab-title" ng-click="vm.moduleInfo(module)">{{ module.name }}</span><span ng-click="module.enabled = !module.enabled; vm.updateModule(ui.name, module.name)" ng-model="module.enabled" class="switch" ng-class="{ off: !module.enabled}"></span></div>
 
 													<div class="vtab-subhead">{{ module.type }} module v{{ module.version }}</div>
 
@@ -251,8 +275,8 @@
 <!-- Used for variables (colors, boolean, siteid, etc...) -->
 <script type="text/ng-template" id="variables">
 	<div class="vtab-blockhead">
-		<span>{{ name }}</span>
-		<span ng-if="variable.type == 'boolean'" ng-click="variable.value = !variable.value; vm.checkChange();" ng-model="variable.value" class="toggle" ng-class="{ off: !variable.value}"></span>
+		<span>{{ variable.label || name }}</span>
+		<span ng-if="variable.type == 'boolean'" ng-click="variable.value = !variable.value; vm.checkChange();" ng-model="variable.value" class="switch" ng-class="{ off: !variable.value}"></span>
 		<span ng-if="variable.type == 'color'" class="variable-color background">&#x2B22;</span>
 		<span ng-if="variable.type == 'color'" class="variable-color" style="color: {{ variable.value }};">&#x2B22;</span>
 	</div>

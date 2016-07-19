@@ -197,7 +197,7 @@ body {
 					padding: 10px;
 
 					.vtab-head {
-						color: $orangefaded;
+						color: $bluegrey;
 						font-size: 12px;
 						text-transform: uppercase;
 						font-weight: bold;
@@ -207,7 +207,7 @@ body {
 								cursor: pointer;
 							}
 						}
-						.toggle {
+						.switch {
 							float: right;
 						}
 					}
@@ -236,10 +236,25 @@ body {
 					.vtab-block {
 						margin-bottom: 5px;
 						.vtab-blockhead {
+							position: relative;
 							font-weight: bold;
-							font-size: 10px;
+							font-size: 11px;
+							color: $bluegrey;
 							padding: 6px;
 							border-bottom: 1px solid $blueaccent;
+							.switch {
+								float: right;
+							}
+							.icon {
+								position: absolute;
+								right: 12px;
+								top: 0px;
+								opacity: 0.6;
+								&:hover {
+									cursor: pointer;
+									opacity: 1;
+								}
+							}
 						}
 
 						.variable-wrap {
@@ -260,7 +275,7 @@ body {
 								background-color: $bluedarkest;
 								border: 1px solid $bluedarkest;
 								color: $orangefaded;
-								font-size: 12px;
+								font-size: 10px;
 								font-weight: bold;
 								cursor: pointer;
 								&:focus {
@@ -292,9 +307,6 @@ body {
 									background-size: 33px;
 									background-color: $blueblack;
 								}
-							}
-							.toggle {
-								float: right;
 							}
 						}
 					}

@@ -7,16 +7,18 @@
 	"creator": "springboard",
 	"settings": {
 		"siteid": {
+			"label": "site id",
 			"value": "",
 			"default": "",
 			"type": "siteid",
 			"description": "six digit alphanumeric"
 		},
 		"eslint": {
+			"label": "enable linting",
 			"value": true,
 			"default": true,
 			"type": "boolean",
-			"description": "enable linting of JS files"
+			"description": "enable linting of JS files (eslint)"
 		}
 	},
 	"variables": {},

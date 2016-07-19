@@ -41,6 +41,25 @@
 	}
 }
 
+.switch {
+	display: inline-block;
+	width: 33px;
+	height: 15px;
+	background-image: url('/images/icons/switch_on.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	vertical-align: middle;
+	cursor: pointer;
+	opacity: 0.7;
+	&.off {
+		background-image: url('/images/icons/switch_off.png');
+		opacity: 1;
+	}
+	&:hover {
+		opacity: 1;
+	}
+}
+
 .toggle {
 	display: inline-block;
 	width: 33px;
@@ -140,6 +159,9 @@ input[type="password"], select {
 	}
 	&.commit {
 		background-image: url('/images/icons/commit.png');
+	}
+	&.compile {
+		background-image: url('/images/icons/compile.png');
 	}
 	&.config {
 		background-image: url('/images/icons/config.png');

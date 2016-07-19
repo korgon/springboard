@@ -28,14 +28,14 @@
 				<a href="/sites/{{ site.name }}/{{ site.default_html }}" target="_blank"><img ng-src="{{ site.thumb }}"></a>
 				<div class="controls">
 					<a ng-click="vm.editSite(site.name)"><span class="sitebutton edit"></span></a>
-					<a href="/sites/{{ site.name }}/{{ site.default_html }}" target="_blank" ng-if="site.default_html && !site.proxy"><span class="sitebutton open"></span></a>
+					<a href="/sites/{{ site.name }}/{{ site.default_html }}" target="_blank" ng-if="site.default_html && !site.proxy.enable.value"><span class="sitebutton open"></span></a>
 				</div>
 				<div class="details">
 					<span class="name">{{ site.name }}</span>
 					<ul class="detailsicons">
 						<li class="icon status-{{ site.status }}"></li>
 						<!-- <li class="icon backend-{{ site.backend }}"></li> -->
-						<li class="icon cart-{{ site.cart }}"></li>
+						<li class="icon cart-{{ site.settings.platform.value }}"></li>
 					</ul>
 				</div>
 			</li>
