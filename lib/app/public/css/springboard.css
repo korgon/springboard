@@ -58,114 +58,77 @@ body {
   text-align: left; }
   .markdown pre {
     background: #00121E;
+    color: #3F525F;
     padding: 20px;
     font-size: 11px;
-    border-left: 3px solid #718599; }
+    border-left: 3px solid #718599;
+    overflow: auto; }
   .markdown p {
     font-size: 12px; }
   .markdown h1 {
-    font-size: 27px;
+    font-size: 24px;
     margin: 10px 0;
     border-bottom: 1px solid #354E66; }
   .markdown h2 {
     margin: 5px 0;
-    font-size: 20px; }
+    font-size: 18px; }
   .markdown hr {
     border-color: #354E66; }
+  .markdown table {
+    width: 100%;
+    max-width: 100%;
+    margin: 10px 0 20px;
+    border-spacing: 0;
+    border-collapse: collapse; }
+    .markdown table thead tr {
+      font-size: 10px; }
+      .markdown table thead tr th {
+        padding: 6px;
+        background-color: #122A3A;
+        vertical-align: bottom;
+        border-bottom: 2px solid #354E66; }
+    .markdown table tr {
+      font-size: 10px; }
+      .markdown table tr:nth-child(odd) td {
+        background-color: rgba(255, 255, 255, 0.03); }
+    .markdown table td {
+      padding: 6px; }
 
-/*
-highlight.js styles
-Gruvbox style (dark) (c) Pavel Pertsev (original style at https://github.com/morhetz/gruvbox)
+.hljs-comment, .hljs-quote {
+  color: #586e75;
+  font-style: italic; }
 
-*/
-.hljs {
-  display: block;
-  overflow-x: auto;
-  padding: 0.5em;
-  background: #282828; }
+.hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-addition {
+  color: #b64926; }
 
-.hljs,
-.hljs-subst {
-  color: #ebdbb2; }
+.hljs-number, .hljs-string, .hljs-doctag, .hljs-regexp {
+  color: #468966; }
 
-/* Gruvbox Red */
-.hljs-deletion,
-.hljs-formula,
-.hljs-keyword,
-.hljs-link,
-.hljs-selector-tag {
-  color: #fb4934; }
+.hljs-title, .hljs-section, .hljs-built_in, .hljs-name {
+  color: #946018; }
 
-/* Gruvbox Blue */
-.hljs-built_in,
-.hljs-emphasis,
-.hljs-name,
-.hljs-quote,
-.hljs-strong,
-.hljs-title,
-.hljs-variable {
-  color: #83a598; }
+.hljs-variable, .hljs-template-variable, .hljs-class .hljs-title, .hljs-type, .hljs-tag {
+  color: #b58900; }
 
-/* Gruvbox Yellow */
-.hljs-attr,
-.hljs-params,
-.hljs-template-tag,
-.hljs-type {
-  color: #fabd2f; }
+.hljs-attribute {
+  color: #b89859; }
 
-/* Gruvbox Purple */
-.hljs-builtin-name,
-.hljs-doctag,
-.hljs-literal,
-.hljs-number {
-  color: #8f3f71; }
+.hljs-symbol, .hljs-bullet, .hljs-link, .hljs-subst, .hljs-meta {
+  color: #cb4b16; }
 
-/* Gruvbox Orange */
-.hljs-code,
-.hljs-meta,
-.hljs-regexp,
-.hljs-selector-id,
-.hljs-template-variable {
-  color: #fe8019; }
+.hljs-deletion {
+  color: #dc322f; }
 
-/* Gruvbox Green */
-.hljs-addition,
-.hljs-meta-string,
-.hljs-section,
-.hljs-selector-attr,
-.hljs-selector-class,
-.hljs-string,
-.hljs-symbol {
-  color: #b8bb26; }
+.hljs-selector-id, .hljs-selector-class {
+  color: #d3a60c; }
 
-/* Gruvbox Aqua */
-.hljs-attribute,
-.hljs-bullet,
-.hljs-class,
-.hljs-function,
-.hljs-function .hljs-keyword,
-.hljs-meta-keyword,
-.hljs-selector-pseudo,
-.hljs-tag {
-  color: #8ec07c; }
+.hljs-formula {
+  background: #073642; }
 
-/* Gruvbox Gray */
-.hljs-comment {
-  color: #928374; }
-
-/* Gruvbox Purple */
-.hljs-link_label,
-.hljs-literal,
-.hljs-number {
-  color: #d3869b; }
-
-.hljs-comment,
 .hljs-emphasis {
   font-style: italic; }
 
-.hljs-section,
-.hljs-strong,
-.hljs-tag {
+.hljs-strong {
   font-weight: bold; }
 
 .button {

@@ -69,7 +69,7 @@
 				<span class="icon module-{{ mm.icon }}"></span>
 				<span>{{ mm.type }}</span>
 			</div>
-			<div class="markdown"><ng-include markdown-it src="mm.readmeUrl"></ng-include></div>
+			<div class="markdown" marked src="mm.readmeUrl"></div>
 
 			<div class="buttons">
 				<button ng-click="mm.closeModal()" class="button">Close</button>
@@ -102,7 +102,7 @@
 			</div>
 
 			<div class="boxright">
-				<div class="markdown"><ng-include markdown-it src="mm.readmeUrl"></ng-include></div>
+				<div class="markdown" marked src="mm.readmeUrl"></div>
 				<div class="buttons">
 					<button ng-click="mm.resolveModal()" class="button" ng-disabled="!mm.selected">Install</button>
 					<button ng-click="mm.closeModal()" class="button">Close</button>
