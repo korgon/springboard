@@ -11,7 +11,7 @@
 					<div id="createbutton" ng-click="vm.showInput()" ng-if="!vm.show_input"><span class="sitebutton add"></span></div>
 					<form id="createinput" name="createForm" novalidate class="visible" ng-if="vm.show_input">
 						<label for="input_name">Site Name</label>
-						<input type="text" name="name" id="input_name" autocomplete="off" focus-on ng-model="vm.new_site.name" required ng-pattern="/^[^\_\.]\w+\.\w{2,}$/i">
+						<input type="text" name="name" id="input_name" autocomplete="off" focus-on ng-model="vm.new_site.name" required ng-pattern="/^[^\_\.][\w\.\-_]+\.\w{2,}$/i">
 						<label for="input_siteid">Siteid</label>
 						<input type="text" name="siteid" id="input_siteid" autocomplete="off" maxlength="6" ng-model="vm.new_site.siteid" required ng-pattern="/^[a-z0-9]{6}$/i">
 						<select required ng-model="vm.new_site.cart" ng-options="cart as cart for cart in vm.carts | orderBy: 'toString()'" ng-init="vm.new_site.cart = 'custom'">
