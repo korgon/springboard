@@ -84,7 +84,7 @@
 			}
 		}
 		&.moduleInstall {
-			width: 750px;
+			min-width: 750px;
 			.boxcontent {
 				padding: 0;
 				overflow: auto;
@@ -93,7 +93,6 @@
 				align-content: stretch;
 			}
 			.boxleft {
-				flex-basis: 199px;
 				background-color: $blueblack;
 				border-right: 1px solid $bluebase;
 				.uimodules {
@@ -117,12 +116,13 @@
 							border-right: 0;
 						}
 						.modulename {
+							padding-right: 10px;
 							cursor: pointer;
 						}
 						.modulethemes {
 							font-size: 10px;
 							list-style: none;
-							padding-left: 33px;
+							padding-left: 5px;
 							li {
 								cursor: pointer;
 								padding: 5px;
@@ -145,7 +145,8 @@
 				}
 			}
 			.boxright {
-				flex-basis: 550px;
+				flex-basis: 0;
+				flex-grow: 1;
 				.markdown {
 					min-height: 400px;
 					padding: 0 20px 20px;
