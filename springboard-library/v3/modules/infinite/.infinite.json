@@ -1,0 +1,8 @@
+{
+	"type": "v3/infinite",
+	"version": "1.0.0",
+	"description": "add infinite scroll or 'load more' capability",
+	"icon": "infinite",
+	"enabled": true,
+	"theme": null
+}

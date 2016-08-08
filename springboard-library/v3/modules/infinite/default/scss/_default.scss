@@ -1,0 +1,26 @@
+/* infinite default scss */
+@import "._variables.scss";
+
+.searchspring-infinite_loadmore {
+	text-align: center;
+	margin: 0 0 20px 0;
+	a {
+		background: $color3;
+		display: inline-block;
+		color: #fff;
+		font-size: 13px;
+		text-transform: uppercase;
+		text-align: center;
+		border-radius: 3px;
+		line-height: 18px;
+		padding: 6px 12px;
+		margin: 5px 0;
+		cursor: pointer;
+	}
+}
+
+.searchspring-infinite_loading {
+	height: 30px;
+	background: url("//cdn.searchspring.net/ajax_search/img/searchspring-loader.gif") no-repeat center;
+	margin-bottom: 20px;
+}
