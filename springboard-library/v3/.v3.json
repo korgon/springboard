@@ -13,6 +13,13 @@
 			"type": "siteid",
 			"description": "six digit alphanumeric"
 		},
+		"query": {
+			"label": "query parameter",
+			"value": "q",
+			"default": "q",
+			"type": "word",
+			"description": "query parameter of the search"
+		},
 		"eslint": {
 			"label": "enable linting",
 			"value": true,
