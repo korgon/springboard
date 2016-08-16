@@ -261,6 +261,8 @@ input[type="password"], select {
     background-image: url("/images/icons/compile.png"); }
   .icon.config {
     background-image: url("/images/icons/config.png"); }
+  .icon.copy {
+    background-image: url("/images/icons/copy.png"); }
   .icon.cloud {
     background-image: url("/images/icons/cloud.png"); }
   .icon.custom {

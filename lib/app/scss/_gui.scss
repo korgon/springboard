@@ -166,6 +166,9 @@ input[type="password"], select {
 	&.config {
 		background-image: url('/images/icons/config.png');
 	}
+	&.copy {
+		background-image: url('/images/icons/copy.png');
+	}
 	&.cloud {
 		background-image: url('/images/icons/cloud.png');
 	}
