@@ -48,10 +48,8 @@
 	text-transform: uppercase;
 	position: relative;
 	display: none;
-	@media only screen and (max-width: $slideout_width) {
-		& {
-			display: block;
-		}
+	@media only screen and (max-width: $slideout_width + 'px') {
+		display: block;
 	}
 	.searchspring-slideout_button_icon {
 		width: 30px;
