@@ -222,8 +222,16 @@
 						background: url('/images/icons/commit.png') no-repeat center;
 						background-size: 30px;
 					}
+					&.connection {
+						background: url('/images/icons/cloudie.png') no-repeat center;
+						background-size: 30px;
+					}
 					&.info {
 						background: url('/images/icons/info.png') no-repeat center;
+						background-size: 30px;
+					}
+					&.warning {
+						background: url('/images/icons/warning.png') no-repeat center;
 						background-size: 30px;
 					}
 				}

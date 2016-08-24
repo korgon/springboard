@@ -1440,8 +1440,14 @@ body #gallery {
         #modals .boxwrap .boxcontent .boxmessage .messageicon.commit {
           background: url("/images/icons/commit.png") no-repeat center;
           background-size: 30px; }
+        #modals .boxwrap .boxcontent .boxmessage .messageicon.connection {
+          background: url("/images/icons/cloudie.png") no-repeat center;
+          background-size: 30px; }
         #modals .boxwrap .boxcontent .boxmessage .messageicon.info {
           background: url("/images/icons/info.png") no-repeat center;
+          background-size: 30px; }
+        #modals .boxwrap .boxcontent .boxmessage .messageicon.warning {
+          background: url("/images/icons/warning.png") no-repeat center;
           background-size: 30px; }
       #modals .boxwrap .boxcontent .boxmessage .message {
         display: inline-block;
