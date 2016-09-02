@@ -158,17 +158,6 @@
 														</li>
 														<li class="variable-container">
 															<div class="vtab-blockhead">
-																<span>force recompile</span>
-																<span ng-click="vm.forceCompile(ui)" class="icon small compile"></span>
-															</div>
-															<div>
-																<div class="variable-description">
-																	<span>force a compile of the entire ui</span>
-																</div>
-															</div>
-														</li>
-														<li class="variable-container">
-															<div class="vtab-blockhead">
 																<span>script tag</span>
 																<span copycat="#uiscript" class="icon small copy"></span>
 															</div>
@@ -176,6 +165,17 @@
 																<input id="uiscript" type=hidden value="{{ vm.getScriptTag(ui.type) }}">
 																<div class="variable-description">
 																	<span>copy {{ ui.type }} script to the clipboard</span>
+																</div>
+															</div>
+														</li>
+														<li class="variable-container">
+															<div class="vtab-blockhead">
+																<span>force recompile</span>
+																<span ng-click="vm.forceCompile(ui)" class="icon small compile"></span>
+															</div>
+															<div>
+																<div class="variable-description">
+																	<span>force a compile of the entire ui</span>
 																</div>
 															</div>
 														</li>
