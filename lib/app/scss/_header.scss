@@ -87,9 +87,9 @@ body {
 							align-items: center;
 							height: 40px;
 							width: 100%;
-							border: 1px solid $blueblack;
+							border: 0 solid transparent;
 							color: $bluetext;
-							transition: border 144ms ease;
+							transition: all 144ms ease;
 							text-transform: uppercase;
 							z-index: 3px;
 							&:hover, &:active {

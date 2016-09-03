@@ -492,9 +492,9 @@ body #above .heading {
           align-items: center;
           height: 40px;
           width: 100%;
-          border: 1px solid #00121E;
+          border: 0 solid transparent;
           color: #3F525F;
-          transition: border 144ms ease;
+          transition: all 144ms ease;
           text-transform: uppercase;
           z-index: 3px; }
           body #above .heading .mainmenu ul.menuoptions li a:hover, body #above .heading .mainmenu ul.menuoptions li a:active {
