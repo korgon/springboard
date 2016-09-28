@@ -157,6 +157,36 @@ input[type="password"], select {
 	&.capture {
 		background-image: url('/images/icons/capture.png');
 	}
+	&.cart-magento {
+		background-image: url('/images/icons/carts/magento.png');
+	}
+	&.cart-bigcommerce {
+		background-image: url('/images/icons/carts/bigcommerce.png');
+	}
+	&.cart-3dcart {
+		background-image: url('/images/icons/carts/3dcart.png');
+	}
+	&.cart-miva {
+		background-image: url('/images/icons/carts/miva.png');
+	}
+	&.cart-shopify {
+		background-image: url('/images/icons/carts/shopify.png');
+	}
+	&.cart-yahoo {
+		background-image: url('/images/icons/carts/yahoo.png');
+	}
+	&.cart-custom {
+		background-image: url('/images/icons/carts/custom.png');
+	}
+	&.cart-netsuite {
+		background-image: url('/images/icons/carts/netsuite.png');
+	}
+	&.cart-volusion {
+		background-image: url('/images/icons/carts/volusion.png');
+	}
+	&.cart-commercev3 {
+		background-image: url('/images/icons/carts/cv3.png');
+	}
 	&.commit {
 		background-image: url('/images/icons/commit.png');
 	}

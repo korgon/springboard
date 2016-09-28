@@ -1,10 +1,10 @@
-
 {
 	"type": "v3",
 	"version": "1.0.0",
 	"description": "AJAX UI v3",
 	"created": "timestamp",
 	"creator": "springboard",
+	"tags": [],
 	"settings": {
 		"siteid": {
 			"label": "site id",
@@ -20,12 +20,12 @@
 			"type": "word",
 			"description": "query parameter of the search"
 		},
-		"eslint": {
-			"label": "enable linting",
-			"value": true,
-			"default": true,
-			"type": "boolean",
-			"description": "enable linting of JS files (eslint)"
+		"context": {
+			"label": "additional context",
+			"value": "",
+			"default": "",
+			"type": "text",
+			"description": "additional context to add to the script tag"
 		}
 	},
 	"variables": {},

@@ -255,6 +255,26 @@ input[type="password"], select {
     background-image: url("/images/icons/add.png"); }
   .icon.capture {
     background-image: url("/images/icons/capture.png"); }
+  .icon.cart-magento {
+    background-image: url("/images/icons/carts/magento.png"); }
+  .icon.cart-bigcommerce {
+    background-image: url("/images/icons/carts/bigcommerce.png"); }
+  .icon.cart-3dcart {
+    background-image: url("/images/icons/carts/3dcart.png"); }
+  .icon.cart-miva {
+    background-image: url("/images/icons/carts/miva.png"); }
+  .icon.cart-shopify {
+    background-image: url("/images/icons/carts/shopify.png"); }
+  .icon.cart-yahoo {
+    background-image: url("/images/icons/carts/yahoo.png"); }
+  .icon.cart-custom {
+    background-image: url("/images/icons/carts/custom.png"); }
+  .icon.cart-netsuite {
+    background-image: url("/images/icons/carts/netsuite.png"); }
+  .icon.cart-volusion {
+    background-image: url("/images/icons/carts/volusion.png"); }
+  .icon.cart-commercev3 {
+    background-image: url("/images/icons/carts/cv3.png"); }
   .icon.commit {
     background-image: url("/images/icons/commit.png"); }
   .icon.compile {
@@ -1215,35 +1235,11 @@ body #gallery {
         body #gallery .sites .site .details .detailsicons {
           float: right; }
           body #gallery .sites .site .details .detailsicons .icon {
-            display: inline-block;
             width: 30px;
             height: 30px;
             margin-right: 5px;
-            opacity: 0.4; }
-            body #gallery .sites .site .details .detailsicons .icon.cart-magento {
-              background: url("/images/icons/meta/magento.png") no-repeat center; }
-            body #gallery .sites .site .details .detailsicons .icon.cart-bigcommerce {
-              background: url("/images/icons/meta/bigcommerce.png") no-repeat center; }
-            body #gallery .sites .site .details .detailsicons .icon.cart-3dcart {
-              background: url("/images/icons/meta/3dcart.png") no-repeat center; }
-            body #gallery .sites .site .details .detailsicons .icon.cart-miva {
-              background: url("/images/icons/meta/miva.png") no-repeat center; }
-            body #gallery .sites .site .details .detailsicons .icon.cart-shopify {
-              background: url("/images/icons/meta/shopify.png") no-repeat center; }
-            body #gallery .sites .site .details .detailsicons .icon.cart-yahoo {
-              background: url("/images/icons/meta/yahoo.png") no-repeat center; }
-            body #gallery .sites .site .details .detailsicons .icon.cart-custom {
-              background: url("/images/icons/meta/custom.png") no-repeat center; }
-            body #gallery .sites .site .details .detailsicons .icon.cart-netsuite {
-              background: url("/images/icons/meta/netsuite.png") no-repeat center; }
-            body #gallery .sites .site .details .detailsicons .icon.cart-volusion {
-              background: url("/images/icons/meta/volusion.png") no-repeat center; }
-            body #gallery .sites .site .details .detailsicons .icon.cart-commercev3 {
-              background: url("/images/icons/meta/cv3.png") no-repeat center; }
-            body #gallery .sites .site .details .detailsicons .icon.backend-solr {
-              background: url("/images/icons/meta/solr.png") no-repeat center; }
-            body #gallery .sites .site .details .detailsicons .icon.backend-saluki {
-              background: url("/images/icons/meta/saluki.png") no-repeat center; }
+            opacity: 0.4;
+            background-size: 20px; }
     body #gallery .sites .sitebutton {
       display: inline-block;
       width: 50px;

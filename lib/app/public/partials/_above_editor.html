@@ -32,7 +32,7 @@
 
 									<li ng-class="{ 'active': vm.activeVtab('default') == 'history' }"><a ng-click="vm.switchVtab('history', 'default')"><span class="icon pulse"></span></a></li>
 
-									<li ng-class="{ 'active': vm.activeVtab('default') == 'tags' }"><a ng-click="vm.switchVtab('tags', 'default')"><span class="icon tags"></span></a></li>
+
 
 									<li ng-class="{ 'active': vm.activeVtab('default') == 'settings' }"><a ng-click="vm.switchVtab('settings', 'default')"><span class="icon settings"></span></a></li>
 								</ul>
@@ -76,12 +76,6 @@
 									</div>
 								</div>
 
-								<div ng-switch-when="tags">
-									<div class="vtab-head">{{ vm.session.tab['settings'].vtab['default'].tab }}</div>
-									<ul class="settings-tags">
-									</ul>
-								</div>
-
 								<div ng-switch-when="history">
 									<div class="vtab-head">{{ vm.session.tab['settings'].vtab['default'].tab }}</div>
 									<ul class="settings-history">
@@ -121,6 +115,8 @@
 
 												<li ng-if="!vm.isEmpty(ui.variables)" ng-class="{ 'active': vm.activeVtab(ui.name) == 'variables' }"><a ng-click="vm.switchVtab('variables', ui.name)"><span class="icon variables"></span></a></li>
 
+												<li ng-class="{ 'active': vm.activeVtab(ui.name) == 'tags' }"><a ng-click="vm.switchVtab('tags', ui.name)"><span class="icon tags"></span></a></li>
+
 												<li ng-class="{ 'active': vm.activeVtab(ui.name) == 'settings' }"><a ng-click="vm.switchVtab('settings', ui.name)"><span class="icon settings"></span></a></li>
 											</ul>
 										</div>
@@ -149,6 +145,11 @@
 												</div>
 											</div>
 
+											<div ng-switch-when="tags">
+												<div class="vtab-head">Tagsies</div>
+												<div class="vtab-block"></div>
+											</div>
+
 											<div ng-switch-when="settings">
 												<div class="vtab-block">
 													<ul class="variable-wrap">
@@ -164,7 +165,7 @@
 															<div>
 																<input id="uiscript" type=hidden value="{{ vm.getScriptTag(ui.type) }}">
 																<div class="variable-description">
-																	<span>copy {{ ui.type }} script to the clipboard</span>
+																	<span>copy {{ ui.type }} script loader to the clipboard</span>
 																</div>
 															</div>
 														</li>
