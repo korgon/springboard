@@ -32,7 +32,7 @@
 
 									<li ng-class="{ 'active': vm.activeVtab('default') == 'history' }"><a ng-click="vm.switchVtab('history', 'default')"><span class="icon pulse"></span></a></li>
 
-
+									<li ng-class="{ 'active': vm.activeVtab('default') == 'instructions' }"><a ng-click="vm.switchVtab('instructions', 'default')"><span class="icon instructions"></span></a></li>
 
 									<li ng-class="{ 'active': vm.activeVtab('default') == 'settings' }"><a ng-click="vm.switchVtab('settings', 'default')"><span class="icon settings"></span></a></li>
 								</ul>
@@ -79,6 +79,12 @@
 								<div ng-switch-when="history">
 									<div class="vtab-head">{{ vm.session.tab['settings'].vtab['default'].tab }}</div>
 									<ul class="settings-history">
+									</ul>
+								</div>
+
+								<div ng-switch-when="instructions">
+									<div class="vtab-head">{{ vm.session.tab['settings'].vtab['default'].tab }}</div>
+									<ul class="settings-instructions">
 									</ul>
 								</div>
 
@@ -185,9 +191,9 @@
 
 											<div ng-switch-default>
 												<div ng-repeat="module in ui.modules" ng-if="vm.session.tab['uigen'].vtab[ui.name].tab == 'module_' + module.name">
-													<div class="vtab-head"><span class="vtab-title" ng-click="vm.moduleInfo(module)">{{ module.name }}</span><span ng-click="module.enabled = !module.enabled; vm.updateModule(ui.name, module.name)" ng-model="module.enabled" class="switch" ng-class="{ off: !module.enabled}"></span></div>
+													<div class="vtab-head"><span class="vtab-title">{{ module.name }}</span><span ng-click="module.enabled = !module.enabled; vm.updateModule(ui.name, module.name)" ng-model="module.enabled" class="switch" ng-class="{ off: !module.enabled}"></span></div>
 
-													<div class="vtab-subhead">{{ module.type }} module v{{ module.version }}</div>
+													<div class="vtab-subhead"><span ng-click="vm.moduleInfo(module)" class="icon infos tiny click"></span>{{ module.type }} module v{{ module.version }}</div>
 
 													<br>
 													<div class="vtab-contents" ng-class="{ disabled: !module.enabled }">
@@ -303,13 +309,13 @@
 	<div class="filewrapper" ng-if="details.type == 'file'" ng-init="details.show = false" ng-class="{ show: details.show }">
 		<div class="filehead" ng-if="details.type == 'file'" ng-click="details.show = !details.show">
 			<span class="icon small extension-{{ details.extension }}">
-				<span class="icon tiny selected" ng-if="vm.site.thumb == ('/sites/' + vm.site.name + '/' + details.path) || details.path == vm.site.default_html"></span>
+				<span class="icon tiny selected" ng-if="vm.site.thumb == (vm.relative_url + details.path) || (vm.relative_url + details.path) == vm.site.default_url"></span>
 			</span>
 			<span class="filename" ng-class="{ cloud: vm.site.cloud_files.indexOf(details.path) != -1 }">{{ details.name }}</span>
 		</div>
 		<div class="filedetails">
 			<div class="fileactions">
-				<span class="icon tiny active" ng-if="details.extension == 'html'" ng-class="{ disabled: details.path != vm.site.default_html }" ng-click="vm.setDefaultHTML(details.path)"></span>
+				<span class="icon tiny active" ng-if="details.extension == 'html'" ng-class="{ disabled: (vm.relative_url + details.path) != vm.site.default_url }" ng-click="vm.setDefaultHTML(details.path)"></span>
 				<span class="icon tiny active"  ng-if="['png', 'jpeg', 'jpg', 'gif'].indexOf(details.extension) != -1" ng-class="{ disabled: vm.site.thumb != ('/sites/' + vm.site.name + '/' + details.path) }" ng-click="vm.setThumb(details.path)"></span>
 				<span class="icon tiny cloud" ng-class="{ disabled: vm.site.cloud_files.indexOf(details.path) == -1 }" ng-click="vm.toggleCloudFile(details.path)"></span>
 				<span class="icon tiny view" ng-click="vm.setUrl(vm.root_url + details.path)" ng-class="{ disabled: vm.session.frameurl.match(vm.site.name + '/' + details.path) }"></span>

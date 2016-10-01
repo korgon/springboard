@@ -4,6 +4,7 @@
         "desktop",
         "groovy",
         "mobile",
-        "responsive"
+        "responsive",
+        "tealium"
     ]
 }

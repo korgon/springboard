@@ -146,11 +146,11 @@ body {
   max-width: inherit; }
 
 .angular-tagger__tag {
-  background: #46927D;
+  background: #3F525F;
   padding: 5px;
   margin: 4px;
   display: block;
-  color: #00121E;
+  color: #CACACA;
   border-radius: 2px;
   word-wrap: break-word;
   font-weight: bold;
@@ -328,6 +328,9 @@ input[type="password"], select {
     background-size: 14px;
     width: 14px;
     height: 14px; }
+  .icon.click {
+    padding: 0 5px;
+    cursor: pointer; }
   .icon.removed:before {
     content: '';
     position: absolute;
@@ -410,6 +413,8 @@ input[type="password"], select {
     background-image: url("/images/icons/history.png"); }
   .icon.info {
     background-image: url("/images/icons/info.png"); }
+  .icon.infos {
+    background-image: url("/images/icons/infos.png"); }
   .icon.install {
     background-image: url("/images/icons/install.png"); }
   .icon.instructions {
@@ -1139,8 +1144,6 @@ body #above .editor-container .vtab-wrap {
       text-transform: uppercase;
       font-weight: bold;
       padding: 6px; }
-      body #above .editor-container .vtab-wrap .vtab .vtab-head .vtab-title:hover {
-        cursor: pointer; }
       body #above .editor-container .vtab-wrap .vtab .vtab-head .switch {
         float: right; }
     body #above .editor-container .vtab-wrap .vtab .vtab-subhead {
