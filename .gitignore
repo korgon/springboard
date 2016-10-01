@@ -8,7 +8,6 @@ springboard-sites/
 
 # ignore the user configuration options
 lib/config/user.json
-lib/config/tags.json
 
 # ignore the dev sass cache
 lib/app/scss/.sass-cache
