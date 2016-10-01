@@ -16,7 +16,9 @@ $bluehighlight: #304B66;
 $bluegrey: #718599;
 $bluetext: #3F525F;
 $grey: #61717B;
-$greenfaded: #507B43;
+$green: #507B43;
+$greenfaded: #63715F;
+$greenblue: #46927D;
 $orange: #C87C0F;
 $orangebright: #CC5200;
 $orangelight: #ff6600;
@@ -25,8 +27,11 @@ $orangeyellow: #7F6E14;
 $orangedark: #724911;
 $orangedarkest: #352C17;
 $red: #A12B00;
+$redfaded: #BF3C2F;
+$reddark: #8E111C;
 $whitefaded: #CACACA;
 
+// other variables
 $heightheader: 40px;
 
 html {
@@ -101,6 +106,7 @@ body {
 // imported scss
 @import "_mixins.scss";
 @import "_markdown.scss";
+@import "_tagger.scss";
 @import "_gui.scss";
 @import "_animations.scss";
 

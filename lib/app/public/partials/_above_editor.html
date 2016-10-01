@@ -146,8 +146,7 @@
 											</div>
 
 											<div ng-switch-when="tags">
-												<div class="vtab-head">Tagsies</div>
-												<div class="vtab-block"></div>
+												<tagger ng-model="ui.tags" options="vm.tags" placeholder="... Add Tags Here" change="vm.checkChange()">
 											</div>
 
 											<div ng-switch-when="settings">

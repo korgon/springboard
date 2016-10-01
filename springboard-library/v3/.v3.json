@@ -13,13 +13,6 @@
 			"type": "siteid",
 			"description": "six digit alphanumeric"
 		},
-		"query": {
-			"label": "query parameter",
-			"value": "q",
-			"default": "q",
-			"type": "word",
-			"description": "query parameter of the search"
-		},
 		"context": {
 			"label": "additional context",
 			"value": "",
