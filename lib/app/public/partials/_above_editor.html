@@ -147,6 +147,11 @@
 
 											<div ng-switch-when="styles">
 												<div class="vtab-block">
+													<div class="vtab-head"><span class="vtab-title">UI Styles</span></div>
+													<div class="vtab-subhead">used for modifying the design</div>
+												</div>
+
+												<div class="vtab-block">
 													<ul class="variable-wrap">
 														<li class="variable-container" ng-repeat="(name, variable) in ui.styles" ng-include="'variables'"></li>
 														<li ng-if="vm.isEmpty(ui.styles)">
@@ -157,6 +162,11 @@
 											</div>
 
 											<div ng-switch-when="variables">
+												<div class="vtab-block">
+													<div class="vtab-head"><span class="vtab-title">UI Variables</span></div>
+													<div class="vtab-subhead">used for modifying the design</div>
+												</div>
+
 												<div class="vtab-block">
 													<ul class="variable-wrap">
 														<li class="variable-container" ng-repeat="(name, variable) in ui.variables" ng-include="'variables'"></li>
@@ -169,19 +179,22 @@
 
 											<div ng-switch-when="tags">
 												<div class="vtab-block">
-													<div class="vtab-head"><span class="vtab-title">Tags</span></div>
+													<div class="vtab-head"><span class="vtab-title">Custom Tags</span></div>
+													<div class="vtab-subhead">for tagging all the things</div>
 
-													<tagger ng-model="ui.tags" options="vm.tags" placeholder="... Add Tags Here" change="vm.checkChange()">
+													<tagger ng-model="ui.tags" options="vm.tags" placeholder="..." change="vm.checkChange()">
 												</div>
 											</div>
 
 											<div ng-switch-when="settings">
 												<div class="vtab-block">
+													<div class="vtab-head"><span class="vtab-title">Settings</span></div>
+													<div class="vtab-subhead">ui specific settings</div>
+												</div>
+
+												<div class="vtab-block">
 													<ul class="variable-wrap">
 														<li class="variable-container" ng-repeat="(name, variable) in ui.settings" ng-include="'variables'"></li>
-														<li ng-if="vm.isEmpty(ui.settings)" class="variable-container">
-															<div class="vtab-subhead">nothing to see here...</div>
-														</li>
 														<li class="variable-container">
 															<div class="vtab-blockhead">
 																<span>script tag</span>
