@@ -42,9 +42,14 @@
 
 								<div ng-switch-when="settings">
 									<div class="vtab-block">
+										<div class="vtab-head"><span class="vtab-title">{{ vm.session.tab['settings'].vtab['default'].tab }}</span></div>
+										<div class="vtab-subhead">site specific settings</div>
+									</div>
+
+									<div class="vtab-block">
 										<ul class="variable-wrap">
 											<li class="variable-container" ng-repeat="(name, variable) in vm.site.settings" ng-include="'variables'"></li>
-											<li>
+											<li class="variable-container">
 												<div class="vtab-blockhead">
 													<span>screen capture</span>
 													<span ng-click="vm.captureScreen()" class="icon small capture"></span>
@@ -60,15 +65,21 @@
 								</div>
 
 								<div ng-switch-when="files">
-									<ul class="settings-files">
-										<li class="root"><span class="icon folder-root"></span></li>
-										<ul class="directory-contents">
-											<li class="{{ details.type }} {{ details.extension.replace('.', '') }}" ng-repeat="details in vm.files.root.contents | orderFilesBy: 'type'" ng-include="'fileTree'"></li>
+									<div class="vtab-block">
+										<ul class="settings-files">
+											<li class="root"><span class="icon folder-root"></span></li>
+											<ul class="directory-contents">
+												<li class="{{ details.type }} {{ details.extension.replace('.', '') }}" ng-repeat="details in vm.files.root.contents | orderFilesBy: 'type'" ng-include="'fileTree'"></li>
+											</ul>
 										</ul>
-									</ul>
+									</div>
 								</div>
 
 								<div ng-switch-when="proxy">
+									<div class="vtab-block">
+										<div class="vtab-head"><span class="vtab-title">{{ vm.session.tab['settings'].vtab['default'].tab }} Settings</span></div>
+									</div>
+
 									<div class="vtab-block">
 										<ul class="variable-wrap">
 											<li class="variable-container" ng-repeat="(name, variable) in vm.site.proxy" ng-include="'variables'"></li>
@@ -77,15 +88,20 @@
 								</div>
 
 								<div ng-switch-when="history">
-									<div class="vtab-head">{{ vm.session.tab['settings'].vtab['default'].tab }}</div>
-									<ul class="settings-history">
-									</ul>
+									<div class="vtab-block">
+										<div class="vtab-head">{{ vm.session.tab['settings'].vtab['default'].tab }}</div>
+
+										<ul class="settings-history">
+										</ul>
+									</div>
 								</div>
 
 								<div ng-switch-when="instructions">
-									<div class="vtab-head">{{ vm.session.tab['settings'].vtab['default'].tab }}</div>
-									<ul class="settings-instructions">
-									</ul>
+									<div class="vtab-block">
+										<div class="vtab-head">{{ vm.session.tab['settings'].vtab['default'].tab }}</div>
+										<ul class="settings-instructions">
+										</ul>
+									</div>
 								</div>
 
 							</div>
@@ -152,7 +168,11 @@
 											</div>
 
 											<div ng-switch-when="tags">
-												<tagger ng-model="ui.tags" options="vm.tags" placeholder="... Add Tags Here" change="vm.checkChange()">
+												<div class="vtab-block">
+													<div class="vtab-head"><span class="vtab-title">Tags</span></div>
+
+													<tagger ng-model="ui.tags" options="vm.tags" placeholder="... Add Tags Here" change="vm.checkChange()">
+												</div>
 											</div>
 
 											<div ng-switch-when="settings">
@@ -170,7 +190,7 @@
 															<div>
 																<input id="uiscript" type=hidden value="{{ vm.getScriptTag(ui.type) }}">
 																<div class="variable-description">
-																	<span>copy {{ ui.type }} script loader to the clipboard</span>
+																	<span>copy script loader to the clipboard</span>
 																</div>
 															</div>
 														</li>
@@ -191,46 +211,47 @@
 
 											<div ng-switch-default>
 												<div ng-repeat="module in ui.modules" ng-if="vm.session.tab['uigen'].vtab[ui.name].tab == 'module_' + module.name">
-													<div class="vtab-head"><span class="vtab-title">{{ module.name }}</span><span ng-click="module.enabled = !module.enabled; vm.updateModule(ui.name, module.name)" ng-model="module.enabled" class="switch" ng-class="{ off: !module.enabled}"></span></div>
+													<div class="vtab-block">
+														<div class="vtab-head"><span class="vtab-title">{{ module.name }}</span><span ng-click="module.enabled = !module.enabled; vm.updateModule(ui.name, module.name)" ng-model="module.enabled" class="switch" ng-class="{ off: !module.enabled}"></span>
+														</div>
 
-													<div class="vtab-subhead"><span ng-click="vm.moduleInfo(module)" class="icon infos tiny click"></span>{{ module.type }} module v{{ module.version }}</div>
+														<div class="vtab-subhead">{{ module.type }} module v{{ module.version }}<span ng-click="vm.moduleInfo(module)" class="icon infos tiny"></span></div>
 
-													<br>
+													</div>
 													<div class="vtab-contents" ng-class="{ disabled: !module.enabled }">
 														<div class="vtab-overlay" ng-hide="module.enabled"></div>
 
-														<div class="vtab-block" ng-if="!vm.isEmpty(vm.site.catalogs[ui.name].modules[module.name].themes[vm.site.catalogs[ui.name].modules[module.name].theme].variables)">
+														<div class="vtab-block">
+
 															<ul class="variable-wrap">
-																<li class="variable-container" ng-repeat="(name, variable) in vm.site.catalogs[ui.name].modules[module.name].themes[vm.site.catalogs[ui.name].modules[module.name].theme].variables">
-																	<div class="vtab-blockhead">{{ name }}</div>
-																	<div>
-																		<div ng-if="variable.description" class="variable-description">{{ variable.description }}</div>
-																		<input class="variable-input" ng-change="vm.checkChange()" ng-model="variable.value" placeholder="..." autocomplete="off" spellcheck="false">
+																<li class="variable-container" ng-repeat="(name, variable) in vm.site.catalogs[ui.name].modules[module.name].themes[vm.site.catalogs[ui.name].modules[module.name].theme].variables" ng-include="'variables'"></li>
+
+																<li class="variable-container" ng-if="!vm.site.catalogs[ui.name].modules[module.name].themes[vm.site.catalogs[ui.name].modules[module.name].theme].variables || vm.isEmpty(vm.site.catalogs[ui.name].modules[module.name].themes[vm.site.catalogs[ui.name].modules[module.name].theme].variables)">
+																	<div class="vtab-blockhead">settings</div>
+																	<div class="variable-description">this module is not configurable</div>
+																</li>
+
+																<li class="variable-container" ng-if="!vm.isSingular(vm.uis[ui.type].modules[module.type.split('/')[1]].themes)">
+																	<div class="vtab-blockhead">themes</div>
+
+																	<div class="variable-description" >
+																		<ul class="module-themes-container" ng-if="!vm.isSingular(vm.uis[ui.type].modules[module.type.split('/')[1]].themes)">
+																			<li ng-repeat="theme in module.themes">
+																				<span class="theme-name">{{ theme.name }}</span>
+																				<span ng-if="vm.site.catalogs[ui.name].modules[module.name].theme == theme.name" title="active" class="icon active on"></span>
+																				<span ng-if="vm.site.catalogs[ui.name].modules[module.name].theme != theme.name" title="inactive" class="icon active off" ng-click="vm.site.catalogs[ui.name].modules[module.name].theme = theme.name; vm.updateModule(ui.name, module.name);"></span>
+																				<span title="custom" class="icon custom disabled" ng-if="!vm.uis[ui.type].modules[module.type.split('/')[1]].themes[theme.name]"></span>
+																			</li>
+																			<li ng-repeat="theme in vm.uis[ui.type].modules[module.type.split('/')[1]].themes" ng-if="!vm.site.catalogs[ui.name].modules[module.name].themes[theme.name]">
+																				<span class="theme-name">{{ theme.name }}</span>
+																				<span title="{{ vm.site.catalogs[ui.name].modules[module.name].themes[theme.name] ? 'installed' : 'install' }}" class="icon install" ng-click="vm.installModuleTheme(ui.name, module.name, theme.name)"></span>
+																			</li>
+																		</ul>
 																	</div>
 																</li>
-																<li ng-if="vm.isEmpty(vm.site.catalogs[ui.name].modules[module.name].themes[vm.site.catalogs[ui.name].modules[module.name].theme].variables)">
-																	<div class="vtab-subhead">no variables defined...</div>
-																</li>
 															</ul>
+
 														</div>
-
-														<div class="vtab-block" ng-if="!vm.isSingular(vm.uis[ui.type].modules[module.type.split('/')[1]].themes)">
-															<div class="vtab-blockhead">themes</div>
-
-															<ul class="module-themes-container">
-																<li ng-repeat="theme in module.themes">
-																	<span class="theme-name">{{ theme.name }}</span>
-																	<span ng-if="vm.site.catalogs[ui.name].modules[module.name].theme == theme.name" title="active" class="icon active on"></span>
-																	<span ng-if="vm.site.catalogs[ui.name].modules[module.name].theme != theme.name" title="inactive" class="icon active off" ng-click="vm.site.catalogs[ui.name].modules[module.name].theme = theme.name; vm.updateModule(ui.name, module.name);"></span>
-																	<span title="custom" class="icon custom disabled" ng-if="!vm.uis[ui.type].modules[module.type.split('/')[1]].themes[theme.name]"></span>
-																</li>
-																<li ng-repeat="theme in vm.uis[ui.type].modules[module.type.split('/')[1]].themes" ng-if="!vm.site.catalogs[ui.name].modules[module.name].themes[theme.name]">
-																	<span class="theme-name">{{ theme.name }}</span>
-																	<span title="{{ vm.site.catalogs[ui.name].modules[module.name].themes[theme.name] ? 'installed' : 'install' }}" class="icon install" ng-click="vm.installModuleTheme(ui.name, module.name, theme.name)"></span>
-																</li>
-															</ul>
-														</div>
-
 													</div>
 												</div>
 											</div>
@@ -295,13 +316,12 @@
 	<div class="vtab-blockhead">
 		<span>{{ variable.label || name }}</span>
 		<span ng-if="variable.type == 'boolean'" ng-click="variable.value = !variable.value; vm.checkChange();" ng-model="variable.value" class="switch" ng-class="{ off: !variable.value}"></span>
-		<span ng-if="variable.type == 'color'" class="variable-color background">&#x2B22;</span>
-		<span ng-if="variable.type == 'color'" class="variable-color" style="color: {{ variable.value }};">&#x2B22;</span>
+		<span ng-if="variable.type == 'color'" class="variable-color background">&#x2b22;</span>
+		<span ng-if="variable.type == 'color'" class="variable-color" style="color: {{ variable.value }};">&#x2b22;</span>
 	</div>
-	<div>
-		<div ng-if="variable.description" class="variable-description">{{ variable.description }}</div>
-		<input ng-if="variable.type != 'boolean'" ng-change="vm.checkChange()" class="variable-input" ng-model= "variable.value" placeholder="..." autocomplete="off" spellcheck="false">
-	</div>
+
+	<div ng-if="variable.description" class="variable-description">{{ variable.description }}</div>
+	<input ng-if="variable.type != 'boolean'" ng-change="vm.checkChange()" class="variable-input" ng-model= "variable.value" placeholder="..." autocomplete="off" spellcheck="false">
 </script>
 
 <!-- Used for recursive file structure -->

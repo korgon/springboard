@@ -4,11 +4,8 @@
 	border: 0;
 	display: inline-block;
 	width: 100%;
-	// background: $blueblack;
-	// padding: 3px;
-	// box-sizing: border-box;
-	// border: 1px solid $bluehighlight;
-	border-bottom: 2px solid $orangefaded;
+	margin-top: 8px;
+	border-bottom: 2px solid $blueaccent;
 }
 .angular-tagger__holder {
 	display: inline-block;
@@ -19,14 +16,14 @@
 	max-width: inherit;
 }
 .angular-tagger__tag {
-	background: $bluetext;
-	padding: 5px;
-	margin: 4px;
+	background: $blueblack;
+	border-top: 2px solid $blueaccent;
+	border-left: 2px solid $blueaccent;
+	padding: 6px;
+	margin: 0 3px 6px 0;
 	display: block;
-	color: $whitefaded;
-	border-radius: 2px;
+	color: $bluefaded;
 	word-wrap: break-word;
-	font-weight: bold;
 	font-size: 12px;
 	&.last {
 		margin-bottom: 8px;
@@ -70,7 +67,8 @@
 	position: relative;
 }
 .angular-tagger__matching {
-	border: 1px solid $redfaded;
+	border-top: 2px solid $blueaccent;
+	border-left: 2px solid $blueaccent;
 	padding: 0;
 	margin: 0;
 	background: $blueblack;
@@ -85,7 +83,7 @@
 	cursor: pointer;
 }
 .angular-tagger__matching-item--selected {
-	background: $redfaded;
+	background: $orangefaded;
 	color: $whitefaded !important;
 }
 .angular-tagger--single .angular-tagger__tag {

@@ -14,7 +14,7 @@
 			"description": "six digit alphanumeric"
 		},
 		"context": {
-			"label": "additional context",
+			"label": "script context",
 			"value": "",
 			"default": "",
 			"type": "text",

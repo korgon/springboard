@@ -50,8 +50,8 @@ body {
 						border: 1px solid transparent;
 						border-bottom: 0;
 						&.active {
-							background-color: #001A2B;
-							border: 1px solid #304B66;
+							background-color: $bluedarkest;
+							border: 1px solid $bluehighlight;
 							border-bottom: 0;
 							opacity: 1;
 						}
@@ -194,7 +194,6 @@ body {
 					display: table-cell;
 					vertical-align: top;
 					width: 100%;
-					padding: 10px;
 
 					.vtab-head {
 						color: $bluegrey;
@@ -202,8 +201,10 @@ body {
 						text-transform: uppercase;
 						font-weight: bold;
 						padding: 6px;
+						border-bottom: 2px solid $blueaccent;
+						border-left: 2px solid $blueaccent;
 						.vtab-title {
-							
+
 						}
 						.switch {
 							float: right;
@@ -216,6 +217,11 @@ body {
 						font-weight: bold;
 						padding: 3px 6px;
 						clear: both;
+						border-left: 2px solid $blueaccent;
+						.infos {
+							cursor: pointer;
+							margin-left: 5px;
+						}
 					}
 
 					.vtab-contents {
@@ -231,22 +237,27 @@ body {
 							z-index: 3;
 						}
 					}
+					.thumbnail {
+						img {
+							opacity: .5;
+							width: 100%;
+						}
+					}
 					.vtab-block {
-						margin-bottom: 5px;
+						padding: 10px;
 						.vtab-blockhead {
 							position: relative;
 							font-weight: bold;
 							font-size: 11px;
 							color: $bluegrey;
-							padding: 6px;
-							border-bottom: 1px solid $blueaccent;
+							padding: 7px;
 							.switch {
 								float: right;
 							}
 							.icon {
 								position: absolute;
-								right: 12px;
-								top: 0px;
+								right: 6px;
+								top: 3px;
 								opacity: 0.6;
 								&:hover {
 									cursor: pointer;
@@ -257,29 +268,29 @@ body {
 
 						.variable-wrap {
 							.variable-container {
-								margin-bottom: 10px
+								margin-bottom: 10px;
+								border-left: 2px solid $blueaccent;
 							}
 							.variable-description {
 								color: $bluefaded;
 								font-size: 10px;
 								text-transform: lowercase;
 								font-weight: bold;
+								border-top: 2px solid $blueaccent;
 								padding: 6px;
 							}
 							.variable-input {
 								width: 100%;
 								box-sizing: border-box;
 								border: 0;
-								background-color: $bluedarkest;
 								border: 1px solid $bluedarkest;
 								color: $orangefaded;
 								font-size: 10px;
 								font-weight: bold;
 								cursor: pointer;
+								resize: none;
 								&:focus {
 									background-color: $blueblack;
-									//border-color: $bluehighlight;
-									//border-radius: 7px;
 									cursor: text;
 								}
 								&::-webkit-input-placeholder {
@@ -289,22 +300,19 @@ body {
 								}
 							}
 							.variable-color {
-								font-size: 33px;
+								font-size: 41px;
 								display: block;
 								position: absolute;
-								right: 1px;
+								right: -2px;
+								top: 1px;
+							}
+							.background {
+								color: $blueaccent;;
+								display: block;
+								position: absolute;
+								font-size: 50px;
+								right: -6px;
 								top: -4px;
-								&.background {
-									color: $blueaccent;;
-									font-size: 40px;
-									right: -2px;
-									top: -8px;
-								}
-								&.invalid {
-									background-image: url('/images/icons/warning.png');
-									background-size: 33px;
-									background-color: $blueblack;
-								}
 							}
 						}
 					}
