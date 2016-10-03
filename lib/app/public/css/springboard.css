@@ -379,6 +379,8 @@ input[type="password"], select {
     background-image: url("/images/icons/copy.png"); }
   .icon.cloud {
     background-image: url("/images/icons/cloud.png"); }
+  .icon.cloudy {
+    background-image: url("/images/icons/cloudy.png"); }
   .icon.custom {
     background-image: url("/images/icons/custom.png"); }
   .icon.edit {

@@ -28,6 +28,8 @@
 								<ul class="vtab-control" ng-class="{ disabled: vm.edited }">
 									<li ng-class="{ 'active': vm.activeVtab('default') == 'files' }"><a ng-click="vm.switchVtab('files', 'default')"><span class="icon files"></span></a></li>
 
+									<li ng-class="{ 'active': vm.activeVtab('default') == 'cloud' }"><a ng-click="vm.switchVtab('cloud', 'default')"><span class="icon cloudy"></span></a></li>
+
 									<li ng-class="{ 'active': vm.activeVtab('default') == 'proxy' }"><a ng-click="vm.switchVtab('proxy', 'default')"><span class="icon proxy"></span></a></li>
 
 									<li ng-class="{ 'active': vm.activeVtab('default') == 'history' }"><a ng-click="vm.switchVtab('history', 'default')"><span class="icon pulse"></span></a></li>
