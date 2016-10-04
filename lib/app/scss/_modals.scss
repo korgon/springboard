@@ -288,9 +288,16 @@
 			}
 		}
 		.s3-upload {
+			max-height: 0;
 			background-color: $blueblack;
-			border-top: 1px solid $bluedarkestest_text;
-			padding: 5px;
+			overflow: hidden;
+			border-top: 1px solid transparent;
+			transition: max-height 144ms ease, max-height 400ms ease-out;
+			&.show {
+				max-height: 400px;
+				border-color: $bluedarkestest_text;
+				padding: 5px;
+			}
 			.s3-file {
 				color: $bluefaded;
 				font-size: 10px;
