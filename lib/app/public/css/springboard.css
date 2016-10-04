@@ -136,8 +136,7 @@ body {
   border: 0;
   display: inline-block;
   width: 100%;
-  margin-top: 8px;
-  border-bottom: 2px solid #052238; }
+  margin-top: 20px; }
 
 .angular-tagger__holder {
   display: inline-block;
@@ -1175,6 +1174,30 @@ body #above .editor-container .vtab-wrap {
     body #above .editor-container .vtab-wrap .vtab .thumbnail img {
       opacity: .5;
       width: 100%; }
+    body #above .editor-container .vtab-wrap .vtab .loading-box {
+      margin: 30px auto;
+      padding: 30px;
+      text-align: center; }
+      body #above .editor-container .vtab-wrap .vtab .loading-box .box {
+        display: inline-block;
+        height: 50px;
+        width: 50px;
+        background-size: 40px;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: .3; }
+        body #above .editor-container .vtab-wrap .vtab .loading-box .box.connect {
+          background-image: url("/images/icons/cloudie.png"); }
+        body #above .editor-container .vtab-wrap .vtab .loading-box .box.alert {
+          background-image: url("/images/icons/alert.png"); }
+        body #above .editor-container .vtab-wrap .vtab .loading-box .box.info {
+          background-image: url("/images/icons/info.png"); }
+        body #above .editor-container .vtab-wrap .vtab .loading-box .box.warn {
+          background-image: url("/images/icons/warning.png"); }
+        body #above .editor-container .vtab-wrap .vtab .loading-box .box.loading-gear {
+          background-image: url("/images/icons/config.png"); }
+      body #above .editor-container .vtab-wrap .vtab .loading-box .message {
+        font-size: 10px; }
     body #above .editor-container .vtab-wrap .vtab .vtab-block {
       padding: 10px; }
       body #above .editor-container .vtab-wrap .vtab .vtab-block .vtab-blockhead {
@@ -1421,7 +1444,7 @@ body #gallery {
     width: 350px; }
   #modals .boxwrap.input {
     width: 350px; }
-  #modals .boxwrap.commit {
+  #modals .boxwrap.commit, #modals .boxwrap.publish {
     width: 450px; }
   #modals .boxwrap.moduleInfo {
     width: 550px; }
@@ -1540,6 +1563,10 @@ body #gallery {
         #modals .boxwrap .boxcontent .boxmessage .messageicon.commit {
           background: url("/images/icons/commit.png") no-repeat center;
           background-size: 30px; }
+        #modals .boxwrap .boxcontent .boxmessage .messageicon.publish {
+          background: url("/images/icons/active.png") no-repeat center;
+          background-size: 30px;
+          opacity: .4; }
         #modals .boxwrap .boxcontent .boxmessage .messageicon.connection {
           background: url("/images/icons/cloudie.png") no-repeat center;
           background-size: 30px; }
@@ -1575,5 +1602,25 @@ body #gallery {
           color: #A12B00; }
         #modals .boxwrap .git-changes .git-change .git-status.new {
           color: #63715F; }
+  #modals .boxwrap .s3-upload {
+    background-color: #00121E;
+    border-top: 1px solid #2B343B;
+    padding: 5px; }
+    #modals .boxwrap .s3-upload .s3-file {
+      color: #354957;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 3px;
+      margin: 10px; }
+      #modals .boxwrap .s3-upload .s3-file .file-details .file-size {
+        display: inline-block;
+        color: #63715F;
+        width: 46px; }
+      #modals .boxwrap .s3-upload .s3-file .file-details .remote {
+        display: inline-block;
+        margin-bottom: 5px; }
+        #modals .boxwrap .s3-upload .s3-file .file-details .remote a {
+          color: #724911;
+          text-decoration: underline; }
 
 /*# sourceMappingURL=springboard.css.map */

@@ -28,13 +28,11 @@
 								<ul class="vtab-control" ng-class="{ disabled: vm.edited }">
 									<li ng-class="{ 'active': vm.activeVtab('default') == 'dirstruct' }"><a ng-click="vm.switchVtab('dirstruct', 'default')"><span class="icon files"></span></a></li>
 
-									<li ng-class="{ 'active': vm.activeVtab('default') == 'cloudstruct' }" ng-if="vm.cloudstruct"><a ng-click="vm.switchVtab('cloudstruct', 'default')"><span class="icon cloudstruct"></span></a></li>
+									<li ng-class="{ 'active': vm.activeVtab('default') == 'cloudstruct' }"><a ng-click="vm.switchVtab('cloudstruct', 'default')"><span class="icon cloudstruct"></span></a></li>
 
 									<li ng-class="{ 'active': vm.activeVtab('default') == 'proxy' }"><a ng-click="vm.switchVtab('proxy', 'default')"><span class="icon proxy"></span></a></li>
 
 									<li ng-class="{ 'active': vm.activeVtab('default') == 'history' }"><a ng-click="vm.switchVtab('history', 'default')"><span class="icon pulse"></span></a></li>
-
-									<li ng-class="{ 'active': vm.activeVtab('default') == 'instructions' }"><a ng-click="vm.switchVtab('instructions', 'default')"><span class="icon instructions"></span></a></li>
 
 									<li ng-class="{ 'active': vm.activeVtab('default') == 'settings' }"><a ng-click="vm.switchVtab('settings', 'default')"><span class="icon settings"></span></a></li>
 								</ul>
@@ -67,24 +65,38 @@
 								</div>
 
 								<div ng-switch-when="dirstruct">
-									<div class="vtab-block">
-										<ul class="settings-files">
+									<div class="vtab-block" ng-init="vm.refreshDirstruct()">
+										<div class="loading-box" ng-if="vm.dirstruct.loading && !vm.dirstruct.error"><span class="loading-gear box animate-spin-cw"></span></div>
+
+										<ul class="settings-files" ng-if="!vm.dirstruct.loading && !vm.dirstruct.error">
 											<li class="root"><span class="icon folder-open"></span></li>
 											<ul class="directory-contents">
-												<li class="{{ details.type }} {{ details.extension.replace('.', '') }}" ng-repeat="details in vm.dirstruct.root.contents | orderFilesBy: 'type'" ng-include="'fileTree'"></li>
+												<li class="{{ details.type }} {{ details.extension.replace('.', '') }}" ng-repeat="details in vm.dirstruct.data.root.contents | orderFilesBy: 'type'" ng-include="'fileTree'"></li>
 											</ul>
 										</ul>
+
+										<div class="loading-box" ng-if="vm.dirstruct.error">
+											<span class="{{ vm.dirstruct.error.icon }} box"></span>
+											<p class="message">{{ vm.dirstruct.error.message }}</p>
+										</div>
 									</div>
 								</div>
 
 								<div ng-switch-when="cloudstruct">
-									<div class="vtab-block">
-										<ul class="settings-files">
+									<div class="vtab-block" ng-init="vm.cloudstruct ? true : vm.refreshCloudstruct()">
+										<div class="loading-box" ng-if="vm.cloudstruct.loading && !vm.cloudstruct.error"><span class="loading-gear box animate-spin-cw"></span></div>
+
+										<ul class="settings-files" ng-if="vm.cloudstruct.data.root && !vm.cloudstruct.loading && !vm.cloudstruct.error">
 											<li class="root"><span class="icon folder-cloud"></span></li>
 											<ul class="directory-contents">
-												<li class="{{ details.type }} {{ details.extension.replace('.', '') }}" ng-repeat="details in vm.cloudstruct.root.contents | orderFilesBy: 'type'" ng-include="'fileTree'"></li>
+												<li class="{{ details.type }} {{ details.extension.replace('.', '') }}" ng-repeat="details in vm.cloudstruct.data.root.contents | orderFilesBy: 'type'" ng-include="'fileTree'"></li>
 											</ul>
 										</ul>
+
+										<div class="loading-box" ng-if="vm.cloudstruct.error">
+											<span class="{{ vm.cloudstruct.error.icon }} box"></span>
+											<p class="message">{{ vm.cloudstruct.error.message }}</p>
+										</div>
 									</div>
 								</div>
 
@@ -360,12 +372,16 @@
 			<span class="filename" ng-class="{ cloud: vm.site.cloud_files.indexOf(details.path) != -1 }">{{ details.name }}</span>
 		</div>
 		<div class="filedetails">
-			<div class="fileactions">
+			<div class="fileactions" ng-if="vm.session.tab['settings'].vtab['default'].tab == 'dirstruct'">
 				<span class="icon tiny active" ng-if="details.extension == 'html'" ng-class="{ disabled: (vm.relative_url + details.path) != vm.site.default_url }" ng-click="vm.setDefaultHTML(details.path)"></span>
 				<span class="icon tiny active"  ng-if="['png', 'jpeg', 'jpg', 'gif'].indexOf(details.extension) != -1" ng-class="{ disabled: vm.site.thumb != ('/sites/' + vm.site.name + '/' + details.path) }" ng-click="vm.setThumb(details.path)"></span>
 				<span class="icon tiny cloud" ng-class="{ disabled: vm.site.cloud_files.indexOf(details.path) == -1 }" ng-click="vm.toggleCloudFile(details.path)"></span>
 				<span class="icon tiny view" ng-click="vm.setUrl(vm.root_url + details.path)" ng-class="{ disabled: vm.session.frameurl.match(vm.site.name + '/' + details.path) }"></span>
 				<span class="icon tiny open" ng-click="vm.openUrl(vm.root_url + details.path)"></span>
+				<span class="filestats">{{ details.size }}</span>
+			</div>
+			<div class="fileactions" ng-if="vm.session.tab['settings'].vtab['default'].tab == 'cloudstruct'">
+				<span class="icon tiny open" ng-click="vm.openUrl('//' + vm.cloudstruct.data.bucket + '/' + details.key)"></span>
 				<span class="filestats">{{ details.size }}</span>
 			</div>
 		</div>

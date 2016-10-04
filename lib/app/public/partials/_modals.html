@@ -15,6 +15,32 @@
 		</div>
 	</div>
 
+	<!-- s3 publish notification modal -->
+	<div class="boxwrap {{ vm.modalview }}" ng-switch-when="publish" ng-controller="ModalAlertCtrl">
+		<div class="boxtop"></div>
+		<div class="boxcontent">
+			<div class="boxmessage">
+				<span class="messageicon {{ mm.message_icon }}"></span>
+				<p class="message">{{ mm.message }}</p>
+			</div>
+			<div class="buttons">
+				<button class="button" ng-if="mm.button_confirm" ng-click="mm.resolveModal()">{{ mm.button_confirm }}</button>
+				<button class="button" ng-if="mm.button_cancel" ng-click="mm.closeModal()" focus-on>{{ mm.button_cancel }}</button>
+			</div>
+		</div>
+		<div class="s3-upload">
+			<div class="s3-file" ng-repeat="file in mm.message_data">
+				<div class="file-details">
+					<span class="remote"><a target="_blank" href="{{ '//' + file.url }}">{{ file.url }}</a></span>
+				</div>
+				<div class="file-details">
+					<span class="file-size">{{ file.size }}</span>
+					<span class="local">{{ file.name }}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!-- single input modal -->
 	<div class="boxwrap {{ vm.modalview }}" ng-switch-when="input" ng-controller="ModalInputCtrl">
 		<div class="boxtop"></div>

@@ -237,12 +237,48 @@ body {
 							z-index: 3;
 						}
 					}
+
 					.thumbnail {
 						img {
 							opacity: .5;
 							width: 100%;
 						}
 					}
+
+					.loading-box {
+						margin: 30px auto;
+						padding: 30px;
+						text-align: center;
+						.box {
+							display: inline-block;
+							height: 50px;
+							width: 50px;
+							background-size: 40px;
+							background-position: center;
+							background-repeat: no-repeat;
+							opacity: .3;
+							&.connect {
+								background-image: url('/images/icons/cloudie.png');
+							}
+							&.alert {
+								background-image: url('/images/icons/alert.png');
+							}
+							&.info {
+								background-image: url('/images/icons/info.png');
+							}
+							&.warn {
+								background-image: url('/images/icons/warning.png');
+							}
+							&.loading-gear {
+								background-image: url('/images/icons/config.png');
+							}
+						}
+						.message {
+							font-size: 10px;
+						}
+					}
+
+
 					.vtab-block {
 						padding: 10px;
 						.vtab-blockhead {

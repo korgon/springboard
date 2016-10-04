@@ -73,7 +73,7 @@
 		&.input {
 			width: 350px;
 		}
-		&.commit {
+		&.commit, &.publish {
 			width: 450px;
 		}
 		&.moduleInfo {
@@ -222,6 +222,11 @@
 						background: url('/images/icons/commit.png') no-repeat center;
 						background-size: 30px;
 					}
+					&.publish {
+						background: url('/images/icons/active.png') no-repeat center;
+						background-size: 30px;
+						opacity: .4;
+					}
 					&.connection {
 						background: url('/images/icons/cloudie.png') no-repeat center;
 						background-size: 30px;
@@ -272,8 +277,34 @@
 						color: $greenfaded;
 					}
 				}
-				.git-file {
-
+			}
+		}
+		.s3-upload {
+			background-color: $blueblack;
+			border-top: 1px solid $bluedarkestest_text;
+			padding: 5px;
+			.s3-file {
+				color: $bluefaded;
+				font-size: 10px;
+				font-weight: bold;
+				padding: 3px;
+				margin: 10px;
+				.file-details {
+					.file-size {
+						display: inline-block;
+						color: $greenfaded;
+						width: 46px;
+					}
+					.local {
+					}
+					.remote {
+						display: inline-block;
+						margin-bottom: 5px;
+						a {
+							color: $orangedark;
+							text-decoration: underline;
+						}
+					}
 				}
 			}
 		}
