@@ -381,6 +381,8 @@ input[type="password"], select {
     background-image: url("/images/icons/cloud.png"); }
   .icon.cloudy {
     background-image: url("/images/icons/cloudy.png"); }
+  .icon.cloudstruct {
+    background-image: url("/images/icons/cloudstruct.png"); }
   .icon.custom {
     background-image: url("/images/icons/custom.png"); }
   .icon.edit {
@@ -407,8 +409,8 @@ input[type="password"], select {
     background-image: url("/images/icons/folder.png"); }
   .icon.folder-open {
     background-image: url("/images/icons/folder_open.png"); }
-  .icon.folder-root {
-    background-image: url("/images/icons/folder_root.png"); }
+  .icon.folder-cloud {
+    background-image: url("/images/icons/folder_cloud.png"); }
   .icon.help {
     background-image: url("/images/icons/help.png"); }
   .icon.history {
@@ -1192,8 +1194,7 @@ body #above .editor-container .vtab-wrap {
             cursor: pointer;
             opacity: 1; }
       body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-container {
-        margin-bottom: 10px;
-        border-left: 2px solid #052238; }
+        margin-bottom: 10px; }
       body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-description {
         color: #354957;
         font-size: 10px;

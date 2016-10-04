@@ -26,9 +26,9 @@
 						<div class="vtab-wrap">
 							<div class="vtab-control-wrap">
 								<ul class="vtab-control" ng-class="{ disabled: vm.edited }">
-									<li ng-class="{ 'active': vm.activeVtab('default') == 'files' }"><a ng-click="vm.switchVtab('files', 'default')"><span class="icon files"></span></a></li>
+									<li ng-class="{ 'active': vm.activeVtab('default') == 'dirstruct' }"><a ng-click="vm.switchVtab('dirstruct', 'default')"><span class="icon files"></span></a></li>
 
-									<li ng-class="{ 'active': vm.activeVtab('default') == 'cloud' }"><a ng-click="vm.switchVtab('cloud', 'default')"><span class="icon cloudy"></span></a></li>
+									<li ng-class="{ 'active': vm.activeVtab('default') == 'cloudstruct' }" ng-if="vm.cloudstruct"><a ng-click="vm.switchVtab('cloudstruct', 'default')"><span class="icon cloudstruct"></span></a></li>
 
 									<li ng-class="{ 'active': vm.activeVtab('default') == 'proxy' }"><a ng-click="vm.switchVtab('proxy', 'default')"><span class="icon proxy"></span></a></li>
 
@@ -66,12 +66,23 @@
 									</div>
 								</div>
 
-								<div ng-switch-when="files">
+								<div ng-switch-when="dirstruct">
 									<div class="vtab-block">
 										<ul class="settings-files">
-											<li class="root"><span class="icon folder-root"></span></li>
+											<li class="root"><span class="icon folder-open"></span></li>
 											<ul class="directory-contents">
-												<li class="{{ details.type }} {{ details.extension.replace('.', '') }}" ng-repeat="details in vm.files.root.contents | orderFilesBy: 'type'" ng-include="'fileTree'"></li>
+												<li class="{{ details.type }} {{ details.extension.replace('.', '') }}" ng-repeat="details in vm.dirstruct.root.contents | orderFilesBy: 'type'" ng-include="'fileTree'"></li>
+											</ul>
+										</ul>
+									</div>
+								</div>
+
+								<div ng-switch-when="cloudstruct">
+									<div class="vtab-block">
+										<ul class="settings-files">
+											<li class="root"><span class="icon folder-cloud"></span></li>
+											<ul class="directory-contents">
+												<li class="{{ details.type }} {{ details.extension.replace('.', '') }}" ng-repeat="details in vm.cloudstruct.root.contents | orderFilesBy: 'type'" ng-include="'fileTree'"></li>
 											</ul>
 										</ul>
 									</div>
@@ -360,13 +371,13 @@
 		</div>
 	</div>
 
-	<span class="filewrapper" ng-if="details.type == 'directory'" ng-click="vm.toggleDir(details)">
+	<span class="filewrapper" ng-if="details.type == 'directory'" ng-click="vm.toggleDir(vm.session.tab['settings'].vtab['default'].tab, details)">
 		<span ng-if="details.collapsed" class="icon small folder"></span>
 		<span ng-if="!details.collapsed" class="icon small folder-open"></span>
 		<span class="filename">{{ details.name }}</span>
 	</span>
 
-	<ul class="directory-contents" ng-if="details.type == 'directory'" ng-init="vm.checkDirState(details)" ng-class="{ collapsed: details.collapsed }">
+	<ul class="directory-contents" ng-if="details.type == 'directory'" ng-init="vm.checkDirState(vm.session.tab['settings'].vtab['default'].tab, details)" ng-class="{ collapsed: details.collapsed }">
 		<li class="{{ details.type }}" ng-repeat="details in details.contents | orderFilesBy: 'type'" ng-include="'fileTree'"></li>
 	</ul>
 </script>

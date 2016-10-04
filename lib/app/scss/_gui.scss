@@ -205,6 +205,9 @@ input[type="password"], select {
 	&.cloudy {
 		background-image: url('/images/icons/cloudy.png');
 	}
+	&.cloudstruct {
+		background-image: url('/images/icons/cloudstruct.png');
+	}
 	&.custom {
 		background-image: url('/images/icons/custom.png');
 	}
@@ -248,8 +251,8 @@ input[type="password"], select {
 	&.folder-open {
 		background-image: url('/images/icons/folder_open.png');
 	}
-	&.folder-root {
-		background-image: url('/images/icons/folder_root.png');
+	&.folder-cloud {
+		background-image: url('/images/icons/folder_cloud.png');
 	}
 	&.help {
 		background-image: url('/images/icons/help.png');
