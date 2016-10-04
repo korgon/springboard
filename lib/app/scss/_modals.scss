@@ -84,7 +84,7 @@
 			}
 		}
 		&.moduleInstall {
-			min-width: 750px;
+			min-width: 900px;
 			.boxcontent {
 				padding: 0;
 				overflow: auto;
@@ -95,6 +95,7 @@
 			.boxleft {
 				background-color: $blueblack;
 				border-right: 1px solid $bluebase;
+				flex: 0 0 200px;
 				.uimodules {
 					list-style: none;
 					text-align: left;
@@ -105,7 +106,7 @@
 					font-weight: bold;
 					color: $bluefaded;
 					& > li {
-						padding: 5px;
+						padding: 10px;
 						margin-right: -1px;
 						border: 1px solid transparent;
 						border-right: 0;
@@ -118,6 +119,10 @@
 						.modulename {
 							padding-right: 10px;
 							cursor: pointer;
+							font-size: 12px;
+							.icon {
+								margin-right: 5px;
+							}
 						}
 						.modulethemes {
 							font-size: 10px;
@@ -125,7 +130,7 @@
 							padding-left: 5px;
 							li {
 								cursor: pointer;
-								padding: 5px;
+								padding: 10px 0 0 20px;
 								color: $bluefaded;
 								&.selected {
 									color: $bluegrey;
@@ -145,12 +150,14 @@
 				}
 			}
 			.boxright {
-				flex-basis: 0;
-				flex-grow: 1;
+				flex: 1;
 				.markdown {
 					min-height: 400px;
 					padding: 0 20px 20px;
 					margin-bottom: 20px;
+					pre {
+						width: 616px;
+					}
 				}
 				.buttons {
 					margin: 20px;

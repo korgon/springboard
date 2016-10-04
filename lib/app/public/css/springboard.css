@@ -1453,7 +1453,7 @@ body #gallery {
       padding: 0 20px 20px;
       margin-bottom: 20px; }
   #modals .boxwrap.moduleInstall {
-    min-width: 750px; }
+    min-width: 900px; }
     #modals .boxwrap.moduleInstall .boxcontent {
       padding: 0;
       overflow: auto;
@@ -1462,7 +1462,8 @@ body #gallery {
       align-content: stretch; }
     #modals .boxwrap.moduleInstall .boxleft {
       background-color: #00121E;
-      border-right: 1px solid #354E66; }
+      border-right: 1px solid #354E66;
+      flex: 0 0 200px; }
       #modals .boxwrap.moduleInstall .boxleft .uimodules {
         list-style: none;
         text-align: left;
@@ -1473,7 +1474,7 @@ body #gallery {
         font-weight: bold;
         color: #354957; }
         #modals .boxwrap.moduleInstall .boxleft .uimodules > li {
-          padding: 5px;
+          padding: 10px;
           margin-right: -1px;
           border: 1px solid transparent;
           border-right: 0; }
@@ -1484,14 +1485,17 @@ body #gallery {
             border-right: 0; }
           #modals .boxwrap.moduleInstall .boxleft .uimodules > li .modulename {
             padding-right: 10px;
-            cursor: pointer; }
+            cursor: pointer;
+            font-size: 12px; }
+            #modals .boxwrap.moduleInstall .boxleft .uimodules > li .modulename .icon {
+              margin-right: 5px; }
           #modals .boxwrap.moduleInstall .boxleft .uimodules > li .modulethemes {
             font-size: 10px;
             list-style: none;
             padding-left: 5px; }
             #modals .boxwrap.moduleInstall .boxleft .uimodules > li .modulethemes li {
               cursor: pointer;
-              padding: 5px;
+              padding: 10px 0 0 20px;
               color: #354957; }
               #modals .boxwrap.moduleInstall .boxleft .uimodules > li .modulethemes li.selected {
                 color: #718599; }
@@ -1502,12 +1506,13 @@ body #gallery {
                 #modals .boxwrap.moduleInstall .boxleft .uimodules > li .modulethemes li .themename .icon {
                   margin-right: 5px; }
     #modals .boxwrap.moduleInstall .boxright {
-      flex-basis: 0;
-      flex-grow: 1; }
+      flex: 1; }
       #modals .boxwrap.moduleInstall .boxright .markdown {
         min-height: 400px;
         padding: 0 20px 20px;
         margin-bottom: 20px; }
+        #modals .boxwrap.moduleInstall .boxright .markdown pre {
+          width: 616px; }
       #modals .boxwrap.moduleInstall .boxright .buttons {
         margin: 20px; }
   #modals .boxwrap .boxtop {

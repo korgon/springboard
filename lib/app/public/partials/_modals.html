@@ -112,10 +112,10 @@
 				<ul class="uimodules">
 					<li ng-repeat="module in mm.modules" ng-class="{ selected: module.name == mm.selected.module }">
 						<div class="modulename" ng-click="mm.selectModule(module.type) && selectModule(module.themes.default.type)">
-							<span class="icon module-{{ module.icon }}"></span>
+							<span class="icon small module-{{ module.icon }}"></span>
 							<span>{{ module.name }}</span>
 						</div>
-						<ul class="modulethemes">
+						<ul class="modulethemes" ng-if="module.name == mm.selected.module">
 							<li ng-repeat="theme in module.themes" ng-class="{ selected: module.name == mm.selected.module && theme.name == mm.selected.theme }" ng-if="keyLength(module.themes) > 1">
 								<div class="themename" ng-click="mm.selectModule(theme.type)">
 									<span class="icon tiny active" ng-if="mm.selected.module == module.name && mm.selected.theme == theme.name"></span>
