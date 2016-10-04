@@ -1192,12 +1192,13 @@ body #above .editor-container .vtab-wrap {
           background-image: url("/images/icons/alert.png"); }
         body #above .editor-container .vtab-wrap .vtab .loading-box .box.info {
           background-image: url("/images/icons/info.png"); }
-        body #above .editor-container .vtab-wrap .vtab .loading-box .box.warn {
+        body #above .editor-container .vtab-wrap .vtab .loading-box .box.warning {
           background-image: url("/images/icons/warning.png"); }
         body #above .editor-container .vtab-wrap .vtab .loading-box .box.loading-gear {
           background-image: url("/images/icons/config.png"); }
       body #above .editor-container .vtab-wrap .vtab .loading-box .message {
-        font-size: 10px; }
+        font-size: 10px;
+        white-space: pre-line; }
     body #above .editor-container .vtab-wrap .vtab .vtab-block {
       padding: 10px; }
       body #above .editor-container .vtab-wrap .vtab .vtab-block .vtab-blockhead {
@@ -1549,14 +1550,14 @@ body #gallery {
     padding: 10px;
     color: #718599; }
     #modals .boxwrap .boxcontent .boxmessage {
-      margin: 10px;
+      margin: 10px 10px 20px;
       text-align: left; }
       #modals .boxwrap .boxcontent .boxmessage .messageicon {
         width: 30px;
         height: 30px;
         display: inline-block;
         vertical-align: middle;
-        padding: 0 10px; }
+        margin: 0 25px 0 15px; }
         #modals .boxwrap .boxcontent .boxmessage .messageicon.alert {
           background: url("/images/icons/alert.png") no-repeat center;
           background-size: 30px; }
@@ -1578,6 +1579,7 @@ body #gallery {
           background-size: 30px; }
       #modals .boxwrap .boxcontent .boxmessage .message {
         display: inline-block;
+        white-space: pre-line;
         vertical-align: middle;
         max-width: 256px; }
     #modals .boxwrap .boxcontent .inputs {

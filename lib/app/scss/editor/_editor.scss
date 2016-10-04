@@ -266,7 +266,7 @@ body {
 							&.info {
 								background-image: url('/images/icons/info.png');
 							}
-							&.warn {
+							&.warning {
 								background-image: url('/images/icons/warning.png');
 							}
 							&.loading-gear {
@@ -275,6 +275,7 @@ body {
 						}
 						.message {
 							font-size: 10px;
+							white-space: pre-line;
 						}
 					}
 
