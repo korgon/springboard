@@ -1,0 +1,172 @@
+// default facets styles
+/* Facets & Summary */
+
+// Variables
+$palette-grid-size: 36px;
+$palette-grid-border: #333333;
+$palette-grid-highlight: #49669e;
+
+// Value here would be replaced by slideout module width
+$slideout_width: 767px !default;
+
+// Mixins
+
+@mixin respond($breakpoint) {
+	@media only screen and (max-width: $breakpoint + px) {
+		@content;
+	}
+}
+
+@mixin transition($value) {
+	-webkit-transition: $value;
+	-moz-transition: $value;
+	-o-transition: $value;
+	transition: $value;
+}
+
+@mixin sizing($width, $height) {
+	width: $width;
+	height: $height;
+}
+
+body {
+	.searchspring-facets, .searchspring-summary {
+		.searchspring-toggle a {
+			cursor: pointer;
+		}
+	}
+}
+
+/* Facets */
+
+body .searchspring-facets {
+	.facet-title {
+		padding: 0 25px 0 0;
+		position: relative;
+		cursor: pointer;
+		&:before {
+			position: absolute;
+			right: 0;
+			top: 0;
+			content: '+';
+		}
+		& ~ ul, & ~ .show-more {
+			display: none;
+		}
+		&.open {
+			&:before {
+				content: '-';
+			}
+			& ~ ul, & ~ .show-more {
+				display: block;
+			}
+		}
+	}
+	.facet-container {
+		ul li a {
+			&.highlight {
+				font-weight: bold;
+			}
+			.facet-count {
+				font-size: 11px;
+			}
+		}
+		&.hierarchy ul li {
+			&.filtered-link a:before {
+    			content: '\0000ab';
+    			padding: 0 2px 0 0;
+			}
+			&.filtered-current {
+				font-weight: bold;
+				& ~ li {
+					padding: 0 0 0 30px;
+				}
+			}
+		}
+		&.palette, &.grid {
+			ul {
+				margin: 0 -2.5px 10px -2.5px;
+				li {
+					float: left;
+					margin: 0 2.5px 5px 2.5px;
+					@include sizing($palette-grid-size, $palette-grid-size);
+					overflow: hidden;
+					a {
+						display: block;
+					}
+				}
+			}
+		}
+		&.palette ul li a {
+			background: $palette-grid-border;
+			@include sizing(100%, 100%);
+			border-radius: 100%;
+			span {
+				display: block;
+				border-radius: $palette-grid-size - 2;
+				@include sizing($palette-grid-size - 2, $palette-grid-size - 2);
+				position: relative;
+				top: 1px;
+				left: 1px;
+				background-color: #ffffff;
+			}
+			&:hover, &.highlight {
+				background: $palette-grid-highlight;
+				span {
+					border-radius: $palette-grid-size - 4;
+					@include sizing($palette-grid-size - 4, $palette-grid-size - 4);
+					top: 2px;
+					left: 2px;
+				}
+			}
+		}
+		&.grid ul li a {
+			border: 1px solid $palette-grid-border;
+			text-align: center;
+			text-decoration: none;
+			font-size: 12px;
+			line-height: $palette-grid-size - 2;
+			margin: 0;
+			padding: 0 3px;
+			&:hover, &.highlight {
+				background: $palette-grid-highlight;
+				border: 1px solid $palette-grid-highlight;
+				color: #ffffff;
+			}
+		}
+		&.slider ul li.slider-wrapper {
+			overflow: hidden;
+			rzslider {
+				display: block;
+				.rz-bar-wrapper {
+					margin-top: -19px;
+				}
+				.rz-bar.rz-selection {
+					margin-top: -3px;
+				}
+				.rz-pointer {
+					top: -11px;
+				}
+				.rz-bubble {
+					padding: 0;
+				}
+			}
+		}
+	}
+}
+
+/* Summary */
+
+body .searchspring-summary .searchspring-message p {
+	margin: 20px 0 0 0;
+	@include respond($slideout_width) {
+		margin: 20px 0;
+	}
+}
+
+body .mobile-summary {
+	display: none;
+	@include respond($slideout_width) {
+		display: block;
+	}
+}

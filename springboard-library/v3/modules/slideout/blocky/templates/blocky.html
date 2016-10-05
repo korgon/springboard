@@ -5,8 +5,8 @@
 </script>
 
 <!-- Button Template -->
-<script type="text/ss-template" target="#changeMe">
-  <div class="searchspring-slideout_button" slideout ng-if="pagination.totalResults && facets.length > 0">
+<script type="text/ss-template" target=".searchspring-slideout_button_target">
+  <div ng-if="facets.length > 0" class="searchspring-slideout_button" slideout ng-if="pagination.totalResults && facets.length > 0" slideout>
     <span class="searchspring-slideout_button_icon"></span>
     <span class="searchspring-slideout_button_text">Filter Options</span>
   </div>
