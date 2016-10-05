@@ -1,0 +1,12 @@
+<div class="cartselect-container" ng-class="{ show: listVisible }">
+	<div class="cartselect-cart" ng-click="toggle();" ng-class="{ clicked: listVisible }">
+		<span class="icon small cart-{{ display }}"></span>
+	</div>
+	<div class="cartselect-list" ng-class="{ show: listVisible }">
+		<div>
+			<div class="cartselect-cart" ng-repeat="item in list" ng-click="select(item)" ng-class="{ selected: isSelected(item) }">
+				<span class="name">{{ item }}</span><span class="icon small cart-{{ item }}"></span>
+			</div>
+		</div>
+	</div>
+</div>
