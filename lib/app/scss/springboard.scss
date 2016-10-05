@@ -106,8 +106,6 @@ body {
 
 // imported scss
 @import "_mixins.scss";
-@import "_markdown.scss";
-@import "_tagger.scss";
 @import "_gui.scss";
 @import "_animations.scss";
 
@@ -118,3 +116,8 @@ body {
 
 @import "_modals.scss";
 @import "_footer.scss";
+
+// for directives
+@import "_markdown.scss";
+@import "_tagger.scss";
+@import "_cartselect.scss";

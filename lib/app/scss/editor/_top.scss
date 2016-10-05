@@ -34,7 +34,7 @@
 				right: 0;
 				width: $editorwidth + 20px;
 				max-height: 0px;
-				overflow: hidden;
+				//overflow: hidden;
 				margin: 1px 0 0;
 				transition: max-height 144ms ease, max-height 400ms ease-out;
 				z-index: 7;
