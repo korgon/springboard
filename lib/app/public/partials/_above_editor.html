@@ -300,25 +300,28 @@
 							</li>
 							<li>
 								<div class="ui-add solo" ng-if="vm.isEmpty(vm.site.catalogs) || !(vm.session.tab['uigen'].current && vm.site.catalogs[vm.session.tab['uigen'].current])" ng-init="vm.new_ui_show = (vm.isEmpty(vm.site.catalogs) ? true : false)">
-									<div id="addbutton" ng-click="vm.showAddInput()" ng-hide="vm.new_ui_show">
+									<div id="addbutton" ng-click="vm.toggleAddInput()" ng-if="!vm.new_ui_show">
 										<span class="brackets">[</span>
 										<span class="add"></span>
 										<span class="brackets">]</span>
 									</div>
-									<form id="adduiinput" name="UIform" novalidate class="visible" ng-if="vm.new_ui_show">
-										<label for="uiname_input">Name</label>
-										<input type="text" name="uiname" id="uiname_input" autocomplete="off" focus-on ng-model="vm.new_ui.name" required ng-pattern="/^[\w-_]{2,}$/i" ng-init="vm.new_ui.type = 'v3'">
-										<cartselect list="vm.carts" selected="vm.new_ui.cart"></cartselect>
+									<div id="addui" ng-if="vm.new_ui_show">
+										<div class="head"><span>Create New UI</span></div>
+										<form id="adduiinput" name="UIform" novalidate class="visible">
+											<label for="uiname_input">Name</label>
+											<input type="text" name="uiname" id="uiname_input" autocomplete="off" focus-on ng-model="vm.new_ui.name" required ng-pattern="/^[\w-_]{2,}$/i" ng-init="vm.new_ui.type = 'v3'">
+											<cartselect class="cartselect" list="vm.carts" selected="vm.new_ui.cart" ng-init="vm.new_ui.cart = 'custom'"></cartselect>
 
-										<label for="uitypeinput" ng-if="vm.uis.length > 1">Type</label>
-										<select id="uitypeinput" ng-if="vm.uis.length > 1" required ng-model="vm.new_ui.type" ng-options="ui.type as ui.type for ui in vm.uis">
-										</select>
+											<label for="uitypeinput" ng-if="vm.uis.length > 1">Type</label>
+											<select id="uitypeinput" ng-if="vm.uis.length > 1" required ng-model="vm.new_ui.type" ng-options="ui.type as ui.type for ui in vm.uis">
+											</select>
 
-										<div class="buttons">
-											<input class="button" type="submit" value="Add" ng-click="vm.installUI()" ng-disabled="UIform.$invalid">
-											<input class="button" type="button" value="Cancel" ng-click="vm.hideAddInput()">
-										</div>
-									</form>
+											<div class="buttons">
+												<input class="button" type="submit" value="Add" ng-click="vm.installUI()" ng-disabled="UIform.$invalid">
+												<input class="button" type="button" value="Cancel" ng-click="vm.hideAddInput()">
+											</div>
+										</form>
+									</div>
 								</div>
 								<div class="spacer"></div>
 							</li>
@@ -355,12 +358,13 @@
 	<div class="vtab-blockhead">
 		<span>{{ variable.label || name }}</span>
 		<span ng-if="variable.type == 'boolean'" ng-click="variable.value = !variable.value; vm.checkChange();" ng-model="variable.value" class="switch" ng-class="{ off: !variable.value}"></span>
+		<cartselect ng-if="variable.type == 'cart'" class="cartselect" list="vm.carts" callback="vm.checkChange();" selected="variable.value" ></cartselect>
 		<span ng-if="variable.type == 'color'" class="variable-color background">&#x2b22;</span>
 		<span ng-if="variable.type == 'color'" class="variable-color" style="color: {{ variable.value }};">&#x2b22;</span>
 	</div>
 
 	<div ng-if="variable.description" class="variable-description">{{ variable.description }}</div>
-	<input ng-if="variable.type != 'boolean'" ng-change="vm.checkChange()" class="variable-input" ng-model= "variable.value" placeholder="..." autocomplete="off" spellcheck="false">
+	<input ng-if="variable.type != 'boolean' && variable.type != 'cart'" ng-change="vm.checkChange()" class="variable-input" ng-model= "variable.value" placeholder="..." autocomplete="off" spellcheck="false">
 </script>
 
 <!-- Used for recursive file structure -->

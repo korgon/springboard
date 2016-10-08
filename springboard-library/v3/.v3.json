@@ -19,6 +19,13 @@
 			"default": "",
 			"type": "text",
 			"description": "additional context to add to the script tag"
+		},
+		"cart": {
+			"label": "platform",
+			"value": "",
+			"default": "",
+			"type": "cart",
+			"description": "shopping cart platform"
 		}
 	},
 	"variables": {},

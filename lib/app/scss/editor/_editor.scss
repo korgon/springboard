@@ -291,7 +291,7 @@ body {
 							.switch {
 								float: right;
 							}
-							.icon {
+							> .icon, > .cartselect {
 								position: absolute;
 								right: 6px;
 								top: 3px;
@@ -299,6 +299,25 @@ body {
 								&:hover {
 									cursor: pointer;
 									opacity: 1;
+								}
+							}
+							.cartselect {
+								width: initial;
+								height: initial;
+								border: 0;
+								background-color: initial;
+								&:hover {
+									cursor: pointer;
+									opacity: 1;
+									.cartselect-list.show {
+										display: block;
+									}
+								}
+								.cartselect-list.show {
+									display: none;
+								}
+								.current-cart {
+									padding: 0;
 								}
 							}
 						}

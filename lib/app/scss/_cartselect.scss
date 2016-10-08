@@ -4,32 +4,50 @@ cartselect {
 	display: inline-block;
 	position: relative;
 	width: 50px;
-	height: 27px;
+	height: 31px;
 	border-radius: 3px;
 	background-color: $blueblack;
 	border: 1px solid $bluebase;
-	box-sizing: border-box;
 
 	.cartselect-container {
-		width: 100%;
 
 		.cartselect-cart {
+			clear: both;
+			color: $bluegrey;
 			cursor: pointer;
-			padding: 3px 14px;
+			padding: 5px 12px;
+			overflow: auto;
 		}
 
 		.cartselect-list {
 			display: none;
 			position: absolute;
 			top: -1px;
-			left: -1px;
+			right: -1px;
 			background: $blueblack;
 			border: solid 1px $bluebase;
+			border-radius: 3px;
 			z-index: 9;
 			&.show {
 				display: block;
 			}
+			.cartselect-cart {
+				width: 26px;
+				&:hover {
+					background: $orangefaded;
+					color: $whitefaded;
+				}
 
+				.name {
+					vertical-align: middle;
+					text-transform: uppercase;
+					line-height: 21px;
+					font-size: 10px;
+					font-weight: bold;
+					float: left;
+					padding: 0px 12px 0px 12px;
+				}
+			}
 		}
 	}
 }
