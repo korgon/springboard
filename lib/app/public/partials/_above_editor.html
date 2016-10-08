@@ -309,8 +309,8 @@
 										<div class="head"><span>Create New UI</span></div>
 										<form id="adduiinput" name="UIform" novalidate class="visible">
 											<label for="uiname_input">Name</label>
-											<input type="text" name="uiname" id="uiname_input" autocomplete="off" focus-on ng-model="vm.new_ui.name" required ng-pattern="/^[\w-_]{2,}$/i" ng-init="vm.new_ui.type = 'v3'">
-											<cartselect class="cartselect" list="vm.carts" selected="vm.new_ui.cart" ng-init="vm.new_ui.cart = 'custom'"></cartselect>
+											<input type="text" name="uiname" id="uiname_input" autocomplete="off" focus-on ng-model="vm.new_ui.name" required ng-pattern="/^[\w-_]{2,}$/i" ng-init="vm.new_ui = { type: 'v3', cart: 'custom' }">
+											<cartselect class="cartselect" list="vm.carts" selected="vm.new_ui.cart"></cartselect>
 
 											<label for="uitypeinput" ng-if="vm.uis.length > 1">Type</label>
 											<select id="uitypeinput" ng-if="vm.uis.length > 1" required ng-model="vm.new_ui.type" ng-options="ui.type as ui.type for ui in vm.uis">
