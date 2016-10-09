@@ -8,10 +8,11 @@ $bluefaded: #354957;
 $bluefadeder: #122A3A;
 $blueaccent: #052238;
 $bluedark: #1B3141;
+$bluedarker: #011827;
 $bluedarkest: #001A2B;
-$blueblack: #00121E;
 $bluedarkestest: #0E1920;
 $bluedarkestest_text: #2B343B;
+$blueblack: #00121E;
 $bluehighlight: #304B66;
 $bluegrey: #718599;
 $bluetext: #3F525F;
@@ -56,15 +57,7 @@ body {
 		font-weight: bold;
 		text-decoration: none;
 	}
-	input, select, textarea {
-		padding: 7px;
-		color: $bluelightest;
-		background-color: $bluedarkest;
-		font-family: Arial;
-		&:focus, &:active {
-			outline: 0;
-		}
-	}
+
 	ul {
 		list-style: none;
 		margin: 0;

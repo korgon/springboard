@@ -5,9 +5,13 @@ cartselect {
 	position: relative;
 	width: 50px;
 	height: 31px;
-	border-radius: 3px;
-	background-color: $blueblack;
-	border: 1px solid $bluebase;
+	background-color: $bluedarker;
+	border: 0;
+	border-top: 2px solid $blueaccent;
+	border-left: 2px solid $blueaccent;
+	&:hover {
+		background-color: $blueblack;
+	}
 
 	.cartselect-container {
 
@@ -22,11 +26,12 @@ cartselect {
 		.cartselect-list {
 			display: none;
 			position: absolute;
-			top: -1px;
-			right: -1px;
+			top: -2px;
+			right: 0px;
 			background: $blueblack;
-			border: solid 1px $bluebase;
-			border-radius: 3px;
+			border: 0;
+			border-top: 2px solid $blueaccent;
+			border-left: 2px solid $blueaccent;
 			z-index: 9;
 			&.show {
 				display: block;

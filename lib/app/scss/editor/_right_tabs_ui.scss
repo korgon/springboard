@@ -167,7 +167,7 @@
 						}
 						#adduiinput {
 							border-left: 2px solid $blueaccent;
-							padding: 10px 0;
+							padding: 15px 0 10px;
 							display: none;
 							&.visible {
 								display: block;
@@ -175,11 +175,13 @@
 							#uiname_input, #uitype_input {
 								width: 140px;
 								height: 33px;
-								background-color: #00121E;
 							}
 							.cartselect {
 								margin-bottom: 10px;
 								vertical-align: bottom;
+							}
+							.buttons {
+								margin-top: 5px;
 							}
 						}
 					}

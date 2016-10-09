@@ -16,13 +16,6 @@ body {
     color: #C87C0F;
     font-weight: bold;
     text-decoration: none; }
-  body input, body select, body textarea {
-    padding: 7px;
-    color: #7194AD;
-    background-color: #001A2B;
-    font-family: Arial; }
-    body input:focus, body input:active, body select:focus, body select:active, body textarea:focus, body textarea:active {
-      outline: 0; }
   body ul {
     list-style: none;
     margin: 0;
@@ -54,8 +47,7 @@ body {
 
 .button {
   min-width: 80px;
-  border: solid 1px #946018;
-  border-radius: 2px;
+  border: 1px solid #946018;
   background: #946018;
   color: #CACACA;
   font-size: 10px;
@@ -126,21 +118,30 @@ legend {
   font-size: 12px;
   text-align: left;
   background-color: #052238;
-  border-radius: 2px;
   padding: 6px; }
+
+input, select, textarea {
+  padding: 7px;
+  color: #7194AD;
+  background-color: #011827;
+  font-family: Arial; }
+  input:focus, input:active, select:focus, select:active, textarea:focus, textarea:active {
+    outline: 0; }
 
 input[type="text"],
 input[type="password"], select {
   box-sizing: border-box;
-  border-radius: 3px;
-  background-color: #001A2B;
-  border: 1px solid #354E66;
+  background-color: #011827;
+  border: 0;
+  border-top: 2px solid #052238;
+  border-left: 2px solid #052238;
   color: #61717B;
   margin-bottom: 10px; }
   input[type="text"]:focus, input[type="text"]:active,
   input[type="password"]:focus,
   input[type="password"]:active, select:focus, select:active {
-    color: #7194AD; }
+    color: #7194AD;
+    background-color: #00121E; }
 
 .icon {
   display: inline-block;
@@ -747,17 +748,18 @@ body #above .heading {
             border-left: 2px solid #052238; }
           .editor-container .ui-scroller .ui-choices li .ui-add #addui #adduiinput {
             border-left: 2px solid #052238;
-            padding: 10px 0;
+            padding: 15px 0 10px;
             display: none; }
             .editor-container .ui-scroller .ui-choices li .ui-add #addui #adduiinput.visible {
               display: block; }
             .editor-container .ui-scroller .ui-choices li .ui-add #addui #adduiinput #uiname_input, .editor-container .ui-scroller .ui-choices li .ui-add #addui #adduiinput #uitype_input {
               width: 140px;
-              height: 33px;
-              background-color: #00121E; }
+              height: 33px; }
             .editor-container .ui-scroller .ui-choices li .ui-add #addui #adduiinput .cartselect {
               margin-bottom: 10px;
               vertical-align: bottom; }
+            .editor-container .ui-scroller .ui-choices li .ui-add #addui #adduiinput .buttons {
+              margin-top: 5px; }
 
 .editor-container .settings-files .filename {
   font-size: 12px;
@@ -1090,12 +1092,18 @@ body #above .editor-container .vtab-wrap {
           body #above .editor-container .vtab-wrap .vtab .vtab-block .vtab-blockhead .cartselect:hover {
             cursor: pointer;
             opacity: 1; }
-            body #above .editor-container .vtab-wrap .vtab .vtab-block .vtab-blockhead .cartselect:hover .cartselect-list.show {
+            body #above .editor-container .vtab-wrap .vtab .vtab-block .vtab-blockhead .cartselect:hover .cartselect-container .cartselect-list.show {
               display: block; }
-          body #above .editor-container .vtab-wrap .vtab .vtab-block .vtab-blockhead .cartselect .cartselect-list.show {
-            display: none; }
-          body #above .editor-container .vtab-wrap .vtab .vtab-block .vtab-blockhead .cartselect .current-cart {
+          body #above .editor-container .vtab-wrap .vtab .vtab-block .vtab-blockhead .cartselect .cartselect-container .cartselect-cart {
             padding: 0; }
+          body #above .editor-container .vtab-wrap .vtab .vtab-block .vtab-blockhead .cartselect .cartselect-container .cartselect-list {
+            top: -7px;
+            right: -7px; }
+            body #above .editor-container .vtab-wrap .vtab .vtab-block .vtab-blockhead .cartselect .cartselect-container .cartselect-list.show {
+              display: none; }
+            body #above .editor-container .vtab-wrap .vtab .vtab-block .vtab-blockhead .cartselect .cartselect-container .cartselect-list .cartselect-cart {
+              width: initial;
+              padding: 5px 7px; }
       body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-container {
         margin-bottom: 10px; }
       body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-description {
@@ -1106,10 +1114,11 @@ body #above .editor-container .vtab-wrap {
         border-top: 2px solid #052238;
         padding: 6px; }
       body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-input {
+        background-color: #001A2B;
         width: 100%;
         box-sizing: border-box;
-        border: 0;
-        border: 1px solid #001A2B;
+        border: 2px solid transparent;
+        border-top: 0;
         color: #946018;
         font-size: 10px;
         font-weight: bold;
@@ -1117,24 +1126,51 @@ body #above .editor-container .vtab-wrap {
         resize: none; }
         body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-input:focus {
           background-color: #00121E;
+          border-left: 2px solid #052238;
+          border-bottom: 2px solid #052238;
           cursor: text; }
         body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-input::-webkit-input-placeholder {
           color: #7F6E14;
           font-weight: normal;
           font-style: italic; }
-      body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-color {
-        font-size: 41px;
-        display: block;
+      body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .hexagon-wrapper {
         position: absolute;
-        right: -2px;
-        top: 1px; }
-      body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .background {
-        color: #052238;
-        display: block;
-        position: absolute;
-        font-size: 50px;
-        right: -6px;
-        top: -4px; }
+        display: inline-block;
+        text-align: center; }
+        body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .hexagon-wrapper.variable-color {
+          top: 10px;
+          right: 0;
+          width: 36px;
+          height: 36px; }
+        body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .hexagon-wrapper.variable-background {
+          top: 8px;
+          right: -2px;
+          width: 40px;
+          height: 40px; }
+        body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .hexagon-wrapper .hexagon {
+          height: 100%;
+          width: calc(100% * 0.57735);
+          display: inline-block; }
+          body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .hexagon-wrapper .hexagon.variable-background {
+            background-color: #052238; }
+          body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .hexagon-wrapper .hexagon:before {
+            position: absolute;
+            top: 0;
+            right: calc((100% / 2) - ((100% * 0.57735) / 2));
+            background-color: inherit;
+            height: inherit;
+            width: inherit;
+            content: '';
+            transform: rotateZ(60deg); }
+          body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .hexagon-wrapper .hexagon:after {
+            position: absolute;
+            top: 0;
+            right: calc((100% / 2) - ((100% * 0.57735) / 2));
+            background-color: inherit;
+            height: inherit;
+            width: inherit;
+            content: '';
+            transform: rotateZ(-60deg); }
 
 body #gallery {
   width: auto;
@@ -1153,7 +1189,7 @@ body #gallery {
       height: 100%;
       box-sizing: border-box; }
       body #gallery .sites .createsite #createbutton {
-        background: rgba(0, 12, 22, 0.8);
+        background: rgba(0, 18, 30, 0.7);
         position: absolute;
         top: 0;
         left: 0;
@@ -1163,14 +1199,14 @@ body #gallery {
         height: 100%; }
         body #gallery .sites .createsite #createbutton:hover {
           cursor: pointer;
-          background: rgba(0, 12, 22, 0.9); }
+          background: rgba(0, 18, 30, 0.9); }
           body #gallery .sites .createsite #createbutton:hover .sitebutton {
             -webkit-filter: drop-shadow(0px 0px 3px #688BA3);
             filter: drop-shadow(0px 0px 3px #688BA3); }
         body #gallery .sites .createsite #createbutton .sitebutton {
           margin-top: 50px; }
       body #gallery .sites .createsite #createinput {
-        background: rgba(0, 12, 22, 0.9);
+        background: #001A2B;
         position: absolute;
         top: 0;
         left: 0;
@@ -1466,7 +1502,7 @@ body #gallery {
         display: inline-block;
         white-space: pre-line;
         vertical-align: middle;
-        max-width: 230px;
+        width: auto;
         font-size: 14px; }
     #modals .boxwrap .boxcontent .inputs {
       width: 90%;
@@ -1612,7 +1648,7 @@ body #gallery {
   max-width: inherit; }
 
 .angular-tagger__tag {
-  background: #00121E;
+  background: #011827;
   border-top: 2px solid #052238;
   border-left: 2px solid #052238;
   padding: 6px;
@@ -1694,9 +1730,12 @@ cartselect {
   position: relative;
   width: 50px;
   height: 31px;
-  border-radius: 3px;
-  background-color: #00121E;
-  border: 1px solid #354E66; }
+  background-color: #011827;
+  border: 0;
+  border-top: 2px solid #052238;
+  border-left: 2px solid #052238; }
+  cartselect:hover {
+    background-color: #00121E; }
   cartselect .cartselect-container .cartselect-cart {
     clear: both;
     color: #718599;
@@ -1706,11 +1745,12 @@ cartselect {
   cartselect .cartselect-container .cartselect-list {
     display: none;
     position: absolute;
-    top: -1px;
-    right: -1px;
+    top: -2px;
+    right: 0px;
     background: #00121E;
-    border: solid 1px #354E66;
-    border-radius: 3px;
+    border: 0;
+    border-top: 2px solid #052238;
+    border-left: 2px solid #052238;
     z-index: 9; }
     cartselect .cartselect-container .cartselect-list.show {
       display: block; }

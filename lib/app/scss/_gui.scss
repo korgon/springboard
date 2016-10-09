@@ -6,8 +6,7 @@
 
 .button {
 	min-width: 80px;
-	border: solid 1px $orangefaded;
-	border-radius: 2px;
+	border: 1px solid $orangefaded;
 	background: $orangefaded;
 	color: $whitefaded;
 	font-size: 10px;
@@ -92,20 +91,31 @@ legend {
 	font-size: 12px;
 	text-align: left;
 	background-color: $blueaccent;
-	border-radius: 2px;
 	padding: 6px;
+}
+
+input, select, textarea {
+	padding: 7px;
+	color: $bluelightest;
+	background-color: $bluedarker;
+	font-family: Arial;
+	&:focus, &:active {
+		outline: 0;
+	}
 }
 
 input[type="text"],
 input[type="password"], select {
 	box-sizing: border-box;
-	border-radius: 3px;
-	background-color: $bluedarkest;
-	border: 1px solid $bluebase;
+	background-color: $bluedarker;
+	border: 0;
+	border-top: 2px solid $blueaccent;
+	border-left: 2px solid $blueaccent;
 	color: $grey;
 	margin-bottom: 10px;
 	&:focus, &:active {
 		color: $bluelightest;
+		background-color: $blueblack;
 	}
 }
 

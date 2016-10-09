@@ -205,7 +205,6 @@
 											<div ng-switch-when="tags">
 												<div class="vtab-block">
 													<div class="vtab-head"><span class="vtab-title">Custom Tags</span></div>
-													<div class="vtab-subhead">for tagging all the things</div>
 
 													<tagger ng-model="ui.tags" options="vm.tags" placeholder="..." change="vm.checkChange()">
 												</div>
@@ -359,8 +358,8 @@
 		<span>{{ variable.label || name }}</span>
 		<span ng-if="variable.type == 'boolean'" ng-click="variable.value = !variable.value; vm.checkChange();" ng-model="variable.value" class="switch" ng-class="{ off: !variable.value}"></span>
 		<cartselect ng-if="variable.type == 'cart'" class="cartselect" list="vm.carts" callback="vm.checkChange();" selected="variable.value" ></cartselect>
-		<span ng-if="variable.type == 'color'" class="variable-color background">&#x2b22;</span>
-		<span ng-if="variable.type == 'color'" class="variable-color" style="color: {{ variable.value }};">&#x2b22;</span>
+		<span ng-if="variable.type == 'color'" class="hexagon-wrapper variable-background"><span class="hexagon variable-background"></span></span>
+		<span ng-if="variable.type == 'color'" class="hexagon-wrapper variable-color"><span class="hexagon" style="background-color: {{ variable.value }};"></span></span>
 	</div>
 
 	<div ng-if="variable.description" class="variable-description">{{ variable.description }}</div>
