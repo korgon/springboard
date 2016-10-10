@@ -6,6 +6,13 @@
 	"creator": "springboard",
 	"tags": [],
 	"settings": {
+		"cart": {
+			"label": "platform",
+			"value": "",
+			"default": "",
+			"type": "cart",
+			"description": "shopping cart platform"
+		},
 		"siteid": {
 			"label": "site id",
 			"value": "",
@@ -14,18 +21,11 @@
 			"description": "six digit alphanumeric"
 		},
 		"context": {
-			"label": "script context",
+			"label": "additional context",
 			"value": "",
 			"default": "",
 			"type": "text",
 			"description": "additional context to add to the script tag"
-		},
-		"cart": {
-			"label": "platform",
-			"value": "",
-			"default": "",
-			"type": "cart",
-			"description": "shopping cart platform"
 		}
 	},
 	"variables": {},

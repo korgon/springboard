@@ -47,8 +47,8 @@ body {
 
 .button {
   min-width: 80px;
-  border: 1px solid #946018;
-  background: #946018;
+  border: 1px solid #90700c;
+  background: #90700c;
   color: #CACACA;
   font-size: 10px;
   font-weight: bold;
@@ -652,7 +652,7 @@ body #above .heading {
           .editor-container .ui-scroller .ui-choices li .ui.active span.brackets, .editor-container .ui-scroller .ui-choices li .ui:hover span.brackets {
             display: inline;
             text-shadow: none;
-            color: #946018; }
+            color: #90700c; }
         .editor-container .ui-scroller .ui-choices li .ui:hover {
           cursor: pointer; }
       .editor-container .ui-scroller .ui-choices li .module-themes-container {
@@ -727,7 +727,7 @@ body #above .heading {
             .editor-container .ui-scroller .ui-choices li .ui-add #addbutton.active span.brackets, .editor-container .ui-scroller .ui-choices li .ui-add #addbutton:hover span.brackets {
               display: inline;
               text-shadow: none;
-              color: #946018; }
+              color: #90700c; }
             .editor-container .ui-scroller .ui-choices li .ui-add #addbutton.active span.add, .editor-container .ui-scroller .ui-choices li .ui-add #addbutton:hover span.add {
               -webkit-filter: drop-shadow(0px 0px 3px #688BA3);
               filter: drop-shadow(0px 0px 3px #688BA3); }
@@ -1119,7 +1119,7 @@ body #above .editor-container .vtab-wrap {
         box-sizing: border-box;
         border: 2px solid transparent;
         border-top: 0;
-        color: #946018;
+        color: #90700c;
         font-size: 10px;
         font-weight: bold;
         cursor: pointer;
@@ -1139,12 +1139,12 @@ body #above .editor-container .vtab-wrap {
         text-align: center; }
         body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .hexagon-wrapper.variable-color {
           top: 10px;
-          right: 0;
+          right: 4px;
           width: 36px;
           height: 36px; }
         body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .hexagon-wrapper.variable-background {
           top: 8px;
-          right: -2px;
+          right: 2px;
           width: 40px;
           height: 40px; }
         body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .hexagon-wrapper .hexagon {
@@ -1471,12 +1471,14 @@ body #gallery {
     padding: 10px;
     color: #718599; }
     #modals .boxwrap .boxcontent .boxmessage {
+      display: flex;
+      align-items: flex-start;
       margin: 10px 10px 20px;
       text-align: left; }
       #modals .boxwrap .boxcontent .boxmessage .messageicon {
+        flex: 0 0 30px;
         width: 30px;
         height: 30px;
-        display: inline-block;
         vertical-align: middle;
         margin: 0 25px 0 15px; }
         #modals .boxwrap .boxcontent .boxmessage .messageicon.alert {
@@ -1499,7 +1501,7 @@ body #gallery {
           background: url("/images/icons/warning.png") no-repeat center;
           background-size: 30px; }
       #modals .boxwrap .boxcontent .boxmessage .message {
-        display: inline-block;
+        flex: 3 0;
         white-space: pre-line;
         vertical-align: middle;
         width: auto;
@@ -1688,7 +1690,7 @@ body #gallery {
   font-size: 10px;
   text-transform: uppercase;
   cursor: pointer;
-  color: #946018; }
+  color: #90700c; }
 
 .angular-tagger__hook {
   width: 100%;
@@ -1713,7 +1715,7 @@ body #gallery {
   cursor: pointer; }
 
 .angular-tagger__matching-item--selected {
-  background: #946018;
+  background: #90700c;
   color: #CACACA !important; }
 
 .angular-tagger--single .angular-tagger__tag {
@@ -1757,7 +1759,7 @@ cartselect {
     cartselect .cartselect-container .cartselect-list .cartselect-cart {
       width: 26px; }
       cartselect .cartselect-container .cartselect-list .cartselect-cart:hover {
-        background: #946018;
+        background: #90700c;
         color: #CACACA; }
       cartselect .cartselect-container .cartselect-list .cartselect-cart .name {
         vertical-align: middle;

@@ -213,12 +213,14 @@
 			padding: 10px;
 			color: $bluegrey;
 			.boxmessage {
+				display: flex;
+				align-items: flex-start;
 				margin: 10px 10px 20px;
 				text-align: left;
 				.messageicon {
+					flex: 0 0 30px;
 					width: 30px;
 					height: 30px;
-					display: inline-block;
 					vertical-align: middle;
 					margin: 0 25px 0 15px;
 					&.alert {
@@ -248,7 +250,7 @@
 					}
 				}
 				.message {
-					display: inline-block;
+					flex: 3 0;
 					white-space: pre-line;
 					vertical-align: middle;
 					width: auto;
