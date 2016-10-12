@@ -9,7 +9,7 @@
 			padding: 0;
 			li {
 				font-size: 14px;
-				color: $bluegrey;
+				color: $bluefaded;
 				position: relative;
 				&:first-of-type {
 				}
@@ -21,7 +21,7 @@
 					border-left: 1px solid $bluehighlight;
 					border-bottom: 1px solid $bluehighlight;
 					line-height: 33px;
-					color: $bluegrey;
+					color: $bluefaded;
 					text-align: center;
 					font-weight: bold;
 					position: relative;
@@ -33,6 +33,7 @@
 					}
 					&.active, &:hover {
 						span {
+							color: $bluegrey;
 							transition: padding 222ms ease;
 							text-shadow: $bluehighlight 0px 0px 12px;
 							padding: 0 5px;
@@ -89,6 +90,7 @@
 				.ui-add {
 					text-align: center;
 					clear: both;
+					color: $bluefaded;
 					background-color: $blueblack;
 					border: 0;
 					border-left: 1px solid $bluedarkestest_text;

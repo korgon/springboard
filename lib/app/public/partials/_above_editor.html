@@ -102,13 +102,46 @@
 
 								<div ng-switch-when="proxy">
 									<div class="vtab-block">
-										<div class="vtab-head"><span class="vtab-title">{{ vm.session.tab['settings'].vtab['default'].tab }} Settings</span></div>
+										<div class="vtab-head">
+											<span class="vtab-title">{{ vm.session.tab['settings'].vtab['default'].tab }} Website</span>
+											<span ng-click="vm.site.proxy.enable.value = !vm.site.proxy.enable.value; vm.checkChange();" ng-model="vm.site.proxy.enable.enabled" class="switch" ng-class="{ off: !vm.site.proxy.enable.value}"></span>
+										</div>
+										<div class="vtab-subhead">{{ vm.site.proxy.enable.description }}</div>
 									</div>
 
-									<div class="vtab-block">
-										<ul class="variable-wrap">
-											<li class="variable-container" ng-repeat="(name, variable) in vm.site.proxy" ng-include="'variables'"></li>
-										</ul>
+									<div class="vtab-contents" ng-class="{ disabled: !vm.site.proxy.enable.value }">
+										<div class="vtab-overlay ng-hide" ng-hide="vm.site.proxy.enable.value"></div>
+										<div class="vtab-block">
+											<ul class="variable-wrap">
+												<li class="variable-container">
+													<div class="vtab-blockhead">
+														<span>{{ vm.site.proxy.url.label || name }}</span>
+													</div>
+
+													<div ng-if="vm.site.proxy.url.description" class="variable-description">{{ vm.site.proxy.url.description }}</div>
+													<input ng-change="vm.checkChange()" class="variable-input" ng-model= "vm.site.proxy.url.value" placeholder="..." autocomplete="off" spellcheck="false">
+												</li>
+												<li class="variable-container">
+													<div class="vtab-blockhead">
+														<span>{{ vm.site.proxy.catalog.label || name }}</span>
+													</div>
+
+													<div ng-if="vm.site.proxy.catalog.description" class="variable-description">{{ vm.site.proxy.catalog.description }}</div>
+													<select ng-change="vm.checkChange()" class="variable-input" ng-model= "vm.site.proxy.catalog.value">
+														<option label="smc" value="smc">smc</option>
+														<option ng-repeat="ui in vm.site.catalogs" label="{{ ui.name }}" value="{{ ui.name }}">{{ ui.name }}</option>
+													</select>
+												</li>
+												<li class="variable-container" ng-if="vm.site.proxy.catalog.value == 'smc'">
+													<div class="vtab-blockhead">
+														<span>{{ vm.site.proxy.context.label || name }}</span>
+													</div>
+
+													<div ng-if="vm.site.proxy.context.description" class="variable-description">{{ vm.site.proxy.context.description }}</div>
+													<input ng-change="vm.checkChange()" class="variable-input" ng-model= "vm.site.proxy.context.value" placeholder="..." autocomplete="off" spellcheck="false">
+												</li>
+											</ul>
+										</div>
 									</div>
 								</div>
 
