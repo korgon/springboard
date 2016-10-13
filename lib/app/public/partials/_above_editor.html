@@ -32,8 +32,6 @@
 
 									<li ng-class="{ 'active': vm.activeVtab('default') == 'proxy' }"><a ng-click="vm.switchVtab('proxy', 'default')"><span class="icon proxy"></span></a></li>
 
-									<li ng-class="{ 'active': vm.activeVtab('default') == 'history' }"><a ng-click="vm.switchVtab('history', 'default')"><span class="icon pulse"></span></a></li>
-
 									<li ng-class="{ 'active': vm.activeVtab('default') == 'settings' }"><a ng-click="vm.switchVtab('settings', 'default')"><span class="icon settings"></span></a></li>
 								</ul>
 							</div>
@@ -142,15 +140,6 @@
 												</li>
 											</ul>
 										</div>
-									</div>
-								</div>
-
-								<div ng-switch-when="history">
-									<div class="vtab-block">
-										<div class="vtab-head">{{ vm.session.tab['settings'].vtab['default'].tab }}</div>
-
-										<ul class="settings-history">
-										</ul>
 									</div>
 								</div>
 
