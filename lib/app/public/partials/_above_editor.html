@@ -4,7 +4,7 @@
 		<div class="subtitle" ng-click="showMenu = !showMenu">SPRIΠGBOΛRD</div>
 	</div>
 	<div class="mainmenu" ng-include src="'/partials/_above_menu.html'" ng-class="{ 'show': showMenu }" ng-init="showMenu = false"></div>
-	<input id="frameurl" name="url" autocomplete="off" spellcheck="false" ng-model="vm.session.url" ng-change="vm.changeUrl()">
+	<input id="frameurl" name="url" autocomplete="off" spellcheck="false" ng-model="vm.session.url" ng-change="vm.changeUrl()" ng-keypress="vm.changeUrl($event)">
 	<div class="openurl" ng-click="vm.openUrl(vm.session.url)"></div>
 	<div class="line"></div>
 	<div class="worksite"><a class="currentsite" ng-click="vm.toggleEditor()"><span id="currentsite">{{ vm.site.name }}</span></a>
@@ -36,11 +36,11 @@
 								</ul>
 							</div>
 
-							<div class="vtab" ng-switch="vm.session.tab['settings'].vtab['default'].tab">
+							<div class="vtab" ng-switch="vm.session.tab.settings.vtab.default.tab">
 
 								<div ng-switch-when="settings">
 									<div class="vtab-block">
-										<div class="vtab-head"><span class="vtab-title">{{ vm.session.tab['settings'].vtab['default'].tab }}</span></div>
+										<div class="vtab-head"><span class="vtab-title">{{ vm.session.tab.settings.vtab.default.tab }}</span></div>
 										<div class="vtab-subhead">site specific settings</div>
 									</div>
 
@@ -101,8 +101,8 @@
 								<div ng-switch-when="proxy">
 									<div class="vtab-block">
 										<div class="vtab-head">
-											<span class="vtab-title">{{ vm.session.tab['settings'].vtab['default'].tab }} Website</span>
-											<span ng-click="vm.site.proxy.enable.value = !vm.site.proxy.enable.value; vm.checkChange();" ng-model="vm.site.proxy.enable.enabled" class="switch" ng-class="{ off: !vm.site.proxy.enable.value}"></span>
+											<span class="vtab-title">{{ vm.session.tab.settings.vtab.default.tab }} Website</span>
+											<span ng-click="vm.site.proxy.enable.value = !vm.site.proxy.enable.value; vm.checkChange();" class="switch" ng-class="{ off: !vm.site.proxy.enable.value }"></span>
 										</div>
 										<div class="vtab-subhead">{{ vm.site.proxy.enable.description }}</div>
 									</div>
@@ -138,6 +138,13 @@
 													<div ng-if="vm.site.proxy.context.description" class="variable-description">{{ vm.site.proxy.context.description }}</div>
 													<input ng-change="vm.checkChange()" class="variable-input" ng-model= "vm.site.proxy.context.value" placeholder="..." autocomplete="off" spellcheck="false">
 												</li>
+												<li class="variable-container">
+													<div class="vtab-blockhead">
+														<span>view proxied site</span>
+														<span ng-click="vm.setUrl('http://localhost:' + vm.proxy.port)" class="icon small proxy_view"></span>
+													</div>
+													<div ng-if="vm.site.proxy.url.description" class="variable-description">show the proxied site in the editor</div>
+												</li>
 											</ul>
 										</div>
 									</div>
@@ -145,7 +152,7 @@
 
 								<div ng-switch-when="instructions">
 									<div class="vtab-block">
-										<div class="vtab-head">{{ vm.session.tab['settings'].vtab['default'].tab }}</div>
+										<div class="vtab-head">{{ vm.session.tab.settings.vtab.default.tab }}</div>
 										<ul class="settings-instructions">
 										</ul>
 									</div>
@@ -182,7 +189,7 @@
 
 												<li ng-class="{ 'active': vm.activeVtab(ui.name) == 'styles' }"><a ng-click="vm.switchVtab('styles', ui.name)"><span class="icon styles"></span></a></li>
 
-												<li ng-if="!vm.isEmpty(ui.variables)" ng-class="{ 'active': vm.activeVtab(ui.name) == 'variables' }"><a ng-click="vm.switchVtab('variables', ui.name)"><span class="icon variables"></span></a></li>
+												<li ng-class="{ 'active': vm.activeVtab(ui.name) == 'variables' }"><a ng-click="vm.switchVtab('variables', ui.name)"><span class="icon variables"></span></a></li>
 
 												<li ng-class="{ 'active': vm.activeVtab(ui.name) == 'tags' }"><a ng-click="vm.switchVtab('tags', ui.name)"><span class="icon tags"></span></a></li>
 
@@ -395,10 +402,10 @@
 			<span class="icon small extension-{{ details.extension }}">
 				<span class="icon tiny selected" ng-if="vm.site.thumb == (vm.relative_url + details.path) || (vm.relative_url + details.path) == vm.site.default_url"></span>
 			</span>
-			<span class="filename" ng-class="{ cloud: vm.site.cloud_files.indexOf(details.path) != -1 }">{{ details.name }}</span>
+			<span class="filename" ng-class="{ cloud: details.cloud }">{{ details.name }}</span>
 		</div>
 		<div class="filedetails">
-			<div class="fileactions" ng-if="vm.session.tab['settings'].vtab['default'].tab == 'dirstruct'">
+			<div class="fileactions" ng-if="vm.session.tab.settings.vtab.default.tab == 'dirstruct'">
 				<span class="icon tiny active" ng-if="details.extension == 'html'" ng-class="{ disabled: (vm.relative_url + details.path) != vm.site.default_url }" ng-click="vm.setDefaultHTML(details.path)"></span>
 				<span class="icon tiny active"  ng-if="['png', 'jpeg', 'jpg', 'gif'].indexOf(details.extension) != -1" ng-class="{ disabled: vm.site.thumb != ('/sites/' + vm.site.name + '/' + details.path) }" ng-click="vm.setThumb(details.path)"></span>
 				<span class="icon tiny cloud" ng-class="{ disabled: vm.site.cloud_files.indexOf(details.path) == -1 }" ng-click="vm.toggleCloudFile(details.path)"></span>
@@ -406,20 +413,20 @@
 				<span class="icon tiny open" ng-click="vm.openUrl(vm.root_url + details.path)"></span>
 				<span class="filestats">{{ details.size }}</span>
 			</div>
-			<div class="fileactions" ng-if="vm.session.tab['settings'].vtab['default'].tab == 'cloudstruct'">
+			<div class="fileactions" ng-if="vm.session.tab.settings.vtab.default.tab == 'cloudstruct'">
 				<span class="icon tiny open" ng-click="vm.openUrl('//' + vm.cloudstruct.data.bucket + '/' + details.key)"></span>
 				<span class="filestats">{{ details.size }}</span>
 			</div>
 		</div>
 	</div>
 
-	<span class="filewrapper" ng-if="details.type == 'directory'" ng-click="vm.toggleDir(vm.session.tab['settings'].vtab['default'].tab, details)">
-		<span ng-if="details.collapsed" class="icon small folder"></span>
-		<span ng-if="!details.collapsed" class="icon small folder-open"></span>
-		<span class="filename">{{ details.name }}</span>
+	<span class="filewrapper" ng-if="details.type == 'directory'" ng-click="vm.toggleDir(vm.session.tab.settings.vtab.default.tab, details)">
+		<span ng-if="details.collapsed" class="icon small folder{{ details.path.match(vm[vm.session.tab.settings.vtab.default.tab].current) ? '-current' : '' }}"></span>
+		<span ng-if="!details.collapsed" class="icon small folder{{ details.path.match(vm[vm.session.tab.settings.vtab.default.tab].current) ? '-current' : '' }}-open"></span>
+		<span class="filename" ng-class="{ cloud: details.cloud }">{{ details.name }}</span>
 	</span>
 
-	<ul class="directory-contents" ng-if="details.type == 'directory'" ng-init="vm.checkDirState(vm.session.tab['settings'].vtab['default'].tab, details)" ng-class="{ collapsed: details.collapsed }">
+	<ul class="directory-contents" ng-if="details.type == 'directory'" ng-init="vm.checkDirState(vm.session.tab.settings.vtab.default.tab, details)" ng-class="{ collapsed: details.collapsed }">
 		<li class="{{ details.type }}" ng-repeat="details in details.contents | orderFilesBy: 'type'" ng-include="'fileTree'"></li>
 	</ul>
 </script>

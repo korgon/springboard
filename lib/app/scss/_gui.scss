@@ -261,6 +261,12 @@ input[type="password"], select {
 	&.folder-open {
 		background-image: url('/images/icons/folder_open.png');
 	}
+	&.folder-current {
+		background-image: url('/images/icons/folder_current.png');
+	}
+	&.folder-current-open {
+		background-image: url('/images/icons/folder_current_open.png');
+	}
 	&.folder-cloud {
 		background-image: url('/images/icons/folder_cloud.png');
 	}
@@ -339,6 +345,9 @@ input[type="password"], select {
 	&.proxy {
 		background-image: url('/images/icons/proxy.png');
 	}
+	&.proxy_view {
+		background-image: url('/images/icons/proxy_view.png');
+	}
 	&.reload {
 		background-image: url('/images/icons/refresh.png');
 	}
@@ -365,9 +374,6 @@ input[type="password"], select {
 	}
 	&.undo {
 		background-image: url('/images/icons/undo.png');
-	}
-	&.update {
-		background-image: url('/images/icons/update.png');
 	}
 	&.upload {
 		background-image: url('/images/icons/upload.png');

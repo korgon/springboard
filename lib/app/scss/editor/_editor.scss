@@ -263,8 +263,11 @@ body {
 							&.alert {
 								background-image: url('/images/icons/alert.png');
 							}
-							&.info {
-								background-image: url('/images/icons/info_white.png');
+							&.empty {
+								height: 90px;
+								width: 90px;
+								background-size: 90px;
+								background-image: url('/images/icons/shruggy.png');
 							}
 							&.warning {
 								background-image: url('/images/icons/warning.png');

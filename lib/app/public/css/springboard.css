@@ -237,6 +237,10 @@ input[type="password"], select {
     background-image: url("/images/icons/folder.png"); }
   .icon.folder-open {
     background-image: url("/images/icons/folder_open.png"); }
+  .icon.folder-current {
+    background-image: url("/images/icons/folder_current.png"); }
+  .icon.folder-current-open {
+    background-image: url("/images/icons/folder_current_open.png"); }
   .icon.folder-cloud {
     background-image: url("/images/icons/folder_cloud.png"); }
   .icon.help {
@@ -289,6 +293,8 @@ input[type="password"], select {
     background-image: url("/images/icons/push.png"); }
   .icon.proxy {
     background-image: url("/images/icons/proxy.png"); }
+  .icon.proxy_view {
+    background-image: url("/images/icons/proxy_view.png"); }
   .icon.reload {
     background-image: url("/images/icons/refresh.png"); }
   .icon.save {
@@ -307,8 +313,6 @@ input[type="password"], select {
     background-image: url("/images/icons/uis.png"); }
   .icon.undo {
     background-image: url("/images/icons/undo.png"); }
-  .icon.update {
-    background-image: url("/images/icons/update.png"); }
   .icon.upload {
     background-image: url("/images/icons/upload.png"); }
   .icon.variables {
@@ -1059,8 +1063,11 @@ body #above .editor-container .vtab-wrap {
           background-image: url("/images/icons/cloudie.png"); }
         body #above .editor-container .vtab-wrap .vtab .loading-box .box.alert {
           background-image: url("/images/icons/alert.png"); }
-        body #above .editor-container .vtab-wrap .vtab .loading-box .box.info {
-          background-image: url("/images/icons/info_white.png"); }
+        body #above .editor-container .vtab-wrap .vtab .loading-box .box.empty {
+          height: 90px;
+          width: 90px;
+          background-size: 90px;
+          background-image: url("/images/icons/shruggy.png"); }
         body #above .editor-container .vtab-wrap .vtab .loading-box .box.warning {
           background-image: url("/images/icons/warning.png"); }
         body #above .editor-container .vtab-wrap .vtab .loading-box .box.loading-gear {
