@@ -25,7 +25,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 100%;
-    color: #718599; }
+    color: #718599;
+    background-color: #304B66; }
     body #error #content {
       flex: 1;
       text-align: center; }
