@@ -1,6 +1,38 @@
 # ϟǷ®1Πɢß0ȺɌÐ
 
-A tool to be used, and steadily improved upon to start tying in our many processes and programs into one unified system.The current focus of this iteration of this program is on Mockup creation and management.
+What is Springboard?
+
+##### Site Management Tool  
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creation  
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Testing  
+
+---
+
+### Management Tool
+
+* Git repository
+* Searchable
+* Publish to Cloud
+
+---
+
+### Creation Tool
+
+* Base Templates
+* Themed Modules
+* Sass
+
+---
+
+### Testing Tool
+
+* Proxy
+* Linting
+* Browsersync
+
+---
+
+Springboard is a tool to be used, and steadily improved upon, to start tying in our many processes and programs into one unified system. The current focus of this iteration of this program is on Mockup creation and management.
 
 Springboard's forefathers are a collection of bash script which became the famous [pyspring.](https://github.com/b7interactive/pyspring) The current iteration of the idea now finds itself written in Javascript with a focus on modular site creation.
 
@@ -11,6 +43,7 @@ Features:
 * Searchable Site Library
 * Plug and play Catalog Module Library
 * UI Construction Interface
+* Built in Proxy
 * Git Repositories
 
 ---
@@ -19,12 +52,11 @@ Features:
 
 ##### Pre-requisites
 
-node.js (>=v4.4.7)  
+node.js (>=v4.4.4)  
 [nodejs](http://nodejs.org/download/)
 ##### Installation
 
-Springboard assumes that you have setup your git account with SSH. If you have not [please do.](https://confluence.atlassian.com/display/BITBUCKET/Use+the+SSH+protocol+with+Bitbucket)  
-Springboard also assumes you have setup your username globally. Springboard will fail to commit changes if you have not setup a [username](https://help.github.com/articles/setting-your-username-in-git/) and email for the searchspring-mockups repo.  
+Springboard assumes that you have setup your git account with SSH. If you have not [please do.](https://confluence.atlassian.com/display/BITBUCKET/Use+the+SSH+protocol+with+Bitbucket)
 
 Get the latest springboard from the repo, then install node modules:
 
