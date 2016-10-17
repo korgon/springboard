@@ -196,6 +196,7 @@ body {
 					width: 100%;
 
 					.vtab-head {
+						position: relative;
 						color: $bluegrey;
 						font-size: 12px;
 						text-transform: uppercase;
@@ -337,6 +338,13 @@ body {
 						}
 
 						.variable-wrap {
+							.variable-container-button {
+								text-align: center;
+								margin-bottom: 10px;
+								.button {
+									display: inline-block;
+								}
+							}
 							.variable-container {
 								margin-bottom: 10px;
 							}

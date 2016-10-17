@@ -185,6 +185,8 @@ input[type="password"], select {
     background-image: url("/images/icons/active.png"); }
   .icon.add {
     background-image: url("/images/icons/add.png"); }
+  .icon.add-neg {
+    background-image: url("/images/icons/add_neg.png"); }
   .icon.capture {
     background-image: url("/images/icons/capture.png"); }
   .icon.cart-magento {
@@ -1024,6 +1026,7 @@ body #above .editor-container .vtab-wrap {
     vertical-align: top;
     width: 100%; }
     body #above .editor-container .vtab-wrap .vtab .vtab-head {
+      position: relative;
       color: #718599;
       font-size: 12px;
       text-transform: uppercase;
@@ -1123,6 +1126,11 @@ body #above .editor-container .vtab-wrap {
             body #above .editor-container .vtab-wrap .vtab .vtab-block .vtab-blockhead .cartselect .cartselect-container .cartselect-list .cartselect-cart {
               width: initial;
               padding: 5px 7px; }
+      body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-container-button {
+        text-align: center;
+        margin-bottom: 10px; }
+        body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-container-button .button {
+          display: inline-block; }
       body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-container {
         margin-bottom: 10px; }
       body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-description {

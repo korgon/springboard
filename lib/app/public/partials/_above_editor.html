@@ -54,7 +54,7 @@
 												</div>
 												<div>
 													<div class="variable-description">
-														<span>generate screen shot for site</span>
+														<span>generate screenshot from frame</span>
 													</div>
 												</div>
 											</li>
@@ -208,8 +208,14 @@
 												<div class="vtab-block">
 													<ul class="variable-wrap">
 														<li class="variable-container" ng-repeat="(name, variable) in ui.styles" ng-include="'variables'"></li>
-														<li ng-if="vm.isEmpty(ui.styles)">
-															<div class="vtab-subhead">nothing to see here...</div>
+														<li class="variable-container" ng-if="vm.isEmpty(ui.styles)">
+															<div class="vtab-blockhead">
+																<span></span>
+															</div>
+														</li>
+														<li class="variable-container-button">
+															<div class="vtab-blockhead"></div>
+															<div class="button">Add Style</div>
 														</li>
 													</ul>
 												</div>
@@ -224,8 +230,12 @@
 												<div class="vtab-block">
 													<ul class="variable-wrap">
 														<li class="variable-container" ng-repeat="(name, variable) in ui.variables" ng-include="'variables'"></li>
-														<li ng-if="vm.isEmpty(ui.variables)">
-															<div class="vtab-subhead">nothing to see here...</div>
+														<li class="variable-container" ng-if="vm.isEmpty(ui.variables)">
+															<div class="vtab-blockhead"></div>
+														</li>
+														<li class="variable-container-button">
+															<div class="vtab-blockhead"></div>
+															<div class="button">Add Variable</div>
 														</li>
 													</ul>
 												</div>

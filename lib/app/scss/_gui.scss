@@ -164,6 +164,9 @@ input[type="password"], select {
 	&.add {
 		background-image: url('/images/icons/add.png');
 	}
+	&.add-neg {
+		background-image: url('/images/icons/add_neg.png');
+	}
 	&.capture {
 		background-image: url('/images/icons/capture.png');
 	}
