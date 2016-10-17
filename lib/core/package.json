@@ -9,6 +9,7 @@
   "author": "SearchSpring",
   "license": "MIT",
   "dependencies": {
+    "ansi-to-html": "^0.4.2",
     "aws-sdk": "^2.6.6",
     "browser-sync": "^2.12.3",
     "chokidar": "^1.4.3",
