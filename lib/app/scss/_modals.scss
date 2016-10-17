@@ -55,8 +55,24 @@
 		background: rgba(0, 0, 0, 0.9);
 		z-index: 999999;
 		overflow: auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		&.ng-hide {
 			opacity: 0;
+		}
+		.overlay {
+			display: inline-block;
+			&.noclick {
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				z-index: 999999;
+				overflow: auto;
+				padding: 90px 0;
+			}
 		}
 	}
 
@@ -65,16 +81,19 @@
 		width: 250px;
 		height: auto;
 		border: 1px solid $bluehighlight;
-		margin: 90px auto 40px;
 		padding: 0;
+		margin: auto;
 		&.alert {
 			width: 350px;
+			margin-top: -120px;
 		}
 		&.input {
 			width: 350px;
+			margin-top: -120px;
 		}
 		&.commit, &.publish {
 			width: 450px;
+			margin-top: -120px;
 		}
 		&.moduleInfo {
 			width: 550px;
@@ -164,6 +183,55 @@
 				}
 			}
 		}
+		&.settings {
+			.boxcontent {
+				border-top: 1px solid $bluehighlight;
+			}
+			.tabstop {
+				display: flex;
+				width: 100%;
+				flex-flow: row nowrap;
+				justify-content: space-around;
+				clear: both;
+				list-style: none;
+				margin: 0;
+				padding: 4px 0 0;
+				background-color: $blueblack;
+				position: relative;
+				> li {
+					display: inline-flex;
+					flex-grow: 1;
+					text-align: center;
+					height: 33px;
+					margin: 0px 6px 0px;
+					a {
+						display: inline-block;
+						width: 100%;
+						height: 33px;
+						opacity: 0.5;
+						border: 1px solid transparent;
+						border-bottom: 0;
+						cursor: pointer;
+						&.active {
+							background-color: $bluedarkest;
+							border: 1px solid $bluehighlight;
+							border-bottom: 0;
+							opacity: 1;
+						}
+						.icon {
+							width: 100%;
+						}
+					}
+				}
+			}
+			#userinput {
+				text-align: left;
+				padding: 15px;
+			}
+			.buttons {
+				text-align: center;
+			}
+		}
 
 		.boxtop {
 			height: 22px;
@@ -246,6 +314,10 @@
 					}
 					&.warning {
 						background: url('/images/icons/warning.png') no-repeat center;
+						background-size: 30px;
+					}
+					&.springboard {
+						background: url('/images/icons/springs.png') no-repeat center;
 						background-size: 30px;
 					}
 				}

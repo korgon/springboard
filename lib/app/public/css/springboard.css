@@ -154,6 +154,93 @@ input[type="password"], select {
     color: #7194AD;
     background-color: #00121E; }
 
+.variable-wrap .variable-container-button {
+  text-align: center;
+  margin-bottom: 10px; }
+  .variable-wrap .variable-container-button .button {
+    display: inline-block; }
+
+.variable-wrap .variable-container {
+  margin-bottom: 10px; }
+
+.variable-wrap .variable-title {
+  position: relative;
+  font-weight: bold;
+  font-size: 11px;
+  color: #718599;
+  padding: 7px; }
+  .variable-wrap .variable-title .switch {
+    float: right; }
+
+.variable-wrap .variable-description {
+  color: #354957;
+  font-size: 10px;
+  text-transform: lowercase;
+  font-weight: bold;
+  border-top: 2px solid #052238;
+  padding: 6px; }
+
+.variable-wrap .variable-input {
+  background-color: #001A2B;
+  width: 100%;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  border: 2px solid transparent;
+  border-top: 0;
+  color: #906911;
+  font-size: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  resize: none; }
+  .variable-wrap .variable-input:focus {
+    background-color: #00121E;
+    border-left: 2px solid #052238;
+    border-bottom: 2px solid #052238;
+    cursor: text; }
+  .variable-wrap .variable-input::-webkit-input-placeholder {
+    color: #7F6E14;
+    font-weight: normal;
+    font-style: italic; }
+
+.variable-wrap .hexagon-wrapper {
+  position: absolute;
+  display: inline-block;
+  text-align: center; }
+  .variable-wrap .hexagon-wrapper.variable-color {
+    top: 10px;
+    right: 4px;
+    width: 36px;
+    height: 36px; }
+  .variable-wrap .hexagon-wrapper.variable-background {
+    top: 8px;
+    right: 2px;
+    width: 40px;
+    height: 40px; }
+  .variable-wrap .hexagon-wrapper .hexagon {
+    height: 100%;
+    width: calc(100% * 0.57735);
+    display: inline-block; }
+    .variable-wrap .hexagon-wrapper .hexagon.variable-background {
+      background-color: #052238; }
+    .variable-wrap .hexagon-wrapper .hexagon:before {
+      position: absolute;
+      top: 0;
+      right: calc((100% / 2) - ((100% * 0.57735) / 2));
+      background-color: inherit;
+      height: inherit;
+      width: inherit;
+      content: '';
+      transform: rotateZ(60deg); }
+    .variable-wrap .hexagon-wrapper .hexagon:after {
+      position: absolute;
+      top: 0;
+      right: calc((100% / 2) - ((100% * 0.57735) / 2));
+      background-color: inherit;
+      height: inherit;
+      width: inherit;
+      content: '';
+      transform: rotateZ(-60deg); }
+
 .icon {
   display: inline-block;
   width: 33px;
@@ -188,6 +275,8 @@ input[type="password"], select {
     background-image: url("/images/icons/add.png"); }
   .icon.add-neg {
     background-image: url("/images/icons/add_neg.png"); }
+  .icon.alert {
+    background-image: url("/images/icons/alert.png"); }
   .icon.capture {
     background-image: url("/images/icons/capture.png"); }
   .icon.cart-magento {
@@ -316,6 +405,8 @@ input[type="password"], select {
     background-image: url("/images/icons/selected.png"); }
   .icon.settings {
     background-image: url("/images/icons/settings.png"); }
+  .icon.shortkeys {
+    background-image: url("/images/icons/shortkeys.png"); }
   .icon.styles {
     background-image: url("/images/icons/palette.png"); }
   .icon.tags {
@@ -328,6 +419,8 @@ input[type="password"], select {
     background-image: url("/images/icons/undo.png"); }
   .icon.upload {
     background-image: url("/images/icons/upload.png"); }
+  .icon.user {
+    background-image: url("/images/icons/user.png"); }
   .icon.variables {
     background-image: url("/images/icons/variable.png"); }
   .icon.view {
@@ -1127,78 +1220,6 @@ body #above .editor-container .vtab-wrap {
             body #above .editor-container .vtab-wrap .vtab .vtab-block .vtab-blockhead .cartselect .cartselect-container .cartselect-list .cartselect-cart {
               width: initial;
               padding: 5px 7px; }
-      body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-container-button {
-        text-align: center;
-        margin-bottom: 10px; }
-        body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-container-button .button {
-          display: inline-block; }
-      body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-container {
-        margin-bottom: 10px; }
-      body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-description {
-        color: #354957;
-        font-size: 10px;
-        text-transform: lowercase;
-        font-weight: bold;
-        border-top: 2px solid #052238;
-        padding: 6px; }
-      body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-input {
-        background-color: #001A2B;
-        width: 100%;
-        box-sizing: border-box;
-        border: 2px solid transparent;
-        border-top: 0;
-        color: #906911;
-        font-size: 10px;
-        font-weight: bold;
-        cursor: pointer;
-        resize: none; }
-        body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-input:focus {
-          background-color: #00121E;
-          border-left: 2px solid #052238;
-          border-bottom: 2px solid #052238;
-          cursor: text; }
-        body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .variable-input::-webkit-input-placeholder {
-          color: #7F6E14;
-          font-weight: normal;
-          font-style: italic; }
-      body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .hexagon-wrapper {
-        position: absolute;
-        display: inline-block;
-        text-align: center; }
-        body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .hexagon-wrapper.variable-color {
-          top: 10px;
-          right: 4px;
-          width: 36px;
-          height: 36px; }
-        body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .hexagon-wrapper.variable-background {
-          top: 8px;
-          right: 2px;
-          width: 40px;
-          height: 40px; }
-        body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .hexagon-wrapper .hexagon {
-          height: 100%;
-          width: calc(100% * 0.57735);
-          display: inline-block; }
-          body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .hexagon-wrapper .hexagon.variable-background {
-            background-color: #052238; }
-          body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .hexagon-wrapper .hexagon:before {
-            position: absolute;
-            top: 0;
-            right: calc((100% / 2) - ((100% * 0.57735) / 2));
-            background-color: inherit;
-            height: inherit;
-            width: inherit;
-            content: '';
-            transform: rotateZ(60deg); }
-          body #above .editor-container .vtab-wrap .vtab .vtab-block .variable-wrap .hexagon-wrapper .hexagon:after {
-            position: absolute;
-            top: 0;
-            right: calc((100% / 2) - ((100% * 0.57735) / 2));
-            background-color: inherit;
-            height: inherit;
-            width: inherit;
-            content: '';
-            transform: rotateZ(-60deg); }
 
 body #gallery {
   width: auto;
@@ -1375,22 +1396,39 @@ body #gallery {
   opacity: 1;
   background: rgba(0, 0, 0, 0.9);
   z-index: 999999;
-  overflow: auto; }
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
   #modals .modal.ng-hide {
     opacity: 0; }
+  #modals .modal .overlay {
+    display: inline-block; }
+    #modals .modal .overlay.noclick {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 999999;
+      overflow: auto;
+      padding: 90px 0; }
 
 #modals .boxwrap {
   width: 250px;
   height: auto;
   border: 1px solid #304B66;
-  margin: 90px auto 40px;
-  padding: 0; }
+  padding: 0;
+  margin: auto; }
   #modals .boxwrap.alert {
-    width: 350px; }
+    width: 350px;
+    margin-top: -120px; }
   #modals .boxwrap.input {
-    width: 350px; }
+    width: 350px;
+    margin-top: -120px; }
   #modals .boxwrap.commit, #modals .boxwrap.publish {
-    width: 450px; }
+    width: 450px;
+    margin-top: -120px; }
   #modals .boxwrap.moduleInfo {
     width: 550px; }
     #modals .boxwrap.moduleInfo .markdown {
@@ -1459,6 +1497,45 @@ body #gallery {
           width: 616px; }
       #modals .boxwrap.moduleInstall .boxright .buttons {
         margin: 20px; }
+  #modals .boxwrap.settings .boxcontent {
+    border-top: 1px solid #304B66; }
+  #modals .boxwrap.settings .tabstop {
+    display: flex;
+    width: 100%;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    clear: both;
+    list-style: none;
+    margin: 0;
+    padding: 4px 0 0;
+    background-color: #00121E;
+    position: relative; }
+    #modals .boxwrap.settings .tabstop > li {
+      display: inline-flex;
+      flex-grow: 1;
+      text-align: center;
+      height: 33px;
+      margin: 0px 6px 0px; }
+      #modals .boxwrap.settings .tabstop > li a {
+        display: inline-block;
+        width: 100%;
+        height: 33px;
+        opacity: 0.5;
+        border: 1px solid transparent;
+        border-bottom: 0;
+        cursor: pointer; }
+        #modals .boxwrap.settings .tabstop > li a.active {
+          background-color: #001A2B;
+          border: 1px solid #304B66;
+          border-bottom: 0;
+          opacity: 1; }
+        #modals .boxwrap.settings .tabstop > li a .icon {
+          width: 100%; }
+  #modals .boxwrap.settings #userinput {
+    text-align: left;
+    padding: 15px; }
+  #modals .boxwrap.settings .buttons {
+    text-align: center; }
   #modals .boxwrap .boxtop {
     height: 22px;
     overflow: hidden;
@@ -1527,6 +1604,9 @@ body #gallery {
           background-size: 30px; }
         #modals .boxwrap .boxcontent .boxmessage .messageicon.warning {
           background: url("/images/icons/warning.png") no-repeat center;
+          background-size: 30px; }
+        #modals .boxwrap .boxcontent .boxmessage .messageicon.springboard {
+          background: url("/images/icons/springs.png") no-repeat center;
           background-size: 30px; }
       #modals .boxwrap .boxcontent .boxmessage .message {
         flex: 3 0;

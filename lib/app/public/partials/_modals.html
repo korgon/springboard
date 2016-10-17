@@ -1,176 +1,215 @@
 <div class="modal" modaly ng-show="modalview" ng-switch="modalview">
 
 	<!-- alert modal -->
-	<div class="boxwrap {{ modalview }}" ng-switch-when="alert" ng-controller="ModalAlertCtrl">
-		<div class="boxtop"></div>
-		<div class="boxcontent">
-			<div class="boxmessage">
-				<span class="messageicon {{ mm.message_icon }}"></span>
-				<span class="message">{{ mm.message }}</span>
-			</div>
-			<div class="buttons">
-				<button class="button" ng-if="mm.button_confirm" ng-click="mm.resolveModal()">{{ mm.button_confirm }}</button>
-				<button class="button" ng-if="mm.button_cancel" ng-click="mm.closeModal()" focus-on>{{ mm.button_cancel }}</button>
+	<div class="overlay" ng-switch-when="alert" ng-controller="ModalAlertCtrl">
+		<div class="boxwrap {{ modalview }}">
+			<div class="boxtop"></div>
+			<div class="boxcontent">
+				<div class="boxmessage">
+					<span class="messageicon {{ mm.message_icon }}"></span>
+					<span class="message">{{ mm.message }}</span>
+				</div>
+				<div class="buttons">
+					<button class="button" ng-if="mm.button_confirm" ng-click="mm.resolveModal()">{{ mm.button_confirm }}</button>
+					<button class="button" ng-if="mm.button_cancel" ng-click="mm.closeModal()" focus-on>{{ mm.button_cancel }}</button>
+				</div>
 			</div>
 		</div>
 	</div>
 
 	<!-- s3 publish notification modal -->
-	<div class="boxwrap {{ modalview }}" ng-switch-when="publish" ng-controller="ModalAlertCtrl" ng-init="mm.detail_show = false">
-		<div class="boxtop"></div>
-		<div class="boxcontent">
-			<div class="boxmessage">
-				<span class="messageicon {{ mm.message_icon }}"></span>
-				<span class="message">{{ mm.message }}</span>
-			</div>
-			<div class="buttons">
-				<button class="button" ng-if="!mm.detail_show" ng-click="mm.detail_show = !mm.detail_show">Details</button>
-				<button class="button" ng-click="mm.resolveModal()">{{ mm.button_confirm }}</button>
-			</div>
-		</div>
-		<div class="s3-upload" ng-class="{ show: mm.detail_show }">
-			<div class="s3-file" ng-repeat="file in mm.message_data">
-				<div class="file-details">
-					<span class="local">{{ file.name }}</span>
+	<div class="overlay" ng-switch-when="publish" ng-controller="ModalAlertCtrl">
+		<div class="boxwrap {{ modalview }}" ng-init="mm.detail_show = false">
+			<div class="boxtop"></div>
+			<div class="boxcontent">
+				<div class="boxmessage">
+					<span class="messageicon {{ mm.message_icon }}"></span>
+					<span class="message">{{ mm.message }}</span>
 				</div>
-				<div class="file-details">
-					<span class="file-size">{{ file.size }}</span>
-					<span class="remote"><a target="_blank" href="{{ '//' + file.url }}">{{ file.url }}</a></span>
+				<div class="buttons">
+					<button class="button" ng-if="!mm.detail_show" ng-click="mm.detail_show = !mm.detail_show">Details</button>
+					<button class="button" ng-click="mm.resolveModal()">{{ mm.button_confirm }}</button>
+				</div>
+			</div>
+			<div class="s3-upload" ng-class="{ show: mm.detail_show }">
+				<div class="s3-file" ng-repeat="file in mm.message_data">
+					<div class="file-details">
+						<span class="local">{{ file.name }}</span>
+					</div>
+					<div class="file-details">
+						<span class="file-size">{{ file.size }}</span>
+						<span class="remote"><a target="_blank" href="{{ '//' + file.url }}">{{ file.url }}</a></span>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<!-- single input modal -->
-	<div class="boxwrap {{ modalview }}" ng-switch-when="input" ng-controller="ModalInputCtrl">
-		<div class="boxtop"></div>
-		<form id="modalInput" name="modalInputForm" novalidate>
-			<div class="boxcontent">
-				<div class="boxmessage">
-					<span class="messageicon {{ mm.message_icon }}"></span>
-					<span class="message">{{ mm.message }}</span>
+	<div class="overlay" ng-switch-when="input" ng-controller="ModalInputCtrl">
+		<div class="boxwrap {{ modalview }}">
+			<div class="boxtop"></div>
+			<form id="modalInput" name="modalInputForm" novalidate>
+				<div class="boxcontent">
+					<div class="boxmessage">
+						<span class="messageicon {{ mm.message_icon }}"></span>
+						<span class="message">{{ mm.message }}</span>
+					</div>
+					<div class="inputs">
+						<input type="text" ng-model="mm.input" required focus-on>
+					</div>
+					<div class="buttons">
+						<input type="submit" class="button" value="{{ mm.button_confirm }}" ng-click="mm.resolveModal()" ng-disabled="modalInputForm.$invalid">
+						<button ng-click="mm.closeModal()" class="button">{{ mm.button_cancel }}</button>
+					</div>
 				</div>
-				<div class="inputs">
-					<input type="text" ng-model="mm.input" required focus-on>
-				</div>
-				<div class="buttons">
-					<input type="submit" class="button" value="{{ mm.button_confirm }}" ng-click="mm.resolveModal()" ng-disabled="modalInputForm.$invalid">
-					<button ng-click="mm.closeModal()" class="button">{{ mm.button_cancel }}</button>
-				</div>
-			</div>
-		</form>
+			</form>
+		</div>
 	</div>
 
 	<!-- git commit input modal -->
-	<div class="boxwrap {{ modalview }}" ng-switch-when="commit" ng-controller="ModalInputCtrl">
-		<div class="boxtop"></div>
-		<form id="modalInput" name="modalInputForm" novalidate>
-			<div class="boxcontent">
-				<div class="boxmessage">
-					<span class="messageicon {{ mm.message_icon }}"></span>
-					<span class="message">{{ mm.message }}</span>
+	<div class="overlay" ng-switch-when="commit" ng-controller="ModalInputCtrl">
+		<div class="boxwrap {{ modalview }}">
+			<div class="boxtop"></div>
+			<form id="modalInput" name="modalInputForm" novalidate>
+				<div class="boxcontent">
+					<div class="boxmessage">
+						<span class="messageicon {{ mm.message_icon }}"></span>
+						<span class="message">{{ mm.message }}</span>
+					</div>
+					<div class="inputs">
+						<input type="text" ng-model="mm.input" required focus-on>
+					</div>
+					<div class="buttons">
+						<input type="submit" class="button" value="{{ mm.button_confirm }}" ng-click="mm.resolveModal()" ng-disabled="modalInputForm.$invalid">
+						<button ng-click="mm.closeModal()" class="button">{{ mm.button_cancel }}</button>
+					</div>
 				</div>
-				<div class="inputs">
-					<input type="text" ng-model="mm.input" required focus-on>
+			</form>
+			<div class="git-changes">
+				<div class="git-change" ng-repeat="change in mm.message_data">
+					<span class="git-status {{ change.state == '??' ? 'new' : change.state }}">{{ change.state }}</span>
+					<span class="git-file">{{ change.change }}</span>
 				</div>
-				<div class="buttons">
-					<input type="submit" class="button" value="{{ mm.button_confirm }}" ng-click="mm.resolveModal()" ng-disabled="modalInputForm.$invalid">
-					<button ng-click="mm.closeModal()" class="button">{{ mm.button_cancel }}</button>
-				</div>
-			</div>
-		</form>
-		<div class="git-changes">
-			<div class="git-change" ng-repeat="change in mm.message_data">
-				<span class="git-status {{ change.state == '??' ? 'new' : change.state }}">{{ change.state }}</span>
-				<span class="git-file">{{ change.change }}</span>
 			</div>
 		</div>
 	</div>
 
 	<!-- module readme modal -->
-	<div class="boxwrap {{ modalview }}" ng-switch-when="moduleInfo" ng-controller="ModalModuleCtrl">
-		<div class="boxtop"></div>
-		<div class="boxcontent">
-			<div class="boxmessage">
-				<span class="icon module-{{ mm.icon }}"></span>
-				<span>{{ mm.type }}</span>
-			</div>
-			<div class="markdown" marked src="mm.readmeUrl"></div>
+	<div class="overlay" ng-switch-when="moduleInfo" ng-controller="ModalModuleCtrl">
+		<div class="boxwrap {{ modalview }}">
+			<div class="boxtop"></div>
+			<div class="boxcontent">
+				<div class="boxmessage">
+					<span class="icon module-{{ mm.icon }}"></span>
+					<span>{{ mm.type }}</span>
+				</div>
+				<div class="markdown" marked src="mm.readmeUrl"></div>
 
-			<div class="buttons">
-				<button ng-click="mm.closeModal()" class="button">Close</button>
+				<div class="buttons">
+					<button ng-click="mm.closeModal()" class="button">Close</button>
+				</div>
 			</div>
 		</div>
 	</div>
 
 	<!-- install module modal -->
-	<div class="boxwrap {{ modalview }}" ng-switch-when="moduleInstall" ng-controller="ModalModuleCtrl">
-		<div class="boxtop"></div>
-		<div class="boxcontent">
+	<div class="overlay" ng-switch-when="moduleInstall" ng-controller="ModalModuleCtrl">
+		<div class="boxwrap {{ modalview }}">
+			<div class="boxtop"></div>
+			<div class="boxcontent">
 
-			<div class="boxleft">
-				<ul class="uimodules">
-					<li ng-repeat="module in mm.modules" ng-class="{ selected: module.name == mm.selected.module }">
-						<div class="modulename" ng-click="mm.selectModule(module.type) && selectModule(module.themes.default.type)">
-							<span class="icon small module-{{ module.icon }}"></span>
-							<span>{{ module.name }}</span>
-						</div>
-						<ul class="modulethemes" ng-if="module.name == mm.selected.module">
-							<li ng-repeat="theme in module.themes" ng-class="{ selected: module.name == mm.selected.module && theme.name == mm.selected.theme }" ng-if="keyLength(module.themes) > 1">
-								<div class="themename" ng-click="mm.selectModule(theme.type)">
-									<span class="icon tiny active" ng-if="mm.selected.module == module.name && mm.selected.theme == theme.name"></span>
-									<span>{{ theme.name }}</span>
-								</div>
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-
-			<div class="boxright">
-				<div class="markdown" marked src="mm.readmeUrl"></div>
-				<div class="buttons">
-					<button ng-click="mm.resolveModal()" class="button" ng-disabled="!mm.selected">Install</button>
-					<button ng-click="mm.closeModal()" class="button">Close</button>
+				<div class="boxleft">
+					<ul class="uimodules">
+						<li ng-repeat="module in mm.modules" ng-class="{ selected: module.name == mm.selected.module }">
+							<div class="modulename" ng-click="mm.selectModule(module.type) && selectModule(module.themes.default.type)">
+								<span class="icon small module-{{ module.icon }}"></span>
+								<span>{{ module.name }}</span>
+							</div>
+							<ul class="modulethemes" ng-if="module.name == mm.selected.module">
+								<li ng-repeat="theme in module.themes" ng-class="{ selected: module.name == mm.selected.module && theme.name == mm.selected.theme }" ng-if="keyLength(module.themes) > 1">
+									<div class="themename" ng-click="mm.selectModule(theme.type)">
+										<span class="icon tiny active" ng-if="mm.selected.module == module.name && mm.selected.theme == theme.name"></span>
+										<span>{{ theme.name }}</span>
+									</div>
+								</li>
+							</ul>
+						</li>
+					</ul>
 				</div>
-			</div>
 
+				<div class="boxright">
+					<div class="markdown" marked src="mm.readmeUrl"></div>
+					<div class="buttons">
+						<button ng-click="mm.resolveModal()" class="button" ng-disabled="!mm.selected">Install</button>
+						<button ng-click="mm.closeModal()" class="button">Close</button>
+					</div>
+				</div>
+
+			</div>
 		</div>
 	</div>
 
 	<!-- settings modal -->
-	<div class="boxwrap {{ modalview }}" ng-switch-when="settings" ng-controller="ModalSettingsCtrl">
-		RAGE
-		<div class="boxtop"></div>
-		<div class="boxcontent">
-
-			<div class="tabstop">
-				<ul class="tabs">
-					<li ng-repeat="module in mm.modules" ng-class="{ selected: module.name == mm.selected.module }">
-						<div class="modulename" ng-click="mm.selectModule(module.type) && selectModule(module.themes.default.type)">
-							<span class="icon small module-{{ module.icon }}"></span>
-							<span>{{ module.name }}</span>
-						</div>
-						<ul class="modulethemes" ng-if="module.name == mm.selected.module">
-							<li ng-repeat="theme in module.themes" ng-class="{ selected: module.name == mm.selected.module && theme.name == mm.selected.theme }" ng-if="keyLength(module.themes) > 1">
-								<div class="themename" ng-click="mm.selectModule(theme.type)">
-									<span class="icon tiny active" ng-if="mm.selected.module == module.name && mm.selected.theme == theme.name"></span>
-									<span>{{ theme.name }}</span>
-								</div>
+	<div class="overlay" ng-class="{ noclick: mm.setup }" ng-switch-when="settings" ng-controller="ModalSettingsCtrl">
+		<div class="boxwrap {{ modalview }}">
+			<div class="boxtop"></div>
+			<ul class="tabstop">
+				<li>
+					<a ng-class="{ active: mm.tab == 'user' }" ng-click="mm.setTab('user')"><span class="icon user"></span></a>
+				</li>
+				<li>
+					<a ng-class="{ active: mm.tab == 'settings' }" ng-click="mm.setTab('settings')"><span class="icon settings"></span></a>
+				</li>
+			</ul>
+			<div class="boxcontent">
+				<form id="userinput" name="userForm" novalidate>
+					<div class="user-settings" ng-hide="mm.tab != 'user'">
+						<ul class="variable-wrap">
+							<li class="variable-container">
+								<div class="variable-title"><span>Name</span></div>
+								<div class="variable-description">what people call you</div>
+								<input class="variable-input" type="text" name="name" id="user_name" placeholder="..." spellcheck="false" autocomplete="off" maxlength="30" focus-on ng-model="mm.data.user.name" required ng-pattern="/^[\ |\w]{3,}$/">
+							</li>
+							<li class="variable-container">
+								<div class="variable-title"><span>Email</span></div>
+								<div class="variable-description">valid email address</div>
+								<input class="variable-input" type="text" name="email" id="user_email" placeholder="..." spellcheck="false" autocomplete="off" maxlength="30" ng-model="mm.data.user.email" required ng-pattern="/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/">
+							</li>
+							<li class="variable-container">
+								<div class="variable-title"><span>S3 Id</span></div>
+								<div class="variable-description">credentials to connect to CDN</div>
+								<input class="variable-input" type="text" name="s3id" id="s3_id" placeholder="..." spellcheck="false" autocomplete="off" maxlength="20" focus-on ng-model="mm.data.user.s3.key_id" required ng-pattern="/^\w{20}$/">
+							</li>
+							<li class="variable-container">
+								<div class="variable-title"><span>S3 Secret Key</span></div>
+								<div class="variable-description">keep it secret, keep it safe</div>
+								<input class="variable-input" type="password" name="s3key" id="s3_key" placeholder="..." spellcheck="false" autocomplete="off" maxlength="40" focus-on ng-model="mm.data.user.s3.key_secret" required ng-pattern="/^[\W|\w]{40}$/">
 							</li>
 						</ul>
-					</li>
-				</ul>
-			</div>
+					</div>
 
-			<div class="boxunder">
-				<div class="markdown" marked src="mm.readmeUrl"></div>
-				<div class="buttons">
-					<button ng-click="mm.resolveModal()" class="button" ng-disabled="!mm.selected">Install</button>
-					<button ng-click="mm.closeModal()" class="button">Close</button>
-				</div>
-			</div>
+					<div class="config-settings" ng-hide="mm.tab != 'settings'">
+						<ul class="variable-wrap">
+							<li class="variable-container" ng-repeat="(name, variable) in mm.data.settings">
+								<div class="variable-title">
+									<span>{{ variable.label || name }}</span>
+									<span ng-if="variable.type == 'boolean'" ng-click="variable.value = !variable.value; vm.checkChange();" ng-model="variable.value" class="switch" ng-class="{ off: !variable.value}"></span>
+								</div>
 
+								<div ng-if="variable.description" class="variable-description">{{ variable.description }}</div>
+							</li>
+						</ul>
+					</div>
+
+					<div class="shortkeys-settings" ng-hide="mm.tab != 'shortkeys'">
+					</div>
+					<div class="buttons">
+						<input class="button" type="submit" value="Save" ng-click="mm.saveSettings()" ng-disabled="userForm.$invalid">
+						<button ng-click="mm.closeModal()" class="button" ng-if="!mm.setup">Close</button>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
 
