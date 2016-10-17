@@ -1,37 +1,5 @@
 # ϟǷ®1Πɢß0ȺɌÐ
 
-What is Springboard?
-
-##### Site Management Tool  
-##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creation  
-##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Testing  
-
----
-
-### Management Tool
-
-* Git repository
-* Searchable
-* Publish to Cloud
-
----
-
-### Creation Tool
-
-* Base Templates
-* Themed Modules
-* Sass
-
----
-
-### Testing Tool
-
-* Proxy
-* Linting
-* Browsersync
-
----
-
 Springboard is a tool to be used, and steadily improved upon, to start tying in our many processes and programs into one unified system. The current focus of this iteration of this program is on Mockup creation and management.
 
 Springboard's forefathers are a collection of bash script which became the famous [pyspring.](https://github.com/b7interactive/pyspring) The current iteration of the idea now finds itself written in Javascript with a focus on modular site creation.
