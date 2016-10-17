@@ -1,7 +1,7 @@
-<div class="modal" modaly ng-show="vm.modalview" ng-switch="vm.modalview">
+<div class="modal" modaly ng-show="modalview" ng-switch="modalview">
 
 	<!-- alert modal -->
-	<div class="boxwrap {{ vm.modalview }}" ng-switch-when="alert" ng-controller="ModalAlertCtrl">
+	<div class="boxwrap {{ modalview }}" ng-switch-when="alert" ng-controller="ModalAlertCtrl">
 		<div class="boxtop"></div>
 		<div class="boxcontent">
 			<div class="boxmessage">
@@ -16,7 +16,7 @@
 	</div>
 
 	<!-- s3 publish notification modal -->
-	<div class="boxwrap {{ vm.modalview }}" ng-switch-when="publish" ng-controller="ModalAlertCtrl" ng-init="mm.detail_show = false">
+	<div class="boxwrap {{ modalview }}" ng-switch-when="publish" ng-controller="ModalAlertCtrl" ng-init="mm.detail_show = false">
 		<div class="boxtop"></div>
 		<div class="boxcontent">
 			<div class="boxmessage">
@@ -42,7 +42,7 @@
 	</div>
 
 	<!-- single input modal -->
-	<div class="boxwrap {{ vm.modalview }}" ng-switch-when="input" ng-controller="ModalInputCtrl">
+	<div class="boxwrap {{ modalview }}" ng-switch-when="input" ng-controller="ModalInputCtrl">
 		<div class="boxtop"></div>
 		<form id="modalInput" name="modalInputForm" novalidate>
 			<div class="boxcontent">
@@ -62,7 +62,7 @@
 	</div>
 
 	<!-- git commit input modal -->
-	<div class="boxwrap {{ vm.modalview }}" ng-switch-when="commit" ng-controller="ModalInputCtrl">
+	<div class="boxwrap {{ modalview }}" ng-switch-when="commit" ng-controller="ModalInputCtrl">
 		<div class="boxtop"></div>
 		<form id="modalInput" name="modalInputForm" novalidate>
 			<div class="boxcontent">
@@ -88,7 +88,7 @@
 	</div>
 
 	<!-- module readme modal -->
-	<div class="boxwrap {{ vm.modalview }}" ng-switch-when="moduleInfo" ng-controller="ModalModuleCtrl">
+	<div class="boxwrap {{ modalview }}" ng-switch-when="moduleInfo" ng-controller="ModalModuleCtrl">
 		<div class="boxtop"></div>
 		<div class="boxcontent">
 			<div class="boxmessage">
@@ -104,7 +104,7 @@
 	</div>
 
 	<!-- install module modal -->
-	<div class="boxwrap {{ vm.modalview }}" ng-switch-when="moduleInstall" ng-controller="ModalModuleCtrl">
+	<div class="boxwrap {{ modalview }}" ng-switch-when="moduleInstall" ng-controller="ModalModuleCtrl">
 		<div class="boxtop"></div>
 		<div class="boxcontent">
 
@@ -128,6 +128,42 @@
 			</div>
 
 			<div class="boxright">
+				<div class="markdown" marked src="mm.readmeUrl"></div>
+				<div class="buttons">
+					<button ng-click="mm.resolveModal()" class="button" ng-disabled="!mm.selected">Install</button>
+					<button ng-click="mm.closeModal()" class="button">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- settings modal -->
+	<div class="boxwrap {{ modalview }}" ng-switch-when="settings" ng-controller="ModalSettingsCtrl">
+		RAGE
+		<div class="boxtop"></div>
+		<div class="boxcontent">
+
+			<div class="tabstop">
+				<ul class="tabs">
+					<li ng-repeat="module in mm.modules" ng-class="{ selected: module.name == mm.selected.module }">
+						<div class="modulename" ng-click="mm.selectModule(module.type) && selectModule(module.themes.default.type)">
+							<span class="icon small module-{{ module.icon }}"></span>
+							<span>{{ module.name }}</span>
+						</div>
+						<ul class="modulethemes" ng-if="module.name == mm.selected.module">
+							<li ng-repeat="theme in module.themes" ng-class="{ selected: module.name == mm.selected.module && theme.name == mm.selected.theme }" ng-if="keyLength(module.themes) > 1">
+								<div class="themename" ng-click="mm.selectModule(theme.type)">
+									<span class="icon tiny active" ng-if="mm.selected.module == module.name && mm.selected.theme == theme.name"></span>
+									<span>{{ theme.name }}</span>
+								</div>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+
+			<div class="boxunder">
 				<div class="markdown" marked src="mm.readmeUrl"></div>
 				<div class="buttons">
 					<button ng-click="mm.resolveModal()" class="button" ng-disabled="!mm.selected">Install</button>

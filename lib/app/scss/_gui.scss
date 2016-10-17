@@ -16,12 +16,14 @@
 	text-decoration: none;
 	text-transform: uppercase;
 
+	&.disabled,
 	&:disabled {
 		border: $orangedarkest;
 		background: $orangedarkest;
 		cursor: default;
+		opacity: .5;
 	}
-	&:hover:not(:disabled) {
+	&:hover:not(:disabled):not(.disabled) {
 		background: $orangedark;
 		border-color: $orangedark;
 		color: $whitefaded;

@@ -66,11 +66,12 @@ body {
   padding: 4px 12px;
   text-decoration: none;
   text-transform: uppercase; }
-  .button:disabled {
+  .button.disabled, .button:disabled {
     border: #352C17;
     background: #352C17;
-    cursor: default; }
-  .button:hover:not(:disabled) {
+    cursor: default;
+    opacity: .5; }
+  .button:hover:not(:disabled):not(.disabled) {
     background: #755900;
     border-color: #755900;
     color: #CACACA; }

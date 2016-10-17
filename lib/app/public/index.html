@@ -12,6 +12,8 @@
 	<body ng-controller="MainCtrl">
 		<div id="main" ng-view></div>
 
+		<div class="modals" ng-include src="'/partials/_modals.html'"></div>
+
 		<div id="loading" ng-show="loading.show || loading.offline">
 			<div class="wrap">
 				<span class="loadImage animate-spin-cw">
