@@ -1,13 +1,17 @@
-<!-- Slideout Template -->
-<script type="text/ss-template" slideout>
-	<a ng-if="facets.length > 0" href="" slideout><div class="searchspring-slideout_button"></div></a>
-	<div ng-if="facets.length > 0" id="searchspring-slideout_facets" ng-swipe-left="slideout.toggleSlideout()"></div>
+<!-- Slideout Button -->
+<script type="text/ss-template" target=".searchspring-slideout_button.searchspring-slideout_filter">
+	<span class="searchspring-slideout_button_icon">
+		<span class="button-line"></span><span class="button-line"></span><span class="button-line"></span>
+	</span>
+	<span class="searchspring-slideout_button_text">Filter Options</span>
 </script>
 
-<!-- Slideout Button Template -->
-<script type="text/ss-template" target="">
-	<div class="searchspring-slideout_button" slideout ng-if="pagination.totalResults && facets.length > 0">
-		<span class="searchspring-slideout_button_icon"></span>
-		<span class="searchspring-slideout_button_text">Filter Options</span>
+<!-- Slideout Menu -->
+<script type="text/ss-template" slideout>
+	<div ng-if="facets.length > 0" id="searchspring-slideout_header">
+		<h4>Filter Options</h4><a class="searchspring-slideout_button" href="" slideout></a>
+	</div>
+	<div ng-if="facets.length > 0" id="searchspring-slideout_facets" ng-swipe-left="slideout.toggleSlideout()">
+		<div class="searchspring-facets"></div>
 	</div>
 </script>

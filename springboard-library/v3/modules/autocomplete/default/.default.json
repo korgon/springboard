@@ -1,0 +1,20 @@
+{
+	"type": "v3/autocomplete/default",
+	"version": "1.0.0",
+	"description": "default autocomplete style",
+	"author": "searchspring",
+	"variables": {
+		"input": {
+			"value": "input.searchspring-ac",
+			"default": "input.searchspring-ac",
+			"type": "string",
+			"description": "css selector to target"
+		},
+		"action": {
+			"value": "",
+			"default": "",
+			"type": "string",
+			"description": "optional to override the form action"
+		}
+	}
+}

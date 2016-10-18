@@ -4,9 +4,9 @@ Default Results Template.
 
 This module has no options, it only includes templates and styles.
 
-There are two targets that needs to be modified.
+To target facet container change the target on the "Results & No Results" template:
 
 ```html
-.content-target-selector
-.title-target-selector
+<!-- Results & No Results -->
+<script type="text/ss-template" module="search" target=".content-target-selector">
 ```

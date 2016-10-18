@@ -1,10 +1,8 @@
-// default results styles
+/* results default scss */
+@import "._variables.scss";
+@import "_mixins.scss";
 
-@mixin respond($breakpoint) {
-	@media only screen and (max-width: $breakpoint + px) {
-		@content;
-	}
-}
+$results_module: true;
 
 #searchspring-merch_header img,
 #searchspring-merch_banner img,

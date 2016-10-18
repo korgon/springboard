@@ -1,0 +1,10 @@
+<!-- Facets - Range Slider -->
+<script type="text/ss-template" target=".facet-range-slider">
+	<div ng-if="facet.range[0] != facet.range[1]" ss-facet-slider="facet" class="slider-wrapper"></div>
+	<div ng-if="facet.range[0] != facet.range[1]" ng-if="" class="slider-reset">
+		<a ng-if="facet.facet_active" ng-href="{{ location().remove('filter', facet.field).url() }}">Reset</a>
+	</div>
+	<div ng-if="facet.range[0] == facet.range[1]" class="slider-no-ranges">
+		<p>Sorry! There are no ranges to refine by. Please try removing some filters.</p>
+	</div>
+</script>

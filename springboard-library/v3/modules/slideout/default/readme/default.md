@@ -7,25 +7,30 @@ The module <i>will</i> create a slidout container. To target this, use a standar
 |*width*|width the slideout should be enabled|
 
 ```js
-this.importer.include('slideout', { width: 1024 });
+this.importer.include('slideout', { width: 767 });
 ```
 
 Additionally, any elements inside your templates that use the 'slideout' directive will gain the click action to 'toggle' the slideout open/close.
-Target the element inside the slideout template (in this case "#searchspring-slideout_facets") with your facets template.
+Target the element inside the slideout template (in this case ".searchspring-facets") with your facets template.
 
 ```html
-<!-- Slideout Template -->
+<!-- Slideout Menu -->
 <script type="text/ss-template" slideout>
-  <a href="" slideout><div class="searchspring-slideout_button"></div></a>
-  <div id="searchspring-slideout_facets" ng-swipe-left="slideout.toggleSlideout()"></div>
+	<div ng-if="facets.length > 0" id="searchspring-slideout_header">
+		<h4>Filter Options</h4><a class="searchspring-slideout_button" href="" slideout></a>
+	</div>
+	<div ng-if="facets.length > 0" id="searchspring-slideout_facets" ng-swipe-left="slideout.toggleSlideout()">
+		<div class="searchspring-facets"></div>
+	</div>
 </script>
 ```
 
 ```html
-<div class="searchspring-slideout_button" slideout ng-if="pagination.totalResults && facets.length > 0">
-  <span class="searchspring-slideout_button_icon"></span>
-  <span class="searchspring-slideout_button_text">Filter Options</span>
-</div>
+<!-- Slideout Button -->
+<script type="text/ss-template" target=".searchspring-slideout_button.searchspring-slideout_filter">
+	<span class="searchspring-slideout_button_icon">
+		<span class="button-line"></span><span class="button-line"></span><span class="button-line"></span>
+	</span>
+	<span class="searchspring-slideout_button_text">Filter Options</span>
+</script>
 ```
-
-The button template code can be moved wherever it best fits.

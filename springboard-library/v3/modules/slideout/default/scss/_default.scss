@@ -1,65 +1,76 @@
 /* slideout default scss */
 @import "._variables.scss";
+@import "_variables.scss";
+@import "_mixins.scss";
 
-.searchspring-overlay {
-	background-color: rgba(51, 51, 51, 0.85);
-}
+$slideout_module: true;
 
-#searchspring-slideout_container .searchspring-slideout_button, .searchspring-slideout_button {
-	background-color: #000;
-	color: #fff;
-	-webkit-transition: all 250ms ease-in-out 0s;
-	-moz-transition: all 250ms ease-in-out 0s;
-	-ms-transition: all 250ms ease-in-out 0s;
-	-o-transition: all 250ms ease-in-out 0s;
-	transition: all 250ms ease-in-out 0s;
-	&:hover {
-		background-color: #f00;
-		color: #fff;
-		cursor: pointer;
+body {
+	.searchspring-overlay {
+		background-color: $slideout-overlay;
 	}
-}
-
-#searchspring-slideout_container {
 	.searchspring-slideout_button {
-		background-image: url("//cdn.searchspring.net/ajax_search/img/back_white.png");
-		background-size: 90% 90%;
-		background-repeat: no-repeat;
-		background-position: center;
-		text-align: center;
-		height: 42px;
-		width: 42px;
-		margin: 10px;
-		float: right;
+		background-color: $slideout-color-01;
+		@include transition(all 250ms ease-in-out 0s);
+		&:hover {
+			background-color: $slideout-color-02;
+			cursor: pointer;
+		}
 	}
-	#searchspring-slideout_facets {
-		clear: both;
-		padding: 10px;
+	.searchspring-slideout_button.searchspring-slideout_filter {
+		display: none;
+		@include sizing(100%, 40px);
+		text-align: center;
+		margin: 0 0 20px 0;
+		position: relative;
+		.searchspring-slideout_button_icon {
+			@include sizing(30px, 20px);
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			.button-line {
+				display: block;
+				@include sizing(100%, 4px);
+				background: $slideout-color-03;
+				margin: 0 0 4px 0;
+			}
+		}
+		.searchspring-slideout_button_text {
+			line-height: 40px;
+			color: $slideout-color-04;
+		}
+	}
+	#searchspring-slideout_container {
+		#searchspring-slideout_header {
+			position: relative;
+			padding: $slideout-title-padding;
+			h4 {
+				line-height: 42px;
+				margin: 0;
+			}
+			.searchspring-slideout_button {
+				position: absolute;
+				top: $slideout-button-top;
+				right: $slideout-button-left;
+				@include background-svg($viewport-width: 24, $fill: $slideout-color-04, $path: 'M20.91 5.375l-9.48 9.482 9.48 9.482q.34.338.34.803t-.34.804l-2.963 2.964q-.34.34-.804.34t-.804-.34L3.09 15.66q-.34-.338-.34-.803t.34-.804L16.34.803q.338-.34.803-.34t.804.34l2.964 2.964q.34.34.34.804t-.34.805z');
+				background-size: 60% 60%;
+				background-repeat: no-repeat;
+				background-position: center;
+				text-align: center;
+				@include sizing(42px, 42px);
+				margin: 0;
+			}
+		}
+		#searchspring-slideout_facets {
+			padding: $slideout-facet-padding;
+		}
 	}
 }
 
-.searchspring-slideout_button {
-	text-align: center;
-	height: 40px;
-	width: 100%;
-	margin: 0 0 20px;
-	font-size: 16px;
-	font-weight: bold;
-	text-transform: uppercase;
-	position: relative;
-	display: none;
-	@media only screen and (max-width: $slideout_width + 'px') {
+/* Slideout - Breakpoint 1 (default: 767) */
+
+@include respond($slideout-bp1-width) {
+	body .searchspring-slideout_button.searchspring-slideout_filter {
 		display: block;
-	}
-	.searchspring-slideout_button_icon {
-		width: 30px;
-		height: 20px;
-		position: absolute;
-		top: 10px;
-		left: 10px;
-		background: url("//cdn.searchspring.net/ajax_search/img/sidebar-menuicon.png") no-repeat 0px 0px;
-	}
-	.searchspring-slideout_button_text {
-		line-height: 40px;
 	}
 }

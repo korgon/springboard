@@ -1,0 +1,45 @@
+/* toolbar default scss */
+@import "._variables.scss";
+@import "_variables.scss";
+@import "_mixins.scss";
+
+$toolbar_module: true;
+
+.searchspring-toolbar {
+	&.top {
+		@if $toolbar-show-top == false {
+			display: none;
+		}
+	}
+	&.bottom {
+		@if $toolbar-show-bottom == false {
+			display: none;
+		}
+	}
+	margin: 0 -10px 20px -10px;
+	@include clearfix('&');
+	& > div {
+		width: 33.33%;
+		float: left;
+		padding: 0 10px;
+	}
+	.per-page {
+		text-align: center;
+		@if $toolbar-show-perpage == false {
+			display: none;
+		}
+	}
+	.pagination .pagination-custom {
+		@if $toolbar-show-pagination == false {
+			display: none;
+		}
+		text-align: right;
+		margin: 0 -2.5px;
+		li {
+			text-align: center;
+			display: inline-block;
+			vertical-align: middle;
+			padding: 0 2.5px;
+		}
+	}
+}

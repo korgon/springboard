@@ -1,2 +1,56 @@
-/* facet slider default scss */
+/* facet-slider default scss */
 @import "._variables.scss";
+@import "_variables.scss";
+@import "_mixins.scss";
+
+$facet-slider_module: true;
+
+.facet-range-slider {
+	.slider-wrapper {
+		overflow: hidden;
+		rzslider {
+			display: block;
+			@if $slider-style == style1 {
+			} @else if $slider-style == style2 {
+				margin: 15px 0 30px 0;
+			}
+			.rz-bar-wrapper {
+				margin-top: -19px;
+				.rz-bar {
+					background: $slider-color-01;
+				}
+			}
+			.rz-bar.rz-selection {
+				margin-top: -3px;
+				background: $slider-color-02;
+			}
+			.rz-pointer {
+				top: -11px;
+				background-color: $slider-color-03;
+				&.rz-active:after {
+					background: $slider-color-04;
+				}
+			}
+			.rz-bubble {
+				padding: 0;
+				@if $slider-style == style1 {
+				} @else if $slider-style == style2 {
+					top: 10px;
+				}
+			}
+		}
+	}
+	.slider-no-ranges p {
+		background: $slider-color-05 ;
+		border: 1px solid $slider-color-06;
+		padding: 10px;
+		&:before {
+			content: '';
+			@include inline-block(middle);
+			@include sizing(14px, 14px);
+			margin: 0 5px 0 0;
+			@include background-svg-properties;
+			@include background-svg($viewport-width: 27, $fill: $slider-color-07, $path: 'M13.714 2.286q3.732 0 6.884 1.84t4.99 4.99T27.43 16t-1.84 6.884-4.99 4.99-6.884 1.84-6.884-1.84-4.99-4.99T0 16t1.84-6.884 4.99-4.99 6.884-1.84zM16 24.554V21.16q0-.25-.16-.42t-.394-.17h-3.43q-.23 0-.41.18t-.18.41v3.394q0 .232.18.41t.41.18h3.43q.232 0 .393-.17t.16-.42zm-.036-6.143l.32-11.088q0-.214-.178-.32-.18-.144-.43-.144H11.75q-.25 0-.43.143-.178.108-.178.322l.304 11.09q0 .178.18.312t.428.134h3.304q.25 0 .42-.134t.188-.313z');
+		}
+	}
+}

@@ -1,0 +1,83 @@
+// Facets Default Variables
+//
+// 01. Change variables. Yay!
+// 02. Variables with true/false values can turn on or off a style.
+// 03. Values set to '' can be left blank so they don't generate extra styles.
+
+// Colors
+$facets-color-01: #49669e; // collapse icon color
+$facets-color-02: #333333; // list checkbox border color
+$facets-color-03: #49669e; // list check mark and square color
+$facets-color-04: #333333; // palette border color
+$facets-color-05: #49669e; // palette check stroke
+$facets-color-06: #333333; // grid border color
+$facets-color-07: #49669e; // grid border highlight
+$facets-color-08: #333333; // summary background color
+$facets-color-09: #49669e; // summary background hover color
+$facets-color-10: #ffffff; // summary font color
+$facets-color-11: #ffffff; // summary "x" color
+$facets-color-12: #ffffa5; // price input error background
+$facets-color-13: #fff5a5; // price input error border
+$facets-color-14: #333333; // price input error icon color
+
+// Collapse
+$facets-collapse-on: true;
+$facets-collapse-style: style1;  // style1 (plus/minus) or style2 (up/down arrow)
+$facets-collapse-padding: 0 25px 0 0;
+$facets-collapse-size: 12px;
+$facets-collapse-right: 0;
+$facets-collapse-left: auto;
+$facets-collapse-top: 6px;
+
+// Facets
+$facets-hierarchy-on: true;
+$facets-hierarchy-indent: 0 0 0 30px;
+$facets-checks-on: true;
+$facets-checks-style: style1; // style1 (checkmark), style2 (colored square), or style3 ("x" icon)
+$facets-checks-padding: 20px;
+$facets-checks-size: 14px;
+$facets-check-top: 4px;
+$facets-check-left: 0;
+$facets-box-size: 36px; // For palette and grid sizing
+$facets-palette-on: true;
+$facets-palette-radius: true;
+$facets-palette-border: true;
+$facets-grid-on: true;
+$facets-price-input: true;
+
+// Summary
+$facets-summary-on: true;
+$facets-summary-style: style1;  // style1 ("pill style" dark backround with "x" icon) or style2 (rounded "x" icon)
+$facets-summary-style1-padding: 5px 10px 5px 30px;
+$facets-summary-style1-size: 12px;
+$facets-summary-style1-top: 10px;
+$facets-summary-style1-left: 10px;
+$facets-summary-style2-padding: 0 0 0 25px;
+$facets-summary-style2-size: 16px;
+$facets-summary-style2-top: 2.5px;
+$facets-summary-style2-left: 0;
+$facets-summary-bp1-width: 767 !default;
+$facets-summary-bp2-width: 480;
+
+// Connected
+@if variable-exists(slideout-width) {
+	$facets-summary-bp1-width: $slideout_width;
+}
+
+@if variable-exists(color1) {
+	$facets-color-01: $color1;
+	$facets-color-03: $color1;
+	$facets-color-05: $color1;
+	$facets-color-07: $color1;
+	$facets-color-09: $color1;
+}
+@if variable-exists(color2) {
+	$facets-color-02: $color2;
+	$facets-color-04: $color2;
+	$facets-color-06: $color2;
+	$facets-color-08: $color2;
+}
+@if variable-exists(color3) {
+	$facets-color-10: $color3;
+	$facets-color-11: $color3;
+}

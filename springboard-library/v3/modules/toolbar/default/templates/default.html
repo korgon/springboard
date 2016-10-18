@@ -1,0 +1,37 @@
+<!-- Results - Toolbar -->
+<script type="text/ss-template" target=".searchspring-toolbar">
+	<div class="sort-by">
+		Sort by: <select ng-model="sorting.current" ng-options="option.label for option in sorting.options"></select>
+	</div>
+
+	<div class="per-page">
+		Items: <select ng-model="pagination.perPage" ng-options="n for n in [15, 30, 45]"></select>
+	</div>
+
+	<div ng-if="pagination.totalPages > 1" class="pagination">
+		<ul class="pagination-custom">
+			<li ng-if="pagination.previous">
+				<a ng-href="{{ pagination.previous.url }}" title="Previous">Previous</a>
+			</li>
+			<li ng-if="pagination.totalPages > 3 && pagination.currentPage > 2">
+				<a class="page-number" ng-href="{{ pagination.first.url }}" title="Page {{ pagination.first.number }}<">{{ pagination.first.number }}</a>
+			</li>
+			<li ng-if="pagination.totalPages > 3 && pagination.currentPage > 2">
+				<span>&hellip;</span>
+			</li>
+			<li ng-repeat="page in pagination.getPages(3)" ng-class="{ active: page.active }">
+				<a ng-if="!page.active" ng-href="{{ page.url }}" title="Page {{ page.number }}">{{ page.number }}</a>
+				<span ng-if="page.active" class="current-page" title="Page {{ page.number }}">{{ page.number }}</span>
+			</li>
+			<li ng-if="pagination.totalPages > 3 && pagination.currentPage < (pagination.totalPages - 1)">
+				<span>&hellip;</span>
+			</li>
+			<li ng-if="pagination.totalPages > 3 && pagination.currentPage < (pagination.totalPages - 1)">
+				<a ng-href="{{ pagination.last.url }}" title="Page {{ pagination.last.number }}">{{ pagination.last.number }}</a>
+			</li>
+			<li ng-if="pagination.next">
+				<a ng-href="{{ pagination.next.url }}" title="Next">Next</a>
+			</li>
+		</ul>
+	</div>
+</script>

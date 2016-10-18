@@ -1,0 +1,39 @@
+// -----------------------------------------------------------------------
+// STYLESHEET INFORMATION
+//
+// 01. Change variables. Yay!
+// 02. Variables with true/false values can turn on or off a style.
+// 03. Values set to '' can be left blank so they don't generate extra styles.
+// -----------------------------------------------------------------------
+
+// Colors
+$slideout-color-01: #49669e; // slideout button color
+$slideout-color-02: #333333; // slideout button hover color
+$slideout-color-03: #ffffff; // slideout line button color
+$slideout-color-04: #ffffff; // slideout button font color
+$slideout-color-05: #ffffff; // slideout arrow color
+
+// Slideout
+$slideout-overlay: rgba(0, 0, 0, 0.8);
+$slideout-title-padding: 10px 65px 10px 10px;
+$slideout-facet-padding: 0 10px;
+$slideout-button-top: 10px;
+$slideout-button-left: 10px;
+$slideout-bp1-width: 767;
+
+
+@if variable-exists(color1) {
+	$slideout-color-01: $color1;
+}
+@if variable-exists(color2) {
+	$slideout-color-02: $color2;
+}
+@if variable-exists(color3) {
+	$slideout-color-03: $color3;
+	$slideout-color-04: $color3;
+	$slideout-color-05: $color3;
+}
+
+@if variable-exists(slideout-width) {
+	$slideout-bp1-width: $slideout-width;
+}

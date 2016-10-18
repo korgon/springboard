@@ -1,0 +1,30 @@
+// Facet-Slider Default Variables
+//
+// 01. Change variables. Yay!
+// 02. Variables with true/false values can turn on or off a style.
+// 03. Values set to '' can be left blank so they don't generate extra styles.
+// -----------------------------------------------------------------------
+
+// Colors
+$slider-color-01: #333333; // slider back bar color
+$slider-color-02: #7c99d1; // slider front bar color
+$slider-color-03: #49669e; // slider pointer color
+$slider-color-04: #333333; // slider pointer active dot color
+$slider-color-05: #ffffa5; // slider error background
+$slider-color-06: #fff5a5; // slider error border
+$slider-color-07: #333333; // slider error icon color
+
+// Slider
+$slider-style: style1; // style1 (values above slider) or style2 (values below slider)
+
+@if variable-exists(color1) {
+	$slider-color-02: $color1 + #222;
+	$facets-color-03: $color1;
+}
+@if variable-exists(color2) {
+	$slider-color-01: $color2;
+	$slider-color-04: $color2;
+	$slider-color-07: $color2;
+}
+@if variable-exists(color3) {
+}
