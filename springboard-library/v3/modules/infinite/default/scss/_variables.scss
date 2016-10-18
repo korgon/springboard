@@ -1,0 +1,17 @@
+// Infinite Default Variables
+//
+// 01. Change variables. Yay!
+// 02. Variables with true/false values can turn on or off a style.
+// 03. Values set to '' can be left blank so they don't generate extra styles.
+// -----------------------------------------------------------------------
+
+// Colors
+$infinite-color-01: #49669e;
+
+@if variable-exists(color1) {
+	$infinite-color-01: $color1;
+}
+@if variable-exists(color2) {
+}
+@if variable-exists(color3) {
+}

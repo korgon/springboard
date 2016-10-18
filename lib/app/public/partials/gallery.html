@@ -2,7 +2,7 @@
 
 <div id="content">
 
-	<div id="gallery" ng-if="vm.loaded">
+	<div id="gallery" ng-if="vm.sites">
 
 		<ul class="sites" ng-hide="vm.loading">
 
@@ -14,7 +14,7 @@
 						<input type="text" name="name" id="input_name" autocomplete="off" focus-on ng-model="vm.new_site.name" required ng-pattern="/^[^\_\.][\w\.\-_]+\.\w{2,}$/i">
 						<label for="input_siteid">Siteid</label>
 						<input type="text" name="siteid" id="input_siteid" autocomplete="off" maxlength="6" ng-model="vm.new_site.siteid" required ng-pattern="/^[a-z0-9]{6}$/i">
-						<select required ng-model="vm.new_site.cart" ng-options="cart as cart for cart in vm.carts | orderBy: 'toString()'" ng-init="vm.new_site.cart = 'custom'">
+						<select required ng-model="vm.new_site.template" ng-options="template as template for template in vm.templates | orderBy: 'toString()'" ng-init="vm.new_site.template = 'empty'">
 						</select>
 						<div class="buttons">
 							<input class="button new_add" type="submit" value="Add" ng-click="vm.createSite()" ng-disabled="createForm.$invalid">
@@ -25,10 +25,10 @@
 			</li>
 
 			<li class="site" ng-repeat="site in vm.sites | filter:vm.query">
-				<a href="/sites/{{ site.name }}/{{ site.default_html }}" target="_blank"><img ng-src="{{ site.thumb }}"></a>
+				<a href="{{ site.default_url }}" target="_blank"><img ng-src="{{ site.thumb }}"></a>
 				<div class="controls">
 					<a ng-click="vm.editSite(site.name)"><span class="sitebutton edit"></span></a>
-					<a href="/sites/{{ site.name }}/{{ site.default_html }}" target="_blank" ng-if="site.default_html && !site.proxy.enable.value"><span class="sitebutton open"></span></a>
+					<a href="{{ site.default_url }}" target="_blank" ng-if="site.default_url && !site.proxy.enable.value"><span class="sitebutton open"></span></a>
 				</div>
 				<div class="details">
 					<span class="name">{{ site.name }}</span>

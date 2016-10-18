@@ -4,7 +4,7 @@
 		<div class="subtitle" ng-click="showMenu = !showMenu">SPRIΠGBOΛRD</div>
 	</div>
 	<div class="mainmenu" ng-include src="'/partials/_above_menu.html'" ng-class="{ 'show': showMenu }" ng-init="showMenu = false"></div>
-	<input id="frameurl" name="url" autocomplete="off" spellcheck="false" ng-model="vm.session.url" ng-change="vm.changeUrl()">
+	<input id="frameurl" name="url" autocomplete="off" spellcheck="false" ng-model="vm.session.url" ng-change="vm.changeUrl()" ng-keypress="vm.changeUrl($event)">
 	<div class="openurl" ng-click="vm.openUrl(vm.session.url)"></div>
 	<div class="line"></div>
 	<div class="worksite"><a class="currentsite" ng-click="vm.toggleEditor()"><span id="currentsite">{{ vm.site.name }}</span></a>
@@ -26,32 +26,35 @@
 						<div class="vtab-wrap">
 							<div class="vtab-control-wrap">
 								<ul class="vtab-control" ng-class="{ disabled: vm.edited }">
-									<li ng-class="{ 'active': vm.activeVtab('default') == 'files' }"><a ng-click="vm.switchVtab('files', 'default')"><span class="icon files"></span></a></li>
+									<li ng-class="{ 'active': vm.activeVtab('default') == 'dirstruct' }"><a ng-click="vm.switchVtab('dirstruct', 'default')"><span class="icon files"></span></a></li>
+
+									<li ng-class="{ 'active': vm.activeVtab('default') == 'cloudstruct' }"><a ng-click="vm.switchVtab('cloudstruct', 'default')"><span class="icon cloudstruct"></span></a></li>
 
 									<li ng-class="{ 'active': vm.activeVtab('default') == 'proxy' }"><a ng-click="vm.switchVtab('proxy', 'default')"><span class="icon proxy"></span></a></li>
-
-									<li ng-class="{ 'active': vm.activeVtab('default') == 'history' }"><a ng-click="vm.switchVtab('history', 'default')"><span class="icon pulse"></span></a></li>
-
-									<li ng-class="{ 'active': vm.activeVtab('default') == 'tags' }"><a ng-click="vm.switchVtab('tags', 'default')"><span class="icon tags"></span></a></li>
 
 									<li ng-class="{ 'active': vm.activeVtab('default') == 'settings' }"><a ng-click="vm.switchVtab('settings', 'default')"><span class="icon settings"></span></a></li>
 								</ul>
 							</div>
 
-							<div class="vtab" ng-switch="vm.session.tab['settings'].vtab['default'].tab">
+							<div class="vtab" ng-switch="vm.session.tab.settings.vtab.default.tab">
 
 								<div ng-switch-when="settings">
 									<div class="vtab-block">
+										<div class="vtab-head"><span class="vtab-title">{{ vm.session.tab.settings.vtab.default.tab }}</span></div>
+										<div class="vtab-subhead">site specific settings</div>
+									</div>
+
+									<div class="vtab-block">
 										<ul class="variable-wrap">
 											<li class="variable-container" ng-repeat="(name, variable) in vm.site.settings" ng-include="'variables'"></li>
-											<li>
+											<li class="variable-container">
 												<div class="vtab-blockhead">
 													<span>screen capture</span>
 													<span ng-click="vm.captureScreen()" class="icon small capture"></span>
 												</div>
 												<div>
 													<div class="variable-description">
-														<span>generate screen shot for site</span>
+														<span>generate screenshot from frame</span>
 													</div>
 												</div>
 											</li>
@@ -59,33 +62,100 @@
 									</div>
 								</div>
 
-								<div ng-switch-when="files">
-									<ul class="settings-files">
-										<li class="root"><span class="icon folder-root"></span></li>
-										<ul class="directory-contents">
-											<li class="{{ details.type }} {{ details.extension.replace('.', '') }}" ng-repeat="details in vm.files.root.contents | orderFilesBy: 'type'" ng-include="'fileTree'"></li>
+								<div ng-switch-when="dirstruct">
+									<div class="vtab-block" ng-init="vm.refreshDirstruct()">
+										<div class="loading-box" ng-if="vm.dirstruct.loading && !vm.dirstruct.error"><span class="loading-gear box animate-spin-cw"></span></div>
+
+										<ul class="settings-files" ng-if="!vm.dirstruct.loading && !vm.dirstruct.error">
+											<li class="root"><span class="icon folder-open"></span></li>
+											<ul class="directory-contents">
+												<li class="{{ details.type }} {{ details.extension.replace('.', '') }}" ng-repeat="details in vm.dirstruct.data.root.contents | orderFilesBy: 'type'" ng-include="'fileTree'"></li>
+											</ul>
 										</ul>
-									</ul>
+
+										<div class="loading-box" ng-if="vm.dirstruct.error">
+											<span class="{{ vm.dirstruct.error.icon }} box"></span>
+											<p class="message">{{ vm.dirstruct.error.message }}</p>
+										</div>
+									</div>
+								</div>
+
+								<div ng-switch-when="cloudstruct">
+									<div class="vtab-block" ng-init="vm.cloudstruct ? true : vm.refreshCloudstruct()">
+										<div class="loading-box" ng-if="vm.cloudstruct.loading && !vm.cloudstruct.error"><span class="loading-gear box animate-spin-cw"></span></div>
+
+										<ul class="settings-files" ng-if="vm.cloudstruct.data.root && !vm.cloudstruct.loading && !vm.cloudstruct.error">
+											<li class="root"><span class="icon folder-cloud"></span></li>
+											<ul class="directory-contents">
+												<li class="{{ details.type }} {{ details.extension.replace('.', '') }}" ng-repeat="details in vm.cloudstruct.data.root.contents | orderFilesBy: 'type'" ng-include="'fileTree'"></li>
+											</ul>
+										</ul>
+
+										<div class="loading-box" ng-if="vm.cloudstruct.error">
+											<span class="{{ vm.cloudstruct.error.icon }} box"></span>
+											<p class="message">{{ vm.cloudstruct.error.message }}</p>
+										</div>
+									</div>
 								</div>
 
 								<div ng-switch-when="proxy">
 									<div class="vtab-block">
-										<ul class="variable-wrap">
-											<li class="variable-container" ng-repeat="(name, variable) in vm.site.proxy" ng-include="'variables'"></li>
-										</ul>
+										<div class="vtab-head">
+											<span class="vtab-title">{{ vm.session.tab.settings.vtab.default.tab }} Website</span>
+											<span ng-click="vm.site.proxy.enable.value = !vm.site.proxy.enable.value; vm.checkChange();" class="switch" ng-class="{ off: !vm.site.proxy.enable.value }"></span>
+										</div>
+										<div class="vtab-subhead">{{ vm.site.proxy.enable.description }}</div>
+									</div>
+
+									<div class="vtab-contents" ng-class="{ disabled: !vm.site.proxy.enable.value }">
+										<div class="vtab-overlay ng-hide" ng-hide="vm.site.proxy.enable.value"></div>
+										<div class="vtab-block">
+											<ul class="variable-wrap">
+												<li class="variable-container">
+													<div class="vtab-blockhead">
+														<span>{{ vm.site.proxy.url.label || name }}</span>
+													</div>
+
+													<div ng-if="vm.site.proxy.url.description" class="variable-description">{{ vm.site.proxy.url.description }}</div>
+													<input ng-change="vm.checkChange()" class="variable-input" ng-model= "vm.site.proxy.url.value" placeholder="..." autocomplete="off" spellcheck="false">
+												</li>
+												<li class="variable-container">
+													<div class="vtab-blockhead">
+														<span>{{ vm.site.proxy.catalog.label || name }}</span>
+													</div>
+
+													<div ng-if="vm.site.proxy.catalog.description" class="variable-description">{{ vm.site.proxy.catalog.description }}</div>
+													<select ng-change="vm.checkChange()" class="variable-input" ng-model= "vm.site.proxy.catalog.value">
+														<option label="smc" value="smc">smc</option>
+														<option ng-repeat="ui in vm.site.catalogs" label="{{ ui.name }}" value="{{ ui.name }}">{{ ui.name }}</option>
+													</select>
+												</li>
+												<li class="variable-container" ng-if="vm.site.proxy.catalog.value == 'smc'">
+													<div class="vtab-blockhead">
+														<span>{{ vm.site.proxy.context.label || name }}</span>
+													</div>
+
+													<div ng-if="vm.site.proxy.context.description" class="variable-description">{{ vm.site.proxy.context.description }}</div>
+													<input ng-change="vm.checkChange()" class="variable-input" ng-model= "vm.site.proxy.context.value" placeholder="..." autocomplete="off" spellcheck="false">
+												</li>
+												<li class="variable-container">
+													<div class="vtab-blockhead">
+														<span>view proxied site</span>
+														<span ng-click="vm.setProxyUrl('http://localhost:' + vm.proxy.port)" class="icon small proxy_view"></span>
+													</div>
+													<div ng-if="vm.site.proxy.url.description" class="variable-description">show the proxied site in the editor</div>
+												</li>
+											</ul>
+										</div>
 									</div>
 								</div>
 
-								<div ng-switch-when="tags">
-									<div class="vtab-head">{{ vm.session.tab['settings'].vtab['default'].tab }}</div>
-									<ul class="settings-tags">
-									</ul>
-								</div>
-
-								<div ng-switch-when="history">
-									<div class="vtab-head">{{ vm.session.tab['settings'].vtab['default'].tab }}</div>
-									<ul class="settings-history">
-									</ul>
+								<div ng-switch-when="instructions">
+									<div class="vtab-block">
+										<div class="vtab-head">{{ vm.session.tab.settings.vtab.default.tab }}</div>
+										<ul class="settings-instructions">
+										</ul>
+									</div>
 								</div>
 
 							</div>
@@ -119,7 +189,9 @@
 
 												<li ng-class="{ 'active': vm.activeVtab(ui.name) == 'styles' }"><a ng-click="vm.switchVtab('styles', ui.name)"><span class="icon styles"></span></a></li>
 
-												<li ng-if="!vm.isEmpty(ui.variables)" ng-class="{ 'active': vm.activeVtab(ui.name) == 'variables' }"><a ng-click="vm.switchVtab('variables', ui.name)"><span class="icon variables"></span></a></li>
+												<li ng-class="{ 'active': vm.activeVtab(ui.name) == 'variables' }"><a ng-click="vm.switchVtab('variables', ui.name)"><span class="icon variables"></span></a></li>
+
+												<li ng-class="{ 'active': vm.activeVtab(ui.name) == 'tags' }"><a ng-click="vm.switchVtab('tags', ui.name)"><span class="icon tags"></span></a></li>
 
 												<li ng-class="{ 'active': vm.activeVtab(ui.name) == 'settings' }"><a ng-click="vm.switchVtab('settings', ui.name)"><span class="icon settings"></span></a></li>
 											</ul>
@@ -129,10 +201,21 @@
 
 											<div ng-switch-when="styles">
 												<div class="vtab-block">
+													<div class="vtab-head"><span class="vtab-title">Styles</span></div>
+													<div class="vtab-subhead">used for modifying the design</div>
+												</div>
+
+												<div class="vtab-block">
 													<ul class="variable-wrap">
 														<li class="variable-container" ng-repeat="(name, variable) in ui.styles" ng-include="'variables'"></li>
-														<li ng-if="vm.isEmpty(ui.styles)">
-															<div class="vtab-subhead">nothing to see here...</div>
+														<li class="variable-container" ng-if="vm.isEmpty(ui.styles)">
+															<div class="vtab-blockhead">
+																<span></span>
+															</div>
+														</li>
+														<li class="variable-container-button">
+															<div class="vtab-blockhead"></div>
+															<div class="button disabled">Add Style</div>
 														</li>
 													</ul>
 												</div>
@@ -140,23 +223,54 @@
 
 											<div ng-switch-when="variables">
 												<div class="vtab-block">
+													<div class="vtab-head"><span class="vtab-title">Variables</span></div>
+													<div class="vtab-subhead">used for modifying the design</div>
+												</div>
+
+												<div class="vtab-block">
 													<ul class="variable-wrap">
 														<li class="variable-container" ng-repeat="(name, variable) in ui.variables" ng-include="'variables'"></li>
-														<li ng-if="vm.isEmpty(ui.variables)">
-															<div class="vtab-subhead">nothing to see here...</div>
+														<li class="variable-container" ng-if="vm.isEmpty(ui.variables)">
+															<div class="vtab-blockhead"></div>
+														</li>
+														<li class="variable-container-button">
+															<div class="vtab-blockhead"></div>
+															<div class="button disabled">Add Variable</div>
 														</li>
 													</ul>
 												</div>
 											</div>
 
+											<div ng-switch-when="tags">
+												<div class="vtab-block">
+													<div class="vtab-head"><span class="vtab-title">Custom Tags</span></div>
+
+													<tagger ng-model="ui.tags" options="vm.tags" placeholder="..." change="vm.checkChange()">
+												</div>
+											</div>
+
 											<div ng-switch-when="settings">
+												<div class="vtab-block">
+													<div class="vtab-head"><span class="vtab-title">Settings</span></div>
+													<div class="vtab-subhead">ui specific settings</div>
+												</div>
+
 												<div class="vtab-block">
 													<ul class="variable-wrap">
 														<li class="variable-container" ng-repeat="(name, variable) in ui.settings" ng-include="'variables'"></li>
-														<li ng-if="vm.isEmpty(ui.settings)">
-															<div class="vtab-subhead">nothing to see here...</div>
+														<li class="variable-container">
+															<div class="vtab-blockhead">
+																<span>script tag</span>
+																<span copycat="#uiscript" class="icon small copy"></span>
+															</div>
+															<div>
+																<input id="uiscript" type=hidden value="{{ vm.getScriptTag(ui.type) }}">
+																<div class="variable-description">
+																	<span>copy script loader to the clipboard</span>
+																</div>
+															</div>
 														</li>
-														<li>
+														<li class="variable-container">
 															<div class="vtab-blockhead">
 																<span>force recompile</span>
 																<span ng-click="vm.forceCompile(ui)" class="icon small compile"></span>
@@ -173,46 +287,47 @@
 
 											<div ng-switch-default>
 												<div ng-repeat="module in ui.modules" ng-if="vm.session.tab['uigen'].vtab[ui.name].tab == 'module_' + module.name">
-													<div class="vtab-head"><span class="vtab-title" ng-click="vm.moduleInfo(module)">{{ module.name }}</span><span ng-click="module.enabled = !module.enabled; vm.updateModule(ui.name, module.name)" ng-model="module.enabled" class="switch" ng-class="{ off: !module.enabled}"></span></div>
+													<div class="vtab-block">
+														<div class="vtab-head"><span class="vtab-title">{{ module.name }}</span><span ng-click="module.enabled = !module.enabled; vm.updateModule(ui.name, module.name)" ng-model="module.enabled" class="switch" ng-class="{ off: !module.enabled}"></span>
+														</div>
 
-													<div class="vtab-subhead">{{ module.type }} module v{{ module.version }}</div>
+														<div class="vtab-subhead">{{ module.type }} module v{{ module.version }}<span ng-click="vm.moduleInfo(module)" class="icon infos tiny"></span></div>
 
-													<br>
+													</div>
 													<div class="vtab-contents" ng-class="{ disabled: !module.enabled }">
 														<div class="vtab-overlay" ng-hide="module.enabled"></div>
 
-														<div class="vtab-block" ng-if="!vm.isEmpty(vm.site.catalogs[ui.name].modules[module.name].themes[vm.site.catalogs[ui.name].modules[module.name].theme].variables)">
+														<div class="vtab-block">
+
 															<ul class="variable-wrap">
-																<li class="variable-container" ng-repeat="(name, variable) in vm.site.catalogs[ui.name].modules[module.name].themes[vm.site.catalogs[ui.name].modules[module.name].theme].variables">
-																	<div class="vtab-blockhead">{{ name }}</div>
-																	<div>
-																		<div ng-if="variable.description" class="variable-description">{{ variable.description }}</div>
-																		<input class="variable-input" ng-change="vm.checkChange()" ng-model="variable.value" placeholder="..." autocomplete="off" spellcheck="false">
+																<li class="variable-container" ng-repeat="(name, variable) in vm.site.catalogs[ui.name].modules[module.name].themes[vm.site.catalogs[ui.name].modules[module.name].theme].variables" ng-include="'variables'"></li>
+
+																<li class="variable-container" ng-if="!vm.site.catalogs[ui.name].modules[module.name].themes[vm.site.catalogs[ui.name].modules[module.name].theme].variables || vm.isEmpty(vm.site.catalogs[ui.name].modules[module.name].themes[vm.site.catalogs[ui.name].modules[module.name].theme].variables)">
+																	<div class="vtab-blockhead">settings</div>
+																	<div class="variable-description">this module is not configurable</div>
+																</li>
+
+																<li class="variable-container" ng-if="!vm.isSingular(vm.uis[ui.type].modules[module.type.split('/')[1]].themes)">
+																	<div class="vtab-blockhead">themes</div>
+
+																	<div class="variable-description" >
+																		<ul class="module-themes-container" ng-if="!vm.isSingular(vm.uis[ui.type].modules[module.type.split('/')[1]].themes)">
+																			<li ng-repeat="theme in module.themes">
+																				<span class="theme-name">{{ theme.name }}</span>
+																				<span ng-if="vm.site.catalogs[ui.name].modules[module.name].theme == theme.name" title="active" class="icon active on"></span>
+																				<span ng-if="vm.site.catalogs[ui.name].modules[module.name].theme != theme.name" title="inactive" class="icon active off" ng-click="vm.site.catalogs[ui.name].modules[module.name].theme = theme.name; vm.updateModule(ui.name, module.name);"></span>
+																				<span title="custom" class="icon custom disabled" ng-if="!vm.uis[ui.type].modules[module.type.split('/')[1]].themes[theme.name]"></span>
+																			</li>
+																			<li ng-repeat="theme in vm.uis[ui.type].modules[module.type.split('/')[1]].themes" ng-if="!vm.site.catalogs[ui.name].modules[module.name].themes[theme.name]">
+																				<span class="theme-name">{{ theme.name }}</span>
+																				<span title="{{ vm.site.catalogs[ui.name].modules[module.name].themes[theme.name] ? 'installed' : 'install' }}" class="icon install" ng-click="vm.installModuleTheme(ui.name, module.name, theme.name)"></span>
+																			</li>
+																		</ul>
 																	</div>
 																</li>
-																<li ng-if="vm.isEmpty(vm.site.catalogs[ui.name].modules[module.name].themes[vm.site.catalogs[ui.name].modules[module.name].theme].variables)">
-																	<div class="vtab-subhead">no variables defined...</div>
-																</li>
 															</ul>
+
 														</div>
-
-														<div class="vtab-block" ng-if="!vm.isSingular(vm.uis[ui.type].modules[module.type.split('/')[1]].themes)">
-															<div class="vtab-blockhead">themes</div>
-
-															<ul class="module-themes-container">
-																<li ng-repeat="theme in module.themes">
-																	<span class="theme-name">{{ theme.name }}</span>
-																	<span ng-if="vm.site.catalogs[ui.name].modules[module.name].theme == theme.name" title="active" class="icon active on"></span>
-																	<span ng-if="vm.site.catalogs[ui.name].modules[module.name].theme != theme.name" title="inactive" class="icon active off" ng-click="vm.site.catalogs[ui.name].modules[module.name].theme = theme.name; vm.updateModule(ui.name, module.name);"></span>
-																	<span title="custom" class="icon custom disabled" ng-if="!vm.uis[ui.type].modules[module.type.split('/')[1]].themes[theme.name]"></span>
-																</li>
-																<li ng-repeat="theme in vm.uis[ui.type].modules[module.type.split('/')[1]].themes" ng-if="!vm.site.catalogs[ui.name].modules[module.name].themes[theme.name]">
-																	<span class="theme-name">{{ theme.name }}</span>
-																	<span title="{{ vm.site.catalogs[ui.name].modules[module.name].themes[theme.name] ? 'installed' : 'install' }}" class="icon install" ng-click="vm.installModuleTheme(ui.name, module.name, theme.name)"></span>
-																</li>
-															</ul>
-														</div>
-
 													</div>
 												</div>
 											</div>
@@ -223,24 +338,28 @@
 							</li>
 							<li>
 								<div class="ui-add solo" ng-if="vm.isEmpty(vm.site.catalogs) || !(vm.session.tab['uigen'].current && vm.site.catalogs[vm.session.tab['uigen'].current])" ng-init="vm.new_ui_show = (vm.isEmpty(vm.site.catalogs) ? true : false)">
-									<div id="addbutton" ng-click="vm.showAddInput()" ng-hide="vm.new_ui_show">
+									<div id="addbutton" ng-click="vm.toggleAddInput()" ng-if="!vm.new_ui_show">
 										<span class="brackets">[</span>
 										<span class="add"></span>
 										<span class="brackets">]</span>
 									</div>
-									<form id="adduiinput" name="UIform" novalidate class="visible" ng-if="vm.new_ui_show">
-										<label for="uiname_input">Name</label>
-										<input type="text" name="uiname" id="uiname_input" autocomplete="off" focus-on ng-model="vm.new_ui.name" required ng-pattern="/^\w{2,}$/i" ng-init="vm.new_ui.type = 'v3'">
+									<div id="addui" ng-if="vm.new_ui_show">
+										<div class="head"><span>Create New UI</span></div>
+										<form id="adduiinput" name="UIform" novalidate class="visible">
+											<label for="uiname_input">Name</label>
+											<input type="text" name="uiname" id="uiname_input" autocomplete="off" focus-on ng-model="vm.new_ui.name" required ng-pattern="/^[\w-_]{2,}$/i" ng-init="vm.new_ui = { type: 'v3', cart: 'custom' }">
+											<cartselect class="cartselect" list="vm.carts" selected="vm.new_ui.cart"></cartselect>
 
-										<label for="uitypeinput" ng-if="vm.uis.length > 1">Type</label>
-										<select id="uitypeinput" ng-if="vm.uis.length > 1" required ng-model="vm.new_ui.type" ng-options="ui.type as ui.type for ui in vm.uis">
-										</select>
+											<label for="uitypeinput" ng-if="vm.uis.length > 1">Type</label>
+											<select id="uitypeinput" ng-if="vm.uis.length > 1" required ng-model="vm.new_ui.type" ng-options="ui.type as ui.type for ui in vm.uis">
+											</select>
 
-										<div class="buttons">
-											<input class="button" type="submit" value="Add" ng-click="vm.installUI()" ng-disabled="UIform.$invalid">
-											<input class="button" type="button" value="Cancel" ng-click="vm.hideAddInput()">
-										</div>
-									</form>
+											<div class="buttons">
+												<input class="button" type="submit" value="Add" ng-click="vm.installUI()" ng-disabled="UIform.$invalid">
+												<input class="button" type="button" value="Cancel" ng-click="vm.hideAddInput()">
+											</div>
+										</form>
+									</div>
 								</div>
 								<div class="spacer"></div>
 							</li>
@@ -277,13 +396,13 @@
 	<div class="vtab-blockhead">
 		<span>{{ variable.label || name }}</span>
 		<span ng-if="variable.type == 'boolean'" ng-click="variable.value = !variable.value; vm.checkChange();" ng-model="variable.value" class="switch" ng-class="{ off: !variable.value}"></span>
-		<span ng-if="variable.type == 'color'" class="variable-color background">&#x2B22;</span>
-		<span ng-if="variable.type == 'color'" class="variable-color" style="color: {{ variable.value }};">&#x2B22;</span>
+		<cartselect ng-if="variable.type == 'cart'" class="cartselect" list="vm.carts" callback="vm.checkChange();" selected="variable.value" ></cartselect>
+		<span ng-if="variable.type == 'color'" class="hexagon-wrapper variable-background"><span class="hexagon variable-background"></span></span>
+		<span ng-if="variable.type == 'color'" class="hexagon-wrapper variable-color"><span class="hexagon" style="background-color: {{ variable.value }};"></span></span>
 	</div>
-	<div>
-		<div ng-if="variable.description" class="variable-description">{{ variable.description }}</div>
-		<input ng-if="variable.type != 'boolean'" ng-change="vm.checkChange()" class="variable-input" ng-model= "variable.value" placeholder="..." autocomplete="off" spellcheck="false">
-	</div>
+
+	<div ng-if="variable.description" class="variable-description">{{ variable.description }}</div>
+	<input ng-if="variable.type != 'boolean' && variable.type != 'cart'" ng-change="vm.checkChange()" class="variable-input" ng-model= "variable.value" placeholder="..." autocomplete="off" spellcheck="false">
 </script>
 
 <!-- Used for recursive file structure -->
@@ -291,29 +410,34 @@
 	<div class="filewrapper" ng-if="details.type == 'file'" ng-init="details.show = false" ng-class="{ show: details.show }">
 		<div class="filehead" ng-if="details.type == 'file'" ng-click="details.show = !details.show">
 			<span class="icon small extension-{{ details.extension }}">
-				<span class="icon tiny selected" ng-if="vm.site.thumb == ('/sites/' + vm.site.name + '/' + details.path) || details.path == vm.site.default_html"></span>
+				<span class="icon tiny selected" ng-if="vm.site.thumb == (vm.relative_url + details.path) || (vm.relative_url + details.path) == vm.site.default_url"></span>
 			</span>
-			<span class="filename" ng-class="{ cloud: vm.site.cloud_files.indexOf(details.path) != -1 }">{{ details.name }}</span>
+			<span class="filename" ng-class="{ cloud: details.cloud }">{{ details.name }}</span>
 		</div>
 		<div class="filedetails">
-			<div class="fileactions">
-				<span class="icon tiny active" ng-if="details.extension == 'html'" ng-class="{ disabled: details.path != vm.site.default_html }" ng-click="vm.setDefaultHTML(details.path)"></span>
+			<div class="fileactions" ng-if="vm.session.tab.settings.vtab.default.tab == 'dirstruct'">
+				<span class="icon tiny active" ng-if="details.extension == 'html'" ng-class="{ disabled: (vm.relative_url + details.path) != vm.site.default_url }" ng-click="vm.setDefaultHTML(details.path)"></span>
 				<span class="icon tiny active"  ng-if="['png', 'jpeg', 'jpg', 'gif'].indexOf(details.extension) != -1" ng-class="{ disabled: vm.site.thumb != ('/sites/' + vm.site.name + '/' + details.path) }" ng-click="vm.setThumb(details.path)"></span>
 				<span class="icon tiny cloud" ng-class="{ disabled: vm.site.cloud_files.indexOf(details.path) == -1 }" ng-click="vm.toggleCloudFile(details.path)"></span>
+				<span class="icon tiny upload" ng-click="vm.publishFile(details.path)"></span>
 				<span class="icon tiny view" ng-click="vm.setUrl(vm.root_url + details.path)" ng-class="{ disabled: vm.session.frameurl.match(vm.site.name + '/' + details.path) }"></span>
 				<span class="icon tiny open" ng-click="vm.openUrl(vm.root_url + details.path)"></span>
+				<span class="filestats">{{ details.size }}</span>
+			</div>
+			<div class="fileactions" ng-if="vm.session.tab.settings.vtab.default.tab == 'cloudstruct'">
+				<span class="icon tiny open" ng-click="vm.openUrl('//' + vm.cloudstruct.data.bucket + '/' + details.key)"></span>
 				<span class="filestats">{{ details.size }}</span>
 			</div>
 		</div>
 	</div>
 
-	<span class="filewrapper" ng-if="details.type == 'directory'" ng-click="vm.toggleDir(details)">
-		<span ng-if="details.collapsed" class="icon small folder"></span>
-		<span ng-if="!details.collapsed" class="icon small folder-open"></span>
-		<span class="filename">{{ details.name }}</span>
+	<span class="filewrapper" ng-if="details.type == 'directory'" ng-click="vm.toggleDir(vm.session.tab.settings.vtab.default.tab, details)">
+		<span ng-if="details.collapsed" class="icon small folder{{ details.path.match(vm[vm.session.tab.settings.vtab.default.tab].current) ? '-current' : '' }}"></span>
+		<span ng-if="!details.collapsed" class="icon small folder{{ details.path.match(vm[vm.session.tab.settings.vtab.default.tab].current) ? '-current' : '' }}-open"></span>
+		<span class="filename" ng-class="{ cloud: details.cloud }">{{ details.name }}</span>
 	</span>
 
-	<ul class="directory-contents" ng-if="details.type == 'directory'" ng-init="vm.checkDirState(details)" ng-class="{ collapsed: details.collapsed }">
+	<ul class="directory-contents" ng-if="details.type == 'directory'" ng-init="vm.checkDirState(vm.session.tab.settings.vtab.default.tab, details)" ng-class="{ collapsed: details.collapsed }">
 		<li class="{{ details.type }}" ng-repeat="details in details.contents | orderFilesBy: 'type'" ng-include="'fileTree'"></li>
 	</ul>
 </script>

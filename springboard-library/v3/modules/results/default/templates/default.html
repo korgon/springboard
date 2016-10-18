@@ -1,0 +1,95 @@
+<!-- Results & No Results -->
+<script type="text/ss-template" module="search" target=".content-target-selector">
+	<div ng-if="pagination.totalResults" class="searchspring-results">
+		<div id="searchspring-merch_banner" ss-merchandising="banner"></div>
+
+		<h2 ng-if="pagination.totalResults > 1" class="results-title">
+			Showing {{ pagination.begin }} - {{ pagination.end }} of {{ pagination.totalResults }} <span ng-if="q">search results for "{{ q }}"</span><span ng-if="!q">items</span>
+		</h2>
+		<h2 ng-if="pagination.totalResults == 1" class="results-title">
+			Showing 1 <span ng-if="q">search result for "{{ q }}"</span><span ng-if="!q">item</span>
+		</h2>
+
+		<div id="searchspring-merch_header" ss-merchandising="header"></div>
+
+		<div ng-if="filterSummary.length" class="mobile-summary">
+			<div class="searchspring-summary"></div>
+		</div>
+
+		<div ng-if="facets.length > 0" class="searchspring-slideout_button searchspring-slideout_filter" slideout></div>
+
+		<div ng-if="pagination.totalResults > 1" class="searchspring-toolbar top"></div>
+
+		<div class="searchspring-items"></div>
+
+		<div ng-if="pagination.totalResults > 1" class="searchspring-toolbar bottom"></div>
+		<div class="searchspring-infinite_button"></div>
+
+		<div id="searchspring-merch_footer" ss-merchandising="footer"></div>
+	</div>
+	<div ng-if="pagination.totalResults === 0" class="searchspring-no_results"></div>
+</script>
+
+<!-- Results - Items -->
+<script type="text/ss-template" target=".searchspring-items">
+	<div ng-repeat="result in results" class="item">
+		<a ng-href="{{ result.url }}" intellisuggest>
+			<img ng-src="{{ result.thumbnailImageUrl ? result.thumbnailImageUrl : '//cdn.searchspring.net/ajax_search/img/default_image.png' }}" onerror="this.src='//cdn.searchspring.net/ajax_search/img/default_image.png';" alt="{{ result.name }}" title="{{ result.name }}" />
+		</a>
+
+		<p><a ng-href="{{ result.url }}" intellisuggest>{{ result.name }}</a></p>
+
+		<p ng-if="(result.msrp * 1) > (result.price * 1) && result.msrp">
+			<strike>Retail: ${{ result.msrp | number:2 }}</strike><br />
+			Sale: ${{ result.price | number:2 }}
+		</p>
+		<p ng-if="(result.msrp * 1) <= (result.price * 1) || !result.msrp">
+			${{ result.price | number:2 }}
+		</p>
+	</div>
+</script>
+
+<!-- No Results -->
+<script type="text/ss-template" target=".searchspring-no_results">
+	<h3 ng-if="!q">No results found.</h3>
+	<h3 ng-if="q">Your search for "{{ q }}" returned no results.</h3>
+
+	<p class="did-you-mean" ng-if="didYouMean.query.length">
+		Did you mean <a href="{{ location().remove('q').add('q', didYouMean.query).url() }}">{{ didYouMean.query }}</a>?
+	</p>
+
+	<div ng-if="filterSummary.length" class="mobile-summary">
+		<div class="searchspring-summary"></div>
+		<div ng-if="facets.length === 0" class="searchspring-filter_messages"></div>
+	</div>
+
+	<p><strong>Suggestions</strong></p>
+	<ul>
+		<li>Check for misspellings.</li>
+		<li>Remove possible redundant keywords (ie. "products").</li>
+		<li>Use other words to describe what you are searching for.</li>
+	</ul>
+	<p>Still can't find what you're looking for? <a href="/urlhere.html">Contact us</a>.</p>
+	<div class="contact address">
+		<h4>Address</h4>
+		<p>1234 Random Street<br />Some City, XX, 12345</p>
+	</div>
+	<div class="contact hours">
+		<h4>Hours</h4>
+		<p>
+			Mon - Sat, 00:00am - 00:00pm<br />
+			Sun, 00:00am - 00:00pm
+		</p>
+	</div>
+	<div class="contact phone">
+		<h4>Call Us</h4>
+		<p>
+			<strong>Telephone:</strong> 123-456-7890<br />
+			<strong>Toll Free:</strong> 123-456-7890
+		</p>
+	</div>
+	<div class="contact email">
+		<h4>Email</h4>
+		<p><a href="mailto:email@sitename.com">email@sitename.com</a></p>
+	</div>
+</script>

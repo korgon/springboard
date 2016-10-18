@@ -15,6 +15,16 @@
 	transition: all linear 0.5s;
 	text-align: center;
 	opacity: .6;
+	&.offline {
+		background: rgba(100,0,0,0.9);
+		&:after {
+			content: "offline";
+			z-index: 9999999;
+			color: $blueblack;
+			font-size: 187px;
+			font-weight: bold;
+		}
+	}
 	&.ng-hide {
 		opacity: 0;
 	}
@@ -55,8 +65,24 @@
 		background: rgba(0, 0, 0, 0.9);
 		z-index: 999999;
 		overflow: auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		&.ng-hide {
 			opacity: 0;
+		}
+		.overlay {
+			display: inline-block;
+			&.noclick {
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				z-index: 999999;
+				overflow: auto;
+				padding: 90px 0;
+			}
 		}
 	}
 
@@ -65,16 +91,19 @@
 		width: 250px;
 		height: auto;
 		border: 1px solid $bluehighlight;
-		margin: 90px auto 40px;
 		padding: 0;
+		margin: auto;
 		&.alert {
 			width: 350px;
+			margin-top: -120px;
 		}
 		&.input {
 			width: 350px;
+			margin-top: -120px;
 		}
-		&.commit {
+		&.commit, &.publish {
 			width: 450px;
+			margin-top: -120px;
 		}
 		&.moduleInfo {
 			width: 550px;
@@ -84,7 +113,7 @@
 			}
 		}
 		&.moduleInstall {
-			min-width: 750px;
+			min-width: 900px;
 			.boxcontent {
 				padding: 0;
 				overflow: auto;
@@ -95,6 +124,7 @@
 			.boxleft {
 				background-color: $blueblack;
 				border-right: 1px solid $bluebase;
+				flex: 0 0 200px;
 				.uimodules {
 					list-style: none;
 					text-align: left;
@@ -105,7 +135,7 @@
 					font-weight: bold;
 					color: $bluefaded;
 					& > li {
-						padding: 5px;
+						padding: 10px;
 						margin-right: -1px;
 						border: 1px solid transparent;
 						border-right: 0;
@@ -118,6 +148,10 @@
 						.modulename {
 							padding-right: 10px;
 							cursor: pointer;
+							font-size: 12px;
+							.icon {
+								margin-right: 5px;
+							}
 						}
 						.modulethemes {
 							font-size: 10px;
@@ -125,7 +159,7 @@
 							padding-left: 5px;
 							li {
 								cursor: pointer;
-								padding: 5px;
+								padding: 10px 0 0 20px;
 								color: $bluefaded;
 								&.selected {
 									color: $bluegrey;
@@ -145,16 +179,67 @@
 				}
 			}
 			.boxright {
-				flex-basis: 0;
-				flex-grow: 1;
+				flex: 1;
 				.markdown {
 					min-height: 400px;
 					padding: 0 20px 20px;
 					margin-bottom: 20px;
+					pre {
+						width: 616px;
+					}
 				}
 				.buttons {
 					margin: 20px;
 				}
+			}
+		}
+		&.settings {
+			.boxcontent {
+				border-top: 1px solid $bluehighlight;
+			}
+			.tabstop {
+				display: flex;
+				width: 100%;
+				flex-flow: row nowrap;
+				justify-content: space-around;
+				clear: both;
+				list-style: none;
+				margin: 0;
+				padding: 4px 0 0;
+				background-color: $blueblack;
+				position: relative;
+				> li {
+					display: inline-flex;
+					flex-grow: 1;
+					text-align: center;
+					height: 33px;
+					margin: 0px 6px 0px;
+					a {
+						display: inline-block;
+						width: 100%;
+						height: 33px;
+						opacity: 0.5;
+						border: 1px solid transparent;
+						border-bottom: 0;
+						cursor: pointer;
+						&.active {
+							background-color: $bluedarkest;
+							border: 1px solid $bluehighlight;
+							border-bottom: 0;
+							opacity: 1;
+						}
+						.icon {
+							width: 100%;
+						}
+					}
+				}
+			}
+			#userinput {
+				text-align: left;
+				padding: 15px;
+			}
+			.buttons {
+				text-align: center;
 			}
 		}
 
@@ -206,31 +291,56 @@
 			padding: 10px;
 			color: $bluegrey;
 			.boxmessage {
-				margin: 10px;
+				display: flex;
+				align-items: center;
+				margin: 10px 10px 20px;
 				text-align: left;
 				.messageicon {
+					flex: 0 0 30px;
 					width: 30px;
 					height: 30px;
-					display: inline-block;
 					vertical-align: middle;
-					padding: 0 10px;
+					margin: 0 25px 0 15px;
 					&.alert {
 						background: url('/images/icons/alert.png') no-repeat center;
+						background-size: 30px;
+					}
+					&.cloud {
+						background: url('/images/icons/cloud.png') no-repeat center;
 						background-size: 30px;
 					}
 					&.commit {
 						background: url('/images/icons/commit.png') no-repeat center;
 						background-size: 30px;
 					}
+					&.publish {
+						background: url('/images/icons/active.png') no-repeat center;
+						background-size: 30px;
+						opacity: .4;
+					}
+					&.connection {
+						background: url('/images/icons/cloudie.png') no-repeat center;
+						background-size: 30px;
+					}
 					&.info {
 						background: url('/images/icons/info.png') no-repeat center;
 						background-size: 30px;
 					}
+					&.warning {
+						background: url('/images/icons/warning.png') no-repeat center;
+						background-size: 30px;
+					}
+					&.springboard {
+						background: url('/images/icons/springs.png') no-repeat center;
+						background-size: 30px;
+					}
 				}
 				.message {
-					display: inline-block;
+					flex: 3 0;
+					white-space: pre-line;
 					vertical-align: middle;
-					max-width: 256px;
+					width: auto;
+					font-size: 14px;
 				}
 			}
 			.inputs {
@@ -264,8 +374,41 @@
 						color: $greenfaded;
 					}
 				}
-				.git-file {
-
+			}
+		}
+		.s3-upload {
+			max-height: 0;
+			background-color: $blueblack;
+			overflow: hidden;
+			border-top: 1px solid transparent;
+			transition: max-height 144ms ease, max-height 400ms ease-out;
+			&.show {
+				max-height: 400px;
+				border-color: $bluedarkestest_text;
+				padding: 5px;
+			}
+			.s3-file {
+				color: $bluefaded;
+				font-size: 10px;
+				font-weight: bold;
+				padding: 3px;
+				margin: 10px;
+				.file-details {
+					.file-size {
+						display: inline-block;
+						color: $greenfaded;
+						margin-right: 5px;
+					}
+					.local {
+					}
+					.remote {
+						display: inline-block;
+						margin-bottom: 5px;
+						a {
+							color: $orangedark;
+							text-decoration: underline;
+						}
+					}
 				}
 			}
 		}

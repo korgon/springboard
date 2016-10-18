@@ -1,0 +1,24 @@
+body {
+	background-color: #304B66;
+	color: #718599;
+}
+
+#center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+#content {
+	flex: 1;
+	text-align: center;
+}
+
+#content .urls {
+	color: #906911;
+}
+
+#content .redirect {
+	color: #00121e;
+}

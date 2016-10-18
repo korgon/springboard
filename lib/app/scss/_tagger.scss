@@ -1,0 +1,96 @@
+// scss for springboard tagger directive
+
+.angular-tagger {
+	border: 0;
+	display: inline-block;
+	width: 100%;
+	margin-top: 20px;
+}
+.angular-tagger__holder {
+	display: inline-block;
+	max-width: inherit;
+}
+.angular-tagger__wrapper {
+	vertical-align: middle;
+	max-width: inherit;
+}
+.angular-tagger__tag {
+	background: $bluedarker;
+	border-top: 2px solid $blueaccent;
+	border-left: 2px solid $blueaccent;
+	padding: 6px;
+	margin: 0 3px 6px 0;
+	display: block;
+	color: $bluefaded;
+	word-wrap: break-word;
+	font-size: 12px;
+	&.last {
+		margin-bottom: 8px;
+	}
+}
+.angular-tagger-tag__delete {
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 12px;
+	padding: 3px;
+	&:hover {
+		color: $reddark;
+	}
+}
+.angular-tagger__input {
+	border: none;
+	background: none;
+	outline: none;
+	width: auto;
+	min-width: 1px;
+	display: inline-block;
+	height: 27px;
+	line-height: 27px;
+	padding: 1px 0;
+	vertical-align: middle;
+	word-wrap: break-word;
+	max-width: inherit;
+}
+.angular-tagger__input:empty:not(:focus):before {
+	content: attr(placeholder);
+	padding: 6px;
+	font-size: 10px;
+	text-transform: uppercase;
+	cursor: pointer;
+	color: $orangefaded;
+}
+.angular-tagger__hook {
+	width: 100%;
+	clear: both;
+	height: 0;
+	position: relative;
+}
+.angular-tagger__matching {
+	border-top: 2px solid $blueaccent;
+	border-left: 2px solid $blueaccent;
+	padding: 0;
+	margin: 0;
+	background: $blueblack;
+}
+.angular-tagger__matching-item {
+	list-style: none;
+	padding: 3px 5px;
+	background: $blueblack;
+	word-wrap: break-word;
+}
+.angular-tagger__matching-item:hover {
+	cursor: pointer;
+}
+.angular-tagger__matching-item--selected {
+	background: $orangefaded;
+	color: $whitefaded !important;
+}
+.angular-tagger--single .angular-tagger__tag {
+	display: block;
+}
+.angular-tagger--single .angular-tagger__holder {
+	display: block;
+}
+.angular-tagger--single .angular-tagger-tag__delete {
+	float: right;
+}

@@ -1,11 +1,14 @@
 /* infinite default scss */
 @import "._variables.scss";
+@import "_variables.scss";
+
+$infinite_module: true;
 
 .searchspring-infinite_loadmore {
 	text-align: center;
 	margin: 0 0 20px 0;
 	a {
-		background: $color3;
+		background: $infinite-color-01;
 		display: inline-block;
 		color: #fff;
 		font-size: 13px;

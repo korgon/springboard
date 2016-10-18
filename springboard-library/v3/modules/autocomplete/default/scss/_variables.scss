@@ -1,0 +1,121 @@
+// Autocomplete Default Variables
+//
+// 01. Change variables. Yay!
+// 02. Variables with true/false values can turn on or off a style.
+// 03. Values set to '' can be left blank so they don't generate extra styles.
+
+// Colors
+$ac-color-01: #f8f9fb; // wrapper background, terms background
+$ac-color-02: #e8edf7; // wrapper border color
+$ac-color-03: #333333; // wrapper link color, facet link color, term link color
+$ac-color-04: #ffffff; // content background, term highlight background
+$ac-color-05: #49669e; // active and focus color
+$ac-color-06: #49669e; // facet title color
+$ac-color-07: #e8edf7; // facet border color
+$ac-color-08: #333333; // facet check border color
+$ac-color-09: #49669e; // facet check filled in color
+$ac-color-10: #333333; // palette border color
+$ac-color-11: #49669e; // palette check stroke outline
+$ac-color-12: #333333; // facet grid border color
+$ac-color-13: #49669e; // facet grid hover color (border and background)
+$ac-color-14: #49669e; // results title
+$ac-color-15: #333333; // strong results title color
+$ac-color-16: #333333; // item name
+$ac-color-17: #49669e; // regular price
+$ac-color-18: #49669e; // sale price
+$ac-color-19: #999999; // msrp price
+
+@if variable-exists(color1) {
+	$ac-color-05: $color1;
+	$ac-color-06: $color1;
+	$ac-color-09: $color1;
+	$ac-color-11: $color1;
+	$ac-color-13: $color1;
+	$ac-color-14: $color1;
+	$ac-color-17: $color1;
+	$ac-color-18: $color1;
+}
+@if variable-exists(color2) {
+	$ac-color-03: $color2;
+	$ac-color-08: $color2;
+	$ac-color-10: $color2;
+	$ac-color-12: $color2;
+	$ac-color-15: $color2;
+	$ac-color-16: $color2;
+}
+@if variable-exists(color3) {
+	$ac-color-4: $color3;
+}
+
+// Fonts
+$ac-font-01: tahoma, arial, sans-serif;
+$ac-font-02: garamond, 'times new roman', serif;
+$ac-font-size: 12px;
+
+// Search input field
+$ac-search-input: 'nav #search-bar form input[ss-nav-input]';
+
+// AutoComplete
+$ac-right: 0;
+$ac-left: auto;
+$ac-top: 42px;
+
+// Wrapper
+$ac-wrapper-shadow-on: true;
+$ac-wrapper-border-on: true;
+
+// Content
+$ac-content-width: 700px;
+
+// Active and focus states
+$ac-focused-decoration: underline;
+$ac-focused-style: ''; // Refers to font-style property
+$ac-focused-weight: '';
+
+// Terms
+$ac-terms-width: 150px;
+$ac-terms-font-size: $ac-font-size + 4;
+$ac-terms-em-style: normal; // Refers to font-style property
+$ac-terms-em-weight: bold;
+
+// Facets
+$ac-facets-width: 175px;
+$ac-facets-h4-font-size: $ac-font-size + 4;
+$ac-facets-h4-weight: normal;
+$ac-facets-option-font-size: $ac-font-size + 1;
+$ac-facets-ul-border-on: true;
+$ac-facets-checks-on: true;
+$ac-facets-checks-style: style1; // style1 (checkmark), style2 (colored square), or style3 ("x" icon)
+$ac-facets-checks-padding: 20px;
+$ac-facets-checks-size: 14px;
+$ac-facets-check-top: 2px;
+$ac-facets-check-left: 0;
+$ac-facets-box-size: 35px; // For palette and grid sizing
+$ac-facets-palette-on: true;
+$ac-facets-palette-radius: true;
+$ac-facets-palette-border: true;
+$ac-facets-grid-on: true;
+
+// Results
+$ac-results-h4-font-size: $ac-font-size + 10;
+$ac-results-h4-weight: normal;
+$ac-results-li-width: 33.33%;
+$ac-results-image-height: 130px;
+$ac-results-image-border-on: true;
+$ac-results-price-font-size: $ac-font-size + 2;
+$ac-results-regular-weight: bold;
+$ac-results-retail-decoration: line-through;
+$ac-results-sale-weight: bold;
+
+// Breakpoint 1
+$ac-bp1-width: 1099;
+$ac-bp1-terms-width: auto;
+$ac-bp1-image-height: 100px;
+
+// Breakpoint 2
+$ac-bp2-width: 767;
+$ac-bp2-facets-width: 33.33%;
+
+// Breakpoint 3
+$ac-bp3-width: 480;
+$ac-bp3-results-li-width: 50%;

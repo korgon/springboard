@@ -12,7 +12,9 @@
 	<body ng-controller="MainCtrl">
 		<div id="main" ng-view></div>
 
-		<div id="loading" ng-show="loading.show">
+		<div id="modals" ng-include src="'/partials/_modals.html'"></div>
+
+		<div id="loading" ng-class="{ offline: loading.offline }" ng-show="loading.show || loading.offline">
 			<div class="wrap">
 				<span class="loadImage animate-spin-cw">
 			</div>

@@ -38,11 +38,9 @@
 				margin: 1px 0 0;
 				transition: max-height 144ms ease, max-height 400ms ease-out;
 				z-index: 7;
-				&:hover {
+				&:hover, &.show {
 					max-height: 1200px;
-				}
-				&.show {
-					max-height: 1200px;
+					overflow: visible;
 				}
 
 				.spacer {

@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title>Proxy Error</title>
+		<link rel="stylesheet" href="/hooke/css/hooke.css">
+	</head>
+	<body>
+		<div id="center">
+			<div id="content">
+				<img src="/hooke/images/warning.png"></img>
+				<br><br><br>
+				<p class="redirect"><b>Change proxy host to: <span id="newhost"></span></b></p>
+				<br>
+				<p class="urls"><span id="req"></span><span class="to"> -> </span><span id="resp"></span></p>
+				<p>This address is redirecting!</p>
+
+				<script>
+					(function() {
+						document.getElementById('req').innerHTML = getParameterByName('req');
+						document.getElementById('resp').innerHTML = getParameterByName('resp');
+						document.getElementById('newhost').innerHTML = getParameterByName('resp');
+
+						function getParameterByName(name, url) {
+							if (!url) url = window.location.href;
+							name = name.replace(/[\[\]]/g, "\\$&");
+							var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+								results = regex.exec(url);
+							if (!results) return null;
+							if (!results[2]) return '';
+							return decodeURIComponent(results[2].replace(/\+/g, " "));
+						}
+					})();
+				</script>
+			</div>
+		</div>
+	</body>
+</html>

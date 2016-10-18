@@ -8,25 +8,31 @@ $bluefaded: #354957;
 $bluefadeder: #122A3A;
 $blueaccent: #052238;
 $bluedark: #1B3141;
+$bluedarker: #011827;
 $bluedarkest: #001A2B;
-$blueblack: #00121E;
 $bluedarkestest: #0E1920;
 $bluedarkestest_text: #2B343B;
+$blueblack: #00121E;
 $bluehighlight: #304B66;
 $bluegrey: #718599;
 $bluetext: #3F525F;
 $grey: #61717B;
-$greenfaded: #507B43;
+$green: #507B43;
+$greenfaded: #63715F;
+$greenblue: #46927D;
 $orange: #C87C0F;
 $orangebright: #CC5200;
 $orangelight: #ff6600;
-$orangefaded: #946018;
+$orangefaded: #906911;
 $orangeyellow: #7F6E14;
-$orangedark: #724911;
+$orangedark: #755900;
 $orangedarkest: #352C17;
 $red: #A12B00;
+$redfaded: #BF3C2F;
+$reddark: #8E111C;
 $whitefaded: #CACACA;
 
+// other variables
 $heightheader: 40px;
 
 html {
@@ -51,18 +57,24 @@ body {
 		font-weight: bold;
 		text-decoration: none;
 	}
-	input, select, textarea {
-		padding: 7px;
-		color: $bluelightest;
-		background-color: $bluedarkest;
-		&:focus, &:active {
-			outline: 0;
-		}
-	}
+
 	ul {
 		list-style: none;
 		margin: 0;
 		padding: 0;
+	}
+
+	#error {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		color: $bluegrey;
+		background-color: $bluehighlight;
+		#content {
+			flex: 1;
+			text-align: center;
+		}
 	}
 	#main {
 		width: 100%;
@@ -100,8 +112,8 @@ body {
 
 // imported scss
 @import "_mixins.scss";
-@import "_markdown.scss";
 @import "_gui.scss";
+@import "_icons.scss";
 @import "_animations.scss";
 
 @import "_header.scss";
@@ -111,3 +123,8 @@ body {
 
 @import "_modals.scss";
 @import "_footer.scss";
+
+// for directives
+@import "_markdown.scss";
+@import "_tagger.scss";
+@import "_cartselect.scss";

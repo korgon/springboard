@@ -9,11 +9,15 @@
   "author": "SearchSpring",
   "license": "MIT",
   "dependencies": {
+    "ansi-to-html": "^0.4.2",
+    "aws-sdk": "^2.6.6",
     "browser-sync": "^2.12.3",
     "chokidar": "^1.4.3",
     "clean-css": "^3.4.10",
     "colors": "^1.1.2",
     "eslint": "^2.7.0",
+    "hoxy": "^3.2.0",
+    "http-shutdown": "^1.1.0",
     "lwip": "0.0.9",
     "node-sass": "^3.4.2",
     "webshot": "^0.18.0"

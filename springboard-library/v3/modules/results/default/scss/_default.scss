@@ -1,0 +1,37 @@
+/* results default scss */
+@import "._variables.scss";
+@import "_mixins.scss";
+
+$results_module: true;
+
+#searchspring-merch_header img,
+#searchspring-merch_banner img,
+#searchspring-merch_footer img {
+	max-width: 100%;
+}
+
+.searchspring-items {
+	.item {
+		display: inline-block;
+		vertical-align: top;
+		width: 33.33%;
+		margin: 0 0 20px 0;
+		text-align: center;
+		p {
+			margin: 0;
+		}
+		img {
+			max-height: 200px;
+			max-width: 100%;
+			height: auto;
+			width: auto;
+		}
+		@include respond(1000) {
+			width: 50%;
+		}
+		@include respond(480) {
+			display: block;
+			width: auto;
+		}
+	}
+}

@@ -1,0 +1,232 @@
+// Responsive breakpoint, pass in a pixel value
+@mixin respond($breakpoint) {
+	@media only screen and (max-width: $breakpoint + px) {
+		@content;
+	}
+}
+
+// General reset - no margin or padding
+@mixin reset {
+	margin: 0;
+	padding: 0;
+}
+
+// Inline block with vertical alignment
+@mixin inline-block($vertical-align) {
+	display: inline-block;
+	zoom: 1;
+	*display: inline;
+	vertical-align: $vertical-align;
+}
+
+// Clearfix
+@mixin clearfix($selector) {
+	#{$selector}:before, #{$selector}:after {
+		content: '';
+		display: table;
+	}
+	#{$selector}:after {
+		clear: both;
+		zoom: 1;
+	}
+}
+
+// Box shadow with browser prefixes
+@mixin box-shadow ($size, $color) {
+	-webkit-box-shadow: $size $color;
+	-moz-box-shadow: $size $color;
+	box-shadow: $size $color;
+}
+
+// Box sizing with browser prefixes
+@mixin box-sizing {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+// Quick width and height sizing
+@mixin sizing($width, $height) {
+	width: $width;
+	height: $height;
+}
+
+// Transition
+@mixin transition($value) {
+	-webkit-transition: $value;
+	-moz-transition: $value;
+	-o-transition: $value;
+	transition: $value;
+}
+
+// Palette default styles
+@mixin palette($radius, $border, $color) {
+	position: relative;
+	span {
+		@if $radius == true {
+			border-radius: 100%;
+		}
+		@if $border == true {
+				&.color-value {
+					border: 2px solid $color;
+				}
+		} @else {
+			&.color-value {
+				border: 2px solid $color;
+			}
+			&.color-value[style*='background-color'] {
+				border: none;
+			}
+			&.color-value-white, &.color-value[style*='white'] {
+				border: 2px solid $color;
+			}
+		}
+		&:after {
+			content: '';
+			@include sizing(60%, 60%);
+			position: absolute;
+			z-index: 2;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			margin: auto;
+		}
+	}
+}
+
+// Palette highlight styles
+@mixin palette-highlight($check-outline) {
+	display: block;
+	background-color: transparent;
+	@include background-svg-properties;
+	@include background-svg-stroke($stroke: $check-outline, $path: 'M29.839 10.107q0 0.714-0.5 1.214l-15.357 15.357q-0.5 0.5-1.214 0.5t-1.214-0.5l-8.893-8.893q-0.5-0.5-0.5-1.214t0.5-1.214l2.429-2.429q0.5-0.5 1.214-0.5t1.214 0.5l5.25 5.268 11.714-11.732q0.5-0.5 1.214-0.5t1.214 0.5l2.429 2.429q0.5 0.5 0.5 1.214z');
+}
+
+// Grid default styles
+@mixin grid($line-height, $border-color) {
+	padding: 0 3px;
+	font-size: 12px;
+	line-height: $line-height;
+	text-align: center;
+	border: 1px solid $border-color;
+	span {
+			overflow: hidden;
+	}
+}
+
+// Grid highlight styles
+@mixin grid-highlight($color) {
+	background: $color;
+	border: 1px solid $color;
+	color: #ffffff;
+}
+
+// Check default styles
+@mixin checks($padding, $size, $top, $left, $border-color) {
+	position: relative;
+	padding-left: $padding;
+	&:before, &:after {
+		content: '';
+		display: block;
+		position: absolute;
+		@include box-sizing;
+		@include sizing($size, $size);
+		top: $top;
+		left: $left;
+	}
+	&:before {
+		z-index: 2;
+		background-color: transparent;
+		border: 1px solid $border-color;
+	}
+	&:after {
+		z-index: 1;
+	}
+}
+
+// Check highlight styles
+@mixin checks-highlight($style, $color) {
+	@if $style == style1 {
+		border: 2px solid transparent;
+		background-color: transparent;
+		@include background-svg-properties;
+		@include background-svg($fill: $color, $path: 'M29.839 10.107q0 0.714-0.5 1.214l-15.357 15.357q-0.5 0.5-1.214 0.5t-1.214-0.5l-8.893-8.893q-0.5-0.5-0.5-1.214t0.5-1.214l2.429-2.429q0.5-0.5 1.214-0.5t1.214 0.5l5.25 5.268 11.714-11.732q0.5-0.5 1.214-0.5t1.214 0.5l2.429 2.429q0.5 0.5 0.5 1.214z');
+	} @else if $style == style2 {
+		border: 3px solid #fff;
+		background-color: $color;
+	} @else if $style == style3 {
+		border: 2px solid transparent;
+		background-color: transparent;
+		@include background-svg-properties;
+		@include background-svg($viewport-width: 25, $fill: $color, $path: 'M23.18 23.607q0 .714-.5 1.214l-2.43 2.43q-.5.5-1.214.5t-1.214-.5L12.572 22l-5.25 5.25q-.5.5-1.214.5t-1.214-.5l-2.43-2.43q-.5-.5-.5-1.213t.5-1.214l5.25-5.25-5.25-5.25q-.5-.5-.5-1.214t.5-1.215l2.43-2.43q.5-.5 1.214-.5t1.214.5l5.25 5.25 5.25-5.25q.5-.5 1.214-.5t1.214.5l2.43 2.43q.5.5.5 1.214t-.5 1.213l-5.25 5.25 5.25 5.25q.5.5.5 1.214z');
+	}
+}
+
+// Background svg mixin with varables
+@mixin background-svg($viewport-width: 32, $viewport-height: 32, $fill: #333, $path: null) {
+	background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + $viewport-width + ' ' + $viewport-height + '"><path fill="' + $fill + '" d="' + $path + '"/></svg>');
+}
+
+// Background svg stroke mixin with varables
+@mixin background-svg-stroke($viewport-width: 32, $viewport-height: 32, $fill: #fff, $stroke: #333, $stroke-width: 2, $path: null) {
+	background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + $viewport-width + ' ' + $viewport-height + '"><path fill="' + $fill + '" stroke="' + $stroke + '" stroke-width="' + $stroke-width + '" d="' + $path + '"/></svg>');
+}
+
+// Default background properties for svgs
+@mixin background-svg-properties {
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+// Function to create an optimized svg url
+// From: http://codepen.io/jakob-e/pen/doMoML
+@function svg-url($svg) {
+	//  Add missing namespace
+	@if not str-index($svg,xmlns) {
+		$svg: str-replace($svg, '<svg','<svg xmlns="http://www.w3.org/2000/svg"');
+	}
+	//  Chunk up string in order to avoid "stack level too deep" error
+	$encoded:'';
+	$slice: 2000;
+	$index: 0;
+	$loops: ceil(str-length($svg)/$slice);
+	@for $i from 1 through $loops {
+		$chunk: str-slice($svg, $index, $index + $slice - 1);
+		// Encode
+		$chunk: str-replace($chunk,'"', '\'');
+		$chunk: str-replace($chunk,'%', '%25');
+		$chunk: str-replace($chunk,'&', '%26');
+		$chunk: str-replace($chunk,'#', '%23');
+		$chunk: str-replace($chunk,'{', '%7B');
+		$chunk: str-replace($chunk,'}', '%7D');
+		$chunk: str-replace($chunk,'<', '%3C');
+		$chunk: str-replace($chunk,'>', '%3E');
+		// The maybe list
+		//  Keep size and compile time down ... only add on documented fail
+		//
+		//  $chunk: str-replace($chunk, '|', '%7C');
+		//  $chunk: str-replace($chunk, '[', '%5B');
+		//  $chunk: str-replace($chunk, ']', '%5D');
+		//  $chunk: str-replace($chunk, '^', '%5E');
+		//  $chunk: str-replace($chunk, '`', '%60');
+		//  $chunk: str-replace($chunk, ';', '%3B');
+		//  $chunk: str-replace($chunk, '?', '%3F');
+		//  $chunk: str-replace($chunk, ':', '%3A');
+		//  $chunk: str-replace($chunk, '@', '%40');
+		//  $chunk: str-replace($chunk, '=', '%3D');
+		$encoded: #{$encoded}#{$chunk};
+		$index: $index + $slice;
+	}
+	@return url("data:image/svg+xml,#{$encoded}");
+}
+
+//  Helper function to replace characters in a string
+@function str-replace($string, $search, $replace: '') {
+	$index: str-index($string, $search);
+	@return if($index,
+		str-slice($string, 1, $index - 1) + $replace +
+		str-replace(str-slice($string, $index +
+		str-length($search)), $search, $replace),
+		$string);
+}

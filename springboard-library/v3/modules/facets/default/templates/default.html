@@ -1,0 +1,97 @@
+<!-- Facets & Filter Summary -->
+<script type="text/ss-template" module="search" target=".sidebar-target-selector">
+	<div ng-if="filterSummary.length" class="searchspring-summary"></div>
+	<div ng-if="facets.length" class="searchspring-facets"></div>
+	<div ng-if="facets.length === 0" class="searchspring-filter_messages"></div>
+</script>
+
+<!-- Filter Messages -->
+<script type="text/ss-template" target=".searchspring-filter_messages">
+	<h3 ng-if="filterSummary.length === 0">Sorry</h3>
+	<p ng-if="pagination.totalResults === 0 && filterSummary.length === 0">
+		There are no results to refine! If you need additional help, please try our "<strong>Suggestions</strong>" to the right.
+	</p>
+	<p ng-if="pagination.totalResults === 0 && filterSummary.length" class="{{ summaryClass }}">
+		If you are not seeing any results, try removing some of your selected filters above.
+	</p>
+	<p ng-if="pagination.totalResults && filterSummary.length === 0">
+		There are no filters to refine by! Perhaps try a new search?
+	</p>
+</script>
+
+<!-- Facets -->
+<script type="text/ss-template" target=".searchspring-facets">
+	<h3 class="searchspring-facets_title">Shop By</h3>
+	<div ng-repeat="facet in facets" ng-switch="facet.type" ng-if="(facet.type == 'hierarchy' ? facet.values.length : true)" id="searchspring-{{ facet.field }}" class="facet-container {{ facet.type ? facet.type : 'list' }}">
+		<h4 title="{{ facet.label }}" ng-click="facet.collapse = !facet.collapse" ng-class="{'open': !facet.collapse}">
+			{{ facet.label }}
+		</h4>
+		<div ng-if="facet.field == 'field name here'" class="search-within-facet">
+			<input type="text" ng-model="facet.search.label" placeholder="Filter by {{ facet.label }}" />
+		</div>
+		<ul ng-switch-when="hierarchy">
+			<li ng-repeat="value in facet.values | limitTo:facet.overflow.limit" ng-class="{'filtered-current': value.active, 'filtered-link': value.history && !value.active}">
+				<a ng-if="!value.active" ng-href="{{ value.url }}" title="{{ value.label }}">
+					{{ value.label }} <span ng-if="!value.history" class="facet-count">({{ value.count }})</span>
+				</a>
+				<span ng-if="value.active" title="{{ value.label }}">{{ value.label }}</span>
+			</li>
+		</ul>
+		<ul ng-switch-when="grid">
+			<li ng-repeat="value in facet.values | limitTo:facet.overflow.limit">
+				<a href="{{ value.url }}" ng-class="{'highlight': value.active}">
+					<span class="grid-value">{{ value.label }}</span>
+				</a>
+			</li>
+		</ul>
+		<ul ng-switch-when="palette">
+			<li ng-repeat="value in facet.values | limitTo:facet.overflow.limit">
+				<a ng-class="{'highlight': value.active}" alt="{{ value.label }}" title="{{ value.label }}" href="{{ value.url }}">
+					<span ng-style="{'background-color': value.label.toLowerCase() }" class="color-value color-value-{{ value.label.toLowerCase() }}"></span>
+				</a>
+			</li>
+		</ul>
+		<div ng-switch-when="slider" class="searchspring-range-slider"></div>
+		<ul ng-switch-default>
+			<li ng-repeat="value in facet.values | filter:facet.search | limitTo:facet.overflow.limit">
+				<a href="{{ value.url }}" ng-class="{'highlight': value.active}">
+					{{ value.label }} <span class="facet-count">({{ value.count }})</span>
+				</a>
+			</li>
+		</ul>
+		<div ng-if="facet.field == 'field name here'" class="price-input-boxes">
+			<form ng-submit="location().add('filter', facet.field, facet.range[0], facet.range[1]).go()" name="ssPrice">
+				<div class="price-input-row">
+					<input type="text" value="" ng-model="facet.range[0]" ng-pattern="/^\d*\.?\d*$/" />
+					<span class="to">to</span>
+					<input type="text" value="" ng-model="facet.range[1]" ng-pattern="/^\d*\.?\d*$/" />
+				</div>
+				<input type="submit" value="Submit" ng-disabled="ssPrice.$invalid" />
+				<p class="price-input-error" ng-if="ssPrice.$invalid">Please enter only whole or decimal numbers. <strong>For example:</strong> 5.25 or 5.</p>
+			</form>
+		</div>
+		<div ng-if="facet.overflow.set(facet.type == 'hierarchy' ? 9999 : 10).count" class="show-more">
+			<a class="ss-pointer" ng-click="facet.overflow.toggle()">
+				Show {{ facet.overflow.remaining ? 'More' : 'Less' }}
+			</a>
+		</div>
+	</div>
+	<div id="searchspring-merch_left" ss-merchandising="left"></div>
+</script>
+
+<!-- Filter Summary -->
+<script type="text/ss-template" target=".searchspring-summary">
+	<h3 class="searchspring-summary_title">Current Filters</h3>
+	<div class="summary-container">
+		<ul>
+			<li ng-repeat="filter in filterSummary">
+				<a href="{{ filter.remove.url }}">
+					<span class="summary-label">{{ filter.filterLabel }}:</span> <span class="summary-value">{{ filter.filterValue }}</span>
+				</a>
+			</li>
+		</ul>
+		<div ng-if="filterSummary.length > 1" class="summary-reset">
+			<a href="{{ location().remove('filter').remove('rq').url() }}">Clear All</a>
+		</div>
+	</div>
+</script>

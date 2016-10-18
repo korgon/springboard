@@ -1,0 +1,19 @@
+// Toolbar Default Variables
+//
+// 01. Change variables. Yay!
+// 02. Variables with true/false values can turn on or off a style.
+// 03. Values set to '' can be left blank so they don't generate extra styles.
+
+
+// Options
+$toolbar-show-perpage: true;
+$toolbar-show-pagination: true;
+$toolbar-show-top: true;
+$toolbar-show-bottom: true;
+
+// Connected
+@if variable-exists(infinite_module) {
+	$toolbar-show-perpage: false;
+	$toolbar-show-pagination: false;
+	$toolbar-show-bottom: false;
+}

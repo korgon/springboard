@@ -2,7 +2,5 @@
 	"type": "v3/facet-slider/default",
 	"version": "1.0.0",
 	"description": "default facet-slider style",
-	"author": "searchspring",
-	"variables": {
-	}
+	"author": "searchspring"
 }

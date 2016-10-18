@@ -1,0 +1,8 @@
+{
+	"type": "v3/facets",
+	"version": "1.0.0",
+	"description": "facet template",
+	"icon": "left",
+	"enabled": true,
+	"theme": null
+}

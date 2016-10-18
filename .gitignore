@@ -4,6 +4,7 @@
 
 # ignore the searchspring-mockups repo
 searchspring-sites/
+springboard-sites/
 
 # ignore the user configuration options
 lib/config/user.json

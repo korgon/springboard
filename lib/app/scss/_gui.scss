@@ -6,8 +6,7 @@
 
 .button {
 	min-width: 80px;
-	border: solid 1px $orangefaded;
-	border-radius: 2px;
+	border: 1px solid $orangefaded;
 	background: $orangefaded;
 	color: $whitefaded;
 	font-size: 10px;
@@ -17,12 +16,14 @@
 	text-decoration: none;
 	text-transform: uppercase;
 
+	&.disabled,
 	&:disabled {
 		border: $orangedarkest;
 		background: $orangedarkest;
 		cursor: default;
+		opacity: .5;
 	}
-	&:hover:not(:disabled) {
+	&:hover:not(:disabled):not(.disabled) {
 		background: $orangedark;
 		border-color: $orangedark;
 		color: $whitefaded;
@@ -92,238 +93,132 @@ legend {
 	font-size: 12px;
 	text-align: left;
 	background-color: $blueaccent;
-	border-radius: 2px;
 	padding: 6px;
+}
+
+input, select, textarea {
+	padding: 7px;
+	color: $bluelightest;
+	background-color: $bluedarker;
+	font-family: Arial;
+	&:focus, &:active {
+		outline: 0;
+	}
 }
 
 input[type="text"],
 input[type="password"], select {
 	box-sizing: border-box;
-	border-radius: 3px;
-	background-color: $bluedarkest;
-	border: 1px solid $bluebase;
+	background-color: $bluedarker;
+	border: 0;
+	border-top: 2px solid $blueaccent;
+	border-left: 2px solid $blueaccent;
 	color: $grey;
 	margin-bottom: 10px;
 	&:focus, &:active {
 		color: $bluelightest;
+		background-color: $blueblack;
 	}
 }
 
-.icon {
-	display: inline-block;
-	width: 33px;
-	height: 33px;
-	background-repeat: no-repeat;
-	background-size: 27px;
-	background-position: center center;
-	vertical-align: middle;
-	// icon sizes
-	&.small {
-		background-size: 21px;
-		width: 21px;
-		height: 21px;
-	}
-	&.tiny {
-		background-size: 14px;
-		width: 14px;
-		height: 14px;
-	}
-
-	// icon styles
-	&.removed {
-		&:before {
-			content: '';
-			position: absolute;
-			left: 0;
-			background-image: url("/images/icons/disabled.png");
-			width: 33px;
-			background-size: 21px;
-			background-repeat: no-repeat;
-			background-position: 3px 12px;
-			height: 33px;
+.variable-wrap {
+	.variable-container-button {
+		text-align: center;
+		margin-bottom: 10px;
+		.button {
+			display: inline-block;
 		}
 	}
-	&.disabled {
-		opacity: 0.15;
+	.variable-container {
+		margin-bottom: 10px;
+	}
+	.variable-title {
+		position: relative;
+		font-weight: bold;
+		font-size: 11px;
+		color: $bluegrey;
+		padding: 7px;
+		.switch {
+			float: right;
+		}
+	}
+	.variable-description {
+		color: $bluefaded;
+		font-size: 10px;
+		text-transform: lowercase;
+		font-weight: bold;
+		border-top: 2px solid $blueaccent;
+		padding: 6px;
+	}
+	.variable-input {
+		background-color: $bluedarkest;
+		width: 100%;
+		margin-bottom: 0;
+		box-sizing: border-box;
+		border: 2px solid transparent;
+		border-top: 0;
+		color: $orangefaded;
+		font-size: 10px;
+		font-weight: bold;
+		cursor: pointer;
+		resize: none;
+		&:focus {
+			background-color: $blueblack;
+			border-left: 2px solid $blueaccent;
+			border-bottom: 2px solid $blueaccent;
+			cursor: text;
+		}
+		&::-webkit-input-placeholder {
+			color: $orangeyellow;
+			font-weight: normal;
+			font-style: italic;
+		}
 	}
 
-	// icons
-	&.active {
-		background-image: url('/images/icons/active.png');
-	}
-	&.add {
-		background-image: url('/images/icons/add.png');
-	}
-	&.capture {
-		background-image: url('/images/icons/capture.png');
-	}
-	&.commit {
-		background-image: url('/images/icons/commit.png');
-	}
-	&.compile {
-		background-image: url('/images/icons/compile.png');
-	}
-	&.config {
-		background-image: url('/images/icons/config.png');
-	}
-	&.cloud {
-		background-image: url('/images/icons/cloud.png');
-	}
-	&.custom {
-		background-image: url('/images/icons/custom.png');
-	}
-	&.edit {
-		background-image: url('/images/icons/edit.png');
-	}
-	&.extension-css {
-		background-image: url('/images/icons/extensions/css.png');
-	}
-	&.extension-map {
-		background-image: url('/images/icons/extensions/css_map.png');
-	}
-	&.extension-md {
-		background-image: url('/images/icons/extensions/md.png');
-	}
-	&.extension-html {
-		background-image: url('/images/icons/extensions/html.png');
-	}
-	&.extension-js {
-		background-image: url('/images/icons/extensions/js.png');
-	}
-	&.extension-json {
-		background-image: url('/images/icons/extensions/json.png');
-	}
-	&.extension-gif,
-	&.extension-jpg,
-	&.extension-jpeg,
-	&.extension-png {
-		background-image: url('/images/icons/extensions/image.png');
-	}
-	&.extension-sass,
-	&.extension-scss {
-		background-image: url('/images/icons/extensions/sass.png');
-	}
-	&.files {
-		background-image: url('/images/icons/filestruct.png');
-	}
-	&.folder {
-		background-image: url('/images/icons/folder.png');
-	}
-	&.folder-open {
-		background-image: url('/images/icons/folder_open.png');
-	}
-	&.folder-root {
-		background-image: url('/images/icons/folder_root.png');
-	}
-	&.help {
-		background-image: url('/images/icons/help.png');
-	}
-	&.history {
-		background-image: url('/images/icons/history.png');
-	}
-	&.info {
-		background-image: url('/images/icons/info.png');
-	}
-	&.install {
-		background-image: url('/images/icons/install.png');
-	}
-	&.instructions {
-		background-image: url('/images/icons/instructions.png');
-	}
-	&.module {
-		background-image: url('/images/icons/modules/module.png');
-	}
-	&.module-generic {
-		background-image: url('/images/icons/modules/module.png');
-	}
-	&.module-add {
-		background-image: url('/images/icons/modules/module_add.png');
-	}
-	&.module-autocomplete {
-		background-image: url('/images/icons/modules/module_autocomplete.png');
-	}
-	&.module-compare {
-		background-image: url('/images/icons/modules/module_compare.png');
-	}
-	&.module-facet_slider {
-		background-image: url('/images/icons/modules/module_facet_slider.png');
-	}
-	&.module-image_load {
-		background-image: url('/images/icons/modules/module_image_load.png');
-	}
-	&.module-image_swap {
-		background-image: url('/images/icons/modules/module_image_swap.png');
-	}
-	&.module-infinite {
-		background-image: url('/images/icons/modules/module_infinite.png');
-	}
-	&.module-left {
-		background-image: url('/images/icons/modules/module_left.png');
-	}
-	&.module-right {
-		background-image: url('/images/icons/modules/module_right.png');
-	}
-	&.module-slideout {
-		background-image: url('/images/icons/modules/module_slideout.png');
-	}
-	&.module-top {
-		background-image: url('/images/icons/modules/module_top.png');
-	}
-	&.module-translate {
-		background-image: url('/images/icons/modules/module_translate.png');
-	}
-	&.open {
-		background-image: url('/images/icons/open.png');
-	}
-	&.pull {
-		background-image: url('/images/icons/pull_request.png');
-	}
-	&.pulse {
-		background-image: url('/images/icons/pulse.png');
-	}
-	&.push {
-		background-image: url('/images/icons/push.png');
-	}
-	&.proxy {
-		background-image: url('/images/icons/proxy.png');
-	}
-	&.reload {
-		background-image: url('/images/icons/refresh.png');
-	}
-	&.save {
-		background-image: url('/images/icons/save.png');
-	}
-	&.selected {
-		background-image: url('/images/icons/selected.png');
-	}
-	&.settings {
-		background-image: url('/images/icons/settings.png');
-	}
-	&.styles {
-		background-image: url('/images/icons/palette.png');
-	}
-	&.tags {
-		background-image: url('/images/icons/tag.png');
-	}
-	&.themes {
-		background-image: url('/images/icons/theme.png');
-	}
-	&.uis {
-		background-image: url('/images/icons/uis.png');
-	}
-	&.undo {
-		background-image: url('/images/icons/undo.png');
-	}
-	&.update {
-		background-image: url('/images/icons/update.png');
-	}
-	&.upload {
-		background-image: url('/images/icons/upload.png');
-	}
-	&.variables {
-		background-image: url('/images/icons/variable.png');
-	}
-	&.view {
-		background-image: url('/images/icons/view.png');
+	.hexagon-wrapper {
+		position: absolute;
+		display: inline-block;
+		text-align: center;
+		&.variable-color {
+			top: 10px;
+			right: 4px;
+			width: 36px;
+			height: 36px;
+		}
+		&.variable-background {
+			top: 8px;
+			right: 2px;
+			width: 40px;
+			height: 40px;
+		}
+
+		.hexagon {
+			height: 100%;
+			width: calc(100% * 0.57735);
+			display: inline-block;
+			&.variable-background {
+				background-color: $blueaccent;
+			}
+			&:before {
+				position: absolute;
+				top: 0;
+				right: calc((100% / 2) - ((100% * 0.57735) / 2));
+				background-color: inherit;
+				height: inherit;
+				width: inherit;
+				content: '';
+				transform: rotateZ(60deg);
+			}
+			&:after {
+				position: absolute;
+				top: 0;
+				right: calc((100% / 2) - ((100% * 0.57735) / 2));
+				background-color: inherit;
+				height: inherit;
+				width: inherit;
+				content: '';
+				transform: rotateZ(-60deg);
+			}
+		}
 	}
 }

@@ -1,0 +1,58 @@
+// scss for springboard cartselect directive
+
+cartselect {
+	display: inline-block;
+	position: relative;
+	width: 50px;
+	height: 31px;
+	background-color: $bluedarker;
+	border: 0;
+	border-top: 2px solid $blueaccent;
+	border-left: 2px solid $blueaccent;
+	&:hover {
+		background-color: $blueblack;
+	}
+
+	.cartselect-container {
+
+		.cartselect-cart {
+			clear: both;
+			color: $bluegrey;
+			cursor: pointer;
+			padding: 5px 12px;
+			overflow: auto;
+		}
+
+		.cartselect-list {
+			display: none;
+			position: absolute;
+			top: -2px;
+			right: 0px;
+			background: $blueblack;
+			border: 0;
+			border-top: 2px solid $blueaccent;
+			border-left: 2px solid $blueaccent;
+			z-index: 9;
+			&.show {
+				display: block;
+			}
+			.cartselect-cart {
+				width: 26px;
+				&:hover {
+					background: $orangefaded;
+					color: $whitefaded;
+				}
+
+				.name {
+					vertical-align: middle;
+					text-transform: uppercase;
+					line-height: 21px;
+					font-size: 10px;
+					font-weight: bold;
+					float: left;
+					padding: 0px 12px 0px 12px;
+				}
+			}
+		}
+	}
+}
