@@ -1589,6 +1589,9 @@ body #gallery {
         #modals .boxwrap .boxcontent .boxmessage .messageicon.alert {
           background: url("/images/icons/alert.png") no-repeat center;
           background-size: 30px; }
+        #modals .boxwrap .boxcontent .boxmessage .messageicon.cloud {
+          background: url("/images/icons/cloud.png") no-repeat center;
+          background-size: 30px; }
         #modals .boxwrap .boxcontent .boxmessage .messageicon.commit {
           background: url("/images/icons/commit.png") no-repeat center;
           background-size: 30px; }
