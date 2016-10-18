@@ -15,6 +15,16 @@
 	transition: all linear 0.5s;
 	text-align: center;
 	opacity: .6;
+	&.offline {
+		background: rgba(100,0,0,0.9);
+		&:after {
+			content: "offline";
+			z-index: 9999999;
+			color: $blueblack;
+			font-size: 187px;
+			font-weight: bold;
+		}
+	}
 	&.ng-hide {
 		opacity: 0;
 	}

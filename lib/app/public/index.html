@@ -14,7 +14,7 @@
 
 		<div id="modals" ng-include src="'/partials/_modals.html'"></div>
 
-		<div id="loading" ng-show="loading.show || loading.offline">
+		<div id="loading" ng-class="{ offline: loading.offline }" ng-show="loading.show || loading.offline">
 			<div class="wrap">
 				<span class="loadImage animate-spin-cw">
 			</div>

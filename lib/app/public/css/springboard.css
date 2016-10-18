@@ -1363,6 +1363,14 @@ body #gallery {
   transition: all linear 0.5s;
   text-align: center;
   opacity: .6; }
+  #loading.offline {
+    background: rgba(100, 0, 0, 0.9); }
+    #loading.offline:after {
+      content: "offline";
+      z-index: 9999999;
+      color: #00121E;
+      font-size: 187px;
+      font-weight: bold; }
   #loading.ng-hide {
     opacity: 0; }
   #loading .wrap {
