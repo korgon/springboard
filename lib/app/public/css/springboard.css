@@ -1342,7 +1342,7 @@ body #gallery {
   #loading.offline:after {
     content: "offline";
     z-index: 9999999;
-    color: #CACACA;
+    color: #755900;
     font-size: 187px;
     font-weight: bold; }
   #loading.ng-hide {
