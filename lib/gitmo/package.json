@@ -12,6 +12,6 @@
   "author": "SearchSpring",
   "license": "MIT",
   "devDependencies": {
-    "tape": "^4.5.1"
+    "tape": "^4.6.2"
   }
 }
