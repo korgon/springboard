@@ -6,6 +6,9 @@
 searchspring-sites/
 springboard-sites/
 
+# ignore the springboard-library repo
+springboard-library/
+
 # ignore the user configuration options
 lib/config/user.json
 
