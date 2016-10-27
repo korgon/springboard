@@ -1,8 +1,0 @@
-{
-	"type": "v3/v2translator",
-	"version": "1.0.0",
-	"description": "v2 translator",
-	"icon": "translate",
-	"enabled": true,
-	"theme": null
-}
