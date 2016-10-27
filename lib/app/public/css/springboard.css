@@ -312,6 +312,8 @@ input[type="password"], select {
     background-image: url("/images/icons/custom.png"); }
   .icon.edit {
     background-image: url("/images/icons/edit.png"); }
+  .icon.extension {
+    background-image: url("/images/icons/extensions/unknown.png"); }
   .icon.extension-css {
     background-image: url("/images/icons/extensions/css.png"); }
   .icon.extension-map {
@@ -328,6 +330,8 @@ input[type="password"], select {
     background-image: url("/images/icons/extensions/image.png"); }
   .icon.extension-sass, .icon.extension-scss {
     background-image: url("/images/icons/extensions/sass.png"); }
+  .icon.extension-txt, .icon.extension-text {
+    background-image: url("/images/icons/extensions/text.png"); }
   .icon.files {
     background-image: url("/images/icons/filestruct.png"); }
   .icon.folder {
@@ -921,7 +925,11 @@ body #above .heading {
       top: 9px;
       background-size: 12px; }
     .editor-container .settings-files .directory-contents > li.file .filewrapper .filehead .filename {
-      padding: 0 6px 0 0; }
+      padding: 0 6px 0 0;
+      max-width: 120px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: inline-block; }
     .editor-container .settings-files .directory-contents > li.file .filewrapper .filedetails {
       background-color: #00121E;
       max-height: 0px;

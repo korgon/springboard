@@ -109,6 +109,9 @@
 	&.edit {
 		background-image: url('/images/icons/edit.png');
 	}
+	&.extension {
+		background-image: url('/images/icons/extensions/unknown.png');
+	}
 	&.extension-css {
 		background-image: url('/images/icons/extensions/css.png');
 	}
@@ -136,6 +139,10 @@
 	&.extension-sass,
 	&.extension-scss {
 		background-image: url('/images/icons/extensions/sass.png');
+	}
+	&.extension-txt,
+	&.extension-text {
+		background-image: url('/images/icons/extensions/text.png');
 	}
 	&.files {
 		background-image: url('/images/icons/filestruct.png');

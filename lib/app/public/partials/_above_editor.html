@@ -69,7 +69,7 @@
 										<ul class="settings-files" ng-if="!vm.dirstruct.loading && !vm.dirstruct.error">
 											<li class="root"><span class="icon folder-open"></span></li>
 											<ul class="directory-contents">
-												<li class="{{ details.type }} {{ details.extension.replace('.', '') }}" ng-repeat="details in vm.dirstruct.data.root.contents | orderFilesBy: 'type'" ng-include="'fileTree'"></li>
+												<li class="{{ details.type }} extension {{ details.extension.replace('.', '') }}" ng-repeat="details in vm.dirstruct.data.root.contents | orderFilesBy: 'type'" ng-include="'fileTree'"></li>
 											</ul>
 										</ul>
 
@@ -87,7 +87,7 @@
 										<ul class="settings-files" ng-if="vm.cloudstruct.data.root && !vm.cloudstruct.loading && !vm.cloudstruct.error">
 											<li class="root"><span class="icon folder-cloud"></span></li>
 											<ul class="directory-contents">
-												<li class="{{ details.type }} {{ details.extension.replace('.', '') }}" ng-repeat="details in vm.cloudstruct.data.root.contents | orderFilesBy: 'type'" ng-include="'fileTree'"></li>
+												<li class="{{ details.type }} extension {{ details.extension.replace('.', '') }}" ng-repeat="details in vm.cloudstruct.data.root.contents | orderFilesBy: 'type'" ng-include="'fileTree'"></li>
 											</ul>
 										</ul>
 
@@ -409,7 +409,7 @@
 <script type="text/ng-template" id="fileTree">
 	<div class="filewrapper" ng-if="details.type == 'file'" ng-init="details.show = false" ng-class="{ show: details.show }">
 		<div class="filehead" ng-if="details.type == 'file'" ng-click="details.show = !details.show">
-			<span class="icon small extension-{{ details.extension }}">
+			<span class="icon small extension extension-{{ details.extension }}">
 				<span class="icon tiny selected" ng-if="vm.site.thumb == (vm.relative_url + details.path) || (vm.relative_url + details.path) == vm.site.default_url"></span>
 			</span>
 			<span class="filename" ng-class="{ cloud: details.cloud }">{{ details.name }}</span>
