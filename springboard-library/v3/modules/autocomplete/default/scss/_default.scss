@@ -361,9 +361,6 @@ $autocomplete_module: true;
 						a {
 							font-size: $ac-facets-option-font-size - 1;
 						}
-						a:before, &.active a:after {
-							top: 1px;
-						}
 					}
 				}
 				&:last-child ul {
