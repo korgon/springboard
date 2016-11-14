@@ -185,7 +185,7 @@
 											<ul class="vtab-control" ng-class="{ disabled: vm.edited }">
 												<li><a ng-click="vm.installModule(ui)"><span class="icon module-add"></span></a></li>
 
-												<li ng-repeat="module in ui.modules" ng-class="{ 'active': vm.activeVtab(ui.name) == 'module_' + module.name }"><a ng-click="vm.switchVtab('module_' + module.name, ui.name)"><span class="icon module-{{ module.icon }}" ng-class="{ removed: !module.enabled }"></span></a></li>
+												<li ng-repeat="module in ui.modules" ng-class="{ 'active': vm.activeVtab(ui.name) == 'module_' + module.name }" ng-if="module.theme"><a ng-click="vm.switchVtab('module_' + module.name, ui.name)"><span class="icon module" ng-style="{ 'background-image': 'url(' + vm.relative_url + ui.name + '/modules/' + module.name + '/' + module.theme + '/resources/icon.png' + ')' }" ng-class="{ removed: !module.enabled }"></span></a></li>
 
 												<li ng-class="{ 'active': vm.activeVtab(ui.name) == 'styles' }"><a ng-click="vm.switchVtab('styles', ui.name)"><span class="icon styles"></span></a></li>
 
@@ -291,7 +291,7 @@
 														<div class="vtab-head"><span class="vtab-title">{{ module.name }}</span><span ng-click="module.enabled = !module.enabled; vm.updateModule(ui.name, module.name)" ng-model="module.enabled" class="switch" ng-class="{ off: !module.enabled}"></span>
 														</div>
 
-														<div class="vtab-subhead">{{ module.type }} module v{{ module.version }}<span ng-click="vm.moduleInfo(module)" class="icon infos tiny"></span></div>
+														<div class="vtab-subhead">{{ module.type }} module v{{ module.version }}<span ng-click="vm.moduleInfo(ui, module)" class="icon infos tiny"></span></div>
 
 													</div>
 													<div class="vtab-contents" ng-class="{ disabled: !module.enabled }">

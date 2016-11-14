@@ -358,32 +358,8 @@ input[type="password"], select {
     background-image: url("/images/icons/instructions.png"); }
   .icon.module {
     background-image: url("/images/icons/modules/module.png"); }
-  .icon.module-generic {
-    background-image: url("/images/icons/modules/module.png"); }
   .icon.module-add {
     background-image: url("/images/icons/modules/module_add.png"); }
-  .icon.module-autocomplete {
-    background-image: url("/images/icons/modules/module_autocomplete.png"); }
-  .icon.module-compare {
-    background-image: url("/images/icons/modules/module_compare.png"); }
-  .icon.module-facet_slider {
-    background-image: url("/images/icons/modules/module_facet_slider.png"); }
-  .icon.module-image_load {
-    background-image: url("/images/icons/modules/module_image_load.png"); }
-  .icon.module-image_swap {
-    background-image: url("/images/icons/modules/module_image_swap.png"); }
-  .icon.module-infinite {
-    background-image: url("/images/icons/modules/module_infinite.png"); }
-  .icon.module-left {
-    background-image: url("/images/icons/modules/module_left.png"); }
-  .icon.module-right {
-    background-image: url("/images/icons/modules/module_right.png"); }
-  .icon.module-slideout {
-    background-image: url("/images/icons/modules/module_slideout.png"); }
-  .icon.module-top {
-    background-image: url("/images/icons/modules/module_top.png"); }
-  .icon.module-translate {
-    background-image: url("/images/icons/modules/module_translate.png"); }
   .icon.open {
     background-image: url("/images/icons/open.png"); }
   .icon.pull {

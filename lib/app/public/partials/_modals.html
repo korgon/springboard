@@ -101,7 +101,7 @@
 			<div class="boxtop"></div>
 			<div class="boxcontent">
 				<div class="boxmessage">
-					<span class="icon module-{{ mm.icon }}"></span>
+					<span class="icon module" ng-style="{ 'background-image': 'url(' + mm.iconUrl + ')' }"></span>
 					<span>{{ mm.type }}</span>
 				</div>
 				<div class="markdown" marked src="mm.readmeUrl"></div>
@@ -123,7 +123,7 @@
 					<ul class="uimodules">
 						<li ng-repeat="module in mm.modules" ng-class="{ selected: module.name == mm.selected.module }">
 							<div class="modulename" ng-click="mm.selectModule(module.type) && selectModule(module.themes.default.type)">
-								<span class="icon small module-{{ module.icon }}"></span>
+								<span class="icon small module" ng-style="{ 'background-image': 'url(' + module.iconUrl + ')' }"></span>
 								<span>{{ module.name }}</span>
 							</div>
 							<ul class="modulethemes" ng-if="module.name == mm.selected.module">
