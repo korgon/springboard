@@ -60,7 +60,7 @@ body {
   border: 1px solid #906911;
   background: #906911;
   color: #CACACA;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: bold;
   cursor: pointer;
   padding: 4px 12px;
@@ -73,8 +73,7 @@ body {
     opacity: .5; }
   .button:hover:not(:disabled):not(.disabled) {
     background: #755900;
-    border-color: #755900;
-    color: #CACACA; }
+    border-color: #755900; }
   .button:focus {
     outline: 0; }
   .button.right {
@@ -270,6 +269,8 @@ input[type="password"], select {
     background-image: url("/images/icons/add.png"); }
   .icon.add-neg {
     background-image: url("/images/icons/add_neg.png"); }
+  .icon.add-button {
+    background-image: url("/images/icons/add_button.png"); }
   .icon.alert {
     background-image: url("/images/icons/alert.png"); }
   .icon.capture {
