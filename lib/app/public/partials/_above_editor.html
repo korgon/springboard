@@ -185,7 +185,7 @@
 											<ul class="vtab-control" ng-class="{ disabled: vm.edited }">
 												<li><a ng-click="vm.installModule(ui)"><span class="icon module-add"></span></a></li>
 
-												<li ng-repeat="module in ui.modules" ng-class="{ 'active': vm.activeVtab(ui.name) == 'module_' + module.name }" ng-if="module.theme"><a ng-click="vm.switchVtab('module_' + module.name, ui.name)"><span class="icon module" ng-style="{ 'background-image': 'url(' + vm.relative_url + ui.name + '/modules/' + module.name + '/' + module.theme + '/resources/icon.png' + ')' }" ng-class="{ removed: !module.enabled }"></span></a></li>
+												<li ng-repeat="module in ui.modules" ng-class="{ 'active': vm.activeVtab(ui.name) == 'module_' + module.name }" ng-if="module.theme && !module.hidden"><a ng-click="vm.switchVtab('module_' + module.name, ui.name)"><span class="icon module" ng-style="{ 'background-image': 'url(' + vm.relative_url + ui.name + '/modules/' + module.name + '/' + module.theme + '/resources/icon.png' + ')' }" ng-class="{ removed: !module.enabled }"></span></a></li>
 
 												<li ng-class="{ 'active': vm.activeVtab(ui.name) == 'styles' }"><a ng-click="vm.switchVtab('styles', ui.name)"><span class="icon styles"></span></a></li>
 
