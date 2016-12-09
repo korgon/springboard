@@ -327,7 +327,7 @@ input[type="password"], select {
     background-image: url("/images/icons/extensions/js.png"); }
   .icon.extension-json {
     background-image: url("/images/icons/extensions/json.png"); }
-  .icon.extension-gif, .icon.extension-jpg, .icon.extension-jpeg, .icon.extension-png {
+  .icon.extension-gif, .icon.extension-jpg, .icon.extension-jpeg, .icon.extension-png, .icon.extension-svg {
     background-image: url("/images/icons/extensions/image.png"); }
   .icon.extension-sass, .icon.extension-scss {
     background-image: url("/images/icons/extensions/sass.png"); }
