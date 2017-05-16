@@ -18,7 +18,7 @@
     "eslint": "^2.13.1",
     "hoxy": "^3.2.0",
     "http-shutdown": "^1.1.0",
-    "node-sass": "^3.10.1",
+    "node-sass": "^3.13.1",
     "webshot": "^0.18.0"
   },
   "devDependencies": {
