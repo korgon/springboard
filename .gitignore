@@ -6,8 +6,12 @@
 searchspring-sites/
 springboard-sites/
 
+# ignore the springboard-library repo
+springboard-library/
+
 # ignore the user configuration options
 lib/config/user.json
+lib/config/cache.json
 
 # ignore the dev sass cache
 lib/app/scss/.sass-cache

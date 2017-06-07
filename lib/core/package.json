@@ -10,19 +10,18 @@
   "license": "MIT",
   "dependencies": {
     "ansi-to-html": "^0.4.2",
-    "aws-sdk": "^2.6.6",
-    "browser-sync": "^2.12.3",
-    "chokidar": "^1.4.3",
-    "clean-css": "^3.4.10",
+    "aws-sdk": "^2.6.11",
+    "browser-sync": "^2.17.5",
+    "chokidar": "^1.6.1",
+    "clean-css": "^3.4.20",
     "colors": "^1.1.2",
-    "eslint": "^2.7.0",
+    "eslint": "^2.13.1",
     "hoxy": "^3.2.0",
     "http-shutdown": "^1.1.0",
-    "lwip": "0.0.9",
-    "node-sass": "^3.4.2",
+    "node-sass": "^3.13.1",
     "webshot": "^0.18.0"
   },
   "devDependencies": {
-    "tape": "^4.5.1"
+    "tape": "^4.6.2"
   }
 }

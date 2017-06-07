@@ -1,8 +1,0 @@
-{
-	"type": "v3/autocomplete",
-	"version": "1.0.0",
-	"description": "rich autocomplete",
-	"icon": "autocomplete",
-	"enabled": true,
-	"theme": null
-}

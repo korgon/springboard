@@ -46,6 +46,9 @@
 	&.add-neg {
 		background-image: url('/images/icons/add_neg.png');
 	}
+	&.add-button {
+		background-image: url('/images/icons/add_button.png');
+	}
 	&.alert {
 		background-image: url('/images/icons/alert.png');
 	}
@@ -109,6 +112,9 @@
 	&.edit {
 		background-image: url('/images/icons/edit.png');
 	}
+	&.extension {
+		background-image: url('/images/icons/extensions/unknown.png');
+	}
 	&.extension-css {
 		background-image: url('/images/icons/extensions/css.png');
 	}
@@ -130,12 +136,17 @@
 	&.extension-gif,
 	&.extension-jpg,
 	&.extension-jpeg,
-	&.extension-png {
+	&.extension-png,
+	&.extension-svg {
 		background-image: url('/images/icons/extensions/image.png');
 	}
 	&.extension-sass,
 	&.extension-scss {
 		background-image: url('/images/icons/extensions/sass.png');
+	}
+	&.extension-txt,
+	&.extension-text {
+		background-image: url('/images/icons/extensions/text.png');
 	}
 	&.files {
 		background-image: url('/images/icons/filestruct.png');
@@ -176,44 +187,8 @@
 	&.module {
 		background-image: url('/images/icons/modules/module.png');
 	}
-	&.module-generic {
-		background-image: url('/images/icons/modules/module.png');
-	}
 	&.module-add {
 		background-image: url('/images/icons/modules/module_add.png');
-	}
-	&.module-autocomplete {
-		background-image: url('/images/icons/modules/module_autocomplete.png');
-	}
-	&.module-compare {
-		background-image: url('/images/icons/modules/module_compare.png');
-	}
-	&.module-facet_slider {
-		background-image: url('/images/icons/modules/module_facet_slider.png');
-	}
-	&.module-image_load {
-		background-image: url('/images/icons/modules/module_image_load.png');
-	}
-	&.module-image_swap {
-		background-image: url('/images/icons/modules/module_image_swap.png');
-	}
-	&.module-infinite {
-		background-image: url('/images/icons/modules/module_infinite.png');
-	}
-	&.module-left {
-		background-image: url('/images/icons/modules/module_left.png');
-	}
-	&.module-right {
-		background-image: url('/images/icons/modules/module_right.png');
-	}
-	&.module-slideout {
-		background-image: url('/images/icons/modules/module_slideout.png');
-	}
-	&.module-top {
-		background-image: url('/images/icons/modules/module_top.png');
-	}
-	&.module-translate {
-		background-image: url('/images/icons/modules/module_translate.png');
 	}
 	&.open {
 		background-image: url('/images/icons/open.png');
