@@ -209,10 +209,13 @@
 		background-image: url('/images/icons/proxy_view.png');
 	}
 	&.reload {
-		background-image: url('/images/icons/refresh.png');
+		background-image: url('/images/icons/reload.png');
 	}
 	&.save {
 		background-image: url('/images/icons/save.png');
+	}
+	&.search {
+		background-image: url('/images/icons/search.png');
 	}
 	&.selected {
 		background-image: url('/images/icons/selected.png');
@@ -225,6 +228,9 @@
 	}
 	&.styles {
 		background-image: url('/images/icons/palette.png');
+	}
+	&.sync {
+		background-image: url('/images/icons/sync.png');
 	}
 	&.tags {
 		background-image: url('/images/icons/tag.png');

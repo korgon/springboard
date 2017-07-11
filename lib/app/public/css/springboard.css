@@ -374,9 +374,11 @@ input[type="password"], select {
   .icon.proxy_view {
     background-image: url("/images/icons/proxy_view.png"); }
   .icon.reload {
-    background-image: url("/images/icons/refresh.png"); }
+    background-image: url("/images/icons/reload.png"); }
   .icon.save {
     background-image: url("/images/icons/save.png"); }
+  .icon.search {
+    background-image: url("/images/icons/search.png"); }
   .icon.selected {
     background-image: url("/images/icons/selected.png"); }
   .icon.settings {
@@ -385,6 +387,8 @@ input[type="password"], select {
     background-image: url("/images/icons/shortkeys.png"); }
   .icon.styles {
     background-image: url("/images/icons/palette.png"); }
+  .icon.sync {
+    background-image: url("/images/icons/sync.png"); }
   .icon.tags {
     background-image: url("/images/icons/tag.png"); }
   .icon.themes {
@@ -568,11 +572,25 @@ body #above .heading {
     body #above .heading #frameurl:focus {
       background-color: #0E1920;
       color: #C87C0F; }
-  body #above .heading .sitesearch {
+  body #above .heading .spacer {
+    display: flex;
+    order: 2;
+    flex: 2 0 auto; }
+  body #above .heading .functions {
     display: flex;
     order: 3;
+    flex: 0 2 auto;
+    margin: 0 10px 0 0; }
+    body #above .heading .functions a {
+      opacity: 0.5; }
+      body #above .heading .functions a:hover {
+        cursor: pointer;
+        opacity: 1; }
+  body #above .heading .sitesearch {
+    display: flex;
+    order: 4;
     flex: 0 0 auto;
-    margin: 0 10px;
+    margin: 0 10px 0 0;
     justify-content: flex-start;
     background-color: #00121E;
     border-radius: 6px;
