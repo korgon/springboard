@@ -597,11 +597,12 @@ body #above .heading {
         opacity: 1; }
     body #above .heading .sitesearch .lookingglass {
       order: 1;
-      width: 40px;
+      width: 30px;
       margin: 0;
       opacity: .6;
       background-image: url("/images/icons/search_tiny.png");
       background-position: center;
+      background-size: 16px;
       background-repeat: no-repeat;
       transition: all 222ms ease; }
   body #above .heading .openurl {
