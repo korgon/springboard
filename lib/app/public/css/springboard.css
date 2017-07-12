@@ -1655,6 +1655,8 @@ body #gallery {
         #modals .boxwrap .s3-upload .s3-file .file-details .remote a {
           color: #755900;
           text-decoration: underline; }
+      #modals .boxwrap .s3-upload .s3-file .file-details img {
+        width: 100%; }
 
 /*
 	Custom Markdown theme
