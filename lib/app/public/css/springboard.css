@@ -561,6 +561,8 @@ body #above .heading {
               background-image: url("/images/icons/settings.png"); }
             body #above .heading .mainmenu ul.menuoptions li a span.menuicon.sitegallery {
               background-image: url("/images/icons/site.png"); }
+            body #above .heading .mainmenu ul.menuoptions li a span.menuicon.fetchgallery {
+              background-image: url("/images/icons/sync.png"); }
   body #above .heading #frameurl {
     order: 2;
     flex: 1 1 33%;

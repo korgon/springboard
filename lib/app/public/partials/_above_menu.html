@@ -1,6 +1,6 @@
 <ul class="menuoptions">
 
-  <li><a href="/gallery"><span class="menuicon sitegallery"></span><span class="menutext">view sites</span></a></li>
+  <li><a href="/gallery" ng-click="vm.fetchGallery()"><span class="menuicon {{ vm.fetchGallery ? 'fetchgallery' : 'sitegallery' }}"></span><span class="menutext">{{ vm.fetchGallery ? 'refresh' : 'view sites' }}</span></a></li>
 
   <li><a ng-click="settings()"><span class="menuicon settings"></span><span class="menutext">settings</span></a></li>
 </ul>
