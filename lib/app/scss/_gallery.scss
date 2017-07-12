@@ -126,14 +126,26 @@ body {
 					}
 					.detailsicons {
 						float: right;
-
+						margin-right: 5px;
 						.icon {
 							width: 30px;
 							height: 30px;
-							margin-right: 5px;
-							opacity: 0.4;
+							opacity: 0.6;
 							background-size: 20px;
 						}
+					}
+					.count {
+						display: inline-block;
+						text-align: center;
+						height: 18px;
+						border: 2px solid $orange;
+						color: $bluelightest;
+						background-color: rgba(0, 0, 0, 0.3);
+						border-radius: 50%;
+						font-size: 11px;
+						line-height: 19px;
+						width: 18px;
+						margin: 5px;
 					}
 				}
 			}

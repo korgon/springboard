@@ -1310,13 +1310,25 @@ body #gallery {
           padding-left: 12px;
           float: left; }
         body #gallery .sites .site .details .detailsicons {
-          float: right; }
+          float: right;
+          margin-right: 5px; }
           body #gallery .sites .site .details .detailsicons .icon {
             width: 30px;
             height: 30px;
-            margin-right: 5px;
-            opacity: 0.4;
+            opacity: 0.6;
             background-size: 20px; }
+        body #gallery .sites .site .details .count {
+          display: inline-block;
+          text-align: center;
+          height: 18px;
+          border: 2px solid #C87C0F;
+          color: #7194AD;
+          background-color: rgba(0, 0, 0, 0.3);
+          border-radius: 50%;
+          font-size: 11px;
+          line-height: 19px;
+          width: 18px;
+          margin: 5px; }
     body #gallery .sites .sitebutton {
       display: inline-block;
       width: 50px;

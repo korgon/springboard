@@ -177,7 +177,7 @@
 							</li>
 							<li class="variable-container">
 								<div class="variable-title"><span>Email</span></div>
-								<div class="variable-description">valid email address</div>
+								<div class="variable-description">email address tied to repos</div>
 								<input class="variable-input" type="text" name="email" id="user_email" placeholder="..." spellcheck="false" autocomplete="off" maxlength="30" ng-model="mm.data.user.email" required ng-pattern="/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/">
 							</li>
 							<li class="variable-container">
@@ -204,6 +204,9 @@
 								<div ng-if="variable.description" class="variable-description">{{ variable.description }}</div>
 							</li>
 						</ul>
+					</div>
+
+					<div class="shortkeys-settings" ng-hide="mm.tab != 'display'">
 					</div>
 
 					<div class="shortkeys-settings" ng-hide="mm.tab != 'shortkeys'">
