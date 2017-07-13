@@ -19,7 +19,7 @@
 
 	<!-- s3 publish notification modal -->
 	<div class="overlay" ng-switch-when="publish" ng-controller="ModalAlertCtrl">
-		<div class="boxwrap {{ modalview }}" ng-init="mm.detail_show = false">
+		<div class="boxwrap {{ modalview }}">
 			<div class="boxtop"></div>
 			<div class="boxcontent">
 				<div class="boxmessage">
@@ -29,6 +29,7 @@
 				<div class="buttons">
 					<button class="button" ng-if="!mm.detail_show" ng-click="mm.detail_show = !mm.detail_show">Details</button>
 					<button class="button" ng-click="mm.resolveModal()">{{ mm.button_confirm }}</button>
+					<button class="button" ng-if="mm.button_cancel" ng-click="mm.closeModal()">{{ mm.button_cancel }}</button>
 				</div>
 			</div>
 			<div class="s3-upload" ng-class="{ show: mm.detail_show }">
@@ -39,6 +40,9 @@
 					<div class="file-details">
 						<span class="file-size">{{ file.size }}</span>
 						<span class="remote"><a target="_blank" href="{{ '//' + file.url }}">{{ file.url }}</a></span>
+					</div>
+					<div class="file-details" ng-if="file.image">
+						<img ng-src="//{{ file.url }}">
 					</div>
 				</div>
 			</div>
@@ -173,7 +177,7 @@
 							</li>
 							<li class="variable-container">
 								<div class="variable-title"><span>Email</span></div>
-								<div class="variable-description">valid email address</div>
+								<div class="variable-description">email address tied to repos</div>
 								<input class="variable-input" type="text" name="email" id="user_email" placeholder="..." spellcheck="false" autocomplete="off" maxlength="30" ng-model="mm.data.user.email" required ng-pattern="/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/">
 							</li>
 							<li class="variable-container">
@@ -200,6 +204,9 @@
 								<div ng-if="variable.description" class="variable-description">{{ variable.description }}</div>
 							</li>
 						</ul>
+					</div>
+
+					<div class="shortkeys-settings" ng-hide="mm.tab != 'display'">
 					</div>
 
 					<div class="shortkeys-settings" ng-hide="mm.tab != 'shortkeys'">

@@ -124,6 +124,9 @@ body {
 								&.sitegallery {
 									background-image: url('/images/icons/site.png');
 								}
+								&.fetchgallery {
+									background-image: url('/images/icons/sync.png');
+								}
 							}
 							span.menutext {
 
@@ -145,11 +148,29 @@ body {
 					color: $orange;
 				}
 			}
-			.sitesearch {
+			.spacer {
+				display: flex;
+				order: 2;
+				flex: 2 0 auto;
+			}
+			.functions {
 				display: flex;
 				order: 3;
+				flex: 0 2 auto;
+				margin: 0 10px 0 0;
+				a {
+					opacity: 0.5;
+					&:hover {
+						cursor: pointer;
+						opacity: 1;
+					}
+				}
+			}
+			.sitesearch {
+				display: flex;
+				order: 4;
 				flex: 0 0 auto;
-				margin: 0 10px;
+				margin: 0 10px 0 0;
 				justify-content: flex-start;
 				background-color: $blueblack;
 				border-radius: 6px;
@@ -177,11 +198,12 @@ body {
 				}
 				.lookingglass {
 					order: 1;
-					width: 40px;
+					width: 30px;
 					margin: 0;
 					opacity: .6;
 					background-image: url('/images/icons/search_tiny.png');
 					background-position: center;
+					background-size: 16px;
 					background-repeat: no-repeat;
 					transition: all 222ms ease;
 				}

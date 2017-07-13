@@ -1,11 +1,17 @@
 <div class="heading gallery">
-  <div class="title">
-    <div class="logo"></div>
-    <div class="subtitle" ng-click="showMenu = !showMenu">SPRIΠGBOΛRD</div>
-  </div>
-  <div class="mainmenu" ng-include src="'/partials/_above_menu.html'" ng-class="{'show': showMenu}" ng-init="showMenu = false"></div>
-  <div class="sitesearch">
-    <input id="searchbox" autocomplete="off" ng-model="vm.query" focus-on>
-    <label for="searchbox" class="lookingglass"></label>
-  </div>
+	<div class="title">
+		<div class="logo"></div>
+		<div class="subtitle" ng-click="showMenu = !showMenu">SPRIΠGBOΛRD</div>
+	</div>
+
+	<div class="mainmenu" ng-include src="'/partials/_above_menu.html'" ng-class="{'show': showMenu}" ng-init="showMenu = false"></div>
+
+	<div class="spacer"></div>
+
+	<div class="functions"></div>
+
+	<div class="sitesearch">
+		<input id="searchbox" autocomplete="off" ng-model="vm.query" focus-on>
+		<label for="searchbox" class="lookingglass"></label>
+	</div>
 </div>

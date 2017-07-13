@@ -32,10 +32,9 @@
 				</div>
 				<div class="details">
 					<span class="name">{{ site.name }}</span>
-					<ul class="detailsicons">
-						<li class="icon status-{{ site.status }}"></li>
-						<!-- <li class="icon backend-{{ site.backend }}"></li> -->
-						<li class="icon cart-{{ site.settings.platform.value }}"></li>
+					<ul class="detailsicons" ng-if="vm.iconsOn">
+						<li ng-repeat="cart in vm.getCatalogCarts(site)" class="icon cart-{{ cart }}"></li>
+						<li ng-if="vm.getCatalogCount(site) > 1" class="icon"><span class="count">x{{ vm.getCatalogCount(site) }}</span></li>
 					</ul>
 				</div>
 			</li>

@@ -425,7 +425,7 @@
 		</div>
 		<div class="filedetails">
 			<div class="fileactions" ng-if="vm.session.tab.settings.vtab.default.tab == 'dirstruct'">
-				<span class="icon tiny active" ng-if="details.extension == 'html'" ng-class="{ disabled: (vm.relative_url + details.path) != vm.site.default_url }" ng-click="vm.setDefaultHTML(details.path)"></span>
+				<span class="icon tiny active" ng-if="details.extension == 'html' && details.level < 3" ng-class="{ disabled: (vm.relative_url + details.path) != vm.site.default_url }" ng-click="vm.setDefaultHTML(details.path)"></span>
 				<span class="icon tiny active"  ng-if="['png', 'jpeg', 'jpg', 'gif'].indexOf(details.extension) != -1" ng-class="{ disabled: vm.site.thumb != ('/sites/' + vm.site.name + '/' + details.path) }" ng-click="vm.setThumb(details.path)"></span>
 				<span class="icon tiny cloud" ng-class="{ disabled: vm.site.cloud_files.indexOf(details.path) == -1 }" ng-click="details.cloud = !details.cloud; vm.toggleCloudFile(details.path)"></span>
 				<span class="icon tiny upload" ng-click="vm.publishFile(details.path)"></span>

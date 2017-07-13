@@ -1,15 +1,15 @@
 ## Learning
 
-A scaffolding tool was not used to build out this project. The minimal, modular, middleware focused HTTP framework, KOA, was chosen to build to serve up a front end built around an API. Browsersync provides the browser refreshing and synchronization across multiple browsers and CSS injection.
+A scaffolding tool was not used to build out this project. The minimal, modular, middleware focused HTTP framework, KOA, was chosen to build to serve up a front end built around an API. Browsersync provides the CSS injection and browser refreshing as well as synchronization across multiple browsers.
 
 Many of the concepts used in this project are new concepts...we are forever learning...
 
-Jumping into it all can be very intimidating, as there are some many choices and opinions... not to mention the opionionated choices. So here is an opionionated start on if you want to develop web applications with Javascript today.
+Jumping into it all can be very intimidating, as there are some many choices and opinions... not to mention the opinionated choices. So here is an opinionated start on learning how to develop web applications with Javascript today.
 
-Provided are some good starting point to learn programing with Javascript and node.js, or if you need a refresher. Packages used by Springboard are also touched on in the specific packages used section.
+Provided below are some good starting point to learn programing with Javascript and node.js, or if you need a refresher. Packages used by Springboard are also touched on in the specific packages used section.
 
 ## Git
-The hope is that those who want to contribute can.  
+The hope is that those who want to contribute, can contribute.  
 Get started by learning some git basics so that we can all contribute safely.  
 
 ##### Articles

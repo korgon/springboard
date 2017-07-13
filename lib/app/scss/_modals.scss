@@ -378,7 +378,7 @@
 		.s3-upload {
 			max-height: 0;
 			background-color: $blueblack;
-			overflow: hidden;
+			overflow: auto;
 			border-top: 1px solid transparent;
 			transition: max-height 144ms ease, max-height 400ms ease-out;
 			&.show {
@@ -407,6 +407,9 @@
 							color: $orangedark;
 							text-decoration: underline;
 						}
+					}
+					img {
+						width: 100%;
 					}
 				}
 			}

@@ -20,7 +20,7 @@ Features:
 
 ##### Pre-requisites
 
-node.js (>=v4.4.4)  
+node.js (>=v6.11.1)  
 [nodejs](http://nodejs.org/download/)
 ##### Installation
 
