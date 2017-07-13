@@ -419,14 +419,14 @@
 	<div class="filewrapper" ng-if="details.type == 'file'" ng-init="details.show = false" ng-class="{ show: details.show }">
 		<div class="filehead" ng-if="details.type == 'file'" ng-click="details.show = !details.show">
 			<span class="icon small extension extension-{{ details.extension }}">
-				<span class="icon tiny selected" ng-if="vm.site.thumb == (vm.relative_url + details.path) || (vm.relative_url + details.path) == vm.site.default_url"></span>
+				<span class="icon tiny selected" ng-if="vm.site.thumb == details.path || details.path == vm.site.default_url"></span>
 			</span>
 			<span class="filename" ng-class="{ cloud: details.cloud }">{{ details.name }}</span>
 		</div>
 		<div class="filedetails">
 			<div class="fileactions" ng-if="vm.session.tab.settings.vtab.default.tab == 'dirstruct'">
-				<span class="icon tiny active" ng-if="details.extension == 'html' && details.level < 3" ng-class="{ disabled: (vm.relative_url + details.path) != vm.site.default_url }" ng-click="vm.setDefaultHTML(details.path)"></span>
-				<span class="icon tiny active"  ng-if="['png', 'jpeg', 'jpg', 'gif'].indexOf(details.extension) != -1" ng-class="{ disabled: vm.site.thumb != ('/sites/' + vm.site.name + '/' + details.path) }" ng-click="vm.setThumb(details.path)"></span>
+				<span class="icon tiny active" ng-if="details.extension == 'html' && details.level < 3" ng-class="{ disabled: (details.path != vm.site.default_url) }" ng-click="vm.setDefaultHTML(details.path)"></span>
+				<span class="icon tiny active"  ng-if="['png', 'jpeg', 'jpg', 'gif'].indexOf(details.extension) != -1" ng-class="{ disabled: (vm.site.thumb != details.path) }" ng-click="vm.setThumb(details.path)"></span>
 				<span class="icon tiny cloud" ng-class="{ disabled: vm.site.cloud_files.indexOf(details.path) == -1 }" ng-click="details.cloud = !details.cloud; vm.toggleCloudFile(details.path)"></span>
 				<span class="icon tiny upload" ng-click="vm.publishFile(details.path)"></span>
 				<span class="icon tiny view" ng-click="vm.setUrl(vm.root_url + details.path)" ng-class="{ disabled: vm.session.frameurl.match(vm.site.name + '/' + details.path) }"></span>
