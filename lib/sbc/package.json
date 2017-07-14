@@ -9,7 +9,7 @@
   "author": "SearchSpring",
   "license": "MIT",
   "dependencies": {
-    "angular": "^1.5.8",
+    "angular": "=1.6.5",
     "angular-marked": "^1.2.2",
     "angular-route": "^1.5.8",
     "highlight.js": "^9.7.0"
