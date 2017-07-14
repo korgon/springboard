@@ -24,7 +24,7 @@
 				</div>
 			</li>
 
-			<li class="site" ng-repeat="site in vm.sites | filter:vm.query">
+			<li class="site" ng-repeat="site in vm.sites | filter:vm.query" ng-if="site.type == 'site' || (site.type == 'playground' && site.name == vm.username)">
 				<a href="{{ site.default_url }}" target="_blank">
 					<img ng-if="site.thumb" ng-src="/sites/{{ site.name + '/' + site.thumb }}">
 					<img ng-if="!site.thumb && site.type == 'site'" src="/images/working.png">
