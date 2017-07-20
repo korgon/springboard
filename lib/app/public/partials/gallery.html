@@ -35,7 +35,7 @@
 					<a href="/sites/{{ site.name + '/' + site.default_url }}" target="_blank" ng-if="site.default_url && !site.proxy.enable.value"><span class="sitebutton open"></span></a>
 				</div>
 				<div class="details">
-					<span class="name">{{ site.name }}</span>
+					<span class="name">{{ site.type == 'playground' ? 'playground' : site.name }}</span>
 					<ul class="detailsicons" ng-if="vm.iconsOn">
 						<li ng-repeat="cart in vm.getCatalogCarts(site)" class="icon cart-{{ cart }}"></li>
 						<li ng-if="vm.getCatalogCount(site) > 1" class="icon"><span class="count">x{{ vm.getCatalogCount(site) }}</span></li>
