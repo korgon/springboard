@@ -380,13 +380,17 @@
 
 			<ul class="action-buttons" ng-if="vm.site && vm.edited">
 				<li><a ng-click="vm.saveChanges()"><span class="icon save"></span></a></li>
+
 				<li><span class="icon push disabled"></span></li>
+
 				<li><a ng-click="vm.reloadSite()"><span class="icon reload"></span></a></li>
 			</ul>
 
 			<ul class="action-buttons" ng-if="vm.site && !vm.edited">
 				<li><a ng-click="vm.commitSite()"><span class="icon commit"></span></a></li>
+
 				<li><a ng-click="vm.pushSite()"><span class="icon push"></span></a></li>
+
 				<li>
 					<a ng-click="vm.site.cloud_files.length && vm.publishSite()">
 						<span class="icon upload" ng-class="{ disabled: !vm.site.cloud_files.length }"></span>
