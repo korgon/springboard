@@ -173,7 +173,7 @@
 							<li class="variable-container">
 								<div class="variable-title"><span>Name</span></div>
 								<div class="variable-description">what people call you</div>
-								<input class="variable-input" type="text" name="name" id="user_name" placeholder="..." spellcheck="false" autocomplete="off" maxlength="30" focus-on ng-model="mm.data.user.name" required ng-pattern="/^[\ |\w]{3,}$/">
+								<input class="variable-input" type="text" name="name" id="user_name" placeholder="..." spellcheck="false" autocomplete="off" maxlength="30" focus-on ng-model="mm.data.user.name" required ng-pattern="/^[\w]{3,}$/">
 							</li>
 							<li class="variable-container">
 								<div class="variable-title"><span>Email</span></div>
@@ -183,12 +183,12 @@
 							<li class="variable-container">
 								<div class="variable-title"><span>S3 Id</span></div>
 								<div class="variable-description">credentials to connect to CDN</div>
-								<input class="variable-input" type="text" name="s3id" id="s3_id" placeholder="..." spellcheck="false" autocomplete="off" maxlength="20" focus-on ng-model="mm.data.user.s3.key_id" required ng-pattern="/^\w{20}$/">
+								<input class="variable-input" type="text" name="s3id" id="s3_id" placeholder="..." spellcheck="false" autocomplete="off" maxlength="20" ng-model="mm.data.user.s3.key_id" ng-pattern="/^\w{20}$/">
 							</li>
 							<li class="variable-container">
 								<div class="variable-title"><span>S3 Secret Key</span></div>
 								<div class="variable-description">keep it secret, keep it safe</div>
-								<input class="variable-input" type="password" name="s3key" id="s3_key" placeholder="..." spellcheck="false" autocomplete="off" maxlength="40" focus-on ng-model="mm.data.user.s3.key_secret" required ng-pattern="/^[\W|\w]{40}$/">
+								<input class="variable-input" type="password" name="s3key" id="s3_key" placeholder="..." spellcheck="false" autocomplete="off" maxlength="40" ng-model="mm.data.user.s3.key_secret" ng-pattern="/^[\W|\w]{40}$/">
 							</li>
 						</ul>
 					</div>

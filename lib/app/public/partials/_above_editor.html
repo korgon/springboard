@@ -7,7 +7,7 @@
 	<input id="frameurl" name="url" autocomplete="off" spellcheck="false" ng-model="vm.session.url" ng-change="vm.changeUrl()" ng-keypress="vm.changeUrl($event)">
 	<div class="openurl" ng-click="vm.openUrl(vm.session.url)"></div>
 	<div class="line"></div>
-	<div class="worksite"><a class="currentsite" ng-click="vm.toggleEditor()"><span id="currentsite">{{ vm.site.name }}</span></a>
+	<div class="worksite"><a class="currentsite" ng-click="vm.toggleEditor()"><span id="currentsite">{{ vm.site.type == 'playground' ? 'playground' : vm.site.name }}</span></a>
 		<div class="editor-container" ng-class="{'show': vm.session.showOptions}">
 
 			<ul class="tab-control" ng-class="{ disabled: vm.edited }">
@@ -380,13 +380,17 @@
 
 			<ul class="action-buttons" ng-if="vm.site && vm.edited">
 				<li><a ng-click="vm.saveChanges()"><span class="icon save"></span></a></li>
+
 				<li><span class="icon push disabled"></span></li>
+
 				<li><a ng-click="vm.reloadSite()"><span class="icon reload"></span></a></li>
 			</ul>
 
 			<ul class="action-buttons" ng-if="vm.site && !vm.edited">
 				<li><a ng-click="vm.commitSite()"><span class="icon commit"></span></a></li>
+
 				<li><a ng-click="vm.pushSite()"><span class="icon push"></span></a></li>
+
 				<li>
 					<a ng-click="vm.site.cloud_files.length && vm.publishSite()">
 						<span class="icon upload" ng-class="{ disabled: !vm.site.cloud_files.length }"></span>
